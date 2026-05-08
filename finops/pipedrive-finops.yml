@@ -5,22 +5,21 @@ provider: Pipedrive
 providerId: pipedrive
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- CRM
-- Sales
-- Pipeline Management
-- SaaS
-- Small Business
-- FinOps
-- Cost Management
-- FOCUS
-description: FOCUS-aligned FinOps placeholder for Pipedrive. Pipeline will replace with the provider's
-  real billing-model details once researched.
-notes: Initial scaffold — billing model has not yet been reconciled.
+  - CRM
+  - Sales
+  - FinOps
+  - FOCUS
+description: >-
+  Pipedrive bills per-user-per-month subscriptions across five tiers
+  (Essential / Advanced / Professional / Power / Enterprise) plus add-ons
+  (LeadBooster, Web Visitors, Projects, Smart Docs, Campaigns) and an
+  optional API token-budget top-up for high-volume integrations. This
+  artifact maps Pipedrive charges to FOCUS columns for FinOps allocation.
 sources:
-- https://www.pipedrive.com/
-- https://focus.finops.org/focus-specification/v1-3/
+  - https://www.pipedrive.com/en/pricing
+  - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -30,13 +29,14 @@ alignedWith:
 publisherName: Pipedrive
 serviceCategory: CRM
 billingModel:
-  pricingCategory: To Be Reconciled
+  pricingCategory: Subscription Per Seat
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-  - Usage
-  - Purchase
-  - Adjustment
+    - Purchase
+    - Usage
+    - Adjustment
+    - Tax
 focusColumns:
   ServiceName: Pipedrive
   ServiceCategory: CRM
@@ -44,24 +44,54 @@ focusColumns:
   PublisherName: Pipedrive
   InvoiceIssuerName: Pipedrive
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation against the provider's published metering.
-  unit: varies
-  aggregation: sum
-  dimensions:
-  - account
-  - resource
+  - name: pipedrive_seats
+    description: Active seats on Essential / Advanced / Professional / Power / Enterprise.
+    unit: seat-month
+    aggregation: sum
+    dimensions:
+      - tier
+      - team
+      - cost_center
+  - name: pipedrive_addons
+    description: LeadBooster / Web Visitors / Projects / Smart Docs / Campaigns add-ons.
+    unit: addon-month
+    aggregation: sum
+    dimensions:
+      - addon
+      - cost_center
+  - name: pipedrive_api_tokens
+    description: Daily API token budget consumed by integrations.
+    unit: tokens-daily
+    aggregation: sum
+    dimensions:
+      - integration
+      - cost_center
+  - name: pipedrive_api_token_topups
+    description: One-off purchases of additional daily API token budget.
+    unit: tokens
+    aggregation: sum
+    dimensions:
+      - integration
 principles:
-- name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
-- name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
-- name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
-- name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  - name: Visibility
+    description: >-
+      Pull Pipedrive monthly invoices and reconcile seat counts against
+      active users in the Users API. Track API token-budget consumption
+      against daily quota.
+  - name: Allocation
+    description: >-
+      Allocate seats by team / sales region; allocate add-ons to the
+      function that uses them (e.g. Marketing for Campaigns and
+      LeadBooster).
+  - name: Optimization
+    description: >-
+      Lock annual commitment for the discounted rate; right-size tier
+      based on actual feature usage. Audit add-on usage quarterly.
+  - name: Accountability
+    description: >-
+      Designate Sales Operations as contract owner; review at renewal.
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

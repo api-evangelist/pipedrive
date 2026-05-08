@@ -3,7 +3,11 @@ url: https://raw.githubusercontent.com/api-evangelist/pipedrive/refs/heads/main/
 name: Pipedrive
 x-type: company
 description: >-
-  Pipedrive is a sales CRM and pipeline management tool focused on small and mid-market teams. The Pipedrive API exposes deals, persons, organizations, activities, products, and webhook events.
+  Pipedrive is a sales CRM and pipeline management tool focused on small
+  and mid-market teams. The Pipedrive REST API exposes deals, persons,
+  organizations, activities, leads, products, pipelines, stages, mail,
+  calls, files, notes, users, permissions, filters, goals, subscriptions,
+  and webhooks.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - CRM
@@ -14,16 +18,293 @@ tags:
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: pipedrive:pipedrive-deals-api
+    name: Pipedrive Deals API
+    tags:
+      - Deals
+      - Pipeline
+    properties:
+      - url: https://developers.pipedrive.com/
+        type: Documentation
+      - url: https://developers.pipedrive.com/docs/api/v1/Deals
+        type: API Reference
+    description: >-
+      Manage deals — the core sales-pipeline entity. Create, retrieve,
+      update, search, and merge deals; advance them through pipeline
+      stages and track value, status, and probability.
+  - aid: pipedrive:pipedrive-leads-api
+    name: Pipedrive Leads API
+    tags:
+      - Leads
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Leads
+        type: API Reference
+    description: >-
+      Manage leads — pre-qualified deal candidates living in the Leads
+      Inbox before being converted to deals.
+  - aid: pipedrive:pipedrive-persons-api
+    name: Pipedrive Persons API
+    tags:
+      - Persons
+      - Contacts
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Persons
+        type: API Reference
+    description: >-
+      Manage person (contact) records — names, emails, phones, social
+      profiles — associated with deals and organizations.
+  - aid: pipedrive:pipedrive-organizations-api
+    name: Pipedrive Organizations API
+    tags:
+      - Organizations
+      - Companies
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Organizations
+        type: API Reference
+    description: >-
+      Manage organization (company) records that group persons and deals
+      under a single business relationship.
+  - aid: pipedrive:pipedrive-activities-api
+    name: Pipedrive Activities API
+    tags:
+      - Activities
+      - Tasks
+      - Calendar
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Activities
+        type: API Reference
+    description: >-
+      Manage activities (calls, meetings, emails, tasks, deadlines)
+      scheduled against deals, persons, or organizations.
+  - aid: pipedrive:pipedrive-pipelines-api
+    name: Pipedrive Pipelines API
+    tags:
+      - Pipelines
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+        type: API Reference
+    description: >-
+      Manage pipelines — the top-level sales process containers grouping
+      ordered stages.
+  - aid: pipedrive:pipedrive-stages-api
+    name: Pipedrive Stages API
+    tags:
+      - Stages
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Stages
+        type: API Reference
+    description: >-
+      Manage stages within pipelines and the per-stage probability and
+      ordering used to compute weighted forecasts.
+  - aid: pipedrive:pipedrive-products-api
+    name: Pipedrive Products API
+    tags:
+      - Products
+      - Catalog
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Products
+        type: API Reference
+    description: >-
+      Manage product catalog entries (SKU, price, currency variants)
+      attached to deals as line items.
+  - aid: pipedrive:pipedrive-notes-api
+    name: Pipedrive Notes API
+    tags:
+      - Notes
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Notes
+        type: API Reference
+    description: >-
+      Add and retrieve free-form notes attached to deals, persons,
+      organizations, and leads.
+  - aid: pipedrive:pipedrive-files-api
+    name: Pipedrive Files API
+    tags:
+      - Files
+      - Attachments
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Files
+        type: API Reference
+    description: >-
+      Upload and link files (contracts, proposals, attachments) to deals,
+      persons, and organizations.
+  - aid: pipedrive:pipedrive-mailbox-api
+    name: Pipedrive Mailbox API
+    tags:
+      - Mailbox
+      - Email
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+        type: API Reference
+    description: >-
+      Read mailbox messages and threads synced via the Pipedrive Smart
+      Email Bcc and 2-way email sync features.
+  - aid: pipedrive:pipedrive-calls-api
+    name: Pipedrive Calls API
+    tags:
+      - Calls
+      - Telephony
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+        type: API Reference
+    description: >-
+      Log call activities and connect with telephony providers via the
+      Caller integration framework.
+  - aid: pipedrive:pipedrive-users-api
+    name: Pipedrive Users API
+    tags:
+      - Users
+      - Seats
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Users
+        type: API Reference
+    description: >-
+      Manage Pipedrive users (sales reps, managers, admins) and their
+      activation state.
+  - aid: pipedrive:pipedrive-permissions-api
+    name: Pipedrive Permissions API
+    tags:
+      - Permissions
+      - Roles
+      - Groups
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Roles
+        type: API Reference
+    description: >-
+      Manage user roles and permission sets that govern visibility
+      across deals, persons, and organizations.
+  - aid: pipedrive:pipedrive-filters-api
+    name: Pipedrive Filters API
+    tags:
+      - Filters
+      - Saved Views
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Filters
+        type: API Reference
+    description: >-
+      Manage saved filters (saved query / view definitions) used across
+      lists and reports.
+  - aid: pipedrive:pipedrive-goals-api
+    name: Pipedrive Goals API
+    tags:
+      - Goals
+      - Forecasting
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Goals
+        type: API Reference
+    description: >-
+      Set, retrieve, and report on user / team / pipeline goals (deal
+      count, won value, weighted value).
+  - aid: pipedrive:pipedrive-subscriptions-api
+    name: Pipedrive Subscriptions API
+    tags:
+      - Subscriptions
+      - Recurring
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+        type: API Reference
+    description: >-
+      Manage recurring revenue subscriptions attached to a deal — schedule,
+      cancellation, and renewal tracking.
+  - aid: pipedrive:pipedrive-projects-api
+    name: Pipedrive Projects API
+    tags:
+      - Projects
+      - Delivery
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Projects
+        type: API Reference
+    description: >-
+      Manage post-sale projects and tasks linked to a closed-won deal in
+      the Pipedrive Projects (delivery) module.
+  - aid: pipedrive:pipedrive-product-fields-api
+    name: Pipedrive Custom Fields API
+    tags:
+      - Custom Fields
+      - Metadata
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/DealFields
+        type: API Reference
+    description: >-
+      Read and manage custom field definitions on Deals, Persons,
+      Organizations, Products, and Leads.
+  - aid: pipedrive:pipedrive-webhooks-api
+    name: Pipedrive Webhooks API
+    tags:
+      - Webhooks
+      - Events
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+        type: API Reference
+    description: >-
+      Subscribe to Pipedrive events (deal.added, deal.updated, person.added,
+      activity.added) and receive HTTP callbacks for downstream automation.
+  - aid: pipedrive:pipedrive-marketplace-api
+    name: Pipedrive Marketplace App API
+    tags:
+      - Marketplace
+      - OAuth
+      - Apps
+    properties:
+      - url: https://developers.pipedrive.com/docs/api/v1/oauth2
+        type: Documentation
+    description: >-
+      OAuth 2 endpoints, app distribution, and embedded UI extensions
+      (panels, modals, link actions) for building Pipedrive Marketplace
+      apps.
 common:
   - type: Website
     url: https://www.pipedrive.com/
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: API Reference
+    url: https://developers.pipedrive.com/docs/api/v1
+  - type: Pricing
+    url: https://www.pipedrive.com/en/pricing
+  - type: Login
+    url: https://app.pipedrive.com/auth/login
+  - type: Status
+    url: https://status.pipedrive.com/
+  - type: Blog
+    url: https://www.pipedrive.com/en/blog
+  - type: Support
+    url: https://support.pipedrive.com/
+  - type: GitHub Organization
+    url: https://github.com/pipedrive
+  - type: Privacy Policy
+    url: https://www.pipedrive.com/en/privacy
+  - type: Terms of Service
+    url: https://www.pipedrive.com/en/terms-of-service
+  - type: Authentication
+    url: https://pipedrive.readme.io/docs/core-api-concepts-authentication
+  - type: Rate Limits
+    url: https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting
+  - type: Webhooks
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
   - type: Plans
     url: plans/pipedrive-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/pipedrive-rate-limits.yml
   - type: FinOps
     url: finops/pipedrive-finops.yml
+  - type: Features
+    data:
+      - REST API at https://api.pipedrive.com/v1 (and v2 endpoints)
+      - OAuth 2.0 (Marketplace apps) and API token (custom integrations)
+      - Five plan tiers — Essential, Advanced, Professional, Power, Enterprise
+      - Token-based daily budget — 30,000 base tokens × plan multiplier × seats
+      - Plan multipliers from 1 (Lite) to 7 (Ultimate)
+      - Token costs - 2 (single GET), 20 (list GET), 10 (PUT), 40 (search)
+      - Burst per-user limits in 2-second windows
+      - 429 returned when daily budget is exhausted; resets at server midnight
+      - Add-ons - LeadBooster, Smart Docs, Web Visitors, Projects, Campaigns
+      - SDKs in Node.js, PHP, Python, .NET, Ruby
+    sources:
+      - https://www.pipedrive.com/en/pricing
+      - https://developers.pipedrive.com/
+      - https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting
+    updated: '2026-05-08'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

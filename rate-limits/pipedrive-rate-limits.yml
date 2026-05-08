@@ -5,32 +5,81 @@ provider: Pipedrive
 providerId: pipedrive
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- CRM
-- Sales
-- Pipeline Management
-- SaaS
-- Small Business
-- Rate Limiting
-- Quotas
-- Throttling
-description: Placeholder rate-limit artifact for Pipedrive. Replace with real limits once the pipeline
-  researches the provider's rate-limit documentation.
-notes: Initial scaffold — limits have not yet been reconciled against the provider's documentation.
+  - CRM
+  - Sales
+  - Rate Limiting
+  - Throttling
+description: >-
+  Pipedrive enforces a token-budget rate-limit model. Each company has a
+  daily allocation of base tokens × plan multiplier × number of seats
+  (plus any purchased top-ups). Different operations cost different
+  amounts; per-user burst limits apply in 2-second windows. Resets daily
+  at server midnight.
 sources:
-- https://www.pipedrive.com/
+  - https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting
+notes: >-
+  Rolling out December 2024 for new customers and through 2025 for
+  existing customers. Token budget is shared across all users in the
+  company; purchase API token top-ups for sustained higher usage.
 responseCodes:
   throttled: 429
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  - name: Daily Token Budget
+    scope: company
+    metric: tokens
+    formula: 30000 * plan_multiplier * seats + topups
+    notes: >-
+      30,000 base tokens × plan multiplier × number of seats (+ top-ups).
+      Plan multiplier ranges from 1 (Lite) to 7 (Ultimate). Resets daily
+      at server midnight.
+  - name: Single Entity GET Cost
+    scope: request
+    metric: tokens
+    limit: 2
+    notes: Retrieving a single entity (e.g. GET /deals/{id}) costs 2 tokens.
+  - name: List GET Cost
+    scope: request
+    metric: tokens
+    limit: 20
+    notes: Listing multiple entities (e.g. GET /deals) costs 20 tokens.
+  - name: Update Cost
+    scope: request
+    metric: tokens
+    limit: 10
+    notes: PUT / PATCH / POST mutating a single entity costs 10 tokens.
+  - name: Search Cost
+    scope: request
+    metric: tokens
+    limit: 40
+    notes: Search endpoints cost 40 tokens per call.
+  - name: Per User Burst (2 second window)
+    scope: user
+    metric: tokens
+    notes: >-
+      Per-user burst restrictions apply in 2-second windows; e.g. Lite
+      users may make ~20 token-equivalent requests per 2-second window.
+  - name: Webhook Delivery
+    scope: subscription
+    metric: events
+    notes: >-
+      Webhook deliveries are retried on 5xx; receivers should respond 2xx
+      within the platform timeout.
 policies:
-- name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  - name: Backoff Strategy
+    description: >-
+      Implement exponential backoff with jitter on 429. Daily exhaustion
+      requires waiting until midnight server time or buying a top-up.
+  - name: Cost-Aware Design
+    description: >-
+      Prefer single-entity GETs when possible; avoid using search when a
+      direct list+filter works. Cache responses and use webhooks instead
+      of polling.
+  - name: Pagination
+    description: >-
+      Use limit + start cursor on list endpoints to avoid exhausting the
+      list-GET budget.
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
