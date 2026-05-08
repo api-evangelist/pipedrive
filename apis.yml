@@ -29,6 +29,10 @@ apis:
         type: Documentation
       - url: https://developers.pipedrive.com/docs/api/v1/Deals
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage deals — the core sales-pipeline entity. Create, retrieve,
       update, search, and merge deals; advance them through pipeline
@@ -40,6 +44,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Leads
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage leads — pre-qualified deal candidates living in the Leads
       Inbox before being converted to deals.
@@ -51,6 +59,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Persons
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage person (contact) records — names, emails, phones, social
       profiles — associated with deals and organizations.
@@ -62,6 +74,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Organizations
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage organization (company) records that group persons and deals
       under a single business relationship.
@@ -74,6 +90,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Activities
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage activities (calls, meetings, emails, tasks, deadlines)
       scheduled against deals, persons, or organizations.
@@ -84,6 +104,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Pipelines
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage pipelines — the top-level sales process containers grouping
       ordered stages.
@@ -94,6 +118,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Stages
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage stages within pipelines and the per-stage probability and
       ordering used to compute weighted forecasts.
@@ -105,6 +133,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Products
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage product catalog entries (SKU, price, currency variants)
       attached to deals as line items.
@@ -115,6 +147,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Notes
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       Add and retrieve free-form notes attached to deals, persons,
       organizations, and leads.
@@ -126,6 +160,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Files
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       Upload and link files (contracts, proposals, attachments) to deals,
       persons, and organizations.
@@ -137,6 +173,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Mailbox
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       Read mailbox messages and threads synced via the Pipedrive Smart
       Email Bcc and 2-way email sync features.
@@ -148,6 +186,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/CallLogs
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       Log call activities and connect with telephony providers via the
       Caller integration framework.
@@ -159,6 +199,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Users
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage Pipedrive users (sales reps, managers, admins) and their
       activation state.
@@ -171,6 +215,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Roles
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       Manage user roles and permission sets that govern visibility
       across deals, persons, and organizations.
@@ -182,6 +228,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Filters
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       Manage saved filters (saved query / view definitions) used across
       lists and reports.
@@ -193,6 +241,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Goals
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       Set, retrieve, and report on user / team / pipeline goals (deal
       count, won value, weighted value).
@@ -204,6 +254,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       Manage recurring revenue subscriptions attached to a deal — schedule,
       cancellation, and renewal tracking.
@@ -215,6 +267,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Projects
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Manage post-sale projects and tasks linked to a closed-won deal in
       the Pipedrive Projects (delivery) module.
@@ -226,6 +282,10 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/DealFields
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
+      - url: openapi/pipedrive-v2-openapi.yml
+        type: OpenAPI
     description: >-
       Read and manage custom field definitions on Deals, Persons,
       Organizations, Products, and Leads.
@@ -237,6 +297,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Webhooks
         type: API Reference
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       Subscribe to Pipedrive events (deal.added, deal.updated, person.added,
       activity.added) and receive HTTP callbacks for downstream automation.
@@ -249,6 +311,8 @@ apis:
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/oauth2
         type: Documentation
+      - url: openapi/pipedrive-v1-openapi.yml
+        type: OpenAPI
     description: >-
       OAuth 2 endpoints, app distribution, and embedded UI extensions
       (panels, modals, link actions) for building Pipedrive Marketplace
