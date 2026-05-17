@@ -1,7 +1,7 @@
 aid: pipedrive
 url: https://raw.githubusercontent.com/api-evangelist/pipedrive/refs/heads/main/apis.yml
 name: Pipedrive
-x-type: company
+kind: company
 description: >-
   Pipedrive is a sales CRM and pipeline management tool focused on small
   and mid-market teams. The Pipedrive REST API exposes deals, persons,
@@ -28,7 +28,7 @@ apis:
       - url: https://developers.pipedrive.com/
         type: Documentation
       - url: https://developers.pipedrive.com/docs/api/v1/Deals
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -43,7 +43,7 @@ apis:
       - Leads
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Leads
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -58,7 +58,7 @@ apis:
       - Contacts
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Persons
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -73,7 +73,7 @@ apis:
       - Companies
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Organizations
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -89,7 +89,7 @@ apis:
       - Calendar
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Activities
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -103,7 +103,7 @@ apis:
       - Pipelines
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Pipelines
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -117,7 +117,7 @@ apis:
       - Stages
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Stages
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -132,7 +132,7 @@ apis:
       - Catalog
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Products
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -146,7 +146,7 @@ apis:
       - Notes
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Notes
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
     description: >-
@@ -159,7 +159,7 @@ apis:
       - Attachments
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Files
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
     description: >-
@@ -172,7 +172,7 @@ apis:
       - Email
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Mailbox
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
     description: >-
@@ -185,7 +185,7 @@ apis:
       - Telephony
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/CallLogs
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
     description: >-
@@ -198,7 +198,7 @@ apis:
       - Seats
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Users
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -214,7 +214,7 @@ apis:
       - Groups
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Roles
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
     description: >-
@@ -227,7 +227,7 @@ apis:
       - Saved Views
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Filters
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
     description: >-
@@ -240,7 +240,7 @@ apis:
       - Forecasting
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Goals
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
     description: >-
@@ -253,7 +253,7 @@ apis:
       - Recurring
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
     description: >-
@@ -266,7 +266,7 @@ apis:
       - Delivery
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Projects
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -281,7 +281,7 @@ apis:
       - Metadata
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/DealFields
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
       - url: openapi/pipedrive-v2-openapi.yml
@@ -296,7 +296,7 @@ apis:
       - Events
     properties:
       - url: https://developers.pipedrive.com/docs/api/v1/Webhooks
-        type: API Reference
+        type: APIReference
       - url: openapi/pipedrive-v1-openapi.yml
         type: OpenAPI
     description: >-
@@ -322,27 +322,27 @@ common:
     url: https://www.pipedrive.com/
   - type: Documentation
     url: https://developers.pipedrive.com/
-  - type: API Reference
+  - type: APIReference
     url: https://developers.pipedrive.com/docs/api/v1
   - type: Pricing
     url: https://www.pipedrive.com/en/pricing
   - type: Login
     url: https://app.pipedrive.com/auth/login
-  - type: Status
+  - type: StatusPage
     url: https://status.pipedrive.com/
   - type: Blog
     url: https://www.pipedrive.com/en/blog
   - type: Support
     url: https://support.pipedrive.com/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/pipedrive
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.pipedrive.com/en/privacy
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.pipedrive.com/en/terms-of-service
   - type: Authentication
     url: https://pipedrive.readme.io/docs/core-api-concepts-authentication
-  - type: Rate Limits
+  - type: RateLimits
     url: https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting
   - type: Webhooks
     url: https://developers.pipedrive.com/docs/api/v1/Webhooks
