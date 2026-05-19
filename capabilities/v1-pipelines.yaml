@@ -1,0 +1,256 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — Pipelines
+  description: 'Pipedrive API v1 — Pipelines. 3 operations. Lead operation: Get deals conversion rates in pipeline. Self-contained
+    Naftiko capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Pipelines
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-pipelines
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — Pipelines business capability. Self-contained, no shared references.
+    resources:
+    - name: pipelines-id-conversion_statistics
+      path: /pipelines/{id}/conversion_statistics
+      operations:
+      - name: getpipelineconversionstatistics
+        method: GET
+        description: Get deals conversion rates in pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the pipeline
+          required: true
+        - name: start_date
+          in: query
+          type: string
+          description: The start of the period. Date in format of YYYY-MM-DD.
+          required: true
+        - name: end_date
+          in: query
+          type: string
+          description: The end of the period. Date in format of YYYY-MM-DD.
+          required: true
+        - name: user_id
+          in: query
+          type: integer
+          description: The ID of the user who's pipeline metrics statistics to fetch. If omitted, the authorized user will
+            be used.
+    - name: pipelines-id-deals
+      path: /pipelines/{id}/deals
+      operations:
+      - name: getpipelinedeals
+        method: GET
+        description: Get deals in a pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the pipeline
+          required: true
+        - name: filter_id
+          in: query
+          type: integer
+          description: If supplied, only deals matching the given filter will be returned
+        - name: user_id
+          in: query
+          type: integer
+          description: 'If supplied, `filter_id` will not be considered and only deals owned by the given user will be returned.
+            If omitted, deals owned by the authorized user will be '
+        - name: everyone
+          in: query
+          type: number
+          description: If supplied, `filter_id` and `user_id` will not be considered – instead, deals owned by everyone will
+            be returned
+        - name: stage_id
+          in: query
+          type: integer
+          description: If supplied, only deals within the given stage will be returned
+        - name: start
+          in: query
+          type: integer
+          description: Pagination start
+        - name: limit
+          in: query
+          type: integer
+          description: Items shown per page
+        - name: get_summary
+          in: query
+          type: number
+          description: Whether to include a summary of the pipeline in the `additional_data` or not
+        - name: totals_convert_currency
+          in: query
+          type: string
+          description: The 3-letter currency code of any of the supported currencies. When supplied, `per_stages_converted`
+            is returned inside `deals_summary` inside `additional_data`
+    - name: pipelines-id-movement_statistics
+      path: /pipelines/{id}/movement_statistics
+      operations:
+      - name: getpipelinemovementstatistics
+        method: GET
+        description: Get deals movements in pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the pipeline
+          required: true
+        - name: start_date
+          in: query
+          type: string
+          description: The start of the period. Date in format of YYYY-MM-DD.
+          required: true
+        - name: end_date
+          in: query
+          type: string
+          description: The end of the period. Date in format of YYYY-MM-DD.
+          required: true
+        - name: user_id
+          in: query
+          type: integer
+          description: The ID of the user who's pipeline statistics to fetch. If omitted, the authorized user will be used.
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-pipelines-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — Pipelines. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/pipelines/{id}/conversion-statistics
+      name: pipelines-id-conversion-statistics
+      description: REST surface for pipelines-id-conversion_statistics.
+      operations:
+      - method: GET
+        name: getpipelineconversionstatistics
+        description: Get deals conversion rates in pipeline
+        call: v1-pipelines.getpipelineconversionstatistics
+        with:
+          id: rest.id
+          start_date: rest.start_date
+          end_date: rest.end_date
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pipelines/{id}/deals
+      name: pipelines-id-deals
+      description: REST surface for pipelines-id-deals.
+      operations:
+      - method: GET
+        name: getpipelinedeals
+        description: Get deals in a pipeline
+        call: v1-pipelines.getpipelinedeals
+        with:
+          id: rest.id
+          filter_id: rest.filter_id
+          user_id: rest.user_id
+          everyone: rest.everyone
+          stage_id: rest.stage_id
+          start: rest.start
+          limit: rest.limit
+          get_summary: rest.get_summary
+          totals_convert_currency: rest.totals_convert_currency
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pipelines/{id}/movement-statistics
+      name: pipelines-id-movement-statistics
+      description: REST surface for pipelines-id-movement_statistics.
+      operations:
+      - method: GET
+        name: getpipelinemovementstatistics
+        description: Get deals movements in pipeline
+        call: v1-pipelines.getpipelinemovementstatistics
+        with:
+          id: rest.id
+          start_date: rest.start_date
+          end_date: rest.end_date
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-pipelines-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — Pipelines. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-deals-conversion-rates-pipeline
+      description: Get deals conversion rates in pipeline
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-pipelines.getpipelineconversionstatistics
+      with:
+        id: tools.id
+        start_date: tools.start_date
+        end_date: tools.end_date
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-deals-pipeline
+      description: Get deals in a pipeline
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-pipelines.getpipelinedeals
+      with:
+        id: tools.id
+        filter_id: tools.filter_id
+        user_id: tools.user_id
+        everyone: tools.everyone
+        stage_id: tools.stage_id
+        start: tools.start
+        limit: tools.limit
+        get_summary: tools.get_summary
+        totals_convert_currency: tools.totals_convert_currency
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-deals-movements-pipeline
+      description: Get deals movements in pipeline
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-pipelines.getpipelinemovementstatistics
+      with:
+        id: tools.id
+        start_date: tools.start_date
+        end_date: tools.end_date
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.

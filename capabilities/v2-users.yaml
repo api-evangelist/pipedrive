@@ -1,0 +1,93 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — Users
+  description: 'Pipedrive API v2 — Users. 1 operations. Lead operation: List followers of a user. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-users
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: users-id-followers
+      path: /users/{id}/followers
+      operations:
+      - name: getuserfollowers
+        method: GET
+        description: List followers of a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the user
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-users-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/users/{id}/followers
+      name: users-id-followers
+      description: REST surface for users-id-followers.
+      operations:
+      - method: GET
+        name: getuserfollowers
+        description: List followers of a user
+        call: v2-users.getuserfollowers
+        with:
+          id: rest.id
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — Users. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-followers-user
+      description: List followers of a user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-users.getuserfollowers
+      with:
+        id: tools.id
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,1083 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — Deals
+  description: 'Pipedrive API v2 — Deals. 17 operations. Lead operation: Get all deals. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Deals
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-deals
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — Deals business capability. Self-contained, no shared references.
+    resources:
+    - name: deals
+      path: /deals
+      operations:
+      - name: getdeals
+        method: GET
+        description: Get all deals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter_id
+          in: query
+          type: integer
+          description: If supplied, only deals matching the specified filter are returned
+        - name: ids
+          in: query
+          type: string
+          description: Optional comma separated string array of up to 100 entity ids to fetch. If filter_id is provided, this
+            is ignored. If any of the requested entities do not exist
+        - name: owner_id
+          in: query
+          type: integer
+          description: If supplied, only deals owned by the specified user are returned. If filter_id is provided, this is
+            ignored.
+        - name: person_id
+          in: query
+          type: integer
+          description: If supplied, only deals linked to the specified person are returned. If filter_id is provided, this
+            is ignored.
+        - name: org_id
+          in: query
+          type: integer
+          description: If supplied, only deals linked to the specified organization are returned. If filter_id is provided,
+            this is ignored.
+        - name: pipeline_id
+          in: query
+          type: integer
+          description: If supplied, only deals in the specified pipeline are returned. If filter_id is provided, this is ignored.
+        - name: stage_id
+          in: query
+          type: integer
+          description: If supplied, only deals in the specified stage are returned. If filter_id is provided, this is ignored.
+        - name: status
+          in: query
+          type: string
+          description: 'Only fetch deals with a specific status. If omitted, all not deleted deals are returned. If set to
+            deleted, deals that have been deleted up to 30 days ago will '
+        - name: updated_since
+          in: query
+          type: string
+          description: If set, only deals with an `update_time` later than or equal to this time are returned. In RFC3339
+            format, e.g. 2025-01-01T10:20:00Z.
+        - name: updated_until
+          in: query
+          type: string
+          description: If set, only deals with an `update_time` earlier than this time are returned. In RFC3339 format, e.g.
+            2025-01-01T10:20:00Z.
+        - name: sort_by
+          in: query
+          type: string
+          description: 'The field to sort by. Supported fields: `id`, `update_time`, `add_time`.'
+        - name: sort_direction
+          in: query
+          type: string
+          description: 'The sorting direction. Supported values: `asc`, `desc`.'
+        - name: include_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of additional fields to include
+        - name: custom_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of custom fields keys to include. If you are only interested
+            in a particular set of custom fields, please use this paramet
+        - name: include_option_labels
+          in: query
+          type: boolean
+          description: 'When provided with a ''true'' value, single option and multiple option custom fields values contain
+            objects in the form of ''{ id: number, label: string }'' instead'
+        - name: include_labels
+          in: query
+          type: boolean
+          description: 'When provided with ''true'' value, response will include an array of label objects in the form of
+            ''{ id: number, label: string }'''
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      - name: adddeal
+        method: POST
+        description: Add a new deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: deals-archived
+      path: /deals/archived
+      operations:
+      - name: getarchiveddeals
+        method: GET
+        description: Get all archived deals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter_id
+          in: query
+          type: integer
+          description: If supplied, only deals matching the specified filter are returned
+        - name: ids
+          in: query
+          type: string
+          description: Optional comma separated string array of up to 100 entity ids to fetch. If filter_id is provided, this
+            is ignored. If any of the requested entities do not exist
+        - name: owner_id
+          in: query
+          type: integer
+          description: If supplied, only deals owned by the specified user are returned. If filter_id is provided, this is
+            ignored.
+        - name: person_id
+          in: query
+          type: integer
+          description: If supplied, only deals linked to the specified person are returned. If filter_id is provided, this
+            is ignored.
+        - name: org_id
+          in: query
+          type: integer
+          description: If supplied, only deals linked to the specified organization are returned. If filter_id is provided,
+            this is ignored.
+        - name: pipeline_id
+          in: query
+          type: integer
+          description: If supplied, only deals in the specified pipeline are returned. If filter_id is provided, this is ignored.
+        - name: stage_id
+          in: query
+          type: integer
+          description: If supplied, only deals in the specified stage are returned. If filter_id is provided, this is ignored.
+        - name: status
+          in: query
+          type: string
+          description: 'Only fetch deals with a specific status. If omitted, all not deleted deals are returned. If set to
+            deleted, deals that have been deleted up to 30 days ago will '
+        - name: updated_since
+          in: query
+          type: string
+          description: If set, only deals with an `update_time` later than or equal to this time are returned. In RFC3339
+            format, e.g. 2025-01-01T10:20:00Z.
+        - name: updated_until
+          in: query
+          type: string
+          description: If set, only deals with an `update_time` earlier than this time are returned. In RFC3339 format, e.g.
+            2025-01-01T10:20:00Z.
+        - name: sort_by
+          in: query
+          type: string
+          description: 'The field to sort by. Supported fields: `id`, `update_time`, `add_time`.'
+        - name: sort_direction
+          in: query
+          type: string
+          description: 'The sorting direction. Supported values: `asc`, `desc`.'
+        - name: include_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of additional fields to include
+        - name: custom_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of custom fields keys to include. If you are only interested
+            in a particular set of custom fields, please use this paramet
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+    - name: deals-search
+      path: /deals/search
+      operations:
+      - name: searchdeals
+        method: GET
+        description: Search deals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: term
+          in: query
+          type: string
+          description: The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the
+            search term has to be URL encoded.
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: 'A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only
+            the following custom field types are searchable: `address`,'
+        - name: exact_match
+          in: query
+          type: boolean
+          description: When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.
+        - name: person_id
+          in: query
+          type: integer
+          description: Will filter deals by the provided person ID. The upper limit of found deals associated with the person
+            is 2000.
+        - name: organization_id
+          in: query
+          type: integer
+          description: Will filter deals by the provided organization ID. The upper limit of found deals associated with the
+            organization is 2000.
+        - name: status
+          in: query
+          type: string
+          description: Will filter deals by the provided specific status. open = Open, won = Won, lost = Lost. The upper limit
+            of found deals associated with the status is 2000.
+        - name: include_fields
+          in: query
+          type: string
+          description: Supports including optional fields in the results which are not provided by default
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+    - name: deals-id
+      path: /deals/{id}
+      operations:
+      - name: deletedeal
+        method: DELETE
+        description: Delete a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+      - name: getdeal
+        method: GET
+        description: Get details of a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: include_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of additional fields to include
+        - name: custom_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of custom fields keys to include. If you are only interested
+            in a particular set of custom fields, please use this paramet
+        - name: include_option_labels
+          in: query
+          type: boolean
+          description: 'When provided with a ''true'' value, single option and multiple option custom fields values contain
+            objects in the form of ''{ id: number, label: string }'' instead'
+        - name: include_labels
+          in: query
+          type: boolean
+          description: 'When provided with ''true'' value, response will include an array of label objects in the form of
+            ''{ id: number, label: string }'''
+      - name: updatedeal
+        method: PATCH
+        description: Update a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: deals-id-convert-lead
+      path: /deals/{id}/convert/lead
+      operations:
+      - name: convertdealtolead
+        method: POST
+        description: Convert a deal to a lead
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal to convert
+          required: true
+    - name: deals-id-convert-status-conversion_id
+      path: /deals/{id}/convert/status/{conversion_id}
+      operations:
+      - name: getdealconversionstatus
+        method: GET
+        description: Get Deal conversion status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of a deal
+          required: true
+        - name: conversion_id
+          in: path
+          type: string
+          description: The ID of the conversion
+          required: true
+    - name: deals-id-discounts
+      path: /deals/{id}/discounts
+      operations:
+      - name: getadditionaldiscounts
+        method: GET
+        description: List discounts added to a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+      - name: postadditionaldiscount
+        method: POST
+        description: Add a discount to a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: deals-id-discounts-discount_id
+      path: /deals/{id}/discounts/{discount_id}
+      operations:
+      - name: updateadditionaldiscount
+        method: PATCH
+        description: Update a discount added to a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: discount_id
+          in: path
+          type: string
+          description: The ID of the discount
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteadditionaldiscount
+        method: DELETE
+        description: Delete a discount from a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: discount_id
+          in: path
+          type: string
+          description: The ID of the discount
+          required: true
+    - name: deals-id-followers
+      path: /deals/{id}/followers
+      operations:
+      - name: getdealfollowers
+        method: GET
+        description: List followers of a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      - name: adddealfollower
+        method: POST
+        description: Add a follower to a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: deals-id-followers-changelog
+      path: /deals/{id}/followers/changelog
+      operations:
+      - name: getdealfollowerschangelog
+        method: GET
+        description: List followers changelog of a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+    - name: deals-id-followers-follower_id
+      path: /deals/{id}/followers/{follower_id}
+      operations:
+      - name: deletedealfollower
+        method: DELETE
+        description: Delete a follower from a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: follower_id
+          in: path
+          type: integer
+          description: The ID of the following user
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-deals-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — Deals. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/deals
+      name: deals
+      description: REST surface for deals.
+      operations:
+      - method: GET
+        name: getdeals
+        description: Get all deals
+        call: v2-deals.getdeals
+        with:
+          filter_id: rest.filter_id
+          ids: rest.ids
+          owner_id: rest.owner_id
+          person_id: rest.person_id
+          org_id: rest.org_id
+          pipeline_id: rest.pipeline_id
+          stage_id: rest.stage_id
+          status: rest.status
+          updated_since: rest.updated_since
+          updated_until: rest.updated_until
+          sort_by: rest.sort_by
+          sort_direction: rest.sort_direction
+          include_fields: rest.include_fields
+          custom_fields: rest.custom_fields
+          include_option_labels: rest.include_option_labels
+          include_labels: rest.include_labels
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: adddeal
+        description: Add a new deal
+        call: v2-deals.adddeal
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/archived
+      name: deals-archived
+      description: REST surface for deals-archived.
+      operations:
+      - method: GET
+        name: getarchiveddeals
+        description: Get all archived deals
+        call: v2-deals.getarchiveddeals
+        with:
+          filter_id: rest.filter_id
+          ids: rest.ids
+          owner_id: rest.owner_id
+          person_id: rest.person_id
+          org_id: rest.org_id
+          pipeline_id: rest.pipeline_id
+          stage_id: rest.stage_id
+          status: rest.status
+          updated_since: rest.updated_since
+          updated_until: rest.updated_until
+          sort_by: rest.sort_by
+          sort_direction: rest.sort_direction
+          include_fields: rest.include_fields
+          custom_fields: rest.custom_fields
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/search
+      name: deals-search
+      description: REST surface for deals-search.
+      operations:
+      - method: GET
+        name: searchdeals
+        description: Search deals
+        call: v2-deals.searchdeals
+        with:
+          term: rest.term
+          fields: rest.fields
+          exact_match: rest.exact_match
+          person_id: rest.person_id
+          organization_id: rest.organization_id
+          status: rest.status
+          include_fields: rest.include_fields
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}
+      name: deals-id
+      description: REST surface for deals-id.
+      operations:
+      - method: DELETE
+        name: deletedeal
+        description: Delete a deal
+        call: v2-deals.deletedeal
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getdeal
+        description: Get details of a deal
+        call: v2-deals.getdeal
+        with:
+          id: rest.id
+          include_fields: rest.include_fields
+          custom_fields: rest.custom_fields
+          include_option_labels: rest.include_option_labels
+          include_labels: rest.include_labels
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatedeal
+        description: Update a deal
+        call: v2-deals.updatedeal
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/convert/lead
+      name: deals-id-convert-lead
+      description: REST surface for deals-id-convert-lead.
+      operations:
+      - method: POST
+        name: convertdealtolead
+        description: Convert a deal to a lead
+        call: v2-deals.convertdealtolead
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/convert/status/{conversion-id}
+      name: deals-id-convert-status-conversion-id
+      description: REST surface for deals-id-convert-status-conversion_id.
+      operations:
+      - method: GET
+        name: getdealconversionstatus
+        description: Get Deal conversion status
+        call: v2-deals.getdealconversionstatus
+        with:
+          id: rest.id
+          conversion_id: rest.conversion_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/discounts
+      name: deals-id-discounts
+      description: REST surface for deals-id-discounts.
+      operations:
+      - method: GET
+        name: getadditionaldiscounts
+        description: List discounts added to a deal
+        call: v2-deals.getadditionaldiscounts
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: postadditionaldiscount
+        description: Add a discount to a deal
+        call: v2-deals.postadditionaldiscount
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/discounts/{discount-id}
+      name: deals-id-discounts-discount-id
+      description: REST surface for deals-id-discounts-discount_id.
+      operations:
+      - method: PATCH
+        name: updateadditionaldiscount
+        description: Update a discount added to a deal
+        call: v2-deals.updateadditionaldiscount
+        with:
+          id: rest.id
+          discount_id: rest.discount_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteadditionaldiscount
+        description: Delete a discount from a deal
+        call: v2-deals.deleteadditionaldiscount
+        with:
+          id: rest.id
+          discount_id: rest.discount_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/followers
+      name: deals-id-followers
+      description: REST surface for deals-id-followers.
+      operations:
+      - method: GET
+        name: getdealfollowers
+        description: List followers of a deal
+        call: v2-deals.getdealfollowers
+        with:
+          id: rest.id
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: adddealfollower
+        description: Add a follower to a deal
+        call: v2-deals.adddealfollower
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/followers/changelog
+      name: deals-id-followers-changelog
+      description: REST surface for deals-id-followers-changelog.
+      operations:
+      - method: GET
+        name: getdealfollowerschangelog
+        description: List followers changelog of a deal
+        call: v2-deals.getdealfollowerschangelog
+        with:
+          id: rest.id
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/followers/{follower-id}
+      name: deals-id-followers-follower-id
+      description: REST surface for deals-id-followers-follower_id.
+      operations:
+      - method: DELETE
+        name: deletedealfollower
+        description: Delete a follower from a deal
+        call: v2-deals.deletedealfollower
+        with:
+          id: rest.id
+          follower_id: rest.follower_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-deals-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — Deals. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-all-deals
+      description: Get all deals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-deals.getdeals
+      with:
+        filter_id: tools.filter_id
+        ids: tools.ids
+        owner_id: tools.owner_id
+        person_id: tools.person_id
+        org_id: tools.org_id
+        pipeline_id: tools.pipeline_id
+        stage_id: tools.stage_id
+        status: tools.status
+        updated_since: tools.updated_since
+        updated_until: tools.updated_until
+        sort_by: tools.sort_by
+        sort_direction: tools.sort_direction
+        include_fields: tools.include_fields
+        custom_fields: tools.custom_fields
+        include_option_labels: tools.include_option_labels
+        include_labels: tools.include_labels
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-new-deal
+      description: Add a new deal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-deals.adddeal
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-archived-deals
+      description: Get all archived deals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-deals.getarchiveddeals
+      with:
+        filter_id: tools.filter_id
+        ids: tools.ids
+        owner_id: tools.owner_id
+        person_id: tools.person_id
+        org_id: tools.org_id
+        pipeline_id: tools.pipeline_id
+        stage_id: tools.stage_id
+        status: tools.status
+        updated_since: tools.updated_since
+        updated_until: tools.updated_until
+        sort_by: tools.sort_by
+        sort_direction: tools.sort_direction
+        include_fields: tools.include_fields
+        custom_fields: tools.custom_fields
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-deals
+      description: Search deals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-deals.searchdeals
+      with:
+        term: tools.term
+        fields: tools.fields
+        exact_match: tools.exact_match
+        person_id: tools.person_id
+        organization_id: tools.organization_id
+        status: tools.status
+        include_fields: tools.include_fields
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-deal
+      description: Delete a deal
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-deals.deletedeal
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-deal
+      description: Get details of a deal
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-deals.getdeal
+      with:
+        id: tools.id
+        include_fields: tools.include_fields
+        custom_fields: tools.custom_fields
+        include_option_labels: tools.include_option_labels
+        include_labels: tools.include_labels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-deal
+      description: Update a deal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-deals.updatedeal
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: convert-deal-lead
+      description: Convert a deal to a lead
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-deals.convertdealtolead
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-deal-conversion-status
+      description: Get Deal conversion status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-deals.getdealconversionstatus
+      with:
+        id: tools.id
+        conversion_id: tools.conversion_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-discounts-added-deal
+      description: List discounts added to a deal
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-deals.getadditionaldiscounts
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-discount-deal
+      description: Add a discount to a deal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-deals.postadditionaldiscount
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-discount-added-deal
+      description: Update a discount added to a deal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-deals.updateadditionaldiscount
+      with:
+        id: tools.id
+        discount_id: tools.discount_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-discount-deal
+      description: Delete a discount from a deal
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-deals.deleteadditionaldiscount
+      with:
+        id: tools.id
+        discount_id: tools.discount_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-followers-deal
+      description: List followers of a deal
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-deals.getdealfollowers
+      with:
+        id: tools.id
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-follower-deal
+      description: Add a follower to a deal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-deals.adddealfollower
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-followers-changelog-deal
+      description: List followers changelog of a deal
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-deals.getdealfollowerschangelog
+      with:
+        id: tools.id
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-follower-deal
+      description: Delete a follower from a deal
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-deals.deletedealfollower
+      with:
+        id: tools.id
+        follower_id: tools.follower_id
+      outputParameters:
+      - type: object
+        mapping: $.

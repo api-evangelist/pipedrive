@@ -1,0 +1,127 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — ProjectTemplates
+  description: 'Pipedrive API v1 — ProjectTemplates. 2 operations. Lead operation: Get all project templates. Self-contained
+    Naftiko capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - ProjectTemplates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-projecttemplates
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — ProjectTemplates business capability. Self-contained, no shared references.
+    resources:
+    - name: projectTemplates
+      path: /projectTemplates
+      operations:
+      - name: getprojecttemplates
+        method: GET
+        description: Get all project templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, up to 500 items will be returned.
+    - name: projectTemplates-id
+      path: /projectTemplates/{id}
+      operations:
+      - name: getprojecttemplate
+        method: GET
+        description: Get details of a template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project template
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-projecttemplates-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — ProjectTemplates. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projecttemplates
+      name: projecttemplates
+      description: REST surface for projectTemplates.
+      operations:
+      - method: GET
+        name: getprojecttemplates
+        description: Get all project templates
+        call: v1-projecttemplates.getprojecttemplates
+        with:
+          cursor: rest.cursor
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projecttemplates/{id}
+      name: projecttemplates-id
+      description: REST surface for projectTemplates-id.
+      operations:
+      - method: GET
+        name: getprojecttemplate
+        description: Get details of a template
+        call: v1-projecttemplates.getprojecttemplate
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-projecttemplates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — ProjectTemplates. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-all-project-templates
+      description: Get all project templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-projecttemplates.getprojecttemplates
+      with:
+        cursor: tools.cursor
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-template
+      description: Get details of a template
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-projecttemplates.getprojecttemplate
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

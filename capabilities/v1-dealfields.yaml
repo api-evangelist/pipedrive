@@ -1,0 +1,274 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — DealFields
+  description: 'Pipedrive API v1 — DealFields. 6 operations. Lead operation: Get all deal fields. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - DealFields
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-dealfields
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — DealFields business capability. Self-contained, no shared references.
+    resources:
+    - name: dealFields
+      path: /dealFields
+      operations:
+      - name: getdealfields
+        method: GET
+        description: Get all deal fields
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: start
+          in: query
+          type: integer
+          description: Pagination start
+        - name: limit
+          in: query
+          type: integer
+          description: Items shown per page
+      - name: adddealfield
+        method: POST
+        description: Add a new deal field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletedealfields
+        method: DELETE
+        description: Delete multiple deal fields in bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: The comma-separated field IDs to delete
+          required: true
+    - name: dealFields-id
+      path: /dealFields/{id}
+      operations:
+      - name: getdealfield
+        method: GET
+        description: Get one deal field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the field
+          required: true
+      - name: deletedealfield
+        method: DELETE
+        description: Delete a deal field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the field
+          required: true
+      - name: updatedealfield
+        method: PUT
+        description: Update a deal field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the field
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-dealfields-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — DealFields. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/dealfields
+      name: dealfields
+      description: REST surface for dealFields.
+      operations:
+      - method: GET
+        name: getdealfields
+        description: Get all deal fields
+        call: v1-dealfields.getdealfields
+        with:
+          start: rest.start
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: adddealfield
+        description: Add a new deal field
+        call: v1-dealfields.adddealfield
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedealfields
+        description: Delete multiple deal fields in bulk
+        call: v1-dealfields.deletedealfields
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dealfields/{id}
+      name: dealfields-id
+      description: REST surface for dealFields-id.
+      operations:
+      - method: GET
+        name: getdealfield
+        description: Get one deal field
+        call: v1-dealfields.getdealfield
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedealfield
+        description: Delete a deal field
+        call: v1-dealfields.deletedealfield
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatedealfield
+        description: Update a deal field
+        call: v1-dealfields.updatedealfield
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-dealfields-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — DealFields. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-deal-fields
+      description: Get all deal fields
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-dealfields.getdealfields
+      with:
+        start: tools.start
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-new-deal-field
+      description: Add a new deal field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-dealfields.adddealfield
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-multiple-deal-fields-bulk
+      description: Delete multiple deal fields in bulk
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-dealfields.deletedealfields
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-one-deal-field
+      description: Get one deal field
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-dealfields.getdealfield
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-deal-field
+      description: Delete a deal field
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-dealfields.deletedealfield
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-deal-field
+      description: Update a deal field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v1-dealfields.updatedealfield
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

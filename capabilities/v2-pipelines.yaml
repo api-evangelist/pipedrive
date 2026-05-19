@@ -1,0 +1,252 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — Pipelines
+  description: 'Pipedrive API v2 — Pipelines. 5 operations. Lead operation: Get all pipelines. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Pipelines
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-pipelines
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — Pipelines business capability. Self-contained, no shared references.
+    resources:
+    - name: pipelines
+      path: /pipelines
+      operations:
+      - name: getpipelines
+        method: GET
+        description: Get all pipelines
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sort_by
+          in: query
+          type: string
+          description: 'The field to sort by. Supported fields: `id`, `update_time`, `add_time`.'
+        - name: sort_direction
+          in: query
+          type: string
+          description: 'The sorting direction. Supported values: `asc`, `desc`.'
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      - name: addpipeline
+        method: POST
+        description: Add a new pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: pipelines-id
+      path: /pipelines/{id}
+      operations:
+      - name: deletepipeline
+        method: DELETE
+        description: Delete a pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the pipeline
+          required: true
+      - name: getpipeline
+        method: GET
+        description: Get one pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the pipeline
+          required: true
+      - name: updatepipeline
+        method: PATCH
+        description: Update a pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the pipeline
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-pipelines-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — Pipelines. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/pipelines
+      name: pipelines
+      description: REST surface for pipelines.
+      operations:
+      - method: GET
+        name: getpipelines
+        description: Get all pipelines
+        call: v2-pipelines.getpipelines
+        with:
+          sort_by: rest.sort_by
+          sort_direction: rest.sort_direction
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addpipeline
+        description: Add a new pipeline
+        call: v2-pipelines.addpipeline
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pipelines/{id}
+      name: pipelines-id
+      description: REST surface for pipelines-id.
+      operations:
+      - method: DELETE
+        name: deletepipeline
+        description: Delete a pipeline
+        call: v2-pipelines.deletepipeline
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getpipeline
+        description: Get one pipeline
+        call: v2-pipelines.getpipeline
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatepipeline
+        description: Update a pipeline
+        call: v2-pipelines.updatepipeline
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-pipelines-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — Pipelines. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-pipelines
+      description: Get all pipelines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-pipelines.getpipelines
+      with:
+        sort_by: tools.sort_by
+        sort_direction: tools.sort_direction
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-new-pipeline
+      description: Add a new pipeline
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-pipelines.addpipeline
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-pipeline
+      description: Delete a pipeline
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-pipelines.deletepipeline
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-one-pipeline
+      description: Get one pipeline
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-pipelines.getpipeline
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-pipeline
+      description: Update a pipeline
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-pipelines.updatepipeline
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

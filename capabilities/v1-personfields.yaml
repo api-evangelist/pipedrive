@@ -1,0 +1,274 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — PersonFields
+  description: 'Pipedrive API v1 — PersonFields. 6 operations. Lead operation: Get all person fields. Self-contained Naftiko
+    capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - PersonFields
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-personfields
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — PersonFields business capability. Self-contained, no shared references.
+    resources:
+    - name: personFields
+      path: /personFields
+      operations:
+      - name: getpersonfields
+        method: GET
+        description: Get all person fields
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: start
+          in: query
+          type: integer
+          description: Pagination start
+        - name: limit
+          in: query
+          type: integer
+          description: Items shown per page
+      - name: addpersonfield
+        method: POST
+        description: Add a new person field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletepersonfields
+        method: DELETE
+        description: Delete multiple person fields in bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: The comma-separated field IDs to delete
+          required: true
+    - name: personFields-id
+      path: /personFields/{id}
+      operations:
+      - name: getpersonfield
+        method: GET
+        description: Get one person field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the field
+          required: true
+      - name: deletepersonfield
+        method: DELETE
+        description: Delete a person field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the field
+          required: true
+      - name: updatepersonfield
+        method: PUT
+        description: Update a person field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the field
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-personfields-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — PersonFields. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/personfields
+      name: personfields
+      description: REST surface for personFields.
+      operations:
+      - method: GET
+        name: getpersonfields
+        description: Get all person fields
+        call: v1-personfields.getpersonfields
+        with:
+          start: rest.start
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addpersonfield
+        description: Add a new person field
+        call: v1-personfields.addpersonfield
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletepersonfields
+        description: Delete multiple person fields in bulk
+        call: v1-personfields.deletepersonfields
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/personfields/{id}
+      name: personfields-id
+      description: REST surface for personFields-id.
+      operations:
+      - method: GET
+        name: getpersonfield
+        description: Get one person field
+        call: v1-personfields.getpersonfield
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletepersonfield
+        description: Delete a person field
+        call: v1-personfields.deletepersonfield
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatepersonfield
+        description: Update a person field
+        call: v1-personfields.updatepersonfield
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-personfields-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — PersonFields. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-person-fields
+      description: Get all person fields
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-personfields.getpersonfields
+      with:
+        start: tools.start
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-new-person-field
+      description: Add a new person field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-personfields.addpersonfield
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-multiple-person-fields-bulk
+      description: Delete multiple person fields in bulk
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-personfields.deletepersonfields
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-one-person-field
+      description: Get one person field
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-personfields.getpersonfield
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-person-field
+      description: Delete a person field
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-personfields.deletepersonfield
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-person-field
+      description: Update a person field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v1-personfields.updatepersonfield
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

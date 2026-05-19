@@ -1,0 +1,240 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — OrganizationRelationships
+  description: 'Pipedrive API v1 — OrganizationRelationships. 5 operations. Lead operation: Get all relationships for organization.
+    Self-contained Naftiko capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - OrganizationRelationships
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-organizationrelationships
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — OrganizationRelationships business capability. Self-contained, no shared references.
+    resources:
+    - name: organizationRelationships
+      path: /organizationRelationships
+      operations:
+      - name: getorganizationrelationships
+        method: GET
+        description: Get all relationships for organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: query
+          type: integer
+          description: The ID of the organization to get relationships for
+          required: true
+      - name: addorganizationrelationship
+        method: POST
+        description: Create an organization relationship
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: organizationRelationships-id
+      path: /organizationRelationships/{id}
+      operations:
+      - name: deleteorganizationrelationship
+        method: DELETE
+        description: Delete an organization relationship
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the organization relationship
+          required: true
+      - name: getorganizationrelationship
+        method: GET
+        description: Get one organization relationship
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the organization relationship
+          required: true
+        - name: org_id
+          in: query
+          type: integer
+          description: The ID of the base organization for the returned calculated values
+      - name: updateorganizationrelationship
+        method: PUT
+        description: Update an organization relationship
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the organization relationship
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-organizationrelationships-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — OrganizationRelationships. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/organizationrelationships
+      name: organizationrelationships
+      description: REST surface for organizationRelationships.
+      operations:
+      - method: GET
+        name: getorganizationrelationships
+        description: Get all relationships for organization
+        call: v1-organizationrelationships.getorganizationrelationships
+        with:
+          org_id: rest.org_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addorganizationrelationship
+        description: Create an organization relationship
+        call: v1-organizationrelationships.addorganizationrelationship
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizationrelationships/{id}
+      name: organizationrelationships-id
+      description: REST surface for organizationRelationships-id.
+      operations:
+      - method: DELETE
+        name: deleteorganizationrelationship
+        description: Delete an organization relationship
+        call: v1-organizationrelationships.deleteorganizationrelationship
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getorganizationrelationship
+        description: Get one organization relationship
+        call: v1-organizationrelationships.getorganizationrelationship
+        with:
+          id: rest.id
+          org_id: rest.org_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateorganizationrelationship
+        description: Update an organization relationship
+        call: v1-organizationrelationships.updateorganizationrelationship
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-organizationrelationships-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — OrganizationRelationships. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-all-relationships-organization
+      description: Get all relationships for organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-organizationrelationships.getorganizationrelationships
+      with:
+        org_id: tools.org_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-organization-relationship
+      description: Create an organization relationship
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-organizationrelationships.addorganizationrelationship
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-organization-relationship
+      description: Delete an organization relationship
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-organizationrelationships.deleteorganizationrelationship
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-one-organization-relationship
+      description: Get one organization relationship
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-organizationrelationships.getorganizationrelationship
+      with:
+        id: tools.id
+        org_id: tools.org_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-organization-relationship
+      description: Update an organization relationship
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v1-organizationrelationships.updateorganizationrelationship
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

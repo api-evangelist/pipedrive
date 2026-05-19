@@ -1,0 +1,189 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — LeadLabels
+  description: 'Pipedrive API v1 — LeadLabels. 4 operations. Lead operation: Get all lead labels. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - LeadLabels
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-leadlabels
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — LeadLabels business capability. Self-contained, no shared references.
+    resources:
+    - name: leadLabels
+      path: /leadLabels
+      operations:
+      - name: getleadlabels
+        method: GET
+        description: Get all lead labels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addleadlabel
+        method: POST
+        description: Add a lead label
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: leadLabels-id
+      path: /leadLabels/{id}
+      operations:
+      - name: updateleadlabel
+        method: PATCH
+        description: Update a lead label
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the lead label
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteleadlabel
+        method: DELETE
+        description: Delete a lead label
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the lead label
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-leadlabels-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — LeadLabels. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/leadlabels
+      name: leadlabels
+      description: REST surface for leadLabels.
+      operations:
+      - method: GET
+        name: getleadlabels
+        description: Get all lead labels
+        call: v1-leadlabels.getleadlabels
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addleadlabel
+        description: Add a lead label
+        call: v1-leadlabels.addleadlabel
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/leadlabels/{id}
+      name: leadlabels-id
+      description: REST surface for leadLabels-id.
+      operations:
+      - method: PATCH
+        name: updateleadlabel
+        description: Update a lead label
+        call: v1-leadlabels.updateleadlabel
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteleadlabel
+        description: Delete a lead label
+        call: v1-leadlabels.deleteleadlabel
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-leadlabels-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — LeadLabels. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-lead-labels
+      description: Get all lead labels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-leadlabels.getleadlabels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-lead-label
+      description: Add a lead label
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-leadlabels.addleadlabel
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-lead-label
+      description: Update a lead label
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v1-leadlabels.updateleadlabel
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-lead-label
+      description: Delete a lead label
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-leadlabels.deleteleadlabel
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

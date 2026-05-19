@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — LeadFields
+  description: 'Pipedrive API v1 — LeadFields. 1 operations. Lead operation: Get all lead fields. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - LeadFields
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-leadfields
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — LeadFields business capability. Self-contained, no shared references.
+    resources:
+    - name: leadFields
+      path: /leadFields
+      operations:
+      - name: getleadfields
+        method: GET
+        description: Get all lead fields
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: start
+          in: query
+          type: integer
+          description: Pagination start
+        - name: limit
+          in: query
+          type: integer
+          description: Items shown per page
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-leadfields-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — LeadFields. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/leadfields
+      name: leadfields
+      description: REST surface for leadFields.
+      operations:
+      - method: GET
+        name: getleadfields
+        description: Get all lead fields
+        call: v1-leadfields.getleadfields
+        with:
+          start: rest.start
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-leadfields-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — LeadFields. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-lead-fields
+      description: Get all lead fields
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-leadfields.getleadfields
+      with:
+        start: tools.start
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,1069 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — Beta
+  description: 'Pipedrive API v2 — Beta. 24 operations. Lead operation: Get all project boards. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Beta
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-beta
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — Beta business capability. Self-contained, no shared references.
+    resources:
+    - name: boards
+      path: /boards
+      operations:
+      - name: getprojectsboards
+        method: GET
+        description: Get all project boards
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addprojectboard
+        method: POST
+        description: Add a project board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: boards-id
+      path: /boards/{id}
+      operations:
+      - name: getprojectsboard
+        method: GET
+        description: Get details of a project board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project board
+          required: true
+      - name: updateprojectboard
+        method: PATCH
+        description: Update a project board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project board
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteprojectboard
+        method: DELETE
+        description: Delete a project board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project board
+          required: true
+    - name: phases
+      path: /phases
+      operations:
+      - name: getprojectsphases
+        method: GET
+        description: Get project phases
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: query
+          type: integer
+          description: The ID of the board for which phases are requested
+          required: true
+      - name: addprojectphase
+        method: POST
+        description: Add a project phase
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: phases-id
+      path: /phases/{id}
+      operations:
+      - name: getprojectsphase
+        method: GET
+        description: Get details of a project phase
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project phase
+          required: true
+      - name: updateprojectphase
+        method: PATCH
+        description: Update a project phase
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project phase
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteprojectphase
+        method: DELETE
+        description: Delete a project phase
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project phase
+          required: true
+    - name: projectFields
+      path: /projectFields
+      operations:
+      - name: getprojectfields
+        method: GET
+        description: Get all project fields
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      - name: addprojectfield
+        method: POST
+        description: Create one project field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projectFields-field_code
+      path: /projectFields/{field_code}
+      operations:
+      - name: getprojectfield
+        method: GET
+        description: Get one project field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: field_code
+          in: path
+          type: string
+          description: The unique code identifying the field
+          required: true
+      - name: updateprojectfield
+        method: PATCH
+        description: Update one project field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: field_code
+          in: path
+          type: string
+          description: The unique code identifying the field
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteprojectfield
+        method: DELETE
+        description: Delete one project field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: field_code
+          in: path
+          type: string
+          description: The unique code identifying the field
+          required: true
+    - name: projectFields-field_code-options
+      path: /projectFields/{field_code}/options
+      operations:
+      - name: addprojectfieldoptions
+        method: POST
+        description: Add project field options in bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: field_code
+          in: path
+          type: string
+          description: The unique code identifying the field
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteprojectfieldoptions
+        method: DELETE
+        description: Delete project field options in bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: field_code
+          in: path
+          type: string
+          description: The unique code identifying the field
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updateprojectfieldoptions
+        method: PATCH
+        description: Update project field options in bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: field_code
+          in: path
+          type: string
+          description: The unique code identifying the field
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-search
+      path: /projects/search
+      operations:
+      - name: searchprojects
+        method: GET
+        description: Search projects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: term
+          in: query
+          type: string
+          description: The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the
+            search term has to be URL encoded.
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: 'A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only
+            the following custom field types are searchable: `address`,'
+        - name: exact_match
+          in: query
+          type: boolean
+          description: When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.
+        - name: person_id
+          in: query
+          type: integer
+          description: Will filter projects by the provided person ID
+        - name: organization_id
+          in: query
+          type: integer
+          description: Will filter projects by the provided organization ID
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+    - name: tasks
+      path: /tasks
+      operations:
+      - name: gettasks
+        method: GET
+        description: Get all tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: is_done
+          in: query
+          type: boolean
+          description: Whether the task is done or not. If omitted, both done and not done tasks are returned.
+        - name: is_milestone
+          in: query
+          type: boolean
+          description: Whether the task is a milestone or not. If omitted, both milestone and non-milestone tasks are returned.
+        - name: assignee_id
+          in: query
+          type: integer
+          description: If supplied, only tasks assigned to this user are returned
+        - name: project_id
+          in: query
+          type: integer
+          description: If supplied, only tasks belonging to this project are returned
+        - name: parent_task_id
+          in: query
+          type: string
+          description: If `null` is supplied, only root-level tasks (without a parent) are returned. If an integer is supplied,
+            only subtasks of that specific task are returned. By de
+      - name: addtask
+        method: POST
+        description: Add a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: tasks-id
+      path: /tasks/{id}
+      operations:
+      - name: gettask
+        method: GET
+        description: Get details of a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the task
+          required: true
+      - name: updatetask
+        method: PATCH
+        description: Update a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the task
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletetask
+        method: DELETE
+        description: Delete a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the task
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-beta-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — Beta. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/boards
+      name: boards
+      description: REST surface for boards.
+      operations:
+      - method: GET
+        name: getprojectsboards
+        description: Get all project boards
+        call: v2-beta.getprojectsboards
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addprojectboard
+        description: Add a project board
+        call: v2-beta.addprojectboard
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/boards/{id}
+      name: boards-id
+      description: REST surface for boards-id.
+      operations:
+      - method: GET
+        name: getprojectsboard
+        description: Get details of a project board
+        call: v2-beta.getprojectsboard
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateprojectboard
+        description: Update a project board
+        call: v2-beta.updateprojectboard
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprojectboard
+        description: Delete a project board
+        call: v2-beta.deleteprojectboard
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/phases
+      name: phases
+      description: REST surface for phases.
+      operations:
+      - method: GET
+        name: getprojectsphases
+        description: Get project phases
+        call: v2-beta.getprojectsphases
+        with:
+          board_id: rest.board_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addprojectphase
+        description: Add a project phase
+        call: v2-beta.addprojectphase
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/phases/{id}
+      name: phases-id
+      description: REST surface for phases-id.
+      operations:
+      - method: GET
+        name: getprojectsphase
+        description: Get details of a project phase
+        call: v2-beta.getprojectsphase
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateprojectphase
+        description: Update a project phase
+        call: v2-beta.updateprojectphase
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprojectphase
+        description: Delete a project phase
+        call: v2-beta.deleteprojectphase
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projectfields
+      name: projectfields
+      description: REST surface for projectFields.
+      operations:
+      - method: GET
+        name: getprojectfields
+        description: Get all project fields
+        call: v2-beta.getprojectfields
+        with:
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addprojectfield
+        description: Create one project field
+        call: v2-beta.addprojectfield
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projectfields/{field-code}
+      name: projectfields-field-code
+      description: REST surface for projectFields-field_code.
+      operations:
+      - method: GET
+        name: getprojectfield
+        description: Get one project field
+        call: v2-beta.getprojectfield
+        with:
+          field_code: rest.field_code
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateprojectfield
+        description: Update one project field
+        call: v2-beta.updateprojectfield
+        with:
+          field_code: rest.field_code
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprojectfield
+        description: Delete one project field
+        call: v2-beta.deleteprojectfield
+        with:
+          field_code: rest.field_code
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projectfields/{field-code}/options
+      name: projectfields-field-code-options
+      description: REST surface for projectFields-field_code-options.
+      operations:
+      - method: POST
+        name: addprojectfieldoptions
+        description: Add project field options in bulk
+        call: v2-beta.addprojectfieldoptions
+        with:
+          field_code: rest.field_code
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprojectfieldoptions
+        description: Delete project field options in bulk
+        call: v2-beta.deleteprojectfieldoptions
+        with:
+          field_code: rest.field_code
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateprojectfieldoptions
+        description: Update project field options in bulk
+        call: v2-beta.updateprojectfieldoptions
+        with:
+          field_code: rest.field_code
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/search
+      name: projects-search
+      description: REST surface for projects-search.
+      operations:
+      - method: GET
+        name: searchprojects
+        description: Search projects
+        call: v2-beta.searchprojects
+        with:
+          term: rest.term
+          fields: rest.fields
+          exact_match: rest.exact_match
+          person_id: rest.person_id
+          organization_id: rest.organization_id
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tasks
+      name: tasks
+      description: REST surface for tasks.
+      operations:
+      - method: GET
+        name: gettasks
+        description: Get all tasks
+        call: v2-beta.gettasks
+        with:
+          cursor: rest.cursor
+          limit: rest.limit
+          is_done: rest.is_done
+          is_milestone: rest.is_milestone
+          assignee_id: rest.assignee_id
+          project_id: rest.project_id
+          parent_task_id: rest.parent_task_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addtask
+        description: Add a task
+        call: v2-beta.addtask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tasks/{id}
+      name: tasks-id
+      description: REST surface for tasks-id.
+      operations:
+      - method: GET
+        name: gettask
+        description: Get details of a task
+        call: v2-beta.gettask
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetask
+        description: Update a task
+        call: v2-beta.updatetask
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetask
+        description: Delete a task
+        call: v2-beta.deletetask
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-beta-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — Beta. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-all-project-boards
+      description: Get all project boards
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-beta.getprojectsboards
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-project-board
+      description: Add a project board
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-beta.addprojectboard
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-project-board
+      description: Get details of a project board
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-beta.getprojectsboard
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-project-board
+      description: Update a project board
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-beta.updateprojectboard
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project-board
+      description: Delete a project board
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-beta.deleteprojectboard
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-project-phases
+      description: Get project phases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-beta.getprojectsphases
+      with:
+        board_id: tools.board_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-project-phase
+      description: Add a project phase
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-beta.addprojectphase
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-project-phase
+      description: Get details of a project phase
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-beta.getprojectsphase
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-project-phase
+      description: Update a project phase
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-beta.updateprojectphase
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project-phase
+      description: Delete a project phase
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-beta.deleteprojectphase
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-project-fields
+      description: Get all project fields
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-beta.getprojectfields
+      with:
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-one-project-field
+      description: Create one project field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-beta.addprojectfield
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-one-project-field
+      description: Get one project field
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-beta.getprojectfield
+      with:
+        field_code: tools.field_code
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-one-project-field
+      description: Update one project field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-beta.updateprojectfield
+      with:
+        field_code: tools.field_code
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-one-project-field
+      description: Delete one project field
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-beta.deleteprojectfield
+      with:
+        field_code: tools.field_code
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-project-field-options-bulk
+      description: Add project field options in bulk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-beta.addprojectfieldoptions
+      with:
+        field_code: tools.field_code
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project-field-options-bulk
+      description: Delete project field options in bulk
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-beta.deleteprojectfieldoptions
+      with:
+        field_code: tools.field_code
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-project-field-options-bulk
+      description: Update project field options in bulk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-beta.updateprojectfieldoptions
+      with:
+        field_code: tools.field_code
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-projects
+      description: Search projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-beta.searchprojects
+      with:
+        term: tools.term
+        fields: tools.fields
+        exact_match: tools.exact_match
+        person_id: tools.person_id
+        organization_id: tools.organization_id
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-tasks
+      description: Get all tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-beta.gettasks
+      with:
+        cursor: tools.cursor
+        limit: tools.limit
+        is_done: tools.is_done
+        is_milestone: tools.is_milestone
+        assignee_id: tools.assignee_id
+        project_id: tools.project_id
+        parent_task_id: tools.parent_task_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-task
+      description: Add a task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-beta.addtask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-task
+      description: Get details of a task
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-beta.gettask
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-task
+      description: Update a task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-beta.updatetask
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-task
+      description: Delete a task
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-beta.deletetask
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,140 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — ActivityFields
+  description: 'Pipedrive API v2 — ActivityFields. 2 operations. Lead operation: Get all activity fields. Self-contained Naftiko
+    capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - ActivityFields
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-activityfields
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — ActivityFields business capability. Self-contained, no shared references.
+    resources:
+    - name: activityFields
+      path: /activityFields
+      operations:
+      - name: getactivityfields
+        method: GET
+        description: Get all activity fields
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: include_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of additional data namespaces to include in response
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+    - name: activityFields-field_code
+      path: /activityFields/{field_code}
+      operations:
+      - name: getactivityfield
+        method: GET
+        description: Get one activity field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: field_code
+          in: path
+          type: string
+          description: The unique code identifying the field
+          required: true
+        - name: include_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of additional data namespaces to include in response
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-activityfields-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — ActivityFields. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/activityfields
+      name: activityfields
+      description: REST surface for activityFields.
+      operations:
+      - method: GET
+        name: getactivityfields
+        description: Get all activity fields
+        call: v2-activityfields.getactivityfields
+        with:
+          include_fields: rest.include_fields
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/activityfields/{field-code}
+      name: activityfields-field-code
+      description: REST surface for activityFields-field_code.
+      operations:
+      - method: GET
+        name: getactivityfield
+        description: Get one activity field
+        call: v2-activityfields.getactivityfield
+        with:
+          field_code: rest.field_code
+          include_fields: rest.include_fields
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-activityfields-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — ActivityFields. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-all-activity-fields
+      description: Get all activity fields
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-activityfields.getactivityfields
+      with:
+        include_fields: tools.include_fields
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-one-activity-field
+      description: Get one activity field
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-activityfields.getactivityfield
+      with:
+        field_code: tools.field_code
+        include_fields: tools.include_fields
+      outputParameters:
+      - type: object
+        mapping: $.

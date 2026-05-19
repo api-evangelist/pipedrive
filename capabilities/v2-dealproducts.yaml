@@ -1,0 +1,404 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — DealProducts
+  description: 'Pipedrive API v2 — DealProducts. 7 operations. Lead operation: Get deal products of several deals. Self-contained
+    Naftiko capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - DealProducts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-dealproducts
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — DealProducts business capability. Self-contained, no shared references.
+    resources:
+    - name: deals-products
+      path: /deals/products
+      operations:
+      - name: getdealsproducts
+        method: GET
+        description: Get deal products of several deals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deal_ids
+          in: query
+          type: array
+          description: An array of integers with the IDs of the deals for which the attached products will be returned. A
+            maximum of 100 deal IDs can be provided.
+          required: true
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: sort_by
+          in: query
+          type: string
+          description: 'The field to sort by. Supported fields: `id`, `deal_id`, `add_time`, `update_time`, `order_nr`.'
+        - name: sort_direction
+          in: query
+          type: string
+          description: 'The sorting direction. Supported values: `asc`, `desc`.'
+    - name: deals-id-products
+      path: /deals/{id}/products
+      operations:
+      - name: getdealproducts
+        method: GET
+        description: List products attached to a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: sort_by
+          in: query
+          type: string
+          description: 'The field to sort by. Supported fields: `id`, `add_time`, `update_time`, `order_nr`.'
+        - name: sort_direction
+          in: query
+          type: string
+          description: 'The sorting direction. Supported values: `asc`, `desc`.'
+      - name: adddealproduct
+        method: POST
+        description: Add a product to a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletemanydealproducts
+        method: DELETE
+        description: Delete many products from a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: ids
+          in: query
+          type: string
+          description: Comma-separated list of deal product IDs to delete. If not provided, all deal products will be deleted
+            up to 100 items. Maximum 100 IDs allowed.
+    - name: deals-id-products-bulk
+      path: /deals/{id}/products/bulk
+      operations:
+      - name: addmanydealproducts
+        method: POST
+        description: Add multiple products to a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: deals-id-products-product_attachment_id
+      path: /deals/{id}/products/{product_attachment_id}
+      operations:
+      - name: updatedealproduct
+        method: PATCH
+        description: Update the product attached to a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: product_attachment_id
+          in: path
+          type: integer
+          description: The ID of the deal-product (the ID of the product attached to the deal)
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletedealproduct
+        method: DELETE
+        description: Delete an attached product from a deal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the deal
+          required: true
+        - name: product_attachment_id
+          in: path
+          type: integer
+          description: The product attachment ID
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-dealproducts-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — DealProducts. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/deals/products
+      name: deals-products
+      description: REST surface for deals-products.
+      operations:
+      - method: GET
+        name: getdealsproducts
+        description: Get deal products of several deals
+        call: v2-dealproducts.getdealsproducts
+        with:
+          deal_ids: rest.deal_ids
+          cursor: rest.cursor
+          limit: rest.limit
+          sort_by: rest.sort_by
+          sort_direction: rest.sort_direction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/products
+      name: deals-id-products
+      description: REST surface for deals-id-products.
+      operations:
+      - method: GET
+        name: getdealproducts
+        description: List products attached to a deal
+        call: v2-dealproducts.getdealproducts
+        with:
+          id: rest.id
+          cursor: rest.cursor
+          limit: rest.limit
+          sort_by: rest.sort_by
+          sort_direction: rest.sort_direction
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: adddealproduct
+        description: Add a product to a deal
+        call: v2-dealproducts.adddealproduct
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemanydealproducts
+        description: Delete many products from a deal
+        call: v2-dealproducts.deletemanydealproducts
+        with:
+          id: rest.id
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/products/bulk
+      name: deals-id-products-bulk
+      description: REST surface for deals-id-products-bulk.
+      operations:
+      - method: POST
+        name: addmanydealproducts
+        description: Add multiple products to a deal
+        call: v2-dealproducts.addmanydealproducts
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deals/{id}/products/{product-attachment-id}
+      name: deals-id-products-product-attachment-id
+      description: REST surface for deals-id-products-product_attachment_id.
+      operations:
+      - method: PATCH
+        name: updatedealproduct
+        description: Update the product attached to a deal
+        call: v2-dealproducts.updatedealproduct
+        with:
+          id: rest.id
+          product_attachment_id: rest.product_attachment_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedealproduct
+        description: Delete an attached product from a deal
+        call: v2-dealproducts.deletedealproduct
+        with:
+          id: rest.id
+          product_attachment_id: rest.product_attachment_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-dealproducts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — DealProducts. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-deal-products-several-deals
+      description: Get deal products of several deals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-dealproducts.getdealsproducts
+      with:
+        deal_ids: tools.deal_ids
+        cursor: tools.cursor
+        limit: tools.limit
+        sort_by: tools.sort_by
+        sort_direction: tools.sort_direction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-products-attached-deal
+      description: List products attached to a deal
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-dealproducts.getdealproducts
+      with:
+        id: tools.id
+        cursor: tools.cursor
+        limit: tools.limit
+        sort_by: tools.sort_by
+        sort_direction: tools.sort_direction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-product-deal
+      description: Add a product to a deal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-dealproducts.adddealproduct
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-many-products-deal
+      description: Delete many products from a deal
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-dealproducts.deletemanydealproducts
+      with:
+        id: tools.id
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-multiple-products-deal
+      description: Add multiple products to a deal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-dealproducts.addmanydealproducts
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-product-attached-deal
+      description: Update the product attached to a deal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-dealproducts.updatedealproduct
+      with:
+        id: tools.id
+        product_attachment_id: tools.product_attachment_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-attached-product-deal
+      description: Delete an attached product from a deal
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-dealproducts.deletedealproduct
+      with:
+        id: tools.id
+        product_attachment_id: tools.product_attachment_id
+      outputParameters:
+      - type: object
+        mapping: $.

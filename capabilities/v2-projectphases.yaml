@@ -1,0 +1,234 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — ProjectPhases
+  description: 'Pipedrive API v2 — ProjectPhases. 5 operations. Lead operation: Get project phases. Self-contained Naftiko
+    capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - ProjectPhases
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-projectphases
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — ProjectPhases business capability. Self-contained, no shared references.
+    resources:
+    - name: phases
+      path: /phases
+      operations:
+      - name: getprojectsphases
+        method: GET
+        description: Get project phases
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: query
+          type: integer
+          description: The ID of the board for which phases are requested
+          required: true
+      - name: addprojectphase
+        method: POST
+        description: Add a project phase
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: phases-id
+      path: /phases/{id}
+      operations:
+      - name: getprojectsphase
+        method: GET
+        description: Get details of a project phase
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project phase
+          required: true
+      - name: updateprojectphase
+        method: PATCH
+        description: Update a project phase
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project phase
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteprojectphase
+        method: DELETE
+        description: Delete a project phase
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project phase
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-projectphases-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — ProjectPhases. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/phases
+      name: phases
+      description: REST surface for phases.
+      operations:
+      - method: GET
+        name: getprojectsphases
+        description: Get project phases
+        call: v2-projectphases.getprojectsphases
+        with:
+          board_id: rest.board_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addprojectphase
+        description: Add a project phase
+        call: v2-projectphases.addprojectphase
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/phases/{id}
+      name: phases-id
+      description: REST surface for phases-id.
+      operations:
+      - method: GET
+        name: getprojectsphase
+        description: Get details of a project phase
+        call: v2-projectphases.getprojectsphase
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateprojectphase
+        description: Update a project phase
+        call: v2-projectphases.updateprojectphase
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprojectphase
+        description: Delete a project phase
+        call: v2-projectphases.deleteprojectphase
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-projectphases-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — ProjectPhases. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-project-phases
+      description: Get project phases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-projectphases.getprojectsphases
+      with:
+        board_id: tools.board_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-project-phase
+      description: Add a project phase
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-projectphases.addprojectphase
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-project-phase
+      description: Get details of a project phase
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-projectphases.getprojectsphase
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-project-phase
+      description: Update a project phase
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-projectphases.updateprojectphase
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project-phase
+      description: Delete a project phase
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-projectphases.deleteprojectphase
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

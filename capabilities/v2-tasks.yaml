@@ -1,0 +1,271 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — Tasks
+  description: 'Pipedrive API v2 — Tasks. 5 operations. Lead operation: Get all tasks. Self-contained Naftiko capability covering
+    one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Tasks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-tasks
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — Tasks business capability. Self-contained, no shared references.
+    resources:
+    - name: tasks
+      path: /tasks
+      operations:
+      - name: gettasks
+        method: GET
+        description: Get all tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: is_done
+          in: query
+          type: boolean
+          description: Whether the task is done or not. If omitted, both done and not done tasks are returned.
+        - name: is_milestone
+          in: query
+          type: boolean
+          description: Whether the task is a milestone or not. If omitted, both milestone and non-milestone tasks are returned.
+        - name: assignee_id
+          in: query
+          type: integer
+          description: If supplied, only tasks assigned to this user are returned
+        - name: project_id
+          in: query
+          type: integer
+          description: If supplied, only tasks belonging to this project are returned
+        - name: parent_task_id
+          in: query
+          type: string
+          description: If `null` is supplied, only root-level tasks (without a parent) are returned. If an integer is supplied,
+            only subtasks of that specific task are returned. By de
+      - name: addtask
+        method: POST
+        description: Add a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: tasks-id
+      path: /tasks/{id}
+      operations:
+      - name: gettask
+        method: GET
+        description: Get details of a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the task
+          required: true
+      - name: updatetask
+        method: PATCH
+        description: Update a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the task
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletetask
+        method: DELETE
+        description: Delete a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the task
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-tasks-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — Tasks. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/tasks
+      name: tasks
+      description: REST surface for tasks.
+      operations:
+      - method: GET
+        name: gettasks
+        description: Get all tasks
+        call: v2-tasks.gettasks
+        with:
+          cursor: rest.cursor
+          limit: rest.limit
+          is_done: rest.is_done
+          is_milestone: rest.is_milestone
+          assignee_id: rest.assignee_id
+          project_id: rest.project_id
+          parent_task_id: rest.parent_task_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addtask
+        description: Add a task
+        call: v2-tasks.addtask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tasks/{id}
+      name: tasks-id
+      description: REST surface for tasks-id.
+      operations:
+      - method: GET
+        name: gettask
+        description: Get details of a task
+        call: v2-tasks.gettask
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetask
+        description: Update a task
+        call: v2-tasks.updatetask
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetask
+        description: Delete a task
+        call: v2-tasks.deletetask
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-tasks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — Tasks. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-all-tasks
+      description: Get all tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-tasks.gettasks
+      with:
+        cursor: tools.cursor
+        limit: tools.limit
+        is_done: tools.is_done
+        is_milestone: tools.is_milestone
+        assignee_id: tools.assignee_id
+        project_id: tools.project_id
+        parent_task_id: tools.parent_task_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-task
+      description: Add a task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-tasks.addtask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-task
+      description: Get details of a task
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-tasks.gettask
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-task
+      description: Update a task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-tasks.updatetask
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-task
+      description: Delete a task
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-tasks.deletetask
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

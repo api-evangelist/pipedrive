@@ -1,0 +1,189 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — ActivityTypes
+  description: 'Pipedrive API v1 — ActivityTypes. 4 operations. Lead operation: Get all activity types. Self-contained Naftiko
+    capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - ActivityTypes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-activitytypes
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — ActivityTypes business capability. Self-contained, no shared references.
+    resources:
+    - name: activityTypes
+      path: /activityTypes
+      operations:
+      - name: getactivitytypes
+        method: GET
+        description: Get all activity types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addactivitytype
+        method: POST
+        description: Add new activity type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: activityTypes-id
+      path: /activityTypes/{id}
+      operations:
+      - name: deleteactivitytype
+        method: DELETE
+        description: Delete an activity type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the activity type
+          required: true
+      - name: updateactivitytype
+        method: PUT
+        description: Update an activity type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the activity type
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-activitytypes-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — ActivityTypes. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/activitytypes
+      name: activitytypes
+      description: REST surface for activityTypes.
+      operations:
+      - method: GET
+        name: getactivitytypes
+        description: Get all activity types
+        call: v1-activitytypes.getactivitytypes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addactivitytype
+        description: Add new activity type
+        call: v1-activitytypes.addactivitytype
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/activitytypes/{id}
+      name: activitytypes-id
+      description: REST surface for activityTypes-id.
+      operations:
+      - method: DELETE
+        name: deleteactivitytype
+        description: Delete an activity type
+        call: v1-activitytypes.deleteactivitytype
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateactivitytype
+        description: Update an activity type
+        call: v1-activitytypes.updateactivitytype
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-activitytypes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — ActivityTypes. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-all-activity-types
+      description: Get all activity types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-activitytypes.getactivitytypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-new-activity-type
+      description: Add new activity type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-activitytypes.addactivitytype
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-activity-type
+      description: Delete an activity type
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-activitytypes.deleteactivitytype
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-activity-type
+      description: Update an activity type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v1-activitytypes.updateactivitytype
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

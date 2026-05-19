@@ -1,0 +1,371 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — Files
+  description: 'Pipedrive API v1 — Files. 8 operations. Lead operation: Get all files. Self-contained Naftiko capability covering
+    one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Files
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-files
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — Files business capability. Self-contained, no shared references.
+    resources:
+    - name: files
+      path: /files
+      operations:
+      - name: getfiles
+        method: GET
+        description: Get all files
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: start
+          in: query
+          type: integer
+          description: Pagination start
+        - name: limit
+          in: query
+          type: integer
+          description: Items shown per page. Please note that a maximum value of 100 is allowed.
+        - name: sort
+          in: query
+          type: string
+          description: 'Supported fields: `id`, `update_time`'
+      - name: addfile
+        method: POST
+        description: Add file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: files-remote
+      path: /files/remote
+      operations:
+      - name: addfileandlinkit
+        method: POST
+        description: Create a remote file and link it to an item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: files-remoteLink
+      path: /files/remoteLink
+      operations:
+      - name: linkfiletoitem
+        method: POST
+        description: Link a remote file to an item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: files-id
+      path: /files/{id}
+      operations:
+      - name: deletefile
+        method: DELETE
+        description: Delete a file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the file
+          required: true
+      - name: getfile
+        method: GET
+        description: Get one file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the file
+          required: true
+      - name: updatefile
+        method: PUT
+        description: Update file details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the file
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: files-id-download
+      path: /files/{id}/download
+      operations:
+      - name: downloadfile
+        method: GET
+        description: Download one file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the file
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-files-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — Files. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/files
+      name: files
+      description: REST surface for files.
+      operations:
+      - method: GET
+        name: getfiles
+        description: Get all files
+        call: v1-files.getfiles
+        with:
+          start: rest.start
+          limit: rest.limit
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addfile
+        description: Add file
+        call: v1-files.addfile
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/remote
+      name: files-remote
+      description: REST surface for files-remote.
+      operations:
+      - method: POST
+        name: addfileandlinkit
+        description: Create a remote file and link it to an item
+        call: v1-files.addfileandlinkit
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/remotelink
+      name: files-remotelink
+      description: REST surface for files-remoteLink.
+      operations:
+      - method: POST
+        name: linkfiletoitem
+        description: Link a remote file to an item
+        call: v1-files.linkfiletoitem
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{id}
+      name: files-id
+      description: REST surface for files-id.
+      operations:
+      - method: DELETE
+        name: deletefile
+        description: Delete a file
+        call: v1-files.deletefile
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getfile
+        description: Get one file
+        call: v1-files.getfile
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatefile
+        description: Update file details
+        call: v1-files.updatefile
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{id}/download
+      name: files-id-download
+      description: REST surface for files-id-download.
+      operations:
+      - method: GET
+        name: downloadfile
+        description: Download one file
+        call: v1-files.downloadfile
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-files-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — Files. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-all-files
+      description: Get all files
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-files.getfiles
+      with:
+        start: tools.start
+        limit: tools.limit
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-file
+      description: Add file
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-files.addfile
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-remote-file-and-link
+      description: Create a remote file and link it to an item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-files.addfileandlinkit
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: link-remote-file-item
+      description: Link a remote file to an item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-files.linkfiletoitem
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-file
+      description: Delete a file
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-files.deletefile
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-one-file
+      description: Get one file
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-files.getfile
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-file-details
+      description: Update file details
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v1-files.updatefile
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: download-one-file
+      description: Download one file
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-files.downloadfile
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

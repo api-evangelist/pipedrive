@@ -1,0 +1,587 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — Projects
+  description: 'Pipedrive API v1 — Projects. 12 operations. Lead operation: Get all projects. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Projects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-projects
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — Projects business capability. Self-contained, no shared references.
+    resources:
+    - name: projects
+      path: /projects
+      operations:
+      - name: getprojects
+        method: GET
+        description: Get all projects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned.
+        - name: filter_id
+          in: query
+          type: integer
+          description: The ID of the filter to use
+        - name: status
+          in: query
+          type: string
+          description: If supplied, includes only projects with the specified statuses. Possible values are `open`, `completed`,
+            `canceled` and `deleted`. By default `deleted` project
+        - name: phase_id
+          in: query
+          type: integer
+          description: If supplied, only projects in specified phase are returned
+        - name: include_archived
+          in: query
+          type: boolean
+          description: If supplied with `true` then archived projects are also included in the response. By default only not
+            archived projects are returned.
+      - name: addproject
+        method: POST
+        description: Add a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: projects-id
+      path: /projects/{id}
+      operations:
+      - name: getproject
+        method: GET
+        description: Get details of a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+      - name: updateproject
+        method: PUT
+        description: Update a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteproject
+        method: DELETE
+        description: Delete a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+    - name: projects-id-activities
+      path: /projects/{id}/activities
+      operations:
+      - name: getprojectactivities
+        method: GET
+        description: Returns project activities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+    - name: projects-id-archive
+      path: /projects/{id}/archive
+      operations:
+      - name: archiveproject
+        method: POST
+        description: Archive a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+    - name: projects-id-groups
+      path: /projects/{id}/groups
+      operations:
+      - name: getprojectgroups
+        method: GET
+        description: Returns project groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+    - name: projects-id-plan
+      path: /projects/{id}/plan
+      operations:
+      - name: getprojectplan
+        method: GET
+        description: Returns project plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+    - name: projects-id-plan-activities-activityId
+      path: /projects/{id}/plan/activities/{activityId}
+      operations:
+      - name: putprojectplanactivity
+        method: PUT
+        description: Update activity in project plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+        - name: activityId
+          in: path
+          type: integer
+          description: The ID of the activity
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: projects-id-plan-tasks-taskId
+      path: /projects/{id}/plan/tasks/{taskId}
+      operations:
+      - name: putprojectplantask
+        method: PUT
+        description: Update task in project plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+        - name: taskId
+          in: path
+          type: integer
+          description: The ID of the task
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: projects-id-tasks
+      path: /projects/{id}/tasks
+      operations:
+      - name: getprojecttasks
+        method: GET
+        description: Returns project tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-projects-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — Projects. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/projects
+      name: projects
+      description: REST surface for projects.
+      operations:
+      - method: GET
+        name: getprojects
+        description: Get all projects
+        call: v1-projects.getprojects
+        with:
+          cursor: rest.cursor
+          limit: rest.limit
+          filter_id: rest.filter_id
+          status: rest.status
+          phase_id: rest.phase_id
+          include_archived: rest.include_archived
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addproject
+        description: Add a project
+        call: v1-projects.addproject
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}
+      name: projects-id
+      description: REST surface for projects-id.
+      operations:
+      - method: GET
+        name: getproject
+        description: Get details of a project
+        call: v1-projects.getproject
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateproject
+        description: Update a project
+        call: v1-projects.updateproject
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteproject
+        description: Delete a project
+        call: v1-projects.deleteproject
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/activities
+      name: projects-id-activities
+      description: REST surface for projects-id-activities.
+      operations:
+      - method: GET
+        name: getprojectactivities
+        description: Returns project activities
+        call: v1-projects.getprojectactivities
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/archive
+      name: projects-id-archive
+      description: REST surface for projects-id-archive.
+      operations:
+      - method: POST
+        name: archiveproject
+        description: Archive a project
+        call: v1-projects.archiveproject
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/groups
+      name: projects-id-groups
+      description: REST surface for projects-id-groups.
+      operations:
+      - method: GET
+        name: getprojectgroups
+        description: Returns project groups
+        call: v1-projects.getprojectgroups
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/plan
+      name: projects-id-plan
+      description: REST surface for projects-id-plan.
+      operations:
+      - method: GET
+        name: getprojectplan
+        description: Returns project plan
+        call: v1-projects.getprojectplan
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/plan/activities/{activityid}
+      name: projects-id-plan-activities-activityid
+      description: REST surface for projects-id-plan-activities-activityId.
+      operations:
+      - method: PUT
+        name: putprojectplanactivity
+        description: Update activity in project plan
+        call: v1-projects.putprojectplanactivity
+        with:
+          id: rest.id
+          activityId: rest.activityId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/plan/tasks/{taskid}
+      name: projects-id-plan-tasks-taskid
+      description: REST surface for projects-id-plan-tasks-taskId.
+      operations:
+      - method: PUT
+        name: putprojectplantask
+        description: Update task in project plan
+        call: v1-projects.putprojectplantask
+        with:
+          id: rest.id
+          taskId: rest.taskId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/tasks
+      name: projects-id-tasks
+      description: REST surface for projects-id-tasks.
+      operations:
+      - method: GET
+        name: getprojecttasks
+        description: Returns project tasks
+        call: v1-projects.getprojecttasks
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-projects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — Projects. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-projects
+      description: Get all projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-projects.getprojects
+      with:
+        cursor: tools.cursor
+        limit: tools.limit
+        filter_id: tools.filter_id
+        status: tools.status
+        phase_id: tools.phase_id
+        include_archived: tools.include_archived
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-project
+      description: Add a project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-projects.addproject
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-project
+      description: Get details of a project
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-projects.getproject
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-project
+      description: Update a project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v1-projects.updateproject
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project
+      description: Delete a project
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-projects.deleteproject
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-project-activities
+      description: Returns project activities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-projects.getprojectactivities
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: archive-project
+      description: Archive a project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-projects.archiveproject
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-project-groups
+      description: Returns project groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-projects.getprojectgroups
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-project-plan
+      description: Returns project plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-projects.getprojectplan
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-activity-project-plan
+      description: Update activity in project plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v1-projects.putprojectplanactivity
+      with:
+        id: tools.id
+        activityId: tools.activityId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-task-project-plan
+      description: Update task in project plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v1-projects.putprojectplantask
+      with:
+        id: tools.id
+        taskId: tools.taskId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-project-tasks
+      description: Returns project tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-projects.getprojecttasks
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

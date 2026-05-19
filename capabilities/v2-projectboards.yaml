@@ -1,0 +1,224 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — ProjectBoards
+  description: 'Pipedrive API v2 — ProjectBoards. 5 operations. Lead operation: Get all project boards. Self-contained Naftiko
+    capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - ProjectBoards
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-projectboards
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — ProjectBoards business capability. Self-contained, no shared references.
+    resources:
+    - name: boards
+      path: /boards
+      operations:
+      - name: getprojectsboards
+        method: GET
+        description: Get all project boards
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addprojectboard
+        method: POST
+        description: Add a project board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: boards-id
+      path: /boards/{id}
+      operations:
+      - name: getprojectsboard
+        method: GET
+        description: Get details of a project board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project board
+          required: true
+      - name: updateprojectboard
+        method: PATCH
+        description: Update a project board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project board
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteprojectboard
+        method: DELETE
+        description: Delete a project board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the project board
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-projectboards-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — ProjectBoards. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/boards
+      name: boards
+      description: REST surface for boards.
+      operations:
+      - method: GET
+        name: getprojectsboards
+        description: Get all project boards
+        call: v2-projectboards.getprojectsboards
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addprojectboard
+        description: Add a project board
+        call: v2-projectboards.addprojectboard
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/boards/{id}
+      name: boards-id
+      description: REST surface for boards-id.
+      operations:
+      - method: GET
+        name: getprojectsboard
+        description: Get details of a project board
+        call: v2-projectboards.getprojectsboard
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateprojectboard
+        description: Update a project board
+        call: v2-projectboards.updateprojectboard
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprojectboard
+        description: Delete a project board
+        call: v2-projectboards.deleteprojectboard
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-projectboards-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — ProjectBoards. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-all-project-boards
+      description: Get all project boards
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-projectboards.getprojectsboards
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-project-board
+      description: Add a project board
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-projectboards.addprojectboard
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-project-board
+      description: Get details of a project board
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-projectboards.getprojectsboard
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-project-board
+      description: Update a project board
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-projectboards.updateprojectboard
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project-board
+      description: Delete a project board
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-projectboards.deleteprojectboard
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

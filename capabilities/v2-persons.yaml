@@ -1,0 +1,681 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — Persons
+  description: 'Pipedrive API v2 — Persons. 11 operations. Lead operation: Get all persons. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Persons
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-persons
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — Persons business capability. Self-contained, no shared references.
+    resources:
+    - name: persons
+      path: /persons
+      operations:
+      - name: getpersons
+        method: GET
+        description: Get all persons
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter_id
+          in: query
+          type: integer
+          description: If supplied, only persons matching the specified filter are returned
+        - name: ids
+          in: query
+          type: string
+          description: Optional comma separated string array of up to 100 entity ids to fetch. If filter_id is provided, this
+            is ignored. If any of the requested entities do not exist
+        - name: owner_id
+          in: query
+          type: integer
+          description: If supplied, only persons owned by the specified user are returned. If filter_id is provided, this
+            is ignored.
+        - name: org_id
+          in: query
+          type: integer
+          description: If supplied, only persons linked to the specified organization are returned. If filter_id is provided,
+            this is ignored.
+        - name: deal_id
+          in: query
+          type: integer
+          description: If supplied, only persons linked to the specified deal are returned. If filter_id is provided, this
+            is ignored.
+        - name: updated_since
+          in: query
+          type: string
+          description: If set, only persons with an `update_time` later than or equal to this time are returned. In RFC3339
+            format, e.g. 2025-01-01T10:20:00Z.
+        - name: updated_until
+          in: query
+          type: string
+          description: If set, only persons with an `update_time` earlier than this time are returned. In RFC3339 format,
+            e.g. 2025-01-01T10:20:00Z.
+        - name: sort_by
+          in: query
+          type: string
+          description: 'The field to sort by. Supported fields: `id`, `update_time`, `add_time`.'
+        - name: sort_direction
+          in: query
+          type: string
+          description: 'The sorting direction. Supported values: `asc`, `desc`.'
+        - name: include_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of additional fields to include. `marketing_status` and `doi_status`
+            can only be included if the company has marketing app
+        - name: custom_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of custom fields keys to include. If you are only interested
+            in a particular set of custom fields, please use this paramet
+        - name: include_option_labels
+          in: query
+          type: boolean
+          description: 'When provided with a ''true'' value, single option and multiple option custom fields values contain
+            objects in the form of ''{ id: number, label: string }'' instead'
+        - name: include_labels
+          in: query
+          type: boolean
+          description: 'When provided with ''true'' value, response will include an array of label objects in the form of
+            ''{ id: number, label: string }'''
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      - name: addperson
+        method: POST
+        description: Add a new person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: persons-search
+      path: /persons/search
+      operations:
+      - name: searchpersons
+        method: GET
+        description: Search persons
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: term
+          in: query
+          type: string
+          description: The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the
+            search term has to be URL encoded.
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: 'A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only
+            the following custom field types are searchable: `address`,'
+        - name: exact_match
+          in: query
+          type: boolean
+          description: When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.
+        - name: organization_id
+          in: query
+          type: integer
+          description: Will filter persons by the provided organization ID. The upper limit of found persons associated with
+            the organization is 2000.
+        - name: include_fields
+          in: query
+          type: string
+          description: Supports including optional fields in the results which are not provided by default
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+    - name: persons-id
+      path: /persons/{id}
+      operations:
+      - name: deleteperson
+        method: DELETE
+        description: Delete a person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the person
+          required: true
+      - name: getperson
+        method: GET
+        description: Get details of a person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the person
+          required: true
+        - name: include_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of additional fields to include. `marketing_status` and `doi_status`
+            can only be included if the company has marketing app
+        - name: custom_fields
+          in: query
+          type: string
+          description: Optional comma separated string array of custom fields keys to include. If you are only interested
+            in a particular set of custom fields, please use this paramet
+        - name: include_option_labels
+          in: query
+          type: boolean
+          description: 'When provided with a ''true'' value, single option and multiple option custom fields values contain
+            objects in the form of ''{ id: number, label: string }'' instead'
+        - name: include_labels
+          in: query
+          type: boolean
+          description: 'When provided with ''true'' value, response will include an array of label objects in the form of
+            ''{ id: number, label: string }'''
+      - name: updateperson
+        method: PATCH
+        description: Update a person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the person
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: persons-id-followers
+      path: /persons/{id}/followers
+      operations:
+      - name: getpersonfollowers
+        method: GET
+        description: List followers of a person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the person
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      - name: addpersonfollower
+        method: POST
+        description: Add a follower to a person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the person
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: persons-id-followers-changelog
+      path: /persons/{id}/followers/changelog
+      operations:
+      - name: getpersonfollowerschangelog
+        method: GET
+        description: List followers changelog of a person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the person
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+    - name: persons-id-followers-follower_id
+      path: /persons/{id}/followers/{follower_id}
+      operations:
+      - name: deletepersonfollower
+        method: DELETE
+        description: Delete a follower from a person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the person
+          required: true
+        - name: follower_id
+          in: path
+          type: integer
+          description: The ID of the following user
+          required: true
+    - name: persons-id-picture
+      path: /persons/{id}/picture
+      operations:
+      - name: getpersonpicture
+        method: GET
+        description: Get picture of a person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the person
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-persons-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — Persons. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/persons
+      name: persons
+      description: REST surface for persons.
+      operations:
+      - method: GET
+        name: getpersons
+        description: Get all persons
+        call: v2-persons.getpersons
+        with:
+          filter_id: rest.filter_id
+          ids: rest.ids
+          owner_id: rest.owner_id
+          org_id: rest.org_id
+          deal_id: rest.deal_id
+          updated_since: rest.updated_since
+          updated_until: rest.updated_until
+          sort_by: rest.sort_by
+          sort_direction: rest.sort_direction
+          include_fields: rest.include_fields
+          custom_fields: rest.custom_fields
+          include_option_labels: rest.include_option_labels
+          include_labels: rest.include_labels
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addperson
+        description: Add a new person
+        call: v2-persons.addperson
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/persons/search
+      name: persons-search
+      description: REST surface for persons-search.
+      operations:
+      - method: GET
+        name: searchpersons
+        description: Search persons
+        call: v2-persons.searchpersons
+        with:
+          term: rest.term
+          fields: rest.fields
+          exact_match: rest.exact_match
+          organization_id: rest.organization_id
+          include_fields: rest.include_fields
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/persons/{id}
+      name: persons-id
+      description: REST surface for persons-id.
+      operations:
+      - method: DELETE
+        name: deleteperson
+        description: Delete a person
+        call: v2-persons.deleteperson
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getperson
+        description: Get details of a person
+        call: v2-persons.getperson
+        with:
+          id: rest.id
+          include_fields: rest.include_fields
+          custom_fields: rest.custom_fields
+          include_option_labels: rest.include_option_labels
+          include_labels: rest.include_labels
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateperson
+        description: Update a person
+        call: v2-persons.updateperson
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/persons/{id}/followers
+      name: persons-id-followers
+      description: REST surface for persons-id-followers.
+      operations:
+      - method: GET
+        name: getpersonfollowers
+        description: List followers of a person
+        call: v2-persons.getpersonfollowers
+        with:
+          id: rest.id
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addpersonfollower
+        description: Add a follower to a person
+        call: v2-persons.addpersonfollower
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/persons/{id}/followers/changelog
+      name: persons-id-followers-changelog
+      description: REST surface for persons-id-followers-changelog.
+      operations:
+      - method: GET
+        name: getpersonfollowerschangelog
+        description: List followers changelog of a person
+        call: v2-persons.getpersonfollowerschangelog
+        with:
+          id: rest.id
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/persons/{id}/followers/{follower-id}
+      name: persons-id-followers-follower-id
+      description: REST surface for persons-id-followers-follower_id.
+      operations:
+      - method: DELETE
+        name: deletepersonfollower
+        description: Delete a follower from a person
+        call: v2-persons.deletepersonfollower
+        with:
+          id: rest.id
+          follower_id: rest.follower_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/persons/{id}/picture
+      name: persons-id-picture
+      description: REST surface for persons-id-picture.
+      operations:
+      - method: GET
+        name: getpersonpicture
+        description: Get picture of a person
+        call: v2-persons.getpersonpicture
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-persons-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — Persons. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-all-persons
+      description: Get all persons
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-persons.getpersons
+      with:
+        filter_id: tools.filter_id
+        ids: tools.ids
+        owner_id: tools.owner_id
+        org_id: tools.org_id
+        deal_id: tools.deal_id
+        updated_since: tools.updated_since
+        updated_until: tools.updated_until
+        sort_by: tools.sort_by
+        sort_direction: tools.sort_direction
+        include_fields: tools.include_fields
+        custom_fields: tools.custom_fields
+        include_option_labels: tools.include_option_labels
+        include_labels: tools.include_labels
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-new-person
+      description: Add a new person
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-persons.addperson
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-persons
+      description: Search persons
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-persons.searchpersons
+      with:
+        term: tools.term
+        fields: tools.fields
+        exact_match: tools.exact_match
+        organization_id: tools.organization_id
+        include_fields: tools.include_fields
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-person
+      description: Delete a person
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-persons.deleteperson
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-person
+      description: Get details of a person
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-persons.getperson
+      with:
+        id: tools.id
+        include_fields: tools.include_fields
+        custom_fields: tools.custom_fields
+        include_option_labels: tools.include_option_labels
+        include_labels: tools.include_labels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-person
+      description: Update a person
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-persons.updateperson
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-followers-person
+      description: List followers of a person
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-persons.getpersonfollowers
+      with:
+        id: tools.id
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-follower-person
+      description: Add a follower to a person
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-persons.addpersonfollower
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-followers-changelog-person
+      description: List followers changelog of a person
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-persons.getpersonfollowerschangelog
+      with:
+        id: tools.id
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-follower-person
+      description: Delete a follower from a person
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-persons.deletepersonfollower
+      with:
+        id: tools.id
+        follower_id: tools.follower_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-picture-person
+      description: Get picture of a person
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-persons.getpersonpicture
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

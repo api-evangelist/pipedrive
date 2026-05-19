@@ -1,0 +1,258 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v2 — Stages
+  description: 'Pipedrive API v2 — Stages. 5 operations. Lead operation: Get all stages. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Stages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v2-stages
+    baseUri: https://api.pipedrive.com/api/v2
+    description: Pipedrive API v2 — Stages business capability. Self-contained, no shared references.
+    resources:
+    - name: stages
+      path: /stages
+      operations:
+      - name: getstages
+        method: GET
+        description: Get all stages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pipeline_id
+          in: query
+          type: integer
+          description: The ID of the pipeline to fetch stages for. If omitted, stages for all pipelines will be fetched.
+        - name: sort_by
+          in: query
+          type: string
+          description: 'The field to sort by. Supported fields: `id`, `update_time`, `add_time`, `order_nr`.'
+        - name: sort_direction
+          in: query
+          type: string
+          description: 'The sorting direction. Supported values: `asc`, `desc`.'
+        - name: limit
+          in: query
+          type: integer
+          description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please
+            note that a maximum value of 500 is allowed.
+        - name: cursor
+          in: query
+          type: string
+          description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      - name: addstage
+        method: POST
+        description: Add a new stage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: stages-id
+      path: /stages/{id}
+      operations:
+      - name: deletestage
+        method: DELETE
+        description: Delete a stage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the stage
+          required: true
+      - name: getstage
+        method: GET
+        description: Get one stage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the stage
+          required: true
+      - name: updatestage
+        method: PATCH
+        description: Update stage details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the stage
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v2-stages-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v2 — Stages. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/stages
+      name: stages
+      description: REST surface for stages.
+      operations:
+      - method: GET
+        name: getstages
+        description: Get all stages
+        call: v2-stages.getstages
+        with:
+          pipeline_id: rest.pipeline_id
+          sort_by: rest.sort_by
+          sort_direction: rest.sort_direction
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addstage
+        description: Add a new stage
+        call: v2-stages.addstage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stages/{id}
+      name: stages-id
+      description: REST surface for stages-id.
+      operations:
+      - method: DELETE
+        name: deletestage
+        description: Delete a stage
+        call: v2-stages.deletestage
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getstage
+        description: Get one stage
+        call: v2-stages.getstage
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatestage
+        description: Update stage details
+        call: v2-stages.updatestage
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v2-stages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v2 — Stages. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-all-stages
+      description: Get all stages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-stages.getstages
+      with:
+        pipeline_id: tools.pipeline_id
+        sort_by: tools.sort_by
+        sort_direction: tools.sort_direction
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-new-stage
+      description: Add a new stage
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v2-stages.addstage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-stage
+      description: Delete a stage
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v2-stages.deletestage
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-one-stage
+      description: Get one stage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v2-stages.getstage
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-stage-details
+      description: Update stage details
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: v2-stages.updatestage
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

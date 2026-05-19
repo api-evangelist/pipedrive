@@ -1,0 +1,175 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — PermissionSets
+  description: 'Pipedrive API v1 — PermissionSets. 3 operations. Lead operation: Get all permission sets. Self-contained Naftiko
+    capability covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - PermissionSets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-permissionsets
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — PermissionSets business capability. Self-contained, no shared references.
+    resources:
+    - name: permissionSets
+      path: /permissionSets
+      operations:
+      - name: getpermissionsets
+        method: GET
+        description: Get all permission sets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: app
+          in: query
+          type: string
+          description: The app to filter the permission sets by
+    - name: permissionSets-id
+      path: /permissionSets/{id}
+      operations:
+      - name: getpermissionset
+        method: GET
+        description: Get one permission set
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the permission set
+          required: true
+    - name: permissionSets-id-assignments
+      path: /permissionSets/{id}/assignments
+      operations:
+      - name: getpermissionsetassignments
+        method: GET
+        description: List permission set assignments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the permission set
+          required: true
+        - name: start
+          in: query
+          type: integer
+          description: Pagination start
+        - name: limit
+          in: query
+          type: integer
+          description: Items shown per page
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-permissionsets-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — PermissionSets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/permissionsets
+      name: permissionsets
+      description: REST surface for permissionSets.
+      operations:
+      - method: GET
+        name: getpermissionsets
+        description: Get all permission sets
+        call: v1-permissionsets.getpermissionsets
+        with:
+          app: rest.app
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/permissionsets/{id}
+      name: permissionsets-id
+      description: REST surface for permissionSets-id.
+      operations:
+      - method: GET
+        name: getpermissionset
+        description: Get one permission set
+        call: v1-permissionsets.getpermissionset
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/permissionsets/{id}/assignments
+      name: permissionsets-id-assignments
+      description: REST surface for permissionSets-id-assignments.
+      operations:
+      - method: GET
+        name: getpermissionsetassignments
+        description: List permission set assignments
+        call: v1-permissionsets.getpermissionsetassignments
+        with:
+          id: rest.id
+          start: rest.start
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-permissionsets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — PermissionSets. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-all-permission-sets
+      description: Get all permission sets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-permissionsets.getpermissionsets
+      with:
+        app: tools.app
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-one-permission-set
+      description: Get one permission set
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-permissionsets.getpermissionset
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-permission-set-assignments
+      description: List permission set assignments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-permissionsets.getpermissionsetassignments
+      with:
+        id: tools.id
+        start: tools.start
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.

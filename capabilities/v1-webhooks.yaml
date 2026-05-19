@@ -1,0 +1,147 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pipedrive API v1 — Webhooks
+  description: 'Pipedrive API v1 — Webhooks. 3 operations. Lead operation: Get all Webhooks. Self-contained Naftiko capability
+    covering one Pipedrive business surface.'
+  tags:
+  - Pipedrive
+  - Webhooks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIPEDRIVE_API_KEY: PIPEDRIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: v1-webhooks
+    baseUri: https://api.pipedrive.com/v1
+    description: Pipedrive API v1 — Webhooks business capability. Self-contained, no shared references.
+    resources:
+    - name: webhooks
+      path: /webhooks
+      operations:
+      - name: getwebhooks
+        method: GET
+        description: Get all Webhooks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addwebhook
+        method: POST
+        description: Create a new Webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: webhooks-id
+      path: /webhooks/{id}
+      operations:
+      - name: deletewebhook
+        method: DELETE
+        description: Delete existing Webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: The ID of the Webhook to delete
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PIPEDRIVE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: v1-webhooks-rest
+    port: 8080
+    description: REST adapter for Pipedrive API v1 — Webhooks. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/webhooks
+      name: webhooks
+      description: REST surface for webhooks.
+      operations:
+      - method: GET
+        name: getwebhooks
+        description: Get all Webhooks
+        call: v1-webhooks.getwebhooks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addwebhook
+        description: Create a new Webhook
+        call: v1-webhooks.addwebhook
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/webhooks/{id}
+      name: webhooks-id
+      description: REST surface for webhooks-id.
+      operations:
+      - method: DELETE
+        name: deletewebhook
+        description: Delete existing Webhook
+        call: v1-webhooks.deletewebhook
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: v1-webhooks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pipedrive API v1 — Webhooks. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-webhooks
+      description: Get all Webhooks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: v1-webhooks.getwebhooks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-webhook
+      description: Create a new Webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: v1-webhooks.addwebhook
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-existing-webhook
+      description: Delete existing Webhook
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: v1-webhooks.deletewebhook
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
