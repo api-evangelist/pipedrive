@@ -459,6 +459,8 @@ common:
   - https://developers.pipedrive.com/
   - https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting
   updated: '2026-05-08'
+- type: LLMsTxt
+  url: https://developers.pipedrive.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
