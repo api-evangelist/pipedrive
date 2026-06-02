@@ -1,0 +1,1275 @@
+asyncapi: 2.6.0
+info:
+  title: Pipedrive Webhooks v2
+  version: 2.0.0
+  description: |
+    AsyncAPI description of the Pipedrive Webhooks v2 surface.
+
+    Pipedrive delivers webhook notifications as HTTP `POST` requests carrying a
+    JSON body. A webhook subscription is identified by combining two parameters,
+    `event_action` and `event_object`, joined with a dot (for example
+    `create.deal`, `change.person`, `delete.organization`). The wildcard `*` is
+    accepted in either position (for example `*.*`, `*.deal`, `create.*`).
+
+    Delivery semantics are documented at
+    https://pipedrive.readme.io/docs/guide-for-webhooks-v2 :
+      - Pipedrive considers any 2XX response a success.
+      - Requests time out after 10 seconds.
+      - Failed attempts are retried after 3, 30, and 150 seconds (up to 4 attempts).
+      - A webhook is banned for 30 minutes after 10 first-attempt failures.
+      - Subscriptions with no successful deliveries for 3 consecutive days are deleted.
+
+    Subscribers may register optional HTTP Basic credentials (`http_auth_user`,
+    `http_auth_password`) when creating the subscription; Pipedrive will then
+    include those credentials on the outbound `POST` request.
+
+    Only event types, object types, payload sections, and delivery rules
+    explicitly documented by Pipedrive are modelled here. The shape of each
+    entity's `data` and `previous` objects is intentionally left open
+    (`additionalProperties: true`) because Pipedrive's guide states that the
+    payload "contains only crucial information about the entity and related /
+    connected entities" and that `previous` "contains only the fields that have
+    changed", without enumerating those fields per entity in the v2 guide.
+  contact:
+    name: Pipedrive Developer Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  license:
+    name: Pipedrive Terms of Service
+    url: https://www.pipedrive.com/en/terms-of-service
+  tags:
+    - name: Pipedrive
+    - name: Webhooks
+    - name: CRM
+    - name: v2
+externalDocs:
+  description: Guide for Webhooks v2
+  url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+defaultContentType: application/json
+servers:
+  subscriber:
+    url: '{subscriberUrl}'
+    protocol: https
+    description: |
+      Subscriber-supplied HTTPS endpoint registered via `POST /v1/webhooks` with
+      `version=2.0`. Pipedrive does not support self-signed certificates.
+    variables:
+      subscriberUrl:
+        description: Fully-qualified HTTPS URL of the subscriber endpoint.
+        default: https://example.com/pipedrive/webhooks
+    security:
+      - httpBasic: []
+      - {}
+channels:
+  create.activity:
+    description: Activity was created.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: 0.3.0
+    subscribe:
+      operationId: onActivityCreated
+      summary: Activity created (event `create.activity`).
+      message:
+        $ref: '#/components/messages/ActivityCreated'
+  change.activity:
+    description: Activity was changed.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: 0.3.0
+    subscribe:
+      operationId: onActivityChanged
+      summary: Activity changed (event `change.activity`).
+      message:
+        $ref: '#/components/messages/ActivityChanged'
+  delete.activity:
+    description: Activity was deleted.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: 0.3.0
+    subscribe:
+      operationId: onActivityDeleted
+      summary: Activity deleted (event `delete.activity`).
+      message:
+        $ref: '#/components/messages/ActivityDeleted'
+
+  create.board:
+    description: Project board was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onBoardCreated
+      summary: Board created (event `create.board`).
+      message:
+        $ref: '#/components/messages/BoardCreated'
+  change.board:
+    description: Project board was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onBoardChanged
+      summary: Board changed (event `change.board`).
+      message:
+        $ref: '#/components/messages/BoardChanged'
+  delete.board:
+    description: Project board was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onBoardDeleted
+      summary: Board deleted (event `delete.board`).
+      message:
+        $ref: '#/components/messages/BoardDeleted'
+
+  create.deal:
+    description: Deal was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onDealCreated
+      summary: Deal created (event `create.deal`).
+      message:
+        $ref: '#/components/messages/DealCreated'
+  change.deal:
+    description: Deal was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onDealChanged
+      summary: Deal changed (event `change.deal`).
+      message:
+        $ref: '#/components/messages/DealChanged'
+  delete.deal:
+    description: Deal was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onDealDeleted
+      summary: Deal deleted (event `delete.deal`).
+      message:
+        $ref: '#/components/messages/DealDeleted'
+
+  create.deal_installment:
+    description: Deal installment was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onDealInstallmentCreated
+      summary: Deal installment created (event `create.deal_installment`).
+      message:
+        $ref: '#/components/messages/DealInstallmentCreated'
+  change.deal_installment:
+    description: Deal installment was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onDealInstallmentChanged
+      summary: Deal installment changed (event `change.deal_installment`).
+      message:
+        $ref: '#/components/messages/DealInstallmentChanged'
+  delete.deal_installment:
+    description: Deal installment was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onDealInstallmentDeleted
+      summary: Deal installment deleted (event `delete.deal_installment`).
+      message:
+        $ref: '#/components/messages/DealInstallmentDeleted'
+
+  create.deal_product:
+    description: Deal product (line item) was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onDealProductCreated
+      summary: Deal product created (event `create.deal_product`).
+      message:
+        $ref: '#/components/messages/DealProductCreated'
+  change.deal_product:
+    description: Deal product (line item) was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onDealProductChanged
+      summary: Deal product changed (event `change.deal_product`).
+      message:
+        $ref: '#/components/messages/DealProductChanged'
+  delete.deal_product:
+    description: Deal product (line item) was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onDealProductDeleted
+      summary: Deal product deleted (event `delete.deal_product`).
+      message:
+        $ref: '#/components/messages/DealProductDeleted'
+
+  create.lead:
+    description: Lead was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onLeadCreated
+      summary: Lead created (event `create.lead`).
+      message:
+        $ref: '#/components/messages/LeadCreated'
+  change.lead:
+    description: Lead was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onLeadChanged
+      summary: Lead changed (event `change.lead`).
+      message:
+        $ref: '#/components/messages/LeadChanged'
+  delete.lead:
+    description: Lead was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onLeadDeleted
+      summary: Lead deleted (event `delete.lead`).
+      message:
+        $ref: '#/components/messages/LeadDeleted'
+
+  create.note:
+    description: Note was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onNoteCreated
+      summary: Note created (event `create.note`).
+      message:
+        $ref: '#/components/messages/NoteCreated'
+  change.note:
+    description: Note was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onNoteChanged
+      summary: Note changed (event `change.note`).
+      message:
+        $ref: '#/components/messages/NoteChanged'
+  delete.note:
+    description: Note was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onNoteDeleted
+      summary: Note deleted (event `delete.note`).
+      message:
+        $ref: '#/components/messages/NoteDeleted'
+
+  create.organization:
+    description: Organization was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onOrganizationCreated
+      summary: Organization created (event `create.organization`).
+      message:
+        $ref: '#/components/messages/OrganizationCreated'
+  change.organization:
+    description: Organization was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onOrganizationChanged
+      summary: Organization changed (event `change.organization`).
+      message:
+        $ref: '#/components/messages/OrganizationChanged'
+  delete.organization:
+    description: Organization was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onOrganizationDeleted
+      summary: Organization deleted (event `delete.organization`).
+      message:
+        $ref: '#/components/messages/OrganizationDeleted'
+
+  create.person:
+    description: Person was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onPersonCreated
+      summary: Person created (event `create.person`).
+      message:
+        $ref: '#/components/messages/PersonCreated'
+  change.person:
+    description: Person was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onPersonChanged
+      summary: Person changed (event `change.person`).
+      message:
+        $ref: '#/components/messages/PersonChanged'
+  delete.person:
+    description: Person was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onPersonDeleted
+      summary: Person deleted (event `delete.person`).
+      message:
+        $ref: '#/components/messages/PersonDeleted'
+
+  create.phase:
+    description: Project phase was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onPhaseCreated
+      summary: Phase created (event `create.phase`).
+      message:
+        $ref: '#/components/messages/PhaseCreated'
+  change.phase:
+    description: Project phase was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onPhaseChanged
+      summary: Phase changed (event `change.phase`).
+      message:
+        $ref: '#/components/messages/PhaseChanged'
+  delete.phase:
+    description: Project phase was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onPhaseDeleted
+      summary: Phase deleted (event `delete.phase`).
+      message:
+        $ref: '#/components/messages/PhaseDeleted'
+
+  create.pipeline:
+    description: Pipeline was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onPipelineCreated
+      summary: Pipeline created (event `create.pipeline`).
+      message:
+        $ref: '#/components/messages/PipelineCreated'
+  change.pipeline:
+    description: Pipeline was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onPipelineChanged
+      summary: Pipeline changed (event `change.pipeline`).
+      message:
+        $ref: '#/components/messages/PipelineChanged'
+  delete.pipeline:
+    description: Pipeline was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onPipelineDeleted
+      summary: Pipeline deleted (event `delete.pipeline`).
+      message:
+        $ref: '#/components/messages/PipelineDeleted'
+
+  create.product:
+    description: Product was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onProductCreated
+      summary: Product created (event `create.product`).
+      message:
+        $ref: '#/components/messages/ProductCreated'
+  change.product:
+    description: Product was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onProductChanged
+      summary: Product changed (event `change.product`).
+      message:
+        $ref: '#/components/messages/ProductChanged'
+  delete.product:
+    description: Product was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onProductDeleted
+      summary: Product deleted (event `delete.product`).
+      message:
+        $ref: '#/components/messages/ProductDeleted'
+
+  create.project:
+    description: Project was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onProjectCreated
+      summary: Project created (event `create.project`).
+      message:
+        $ref: '#/components/messages/ProjectCreated'
+  change.project:
+    description: Project was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onProjectChanged
+      summary: Project changed (event `change.project`).
+      message:
+        $ref: '#/components/messages/ProjectChanged'
+  delete.project:
+    description: Project was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onProjectDeleted
+      summary: Project deleted (event `delete.project`).
+      message:
+        $ref: '#/components/messages/ProjectDeleted'
+
+  create.stage:
+    description: Stage was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onStageCreated
+      summary: Stage created (event `create.stage`).
+      message:
+        $ref: '#/components/messages/StageCreated'
+  change.stage:
+    description: Stage was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onStageChanged
+      summary: Stage changed (event `change.stage`).
+      message:
+        $ref: '#/components/messages/StageChanged'
+  delete.stage:
+    description: Stage was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onStageDeleted
+      summary: Stage deleted (event `delete.stage`).
+      message:
+        $ref: '#/components/messages/StageDeleted'
+
+  create.task:
+    description: Project task was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onTaskCreated
+      summary: Task created (event `create.task`).
+      message:
+        $ref: '#/components/messages/TaskCreated'
+  change.task:
+    description: Project task was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onTaskChanged
+      summary: Task changed (event `change.task`).
+      message:
+        $ref: '#/components/messages/TaskChanged'
+  delete.task:
+    description: Project task was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onTaskDeleted
+      summary: Task deleted (event `delete.task`).
+      message:
+        $ref: '#/components/messages/TaskDeleted'
+
+  create.user:
+    description: User was created.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onUserCreated
+      summary: User created (event `create.user`).
+      message:
+        $ref: '#/components/messages/UserCreated'
+  change.user:
+    description: User was changed.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onUserChanged
+      summary: User changed (event `change.user`).
+      message:
+        $ref: '#/components/messages/UserChanged'
+  delete.user:
+    description: User was deleted.
+    bindings:
+      http: { type: request, method: POST, bindingVersion: 0.3.0 }
+    subscribe:
+      operationId: onUserDeleted
+      summary: User deleted (event `delete.user`).
+      message:
+        $ref: '#/components/messages/UserDeleted'
+components:
+  securitySchemes:
+    httpBasic:
+      type: userPassword
+      description: |
+        Optional HTTP Basic credentials supplied at subscription time
+        (`http_auth_user` and `http_auth_password`). When configured,
+        Pipedrive includes them on every outbound webhook request.
+  schemas:
+    Meta:
+      type: object
+      description: |
+        Webhook v2 meta block. Lists fields documented in the
+        "Guide for Webhooks v2" payload reference.
+      required:
+        - action
+        - entity
+        - version
+      properties:
+        action:
+          type: string
+          description: Event action.
+          enum: [create, change, delete]
+        entity:
+          type: string
+          description: Object type the event refers to.
+          enum:
+            - activity
+            - board
+            - deal
+            - deal_installment
+            - deal_product
+            - lead
+            - note
+            - organization
+            - person
+            - phase
+            - pipeline
+            - product
+            - project
+            - stage
+            - task
+            - user
+        version:
+          type: string
+          description: Webhook payload version. Always `2.0` for v2 webhooks.
+          enum: ['2.0']
+        company_id:
+          type: integer
+          description: ID of the Pipedrive company account the event belongs to.
+        correlation_id:
+          type: string
+          description: Correlation identifier for grouping related events.
+        entity_id:
+          description: Identifier of the affected entity.
+          oneOf:
+            - type: integer
+            - type: string
+        id:
+          type: string
+          description: Unique identifier of this delivery.
+        is_bulk_edit:
+          type: boolean
+          description: True when the event was produced by a bulk edit.
+        timestamp:
+          type: string
+          description: Time the event occurred.
+        type:
+          type: string
+          description: Type qualifier of the event (as set by Pipedrive).
+        user_id:
+          type: integer
+          description: ID of the user who triggered the event.
+        webhook_id:
+          type: integer
+          description: ID of the Pipedrive webhook subscription.
+        webhook_owner_id:
+          type: integer
+          description: ID of the user that owns the webhook subscription.
+        change_source:
+          type: string
+          description: Source of the change (e.g. app, api).
+        attempt:
+          type: integer
+          minimum: 1
+          maximum: 4
+          description: |
+            Delivery attempt counter. Pipedrive retries failed deliveries
+            after 3, 30 and 150 seconds, for a maximum of 4 attempts.
+        host:
+          type: string
+          description: Pipedrive host that emitted the event.
+        permitted_user_ids:
+          type: array
+          description: Users permitted to see the affected entity.
+          items:
+            type: integer
+        merged_to_id:
+          description: Target entity ID when this event is a merge.
+          oneOf:
+            - type: integer
+            - type: 'null'
+        merged_from_id:
+          description: Source entity ID when this event is a merge.
+          oneOf:
+            - type: integer
+            - type: 'null'
+      additionalProperties: true
+    EntityData:
+      type: object
+      description: |
+        Current state of the affected entity. Per the v2 guide, "the standard
+        data contains only crucial information about the entity and related /
+        connected entities". Field set varies by entity type.
+      additionalProperties: true
+    EntityPrevious:
+      description: |
+        Previous state. Per the v2 guide, for change events "the standard data
+        contains only the fields that have changed".
+      oneOf:
+        - type: object
+          additionalProperties: true
+        - type: 'null'
+    WebhookEnvelope:
+      type: object
+      description: Common Webhooks v2 envelope shared by all events.
+      required:
+        - meta
+        - data
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        data:
+          $ref: '#/components/schemas/EntityData'
+        previous:
+          $ref: '#/components/schemas/EntityPrevious'
+      additionalProperties: false
+  messageTraits:
+    PipedriveWebhookTrait:
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              Content-Type:
+                type: string
+                enum: [application/json]
+              Authorization:
+                type: string
+                description: |
+                  Present only when the subscription was registered with
+                  `http_auth_user` and `http_auth_password`. Encodes those
+                  credentials as standard HTTP Basic auth.
+          bindingVersion: 0.3.0
+      tags:
+        - name: Pipedrive
+        - name: Webhooks
+        - name: v2
+  messages:
+    ActivityCreated:
+      name: ActivityCreated
+      title: Activity created
+      summary: Emitted when an activity is created (`create.activity`).
+      traits:
+        - $ref: '#/components/messageTraits/PipedriveWebhookTrait'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEnvelope'
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: activity }
+    ActivityChanged:
+      name: ActivityChanged
+      title: Activity changed
+      summary: Emitted when an activity is changed (`change.activity`).
+      traits:
+        - $ref: '#/components/messageTraits/PipedriveWebhookTrait'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEnvelope'
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: activity }
+    ActivityDeleted:
+      name: ActivityDeleted
+      title: Activity deleted
+      summary: Emitted when an activity is deleted (`delete.activity`).
+      traits:
+        - $ref: '#/components/messageTraits/PipedriveWebhookTrait'
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEnvelope'
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: activity }
+
+    BoardCreated:
+      name: BoardCreated
+      title: Board created
+      summary: Emitted when a project board is created (`create.board`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: board }
+    BoardChanged:
+      name: BoardChanged
+      title: Board changed
+      summary: Emitted when a project board is changed (`change.board`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: board }
+    BoardDeleted:
+      name: BoardDeleted
+      title: Board deleted
+      summary: Emitted when a project board is deleted (`delete.board`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: board }
+
+    DealCreated:
+      name: DealCreated
+      title: Deal created
+      summary: Emitted when a deal is created (`create.deal`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: deal }
+    DealChanged:
+      name: DealChanged
+      title: Deal changed
+      summary: Emitted when a deal is changed (`change.deal`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: deal }
+    DealDeleted:
+      name: DealDeleted
+      title: Deal deleted
+      summary: Emitted when a deal is deleted (`delete.deal`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: deal }
+
+    DealInstallmentCreated:
+      name: DealInstallmentCreated
+      title: Deal installment created
+      summary: Emitted when a deal installment is created (`create.deal_installment`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: deal_installment }
+    DealInstallmentChanged:
+      name: DealInstallmentChanged
+      title: Deal installment changed
+      summary: Emitted when a deal installment is changed (`change.deal_installment`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: deal_installment }
+    DealInstallmentDeleted:
+      name: DealInstallmentDeleted
+      title: Deal installment deleted
+      summary: Emitted when a deal installment is deleted (`delete.deal_installment`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: deal_installment }
+
+    DealProductCreated:
+      name: DealProductCreated
+      title: Deal product created
+      summary: Emitted when a deal product (line item) is created (`create.deal_product`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: deal_product }
+    DealProductChanged:
+      name: DealProductChanged
+      title: Deal product changed
+      summary: Emitted when a deal product is changed (`change.deal_product`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: deal_product }
+    DealProductDeleted:
+      name: DealProductDeleted
+      title: Deal product deleted
+      summary: Emitted when a deal product is deleted (`delete.deal_product`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: deal_product }
+
+    LeadCreated:
+      name: LeadCreated
+      title: Lead created
+      summary: Emitted when a lead is created (`create.lead`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: lead }
+    LeadChanged:
+      name: LeadChanged
+      title: Lead changed
+      summary: Emitted when a lead is changed (`change.lead`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: lead }
+    LeadDeleted:
+      name: LeadDeleted
+      title: Lead deleted
+      summary: Emitted when a lead is deleted (`delete.lead`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: lead }
+
+    NoteCreated:
+      name: NoteCreated
+      title: Note created
+      summary: Emitted when a note is created (`create.note`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: note }
+    NoteChanged:
+      name: NoteChanged
+      title: Note changed
+      summary: Emitted when a note is changed (`change.note`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: note }
+    NoteDeleted:
+      name: NoteDeleted
+      title: Note deleted
+      summary: Emitted when a note is deleted (`delete.note`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: note }
+
+    OrganizationCreated:
+      name: OrganizationCreated
+      title: Organization created
+      summary: Emitted when an organization is created (`create.organization`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: organization }
+    OrganizationChanged:
+      name: OrganizationChanged
+      title: Organization changed
+      summary: Emitted when an organization is changed (`change.organization`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: organization }
+    OrganizationDeleted:
+      name: OrganizationDeleted
+      title: Organization deleted
+      summary: Emitted when an organization is deleted (`delete.organization`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: organization }
+
+    PersonCreated:
+      name: PersonCreated
+      title: Person created
+      summary: Emitted when a person is created (`create.person`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: person }
+    PersonChanged:
+      name: PersonChanged
+      title: Person changed
+      summary: Emitted when a person is changed (`change.person`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: person }
+    PersonDeleted:
+      name: PersonDeleted
+      title: Person deleted
+      summary: Emitted when a person is deleted (`delete.person`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: person }
+
+    PhaseCreated:
+      name: PhaseCreated
+      title: Phase created
+      summary: Emitted when a project phase is created (`create.phase`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: phase }
+    PhaseChanged:
+      name: PhaseChanged
+      title: Phase changed
+      summary: Emitted when a project phase is changed (`change.phase`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: phase }
+    PhaseDeleted:
+      name: PhaseDeleted
+      title: Phase deleted
+      summary: Emitted when a project phase is deleted (`delete.phase`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: phase }
+
+    PipelineCreated:
+      name: PipelineCreated
+      title: Pipeline created
+      summary: Emitted when a pipeline is created (`create.pipeline`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: pipeline }
+    PipelineChanged:
+      name: PipelineChanged
+      title: Pipeline changed
+      summary: Emitted when a pipeline is changed (`change.pipeline`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: pipeline }
+    PipelineDeleted:
+      name: PipelineDeleted
+      title: Pipeline deleted
+      summary: Emitted when a pipeline is deleted (`delete.pipeline`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: pipeline }
+
+    ProductCreated:
+      name: ProductCreated
+      title: Product created
+      summary: Emitted when a product is created (`create.product`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: product }
+    ProductChanged:
+      name: ProductChanged
+      title: Product changed
+      summary: Emitted when a product is changed (`change.product`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: product }
+    ProductDeleted:
+      name: ProductDeleted
+      title: Product deleted
+      summary: Emitted when a product is deleted (`delete.product`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: product }
+
+    ProjectCreated:
+      name: ProjectCreated
+      title: Project created
+      summary: Emitted when a project is created (`create.project`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: project }
+    ProjectChanged:
+      name: ProjectChanged
+      title: Project changed
+      summary: Emitted when a project is changed (`change.project`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: project }
+    ProjectDeleted:
+      name: ProjectDeleted
+      title: Project deleted
+      summary: Emitted when a project is deleted (`delete.project`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: project }
+
+    StageCreated:
+      name: StageCreated
+      title: Stage created
+      summary: Emitted when a stage is created (`create.stage`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: stage }
+    StageChanged:
+      name: StageChanged
+      title: Stage changed
+      summary: Emitted when a stage is changed (`change.stage`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: stage }
+    StageDeleted:
+      name: StageDeleted
+      title: Stage deleted
+      summary: Emitted when a stage is deleted (`delete.stage`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: stage }
+
+    TaskCreated:
+      name: TaskCreated
+      title: Task created
+      summary: Emitted when a project task is created (`create.task`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: task }
+    TaskChanged:
+      name: TaskChanged
+      title: Task changed
+      summary: Emitted when a project task is changed (`change.task`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: task }
+    TaskDeleted:
+      name: TaskDeleted
+      title: Task deleted
+      summary: Emitted when a project task is deleted (`delete.task`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: task }
+
+    UserCreated:
+      name: UserCreated
+      title: User created
+      summary: Emitted when a user is created (`create.user`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: create }
+              entity: { const: user }
+    UserChanged:
+      name: UserChanged
+      title: User changed
+      summary: Emitted when a user is changed (`change.user`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: change }
+              entity: { const: user }
+    UserDeleted:
+      name: UserDeleted
+      title: User deleted
+      summary: Emitted when a user is deleted (`delete.user`).
+      traits: [{ $ref: '#/components/messageTraits/PipedriveWebhookTrait' }]
+      payload:
+        allOf: [{ $ref: '#/components/schemas/WebhookEnvelope' }]
+        properties:
+          meta:
+            properties:
+              action: { const: delete }
+              entity: { const: user }

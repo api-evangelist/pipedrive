@@ -2,13 +2,13 @@
   "repo": "pipedrive",
   "feeds": [
     {
-      "source": "https://www.pipedrive.com/en/blog",
-      "feed_url": "",
+      "source": "https://status.pipedrive.com/",
+      "feed_url": "https://status.pipedrive.com/",
       "title": "",
       "saved": 0,
-      "error": "no_feed"
+      "method": "none"
     }
   ],
-  "fetched": "2026-05-17T20:48:52Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 0
 }

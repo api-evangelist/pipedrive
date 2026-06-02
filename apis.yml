@@ -13,7 +13,7 @@ tags:
 - SaaS
 - Small Business
 created: '2026-05-08'
-modified: '2026-05-19'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
 - aid: pipedrive:pipedrive-deals-api
@@ -388,8 +388,12 @@ apis:
   properties:
   - url: https://developers.pipedrive.com/docs/api/v1/Webhooks
     type: APIReference
+  - url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+    type: Documentation
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
+  - url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+    type: AsyncAPI
   description: Subscribe to Pipedrive events (deal.added, deal.updated, person.added, activity.added) and receive HTTP callbacks
     for downstream automation.
 - aid: pipedrive:pipedrive-marketplace-api
