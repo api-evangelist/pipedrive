@@ -2,8 +2,9 @@ aid: pipedrive
 url: https://raw.githubusercontent.com/api-evangelist/pipedrive/refs/heads/main/apis.yml
 name: Pipedrive
 kind: company
-description: Pipedrive is a sales CRM and pipeline management tool focused on small and mid-market teams. The Pipedrive REST
-  API exposes deals, persons, organizations, activities, leads, products, pipelines, stages, mail, calls, files, notes, users,
+description: Pipedrive is a sales CRM and pipeline management tool focused on small
+  and mid-market teams. The Pipedrive REST API exposes deals, persons, organizations,
+  activities, leads, products, pipelines, stages, mail, calls, files, notes, users,
   permissions, filters, goals, subscriptions, and webhooks.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -30,140 +31,11 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/v1-activityfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-activitytypes.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-billing.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-calllogs.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-channels.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-currencies.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-dealfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-deals.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-files.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-filters.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-goals.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-leadfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-leadlabels.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-leadsources.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-leads.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-legacyteams.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-mailbox.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-meetings.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-notefields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-notes.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-oauth.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-organizationfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-organizationrelationships.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-organizations.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-permissionsets.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-personfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-persons.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-pipelines.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-productfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-products.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-projectboards.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-projectphases.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-projecttemplates.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-projects.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-recents.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-roles.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-stages.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-tasks.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-userconnections.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-usersettings.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-users.yaml
-  - type: NaftikoCapability
-    url: capabilities/v1-webhooks.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-activities.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-activityfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-beta.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-dealfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-dealinstallments.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-dealproducts.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-deals.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-itemsearch.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-leads.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-organizationfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-organizations.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-personfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-persons.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-pipelines.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-productfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-products.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-projectboards.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-projectfields.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-projectphases.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-projecttemplates.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-projects.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-stages.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-tasks.yaml
-  - type: NaftikoCapability
-    url: capabilities/v2-users.yaml
-  description: Manage deals — the core sales-pipeline entity. Create, retrieve, update, search, and merge deals; advance them
-    through pipeline stages and track value, status, and probability.
+  - url: graphql/pipedrive-graphql.md
+    type: GraphQL
+  description: Manage deals — the core sales-pipeline entity. Create, retrieve, update,
+    search, and merge deals; advance them through pipeline stages and track value,
+    status, and probability.
 - aid: pipedrive:pipedrive-leads-api
   name: Pipedrive Leads API
   tags:
@@ -175,7 +47,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Manage leads — pre-qualified deal candidates living in the Leads Inbox before being converted to deals.
+  description: Manage leads — pre-qualified deal candidates living in the Leads Inbox
+    before being converted to deals.
 - aid: pipedrive:pipedrive-persons-api
   name: Pipedrive Persons API
   tags:
@@ -188,7 +61,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Manage person (contact) records — names, emails, phones, social profiles — associated with deals and organizations.
+  description: Manage person (contact) records — names, emails, phones, social profiles
+    — associated with deals and organizations.
 - aid: pipedrive:pipedrive-organizations-api
   name: Pipedrive Organizations API
   tags:
@@ -201,7 +75,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Manage organization (company) records that group persons and deals under a single business relationship.
+  description: Manage organization (company) records that group persons and deals
+    under a single business relationship.
 - aid: pipedrive:pipedrive-activities-api
   name: Pipedrive Activities API
   tags:
@@ -215,7 +90,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Manage activities (calls, meetings, emails, tasks, deadlines) scheduled against deals, persons, or organizations.
+  description: Manage activities (calls, meetings, emails, tasks, deadlines) scheduled
+    against deals, persons, or organizations.
 - aid: pipedrive:pipedrive-pipelines-api
   name: Pipedrive Pipelines API
   tags:
@@ -227,7 +103,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Manage pipelines — the top-level sales process containers grouping ordered stages.
+  description: Manage pipelines — the top-level sales process containers grouping
+    ordered stages.
 - aid: pipedrive:pipedrive-stages-api
   name: Pipedrive Stages API
   tags:
@@ -239,7 +116,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Manage stages within pipelines and the per-stage probability and ordering used to compute weighted forecasts.
+  description: Manage stages within pipelines and the per-stage probability and ordering
+    used to compute weighted forecasts.
 - aid: pipedrive:pipedrive-products-api
   name: Pipedrive Products API
   tags:
@@ -252,7 +130,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Manage product catalog entries (SKU, price, currency variants) attached to deals as line items.
+  description: Manage product catalog entries (SKU, price, currency variants) attached
+    to deals as line items.
 - aid: pipedrive:pipedrive-notes-api
   name: Pipedrive Notes API
   tags:
@@ -262,7 +141,8 @@ apis:
     type: APIReference
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
-  description: Add and retrieve free-form notes attached to deals, persons, organizations, and leads.
+  description: Add and retrieve free-form notes attached to deals, persons, organizations,
+    and leads.
 - aid: pipedrive:pipedrive-files-api
   name: Pipedrive Files API
   tags:
@@ -273,7 +153,8 @@ apis:
     type: APIReference
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
-  description: Upload and link files (contracts, proposals, attachments) to deals, persons, and organizations.
+  description: Upload and link files (contracts, proposals, attachments) to deals,
+    persons, and organizations.
 - aid: pipedrive:pipedrive-mailbox-api
   name: Pipedrive Mailbox API
   tags:
@@ -284,7 +165,8 @@ apis:
     type: APIReference
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
-  description: Read mailbox messages and threads synced via the Pipedrive Smart Email Bcc and 2-way email sync features.
+  description: Read mailbox messages and threads synced via the Pipedrive Smart Email
+    Bcc and 2-way email sync features.
 - aid: pipedrive:pipedrive-calls-api
   name: Pipedrive Calls API
   tags:
@@ -295,7 +177,8 @@ apis:
     type: APIReference
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
-  description: Log call activities and connect with telephony providers via the Caller integration framework.
+  description: Log call activities and connect with telephony providers via the Caller
+    integration framework.
 - aid: pipedrive:pipedrive-users-api
   name: Pipedrive Users API
   tags:
@@ -308,7 +191,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Manage Pipedrive users (sales reps, managers, admins) and their activation state.
+  description: Manage Pipedrive users (sales reps, managers, admins) and their activation
+    state.
 - aid: pipedrive:pipedrive-permissions-api
   name: Pipedrive Permissions API
   tags:
@@ -320,7 +204,8 @@ apis:
     type: APIReference
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
-  description: Manage user roles and permission sets that govern visibility across deals, persons, and organizations.
+  description: Manage user roles and permission sets that govern visibility across
+    deals, persons, and organizations.
 - aid: pipedrive:pipedrive-filters-api
   name: Pipedrive Filters API
   tags:
@@ -331,7 +216,8 @@ apis:
     type: APIReference
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
-  description: Manage saved filters (saved query / view definitions) used across lists and reports.
+  description: Manage saved filters (saved query / view definitions) used across lists
+    and reports.
 - aid: pipedrive:pipedrive-goals-api
   name: Pipedrive Goals API
   tags:
@@ -342,7 +228,8 @@ apis:
     type: APIReference
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
-  description: Set, retrieve, and report on user / team / pipeline goals (deal count, won value, weighted value).
+  description: Set, retrieve, and report on user / team / pipeline goals (deal count,
+    won value, weighted value).
 - aid: pipedrive:pipedrive-subscriptions-api
   name: Pipedrive Subscriptions API
   tags:
@@ -353,7 +240,8 @@ apis:
     type: APIReference
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
-  description: Manage recurring revenue subscriptions attached to a deal — schedule, cancellation, and renewal tracking.
+  description: Manage recurring revenue subscriptions attached to a deal — schedule,
+    cancellation, and renewal tracking.
 - aid: pipedrive:pipedrive-projects-api
   name: Pipedrive Projects API
   tags:
@@ -366,7 +254,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Manage post-sale projects and tasks linked to a closed-won deal in the Pipedrive Projects (delivery) module.
+  description: Manage post-sale projects and tasks linked to a closed-won deal in
+    the Pipedrive Projects (delivery) module.
 - aid: pipedrive:pipedrive-product-fields-api
   name: Pipedrive Custom Fields API
   tags:
@@ -379,7 +268,8 @@ apis:
     type: OpenAPI
   - url: openapi/pipedrive-v2-openapi.yml
     type: OpenAPI
-  description: Read and manage custom field definitions on Deals, Persons, Organizations, Products, and Leads.
+  description: Read and manage custom field definitions on Deals, Persons, Organizations,
+    Products, and Leads.
 - aid: pipedrive:pipedrive-webhooks-api
   name: Pipedrive Webhooks API
   tags:
@@ -394,8 +284,8 @@ apis:
     type: OpenAPI
   - url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
     type: AsyncAPI
-  description: Subscribe to Pipedrive events (deal.added, deal.updated, person.added, activity.added) and receive HTTP callbacks
-    for downstream automation.
+  description: Subscribe to Pipedrive events (deal.added, deal.updated, person.added,
+    activity.added) and receive HTTP callbacks for downstream automation.
 - aid: pipedrive:pipedrive-marketplace-api
   name: Pipedrive Marketplace App API
   tags:
@@ -407,8 +297,8 @@ apis:
     type: Documentation
   - url: openapi/pipedrive-v1-openapi.yml
     type: OpenAPI
-  description: OAuth 2 endpoints, app distribution, and embedded UI extensions (panels, modals, link actions) for building
-    Pipedrive Marketplace apps.
+  description: OAuth 2 endpoints, app distribution, and embedded UI extensions (panels,
+    modals, link actions) for building Pipedrive Marketplace apps.
 common:
 - type: LinkedIn
   url: https://www.linkedin.com/company/pipedrive

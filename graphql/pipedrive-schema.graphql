@@ -1,0 +1,1596 @@
+"""
+Pipedrive CRM GraphQL Schema
+Derived from the Pipedrive REST API v1/v2: https://developers.pipedrive.com/docs/api/v1
+Covers deals, persons, organizations, activities, leads, products, pipelines,
+goals, subscriptions, users, permissions, filters, webhooks, and platform objects.
+"""
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar DateTime
+scalar Date
+scalar JSON
+scalar Upload
+scalar BigDecimal
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+enum DealStatus {
+  OPEN
+  WON
+  LOST
+  DELETED
+}
+
+enum ActivityStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
+enum GoalType {
+  DEALS_WON
+  DEALS_PROGRESSED
+  REVENUE_FORECASTED
+  ACTIVITIES_COMPLETED
+}
+
+enum GoalPeriod {
+  WEEKLY
+  MONTHLY
+  QUARTERLY
+  ANNUALLY
+}
+
+enum FieldType {
+  TEXT
+  LARGE_TEXT
+  NUMERIC
+  MONETARY
+  DATE
+  DATETIME
+  SET
+  ENUM
+  USER
+  PHONE
+  ADDRESS
+  ORG
+  PEOPLE
+  TIME_RANGE
+  DATE_RANGE
+  DOUBLE
+  PICTURE
+  AUTO_COMPLETE
+}
+
+enum VisibilityLevel {
+  OWNER_ONLY
+  ENTIRE_COMPANY
+  OWNER_AND_FOLLOWERS
+}
+
+enum WebhookEvent {
+  ADDED
+  UPDATED
+  MERGED
+  DELETED
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  COMPLETED
+}
+
+enum OrderDirection {
+  ASC
+  DESC
+}
+
+enum SearchEntityType {
+  DEAL
+  PERSON
+  ORGANIZATION
+  PRODUCT
+  LEAD
+  FILE
+  MAIL_MESSAGE
+}
+
+# ---------------------------------------------------------------------------
+# Interfaces
+# ---------------------------------------------------------------------------
+
+interface Node {
+  id: ID!
+}
+
+interface Auditable {
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+interface OwnedRecord {
+  owner: User
+}
+
+# ---------------------------------------------------------------------------
+# Core Sales Pipeline Types
+# ---------------------------------------------------------------------------
+
+"""A top-level sales process container grouping ordered stages."""
+type Pipeline implements Node & Auditable {
+  id: ID!
+  name: String!
+  urlTitle: String
+  orderNr: Int
+  active: Boolean
+  dealProbability: Boolean
+  addTime: DateTime
+  updateTime: DateTime
+  stages(active: Boolean): [Stage!]
+  deals(status: DealStatus, ownerId: ID, stageId: ID): [Deal!]
+}
+
+"""An ordered step within a pipeline with a win probability."""
+type Stage implements Node & Auditable {
+  id: ID!
+  name: String!
+  orderNr: Int!
+  pipelineId: ID!
+  pipeline: Pipeline
+  dealProbability: Int
+  rottenFlag: Boolean
+  rottenDays: Int
+  active: Boolean
+  addTime: DateTime
+  updateTime: DateTime
+  deals(status: DealStatus): [Deal!]
+}
+
+"""Records a deal's transition from one stage to another."""
+type StageChange implements Node {
+  id: ID!
+  dealId: ID!
+  deal: Deal
+  stageId: ID!
+  stage: Stage
+  previousStageId: ID
+  previousStage: Stage
+  userId: ID
+  user: User
+  changeTime: DateTime!
+  duration: Int
+}
+
+"""The central revenue-generating CRM record."""
+type Deal implements Node & Auditable & OwnedRecord {
+  id: ID!
+  title: String!
+  value: BigDecimal
+  currency: String
+  status: DealStatus!
+  probability: Float
+  expectedCloseDate: Date
+  closeTime: DateTime
+  wonTime: DateTime
+  lostTime: DateTime
+  lostReason: String
+  stageId: ID
+  stage: Stage
+  pipeline: Pipeline
+  personId: ID
+  person: Person
+  organizationId: ID
+  organization: Organization
+  owner: User
+  followers: [Follower!]
+  activities(status: ActivityStatus): [Activity!]
+  notes: [Note!]
+  files: [File!]
+  products: [DealProduct!]
+  history(limit: Int): [DealHistory!]
+  labels: [Label!]
+  channel: DealChannel
+  subscription: Subscription
+  visibility: VisibilityLevel
+  customFields: [FieldValue!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A product line item attached to a deal."""
+type DealProduct implements Node {
+  id: ID!
+  dealId: ID!
+  deal: Deal
+  productId: ID
+  product: Product
+  name: String
+  quantity: Float
+  itemPrice: BigDecimal
+  discount: Discount
+  tax: Tax
+  sum: BigDecimal
+  currency: String
+  comments: String
+  enabled: Boolean
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""The historical stage assignment record for a deal."""
+type DealStage implements Node {
+  id: ID!
+  dealId: ID!
+  deal: Deal
+  stageId: ID!
+  stage: Stage
+  assignTime: DateTime
+}
+
+"""An audit trail entry recording a field change on a deal."""
+type DealHistory implements Node {
+  id: ID!
+  dealId: ID!
+  field: String!
+  oldValue: JSON
+  newValue: JSON
+  userId: ID
+  user: User
+  changeTime: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# People and Organizations
+# ---------------------------------------------------------------------------
+
+"""A contact record representing an individual person."""
+type Person implements Node & Auditable & OwnedRecord {
+  id: ID!
+  name: String!
+  firstName: String
+  lastName: String
+  email: [EmailField!]
+  phone: [PhoneField!]
+  orgId: ID
+  organization: Organization
+  owner: User
+  followers: [Follower!]
+  deals(status: DealStatus): [Deal!]
+  activities(status: ActivityStatus): [Activity!]
+  notes: [Note!]
+  files: [File!]
+  labels: [Label!]
+  channel: PersonChannel
+  customFields: [FieldValue!]
+  visibility: VisibilityLevel
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""An email address field with type and primary flag."""
+type EmailField {
+  value: String!
+  label: String
+  primary: Boolean
+}
+
+"""A phone number field with type and primary flag."""
+type PhoneField {
+  value: String!
+  label: String
+  primary: Boolean
+}
+
+"""A custom field definition scoped to persons."""
+type PersonField implements Node {
+  id: ID!
+  key: String!
+  name: String!
+  fieldType: FieldType!
+  editFlag: Boolean
+  addVisibleFlag: Boolean
+  importantFlag: Boolean
+  bulkEditAllowed: Boolean
+  filteringAllowed: Boolean
+  sortableFlag: Boolean
+  options: [FieldOption!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A company record grouping persons and deals."""
+type Organization implements Node & Auditable & OwnedRecord {
+  id: ID!
+  name: String!
+  address: String
+  industry: String
+  owner: User
+  followers: [Follower!]
+  persons: [Person!]
+  deals(status: DealStatus): [Deal!]
+  activities(status: ActivityStatus): [Activity!]
+  notes: [Note!]
+  files: [File!]
+  labels: [Label!]
+  channel: OrganizationChannel
+  customFields: [FieldValue!]
+  visibility: VisibilityLevel
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A custom field definition scoped to organizations."""
+type OrganizationField implements Node {
+  id: ID!
+  key: String!
+  name: String!
+  fieldType: FieldType!
+  editFlag: Boolean
+  addVisibleFlag: Boolean
+  importantFlag: Boolean
+  bulkEditAllowed: Boolean
+  filteringAllowed: Boolean
+  sortableFlag: Boolean
+  options: [FieldOption!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A user following a deal, person, or organization."""
+type Follower implements Node {
+  id: ID!
+  userId: ID!
+  user: User!
+  addTime: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Leads
+# ---------------------------------------------------------------------------
+
+"""A pre-qualified opportunity in the Leads Inbox before deal conversion."""
+type Lead implements Node & Auditable & OwnedRecord {
+  id: ID!
+  title: String!
+  value: LeadValue
+  expectedCloseDate: Date
+  personId: ID
+  person: Person
+  organizationId: ID
+  organization: Organization
+  owner: User
+  labels: [LeadLabel!]
+  source: LeadSource
+  archived: Boolean
+  isArchived: Boolean
+  wasSeen: Boolean
+  notes: [Note!]
+  customFields: [FieldValue!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""Monetary value associated with a lead."""
+type LeadValue {
+  amount: BigDecimal
+  currency: String
+}
+
+"""A color-coded category label applicable to leads."""
+type LeadLabel implements Node {
+  id: ID!
+  name: String!
+  color: String!
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""The origin channel or attribution source of a lead."""
+type LeadSource implements Node {
+  id: ID!
+  name: String!
+  origin: String
+  channel: String
+  channelId: String
+}
+
+# ---------------------------------------------------------------------------
+# Activities and Communication
+# ---------------------------------------------------------------------------
+
+"""A scheduled or completed task linked to deals, persons, or organizations."""
+type Activity implements Node & Auditable & OwnedRecord {
+  id: ID!
+  subject: String!
+  type: String!
+  activityType: ActivityType
+  dueDate: Date
+  dueTime: String
+  duration: String
+  done: Boolean
+  note: String
+  publicDescription: String
+  dealId: ID
+  deal: Deal
+  personId: ID
+  person: Person
+  orgId: ID
+  organization: Organization
+  leadId: ID
+  lead: Lead
+  owner: User
+  conferenceUrl: String
+  busy: Boolean
+  addTime: DateTime
+  updateTime: DateTime
+  markedAsDoneTime: DateTime
+}
+
+"""A configurable category that defines valid activity kinds."""
+type ActivityType implements Node {
+  id: ID!
+  name: String!
+  iconKey: String
+  color: String
+  orderNr: Int
+  keyString: String
+  activeFlag: Boolean
+  isCustom: Boolean
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""Free-form text attached to a deal, person, organization, or lead."""
+type Note implements Node & Auditable & OwnedRecord {
+  id: ID!
+  content: String!
+  dealId: ID
+  deal: Deal
+  personId: ID
+  person: Person
+  orgId: ID
+  organization: Organization
+  leadId: ID
+  lead: Lead
+  owner: User
+  pinned: Boolean
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""An uploaded file attachment linked to a CRM record."""
+type File implements Node & Auditable {
+  id: ID!
+  name: String!
+  fileName: String
+  fileType: String
+  fileSize: Int
+  description: String
+  url: String
+  remoteLocation: String
+  dealId: ID
+  deal: Deal
+  personId: ID
+  person: Person
+  orgId: ID
+  organization: Organization
+  leadId: ID
+  lead: Lead
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""An email conversation synced via Smart Email BCC or 2-way sync."""
+type MailThread implements Node {
+  id: ID!
+  subject: String
+  snippet: String
+  readFlag: Boolean
+  mailTrackingStatus: String
+  hasAttachments: Boolean
+  opened: Boolean
+  dealId: ID
+  deal: Deal
+  parties: [MailParty!]
+  messages(limit: Int): [MailMessage!]
+  addTime: DateTime
+  lastMessageTime: DateTime
+}
+
+"""An individual email within a mail thread."""
+type MailMessage implements Node {
+  id: ID!
+  threadId: ID!
+  thread: MailThread
+  from: [MailParty!]
+  to: [MailParty!]
+  cc: [MailParty!]
+  bcc: [MailParty!]
+  subject: String
+  body: String
+  hasAttachments: Boolean
+  readFlag: Boolean
+  sentFlag: Boolean
+  draftFlag: Boolean
+  sendTime: DateTime
+  addTime: DateTime
+}
+
+"""An email participant in a mail thread."""
+type MailParty {
+  name: String
+  address: String
+  linkedPersonId: ID
+  linkedPerson: Person
+}
+
+"""A communication channel connector (Calls, Messaging, etc.)."""
+type Channel implements Node {
+  id: ID!
+  name: String!
+  provider: String
+  providerChannelId: String
+  avatarUrl: String
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""Links a communication channel to a person."""
+type PersonChannel implements Node {
+  id: ID!
+  personId: ID!
+  person: Person
+  channelId: ID!
+  channel: Channel
+  addTime: DateTime
+}
+
+"""Links a communication channel to an organization."""
+type OrganizationChannel implements Node {
+  id: ID!
+  orgId: ID!
+  organization: Organization
+  channelId: ID!
+  channel: Channel
+  addTime: DateTime
+}
+
+"""Links a communication channel to a deal."""
+type DealChannel implements Node {
+  id: ID!
+  dealId: ID!
+  deal: Deal
+  channelId: ID!
+  channel: Channel
+  addTime: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Products and Pricing
+# ---------------------------------------------------------------------------
+
+"""A catalog item with name, code, unit, and currency-specific prices."""
+type Product implements Node & Auditable & OwnedRecord {
+  id: ID!
+  name: String!
+  code: String
+  description: String
+  unit: String
+  tax: Float
+  activeFlag: Boolean
+  visible: Boolean
+  owner: User
+  variations: [ProductVariation!]
+  prices: [ProductPrice!]
+  customFields: [FieldValue!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A variant of a product (size, color, configuration)."""
+type ProductVariation implements Node {
+  id: ID!
+  productId: ID!
+  product: Product
+  name: String!
+  prices: [ProductPrice!]
+  addTime: DateTime
+}
+
+"""A currency-specific price for a product or variation."""
+type ProductPrice implements Node {
+  id: ID!
+  productId: ID!
+  currency: String!
+  price: BigDecimal!
+  overheadCost: BigDecimal
+  directCost: BigDecimal
+  startingQuantity: Float
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A percentage or fixed discount applied to a deal product."""
+type Discount implements Node {
+  id: ID!
+  type: String!
+  value: BigDecimal!
+  description: String
+}
+
+"""A tax rate applied to a deal product or quote."""
+type Tax implements Node {
+  id: ID!
+  name: String!
+  percentage: Float!
+  country: String
+}
+
+# ---------------------------------------------------------------------------
+# Revenue and Subscriptions
+# ---------------------------------------------------------------------------
+
+"""A recurring revenue contract attached to a deal."""
+type Subscription implements Node & Auditable {
+  id: ID!
+  dealId: ID!
+  deal: Deal
+  description: String
+  isActive: Boolean
+  cycleAmount: BigDecimal
+  currency: String
+  finalStatus: SubscriptionStatus
+  infiniteFlag: Boolean
+  cyclesCount: Int
+  startDate: Date
+  cancelledAt: Date
+  recurrences: [SubscriptionRecurrence!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""Schedule definition for a recurring subscription."""
+type SubscriptionRecurrence implements Node {
+  id: ID!
+  subscriptionId: ID!
+  subscription: Subscription
+  cycleAmount: BigDecimal
+  currency: String
+  description: String
+  dueAt: Date
+  status: SubscriptionStatus
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A recognized revenue entry."""
+type Revenue implements Node {
+  id: ID!
+  dealId: ID!
+  deal: Deal
+  currency: String
+  amount: BigDecimal!
+  revenueDate: Date!
+  description: String
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""Historical revenue records over time for reporting."""
+type RevenueHistory implements Node {
+  id: ID!
+  dealId: ID!
+  amount: BigDecimal!
+  currency: String
+  period: String
+  recordedAt: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Goals and Reporting
+# ---------------------------------------------------------------------------
+
+"""A quantitative target for a user, team, or pipeline."""
+type Goal implements Node & Auditable {
+  id: ID!
+  title: String!
+  type: GoalType!
+  expectedOutcome: GoalOutcome!
+  duration: GoalDuration!
+  assignee: GoalAssignee
+  isActive: Boolean
+  results: [GoalResult!]
+  tracker: GoalTracker
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""The expected outcome definition for a goal."""
+type GoalOutcome {
+  target: Float!
+  trackingMetric: String
+  pipelineId: ID
+  pipeline: Pipeline
+  stageId: ID
+  stage: Stage
+}
+
+"""The time duration bounds for a goal."""
+type GoalDuration {
+  start: Date!
+  end: Date!
+}
+
+"""The user or team assigned to a goal."""
+type GoalAssignee {
+  id: ID!
+  type: String!
+  name: String
+}
+
+"""The measured achievement against a goal in a given period."""
+type GoalResult implements Node {
+  id: ID!
+  goalId: ID!
+  goal: Goal
+  result: Float
+  expectedResult: Float
+  point: Date
+}
+
+"""Tracks progress toward a goal over time."""
+type GoalTracker implements Node {
+  id: ID!
+  goalId: ID!
+  goal: Goal
+  metPoint: Float
+  targetPoint: Float
+  progressPercentage: Float
+  updatedAt: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Users and Access Control
+# ---------------------------------------------------------------------------
+
+"""A Pipedrive seat holder (sales rep, manager, or admin)."""
+type User implements Node & Auditable {
+  id: ID!
+  name: String!
+  email: String!
+  phone: String
+  activated: Boolean
+  activeFlag: Boolean
+  isAdmin: Boolean
+  roleId: ID
+  role: Role
+  teams: [Team!]
+  access: UserAccess
+  settings: [UserSetting!]
+  apiKey: APIKey
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""The permissions granted to a user."""
+type UserAccess implements Node {
+  id: ID!
+  userId: ID!
+  user: User
+  canAddProducts: Boolean
+  canBulkEdit: Boolean
+  canDeleteActivities: Boolean
+  canDeleteDeals: Boolean
+  canDeleteContacts: Boolean
+  canExport: Boolean
+  canSeeCompanyWideStats: Boolean
+  canSeeDealsInOtherCompanies: Boolean
+  canSeeHiddenItemsNames: Boolean
+  canSeeOtherUsers: Boolean
+  canSeeOtherUsersStatistics: Boolean
+  canSetVisibility: Boolean
+  canUseApi: Boolean
+  canUseEmailtracking: Boolean
+  canUseImport: Boolean
+}
+
+"""Per-user configuration preferences."""
+type UserSetting implements Node {
+  id: ID!
+  userId: ID!
+  user: User
+  name: String!
+  value: JSON
+}
+
+"""A named group of users."""
+type Team implements Node & Auditable {
+  id: ID!
+  name: String!
+  description: String
+  managerId: ID
+  manager: User
+  members: [TeamMember!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A user's membership record in a team."""
+type TeamMember implements Node {
+  id: ID!
+  teamId: ID!
+  team: Team
+  userId: ID!
+  user: User
+  addTime: DateTime
+}
+
+"""A named permission set defining access rules."""
+type Role implements Node & Auditable {
+  id: ID!
+  name: String!
+  description: String
+  parentRoleId: ID
+  parentRole: Role
+  assignments: [RoleAssignment!]
+  permissions: [Permission!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""Assigns a role to a user."""
+type RoleAssignment implements Node {
+  id: ID!
+  roleId: ID!
+  role: Role
+  userId: ID!
+  user: User
+  addTime: DateTime
+}
+
+"""An individual access rule within a role."""
+type Permission implements Node {
+  id: ID!
+  roleId: ID!
+  role: Role
+  name: String!
+  value: Boolean!
+}
+
+"""Visibility configuration for a CRM record."""
+type SharingSetting implements Node {
+  id: ID!
+  recordType: String!
+  recordId: ID!
+  visibilityLevel: VisibilityLevel!
+  userId: ID
+  user: User
+}
+
+# ---------------------------------------------------------------------------
+# Filters and Search
+# ---------------------------------------------------------------------------
+
+"""A saved filter (saved query / view definition)."""
+type Filter implements Node & Auditable {
+  id: ID!
+  name: String!
+  type: String!
+  userId: ID
+  user: User
+  visible: Boolean
+  conditions: [FilterCondition!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""An individual predicate within a saved filter."""
+type FilterCondition implements Node {
+  id: ID!
+  filterId: ID!
+  filter: Filter
+  object: String!
+  fieldId: String!
+  operator: String!
+  value: JSON
+  glue: String
+}
+
+"""A polymorphic result item returned from global search."""
+type SearchResult implements Node {
+  id: ID!
+  entityType: SearchEntityType!
+  entityId: ID!
+  resultScore: Float
+  deal: Deal
+  person: Person
+  organization: Organization
+  product: Product
+  lead: Lead
+}
+
+# ---------------------------------------------------------------------------
+# Custom Fields
+# ---------------------------------------------------------------------------
+
+"""A custom field definition (key, label, type, options)."""
+type Field implements Node & Auditable {
+  id: ID!
+  key: String!
+  name: String!
+  fieldType: FieldType!
+  editFlag: Boolean
+  addVisibleFlag: Boolean
+  importantFlag: Boolean
+  bulkEditAllowed: Boolean
+  filteringAllowed: Boolean
+  sortableFlag: Boolean
+  mandatoryFlag: Boolean
+  options: [FieldOption!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""An option within an enum or set field."""
+type FieldOption {
+  id: ID
+  label: String!
+  color: String
+}
+
+"""The value of a custom field on a specific record."""
+type FieldValue implements Node {
+  id: ID!
+  fieldKey: String!
+  field: Field
+  value: JSON
+}
+
+"""A domain-specific alias for Field."""
+type CustomField implements Node & Auditable {
+  id: ID!
+  key: String!
+  name: String!
+  fieldType: FieldType!
+  entityType: String!
+  options: [FieldOption!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""The value of a custom field on a record (domain alias)."""
+type CustomFieldValue implements Node {
+  id: ID!
+  customFieldId: ID!
+  customField: CustomField
+  entityType: String!
+  entityId: ID!
+  value: JSON
+}
+
+"""A color tag applicable to deals, persons, or organizations."""
+type Label implements Node {
+  id: ID!
+  name: String!
+  color: String!
+}
+
+# ---------------------------------------------------------------------------
+# Webhooks and Events
+# ---------------------------------------------------------------------------
+
+"""A subscription to a Pipedrive event type with a target URL."""
+type Webhook implements Node & Auditable {
+  id: ID!
+  userId: ID
+  user: User
+  eventObject: String!
+  eventAction: WebhookEvent!
+  subscriptionUrl: String!
+  httpAuthUser: String
+  active: Boolean
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A real-time push channel for streaming events."""
+type Socket implements Node {
+  id: ID!
+  userId: ID
+  user: User
+  connectionId: String!
+  status: String
+  addTime: DateTime
+  lastActivity: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Platform and Auth
+# ---------------------------------------------------------------------------
+
+"""A supported currency with code, symbol, and exchange rate."""
+type Currency implements Node {
+  id: ID!
+  code: String!
+  name: String!
+  symbol: String!
+  decimalPoints: Int
+  isCustom: Boolean
+  activeFlag: Boolean
+}
+
+"""An API token credential for a user."""
+type APIKey implements Node {
+  id: ID!
+  userId: ID!
+  user: User
+  apiToken: String!
+  addTime: DateTime
+}
+
+"""OAuth 2.0 client credentials and token metadata."""
+type OAuth2 implements Node {
+  id: ID!
+  clientId: String!
+  scope: [String!]
+  redirectUri: String
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""Visibility level reference object."""
+type Visibility implements Node {
+  id: ID!
+  name: String!
+  value: VisibilityLevel!
+}
+
+"""API token usage statistics for a company or user."""
+type UsageSummary implements Node {
+  id: ID!
+  userId: ID
+  user: User
+  tokensUsedToday: Int
+  dailyBudget: Int
+  resetAt: DateTime
+  period: String
+}
+
+# ---------------------------------------------------------------------------
+# Quotes and Orders
+# ---------------------------------------------------------------------------
+
+"""A formal price proposal attached to a deal."""
+type Quote implements Node & Auditable {
+  id: ID!
+  dealId: ID!
+  deal: Deal
+  title: String
+  status: String
+  currency: String
+  validUntil: Date
+  items: [QuoteItem!]
+  discounts: [Discount!]
+  taxes: [Tax!]
+  totalExclTax: BigDecimal
+  totalInclTax: BigDecimal
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A line item in a quote."""
+type QuoteItem implements Node {
+  id: ID!
+  quoteId: ID!
+  quote: Quote
+  productId: ID
+  product: Product
+  name: String
+  description: String
+  quantity: Float
+  itemPrice: ItemPrice!
+  discount: Discount
+  tax: Tax
+  sum: BigDecimal
+}
+
+"""The price of a quote or order line item."""
+type ItemPrice implements Node {
+  id: ID!
+  currency: String!
+  amount: BigDecimal!
+  overheadCost: BigDecimal
+  directCost: BigDecimal
+}
+
+"""A billing document generated from a quote."""
+type Invoice implements Node & Auditable {
+  id: ID!
+  quoteId: ID
+  quote: Quote
+  dealId: ID!
+  deal: Deal
+  status: String
+  currency: String
+  totalAmount: BigDecimal
+  dueDate: Date
+  paidDate: Date
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+"""A fulfilled order record."""
+type Order implements Node & Auditable {
+  id: ID!
+  dealId: ID!
+  deal: Deal
+  quoteId: ID
+  quote: Quote
+  status: String
+  currency: String
+  totalAmount: BigDecimal
+  items: [QuoteItem!]
+  addTime: DateTime
+  updateTime: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Pagination
+# ---------------------------------------------------------------------------
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type DealEdge {
+  node: Deal!
+  cursor: String!
+}
+
+type DealConnection {
+  edges: [DealEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+type PersonEdge {
+  node: Person!
+  cursor: String!
+}
+
+type PersonConnection {
+  edges: [PersonEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+type OrganizationEdge {
+  node: Organization!
+  cursor: String!
+}
+
+type OrganizationConnection {
+  edges: [OrganizationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+# ---------------------------------------------------------------------------
+# Input Types
+# ---------------------------------------------------------------------------
+
+input CreateDealInput {
+  title: String!
+  value: BigDecimal
+  currency: String
+  pipelineId: ID
+  stageId: ID
+  personId: ID
+  organizationId: ID
+  expectedCloseDate: Date
+  probability: Float
+  ownerId: ID
+  visibleTo: VisibilityLevel
+  customFields: JSON
+}
+
+input UpdateDealInput {
+  id: ID!
+  title: String
+  value: BigDecimal
+  currency: String
+  stageId: ID
+  status: DealStatus
+  personId: ID
+  organizationId: ID
+  expectedCloseDate: Date
+  probability: Float
+  lostReason: String
+  ownerId: ID
+  visibleTo: VisibilityLevel
+  customFields: JSON
+}
+
+input CreatePersonInput {
+  name: String!
+  email: [EmailFieldInput!]
+  phone: [PhoneFieldInput!]
+  orgId: ID
+  ownerId: ID
+  visibleTo: VisibilityLevel
+  customFields: JSON
+}
+
+input EmailFieldInput {
+  value: String!
+  label: String
+  primary: Boolean
+}
+
+input PhoneFieldInput {
+  value: String!
+  label: String
+  primary: Boolean
+}
+
+input CreateOrganizationInput {
+  name: String!
+  address: String
+  ownerId: ID
+  visibleTo: VisibilityLevel
+  customFields: JSON
+}
+
+input CreateActivityInput {
+  subject: String!
+  type: String!
+  dueDate: Date
+  dueTime: String
+  duration: String
+  dealId: ID
+  personId: ID
+  orgId: ID
+  leadId: ID
+  note: String
+  ownerId: ID
+}
+
+input CreateLeadInput {
+  title: String!
+  personId: ID
+  organizationId: ID
+  ownerId: ID
+  expectedCloseDate: Date
+  value: LeadValueInput
+  labelIds: [ID!]
+  customFields: JSON
+}
+
+input LeadValueInput {
+  amount: BigDecimal!
+  currency: String!
+}
+
+input CreateWebhookInput {
+  eventObject: String!
+  eventAction: WebhookEvent!
+  subscriptionUrl: String!
+  httpAuthUser: String
+  httpAuthPassword: String
+}
+
+input DealFilterInput {
+  status: DealStatus
+  pipelineId: ID
+  stageId: ID
+  ownerId: ID
+  personId: ID
+  orgId: ID
+  expectedCloseDateMin: Date
+  expectedCloseDateMax: Date
+}
+
+input SearchInput {
+  term: String!
+  entityTypes: [SearchEntityType!]
+  fields: [String!]
+  exactMatch: Boolean
+}
+
+# ---------------------------------------------------------------------------
+# Mutation Payloads
+# ---------------------------------------------------------------------------
+
+type DealPayload {
+  deal: Deal
+  success: Boolean!
+  errors: [String!]
+}
+
+type PersonPayload {
+  person: Person
+  success: Boolean!
+  errors: [String!]
+}
+
+type OrganizationPayload {
+  organization: Organization
+  success: Boolean!
+  errors: [String!]
+}
+
+type ActivityPayload {
+  activity: Activity
+  success: Boolean!
+  errors: [String!]
+}
+
+type LeadPayload {
+  lead: Lead
+  success: Boolean!
+  errors: [String!]
+}
+
+type WebhookPayload {
+  webhook: Webhook
+  success: Boolean!
+  errors: [String!]
+}
+
+type DeletePayload {
+  id: ID!
+  success: Boolean!
+  errors: [String!]
+}
+
+# ---------------------------------------------------------------------------
+# Root Query
+# ---------------------------------------------------------------------------
+
+type Query {
+  """Fetch a single deal by ID."""
+  deal(id: ID!): Deal
+
+  """List deals with optional filtering and pagination."""
+  deals(
+    filter: DealFilterInput
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): DealConnection!
+
+  """Search across all deal text fields."""
+  searchDeals(term: String!, limit: Int): [Deal!]!
+
+  """Fetch a single person by ID."""
+  person(id: ID!): Person
+
+  """List persons with optional pagination."""
+  persons(
+    ownerId: ID
+    orgId: ID
+    first: Int
+    after: String
+  ): PersonConnection!
+
+  """Fetch a single organization by ID."""
+  organization(id: ID!): Organization
+
+  """List organizations with optional pagination."""
+  organizations(
+    ownerId: ID
+    first: Int
+    after: String
+  ): OrganizationConnection!
+
+  """Fetch a single lead by ID."""
+  lead(id: ID!): Lead
+
+  """List leads."""
+  leads(archived: Boolean, ownerId: ID, first: Int, after: String): [Lead!]!
+
+  """Fetch a single pipeline by ID."""
+  pipeline(id: ID!): Pipeline
+
+  """List all active pipelines."""
+  pipelines: [Pipeline!]!
+
+  """Fetch a single stage by ID."""
+  stage(id: ID!): Stage
+
+  """List stages, optionally filtered by pipeline."""
+  stages(pipelineId: ID, active: Boolean): [Stage!]!
+
+  """Fetch a single activity by ID."""
+  activity(id: ID!): Activity
+
+  """List activities with optional filtering."""
+  activities(
+    status: ActivityStatus
+    dealId: ID
+    personId: ID
+    orgId: ID
+    leadId: ID
+    ownerId: ID
+    first: Int
+    after: String
+  ): [Activity!]!
+
+  """List activity types."""
+  activityTypes: [ActivityType!]!
+
+  """Fetch a note by ID."""
+  note(id: ID!): Note
+
+  """List notes attached to a record."""
+  notes(dealId: ID, personId: ID, orgId: ID, leadId: ID): [Note!]!
+
+  """Fetch a product by ID."""
+  product(id: ID!): Product
+
+  """List products."""
+  products(first: Int, after: String): [Product!]!
+
+  """Fetch a goal by ID."""
+  goal(id: ID!): Goal
+
+  """List goals."""
+  goals(isActive: Boolean): [Goal!]!
+
+  """Fetch a subscription by ID."""
+  subscription(id: ID!): Subscription
+
+  """Fetch a user by ID."""
+  user(id: ID!): User
+
+  """List users in the company."""
+  users(activeFlag: Boolean): [User!]!
+
+  """Fetch the currently authenticated user."""
+  me: User
+
+  """Fetch a team by ID."""
+  team(id: ID!): Team
+
+  """List all teams."""
+  teams: [Team!]!
+
+  """Fetch a role by ID."""
+  role(id: ID!): Role
+
+  """List roles."""
+  roles: [Role!]!
+
+  """Fetch a filter by ID."""
+  filter(id: ID!): Filter
+
+  """List saved filters by type."""
+  filters(type: String): [Filter!]!
+
+  """Perform a global search."""
+  search(input: SearchInput!): [SearchResult!]!
+
+  """Fetch a webhook by ID."""
+  webhook(id: ID!): Webhook
+
+  """List webhooks."""
+  webhooks: [Webhook!]!
+
+  """List supported currencies."""
+  currencies(activeFlag: Boolean): [Currency!]!
+
+  """List custom field definitions for an entity type."""
+  fields(entityType: String!): [Field!]!
+
+  """Fetch a mail thread by ID."""
+  mailThread(id: ID!): MailThread
+
+  """List mail threads."""
+  mailThreads(dealId: ID, first: Int, after: String): [MailThread!]!
+
+  """Fetch API usage summary for the authenticated user."""
+  usageSummary: UsageSummary
+
+  """Fetch a quote by ID."""
+  quote(id: ID!): Quote
+
+  """List quotes for a deal."""
+  quotes(dealId: ID!): [Quote!]!
+}
+
+# ---------------------------------------------------------------------------
+# Root Mutation
+# ---------------------------------------------------------------------------
+
+type Mutation {
+  """Create a new deal."""
+  createDeal(input: CreateDealInput!): DealPayload!
+
+  """Update an existing deal."""
+  updateDeal(input: UpdateDealInput!): DealPayload!
+
+  """Delete a deal."""
+  deleteDeal(id: ID!): DeletePayload!
+
+  """Merge two deals (source is merged into target)."""
+  mergeDeals(targetId: ID!, sourceId: ID!): DealPayload!
+
+  """Create a new person."""
+  createPerson(input: CreatePersonInput!): PersonPayload!
+
+  """Update a person."""
+  updatePerson(id: ID!, input: CreatePersonInput!): PersonPayload!
+
+  """Delete a person."""
+  deletePerson(id: ID!): DeletePayload!
+
+  """Create a new organization."""
+  createOrganization(input: CreateOrganizationInput!): OrganizationPayload!
+
+  """Update an organization."""
+  updateOrganization(id: ID!, input: CreateOrganizationInput!): OrganizationPayload!
+
+  """Delete an organization."""
+  deleteOrganization(id: ID!): DeletePayload!
+
+  """Create a new lead."""
+  createLead(input: CreateLeadInput!): LeadPayload!
+
+  """Update a lead."""
+  updateLead(id: ID!, input: CreateLeadInput!): LeadPayload!
+
+  """Delete a lead."""
+  deleteLead(id: ID!): DeletePayload!
+
+  """Convert a lead to a deal."""
+  convertLeadToDeal(leadId: ID!): DealPayload!
+
+  """Create a new activity."""
+  createActivity(input: CreateActivityInput!): ActivityPayload!
+
+  """Update an activity."""
+  updateActivity(id: ID!, input: CreateActivityInput!): ActivityPayload!
+
+  """Mark an activity as done."""
+  markActivityDone(id: ID!): ActivityPayload!
+
+  """Delete an activity."""
+  deleteActivity(id: ID!): DeletePayload!
+
+  """Add a product to a deal."""
+  addDealProduct(dealId: ID!, productId: ID!, quantity: Float!, itemPrice: BigDecimal!, currency: String): DealPayload!
+
+  """Remove a product from a deal."""
+  removeDealProduct(dealId: ID!, dealProductId: ID!): DeletePayload!
+
+  """Create a webhook subscription."""
+  createWebhook(input: CreateWebhookInput!): WebhookPayload!
+
+  """Delete a webhook."""
+  deleteWebhook(id: ID!): DeletePayload!
+}
+
+# ---------------------------------------------------------------------------
+# Root Subscription
+# ---------------------------------------------------------------------------
+
+type Subscription {
+  """Subscribe to deal change events."""
+  dealChanged(pipelineId: ID): Deal
+
+  """Subscribe to new activity events."""
+  activityAdded(ownerId: ID): Activity
+
+  """Subscribe to new lead events."""
+  leadAdded: Lead
+}
