@@ -1,0 +1,233 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/pipedrive-v1-openapi.yml, openapi/pipedrive-v2-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/pipedrive-v1-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+    tokenUrl: https://oauth.pipedrive.com/oauth/token
+  description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+- name: oauth2
+  source: openapi/pipedrive-v2-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+    tokenUrl: https://oauth.pipedrive.com/oauth/token
+  description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+scopes:
+- scope: activities:full
+  description: Create, read, update and delete activities and all files and filters. Also includes
+    read access to activity fields and types
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: activities:read
+  description: Read activities, its fields and types; all files and filters
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: admin
+  description: Allows to do many things that an administrator can do in a Pipedrive company
+    account - create, read, update and delete pipelines and its stages; deal, person and organization
+    fields; activity types; users and permissions, etc. It also allows the app to create webhooks
+    and fetch and delete webhooks that are created by the app
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: base
+  description: Read settings of the authorized user and currencies in an account
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: contact-fields:full
+  description: Create, read, update and delete person and organization fields
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: contacts:full
+  description: Create, read, update and delete persons and organizations and their followers;
+    all notes, files, filters. Also grants read access to contacts-related fields
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: contacts:read
+  description: Read the data about persons and organizations, their related fields and followers;
+    also all notes, files, filters
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: deal-fields:full
+  description: Create, read, update and delete deal fields
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: deals:full
+  description: Create, read, update and delete deals, its participants and followers; all files,
+    notes, and filters. It also includes read access to deal fields, pipelines, stages, and
+    statistics. Does not include access to activities (except the last and next activity related
+    to a deal)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: deals:read
+  description: Read most of the data about deals and related entities - deal fields, products,
+    followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does
+    not include access to activities (except the last and next activity related to a deal)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: goals:full
+  description: Create, read, update and delete goals
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: goals:read
+  description: Read data on all goals
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: leads:full
+  description: Create, read, update and delete leads and lead labels
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: leads:read
+  description: Read data about leads and lead labels
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: mail:full
+  description: Read, update and delete mail threads. Also grants read access to mail messages
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: mail:read
+  description: Read mail threads and messages
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: messengers-integration
+  description: Allows application to register as a messengers integration provider and allows
+    them to deliver incoming messages and their statuses
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: phone-integration
+  description: Enables advanced call integration features like logging call duration and other
+    metadata, and play call recordings inside Pipedrive
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: product-fields:full
+  description: Create, read, update and delete product fields
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: products:full
+  description: Create, read, update and delete products and its fields; add products to deals
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: products:read
+  description: Read products, its fields, files, followers and products connected to a deal
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: project-fields:full
+  description: Create, read, update and delete project fields
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v2-openapi.yml
+- scope: projects:full
+  description: Create, read, update and delete projects and its fields; add projects templates
+    and project related tasks
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: projects:read
+  description: Read projects and its fields, tasks and project templates
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: recents:read
+  description: Read all recent changes occurred in an account. Includes data about activities,
+    activity types, deals, files, filters, notes, persons, organizations, pipelines, stages,
+    products and users
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: search:read
+  description: Search across the account for deals, persons, organizations, files and products,
+    and see details about the returned results
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: users:read
+  description: Read data about users (people with access to a Pipedrive account), their permissions,
+    roles and followers
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- scope: video-calls
+  description: Allows application to register as a video call integration provider and create
+    conference links
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml

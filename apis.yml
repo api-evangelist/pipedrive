@@ -300,6 +300,10 @@ apis:
   description: OAuth 2 endpoints, app distribution, and embedded UI extensions (panels,
     modals, link actions) for building Pipedrive Marketplace apps.
 common:
+- type: Authentication
+  url: authentication/pipedrive-authentication.yml
+- type: OAuthScopes
+  url: scopes/pipedrive-scopes.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/pipedrive
 - type: Website
