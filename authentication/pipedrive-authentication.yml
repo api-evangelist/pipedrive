@@ -1,0 +1,39 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/pipedrive-v1-openapi.yml, openapi/pipedrive-v2-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: basic_authentication
+  type: http
+  scheme: basic
+  description: Base 64 encoded string containing the `client_id` and `client_secret` values.
+    The header value should be `Basic <base64(client_id:client_secret)>`.
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- name: api_key
+  type: apiKey
+  in: header
+  parameter: x-api-token
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+    tokenUrl: https://oauth.pipedrive.com/oauth/token
+    scopes: 27
+  description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+  sources:
+  - openapi/pipedrive-v1-openapi.yml
+  - openapi/pipedrive-v2-openapi.yml
