@@ -300,6 +300,8 @@ apis:
   description: OAuth 2 endpoints, app distribution, and embedded UI extensions (panels,
     modals, link actions) for building Pipedrive Marketplace apps.
 common:
+- type: AgenticAccess
+  url: agentic-access/pipedrive-agentic-access.yml
 - type: DomainSecurity
   url: security/pipedrive-domain-security.yml
 - type: Authentication
