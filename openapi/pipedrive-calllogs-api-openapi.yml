@@ -1,0 +1,935 @@
+openapi: 3.0.1
+info:
+  title: Pipedrive API v1 Activities CallLogs API
+  version: 1.0.0
+  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
+
+    '
+servers:
+- url: https://api.pipedrive.com/v1
+tags:
+- name: CallLogs
+  description: 'Call logs describe the outcome of a phone call managed by an integrated provider. Since these logs are also considered activities, they can be associated with a deal or a lead, a person and/or an organization. Call logs do differ from other activities, as they only receive the information needed to describe the phone call.
+
+    '
+paths:
+  /callLogs:
+    post:
+      security:
+      - api_key: []
+      - oauth2:
+        - phone-integration
+      tags:
+      - CallLogs
+      summary: Add a call log
+      description: Adds a new call log.
+      x-token-cost: 10
+      operationId: addCallLog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: addCallLogRequest
+              type: object
+              required:
+              - to_phone_number
+              - outcome
+              - start_time
+              - end_time
+              properties:
+                user_id:
+                  type: integer
+                  description: The ID of the owner of the call log. Please note that a user without account settings access cannot create call logs for other users.
+                activity_id:
+                  type: integer
+                  description: If specified, this activity will be converted into a call log, with the information provided. When this field is used, you don't need to specify `deal_id`, `person_id` or `org_id`, as they will be ignored in favor of the values already available in the activity. The `activity_id` must refer to a `call` type activity.
+                subject:
+                  type: string
+                  description: The name of the activity this call is attached to
+                duration:
+                  type: string
+                  description: The duration of the call in seconds
+                outcome:
+                  type: string
+                  enum:
+                  - connected
+                  - no_answer
+                  - left_message
+                  - left_voicemail
+                  - wrong_number
+                  - busy
+                  description: Describes the outcome of the call
+                from_phone_number:
+                  type: string
+                  description: The number that made the call
+                to_phone_number:
+                  type: string
+                  description: The number called
+                start_time:
+                  type: string
+                  format: date-time
+                  description: 'The date and time of the start of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.'
+                end_time:
+                  type: string
+                  format: date-time
+                  description: 'The date and time of the end of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.'
+                person_id:
+                  type: integer
+                  description: The ID of the person this call is associated with
+                org_id:
+                  type: integer
+                  description: The ID of the organization this call is associated with
+                deal_id:
+                  type: integer
+                  description: The ID of the deal this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.
+                lead_id:
+                  type: string
+                  format: uuid
+                  description: The ID of the lead in the UUID format this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.
+                note:
+                  type: string
+                  description: The note for the call log in HTML format
+      responses:
+        '200':
+          description: The call log was successfully created.
+          content:
+            application/json:
+              schema:
+                title: GetCallLogResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    title: responseCallLogObject
+                    allOf:
+                    - title: addCallLogRequest
+                      type: object
+                      required:
+                      - to_phone_number
+                      - outcome
+                      - start_time
+                      - end_time
+                      properties:
+                        user_id:
+                          type: integer
+                          description: The ID of the owner of the call log. Please note that a user without account settings access cannot create call logs for other users.
+                        activity_id:
+                          type: integer
+                          description: If specified, this activity will be converted into a call log, with the information provided. When this field is used, you don't need to specify `deal_id`, `person_id` or `org_id`, as they will be ignored in favor of the values already available in the activity. The `activity_id` must refer to a `call` type activity.
+                        subject:
+                          type: string
+                          description: The name of the activity this call is attached to
+                        duration:
+                          type: string
+                          description: The duration of the call in seconds
+                        outcome:
+                          type: string
+                          enum:
+                          - connected
+                          - no_answer
+                          - left_message
+                          - left_voicemail
+                          - wrong_number
+                          - busy
+                          description: Describes the outcome of the call
+                        from_phone_number:
+                          type: string
+                          description: The number that made the call
+                        to_phone_number:
+                          type: string
+                          description: The number called
+                        start_time:
+                          type: string
+                          format: date-time
+                          description: 'The date and time of the start of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.'
+                        end_time:
+                          type: string
+                          format: date-time
+                          description: 'The date and time of the end of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.'
+                        person_id:
+                          type: integer
+                          description: The ID of the person this call is associated with
+                        org_id:
+                          type: integer
+                          description: The ID of the organization this call is associated with
+                        deal_id:
+                          type: integer
+                          description: The ID of the deal this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.
+                        lead_id:
+                          type: string
+                          format: uuid
+                          description: The ID of the lead in the UUID format this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.
+                        note:
+                          type: string
+                          description: The note for the call log in HTML format
+                    - type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The call log ID, generated when the call log was created
+                        has_recording:
+                          type: boolean
+                          description: If the call log has an audio recording attached, the value should be true
+                        company_id:
+                          type: integer
+                          description: The company ID of the owner of the call log
+              example:
+                success: true
+                data:
+                  id: CAd92b224eb4a39b5ad8fea92ff0e
+                  activity_id: 7007
+                  person_id: 333222111
+                  org_id: 123456789
+                  deal_id: 553229734
+                  subject: Just call me maybe
+                  duration: '0'
+                  outcome: busy
+                  from_phone_number: '+37277774841'
+                  to_phone_number: '+37249234343'
+                  has_recording: false
+                  start_time: '2022-12-12T01:01:01.000Z'
+                  end_time: '2022-12-12T01:02:01.000Z'
+                  user_id: 777707777
+                  company_id: 66660666
+                  note: A note for the call log
+        '400':
+          description: The request contains wrong or incorrectly formatted arguments.
+          content:
+            application/json:
+              schema:
+                title: CallLogBadRequestResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: '"outcome" is required.'
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+        '403':
+          description: You don't have permission to access the resource.
+          content:
+            application/json:
+              schema:
+                title: CallLogForbiddenResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: You don't have permission to change this resource.
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+        '404':
+          description: A resource required to process the request was not found.
+          content:
+            application/json:
+              schema:
+                title: CallLogNotFoundResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: A resource required for this operation was not found.
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+        '500':
+          description: There was an error processing the request.
+          content:
+            application/json:
+              schema:
+                title: CallLogInternalErrorResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: An internal server error occurred
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+    get:
+      security:
+      - api_key: []
+      - oauth2:
+        - phone-integration
+      tags:
+      - CallLogs
+      summary: Get all call logs assigned to a particular user
+      description: Returns all call logs assigned to a particular user.
+      x-token-cost: 20
+      operationId: getUserCallLogs
+      parameters:
+      - in: query
+        name: start
+        description: Pagination start
+        schema:
+          type: integer
+          default: 0
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. The upper limit is 50.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of call logs.
+          content:
+            application/json:
+              schema:
+                title: GetCallLogsResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: array
+                    items:
+                      title: responseCallLogObject
+                      allOf:
+                      - title: addCallLogRequest
+                        type: object
+                        required:
+                        - to_phone_number
+                        - outcome
+                        - start_time
+                        - end_time
+                        properties:
+                          user_id:
+                            type: integer
+                            description: The ID of the owner of the call log. Please note that a user without account settings access cannot create call logs for other users.
+                          activity_id:
+                            type: integer
+                            description: If specified, this activity will be converted into a call log, with the information provided. When this field is used, you don't need to specify `deal_id`, `person_id` or `org_id`, as they will be ignored in favor of the values already available in the activity. The `activity_id` must refer to a `call` type activity.
+                          subject:
+                            type: string
+                            description: The name of the activity this call is attached to
+                          duration:
+                            type: string
+                            description: The duration of the call in seconds
+                          outcome:
+                            type: string
+                            enum:
+                            - connected
+                            - no_answer
+                            - left_message
+                            - left_voicemail
+                            - wrong_number
+                            - busy
+                            description: Describes the outcome of the call
+                          from_phone_number:
+                            type: string
+                            description: The number that made the call
+                          to_phone_number:
+                            type: string
+                            description: The number called
+                          start_time:
+                            type: string
+                            format: date-time
+                            description: 'The date and time of the start of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.'
+                          end_time:
+                            type: string
+                            format: date-time
+                            description: 'The date and time of the end of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.'
+                          person_id:
+                            type: integer
+                            description: The ID of the person this call is associated with
+                          org_id:
+                            type: integer
+                            description: The ID of the organization this call is associated with
+                          deal_id:
+                            type: integer
+                            description: The ID of the deal this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.
+                          lead_id:
+                            type: string
+                            format: uuid
+                            description: The ID of the lead in the UUID format this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.
+                          note:
+                            type: string
+                            description: The note for the call log in HTML format
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The call log ID, generated when the call log was created
+                          has_recording:
+                            type: boolean
+                            description: If the call log has an audio recording attached, the value should be true
+                          company_id:
+                            type: integer
+                            description: The company ID of the owner of the call log
+                  additional_data:
+                    type: object
+                    properties:
+                      pagination:
+                        description: The additional data of the list
+                        type: object
+                        properties:
+                          start:
+                            type: integer
+                            description: Pagination start
+                          limit:
+                            type: integer
+                            description: Items shown per page
+                          more_items_in_collection:
+                            type: boolean
+                            description: If there are more list items in the collection than displayed or not
+              example:
+                success: true
+                data:
+                - id: CAd92b224eb4a39b5ad8fea92ff0e
+                  activity_id: 7007
+                  person_id: 333222111
+                  org_id: 123456789
+                  deal_id: 553229734
+                  subject: Just call me maybe
+                  duration: '0'
+                  outcome: busy
+                  from_phone_number: '+37277774841'
+                  to_phone_number: '+37249234343'
+                  has_recording: false
+                  start_time: '2022-12-12T01:01:01.000Z'
+                  end_time: '2022-12-12T01:01:01.000Z'
+                  user_id: 777707777
+                  company_id: 66660666
+                  note: A note for the call log
+                - id: CAd92b224eb4a39b11a8fea92ff0e
+                  activity_id: 1
+                  person_id: 1
+                  duration: '0'
+                  outcome: no_answer
+                  to_phone_number: '+3728439832'
+                  has_recording: true
+                  start_time: '2022-12-12T01:01:01.000Z'
+                  end_time: '2022-12-12T01:01:01.000Z'
+                  user_id: 777777777
+                  company_id: 66666666
+                  note: A note for the call log
+                additional_data:
+                  pagination:
+                    start: 0
+                    limit: 50
+                    more_items_in_collection: false
+                    next_start: 1
+  /callLogs/{id}:
+    delete:
+      security:
+      - api_key: []
+      - oauth2:
+        - phone-integration
+      tags:
+      - CallLogs
+      summary: Delete a call log
+      description: Deletes a call log. If there is an audio recording attached to it, it will also be deleted. The related activity will not be removed by this request. If you want to remove the related activities, please use the endpoint which is specific for activities.
+      x-token-cost: 6
+      operationId: deleteCallLog
+      parameters:
+      - in: path
+        name: id
+        description: The ID received when you create the call log
+        required: true
+        schema:
+          type: string
+          example: 3cde3b05035cae14dcfc172bd8000d08
+      responses:
+        '200':
+          description: The call log was successfully deleted.
+          content:
+            application/json:
+              schema:
+                title: baseResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+              example:
+                success: true
+        '403':
+          description: You don't have permission to access the resource.
+          content:
+            application/json:
+              schema:
+                title: CallLogForbiddenResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: You don't have permission to change this resource.
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+        '404':
+          description: A resource required to process the request was not found.
+          content:
+            application/json:
+              schema:
+                title: CallLogNotFoundResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: A resource required for this operation was not found.
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+        '410':
+          description: The callLog you are trying to access is no longer available.
+          content:
+            application/json:
+              schema:
+                title: CallLogGoneResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: The callLog you are trying to access is no longer available
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+        '500':
+          description: There was an error processing the request.
+          content:
+            application/json:
+              schema:
+                title: CallLogInternalErrorResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: An internal server error occurred
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+    get:
+      security:
+      - api_key: []
+      - oauth2:
+        - phone-integration
+      tags:
+      - CallLogs
+      summary: Get details of a call log
+      description: Returns details of a specific call log.
+      x-token-cost: 2
+      operationId: getCallLog
+      parameters:
+      - in: path
+        name: id
+        description: The ID received when you create the call log
+        required: true
+        schema:
+          type: string
+          example: 3cde3b05035cae14dcfc172bd8000d08
+      responses:
+        '200':
+          description: The requested call log object.
+          content:
+            application/json:
+              schema:
+                title: GetCallLogResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    title: responseCallLogObject
+                    allOf:
+                    - title: addCallLogRequest
+                      type: object
+                      required:
+                      - to_phone_number
+                      - outcome
+                      - start_time
+                      - end_time
+                      properties:
+                        user_id:
+                          type: integer
+                          description: The ID of the owner of the call log. Please note that a user without account settings access cannot create call logs for other users.
+                        activity_id:
+                          type: integer
+                          description: If specified, this activity will be converted into a call log, with the information provided. When this field is used, you don't need to specify `deal_id`, `person_id` or `org_id`, as they will be ignored in favor of the values already available in the activity. The `activity_id` must refer to a `call` type activity.
+                        subject:
+                          type: string
+                          description: The name of the activity this call is attached to
+                        duration:
+                          type: string
+                          description: The duration of the call in seconds
+                        outcome:
+                          type: string
+                          enum:
+                          - connected
+                          - no_answer
+                          - left_message
+                          - left_voicemail
+                          - wrong_number
+                          - busy
+                          description: Describes the outcome of the call
+                        from_phone_number:
+                          type: string
+                          description: The number that made the call
+                        to_phone_number:
+                          type: string
+                          description: The number called
+                        start_time:
+                          type: string
+                          format: date-time
+                          description: 'The date and time of the start of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.'
+                        end_time:
+                          type: string
+                          format: date-time
+                          description: 'The date and time of the end of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.'
+                        person_id:
+                          type: integer
+                          description: The ID of the person this call is associated with
+                        org_id:
+                          type: integer
+                          description: The ID of the organization this call is associated with
+                        deal_id:
+                          type: integer
+                          description: The ID of the deal this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.
+                        lead_id:
+                          type: string
+                          format: uuid
+                          description: The ID of the lead in the UUID format this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.
+                        note:
+                          type: string
+                          description: The note for the call log in HTML format
+                    - type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The call log ID, generated when the call log was created
+                        has_recording:
+                          type: boolean
+                          description: If the call log has an audio recording attached, the value should be true
+                        company_id:
+                          type: integer
+                          description: The company ID of the owner of the call log
+              example:
+                success: true
+                data:
+                  id: CAd92b224eb4a39b5ad8fea92ff0e
+                  activity_id: 7007
+                  person_id: 333222111
+                  org_id: 123456789
+                  deal_id: 553229734
+                  subject: Just call me maybe
+                  duration: '0'
+                  outcome: busy
+                  from_phone_number: '+37277774841'
+                  to_phone_number: '+37249234343'
+                  has_recording: false
+                  start_time: '2022-12-12T01:01:01.000Z'
+                  end_time: '2022-12-12T01:02:01.000Z'
+                  user_id: 777707777
+                  company_id: 66660666
+                  note: A note for the call log
+        '404':
+          description: A resource required to process the request was not found.
+          content:
+            application/json:
+              schema:
+                title: CallLogNotFoundResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: A resource required for this operation was not found.
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+  /callLogs/{id}/recordings:
+    post:
+      security:
+      - api_key: []
+      - oauth2:
+        - phone-integration
+      tags:
+      - CallLogs
+      summary: Attach an audio file to the call log
+      description: Adds an audio recording to the call log. That audio can be played by those who have access to the call log object.
+      x-token-cost: 10
+      operationId: addCallLogAudioFile
+      parameters:
+      - in: path
+        name: id
+        description: The ID received when you create the call log
+        required: true
+        schema:
+          type: string
+          example: 3cde3b05035cae14dcfc172bd8000d08
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              title: addCallLogAudioFileRequest
+              type: object
+              required:
+              - file
+              properties:
+                file:
+                  description: Audio file supported by the HTML5 specification
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: The audio recording was successfully added to the log.
+          content:
+            application/json:
+              schema:
+                title: baseResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+              example:
+                success: true
+        '404':
+          description: A resource required to process the request was not found.
+          content:
+            application/json:
+              schema:
+                title: CallLogNotFoundResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: A resource required for this operation was not found.
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+        '409':
+          description: Recording for this call already exists.
+          content:
+            application/json:
+              schema:
+                title: CallLogConflictResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: A recording for this call already exists
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+        '500':
+          description: There was an error processing the request.
+          content:
+            application/json:
+              schema:
+                title: CallLogInternalErrorResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                    example: An internal server error occurred
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                    example: Please check developers.pipedrive.com for more information about Pipedrive API.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+components:
+  securitySchemes:
+    basic_authentication:
+      type: http
+      scheme: basic
+      description: Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.
+    api_key:
+      type: apiKey
+      name: x-api-token
+      in: header
+    oauth2:
+      type: oauth2
+      description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+          tokenUrl: https://oauth.pipedrive.com/oauth/token
+          refreshUrl: https://oauth.pipedrive.com/oauth/token
+          scopes:
+            base: Read settings of the authorized user and currencies in an account
+            deals:read: Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            deals:full: Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            mail:read: Read mail threads and messages
+            mail:full: Read, update and delete mail threads. Also grants read access to mail messages
+            activities:read: Read activities, its fields and types; all files and filters
+            activities:full: Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types
+            contacts:read: Read the data about persons and organizations, their related fields and followers; also all notes, files, filters
+            contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
+            products:read: Read products, its fields, files, followers and products connected to a deal
+            products:full: Create, read, update and delete products and its fields; add products to deals
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            projects:read: Read projects and its fields, tasks and project templates
+            projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
+            users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
+            recents:read: Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users
+            search:read: Search across the account for deals, persons, organizations, files and products, and see details about the returned results
+            admin: Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app
+            leads:read: Read data about leads and lead labels
+            leads:full: Create, read, update and delete leads and lead labels
+            phone-integration: Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive
+            goals:read: Read data on all goals
+            goals:full: Create, read, update and delete goals
+            video-calls: Allows application to register as a video call integration provider and create conference links
+            messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses

@@ -1,0 +1,1595 @@
+openapi: 3.0.1
+info:
+  title: Pipedrive API v1 Activities Users API
+  version: 1.0.0
+  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
+
+    '
+servers:
+- url: https://api.pipedrive.com/v1
+tags:
+- name: Users
+  description: 'Users are people with access to your Pipedrive account. A user may belong to one or many Pipedrive accounts, so deleting a user from one Pipedrive account will not remove the user from the data store if he/she is connected to multiple accounts. Users should not be confused with persons.
+
+    '
+paths:
+  /users:
+    get:
+      summary: Get all users
+      description: Returns data about all users within the company.
+      x-token-cost: 20
+      operationId: getUsers
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - users:read
+      responses:
+        '200':
+          description: The list of user objects
+          content:
+            application/json:
+              schema:
+                title: GetUsersResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        title: BaseUser
+                        properties:
+                          id:
+                            type: integer
+                            description: The user ID
+                          name:
+                            type: string
+                            description: The user name
+                          default_currency:
+                            type: string
+                            description: The user default currency
+                          locale:
+                            type: string
+                            description: The user locale
+                          lang:
+                            type: integer
+                            description: The user language ID
+                          email:
+                            type: string
+                            description: The user email
+                          phone:
+                            type: string
+                            nullable: true
+                            description: The user phone
+                          activated:
+                            type: boolean
+                            description: Boolean that indicates whether the user is activated
+                          last_login:
+                            type: string
+                            description: 'The last login date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                          created:
+                            type: string
+                            description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                          modified:
+                            type: string
+                            nullable: true
+                            description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                          has_created_company:
+                            type: boolean
+                            description: Boolean that indicates whether the user has created a company
+                          access:
+                            type: array
+                            items:
+                              type: object
+                              title: UserAccess
+                              properties:
+                                app:
+                                  type: string
+                                  enum:
+                                  - global
+                                  - sales
+                                  - campaigns
+                                  - projects
+                                  - account_settings
+                                  - partnership
+                                  description: The granular app access level
+                                admin:
+                                  type: boolean
+                                  description: Whether the user has admin access or not
+                                permission_set_id:
+                                  type: string
+                                  description: The ID of the permission set
+                          active_flag:
+                            type: boolean
+                            description: Boolean that indicates whether the user is activated
+                          timezone_name:
+                            type: string
+                            description: The user timezone name
+                          timezone_offset:
+                            type: string
+                            description: The user timezone offset
+                          role_id:
+                            type: integer
+                            description: The ID of the user role
+                          icon_url:
+                            type: string
+                            nullable: true
+                            description: The user icon URL
+                          is_you:
+                            type: boolean
+                            description: Boolean that indicates if the requested user is the same which is logged in (in this case, always true)
+                          is_deleted:
+                            type: boolean
+                            description: Boolean that indicates whether the user is deleted from the company
+              example:
+                success: true
+                data:
+                - id: 1
+                  name: John Doe
+                  default_currency: EUR
+                  locale: et_EE
+                  lang: 1
+                  email: john@pipedrive.com
+                  phone: 0000-0001
+                  activated: true
+                  last_login: '2019-11-21 08:45:56'
+                  created: '2018-11-13 09:16:26'
+                  modified: '2019-11-21 08:45:56'
+                  has_created_company: true
+                  access:
+                  - app: sales
+                    admin: true
+                    permission_set_id: 62cc4d7f-4038-4352-abf3-a8c1c822b631
+                  - app: global
+                    admin: true
+                    permission_set_id: 233b7976-39bd-43a9-b305-ef3a2b0998e5
+                  - app: account_settings
+                    admin: true
+                    permission_set_id: 982c5ce5-b8ba-4b47-b102-9da024f4b990
+                  active_flag: true
+                  timezone_name: Europe/Berlin
+                  timezone_offset: +03:00
+                  role_id: 1
+                  icon_url: https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png
+                  is_you: true
+                  is_deleted: false
+                - id: 2
+                  name: Jane Doe
+                  default_currency: EUR
+                  locale: et_EE
+                  lang: 1
+                  email: jane@pipedrive.com
+                  phone: 0000-0002
+                  activated: true
+                  last_login: '2019-09-11 11:43:54'
+                  created: '2019-01-22 10:43:47'
+                  modified: '2019-11-21 09:49:50'
+                  has_created_company: false
+                  access:
+                  - app: sales
+                    admin: false
+                    permission_set_id: f07d229d-088a-4144-a40f-1fe64295d180
+                  - app: global
+                    admin: true
+                    permission_set_id: 233b7976-39bd-43a9-b305-ef3a2b0998e5
+                  active_flag: true
+                  timezone_name: Europe/Berlin
+                  timezone_offset: +03:00
+                  role_id: 1
+                  icon_url: null
+                  is_you: false
+                  is_deleted: false
+    post:
+      summary: Add a new user
+      description: Adds a new user to the company, returns the ID upon success.
+      x-token-cost: 10
+      operationId: addUser
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: addUserRequest
+              type: object
+              required:
+              - email
+              properties:
+                email:
+                  type: string
+                  description: The email of the user
+                access:
+                  type: array
+                  items:
+                    type: object
+                    title: UserAccess
+                    properties:
+                      app:
+                        type: string
+                        enum:
+                        - global
+                        - sales
+                        - campaigns
+                        - projects
+                        - account_settings
+                        - partnership
+                        description: The granular app access level
+                      admin:
+                        type: boolean
+                        description: Whether the user has admin access or not
+                      permission_set_id:
+                        type: string
+                        description: The ID of the permission set
+                    required:
+                    - app
+                  description: 'The access given to the user. Each item in the array represents access to a specific app. Optionally may include either admin flag or permission set ID to specify which access to give within the app. If both are omitted, the default access for the corresponding app will be used. It requires structure as follows: `[{ app: ''sales'', permission_set_id: ''62cc4d7f-4038-4352-abf3-a8c1c822b631'' }, { app: ''global'', admin: true }, { app: ''account_settings'' }]`
+
+                    '
+                  default:
+                  - app: sales
+                active_flag:
+                  type: boolean
+                  default: true
+                  description: Whether the user is active or not. `false` = Not activated, `true` = Activated
+      responses:
+        '200':
+          description: The data of the user
+          content:
+            application/json:
+              schema:
+                title: GetUserResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: GetUserResponseData
+                  properties:
+                    data:
+                      type: object
+                      title: BaseUser
+                      properties:
+                        id:
+                          type: integer
+                          description: The user ID
+                        name:
+                          type: string
+                          description: The user name
+                        default_currency:
+                          type: string
+                          description: The user default currency
+                        locale:
+                          type: string
+                          description: The user locale
+                        lang:
+                          type: integer
+                          description: The user language ID
+                        email:
+                          type: string
+                          description: The user email
+                        phone:
+                          type: string
+                          nullable: true
+                          description: The user phone
+                        activated:
+                          type: boolean
+                          description: Boolean that indicates whether the user is activated
+                        last_login:
+                          type: string
+                          description: 'The last login date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                        created:
+                          type: string
+                          description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                        modified:
+                          type: string
+                          nullable: true
+                          description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                        has_created_company:
+                          type: boolean
+                          description: Boolean that indicates whether the user has created a company
+                        access:
+                          type: array
+                          items:
+                            type: object
+                            title: UserAccess
+                            properties:
+                              app:
+                                type: string
+                                enum:
+                                - global
+                                - sales
+                                - campaigns
+                                - projects
+                                - account_settings
+                                - partnership
+                                description: The granular app access level
+                              admin:
+                                type: boolean
+                                description: Whether the user has admin access or not
+                              permission_set_id:
+                                type: string
+                                description: The ID of the permission set
+                        active_flag:
+                          type: boolean
+                          description: Boolean that indicates whether the user is activated
+                        timezone_name:
+                          type: string
+                          description: The user timezone name
+                        timezone_offset:
+                          type: string
+                          description: The user timezone offset
+                        role_id:
+                          type: integer
+                          description: The ID of the user role
+                        icon_url:
+                          type: string
+                          nullable: true
+                          description: The user icon URL
+                        is_you:
+                          type: boolean
+                          description: Boolean that indicates if the requested user is the same which is logged in (in this case, always true)
+                        is_deleted:
+                          type: boolean
+                          description: Boolean that indicates whether the user is deleted from the company
+              example:
+                success: true
+                data:
+                  id: 2
+                  name: Jane Doe
+                  default_currency: EUR
+                  locale: et_EE
+                  lang: 1
+                  email: jane@pipedrive.com
+                  phone: 0000-0002
+                  activated: true
+                  last_login: '2019-09-11 11:43:54'
+                  created: '2019-01-22 10:43:47'
+                  modified: '2019-11-21 09:49:50'
+                  has_created_company: false
+                  access:
+                  - app: sales
+                    admin: false
+                    permission_set_id: f07d229d-088a-4144-a40f-1fe64295d180
+                  - app: global
+                    admin: true
+                    permission_set_id: 233b7976-39bd-43a9-b305-ef3a2b0998e5
+                  active_flag: true
+                  timezone_name: Europe/Berlin
+                  timezone_offset: +03:00
+                  role_id: 1
+                  icon_url: null
+                  is_you: false
+                  is_deleted: false
+        '403':
+          description: Forbidden response
+          content:
+            application/json:
+              schema:
+                title: failResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  error:
+                    type: string
+                    description: The error message
+              example:
+                success: false
+                error: You do not have permissions to do this.
+                error_info: Please check developers.pipedrive.com
+                data: null
+                additional_data: null
+  /users/find:
+    get:
+      summary: Find users by name
+      description: Finds users by their name.
+      x-token-cost: 40
+      operationId: findUsersByName
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - users:read
+      parameters:
+      - in: query
+        name: term
+        required: true
+        schema:
+          type: string
+        description: The search term to look for
+      - in: query
+        name: search_by_email
+        schema:
+          title: numberBooleanDefault0
+          type: number
+          default: 0
+          enum:
+          - 0
+          - 1
+        description: 'When enabled, the term will only be matched against email addresses of users. Default: `false`.'
+      responses:
+        '200':
+          description: The list of user objects
+          content:
+            application/json:
+              schema:
+                title: GetUsersResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        title: BaseUser
+                        properties:
+                          id:
+                            type: integer
+                            description: The user ID
+                          name:
+                            type: string
+                            description: The user name
+                          default_currency:
+                            type: string
+                            description: The user default currency
+                          locale:
+                            type: string
+                            description: The user locale
+                          lang:
+                            type: integer
+                            description: The user language ID
+                          email:
+                            type: string
+                            description: The user email
+                          phone:
+                            type: string
+                            nullable: true
+                            description: The user phone
+                          activated:
+                            type: boolean
+                            description: Boolean that indicates whether the user is activated
+                          last_login:
+                            type: string
+                            description: 'The last login date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                          created:
+                            type: string
+                            description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                          modified:
+                            type: string
+                            nullable: true
+                            description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                          has_created_company:
+                            type: boolean
+                            description: Boolean that indicates whether the user has created a company
+                          access:
+                            type: array
+                            items:
+                              type: object
+                              title: UserAccess
+                              properties:
+                                app:
+                                  type: string
+                                  enum:
+                                  - global
+                                  - sales
+                                  - campaigns
+                                  - projects
+                                  - account_settings
+                                  - partnership
+                                  description: The granular app access level
+                                admin:
+                                  type: boolean
+                                  description: Whether the user has admin access or not
+                                permission_set_id:
+                                  type: string
+                                  description: The ID of the permission set
+                          active_flag:
+                            type: boolean
+                            description: Boolean that indicates whether the user is activated
+                          timezone_name:
+                            type: string
+                            description: The user timezone name
+                          timezone_offset:
+                            type: string
+                            description: The user timezone offset
+                          role_id:
+                            type: integer
+                            description: The ID of the user role
+                          icon_url:
+                            type: string
+                            nullable: true
+                            description: The user icon URL
+                          is_you:
+                            type: boolean
+                            description: Boolean that indicates if the requested user is the same which is logged in (in this case, always true)
+                          is_deleted:
+                            type: boolean
+                            description: Boolean that indicates whether the user is deleted from the company
+              example:
+                success: true
+                data:
+                - id: 1
+                  name: John Doe
+                  default_currency: EUR
+                  locale: et_EE
+                  lang: 1
+                  email: john@pipedrive.com
+                  phone: 0000-0001
+                  activated: true
+                  last_login: '2019-11-21 08:45:56'
+                  created: '2018-11-13 09:16:26'
+                  modified: '2019-11-21 08:45:56'
+                  has_created_company: true
+                  access:
+                  - app: sales
+                    admin: true
+                    permission_set_id: 62cc4d7f-4038-4352-abf3-a8c1c822b631
+                  - app: global
+                    admin: true
+                    permission_set_id: 233b7976-39bd-43a9-b305-ef3a2b0998e5
+                  - app: account_settings
+                    admin: true
+                    permission_set_id: 982c5ce5-b8ba-4b47-b102-9da024f4b990
+                  active_flag: true
+                  timezone_name: Europe/Berlin
+                  timezone_offset: +03:00
+                  role_id: 1
+                  icon_url: https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png
+                  is_you: true
+                  is_deleted: false
+                - id: 2
+                  name: Jane Doe
+                  default_currency: EUR
+                  locale: et_EE
+                  lang: 1
+                  email: jane@pipedrive.com
+                  phone: 0000-0002
+                  activated: true
+                  last_login: '2019-09-11 11:43:54'
+                  created: '2019-01-22 10:43:47'
+                  modified: '2019-11-21 09:49:50'
+                  has_created_company: false
+                  access:
+                  - app: sales
+                    admin: false
+                    permission_set_id: f07d229d-088a-4144-a40f-1fe64295d180
+                  - app: global
+                    admin: true
+                    permission_set_id: 233b7976-39bd-43a9-b305-ef3a2b0998e5
+                  active_flag: true
+                  timezone_name: Europe/Berlin
+                  timezone_offset: +03:00
+                  role_id: 1
+                  icon_url: null
+                  is_you: false
+                  is_deleted: false
+  /users/me:
+    get:
+      summary: Get current user data
+      description: 'Returns data about an authorized user within the company with bound company data: company ID, company name, and domain. Note that the `locale` property means ''Date/number format'' in the Pipedrive account settings, not the chosen language.'
+      x-token-cost: 2
+      operationId: getCurrentUser
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - base
+      responses:
+        '200':
+          description: The data of the logged in user
+          content:
+            application/json:
+              schema:
+                title: GetCurrentUserResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      allOf:
+                      - type: object
+                        title: BaseUser
+                        properties:
+                          id:
+                            type: integer
+                            description: The user ID
+                          name:
+                            type: string
+                            description: The user name
+                          default_currency:
+                            type: string
+                            description: The user default currency
+                          locale:
+                            type: string
+                            description: The user locale
+                          lang:
+                            type: integer
+                            description: The user language ID
+                          email:
+                            type: string
+                            description: The user email
+                          phone:
+                            type: string
+                            nullable: true
+                            description: The user phone
+                          activated:
+                            type: boolean
+                            description: Boolean that indicates whether the user is activated
+                          last_login:
+                            type: string
+                            description: 'The last login date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                          created:
+                            type: string
+                            description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                          modified:
+                            type: string
+                            nullable: true
+                            description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                          has_created_company:
+                            type: boolean
+                            description: Boolean that indicates whether the user has created a company
+                          access:
+                            type: array
+                            items:
+                              type: object
+                              title: UserAccess
+                              properties:
+                                app:
+                                  type: string
+                                  enum:
+                                  - global
+                                  - sales
+                                  - campaigns
+                                  - projects
+                                  - account_settings
+                                  - partnership
+                                  description: The granular app access level
+                                admin:
+                                  type: boolean
+                                  description: Whether the user has admin access or not
+                                permission_set_id:
+                                  type: string
+                                  description: The ID of the permission set
+                          active_flag:
+                            type: boolean
+                            description: Boolean that indicates whether the user is activated
+                          timezone_name:
+                            type: string
+                            description: The user timezone name
+                          timezone_offset:
+                            type: string
+                            description: The user timezone offset
+                          role_id:
+                            type: integer
+                            description: The ID of the user role
+                          icon_url:
+                            type: string
+                            nullable: true
+                            description: The user icon URL
+                          is_you:
+                            type: boolean
+                            description: Boolean that indicates if the requested user is the same which is logged in (in this case, always true)
+                          is_deleted:
+                            type: boolean
+                            description: Boolean that indicates whether the user is deleted from the company
+                      - type: object
+                        properties:
+                          company_id:
+                            type: integer
+                            description: The user company ID
+                          company_name:
+                            type: string
+                            description: The user company name
+                          company_domain:
+                            type: string
+                            description: The user company domain
+                          company_country:
+                            type: string
+                            description: The user company country
+                          company_industry:
+                            type: string
+                            description: The user company industry
+                          language:
+                            type: object
+                            description: The user language details
+                            properties:
+                              language_code:
+                                type: string
+                                description: The language code. E.g. en
+                              country_code:
+                                type: string
+                                description: The country code. E.g. US
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Me
+                  default_currency: EUR
+                  locale: et_EE
+                  lang: 1
+                  email: me@pipedrive.com
+                  phone: 0000-0000
+                  activated: true
+                  last_login: '2019-11-21 08:45:56'
+                  created: '2018-11-13 09:16:26'
+                  modified: '2019-11-21 08:45:56'
+                  has_created_company: true
+                  access:
+                  - app: sales
+                    admin: true
+                    permission_set_id: 62cc4d7f-4038-4352-abf3-a8c1c822b631
+                  - app: global
+                    admin: true
+                    permission_set_id: 233b7976-39bd-43a9-b305-ef3a2b0998e5
+                  - app: account_settings
+                    admin: true
+                    permission_set_id: 982c5ce5-b8ba-4b47-b102-9da024f4b990
+                  active_flag: true
+                  timezone_name: Europe/Berlin
+                  timezone_offset: +03:00
+                  role_id: 1
+                  icon_url: https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png
+                  is_you: true
+                  is_deleted: false
+                  company_id: 54235233
+                  company_name: Pipedrive
+                  company_domain: pipedrive-12g53f
+                  company_country: EE
+                  company_industry: IT Services
+                  language:
+                    language_code: en
+                    country_code: US
+        '401':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                title: unathorizedResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  error:
+                    type: string
+                    description: The error message
+                  errorCode:
+                    type: integer
+                    description: The response error code
+              example:
+                success: false
+                error: unauthorized access
+                errorCode: 401
+  /users/{id}:
+    get:
+      summary: Get one user
+      description: Returns data about a specific user within the company.
+      x-token-cost: 2
+      operationId: getUser
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - users:read
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the user
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The data of the user
+          content:
+            application/json:
+              schema:
+                title: GetUserResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: GetUserResponseData
+                  properties:
+                    data:
+                      type: object
+                      title: BaseUser
+                      properties:
+                        id:
+                          type: integer
+                          description: The user ID
+                        name:
+                          type: string
+                          description: The user name
+                        default_currency:
+                          type: string
+                          description: The user default currency
+                        locale:
+                          type: string
+                          description: The user locale
+                        lang:
+                          type: integer
+                          description: The user language ID
+                        email:
+                          type: string
+                          description: The user email
+                        phone:
+                          type: string
+                          nullable: true
+                          description: The user phone
+                        activated:
+                          type: boolean
+                          description: Boolean that indicates whether the user is activated
+                        last_login:
+                          type: string
+                          description: 'The last login date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                        created:
+                          type: string
+                          description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                        modified:
+                          type: string
+                          nullable: true
+                          description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                        has_created_company:
+                          type: boolean
+                          description: Boolean that indicates whether the user has created a company
+                        access:
+                          type: array
+                          items:
+                            type: object
+                            title: UserAccess
+                            properties:
+                              app:
+                                type: string
+                                enum:
+                                - global
+                                - sales
+                                - campaigns
+                                - projects
+                                - account_settings
+                                - partnership
+                                description: The granular app access level
+                              admin:
+                                type: boolean
+                                description: Whether the user has admin access or not
+                              permission_set_id:
+                                type: string
+                                description: The ID of the permission set
+                        active_flag:
+                          type: boolean
+                          description: Boolean that indicates whether the user is activated
+                        timezone_name:
+                          type: string
+                          description: The user timezone name
+                        timezone_offset:
+                          type: string
+                          description: The user timezone offset
+                        role_id:
+                          type: integer
+                          description: The ID of the user role
+                        icon_url:
+                          type: string
+                          nullable: true
+                          description: The user icon URL
+                        is_you:
+                          type: boolean
+                          description: Boolean that indicates if the requested user is the same which is logged in (in this case, always true)
+                        is_deleted:
+                          type: boolean
+                          description: Boolean that indicates whether the user is deleted from the company
+              example:
+                success: true
+                data:
+                  id: 2
+                  name: Jane Doe
+                  default_currency: EUR
+                  locale: et_EE
+                  lang: 1
+                  email: jane@pipedrive.com
+                  phone: 0000-0002
+                  activated: true
+                  last_login: '2019-09-11 11:43:54'
+                  created: '2019-01-22 10:43:47'
+                  modified: '2019-11-21 09:49:50'
+                  has_created_company: false
+                  access:
+                  - app: sales
+                    admin: false
+                    permission_set_id: f07d229d-088a-4144-a40f-1fe64295d180
+                  - app: global
+                    admin: true
+                    permission_set_id: 233b7976-39bd-43a9-b305-ef3a2b0998e5
+                  active_flag: true
+                  timezone_name: Europe/Berlin
+                  timezone_offset: +03:00
+                  role_id: 1
+                  icon_url: null
+                  is_you: false
+                  is_deleted: false
+        '404':
+          description: User with specified ID does not exist or is inaccessible
+          content:
+            application/json:
+              schema:
+                title: failResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  error:
+                    type: string
+                    description: The error message
+              example:
+                success: false
+                error: User not found or not accessible.
+    put:
+      summary: Update user details
+      description: Updates the properties of a user. Currently, only `active_flag` can be updated.
+      x-token-cost: 10
+      operationId: updateUser
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - admin
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the user
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: updateUserRequest
+              type: object
+              required:
+              - active_flag
+              properties:
+                active_flag:
+                  type: boolean
+                  description: Whether the user is active or not. `false` = Not activated, `true` = Activated
+      responses:
+        '200':
+          description: The data of the user
+          content:
+            application/json:
+              schema:
+                title: GetUserResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: GetUserResponseData
+                  properties:
+                    data:
+                      type: object
+                      title: BaseUser
+                      properties:
+                        id:
+                          type: integer
+                          description: The user ID
+                        name:
+                          type: string
+                          description: The user name
+                        default_currency:
+                          type: string
+                          description: The user default currency
+                        locale:
+                          type: string
+                          description: The user locale
+                        lang:
+                          type: integer
+                          description: The user language ID
+                        email:
+                          type: string
+                          description: The user email
+                        phone:
+                          type: string
+                          nullable: true
+                          description: The user phone
+                        activated:
+                          type: boolean
+                          description: Boolean that indicates whether the user is activated
+                        last_login:
+                          type: string
+                          description: 'The last login date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                        created:
+                          type: string
+                          description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                        modified:
+                          type: string
+                          nullable: true
+                          description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
+                        has_created_company:
+                          type: boolean
+                          description: Boolean that indicates whether the user has created a company
+                        access:
+                          type: array
+                          items:
+                            type: object
+                            title: UserAccess
+                            properties:
+                              app:
+                                type: string
+                                enum:
+                                - global
+                                - sales
+                                - campaigns
+                                - projects
+                                - account_settings
+                                - partnership
+                                description: The granular app access level
+                              admin:
+                                type: boolean
+                                description: Whether the user has admin access or not
+                              permission_set_id:
+                                type: string
+                                description: The ID of the permission set
+                        active_flag:
+                          type: boolean
+                          description: Boolean that indicates whether the user is activated
+                        timezone_name:
+                          type: string
+                          description: The user timezone name
+                        timezone_offset:
+                          type: string
+                          description: The user timezone offset
+                        role_id:
+                          type: integer
+                          description: The ID of the user role
+                        icon_url:
+                          type: string
+                          nullable: true
+                          description: The user icon URL
+                        is_you:
+                          type: boolean
+                          description: Boolean that indicates if the requested user is the same which is logged in (in this case, always true)
+                        is_deleted:
+                          type: boolean
+                          description: Boolean that indicates whether the user is deleted from the company
+              example:
+                success: true
+                data:
+                  id: 2
+                  name: Jane Doe
+                  default_currency: EUR
+                  locale: et_EE
+                  lang: 1
+                  email: jane@pipedrive.com
+                  phone: 0000-0002
+                  activated: true
+                  last_login: '2019-09-11 11:43:54'
+                  created: '2019-01-22 10:43:47'
+                  modified: '2019-11-21 09:49:50'
+                  has_created_company: false
+                  access:
+                  - app: sales
+                    admin: false
+                    permission_set_id: f07d229d-088a-4144-a40f-1fe64295d180
+                  - app: global
+                    admin: true
+                    permission_set_id: 233b7976-39bd-43a9-b305-ef3a2b0998e5
+                  active_flag: true
+                  timezone_name: Europe/Berlin
+                  timezone_offset: +03:00
+                  role_id: 1
+                  icon_url: null
+                  is_you: false
+                  is_deleted: false
+        '403':
+          description: Forbidden response
+          content:
+            application/json:
+              schema:
+                title: failResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  error:
+                    type: string
+                    description: The error message
+              example:
+                success: false
+                error: You do not have permissions to do this.
+                error_info: Please check developers.pipedrive.com
+                data: null
+                additional_data: null
+        '404':
+          description: User with specified ID does not exist or is inaccessible
+          content:
+            application/json:
+              schema:
+                title: failResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  error:
+                    type: string
+                    description: The error message
+              example:
+                success: false
+                error: User not found or not accessible.
+  /users/{id}/followers:
+    get:
+      summary: List followers of a user
+      description: Lists the followers of a specific user.
+      x-token-cost: 20
+      operationId: getUserFollowers
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - users:read
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the user
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The list of user IDs
+          content:
+            application/json:
+              schema:
+                title: userIds
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: integer
+                      description: The list of user IDs
+              example:
+                success: true
+                data:
+                - 2
+                - 5
+                - 8
+        '403':
+          description: Forbidden response
+          content:
+            application/json:
+              schema:
+                title: failResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  error:
+                    type: string
+                    description: The error message
+              example:
+                success: false
+                error: You do not have permissions to do this.
+                error_info: Please check developers.pipedrive.com
+                data: null
+                additional_data: null
+  /users/{id}/permissions:
+    get:
+      summary: List user permissions
+      description: Lists aggregated permissions over all assigned permission sets for a user.
+      x-token-cost: 10
+      operationId: getUserPermissions
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - users:read
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the user
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The list of user permissions
+          content:
+            application/json:
+              schema:
+                title: GetUserPermissionsResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        can_add_custom_fields:
+                          type: boolean
+                          description: If the user can add custom fields
+                        can_add_products:
+                          type: boolean
+                          description: If the user can add products
+                        can_add_prospects_as_leads:
+                          type: boolean
+                          description: If the user can add prospects as leads
+                        can_bulk_edit_items:
+                          type: boolean
+                          description: If the user can bulk edit items
+                        can_change_visibility_of_items:
+                          type: boolean
+                          description: If the user can change visibility of items
+                        can_convert_deals_to_leads:
+                          type: boolean
+                          description: If the user can convert deals to leads
+                        can_create_own_workflow:
+                          type: boolean
+                          description: If the user can create workflows
+                        can_delete_activities:
+                          type: boolean
+                          description: If the user can delete activities
+                        can_delete_custom_fields:
+                          type: boolean
+                          description: If the user can delete custom fields
+                        can_delete_deals:
+                          type: boolean
+                          description: If the user can delete deals
+                        can_edit_custom_fields:
+                          type: boolean
+                          description: If the user can edit custom fields
+                        can_edit_deals_closed_date:
+                          type: boolean
+                          description: If the user can edit deals' closed date
+                        can_edit_products:
+                          type: boolean
+                          description: If the user can edit products
+                        can_edit_shared_filters:
+                          type: boolean
+                          description: If the user can edit shared filters
+                        can_export_data_from_lists:
+                          type: boolean
+                          description: If the user can export data from item lists
+                        can_follow_other_users:
+                          type: boolean
+                          description: If the user can follow other users
+                        can_merge_deals:
+                          type: boolean
+                          description: If the user can merge deals
+                        can_merge_organizations:
+                          type: boolean
+                          description: If the user can merge organizations
+                        can_merge_people:
+                          type: boolean
+                          description: If the user can merge people
+                        can_modify_labels:
+                          type: boolean
+                          description: If the user can modify labels
+                        can_see_company_wide_statistics:
+                          type: boolean
+                          description: If the user can see company-wide statistics
+                        can_see_deals_list_summary:
+                          type: boolean
+                          description: If the user can see the summary on the deals page
+                        can_see_hidden_items_names:
+                          type: boolean
+                          description: If the user can see the names of hidden items
+                        can_see_other_users:
+                          type: boolean
+                          description: If the user can see other users
+                        can_see_other_users_statistics:
+                          type: boolean
+                          description: If the user can see other users' statistics
+                        can_see_security_dashboard:
+                          type: boolean
+                          description: If the user can see security dashboard
+                        can_share_filters:
+                          type: boolean
+                          description: If the user can share filters
+                        can_share_insights:
+                          type: boolean
+                          description: If the user can share insights
+                        can_use_api:
+                          type: boolean
+                          description: If the user can use API
+                        can_use_email_tracking:
+                          type: boolean
+                          description: If the user can use email tracking
+                        can_use_import:
+                          type: boolean
+                          description: If the user can use import
+              example:
+                success: true
+                data:
+                  can_add_custom_fields: true
+                  can_bulk_edit_items: true
+                  can_change_visibility_of_items: true
+                  can_create_own_workflow: true
+  /users/{id}/roleAssignments:
+    get:
+      summary: List role assignments
+      description: Lists role assignments for a user.
+      x-token-cost: 10
+      operationId: getUserRoleAssignments
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - users:read
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the user
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: start
+        description: Pagination start
+        schema:
+          type: integer
+          default: 0
+      - in: query
+        name: limit
+        description: Items shown per page
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List assignments for a role
+          content:
+            application/json:
+              schema:
+                title: GetRoleAssignmentsResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: GetRoleAssignmentsResponseData
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        title: RoleAssignment
+                        allOf:
+                        - title: baseRoleRequest
+                          description: The details of the role
+                          type: object
+                          properties:
+                            parent_role_id:
+                              type: integer
+                              nullable: true
+                              description: The ID of the parent role
+                            name:
+                              type: string
+                              description: The name of the role
+                        - type: object
+                          title: RoleAssignmentData
+                          properties:
+                            user_id:
+                              type: integer
+                              description: The user ID
+                            role_id:
+                              type: integer
+                              description: The role ID
+                            active_flag:
+                              type: boolean
+                              description: Whether the role is active or not
+                            type:
+                              type: string
+                              description: The assignment type
+                        description: The assignment data of the role
+                      description: The role assignments
+                    additional_data:
+                      description: The additional data in the role list
+                      type: object
+                      properties:
+                        pagination:
+                          description: The pagination details in the role list
+                          type: object
+                          properties:
+                            start:
+                              type: integer
+                              description: Pagination start
+                            limit:
+                              type: integer
+                              description: Items shown per page
+                            more_items_in_collection:
+                              type: boolean
+                              description: Whether there are more list items in the collection than displayed
+              example:
+                success: true
+                data:
+                - user_id: 1234567
+                  role_id: 2
+                  parent_role_id: 1
+                  name: Admins
+                  active_flag: true
+                  type: '1'
+                additional_data:
+                  pagination:
+                    start: 0
+                    limit: 100
+                    more_items_in_collection: false
+  /users/{id}/roleSettings:
+    get:
+      summary: List user role settings
+      description: Lists the settings of user's assigned role.
+      x-token-cost: 10
+      operationId: getUserRoleSettings
+      tags:
+      - Users
+      security:
+      - api_key: []
+      - oauth2:
+        - users:read
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the user
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List role settings
+          content:
+            application/json:
+              schema:
+                title: GetRoleSettingsResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: GetRoleSettingsResponseData
+                  properties:
+                    data:
+                      description: The settings for the role
+                      type: object
+                      title: RoleSettings
+                      properties:
+                        deal_default_visibility:
+                          type: number
+                          description: The default visibility level of the deals for the role
+                        lead_default_visibility:
+                          type: number
+                          description: The default visibility level of the leads for the role
+                        org_default_visibility:
+                          type: number
+                          description: The default visibility level of the organizations for the role
+                        person_default_visibility:
+                          type: number
+                          description: The default visibility level of the people for the role
+                        product_default_visibility:
+                          type: number
+                          description: The default visibility level of the products for the role
+                        deal_access_level:
+                          type: number
+                          description: The access level of the deals for the role (only for default role)
+                        org_access_level:
+                          type: number
+                          description: The access level of the organizations for the role (only for default role)
+                        person_access_level:
+                          type: number
+                          description: The access level of the people for the role (only for default role)
+                        product_access_level:
+                          type: number
+                          description: The access level of the products for the role (only for default role)
+              example:
+                success: true
+                data:
+                  deal_default_visibility: 1
+                  lead_default_visibility: 1
+                  org_default_visibility: 1
+                  person_default_visibility: 1
+                  product_default_visibility: 1
+components:
+  securitySchemes:
+    basic_authentication:
+      type: http
+      scheme: basic
+      description: Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.
+    api_key:
+      type: apiKey
+      name: x-api-token
+      in: header
+    oauth2:
+      type: oauth2
+      description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+          tokenUrl: https://oauth.pipedrive.com/oauth/token
+          refreshUrl: https://oauth.pipedrive.com/oauth/token
+          scopes:
+            base: Read settings of the authorized user and currencies in an account
+            deals:read: Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            deals:full: Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            mail:read: Read mail threads and messages
+            mail:full: Read, update and delete mail threads. Also grants read access to mail messages
+            activities:read: Read activities, its fields and types; all files and filters
+            activities:full: Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types
+            contacts:read: Read the data about persons and organizations, their related fields and followers; also all notes, files, filters
+            contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
+            products:read: Read products, its fields, files, followers and products connected to a deal
+            products:full: Create, read, update and delete products and its fields; add products to deals
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            projects:read: Read projects and its fields, tasks and project templates
+            projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
+            users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
+            recents:read: Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users
+            search:read: Search across the account for deals, persons, organizations, files and products, and see details about the returned results
+            admin: Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app
+            leads:read: Read data about leads and lead labels
+            leads:full: Create, read, update and delete leads and lead labels
+            phone-integration: Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive
+            goals:read: Read data on all goals
+            goals:full: Create, read, update and delete goals
+            video-calls: Allows application to register as a video call integration provider and create conference links
+            messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses

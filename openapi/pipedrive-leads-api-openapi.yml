@@ -1,0 +1,1732 @@
+openapi: 3.0.1
+info:
+  title: Pipedrive API v1 Activities Leads API
+  version: 1.0.0
+  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
+
+    '
+servers:
+- url: https://api.pipedrive.com/v1
+tags:
+- name: Leads
+  description: 'Leads are potential deals stored in Leads Inbox before they are archived or converted to a deal. Each lead needs to be named (using the `title` field) and be linked to a person or an organization. In addition to that, a lead can contain most of the fields a deal can (such as `value` or `expected_close_date`).
+
+    '
+paths:
+  /leads:
+    get:
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:read
+        - leads:full
+      tags:
+      - Leads
+      summary: Get all leads
+      description: 'Returns multiple not archived leads. Leads are sorted by the time they were created, from oldest to newest. Pagination can be controlled using `limit` and `start` query parameters. If a lead contains custom fields, the fields'' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field''s value hasn''t been set for the lead, it won''t appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields'' structure from deals.
+
+        '
+      x-token-cost: 20
+      operationId: getLeads
+      parameters:
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned.
+        schema:
+          type: integer
+          example: 100
+      - in: query
+        name: start
+        description: For pagination, the position that represents the first result for the page
+        schema:
+          type: integer
+          example: 0
+      - in: query
+        name: owner_id
+        description: If supplied, only leads matching the given user will be returned. However, `filter_id` takes precedence over `owner_id` when supplied.
+        schema:
+          type: integer
+          example: 1
+      - in: query
+        name: person_id
+        description: If supplied, only leads matching the given person will be returned. However, `filter_id` takes precedence over `person_id` when supplied.
+        schema:
+          type: integer
+          example: 1
+      - in: query
+        name: organization_id
+        description: If supplied, only leads matching the given organization will be returned. However, `filter_id` takes precedence over `organization_id` when supplied.
+        schema:
+          type: integer
+          example: 1
+      - in: query
+        name: filter_id
+        description: The ID of the filter to use
+        schema:
+          type: integer
+          example: 1
+      - in: query
+        name: updated_since
+        description: If set, only leads with an `update_time` later than or equal to this time are returned. In ISO 8601 format, e.g. 2025-01-01T10:20:00Z.
+        schema:
+          type: string
+          example: '2025-01-01T10:20:00Z'
+      - in: query
+        name: sort
+        description: The field names and sorting mode separated by a comma (`field_name_1 ASC`, `field_name_2 DESC`). Only first-level field keys are supported (no nested keys).
+        schema:
+          type: string
+          enum:
+          - id
+          - title
+          - owner_id
+          - creator_id
+          - was_seen
+          - expected_close_date
+          - next_activity_id
+          - add_time
+          - update_time
+      responses:
+        '200':
+          description: Successful response containing payload in the `data` field
+          content:
+            application/json:
+              schema:
+                title: GetLeadsResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      title: Lead
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          description: The unique ID of the lead in the UUID format
+                        title:
+                          type: string
+                          description: The title of the lead
+                        owner_id:
+                          type: integer
+                          description: The ID of the user who owns the lead
+                        creator_id:
+                          type: integer
+                          description: The ID of the user who created the lead
+                        label_ids:
+                          type: array
+                          description: The IDs of the lead labels which are associated with the lead
+                          items:
+                            type: string
+                            format: uuid
+                        person_id:
+                          type: integer
+                          nullable: true
+                          description: The ID of a person which this lead is linked to
+                        organization_id:
+                          type: integer
+                          nullable: true
+                          description: The ID of an organization which this lead is linked to
+                        source_name:
+                          type: string
+                          description: 'Defines where the lead comes from. Will be `API` if the lead was created through the Public API and will be `Manually created` if the lead was created manually through the UI.
+
+                            '
+                        origin:
+                          type: string
+                          description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
+                        origin_id:
+                          type: string
+                          nullable: true
+                          description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
+                        channel:
+                          type: integer
+                          nullable: true
+                          description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
+                        channel_id:
+                          type: string
+                          nullable: true
+                          description: The optional ID to further distinguish the Marketing channel.
+                        source_deal_id:
+                          type: integer
+                          nullable: true
+                          description: The ID of the deal if the lead was converted from a deal.
+                        is_archived:
+                          type: boolean
+                          description: A flag indicating whether the lead is archived or not
+                        was_seen:
+                          type: boolean
+                          description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
+                        value:
+                          type: object
+                          nullable: true
+                          description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
+                          required:
+                          - amount
+                          - currency
+                          properties:
+                            amount:
+                              type: number
+                            currency:
+                              type: string
+                        expected_close_date:
+                          type: string
+                          format: date
+                          nullable: true
+                          description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
+                        next_activity_id:
+                          type: integer
+                          nullable: true
+                          description: The ID of the next activity associated with the lead
+                        add_time:
+                          type: string
+                          description: 'The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                          format: date-time
+                        update_time:
+                          type: string
+                          description: 'The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                          format: date-time
+                        visible_to:
+                          type: string
+                          allOf:
+                          - type: string
+                            enum:
+                            - '1'
+                            - '3'
+                            - '5'
+                            - '7'
+                          description: The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.<table><tr><th>Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner &amp; followers (private)</td></tr><tr><td>`3`</td><td>Entire company (shared)</td></tr></table>
+                        cc_email:
+                          type: string
+                          description: The BCC email of the lead
+                  additional_data:
+                    description: The additional data of the list
+                    type: object
+                    properties:
+                      start:
+                        type: integer
+                        description: Pagination start
+                      limit:
+                        type: integer
+                        description: Items shown per page
+                      more_items_in_collection:
+                        type: boolean
+                        description: If there are more list items in the collection than displayed or not
+              example:
+                success: true
+                data:
+                - id: adf21080-0e10-11eb-879b-05d71fb426ec
+                  title: Jane Doe Lead
+                  owner_id: 1
+                  creator_id: 1
+                  label_ids:
+                  - f08b42a0-4e75-11ea-9643-03698ef1cfd6
+                  - f08b42a1-4e75-11ea-9643-03698ef1cfd6
+                  person_id: 1092
+                  organization_id: null
+                  source_name: API
+                  origin: API
+                  origin_id: null
+                  channel: 52
+                  channel_id: Jun23 Billboards
+                  is_archived: false
+                  was_seen: false
+                  value:
+                    amount: 999
+                    currency: USD
+                  expected_close_date: null
+                  next_activity_id: 1
+                  add_time: '2020-10-14T11:30:36.551Z'
+                  update_time: '2020-10-14T11:30:36.551Z'
+                  visible_to: '3'
+                  cc_email: company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com
+    post:
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:full
+      tags:
+      - Leads
+      summary: Add a lead
+      description: Creates a lead. A lead always has to be linked to a person or an organization or both. All leads created through the Pipedrive API will have a lead source and origin set to `API`. Here's the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-lead" target="_blank" rel="noopener noreferrer">adding a lead</a>. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields' structure from deals. See an example given in the <a href="https://pipedrive.readme.io/docs/updating-custom-field-value" target="_blank" rel="noopener noreferrer">updating custom fields' values tutorial</a>.
+      x-token-cost: 10
+      operationId: addLead
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: addLeadRequest
+              type: object
+              required:
+              - title
+              properties:
+                title:
+                  type: string
+                  description: The name of the lead
+                owner_id:
+                  type: integer
+                  description: The ID of the user which will be the owner of the created lead. If not provided, the user making the request will be used.
+                label_ids:
+                  type: array
+                  description: The IDs of the lead labels which will be associated with the lead
+                  items:
+                    type: string
+                    format: uuid
+                person_id:
+                  type: integer
+                  description: The ID of a person which this lead will be linked to. If the person does not exist yet, it needs to be created first. This property is required unless `organization_id` is specified.
+                organization_id:
+                  type: integer
+                  description: The ID of an organization which this lead will be linked to. If the organization does not exist yet, it needs to be created first. This property is required unless `person_id` is specified.
+                value:
+                  type: object
+                  nullable: true
+                  description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
+                  required:
+                  - amount
+                  - currency
+                  properties:
+                    amount:
+                      type: number
+                    currency:
+                      type: string
+                expected_close_date:
+                  type: string
+                  format: date
+                  description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
+                visible_to:
+                  type: string
+                  allOf:
+                  - type: string
+                    enum:
+                    - '1'
+                    - '3'
+                    - '5'
+                    - '7'
+                  description: 'The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user. Read more about visibility groups <a href="https://support.pipedrive.com/en/article/visibility-groups" target="_blank" rel="noopener noreferrer">here</a>.<h4>Light / Growth and Professional plans</h4><table><tr><th style="width: 40px">Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner &amp; followers</td><tr><td>`3`</td><td>Entire company</td></tr></table><h4>Premium / Ultimate plan</h4><table><tr><th style="width: 40px">Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner only</td><tr><td>`3`</td><td>Owner''s visibility group</td></tr><tr><td>`5`</td><td>Owner''s visibility group and sub-groups</td></tr><tr><td>`7`</td><td>Entire company</td></tr></table>'
+                was_seen:
+                  type: boolean
+                  description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
+                origin_id:
+                  type: string
+                  nullable: true
+                  description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this lead. If omitted, `origin_id` will be set to null.
+                channel:
+                  type: integer
+                  nullable: true
+                  description: The ID of Marketing channel this lead was created from. Provided value must be one of the channels configured for your company. You can fetch allowed values with <a href="https://developers.pipedrive.com/docs/api/v1/DealFields#getDealField" target="_blank" rel="noopener noreferrer">GET /v1/dealFields</a>. If omitted, channel will be set to null.
+                channel_id:
+                  type: string
+                  nullable: true
+                  description: The optional ID to further distinguish the Marketing channel. If omitted, `channel_id` will be set to null.
+      responses:
+        '201':
+          description: Successful response containing payload in the `data` field
+          content:
+            application/json:
+              schema:
+                title: GetLeadResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    title: Lead
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: The unique ID of the lead in the UUID format
+                      title:
+                        type: string
+                        description: The title of the lead
+                      owner_id:
+                        type: integer
+                        description: The ID of the user who owns the lead
+                      creator_id:
+                        type: integer
+                        description: The ID of the user who created the lead
+                      label_ids:
+                        type: array
+                        description: The IDs of the lead labels which are associated with the lead
+                        items:
+                          type: string
+                          format: uuid
+                      person_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of a person which this lead is linked to
+                      organization_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of an organization which this lead is linked to
+                      source_name:
+                        type: string
+                        description: 'Defines where the lead comes from. Will be `API` if the lead was created through the Public API and will be `Manually created` if the lead was created manually through the UI.
+
+                          '
+                      origin:
+                        type: string
+                        description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
+                      origin_id:
+                        type: string
+                        nullable: true
+                        description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
+                      channel:
+                        type: integer
+                        nullable: true
+                        description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
+                      channel_id:
+                        type: string
+                        nullable: true
+                        description: The optional ID to further distinguish the Marketing channel.
+                      source_deal_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of the deal if the lead was converted from a deal.
+                      is_archived:
+                        type: boolean
+                        description: A flag indicating whether the lead is archived or not
+                      was_seen:
+                        type: boolean
+                        description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
+                      value:
+                        type: object
+                        nullable: true
+                        description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
+                        required:
+                        - amount
+                        - currency
+                        properties:
+                          amount:
+                            type: number
+                          currency:
+                            type: string
+                      expected_close_date:
+                        type: string
+                        format: date
+                        nullable: true
+                        description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
+                      next_activity_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of the next activity associated with the lead
+                      add_time:
+                        type: string
+                        description: 'The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                        format: date-time
+                      update_time:
+                        type: string
+                        description: 'The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                        format: date-time
+                      visible_to:
+                        type: string
+                        allOf:
+                        - type: string
+                          enum:
+                          - '1'
+                          - '3'
+                          - '5'
+                          - '7'
+                        description: The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.<table><tr><th>Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner &amp; followers (private)</td></tr><tr><td>`3`</td><td>Entire company (shared)</td></tr></table>
+                      cc_email:
+                        type: string
+                        description: The BCC email of the lead
+              example:
+                success: true
+                data:
+                  id: adf21080-0e10-11eb-879b-05d71fb426ec
+                  title: Jane Doe Lead
+                  owner_id: 1
+                  creator_id: 1
+                  label_ids:
+                  - f08b42a0-4e75-11ea-9643-03698ef1cfd6
+                  - f08b42a1-4e75-11ea-9643-03698ef1cfd6
+                  person_id: 1092
+                  organization_id: null
+                  source_name: API
+                  origin: API
+                  origin_id: null
+                  channel: 52
+                  channel_id: Jun23 Billboards
+                  is_archived: false
+                  was_seen: false
+                  value:
+                    amount: 999
+                    currency: USD
+                  expected_close_date: null
+                  next_activity_id: 1
+                  add_time: '2020-10-14T11:30:36.551Z'
+                  update_time: '2020-10-14T11:30:36.551Z'
+                  visible_to: '3'
+                  cc_email: company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com
+  /leads/archived:
+    get:
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:read
+        - leads:full
+      tags:
+      - Leads
+      summary: Get all archived leads
+      description: 'Returns multiple archived leads. Leads are sorted by the time they were created, from oldest to newest. Pagination can be controlled using `limit` and `start` query parameters. If a lead contains custom fields, the fields'' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field''s value hasn''t been set for the lead, it won''t appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields'' structure from deals.
+
+        '
+      x-token-cost: 40
+      operationId: getArchivedLeads
+      parameters:
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned.
+        schema:
+          type: integer
+          example: 100
+      - in: query
+        name: start
+        description: For pagination, the position that represents the first result for the page
+        schema:
+          type: integer
+          example: 0
+      - in: query
+        name: owner_id
+        description: If supplied, only leads matching the given user will be returned. However, `filter_id` takes precedence over `owner_id` when supplied.
+        schema:
+          type: integer
+          example: 1
+      - in: query
+        name: person_id
+        description: If supplied, only leads matching the given person will be returned. However, `filter_id` takes precedence over `person_id` when supplied.
+        schema:
+          type: integer
+          example: 1
+      - in: query
+        name: organization_id
+        description: If supplied, only leads matching the given organization will be returned. However, `filter_id` takes precedence over `organization_id` when supplied.
+        schema:
+          type: integer
+          example: 1
+      - in: query
+        name: filter_id
+        description: The ID of the filter to use
+        schema:
+          type: integer
+          example: 1
+      - in: query
+        name: sort
+        description: The field names and sorting mode separated by a comma (`field_name_1 ASC`, `field_name_2 DESC`). Only first-level field keys are supported (no nested keys).
+        schema:
+          type: string
+          enum:
+          - id
+          - title
+          - owner_id
+          - creator_id
+          - was_seen
+          - expected_close_date
+          - next_activity_id
+          - add_time
+          - update_time
+      responses:
+        '200':
+          description: Successful response containing payload in the `data` field
+          content:
+            application/json:
+              schema:
+                title: GetLeadsResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      title: Lead
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          description: The unique ID of the lead in the UUID format
+                        title:
+                          type: string
+                          description: The title of the lead
+                        owner_id:
+                          type: integer
+                          description: The ID of the user who owns the lead
+                        creator_id:
+                          type: integer
+                          description: The ID of the user who created the lead
+                        label_ids:
+                          type: array
+                          description: The IDs of the lead labels which are associated with the lead
+                          items:
+                            type: string
+                            format: uuid
+                        person_id:
+                          type: integer
+                          nullable: true
+                          description: The ID of a person which this lead is linked to
+                        organization_id:
+                          type: integer
+                          nullable: true
+                          description: The ID of an organization which this lead is linked to
+                        source_name:
+                          type: string
+                          description: 'Defines where the lead comes from. Will be `API` if the lead was created through the Public API and will be `Manually created` if the lead was created manually through the UI.
+
+                            '
+                        origin:
+                          type: string
+                          description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
+                        origin_id:
+                          type: string
+                          nullable: true
+                          description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
+                        channel:
+                          type: integer
+                          nullable: true
+                          description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
+                        channel_id:
+                          type: string
+                          nullable: true
+                          description: The optional ID to further distinguish the Marketing channel.
+                        source_deal_id:
+                          type: integer
+                          nullable: true
+                          description: The ID of the deal if the lead was converted from a deal.
+                        is_archived:
+                          type: boolean
+                          description: A flag indicating whether the lead is archived or not
+                        was_seen:
+                          type: boolean
+                          description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
+                        value:
+                          type: object
+                          nullable: true
+                          description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
+                          required:
+                          - amount
+                          - currency
+                          properties:
+                            amount:
+                              type: number
+                            currency:
+                              type: string
+                        expected_close_date:
+                          type: string
+                          format: date
+                          nullable: true
+                          description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
+                        next_activity_id:
+                          type: integer
+                          nullable: true
+                          description: The ID of the next activity associated with the lead
+                        add_time:
+                          type: string
+                          description: 'The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                          format: date-time
+                        update_time:
+                          type: string
+                          description: 'The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                          format: date-time
+                        visible_to:
+                          type: string
+                          allOf:
+                          - type: string
+                            enum:
+                            - '1'
+                            - '3'
+                            - '5'
+                            - '7'
+                          description: The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.<table><tr><th>Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner &amp; followers (private)</td></tr><tr><td>`3`</td><td>Entire company (shared)</td></tr></table>
+                        cc_email:
+                          type: string
+                          description: The BCC email of the lead
+                  additional_data:
+                    description: The additional data of the list
+                    type: object
+                    properties:
+                      start:
+                        type: integer
+                        description: Pagination start
+                      limit:
+                        type: integer
+                        description: Items shown per page
+                      more_items_in_collection:
+                        type: boolean
+                        description: If there are more list items in the collection than displayed or not
+              example:
+                success: true
+                data:
+                - id: adf21080-0e10-11eb-879b-05d71fb426ec
+                  title: Jane Doe Lead
+                  owner_id: 1
+                  creator_id: 1
+                  label_ids:
+                  - f08b42a0-4e75-11ea-9643-03698ef1cfd6
+                  - f08b42a1-4e75-11ea-9643-03698ef1cfd6
+                  person_id: 1092
+                  organization_id: null
+                  source_name: API
+                  origin: API
+                  origin_id: null
+                  channel: 52
+                  channel_id: Jun23 Billboards
+                  is_archived: true
+                  was_seen: false
+                  value:
+                    amount: 999
+                    currency: USD
+                  expected_close_date: null
+                  next_activity_id: 1
+                  add_time: '2020-10-14T11:30:36.551Z'
+                  update_time: '2020-10-14T11:30:36.551Z'
+                  visible_to: '3'
+                  cc_email: company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com
+  /leads/{id}:
+    get:
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:read
+        - leads:full
+      tags:
+      - Leads
+      summary: Get one lead
+      description: Returns details of a specific lead. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields’ structure from deals.
+      x-token-cost: 2
+      operationId: getLead
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the lead
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Successful response containing payload in the `data` field
+          content:
+            application/json:
+              schema:
+                title: GetLeadResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    title: Lead
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: The unique ID of the lead in the UUID format
+                      title:
+                        type: string
+                        description: The title of the lead
+                      owner_id:
+                        type: integer
+                        description: The ID of the user who owns the lead
+                      creator_id:
+                        type: integer
+                        description: The ID of the user who created the lead
+                      label_ids:
+                        type: array
+                        description: The IDs of the lead labels which are associated with the lead
+                        items:
+                          type: string
+                          format: uuid
+                      person_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of a person which this lead is linked to
+                      organization_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of an organization which this lead is linked to
+                      source_name:
+                        type: string
+                        description: 'Defines where the lead comes from. Will be `API` if the lead was created through the Public API and will be `Manually created` if the lead was created manually through the UI.
+
+                          '
+                      origin:
+                        type: string
+                        description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
+                      origin_id:
+                        type: string
+                        nullable: true
+                        description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
+                      channel:
+                        type: integer
+                        nullable: true
+                        description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
+                      channel_id:
+                        type: string
+                        nullable: true
+                        description: The optional ID to further distinguish the Marketing channel.
+                      source_deal_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of the deal if the lead was converted from a deal.
+                      is_archived:
+                        type: boolean
+                        description: A flag indicating whether the lead is archived or not
+                      was_seen:
+                        type: boolean
+                        description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
+                      value:
+                        type: object
+                        nullable: true
+                        description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
+                        required:
+                        - amount
+                        - currency
+                        properties:
+                          amount:
+                            type: number
+                          currency:
+                            type: string
+                      expected_close_date:
+                        type: string
+                        format: date
+                        nullable: true
+                        description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
+                      next_activity_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of the next activity associated with the lead
+                      add_time:
+                        type: string
+                        description: 'The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                        format: date-time
+                      update_time:
+                        type: string
+                        description: 'The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                        format: date-time
+                      visible_to:
+                        type: string
+                        allOf:
+                        - type: string
+                          enum:
+                          - '1'
+                          - '3'
+                          - '5'
+                          - '7'
+                        description: The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.<table><tr><th>Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner &amp; followers (private)</td></tr><tr><td>`3`</td><td>Entire company (shared)</td></tr></table>
+                      cc_email:
+                        type: string
+                        description: The BCC email of the lead
+              example:
+                success: true
+                data:
+                  id: adf21080-0e10-11eb-879b-05d71fb426ec
+                  title: Jane Doe Lead
+                  owner_id: 1
+                  creator_id: 1
+                  label_ids:
+                  - f08b42a0-4e75-11ea-9643-03698ef1cfd6
+                  - f08b42a1-4e75-11ea-9643-03698ef1cfd6
+                  person_id: 1092
+                  organization_id: null
+                  source_name: API
+                  origin: API
+                  origin_id: null
+                  channel: 52
+                  channel_id: Jun23 Billboards
+                  is_archived: false
+                  was_seen: false
+                  value:
+                    amount: 999
+                    currency: USD
+                  expected_close_date: null
+                  next_activity_id: 1
+                  add_time: '2020-10-14T11:30:36.551Z'
+                  update_time: '2020-10-14T11:30:36.551Z'
+                  visible_to: '3'
+                  cc_email: company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com
+        '404':
+          description: A resource describing an error
+          content:
+            application/json:
+              schema:
+                type: object
+                title: LeadNotFoundResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: false
+                error: requested lead not found
+                error_info: Object was not found.
+                data: null
+                additional_data: null
+    patch:
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:full
+      tags:
+      - Leads
+      summary: Update a lead
+      description: Updates one or more properties of a lead. Only properties included in the request will be updated. Send `null` to unset a property (applicable for example for `value`, `person_id` or `organization_id`). If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields’ structure from deals. See an example given in the <a href="https://pipedrive.readme.io/docs/updating-custom-field-value" target="_blank" rel="noopener noreferrer">updating custom fields’ values tutorial</a>.
+      x-token-cost: 10
+      operationId: updateLead
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the lead
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: updateLeadRequest
+              type: object
+              properties:
+                title:
+                  type: string
+                  nullable: true
+                  description: The name of the lead
+                owner_id:
+                  type: integer
+                  description: The ID of the user which will be the owner of the created lead. If not provided, the user making the request will be used.
+                label_ids:
+                  type: array
+                  description: The IDs of the lead labels which will be associated with the lead
+                  items:
+                    type: string
+                    format: uuid
+                person_id:
+                  type: integer
+                  nullable: true
+                  description: 'The ID of a person which this lead will be linked to. If the person does not exist yet, it needs to be created first. A lead always has to be linked to a person or organization or both.
+
+                    '
+                organization_id:
+                  type: integer
+                  nullable: true
+                  description: The ID of an organization which this lead will be linked to. If the organization does not exist yet, it needs to be created first. A lead always has to be linked to a person or organization or both.
+                is_archived:
+                  type: boolean
+                  description: A flag indicating whether the lead is archived or not
+                value:
+                  type: object
+                  nullable: true
+                  description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
+                  required:
+                  - amount
+                  - currency
+                  properties:
+                    amount:
+                      type: number
+                    currency:
+                      type: string
+                expected_close_date:
+                  type: string
+                  format: date
+                  nullable: true
+                  description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
+                visible_to:
+                  type: string
+                  allOf:
+                  - type: string
+                    enum:
+                    - '1'
+                    - '3'
+                    - '5'
+                    - '7'
+                  description: 'The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user. Read more about visibility groups <a href="https://support.pipedrive.com/en/article/visibility-groups" target="_blank" rel="noopener noreferrer">here</a>.<h4>Light / Growth and Professional plans</h4><table><tr><th style="width: 40px">Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner &amp; followers</td><tr><td>`3`</td><td>Entire company</td></tr></table><h4>Premium / Ultimate plan</h4><table><tr><th style="width: 40px">Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner only</td><tr><td>`3`</td><td>Owner''s visibility group</td></tr><tr><td>`5`</td><td>Owner''s visibility group and sub-groups</td></tr><tr><td>`7`</td><td>Entire company</td></tr></table>'
+                was_seen:
+                  type: boolean
+                  description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
+                channel:
+                  type: integer
+                  nullable: true
+                  description: The ID of Marketing channel this lead was created from. Provided value must be one of the channels configured for your company which you can fetch with <a href="https://developers.pipedrive.com/docs/api/v1/DealFields#getDealField" target="_blank" rel="noopener noreferrer">GET /v1/dealFields</a>.
+                channel_id:
+                  type: string
+                  nullable: true
+                  description: The optional ID to further distinguish the Marketing channel.
+      responses:
+        '200':
+          description: Successful response containing payload in the `data` field
+          content:
+            application/json:
+              schema:
+                title: GetLeadResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    title: Lead
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: The unique ID of the lead in the UUID format
+                      title:
+                        type: string
+                        description: The title of the lead
+                      owner_id:
+                        type: integer
+                        description: The ID of the user who owns the lead
+                      creator_id:
+                        type: integer
+                        description: The ID of the user who created the lead
+                      label_ids:
+                        type: array
+                        description: The IDs of the lead labels which are associated with the lead
+                        items:
+                          type: string
+                          format: uuid
+                      person_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of a person which this lead is linked to
+                      organization_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of an organization which this lead is linked to
+                      source_name:
+                        type: string
+                        description: 'Defines where the lead comes from. Will be `API` if the lead was created through the Public API and will be `Manually created` if the lead was created manually through the UI.
+
+                          '
+                      origin:
+                        type: string
+                        description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
+                      origin_id:
+                        type: string
+                        nullable: true
+                        description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
+                      channel:
+                        type: integer
+                        nullable: true
+                        description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
+                      channel_id:
+                        type: string
+                        nullable: true
+                        description: The optional ID to further distinguish the Marketing channel.
+                      source_deal_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of the deal if the lead was converted from a deal.
+                      is_archived:
+                        type: boolean
+                        description: A flag indicating whether the lead is archived or not
+                      was_seen:
+                        type: boolean
+                        description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
+                      value:
+                        type: object
+                        nullable: true
+                        description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
+                        required:
+                        - amount
+                        - currency
+                        properties:
+                          amount:
+                            type: number
+                          currency:
+                            type: string
+                      expected_close_date:
+                        type: string
+                        format: date
+                        nullable: true
+                        description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
+                      next_activity_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of the next activity associated with the lead
+                      add_time:
+                        type: string
+                        description: 'The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                        format: date-time
+                      update_time:
+                        type: string
+                        description: 'The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.'
+                        format: date-time
+                      visible_to:
+                        type: string
+                        allOf:
+                        - type: string
+                          enum:
+                          - '1'
+                          - '3'
+                          - '5'
+                          - '7'
+                        description: The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.<table><tr><th>Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner &amp; followers (private)</td></tr><tr><td>`3`</td><td>Entire company (shared)</td></tr></table>
+                      cc_email:
+                        type: string
+                        description: The BCC email of the lead
+              example:
+                success: true
+                data:
+                  id: adf21080-0e10-11eb-879b-05d71fb426ec
+                  title: Jane Doe Lead
+                  owner_id: 1
+                  creator_id: 1
+                  label_ids:
+                  - f08b42a0-4e75-11ea-9643-03698ef1cfd6
+                  - f08b42a1-4e75-11ea-9643-03698ef1cfd6
+                  person_id: 1092
+                  organization_id: null
+                  source_name: API
+                  origin: API
+                  origin_id: null
+                  channel: 52
+                  channel_id: Jun23 Billboards
+                  is_archived: false
+                  was_seen: false
+                  value:
+                    amount: 999
+                    currency: USD
+                  expected_close_date: null
+                  next_activity_id: 1
+                  add_time: '2020-10-14T11:30:36.551Z'
+                  update_time: '2020-10-14T11:30:36.551Z'
+                  visible_to: '3'
+                  cc_email: company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com
+        '404':
+          description: A resource describing an error
+          content:
+            application/json:
+              schema:
+                type: object
+                title: LeadNotFoundResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: false
+                error: requested lead not found
+                error_info: Object was not found.
+                data: null
+                additional_data: null
+    delete:
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:full
+      tags:
+      - Leads
+      summary: Delete a lead
+      description: Deletes a specific lead.
+      x-token-cost: 6
+      operationId: deleteLead
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the lead
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Successful response with id value only. Used in DELETE calls.
+          content:
+            application/json:
+              schema:
+                title: GetLeadIdResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+              example:
+                success: true
+                data:
+                  id: adf21080-0e10-11eb-879b-05d71fb426ec
+        '404':
+          description: A resource describing an error
+          content:
+            application/json:
+              schema:
+                type: object
+                title: LeadNotFoundResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: false
+                error: requested lead not found
+                error_info: Object was not found.
+                data: null
+                additional_data: null
+  /leads/{id}/permittedUsers:
+    get:
+      summary: List permitted users
+      description: Lists the users permitted to access a lead.
+      x-token-cost: 10
+      operationId: getLeadUsers
+      tags:
+      - Leads
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:read
+        - leads:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the lead
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Lists users permitted to access a lead
+          content:
+            application/json:
+              schema:
+                title: userIds
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: integer
+                      description: The list of user IDs
+              example:
+                success: true
+                data:
+                - 10100010
+                - 22302444
+                - 33511023
+  /leads/search:
+    get:
+      summary: Search leads
+      description: Searches all leads by title, notes and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope. Found leads can be filtered by the person ID and the organization ID.
+      x-token-cost: 40
+      operationId: searchLeads
+      tags:
+      - Leads
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:read
+        - leads:full
+        - search:read
+      parameters:
+      - in: query
+        name: term
+        required: true
+        schema:
+          type: string
+        description: The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded.
+      - in: query
+        name: fields
+        schema:
+          type: string
+          enum:
+          - custom_fields
+          - notes
+          - title
+        description: A comma-separated string array. The fields to perform the search from. Defaults to all of them.
+      - in: query
+        name: exact_match
+        schema:
+          type: boolean
+        description: When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.
+      - in: query
+        name: person_id
+        schema:
+          type: integer
+        description: Will filter leads by the provided person ID. The upper limit of found leads associated with the person is 2000.
+      - in: query
+        name: organization_id
+        schema:
+          type: integer
+        description: Will filter leads by the provided organization ID. The upper limit of found leads associated with the organization is 2000.
+      - in: query
+        name: include_fields
+        schema:
+          type: string
+          enum:
+          - lead.was_seen
+        description: Supports including optional fields in the results which are not provided by default
+      - in: query
+        name: start
+        schema:
+          type: integer
+          default: 0
+        description: Pagination start. Note that the pagination is based on main results and does not include related items when using `search_for_related_items` parameter.
+      - in: query
+        name: limit
+        schema:
+          type: integer
+        description: Items shown per page
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: GetLeadSearchResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        items:
+                          type: array
+                          description: The array of leads
+                          items:
+                            type: object
+                            title: LeadSearchItem
+                            properties:
+                              result_score:
+                                type: number
+                                description: Search result relevancy
+                              item:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    description: The ID of the lead
+                                  type:
+                                    type: string
+                                    description: The type of the item
+                                  title:
+                                    type: string
+                                    description: The title of the lead
+                                  owner:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: integer
+                                        description: The ID of the owner of the lead
+                                  person:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: integer
+                                        description: The ID of the person the lead is associated with
+                                      name:
+                                        type: string
+                                        description: The name of the person the lead is associated with
+                                  organization:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: integer
+                                        description: The ID of the organization the lead is associated with
+                                      name:
+                                        type: string
+                                        description: The name of the organization the lead is associated with
+                                  phones:
+                                    type: array
+                                    items:
+                                      type: string
+                                  emails:
+                                    type: array
+                                    items:
+                                      type: string
+                                  custom_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: Custom fields
+                                  notes:
+                                    type: array
+                                    description: An array of notes
+                                    items:
+                                      type: string
+                                  value:
+                                    type: integer
+                                    description: The value of the lead
+                                  currency:
+                                    type: string
+                                    description: The currency of the lead
+                                  visible_to:
+                                    type: integer
+                                    description: The visibility of the lead
+                                  is_archived:
+                                    type: boolean
+                                    description: A flag indicating whether the lead is archived or not
+                    additional_data:
+                      type: object
+                      properties:
+                        pagination:
+                          description: Pagination details of the list
+                          type: object
+                          properties:
+                            start:
+                              type: integer
+                              description: Pagination start
+                            limit:
+                              type: integer
+                              description: Items shown per page
+                            more_items_in_collection:
+                              type: boolean
+                              description: Whether there are more list items in the collection than displayed
+                            next_start:
+                              type: integer
+                              description: Next pagination start
+              example:
+                success: true
+                data:
+                  items:
+                  - result_score: 0.29
+                    item:
+                      id: 39c433f0-8a4c-11ec-8728-09968f0a1ca0
+                      type: lead
+                      title: John Doe lead
+                      owner:
+                        id: 1
+                      person:
+                        id: 1
+                        name: John Doe
+                      organization:
+                        id: 1
+                        name: John company
+                      phones: []
+                      emails:
+                      - john@doe.com
+                      custom_fields: []
+                      notes: []
+                      value: 100
+                      currency: USD
+                      visible_to: 3
+                      is_archived: false
+                additional_data:
+                  description: The additional data of the list
+                  type: object
+                  properties:
+                    start:
+                      type: integer
+                      description: Pagination start
+                    limit:
+                      type: integer
+                      description: Items shown per page
+                    more_items_in_collection:
+                      type: boolean
+                      description: If there are more list items in the collection than displayed or not
+  /leads/{id}/convert/deal:
+    post:
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:full
+      tags:
+      - Leads
+      summary: Convert a lead to a deal
+      description: Initiates a conversion of a lead to a deal. The return value is an ID of a job that was assigned to perform the conversion. Related entities (notes, files, emails, activities, ...) are transferred during the process to the target entity. If the conversion is successful, the lead is marked as deleted. To retrieve the created entity ID and the result of the conversion, call the <a href="https://developers.pipedrive.com/docs/api/v1/Leads#getLeadConversionStatus">/api/v2/leads/{lead_id}/convert/status/{conversion_id}</a> endpoint.
+      operationId: convertLeadToDeal
+      x-token-cost: 40
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The ID of the lead to convert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              type: object
+              properties:
+                stage_id:
+                  description: The ID of a stage the created deal will be added to. Please note that a pipeline will be assigned automatically based on the `stage_id`. If omitted, the deal will be placed in the first stage of the default pipeline.
+                  type: integer
+                pipeline_id:
+                  description: The ID of a pipeline the created deal will be added to. By default, the deal will be added to the first stage of the specified pipeline. Please note that `pipeline_id` and `stage_id` should not be used together as `pipeline_id` will be ignored.
+                  type: integer
+      responses:
+        '200':
+          description: Successful response containing payload in the `data` field
+          content:
+            application/json:
+              schema:
+                title: AddConvertLeadToDealResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    description: An object containing conversion job id that performs the conversion
+                    required:
+                    - conversion_id
+                    properties:
+                      conversion_id:
+                        description: The ID of the conversion job that can be used to retrieve conversion status and details. The ID has UUID format.
+                        type: string
+                        format: uuid
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: true
+                data:
+                  conversion_id: 4b40248b-945a-4802-b996-60fdff8c5c69
+                additional_data: null
+        '404':
+          description: A resource describing an error
+          content:
+            application/json:
+              schema:
+                type: object
+                title: GetConvertResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: false
+                error: Entity was not found
+                error_info: Object was not found.
+                data: null
+                additional_data: null
+  /leads/{id}/convert/status/{conversion_id}:
+    get:
+      security:
+      - api_key: []
+      - oauth2:
+        - leads:full
+        - leads:read
+      tags:
+      - Leads
+      summary: Get Lead conversion status
+      description: Returns data about the conversion. Status is always present and its value (not_started, running, completed, failed, rejected) represents the current state of the conversion. Deal ID is only present if the conversion was successfully finished. This data is only temporary and removed after a few days.
+      operationId: getLeadConversionStatus
+      x-token-cost: 1
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The ID of a lead
+      - in: path
+        name: conversion_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The ID of the conversion
+      responses:
+        '200':
+          description: Successful response containing payload in the `data` field
+          content:
+            application/json:
+              example:
+                success: true
+                data:
+                  deal_id: 33
+                  conversion_id: 4b40248b-945a-4802-b996-60fdff8c5c69
+                  status: completed
+                additional_data: null
+              schema:
+                title: GetConvertResponse
+                type: object
+                required:
+                - success
+                - data
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    description: An object containing conversion status. After successful conversion the converted entity ID is also present.
+                    required:
+                    - conversion_id
+                    - status
+                    properties:
+                      lead_id:
+                        description: The ID of the new lead.
+                        type: string
+                        format: uuid
+                      deal_id:
+                        description: The ID of the new deal.
+                        type: integer
+                      conversion_id:
+                        description: The ID of the conversion job. The ID can be used to retrieve conversion status and details. The ID has UUID format.
+                        type: string
+                        format: uuid
+                      status:
+                        description: Status of the conversion job.
+                        type: string
+                        enum:
+                        - not_started
+                        - running
+                        - completed
+                        - failed
+                        - rejected
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+        '404':
+          description: A resource describing an error
+          content:
+            application/json:
+              schema:
+                type: object
+                title: GetConvertResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    description: The description of the error
+                  error_info:
+                    type: string
+                    description: A message describing how to solve the problem
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: false
+                error: Entity was not found
+                error_info: Object was not found.
+                data: null
+                additional_data: null
+components:
+  securitySchemes:
+    basic_authentication:
+      type: http
+      scheme: basic
+      description: Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.
+    api_key:
+      type: apiKey
+      name: x-api-token
+      in: header
+    oauth2:
+      type: oauth2
+      description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+          tokenUrl: https://oauth.pipedrive.com/oauth/token
+          refreshUrl: https://oauth.pipedrive.com/oauth/token
+          scopes:
+            base: Read settings of the authorized user and currencies in an account
+            deals:read: Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            deals:full: Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            mail:read: Read mail threads and messages
+            mail:full: Read, update and delete mail threads. Also grants read access to mail messages
+            activities:read: Read activities, its fields and types; all files and filters
+            activities:full: Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types
+            contacts:read: Read the data about persons and organizations, their related fields and followers; also all notes, files, filters
+            contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
+            products:read: Read products, its fields, files, followers and products connected to a deal
+            products:full: Create, read, update and delete products and its fields; add products to deals
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            projects:read: Read projects and its fields, tasks and project templates
+            projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
+            users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
+            recents:read: Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users
+            search:read: Search across the account for deals, persons, organizations, files and products, and see details about the returned results
+            admin: Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app
+            leads:read: Read data about leads and lead labels
+            leads:full: Create, read, update and delete leads and lead labels
+            phone-integration: Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive
+            goals:read: Read data on all goals
+            goals:full: Create, read, update and delete goals
+            video-calls: Allows application to register as a video call integration provider and create conference links
+            messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses

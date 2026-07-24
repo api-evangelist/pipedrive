@@ -1,0 +1,599 @@
+openapi: 3.0.1
+info:
+  title: Pipedrive API v1 Activities Channels API
+  version: 1.0.0
+  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
+
+    '
+servers:
+- url: https://api.pipedrive.com/v1
+tags:
+- name: Channels
+  description: 'Channels API allows you to integrate your existing messaging channels into Pipedrive through [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension). It enables you to manage and interact with the channel’s conversations, participants and messages inside Pipedrive Messaging inbox: get the historical conversation, receive and send new messages. These endpoints are accessible only through **Messengers integration** OAuth scope together with Messaging manifest in building the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+
+    '
+paths:
+  /channels:
+    post:
+      deprecated: true
+      security:
+      - api_key: []
+      - oauth2:
+        - messengers-integration
+      tags:
+      - Channels
+      summary: Add a channel
+      description: Adds a new messaging channel, only admins are able to register new channels. It will use the getConversations endpoint to fetch conversations, participants and messages afterward. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+      x-token-cost: 10
+      operationId: addChannel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - provider_channel_id
+              properties:
+                name:
+                  type: string
+                  example: My Channel
+                  description: The name of the channel
+                provider_channel_id:
+                  type: string
+                  description: The channel ID
+                avatar_url:
+                  type: string
+                  format: url
+                  description: The URL for an icon that represents your channel
+                template_support:
+                  type: boolean
+                  description: If true, enables templates logic on UI. Requires getTemplates endpoint implemented. Find out more [here](https://pipedrive.readme.io/docs/implementing-messaging-app-extension).
+                  default: false
+                provider_type:
+                  type: string
+                  enum:
+                  - facebook
+                  - whatsapp
+                  - other
+                  default: other
+                  description: It controls the icons (like the icon next to the conversation)
+      responses:
+        '200':
+          description: The channel registered
+          content:
+            application/json:
+              schema:
+                type: object
+                title: AddChannelResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The unique channel ID used internally in omnichannel-api and the frontend of the extension
+                      name:
+                        type: string
+                        example: My Channel
+                        description: The name of the channel
+                      avatar_url:
+                        type: string
+                        example: http://some-domain.com/test.jpg
+                        description: The URL for an icon that represents your channel
+                      provider_channel_id:
+                        type: string
+                        format: string
+                        description: The channel ID you specified while creating the channel
+                      marketplace_client_id:
+                        type: string
+                        description: The client_id of your app in Pipedrive marketplace
+                      pd_company_id:
+                        type: integer
+                        example: 1
+                        description: The ID of the user's company in Pipedrive
+                      pd_user_id:
+                        type: integer
+                        example: 1
+                        description: The ID of the user in Pipedrive
+                      created_at:
+                        type: string
+                        format: date-time
+                        description: The date and time when your channel was created in the API
+                      provider_type:
+                        type: string
+                        enum:
+                        - facebook
+                        - whatsapp
+                        - other
+                        description: Value of the provider_type sent to this endpoint
+                      template_support:
+                        type: boolean
+                        description: Value of the template_support sent to this endpoint
+              example:
+                success: true
+                data:
+                  id: e283f878-7ef9-4294-8e5c-04a7d003fd92
+                  name: My Channel
+                  avatar_url: http://my-domain.com/images/test.png
+                  provider_channel_id: e283f878-7ef9-4294-8e5c-04a7d003fd92
+                  marketplace_client_id: 57da5c3c55a82bb4
+                  pd_company_id: 123
+                  pd_user_id: 321
+                  created_at: '2022-03-01 00:00:00'
+                  provider_type: other
+                  template_support: false
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                title: AddChannelBadRequestResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: 'Expected { name: string; avatar_url?: string; provider_channel_id: string; }, but was incompatible'
+                    description: The error description
+                  error_info:
+                    type: string
+                    example: Please check the reference docs in https://developers.pipedrive.com/docs/api/v1
+                  additional_data:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: INVALID_BODY
+                        description: An error code sent by the API
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                title: AddChannelForbiddenErrorResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: Only admins can register channels
+                    description: The error description
+                  error_info:
+                    type: string
+                    example: Please check the reference docs in https://developers.pipedrive.com/docs/api/v1
+                  additional_data:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: ADMIN_ONLY
+                        description: An error code sent by the API
+  /channels/{id}:
+    delete:
+      deprecated: true
+      security:
+      - api_key: []
+      - oauth2:
+        - messengers-integration
+      tags:
+      - Channels
+      summary: Delete a channel
+      description: Deletes an existing messenger’s channel and all related entities (conversations and messages). To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+      x-token-cost: 6
+      operationId: deleteChannel
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The ID of the channel provided by the integration
+      responses:
+        '200':
+          description: The channel was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+              example:
+                success: true
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                title: AddChannelBadRequestResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: 'Expected { name: string; avatar_url?: string; provider_channel_id: string; }, but was incompatible'
+                    description: The error description
+                  error_info:
+                    type: string
+                    example: Please check the reference docs in https://developers.pipedrive.com/docs/api/v1
+                  additional_data:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: INVALID_BODY
+                        description: An error code sent by the API
+  /channels/messages/receive:
+    post:
+      deprecated: true
+      security:
+      - api_key: []
+      - oauth2:
+        - messengers-integration
+      tags:
+      - Channels
+      summary: Receives an incoming message
+      description: Adds a message to a conversation. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+      x-token-cost: 10
+      operationId: receiveMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - id
+              - channel_id
+              - sender_id
+              - conversation_id
+              - message
+              - status
+              - created_at
+              properties:
+                id:
+                  type: string
+                  description: The ID of the message
+                channel_id:
+                  type: string
+                  description: The channel ID as in the provider
+                sender_id:
+                  type: string
+                  description: The ID of the provider's user that sent the message
+                conversation_id:
+                  type: string
+                  description: The ID of the conversation
+                message:
+                  type: string
+                  description: The body of the message
+                status:
+                  type: string
+                  enum:
+                  - sent
+                  - delivered
+                  - read
+                  - failed
+                  description: The status of the message
+                created_at:
+                  type: string
+                  format: date-time
+                  description: 'The date and time when the message was created in the provider, in UTC. Format: YYYY-MM-DD HH:MM'
+                reply_by:
+                  type: string
+                  format: date-time
+                  description: 'The date and time when the message can no longer receive a reply, in UTC. Format: YYYY-MM-DD HH:MM'
+                conversation_link:
+                  type: string
+                  format: url
+                  description: A URL that can open the conversation in the provider's side
+                attachments:
+                  type: array
+                  description: The list of attachments available in the message
+                  items:
+                    type: object
+                    required:
+                    - id
+                    - type
+                    - url
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the attachment
+                      type:
+                        type: string
+                        description: The mime-type of the attachment
+                      name:
+                        type: string
+                        description: The name of the attachment
+                      size:
+                        type: number
+                        description: The size of the attachment
+                      url:
+                        type: string
+                        description: A URL to the file
+                      preview_url:
+                        type: string
+                        description: A URL to a preview picture of the file
+                      link_expires:
+                        type: boolean
+                        default: false
+                        description: If true, it will use the getMessageById endpoint for fetching updated attachment's urls. Find out more [here](https://pipedrive.readme.io/docs/implementing-messaging-app-extension)
+      responses:
+        '200':
+          description: The message was registered in the conversation
+          content:
+            application/json:
+              schema:
+                title: GetReceiveMessageSuccessResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the request was successful or not
+                  data:
+                    type: object
+                    required:
+                    - id
+                    - channel_id
+                    - sender_id
+                    - conversation_id
+                    - message
+                    - status
+                    - created_at
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the message
+                      channel_id:
+                        type: string
+                        description: The channel ID as in the provider
+                      sender_id:
+                        type: string
+                        description: The ID of the provider's user that sent the message
+                      conversation_id:
+                        type: string
+                        description: The ID of the conversation
+                      message:
+                        type: string
+                        description: The body of the message
+                      status:
+                        type: string
+                        enum:
+                        - sent
+                        - delivered
+                        - read
+                        - failed
+                        description: The status of the message
+                      created_at:
+                        type: string
+                        format: date-time
+                        description: 'The date and time when the message was created in the provider, in UTC. Format: YYYY-MM-DD HH:MM'
+                      reply_by:
+                        type: string
+                        format: date-time
+                        description: 'The date and time when the message can no longer receive a reply, in UTC. Format: YYYY-MM-DD HH:MM'
+                      conversation_link:
+                        type: string
+                        format: url
+                        description: A URL that can open the conversation in the provider's side
+                      attachments:
+                        type: array
+                        description: The list of attachments available in the message
+                        items:
+                          type: object
+                          required:
+                          - id
+                          - type
+                          - url
+                          properties:
+                            id:
+                              type: string
+                              description: The ID of the attachment
+                            type:
+                              type: string
+                              description: The mime-type of the attachment
+                            name:
+                              type: string
+                              description: The name of the attachment
+                            size:
+                              type: number
+                              description: The size of the attachment
+                            url:
+                              type: string
+                              description: A URL to the file
+                            preview_url:
+                              type: string
+                              description: A URL to a preview picture of the file
+                            link_expires:
+                              type: boolean
+                              default: false
+                              description: If true, it will use the getMessageById endpoint for fetching updated attachment's urls. Find out more [here](https://pipedrive.readme.io/docs/implementing-messaging-app-extension)
+              example:
+                success: true
+                data:
+                  id: e283f878-7ef9-4294-8e5c-04a7d003fd92
+                  channel_id: a8aa4db0-91bb-4e90-b9c0-0c6291307e2f
+                  sender_id: 5d4bd467-d847-4088-ae43-0c7614233bab
+                  conversation_id: 063ffa46-831c-4027-a04c-b65e17f077b7
+                  message: This is a message
+                  status: sent
+                  created_at: '2022-03-01T07:58:35.449Z'
+                  reply_by: '2022-03-01T07:58:35.449Z'
+                  conversation_link: http://my-server.com/conversations/063ffa46-831c-4027-a04c-b65e17f077b7
+                  attachments:
+                  - id: b0369d1d-6b6a-4293-88b9-e2924782d47e
+                    type: image/png
+                    name: Image Name
+                    size: 600
+                    url: http://my-server.com/images/b0369d1d-6b6a-4293-88b9-e2924782d47e.png
+                    preview_url: http://my-server.com/images/b0369d1d-6b6a-4293-88b9-e2924782d47e.preview.png
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                title: ReceiveMessageBadRequestErrorResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: 'Expected { id: string; sender_id: string; conversation_id: string; conversation_link?: string; channel_id: string; created_at: string; message: string; status: unknown; attachments: { id: string; type: string; name: string | null; size: number | null; url: string; preview_url: string | null; }[]; reply_by?: string | null; }, but was incompatible'
+                    description: The error description
+                  error_info:
+                    type: string
+                    example: Please check the reference docs in https://developers.pipedrive.com/docs/api/v1
+                  additional_data:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: INVALID_RECEIVE_MESSAGE_PAYLOAD
+                        description: An error code sent by the API
+  /channels/{channel-id}/conversations/{conversation-id}:
+    delete:
+      deprecated: true
+      security:
+      - api_key: []
+      - oauth2:
+        - messengers-integration
+      tags:
+      - Channels
+      summary: Delete a conversation
+      description: Deletes an existing conversation. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+      x-token-cost: 6
+      operationId: deleteConversation
+      parameters:
+      - in: path
+        name: channel-id
+        schema:
+          type: string
+        required: true
+        description: The ID of the channel provided by the integration
+      - in: path
+        name: conversation-id
+        schema:
+          type: string
+        required: true
+        description: The ID of the conversation provided by the integration
+      responses:
+        '200':
+          description: The conversation was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+              example:
+                success: true
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                title: DeleteConversationForbiddenErrorResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: Only the app owner can delete conversations
+                    description: The error description
+                  error_info:
+                    type: string
+                    example: Please check the reference docs in https://developers.pipedrive.com/docs/api/v1
+                  additional_data:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: FORBIDDEN_USER_REQUEST
+                        description: An error code sent by the API
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                title: DeleteConversationNotFoundErrorResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: Channel not found.
+                    description: The error description
+                  error_info:
+                    type: string
+                    example: Please check the reference docs in https://developers.pipedrive.com/docs/api/v1
+                  additional_data:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: NOT_FOUND
+                        description: An error code sent by the API
+components:
+  securitySchemes:
+    basic_authentication:
+      type: http
+      scheme: basic
+      description: Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.
+    api_key:
+      type: apiKey
+      name: x-api-token
+      in: header
+    oauth2:
+      type: oauth2
+      description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+          tokenUrl: https://oauth.pipedrive.com/oauth/token
+          refreshUrl: https://oauth.pipedrive.com/oauth/token
+          scopes:
+            base: Read settings of the authorized user and currencies in an account
+            deals:read: Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            deals:full: Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            mail:read: Read mail threads and messages
+            mail:full: Read, update and delete mail threads. Also grants read access to mail messages
+            activities:read: Read activities, its fields and types; all files and filters
+            activities:full: Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types
+            contacts:read: Read the data about persons and organizations, their related fields and followers; also all notes, files, filters
+            contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
+            products:read: Read products, its fields, files, followers and products connected to a deal
+            products:full: Create, read, update and delete products and its fields; add products to deals
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            projects:read: Read projects and its fields, tasks and project templates
+            projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
+            users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
+            recents:read: Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users
+            search:read: Search across the account for deals, persons, organizations, files and products, and see details about the returned results
+            admin: Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app
+            leads:read: Read data about leads and lead labels
+            leads:full: Create, read, update and delete leads and lead labels
+            phone-integration: Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive
+            goals:read: Read data on all goals
+            goals:full: Create, read, update and delete goals
+            video-calls: Allows application to register as a video call integration provider and create conference links
+            messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses

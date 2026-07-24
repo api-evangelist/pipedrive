@@ -1,0 +1,1214 @@
+openapi: 3.0.1
+info:
+  title: Pipedrive API v1 Activities Pipelines API
+  version: 1.0.0
+  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
+
+    '
+servers:
+- url: https://api.pipedrive.com/v1
+tags:
+- name: Pipelines
+  description: 'Pipelines are essentially ordered collections of stages.
+
+    '
+paths:
+  /pipelines/{id}/conversion_statistics:
+    get:
+      summary: Get deals conversion rates in pipeline
+      description: Returns all stage-to-stage conversion and pipeline-to-close rates for the given time period.
+      x-token-cost: 40
+      operationId: getPipelineConversionStatistics
+      tags:
+      - Pipelines
+      security:
+      - api_key: []
+      - oauth2:
+        - deals:read
+        - deals:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the pipeline
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: start_date
+        required: true
+        schema:
+          type: string
+          format: date
+        description: The start of the period. Date in format of YYYY-MM-DD.
+      - in: query
+        name: end_date
+        required: true
+        schema:
+          type: string
+          format: date
+        description: The end of the period. Date in format of YYYY-MM-DD.
+      - in: query
+        name: user_id
+        schema:
+          type: integer
+        description: The ID of the user who's pipeline metrics statistics to fetch. If omitted, the authorized user will be used.
+      responses:
+        '200':
+          description: Get pipeline deals conversion rates
+          content:
+            application/json:
+              schema:
+                type: object
+                title: GetPipelineDealsConversionRatesInResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      description: The pipeline object
+                      properties:
+                        stage_conversions:
+                          type: array
+                          description: The stage conversions
+                          items:
+                            type: object
+                            properties:
+                              from_stage_id:
+                                type: integer
+                                description: The stage ID from where conversion starts
+                              to_stage_id:
+                                type: integer
+                                description: The stage ID to where conversion ends
+                              conversion_rate:
+                                type: integer
+                                description: The conversion rate
+                        won_conversion:
+                          type: integer
+                          description: The won conversion
+                        lost_conversion:
+                          type: integer
+                          description: The lost conversion
+              example:
+                success: true
+                data:
+                  stage_conversions:
+                  - from_stage_id: 1
+                    to_stage_id: 2
+                    conversion_rate: 0
+                  won_conversion: 0
+                  lost_conversion: 0
+  /pipelines/{id}/deals:
+    get:
+      summary: Get deals in a pipeline
+      description: Lists deals in a specific pipeline across all its stages. If no parameters are provided open deals owned by the authorized user will be returned. <br>This endpoint has been deprecated. Please use <a href="https://developers.pipedrive.com/docs/api/v1/Deals#getDeals" target="_blank" rel="noopener noreferrer">GET /api/v2/deals?pipeline_id={id}</a> instead.
+      x-token-cost: 20
+      operationId: getPipelineDeals
+      deprecated: true
+      tags:
+      - Pipelines
+      security:
+      - api_key: []
+      - oauth2:
+        - deals:read
+        - deals:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the pipeline
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: filter_id
+        schema:
+          type: integer
+        description: If supplied, only deals matching the given filter will be returned
+      - in: query
+        name: user_id
+        schema:
+          type: integer
+        description: If supplied, `filter_id` will not be considered and only deals owned by the given user will be returned. If omitted, deals owned by the authorized user will be returned.
+      - in: query
+        name: everyone
+        schema:
+          title: numberBoolean
+          type: number
+          enum:
+          - 0
+          - 1
+        description: If supplied, `filter_id` and `user_id` will not be considered – instead, deals owned by everyone will be returned
+      - in: query
+        name: stage_id
+        schema:
+          type: integer
+        description: If supplied, only deals within the given stage will be returned
+      - in: query
+        name: start
+        description: Pagination start
+        schema:
+          type: integer
+          default: 0
+      - in: query
+        name: limit
+        description: Items shown per page
+        schema:
+          type: integer
+      - in: query
+        name: get_summary
+        schema:
+          title: numberBoolean
+          type: number
+          enum:
+          - 0
+          - 1
+        description: Whether to include a summary of the pipeline in the `additional_data` or not
+      - in: query
+        name: totals_convert_currency
+        schema:
+          type: string
+        description: The 3-letter currency code of any of the supported currencies. When supplied, `per_stages_converted` is returned inside `deals_summary` inside `additional_data` which contains the currency-converted total amounts in the given currency per each stage. You may also set this parameter to `default_currency` in which case users default currency is used. Only works when `get_summary` parameter flag is enabled.
+      responses:
+        '200':
+          description: Get deals in a stage
+          content:
+            application/json:
+              schema:
+                title: GetStageDealsResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the request was successful or not
+                  data:
+                    type: array
+                    items:
+                      title: DealStrict
+                      allOf:
+                      - type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the deal
+                          creator_user_id:
+                            type: integer
+                            description: The ID of the deal creator
+                          user_id:
+                            type: integer
+                            description: The ID of the user
+                          person_id:
+                            type: integer
+                            description: The ID of the person associated with the deal
+                          org_id:
+                            type: integer
+                            description: The ID of the organization associated with the deal
+                      - title: baseDeal
+                        type: object
+                        properties:
+                          stage_id:
+                            type: integer
+                            description: The ID of the deal stage
+                          title:
+                            type: string
+                            description: The title of the deal
+                          value:
+                            type: number
+                            description: The value of the deal
+                          currency:
+                            type: string
+                            description: The currency associated with the deal
+                          add_time:
+                            type: string
+                            description: The creation date and time of the deal
+                          update_time:
+                            type: string
+                            description: The last updated date and time of the deal
+                          stage_change_time:
+                            type: string
+                            description: The last updated date and time of the deal stage
+                          active:
+                            type: boolean
+                            description: Whether the deal is active or not
+                          deleted:
+                            type: boolean
+                            description: Whether the deal is deleted or not
+                          is_archived:
+                            type: boolean
+                            description: Whether the deal is archived or not
+                          status:
+                            type: string
+                            description: The status of the deal
+                          probability:
+                            type: number
+                            nullable: true
+                            description: The success probability percentage of the deal
+                          next_activity_date:
+                            type: string
+                            description: The date of the next activity associated with the deal
+                          next_activity_time:
+                            type: string
+                            description: The time of the next activity associated with the deal
+                          next_activity_id:
+                            type: integer
+                            nullable: true
+                            description: The ID of the next activity associated with the deal
+                          last_activity_id:
+                            type: integer
+                            nullable: true
+                            description: The ID of the last activity associated with the deal
+                          last_activity_date:
+                            type: string
+                            nullable: true
+                            description: The date of the last activity associated with the deal
+                          lost_reason:
+                            type: string
+                            nullable: true
+                            description: The reason for losing the deal
+                          visible_to:
+                            type: string
+                            description: The visibility of the deal
+                          close_time:
+                            type: string
+                            nullable: true
+                            description: The date and time of closing the deal
+                          pipeline_id:
+                            type: integer
+                            description: The ID of the pipeline associated with the deal
+                          won_time:
+                            type: string
+                            description: The date and time of changing the deal status as won
+                          first_won_time:
+                            type: string
+                            description: The date and time of the first time changing the deal status as won
+                          lost_time:
+                            type: string
+                            description: The date and time of changing the deal status as lost
+                          products_count:
+                            type: integer
+                            description: The number of products associated with the deal
+                          files_count:
+                            type: integer
+                            description: The number of files associated with the deal
+                          notes_count:
+                            type: integer
+                            description: The number of notes associated with the deal
+                          followers_count:
+                            type: integer
+                            description: The number of followers associated with the deal
+                          email_messages_count:
+                            type: integer
+                            description: The number of emails associated with the deal
+                          activities_count:
+                            type: integer
+                            description: The number of activities associated with the deal
+                          done_activities_count:
+                            type: integer
+                            description: The number of completed activities associated with the deal
+                          undone_activities_count:
+                            type: integer
+                            description: The number of incomplete activities associated with the deal
+                          participants_count:
+                            type: integer
+                            description: The number of participants associated with the deal
+                          expected_close_date:
+                            type: string
+                            format: date
+                            description: The expected close date of the deal
+                          last_incoming_mail_time:
+                            type: string
+                            description: The date and time of the last incoming email associated with the deal
+                          last_outgoing_mail_time:
+                            type: string
+                            description: The date and time of the last outgoing email associated with the deal
+                          label:
+                            type: string
+                            description: The label or multiple labels assigned to the deal
+                          stage_order_nr:
+                            type: integer
+                            description: The order number of the deal stage associated with the deal
+                          person_name:
+                            type: string
+                            description: The name of the person associated with the deal
+                          org_name:
+                            type: string
+                            description: The name of the organization associated with the deal
+                          next_activity_subject:
+                            type: string
+                            description: The subject of the next activity associated with the deal
+                          next_activity_type:
+                            type: string
+                            description: The type of the next activity associated with the deal
+                          next_activity_duration:
+                            type: string
+                            description: The duration of the next activity associated with the deal
+                          next_activity_note:
+                            type: string
+                            description: The note of the next activity associated with the deal
+                          formatted_value:
+                            type: string
+                            description: The deal value formatted with selected currency. E.g. US$500
+                          weighted_value:
+                            type: number
+                            description: Probability times deal value. Probability can either be deal probability or if not set, then stage probability.
+                          formatted_weighted_value:
+                            type: string
+                            description: The weighted_value formatted with selected currency. E.g. US$500
+                          weighted_value_currency:
+                            type: string
+                            description: The currency associated with the deal
+                          rotten_time:
+                            type: string
+                            nullable: true
+                            description: The date and time of changing the deal status as rotten
+                          owner_name:
+                            type: string
+                            description: The name of the deal owner
+                          cc_email:
+                            type: string
+                            description: The BCC email of the deal
+                          org_hidden:
+                            type: boolean
+                            description: If the organization that is associated with the deal is hidden or not
+                          person_hidden:
+                            type: boolean
+                            description: If the person that is associated with the deal is hidden or not
+                          origin:
+                            type: string
+                            description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
+                          origin_id:
+                            type: string
+                            nullable: true
+                            description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
+                          channel:
+                            type: integer
+                            nullable: true
+                            description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
+                          channel_id:
+                            type: string
+                            nullable: true
+                            description: The optional ID to further distinguish the Marketing channel.
+                          arr:
+                            type: number
+                            nullable: true
+                            description: 'Only available in Growth and above plans
+
+
+                              The Annual Recurring Revenue of the deal
+
+
+                              Null if there are no products attached to the deal
+
+                              '
+                          mrr:
+                            type: number
+                            nullable: true
+                            description: 'Only available in Growth and above plans
+
+
+                              The Monthly Recurring Revenue of the deal
+
+
+                              Null if there are no products attached to the deal
+
+                              '
+                          acv:
+                            type: number
+                            nullable: true
+                            description: 'Only available in Growth and above plans
+
+
+                              The Annual Contract Value of the deal
+
+
+                              Null if there are no products attached to the deal
+
+                              '
+                          arr_currency:
+                            type: string
+                            nullable: true
+                            description: 'Only available in Growth and above plans
+
+
+                              The Currency for Annual Recurring Revenue of the deal
+
+
+                              If the `arr` is null, this will also be null
+
+                              '
+                          mrr_currency:
+                            type: string
+                            nullable: true
+                            description: 'Only available in Growth and above plans
+
+
+                              The Currency for Monthly Recurring Revenue of the deal
+
+
+                              If the `mrr` is null, this will also be null
+
+                              '
+                          acv_currency:
+                            type: string
+                            nullable: true
+                            description: 'Only available in Growth and above plans
+
+
+                              The Currency for Annual Contract Value of the deal
+
+
+                              If the `acv` is null, this will also be null
+
+                              '
+                    description: The array of deals
+                  additional_data:
+                    description: The additional data of the list
+                    type: object
+                    properties:
+                      start:
+                        type: integer
+                        description: Pagination start
+                      limit:
+                        type: integer
+                        description: Items shown per page
+                      more_items_in_collection:
+                        type: boolean
+                        description: If there are more list items in the collection than displayed or not
+              example:
+                success: true
+                data:
+                - id: 1
+                  creator_user_id: 123
+                  user_id: 456
+                  person_id: 1
+                  org_id: 2
+                  stage_id: 2
+                  title: Deal One
+                  value: 5000
+                  currency: EUR
+                  add_time: '2019-05-29 04:21:51'
+                  update_time: '2019-05-29 04:21:51'
+                  stage_change_time: '2019-11-28 15:41:22'
+                  active: true
+                  deleted: false
+                  status: open
+                  probability: null
+                  next_activity_date: '2019-11-29'
+                  next_activity_time: '11:30:00'
+                  next_activity_id: 128
+                  last_activity_id: null
+                  last_activity_date: null
+                  lost_reason: null
+                  visible_to: '1'
+                  close_time: null
+                  pipeline_id: 1
+                  won_time: '2019-11-27 11:40:36'
+                  first_won_time: '2019-11-27 11:40:36'
+                  lost_time: '2019-11-27 11:40:36'
+                  products_count: 0
+                  files_count: 0
+                  notes_count: 2
+                  followers_count: 0
+                  email_messages_count: 4
+                  activities_count: 1
+                  done_activities_count: 0
+                  undone_activities_count: 1
+                  participants_count: 1
+                  expected_close_date: '2019-06-29'
+                  last_incoming_mail_time: '2019-05-29 18:21:42'
+                  last_outgoing_mail_time: '2019-05-30 03:45:35'
+                  label: '11'
+                  stage_order_nr: 2
+                  person_name: Person
+                  org_name: Organization
+                  next_activity_subject: Call
+                  next_activity_type: call
+                  next_activity_duration: 00:30:00
+                  next_activity_note: Note content
+                  formatted_value: €5,000
+                  weighted_value: 5000
+                  formatted_weighted_value: €5,000
+                  weighted_value_currency: EUR
+                  rotten_time: null
+                  owner_name: Creator
+                  cc_email: company+deal1@pipedrivemail.com
+                  org_hidden: false
+                  person_hidden: false
+                additional_data:
+                  pagination:
+                    start: 0
+                    limit: 100
+                    more_items_in_collection: false
+  /pipelines/{id}/movement_statistics:
+    get:
+      summary: Get deals movements in pipeline
+      description: Returns statistics for deals movements for the given time period.
+      x-token-cost: 40
+      operationId: getPipelineMovementStatistics
+      tags:
+      - Pipelines
+      security:
+      - api_key: []
+      - oauth2:
+        - deals:read
+        - deals:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the pipeline
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: start_date
+        required: true
+        schema:
+          type: string
+          format: date
+        description: The start of the period. Date in format of YYYY-MM-DD.
+      - in: query
+        name: end_date
+        required: true
+        schema:
+          type: string
+          format: date
+        description: The end of the period. Date in format of YYYY-MM-DD.
+      - in: query
+        name: user_id
+        schema:
+          type: integer
+        description: The ID of the user who's pipeline statistics to fetch. If omitted, the authorized user will be used.
+      responses:
+        '200':
+          description: Get pipeline deals conversion rates
+          content:
+            application/json:
+              schema:
+                type: object
+                title: GetPipelineDealsMovementsStatisticsResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      description: The pipeline object
+                      properties:
+                        movements_between_stages:
+                          type: object
+                          description: Movements between stages
+                          properties:
+                            count:
+                              type: integer
+                              description: The count of the deals that have been moved between stages
+                        new_deals:
+                          type: object
+                          description: Deals summary
+                          properties:
+                            count:
+                              type: integer
+                              description: The count of the deals
+                            deals_ids:
+                              type: array
+                              description: The IDs of the deals that have been moved
+                              items:
+                                type: integer
+                            values:
+                              type: object
+                              description: The values of the deals
+                              properties:
+                                CURRENCY_ID:
+                                  type: integer
+                                  description: The value of the deals
+                            formatted_values:
+                              type: object
+                              description: The formatted values of the deals
+                              properties:
+                                CURRENCY_ID:
+                                  type: string
+                                  description: The formatted values of the deals
+                        deals_left_open:
+                          type: object
+                          description: Deals summary
+                          properties:
+                            count:
+                              type: integer
+                              description: The count of the deals
+                            deals_ids:
+                              type: array
+                              description: The IDs of the deals that have been moved
+                              items:
+                                type: integer
+                            values:
+                              type: object
+                              description: The values of the deals
+                              properties:
+                                CURRENCY_ID:
+                                  type: integer
+                                  description: The value of the deals
+                            formatted_values:
+                              type: object
+                              description: The formatted values of the deals
+                              properties:
+                                CURRENCY_ID:
+                                  type: string
+                                  description: The formatted values of the deals
+                        won_deals:
+                          type: object
+                          description: Deals summary
+                          properties:
+                            count:
+                              type: integer
+                              description: The count of the deals
+                            deals_ids:
+                              type: array
+                              description: The IDs of the deals that have been moved
+                              items:
+                                type: integer
+                            values:
+                              type: object
+                              description: The values of the deals
+                              properties:
+                                CURRENCY_ID:
+                                  type: integer
+                                  description: The value of the deals
+                            formatted_values:
+                              type: object
+                              description: The formatted values of the deals
+                              properties:
+                                CURRENCY_ID:
+                                  type: string
+                                  description: The formatted values of the deals
+                        lost_deals:
+                          type: object
+                          description: Deals summary
+                          properties:
+                            count:
+                              type: integer
+                              description: The count of the deals
+                            deals_ids:
+                              type: array
+                              description: The IDs of the deals that have been moved
+                              items:
+                                type: integer
+                            values:
+                              type: object
+                              description: The values of the deals
+                              properties:
+                                CURRENCY_ID:
+                                  type: integer
+                                  description: The value of the deals
+                            formatted_values:
+                              type: object
+                              description: The formatted values of the deals
+                              properties:
+                                CURRENCY_ID:
+                                  type: string
+                                  description: The formatted values of the deals
+                        average_age_in_days:
+                          type: object
+                          description: The moved deals average age in days
+                          properties:
+                            across_all_stages:
+                              type: integer
+                              description: The moved deals average age across all stages
+                            by_stages:
+                              type: array
+                              description: The moved deals average age by stages
+                              items:
+                                type: object
+                                description: The moved deals average age by the stage
+                                properties:
+                                  stage_id:
+                                    type: integer
+                                    description: The stage ID
+                                  value:
+                                    type: integer
+                                    description: The average deals age in specific stage
+              example:
+                success: true
+                data:
+                  movements_between_stages:
+                    count: 1
+                  new_deals:
+                    count: 1
+                    deals_ids:
+                    - 1
+                    - 2
+                    values:
+                      USD: 10
+                    formatted_values:
+                      USD: US$10
+                  deals_left_open:
+                    count: 1
+                    deals_ids:
+                    - 1
+                    - 2
+                    values:
+                      USD: 10
+                    formatted_values:
+                      USD: US$10
+                  won_deals:
+                    count: 1
+                    deals_ids:
+                    - 1
+                    - 2
+                    values:
+                      USD: 10
+                    formatted_values:
+                      USD: US$10
+                  lost_deals:
+                    count: 1
+                    deals_ids:
+                    - 1
+                    - 2
+                    values:
+                      USD: 10
+                    formatted_values:
+                      USD: US$10
+                  average_age_in_days:
+                    across_all_stages: 2
+                    by_stages:
+                    - stage_id: 10
+                      value: 15
+  /pipelines:
+    get:
+      summary: Get all pipelines
+      description: Returns data about all pipelines.
+      x-token-cost: 5
+      operationId: getPipelines
+      tags:
+      - Pipelines
+      security:
+      - api_key: []
+      - oauth2:
+        - deals:read
+        - deals:full
+        - admin
+      parameters:
+      - in: query
+        name: sort_by
+        description: 'The field to sort by. Supported fields: `id`, `update_time`, `add_time`.'
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - update_time
+          - add_time
+      - in: query
+        name: sort_direction
+        description: 'The sorting direction. Supported values: `asc`, `desc`.'
+        schema:
+          type: string
+          default: asc
+          enum:
+          - asc
+          - desc
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.
+        schema:
+          type: integer
+          example: 100
+      - in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      responses:
+        '200':
+          description: Get all pipelines
+          content:
+            application/json:
+              schema:
+                type: object
+                title: GetPipelinesResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      description: Pipelines array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the pipeline
+                          name:
+                            type: string
+                            description: The name of the pipeline
+                          order_nr:
+                            type: integer
+                            description: Defines the order of pipelines. The pipeline with the lowest `order_nr` is considered the default.
+                          is_deleted:
+                            type: boolean
+                            description: Whether this pipeline is marked as deleted or not
+                          is_deal_probability_enabled:
+                            type: boolean
+                            description: Whether deal probability is disabled or enabled for this pipeline
+                          add_time:
+                            type: string
+                            description: The pipeline creation time
+                          update_time:
+                            type: string
+                            description: The pipeline update time
+                    additional_data:
+                      type: object
+                      description: The additional data of the list
+                      properties:
+                        next_cursor:
+                          type: string
+                          description: The first item on the next page. The value of the `next_cursor` field will be `null` if you have reached the end of the dataset and there’s no more pages to be returned.
+              example:
+                success: true
+                data:
+                - id: 1
+                  name: Pipeline Name
+                  order_nr: 1
+                  is_deleted: false
+                  is_deal_probability_enabled: true
+                  add_time: '2024-01-01T00:00:00Z'
+                  update_time: '2024-01-01T00:00:00Z'
+                additional_data:
+                  next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    post:
+      summary: Add a new pipeline
+      description: Adds a new pipeline.
+      x-token-cost: 5
+      operationId: addPipeline
+      tags:
+      - Pipelines
+      security:
+      - api_key: []
+      - oauth2:
+        - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - name
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the pipeline
+                is_deal_probability_enabled:
+                  type: boolean
+                  default: false
+                  description: Whether deal probability is disabled or enabled for this pipeline
+      responses:
+        '200':
+          description: Add pipeline
+          content:
+            application/json:
+              schema:
+                type: object
+                title: UpsertPipelineResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: UpsertPipelineResponseData
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the pipeline
+                        name:
+                          type: string
+                          description: The name of the pipeline
+                        order_nr:
+                          type: integer
+                          description: Defines the order of pipelines. The pipeline with the lowest `order_nr` is considered the default.
+                        is_deleted:
+                          type: boolean
+                          description: Whether this pipeline is marked as deleted or not
+                        is_deal_probability_enabled:
+                          type: boolean
+                          description: Whether deal probability is disabled or enabled for this pipeline
+                        add_time:
+                          type: string
+                          description: The pipeline creation time
+                        update_time:
+                          type: string
+                          description: The pipeline update time
+                      description: The pipeline object
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Pipeline Name
+                  order_nr: 1
+                  is_deleted: false
+                  is_deal_probability_enabled: true
+                  add_time: '2024-01-01T00:00:00Z'
+                  update_time: '2024-01-01T00:00:00Z'
+  /pipelines/{id}:
+    delete:
+      summary: Delete a pipeline
+      description: Marks a pipeline as deleted.
+      x-token-cost: 3
+      operationId: deletePipeline
+      tags:
+      - Pipelines
+      security:
+      - api_key: []
+      - oauth2:
+        - admin
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the pipeline
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Delete pipeline
+          content:
+            application/json:
+              schema:
+                title: DeletePipelineResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: Deleted Pipeline ID
+              example:
+                success: true
+                data:
+                  id: 1
+    get:
+      summary: Get one pipeline
+      description: Returns data about a specific pipeline.
+      x-token-cost: 1
+      operationId: getPipeline
+      tags:
+      - Pipelines
+      security:
+      - api_key: []
+      - oauth2:
+        - deals:read
+        - deals:full
+        - admin
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the pipeline
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Get pipeline
+          content:
+            application/json:
+              schema:
+                type: object
+                title: UpsertPipelineResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: UpsertPipelineResponseData
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the pipeline
+                        name:
+                          type: string
+                          description: The name of the pipeline
+                        order_nr:
+                          type: integer
+                          description: Defines the order of pipelines. The pipeline with the lowest `order_nr` is considered the default.
+                        is_deleted:
+                          type: boolean
+                          description: Whether this pipeline is marked as deleted or not
+                        is_deal_probability_enabled:
+                          type: boolean
+                          description: Whether deal probability is disabled or enabled for this pipeline
+                        add_time:
+                          type: string
+                          description: The pipeline creation time
+                        update_time:
+                          type: string
+                          description: The pipeline update time
+                      description: The pipeline object
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Pipeline Name
+                  order_nr: 1
+                  is_deleted: false
+                  is_deal_probability_enabled: true
+                  add_time: '2024-01-01T00:00:00Z'
+                  update_time: '2024-01-01T00:00:00Z'
+    patch:
+      summary: Update a pipeline
+      description: Updates the properties of a pipeline.
+      x-token-cost: 5
+      operationId: updatePipeline
+      tags:
+      - Pipelines
+      security:
+      - api_key: []
+      - oauth2:
+        - admin
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the pipeline
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the pipeline
+                is_deal_probability_enabled:
+                  type: boolean
+                  default: false
+                  description: Whether deal probability is disabled or enabled for this pipeline
+      responses:
+        '200':
+          description: Edit pipeline
+          content:
+            application/json:
+              schema:
+                type: object
+                title: UpsertPipelineResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: UpsertPipelineResponseData
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the pipeline
+                        name:
+                          type: string
+                          description: The name of the pipeline
+                        order_nr:
+                          type: integer
+                          description: Defines the order of pipelines. The pipeline with the lowest `order_nr` is considered the default.
+                        is_deleted:
+                          type: boolean
+                          description: Whether this pipeline is marked as deleted or not
+                        is_deal_probability_enabled:
+                          type: boolean
+                          description: Whether deal probability is disabled or enabled for this pipeline
+                        add_time:
+                          type: string
+                          description: The pipeline creation time
+                        update_time:
+                          type: string
+                          description: The pipeline update time
+                      description: The pipeline object
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Pipeline Name
+                  order_nr: 1
+                  is_deleted: false
+                  is_deal_probability_enabled: true
+                  add_time: '2024-01-01T00:00:00Z'
+                  update_time: '2024-01-01T00:00:00Z'
+components:
+  securitySchemes:
+    basic_authentication:
+      type: http
+      scheme: basic
+      description: Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.
+    api_key:
+      type: apiKey
+      name: x-api-token
+      in: header
+    oauth2:
+      type: oauth2
+      description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+          tokenUrl: https://oauth.pipedrive.com/oauth/token
+          refreshUrl: https://oauth.pipedrive.com/oauth/token
+          scopes:
+            base: Read settings of the authorized user and currencies in an account
+            deals:read: Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            deals:full: Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            mail:read: Read mail threads and messages
+            mail:full: Read, update and delete mail threads. Also grants read access to mail messages
+            activities:read: Read activities, its fields and types; all files and filters
+            activities:full: Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types
+            contacts:read: Read the data about persons and organizations, their related fields and followers; also all notes, files, filters
+            contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
+            products:read: Read products, its fields, files, followers and products connected to a deal
+            products:full: Create, read, update and delete products and its fields; add products to deals
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            projects:read: Read projects and its fields, tasks and project templates
+            projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
+            users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
+            recents:read: Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users
+            search:read: Search across the account for deals, persons, organizations, files and products, and see details about the returned results
+            admin: Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app
+            leads:read: Read data about leads and lead labels
+            leads:full: Create, read, update and delete leads and lead labels
+            phone-integration: Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive
+            goals:read: Read data on all goals
+            goals:full: Create, read, update and delete goals
+            video-calls: Allows application to register as a video call integration provider and create conference links
+            messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses

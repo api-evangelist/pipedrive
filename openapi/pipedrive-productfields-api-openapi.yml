@@ -1,0 +1,1531 @@
+openapi: 3.0.1
+info:
+  title: Pipedrive API v1 Activities ProductFields API
+  version: 1.0.0
+  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
+
+    '
+servers:
+- url: https://api.pipedrive.com/v1
+tags:
+- name: ProductFields
+  description: 'Product fields represent the near-complete schema for a product in the context of the company of the authorized user. Each company can have a different schema for their products, with various custom fields. In the context of using product fields as a schema for defining the data fields of a product, it must be kept in mind that some types of custom fields can have additional data fields which are not separate product fields per se. Such is the case with monetary, daterange and timerange fields – each of these fields will have one additional data field in addition to the one presented in the context of product fields. For example, if there is a monetary field with the key `ffk9s9` stored on the account, `ffk9s9` would hold the numeric value of the field, and `ffk9s9_currency` would hold the ISO currency code that goes along with the numeric value. To find out which data fields are available, fetch one product and list its keys.
+
+    '
+paths:
+  /productFields:
+    delete:
+      summary: Delete multiple product fields in bulk
+      description: Marks multiple fields as deleted.
+      x-token-cost: 10
+      operationId: deleteProductFields
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - product-fields:full
+        - products:full
+      parameters:
+      - in: query
+        name: ids
+        required: true
+        schema:
+          type: string
+        description: The comma-separated field IDs to delete
+      responses:
+        '200':
+          description: Mark multiple product fields as deleted
+          content:
+            application/json:
+              schema:
+                title: DeleteProductFieldsResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: array
+                        description: Array of all the IDs of the deleted product fields
+                        items:
+                          type: integer
+              example:
+                success: true
+                data:
+                  id:
+                  - 32
+                  - 35
+    get:
+      summary: Get all product fields
+      description: Returns data about all product fields.
+      x-token-cost: 20
+      operationId: getProductFields
+      parameters:
+      - in: query
+        name: start
+        description: Pagination start
+        schema:
+          type: integer
+          default: 0
+      - in: query
+        name: limit
+        description: Items shown per page
+        schema:
+          type: integer
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - products:read
+        - product-fields:full
+        - products:full
+      responses:
+        '200':
+          description: Get data about all product fields
+          content:
+            application/json:
+              schema:
+                title: GetProductFieldsResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: array
+                    description: Array containing data for all product fields
+                    items:
+                      type: object
+                      allOf:
+                      - title: ProductField
+                        allOf:
+                        - type: object
+                          required:
+                          - name
+                          - field_type
+                          properties:
+                            name:
+                              type: string
+                              description: The name of the field
+                            options:
+                              type: array
+                              items:
+                                type: object
+                              description: When `field_type` is either `set` or `enum`, possible options must be supplied as a JSON-encoded sequential array, for example:</br>`[{"label":"red"}, {"label":"blue"}, {"label":"lilac"}]`
+                            field_type:
+                              type: string
+                              enum:
+                              - varchar
+                              - varchar_auto
+                              - text
+                              - double
+                              - monetary
+                              - date
+                              - set
+                              - enum
+                              - user
+                              - org
+                              - people
+                              - phone
+                              - time
+                              - timerange
+                              - daterange
+                              - address
+                              description: The type of the field<table><tr><th>Value</th><th>Description</th></tr><tr><td>`varchar`</td><td>Text (up to 255 characters)</td><tr><td>`varchar_auto`</td><td>Autocomplete text (up to 255 characters)</td><tr><td>`text`</td><td>Long text (up to 65k characters)</td><tr><td>`double`</td><td>Numeric value</td><tr><td>`monetary`</td><td>Monetary field (has a numeric value and a currency value)</td><tr><td>`date`</td><td>Date (format YYYY-MM-DD)</td><tr><td>`set`</td><td>Options field with a possibility of having multiple chosen options</td><tr><td>`enum`</td><td>Options field with a single possible chosen option</td><tr><td>`user`</td><td>User field (contains a user ID of another Pipedrive user)</td><tr><td>`org`</td><td>Organization field (contains an organization ID which is stored on the same account)</td><tr><td>`people`</td><td>Person field (contains a product ID which is stored on the same account)</td><tr><td>`phone`</td><td>Phone field (up to 255 numbers and/or characters)</td><tr><td>`time`</td><td>Time field (format HH:MM:SS)</td><tr><td>`timerange`</td><td>Time-range field (has a start time and end time value, both HH:MM:SS)</td><tr><td>`daterange`</td><td>Date-range field (has a start date and end date value, both YYYY-MM-DD)</td><tr><td>`address`</td><td>Address field</dd></table>
+                        - type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: The ID of the product field
+                            key:
+                              type: string
+                              description: The key of the product field
+                            order_nr:
+                              type: integer
+                              description: The position (index) of the product field in the detail view
+                            add_time:
+                              type: string
+                              description: 'The product field creation time. Format: YYYY-MM-DD HH:MM:SS'
+                            update_time:
+                              type: string
+                              description: 'The product field last update time. Format: YYYY-MM-DD HH:MM:SS'
+                            last_updated_by_user_id:
+                              type: integer
+                              description: The ID of the last user to update the product field
+                            created_by_user_id:
+                              type: integer
+                              description: The ID of the user who created the product field
+                            active_flag:
+                              type: boolean
+                              description: Whether or not the product field is currently active
+                            edit_flag:
+                              type: boolean
+                              description: Whether or not the product field name and metadata is editable
+                            add_visible_flag:
+                              type: boolean
+                              description: Whether or not the product field is visible in the Add Product Modal
+                            important_flag:
+                              type: boolean
+                              description: Whether or not the product field is marked as important
+                            bulk_edit_allowed:
+                              type: boolean
+                              description: Whether or not the product field data can be edited
+                            searchable_flag:
+                              type: boolean
+                              description: Whether or not the product field is searchable
+                            filtering_allowed:
+                              type: boolean
+                              description: Whether or not the product field value can be used when filtering searches
+                            sortable_flag:
+                              type: boolean
+                              description: Whether or not the product field is sortable
+                            mandatory_flag:
+                              type: boolean
+                              description: Whether or not the product field is mandatory when creating products
+                      - type: object
+                        properties:
+                          field_type:
+                            type: string
+                            enum:
+                            - boolean
+                            - double
+                            - int
+                            - json
+                            - date
+                            - daterange
+                            - time
+                            - timerange
+                            - text
+                            - varchar
+                            - varchar_auto
+                            - varchar_options
+                            - address
+                            - enum
+                            - monetary
+                            - phone
+                            - set
+                            - activity
+                            - deal
+                            - lead
+                            - org
+                            - people
+                            - pipeline
+                            - product
+                            - project
+                            - stage
+                            - user
+                            - billing_frequency
+                            - picture
+                            - price_list
+                            - projects_board
+                            - projects_phase
+                            - status
+                            - visible_to
+                            description: List of all possible field types
+                  additional_data:
+                    type: object
+                    description: Additional data for the product field, such as pagination
+              example:
+                success: true
+                data:
+                - id: 20
+                  key: name
+                  name: Name
+                  order_nr: 1
+                  picklist_data: null
+                  field_type: varchar
+                  add_time: '2019-11-25 13:34:03'
+                  update_time: '2019-11-25 13:34:02'
+                  last_updated_by_user_id: 1
+                  created_by_user_id: 1
+                  active_flag: true
+                  edit_flag: false
+                  index_visible_flag: true
+                  details_visible_flag: false
+                  add_visible_flag: true
+                  important_flag: false
+                  bulk_edit_allowed: true
+                  searchable_flag: false
+                  filtering_allowed: true
+                  sortable_flag: true
+                  mandatory_flag: true
+                - id: 24
+                  key: visible_to
+                  name: Visible to
+                  order_nr: 5
+                  field_type: double
+                  add_time: '2019-11-25 13:34:03'
+                  update_time: '2019-11-25 13:34:02'
+                  last_updated_by_user_id: 1
+                  created_by_user_id: 1
+                  active_flag: true
+                  edit_flag: false
+                  index_visible_flag: true
+                  details_visible_flag: true
+                  add_visible_flag: false
+                  important_flag: false
+                  bulk_edit_allowed: true
+                  searchable_flag: false
+                  filtering_allowed: true
+                  sortable_flag: true
+                  options:
+                  - id: 1
+                    label: Owner & followers
+                  - id: 3
+                    label: Entire company
+                  mandatory_flag: true
+                additional_data:
+                  pagination:
+                    start: 0
+                    limit: 100
+                    more_items_in_collection: false
+    post:
+      summary: Add a new product field
+      description: Adds a new product field. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-new-custom-field" target="_blank" rel="noopener noreferrer">adding a new custom field</a>.
+      x-token-cost: 10
+      operationId: addProductField
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - product-fields:full
+        - products:full
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - field_type
+              properties:
+                name:
+                  type: string
+                  description: The name of the field
+                options:
+                  type: array
+                  items:
+                    type: object
+                  description: When `field_type` is either `set` or `enum`, possible options must be supplied as a JSON-encoded sequential array, for example:</br>`[{"label":"red"}, {"label":"blue"}, {"label":"lilac"}]`
+                field_type:
+                  type: string
+                  enum:
+                  - varchar
+                  - varchar_auto
+                  - text
+                  - double
+                  - monetary
+                  - date
+                  - set
+                  - enum
+                  - user
+                  - org
+                  - people
+                  - phone
+                  - time
+                  - timerange
+                  - daterange
+                  - address
+                  description: The type of the field<table><tr><th>Value</th><th>Description</th></tr><tr><td>`varchar`</td><td>Text (up to 255 characters)</td><tr><td>`varchar_auto`</td><td>Autocomplete text (up to 255 characters)</td><tr><td>`text`</td><td>Long text (up to 65k characters)</td><tr><td>`double`</td><td>Numeric value</td><tr><td>`monetary`</td><td>Monetary field (has a numeric value and a currency value)</td><tr><td>`date`</td><td>Date (format YYYY-MM-DD)</td><tr><td>`set`</td><td>Options field with a possibility of having multiple chosen options</td><tr><td>`enum`</td><td>Options field with a single possible chosen option</td><tr><td>`user`</td><td>User field (contains a user ID of another Pipedrive user)</td><tr><td>`org`</td><td>Organization field (contains an organization ID which is stored on the same account)</td><tr><td>`people`</td><td>Person field (contains a product ID which is stored on the same account)</td><tr><td>`phone`</td><td>Phone field (up to 255 numbers and/or characters)</td><tr><td>`time`</td><td>Time field (format HH:MM:SS)</td><tr><td>`timerange`</td><td>Time-range field (has a start time and end time value, both HH:MM:SS)</td><tr><td>`daterange`</td><td>Date-range field (has a start date and end date value, both YYYY-MM-DD)</td><tr><td>`address`</td><td>Address field</dd></table>
+      responses:
+        '201':
+          description: Get the data for a single product field
+          content:
+            application/json:
+              schema:
+                title: GetProductFieldResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    allOf:
+                    - title: ProductField
+                      allOf:
+                      - type: object
+                        required:
+                        - name
+                        - field_type
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the field
+                          options:
+                            type: array
+                            items:
+                              type: object
+                            description: When `field_type` is either `set` or `enum`, possible options must be supplied as a JSON-encoded sequential array, for example:</br>`[{"label":"red"}, {"label":"blue"}, {"label":"lilac"}]`
+                          field_type:
+                            type: string
+                            enum:
+                            - varchar
+                            - varchar_auto
+                            - text
+                            - double
+                            - monetary
+                            - date
+                            - set
+                            - enum
+                            - user
+                            - org
+                            - people
+                            - phone
+                            - time
+                            - timerange
+                            - daterange
+                            - address
+                            description: The type of the field<table><tr><th>Value</th><th>Description</th></tr><tr><td>`varchar`</td><td>Text (up to 255 characters)</td><tr><td>`varchar_auto`</td><td>Autocomplete text (up to 255 characters)</td><tr><td>`text`</td><td>Long text (up to 65k characters)</td><tr><td>`double`</td><td>Numeric value</td><tr><td>`monetary`</td><td>Monetary field (has a numeric value and a currency value)</td><tr><td>`date`</td><td>Date (format YYYY-MM-DD)</td><tr><td>`set`</td><td>Options field with a possibility of having multiple chosen options</td><tr><td>`enum`</td><td>Options field with a single possible chosen option</td><tr><td>`user`</td><td>User field (contains a user ID of another Pipedrive user)</td><tr><td>`org`</td><td>Organization field (contains an organization ID which is stored on the same account)</td><tr><td>`people`</td><td>Person field (contains a product ID which is stored on the same account)</td><tr><td>`phone`</td><td>Phone field (up to 255 numbers and/or characters)</td><tr><td>`time`</td><td>Time field (format HH:MM:SS)</td><tr><td>`timerange`</td><td>Time-range field (has a start time and end time value, both HH:MM:SS)</td><tr><td>`daterange`</td><td>Date-range field (has a start date and end date value, both YYYY-MM-DD)</td><tr><td>`address`</td><td>Address field</dd></table>
+                      - type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the product field
+                          key:
+                            type: string
+                            description: The key of the product field
+                          order_nr:
+                            type: integer
+                            description: The position (index) of the product field in the detail view
+                          add_time:
+                            type: string
+                            description: 'The product field creation time. Format: YYYY-MM-DD HH:MM:SS'
+                          update_time:
+                            type: string
+                            description: 'The product field last update time. Format: YYYY-MM-DD HH:MM:SS'
+                          last_updated_by_user_id:
+                            type: integer
+                            description: The ID of the last user to update the product field
+                          created_by_user_id:
+                            type: integer
+                            description: The ID of the user who created the product field
+                          active_flag:
+                            type: boolean
+                            description: Whether or not the product field is currently active
+                          edit_flag:
+                            type: boolean
+                            description: Whether or not the product field name and metadata is editable
+                          add_visible_flag:
+                            type: boolean
+                            description: Whether or not the product field is visible in the Add Product Modal
+                          important_flag:
+                            type: boolean
+                            description: Whether or not the product field is marked as important
+                          bulk_edit_allowed:
+                            type: boolean
+                            description: Whether or not the product field data can be edited
+                          searchable_flag:
+                            type: boolean
+                            description: Whether or not the product field is searchable
+                          filtering_allowed:
+                            type: boolean
+                            description: Whether or not the product field value can be used when filtering searches
+                          sortable_flag:
+                            type: boolean
+                            description: Whether or not the product field is sortable
+                          mandatory_flag:
+                            type: boolean
+                            description: Whether or not the product field is mandatory when creating products
+                    description: All data for the product field
+              example:
+                success: true
+                data:
+                  id: 32
+                  key: 397b0f545d134b479a5485041b33b0f0f3da2333
+                  name: Color
+                  order_nr: 13
+                  field_type: enum
+                  add_time: '2019-12-20 11:01:24'
+                  update_time: '2019-12-20 11:01:24'
+                  last_updated_by_user_id: 10999910
+                  created_by_user_id: 10999910
+                  active_flag: true
+                  edit_flag: true
+                  index_visible_flag: true
+                  details_visible_flag: true
+                  add_visible_flag: true
+                  important_flag: false
+                  bulk_edit_allowed: true
+                  searchable_flag: false
+                  filtering_allowed: true
+                  sortable_flag: true
+                  options:
+                  - id: 9
+                    label: red
+                  - id: 10
+                    label: blue
+                  - id: 11
+                    label: lilac
+                  mandatory_flag: false
+  /productFields/{id}:
+    delete:
+      summary: Delete a product field
+      description: Marks a product field as deleted. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/deleting-a-custom-field" target="_blank" rel="noopener noreferrer">deleting a custom field</a>.
+      x-token-cost: 6
+      operationId: deleteProductField
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - product-fields:full
+        - products:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the product field
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Delete a product field
+          content:
+            application/json:
+              schema:
+                title: DeleteProductFieldResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        allOf:
+                        - type: integer
+                        description: The ID of the deleted product field
+              example:
+                success: true
+                data:
+                  id: 32
+        '410':
+          description: The product field with the specified ID does not exist or is inaccessible
+          content:
+            application/json:
+              schema:
+                title: failResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  error:
+                    type: string
+                    description: The error message
+              example:
+                success: false
+                error: The field is not found
+    get:
+      summary: Get one product field
+      description: Returns data about a specific product field.
+      x-token-cost: 2
+      operationId: getProductField
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - products:read
+        - product-fields:full
+        - products:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the product field
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Get the data for a single product field
+          content:
+            application/json:
+              schema:
+                title: GetProductFieldResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    allOf:
+                    - title: ProductField
+                      allOf:
+                      - type: object
+                        required:
+                        - name
+                        - field_type
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the field
+                          options:
+                            type: array
+                            items:
+                              type: object
+                            description: When `field_type` is either `set` or `enum`, possible options must be supplied as a JSON-encoded sequential array, for example:</br>`[{"label":"red"}, {"label":"blue"}, {"label":"lilac"}]`
+                          field_type:
+                            type: string
+                            enum:
+                            - varchar
+                            - varchar_auto
+                            - text
+                            - double
+                            - monetary
+                            - date
+                            - set
+                            - enum
+                            - user
+                            - org
+                            - people
+                            - phone
+                            - time
+                            - timerange
+                            - daterange
+                            - address
+                            description: The type of the field<table><tr><th>Value</th><th>Description</th></tr><tr><td>`varchar`</td><td>Text (up to 255 characters)</td><tr><td>`varchar_auto`</td><td>Autocomplete text (up to 255 characters)</td><tr><td>`text`</td><td>Long text (up to 65k characters)</td><tr><td>`double`</td><td>Numeric value</td><tr><td>`monetary`</td><td>Monetary field (has a numeric value and a currency value)</td><tr><td>`date`</td><td>Date (format YYYY-MM-DD)</td><tr><td>`set`</td><td>Options field with a possibility of having multiple chosen options</td><tr><td>`enum`</td><td>Options field with a single possible chosen option</td><tr><td>`user`</td><td>User field (contains a user ID of another Pipedrive user)</td><tr><td>`org`</td><td>Organization field (contains an organization ID which is stored on the same account)</td><tr><td>`people`</td><td>Person field (contains a product ID which is stored on the same account)</td><tr><td>`phone`</td><td>Phone field (up to 255 numbers and/or characters)</td><tr><td>`time`</td><td>Time field (format HH:MM:SS)</td><tr><td>`timerange`</td><td>Time-range field (has a start time and end time value, both HH:MM:SS)</td><tr><td>`daterange`</td><td>Date-range field (has a start date and end date value, both YYYY-MM-DD)</td><tr><td>`address`</td><td>Address field</dd></table>
+                      - type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the product field
+                          key:
+                            type: string
+                            description: The key of the product field
+                          order_nr:
+                            type: integer
+                            description: The position (index) of the product field in the detail view
+                          add_time:
+                            type: string
+                            description: 'The product field creation time. Format: YYYY-MM-DD HH:MM:SS'
+                          update_time:
+                            type: string
+                            description: 'The product field last update time. Format: YYYY-MM-DD HH:MM:SS'
+                          last_updated_by_user_id:
+                            type: integer
+                            description: The ID of the last user to update the product field
+                          created_by_user_id:
+                            type: integer
+                            description: The ID of the user who created the product field
+                          active_flag:
+                            type: boolean
+                            description: Whether or not the product field is currently active
+                          edit_flag:
+                            type: boolean
+                            description: Whether or not the product field name and metadata is editable
+                          add_visible_flag:
+                            type: boolean
+                            description: Whether or not the product field is visible in the Add Product Modal
+                          important_flag:
+                            type: boolean
+                            description: Whether or not the product field is marked as important
+                          bulk_edit_allowed:
+                            type: boolean
+                            description: Whether or not the product field data can be edited
+                          searchable_flag:
+                            type: boolean
+                            description: Whether or not the product field is searchable
+                          filtering_allowed:
+                            type: boolean
+                            description: Whether or not the product field value can be used when filtering searches
+                          sortable_flag:
+                            type: boolean
+                            description: Whether or not the product field is sortable
+                          mandatory_flag:
+                            type: boolean
+                            description: Whether or not the product field is mandatory when creating products
+                    description: All data for the product field
+              example:
+                success: true
+                data:
+                  id: 32
+                  key: 397b0f545d134b479a5485041b33b0f0f3da2333
+                  name: Color
+                  order_nr: 13
+                  field_type: enum
+                  add_time: '2019-12-20 11:01:24'
+                  update_time: '2019-12-20 11:01:24'
+                  last_updated_by_user_id: 10999910
+                  created_by_user_id: 10999910
+                  active_flag: true
+                  edit_flag: true
+                  index_visible_flag: true
+                  details_visible_flag: true
+                  add_visible_flag: true
+                  important_flag: false
+                  bulk_edit_allowed: true
+                  searchable_flag: false
+                  filtering_allowed: true
+                  sortable_flag: true
+                  options:
+                  - id: 9
+                    label: red
+                  - id: 10
+                    label: blue
+                  - id: 11
+                    label: lilac
+                  mandatory_flag: false
+        '410':
+          description: The product field with the specified ID does not exist or is inaccessible
+          content:
+            application/json:
+              schema:
+                title: failResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  error:
+                    type: string
+                    description: The error message
+              example:
+                success: false
+                error: The field is not found
+    put:
+      summary: Update a product field
+      description: Updates a product field. For more information, see the tutorial for <a href=" https://pipedrive.readme.io/docs/updating-custom-field-value " target="_blank" rel="noopener noreferrer">updating custom fields' values</a>.
+      x-token-cost: 10
+      operationId: updateProductField
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - product-fields:full
+        - products:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the product field
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: UpdateProductFieldResponse
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the field
+                options:
+                  type: array
+                  items:
+                    type: object
+                  description: 'When `field_type` is either set or enum, possible options on update must be supplied as an array of objects each containing id and label, for example: [{"id":1, "label":"red"},{"id":2, "label":"blue"},{"id":3, "label":"lilac"}]'
+      responses:
+        '200':
+          description: Get the data for a single product field
+          content:
+            application/json:
+              schema:
+                title: GetProductFieldResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    allOf:
+                    - title: ProductField
+                      allOf:
+                      - type: object
+                        required:
+                        - name
+                        - field_type
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the field
+                          options:
+                            type: array
+                            items:
+                              type: object
+                            description: When `field_type` is either `set` or `enum`, possible options must be supplied as a JSON-encoded sequential array, for example:</br>`[{"label":"red"}, {"label":"blue"}, {"label":"lilac"}]`
+                          field_type:
+                            type: string
+                            enum:
+                            - varchar
+                            - varchar_auto
+                            - text
+                            - double
+                            - monetary
+                            - date
+                            - set
+                            - enum
+                            - user
+                            - org
+                            - people
+                            - phone
+                            - time
+                            - timerange
+                            - daterange
+                            - address
+                            description: The type of the field<table><tr><th>Value</th><th>Description</th></tr><tr><td>`varchar`</td><td>Text (up to 255 characters)</td><tr><td>`varchar_auto`</td><td>Autocomplete text (up to 255 characters)</td><tr><td>`text`</td><td>Long text (up to 65k characters)</td><tr><td>`double`</td><td>Numeric value</td><tr><td>`monetary`</td><td>Monetary field (has a numeric value and a currency value)</td><tr><td>`date`</td><td>Date (format YYYY-MM-DD)</td><tr><td>`set`</td><td>Options field with a possibility of having multiple chosen options</td><tr><td>`enum`</td><td>Options field with a single possible chosen option</td><tr><td>`user`</td><td>User field (contains a user ID of another Pipedrive user)</td><tr><td>`org`</td><td>Organization field (contains an organization ID which is stored on the same account)</td><tr><td>`people`</td><td>Person field (contains a product ID which is stored on the same account)</td><tr><td>`phone`</td><td>Phone field (up to 255 numbers and/or characters)</td><tr><td>`time`</td><td>Time field (format HH:MM:SS)</td><tr><td>`timerange`</td><td>Time-range field (has a start time and end time value, both HH:MM:SS)</td><tr><td>`daterange`</td><td>Date-range field (has a start date and end date value, both YYYY-MM-DD)</td><tr><td>`address`</td><td>Address field</dd></table>
+                      - type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the product field
+                          key:
+                            type: string
+                            description: The key of the product field
+                          order_nr:
+                            type: integer
+                            description: The position (index) of the product field in the detail view
+                          add_time:
+                            type: string
+                            description: 'The product field creation time. Format: YYYY-MM-DD HH:MM:SS'
+                          update_time:
+                            type: string
+                            description: 'The product field last update time. Format: YYYY-MM-DD HH:MM:SS'
+                          last_updated_by_user_id:
+                            type: integer
+                            description: The ID of the last user to update the product field
+                          created_by_user_id:
+                            type: integer
+                            description: The ID of the user who created the product field
+                          active_flag:
+                            type: boolean
+                            description: Whether or not the product field is currently active
+                          edit_flag:
+                            type: boolean
+                            description: Whether or not the product field name and metadata is editable
+                          add_visible_flag:
+                            type: boolean
+                            description: Whether or not the product field is visible in the Add Product Modal
+                          important_flag:
+                            type: boolean
+                            description: Whether or not the product field is marked as important
+                          bulk_edit_allowed:
+                            type: boolean
+                            description: Whether or not the product field data can be edited
+                          searchable_flag:
+                            type: boolean
+                            description: Whether or not the product field is searchable
+                          filtering_allowed:
+                            type: boolean
+                            description: Whether or not the product field value can be used when filtering searches
+                          sortable_flag:
+                            type: boolean
+                            description: Whether or not the product field is sortable
+                          mandatory_flag:
+                            type: boolean
+                            description: Whether or not the product field is mandatory when creating products
+                    description: All data for the product field
+              example:
+                success: true
+                data:
+                  id: 32
+                  key: 397b0f545d134b479a5485041b33b0f0f3da2333
+                  name: Color
+                  order_nr: 13
+                  field_type: enum
+                  add_time: '2019-12-20 11:01:24'
+                  update_time: '2019-12-20 11:01:24'
+                  last_updated_by_user_id: 10999910
+                  created_by_user_id: 10999910
+                  active_flag: true
+                  edit_flag: true
+                  index_visible_flag: true
+                  details_visible_flag: true
+                  add_visible_flag: true
+                  important_flag: false
+                  bulk_edit_allowed: true
+                  searchable_flag: false
+                  filtering_allowed: true
+                  sortable_flag: true
+                  options:
+                  - id: 9
+                    label: red
+                  - id: 10
+                    label: blue
+                  - id: 11
+                    label: lilac
+                  mandatory_flag: false
+  /productFields/{field_code}:
+    get:
+      summary: Get one product field
+      description: Returns metadata about a specific product field.
+      x-token-cost: 1
+      operationId: getProductField
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - products:read
+        - products:full
+        - product-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: include_fields
+        description: Optional comma separated string array of additional data namespaces to include in response
+        schema:
+          type: string
+          enum:
+          - ui_visibility
+      responses:
+        '200':
+          description: Get one product field
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the request was successful
+                  data:
+                    type: object
+                    required:
+                    - field_name
+                    - field_code
+                    - field_type
+                    - is_custom_field
+                    - is_optional_response_field
+                    properties:
+                      field_name:
+                        type: string
+                        description: The display name/label of the field
+                      field_code:
+                        type: string
+                        description: The unique identifier for the field (40-character hash for custom fields)
+                      field_type:
+                        type: string
+                        description: The type of the field
+                        enum:
+                        - int
+                        - double
+                        - boolean
+                        - varchar
+                        - text
+                        - phone
+                        - varchar_options
+                        - varchar_auto
+                        - date
+                        - daterange
+                        - time
+                        - timerange
+                        - enum
+                        - set
+                        - address
+                        - monetary
+                        - deal
+                        - deals
+                        - lead
+                        - org
+                        - people
+                        - project
+                        - stage
+                        - user
+                        - activity
+                        - json
+                        - picture
+                        - status
+                        - visible_to
+                        - price_list
+                        - billing_frequency
+                        - projects_board
+                        - projects_phase
+                      options:
+                        type: array
+                        nullable: true
+                        description: Array of available options for enum/set fields, null for other field types
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: The option ID
+                            label:
+                              type: string
+                              description: The option display label
+                            color:
+                              type: string
+                              nullable: true
+                              description: Optional color code for the option
+                            update_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was last updated
+                            add_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was created
+                      subfields:
+                        type: array
+                        nullable: true
+                        description: Array of subfields for complex field types (address, monetary), null for simple field types
+                        items:
+                          type: object
+                          properties:
+                            field_code:
+                              type: string
+                              description: The subfield identifier
+                            field_name:
+                              type: string
+                              description: The subfield display name
+                            field_type:
+                              type: string
+                              description: The subfield type
+                      is_custom_field:
+                        type: boolean
+                        description: Whether this is a user-created custom field
+                      is_optional_response_field:
+                        type: boolean
+                        description: Whether this field is not returned by default in entity responses
+                      ui_visibility:
+                        type: object
+                        description: UI visibility settings (only included when requested via include_fields parameter)
+                        properties:
+                          add_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the add modal
+                          details_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the details view (read-only)
+              example:
+                success: true
+                data:
+                  field_name: Product Name
+                  field_code: name
+                  field_type: varchar
+                  options: null
+                  subfields: null
+                  is_custom_field: false
+                  is_optional_response_field: false
+                  ui_visibility:
+                    add_visible_flag: true
+                    details_visible_flag: true
+    patch:
+      summary: Update one product field
+      description: Updates a product custom field. The field_code and field_type cannot be changed. At least one field must be provided in the request body.
+      x-token-cost: 5
+      operationId: updateProductField
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - products:full
+        - product-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              minProperties: 1
+              properties:
+                field_name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  description: Field name
+                ui_visibility:
+                  type: object
+                  description: UI visibility settings for the field. Controls where the field appears in the Pipedrive web UI. Note that products have a simpler visibility model than other entity types.
+                  additionalProperties: true
+                  properties:
+                    add_visible_flag:
+                      type: boolean
+                      description: Whether the field is shown in the add product modal. Default is false. Cannot be set to false for the 'name' system field.
+                      default: false
+                    details_visible_flag:
+                      type: boolean
+                      description: Whether the field is shown in the product details view. Default is true.
+                      default: true
+      responses:
+        '200':
+          description: Get one product field
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the request was successful
+                  data:
+                    type: object
+                    required:
+                    - field_name
+                    - field_code
+                    - field_type
+                    - is_custom_field
+                    - is_optional_response_field
+                    properties:
+                      field_name:
+                        type: string
+                        description: The display name/label of the field
+                      field_code:
+                        type: string
+                        description: The unique identifier for the field (40-character hash for custom fields)
+                      field_type:
+                        type: string
+                        description: The type of the field
+                        enum:
+                        - int
+                        - double
+                        - boolean
+                        - varchar
+                        - text
+                        - phone
+                        - varchar_options
+                        - varchar_auto
+                        - date
+                        - daterange
+                        - time
+                        - timerange
+                        - enum
+                        - set
+                        - address
+                        - monetary
+                        - deal
+                        - deals
+                        - lead
+                        - org
+                        - people
+                        - project
+                        - stage
+                        - user
+                        - activity
+                        - json
+                        - picture
+                        - status
+                        - visible_to
+                        - price_list
+                        - billing_frequency
+                        - projects_board
+                        - projects_phase
+                      options:
+                        type: array
+                        nullable: true
+                        description: Array of available options for enum/set fields, null for other field types
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: The option ID
+                            label:
+                              type: string
+                              description: The option display label
+                            color:
+                              type: string
+                              nullable: true
+                              description: Optional color code for the option
+                            update_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was last updated
+                            add_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was created
+                      subfields:
+                        type: array
+                        nullable: true
+                        description: Array of subfields for complex field types (address, monetary), null for simple field types
+                        items:
+                          type: object
+                          properties:
+                            field_code:
+                              type: string
+                              description: The subfield identifier
+                            field_name:
+                              type: string
+                              description: The subfield display name
+                            field_type:
+                              type: string
+                              description: The subfield type
+                      is_custom_field:
+                        type: boolean
+                        description: Whether this is a user-created custom field
+                      is_optional_response_field:
+                        type: boolean
+                        description: Whether this field is not returned by default in entity responses
+                      ui_visibility:
+                        type: object
+                        description: UI visibility settings (only included when requested via include_fields parameter)
+                        properties:
+                          add_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the add modal
+                          details_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the details view (read-only)
+              example:
+                success: true
+                data:
+                  field_name: Product Name
+                  field_code: name
+                  field_type: varchar
+                  options: null
+                  subfields: null
+                  is_custom_field: false
+                  is_optional_response_field: false
+                  ui_visibility:
+                    add_visible_flag: true
+                    details_visible_flag: true
+    delete:
+      summary: Delete one product field
+      description: Marks a custom field as deleted.
+      x-token-cost: 3
+      operationId: deleteProductField
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - products:full
+        - product-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Delete one product field
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the request was successful
+                  data:
+                    type: object
+                    required:
+                    - field_name
+                    - field_code
+                    - field_type
+                    - is_custom_field
+                    - is_optional_response_field
+                    properties:
+                      field_name:
+                        type: string
+                        description: The display name/label of the field
+                      field_code:
+                        type: string
+                        description: The unique identifier for the field (40-character hash for custom fields)
+                      field_type:
+                        type: string
+                        description: The type of the field
+                      options:
+                        type: array
+                        nullable: true
+                        description: Array of available options for enum/set fields, null for other field types
+                        items:
+                          type: object
+                      subfields:
+                        type: array
+                        nullable: true
+                        description: Array of subfields for complex field types (address, monetary), null for simple field types
+                        items:
+                          type: object
+                      is_custom_field:
+                        type: boolean
+                        description: Whether this is a user-created custom field
+                      is_optional_response_field:
+                        type: boolean
+                        description: Whether this field is not returned by default in entity responses
+              example:
+                success: true
+                data:
+                  field_name: Custom text field
+                  field_code: 946947d1b02fd3ef20798d6112ec5d895a686a21
+                  field_type: varchar
+                  options: null
+                  subfields: null
+                  is_custom_field: true
+                  is_optional_response_field: false
+  /productFields/{field_code}/options:
+    post:
+      summary: Add product field options in bulk
+      description: Adds new options to a product custom field that supports options (enum or set field types). This operation is atomic - all options are added or none are added. Returns only the newly added options.
+      x-token-cost: 5
+      operationId: addProductFieldOptions
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - products:full
+        - product-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Array of options to add. Each item must contain a label. At least one option is required.
+              items:
+                type: object
+                required:
+                - label
+                properties:
+                  label:
+                    type: string
+                    minLength: 1
+                    maxLength: 255
+                    description: The display label for the new option
+      responses:
+        '200':
+          description: Field options operation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - label
+                      properties:
+                        id:
+                          type: integer
+                          description: The unique identifier of the option
+                        label:
+                          type: string
+                          description: The display label of the option
+                  additional_data:
+                    type: object
+                    nullable: true
+              example:
+                success: true
+                data:
+                - id: 4
+                  label: Consulting
+                additional_data: null
+    delete:
+      summary: Delete product field options in bulk
+      description: Removes existing options from a product custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the deleted options.
+      x-token-cost: 3
+      operationId: deleteProductFieldOptions
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - products:full
+        - product-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Array of option IDs to delete. Each item must contain an ID of the option to delete. At least one option ID is required. The entire request fails if any option does not exist.
+              items:
+                type: object
+                required:
+                - id
+                properties:
+                  id:
+                    type: integer
+                    description: The unique identifier of the option to delete
+      responses:
+        '200':
+          description: Field options operation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - label
+                      properties:
+                        id:
+                          type: integer
+                          description: The unique identifier of the option
+                        label:
+                          type: string
+                          description: The display label of the option
+                  additional_data:
+                    type: object
+                    nullable: true
+              example:
+                success: true
+                data:
+                - id: 4
+                  label: Consulting
+                additional_data: null
+    patch:
+      summary: Update product field options in bulk
+      description: Updates existing options for a product custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the updated options.
+      x-token-cost: 5
+      operationId: updateProductFieldOptions
+      tags:
+      - ProductFields
+      security:
+      - api_key: []
+      - oauth2:
+        - products:full
+        - product-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Array of options to update. Each item must contain an ID and the updated label. At least one option is required. The entire request fails if any option does not exist.
+              items:
+                type: object
+                required:
+                - id
+                - label
+                properties:
+                  id:
+                    type: integer
+                    description: The unique identifier of the option to update
+                  label:
+                    type: string
+                    minLength: 1
+                    maxLength: 255
+                    description: The new display label for the option
+      responses:
+        '200':
+          description: Field options operation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - label
+                      properties:
+                        id:
+                          type: integer
+                          description: The unique identifier of the option
+                        label:
+                          type: string
+                          description: The display label of the option
+                  additional_data:
+                    type: object
+                    nullable: true
+              example:
+                success: true
+                data:
+                - id: 4
+                  label: Consulting
+                additional_data: null
+components:
+  securitySchemes:
+    basic_authentication:
+      type: http
+      scheme: basic
+      description: Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.
+    api_key:
+      type: apiKey
+      name: x-api-token
+      in: header
+    oauth2:
+      type: oauth2
+      description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+          tokenUrl: https://oauth.pipedrive.com/oauth/token
+          refreshUrl: https://oauth.pipedrive.com/oauth/token
+          scopes:
+            base: Read settings of the authorized user and currencies in an account
+            deals:read: Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            deals:full: Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            mail:read: Read mail threads and messages
+            mail:full: Read, update and delete mail threads. Also grants read access to mail messages
+            activities:read: Read activities, its fields and types; all files and filters
+            activities:full: Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types
+            contacts:read: Read the data about persons and organizations, their related fields and followers; also all notes, files, filters
+            contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
+            products:read: Read products, its fields, files, followers and products connected to a deal
+            products:full: Create, read, update and delete products and its fields; add products to deals
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            projects:read: Read projects and its fields, tasks and project templates
+            projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
+            users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
+            recents:read: Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users
+            search:read: Search across the account for deals, persons, organizations, files and products, and see details about the returned results
+            admin: Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app
+            leads:read: Read data about leads and lead labels
+            leads:full: Create, read, update and delete leads and lead labels
+            phone-integration: Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive
+            goals:read: Read data on all goals
+            goals:full: Create, read, update and delete goals
+            video-calls: Allows application to register as a video call integration provider and create conference links
+            messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses

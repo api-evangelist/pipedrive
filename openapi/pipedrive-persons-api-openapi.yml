@@ -1,0 +1,3826 @@
+openapi: 3.0.1
+info:
+  title: Pipedrive API v1 Activities Persons API
+  version: 1.0.0
+  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
+
+    '
+servers:
+- url: https://api.pipedrive.com/v1
+tags:
+- name: Persons
+  description: 'Persons are your contacts, the customers you are doing deals with. Each person can belong to an organization. Persons should not be confused with users.
+
+    '
+paths:
+  /persons/{id}/changelog:
+    get:
+      summary: List updates about person field values
+      description: Lists updates about field values of a person.
+      x-token-cost: 20
+      operationId: getPersonChangelog
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - recents:read
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: cursor
+        description: For pagination, the marker (an opaque string value) representing the first item on the next page
+        schema:
+          type: string
+      - in: query
+        name: limit
+        description: Items shown per page
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Get changelog of a person
+          content:
+            application/json:
+              schema:
+                title: GetChangelogResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          field_key:
+                            type: string
+                            description: The key of the field that was changed
+                          old_value:
+                            type: string
+                            nullable: true
+                            description: The value of the field before the change
+                          new_value:
+                            type: string
+                            nullable: true
+                            description: The value of the field after the change
+                          actor_user_id:
+                            type: integer
+                            description: The ID of the user who made the change
+                          time:
+                            type: string
+                            description: The date and time of the change
+                          change_source:
+                            type: string
+                            nullable: true
+                            description: The source of change, for example 'app', 'mobile', 'api', etc.
+                          change_source_user_agent:
+                            type: string
+                            nullable: true
+                            description: The user agent from which the change was made
+                          is_bulk_update_flag:
+                            type: boolean
+                            description: Whether the change was made as part of a bulk update
+                    additional_data:
+                      description: The additional data of the list
+                      type: object
+                      properties:
+                        next_cursor:
+                          type: string
+                          description: The first item on the next page. The value of the `next_cursor` field will be `null` if you have reached the end of the dataset and there’s no more pages to be returned.
+              example:
+                success: true
+                data:
+                - field_key: 51c27e4a19c3bedd91162a9d446707c1f95174ea
+                  old_value: null
+                  new_value: '200'
+                  actor_user_id: 26
+                  time: '2024-02-12 09:14:35'
+                  change_source: app
+                  change_source_user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36
+                  is_bulk_update_flag: false
+                - field_key: email
+                  old_value: john.doe@pipedrive.com
+                  new_value: jane.doe@pipedrive.com
+                  actor_user_id: 26
+                  time: '2024-02-12 09:10:12'
+                  change_source: app
+                  change_source_user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36
+                  is_bulk_update_flag: false
+                additional_data:
+                  next_cursor: aWQ6NTQ0
+  /persons/{id}/files:
+    get:
+      summary: List files attached to a person
+      description: Lists files associated with a person.
+      x-token-cost: 20
+      operationId: getPersonFiles
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:read
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: start
+        description: Pagination start
+        schema:
+          type: integer
+          default: 0
+      - in: query
+        name: limit
+        description: Items shown per page. Please note that a maximum value of 100 is allowed.
+        schema:
+          type: integer
+          maximum: 100
+      - in: query
+        name: sort
+        schema:
+          type: string
+        description: 'Supported fields: `id`, `update_time`'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: GetAssociatedFilesResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        description: The file data
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the file
+                          user_id:
+                            type: integer
+                            description: The ID of the user to associate the file with
+                          deal_id:
+                            type: integer
+                            description: The ID of the deal to associate the file with
+                          person_id:
+                            type: integer
+                            description: The ID of the person to associate the file with
+                          org_id:
+                            type: integer
+                            description: The ID of the organization to associate the file with
+                          product_id:
+                            type: integer
+                            description: The ID of the product to associate the file with
+                          activity_id:
+                            type: integer
+                            description: The ID of the activity to associate the file with
+                          lead_id:
+                            type: string
+                            description: The ID of the lead to associate the file with
+                            format: uuid
+                          add_time:
+                            type: string
+                            description: 'The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS'
+                          update_time:
+                            type: string
+                            description: 'The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS'
+                          file_name:
+                            type: string
+                            description: The original name of the file
+                          file_size:
+                            type: integer
+                            description: The size of the file
+                          active_flag:
+                            type: boolean
+                            description: Whether the user is active or not. false = Not activated, true = Activated
+                          inline_flag:
+                            type: boolean
+                            description: Whether the file was uploaded as inline or not
+                          remote_location:
+                            type: string
+                            description: The location type to send the file to. Only googledrive is supported at the moment.
+                          remote_id:
+                            type: string
+                            description: The ID of the remote item
+                          cid:
+                            type: string
+                            description: The ID of the inline attachment
+                          s3_bucket:
+                            type: string
+                            description: The location of the cloud storage
+                          mail_message_id:
+                            type: string
+                            description: The ID of the mail message to associate the file with
+                          mail_template_id:
+                            type: string
+                            description: The ID of the mail template to associate the file with
+                          deal_name:
+                            type: string
+                            description: The name of the deal associated with the dile
+                          person_name:
+                            type: string
+                            description: The name of the person associated with the file
+                          org_name:
+                            type: string
+                            description: The name of the organization associated with the file
+                          product_name:
+                            type: string
+                            description: The name of the product associated with the file
+                          lead_name:
+                            type: string
+                            description: The name of the lead associated with the file
+                          url:
+                            type: string
+                            description: The URL of the download file
+                          name:
+                            type: string
+                            description: The visible name of the file
+                          description:
+                            type: string
+                            description: The description of the file
+                      description: The array of files
+                    additional_data:
+                      description: The additional data of the list
+                      type: object
+                      properties:
+                        start:
+                          type: integer
+                          description: Pagination start
+                        limit:
+                          type: integer
+                          description: Items shown per page
+                        more_items_in_collection:
+                          type: boolean
+                          description: If there are more list items in the collection than displayed or not
+              example:
+                success: true
+                data:
+                - id: 1
+                  user_id: 8877
+                  deal_id: 1
+                  person_id: 1
+                  org_id: 1480
+                  product_id: 1
+                  activity_id: 1
+                  lead_id: adf21080-0e10-11eb-879b-05d71fb426ec
+                  log_id: null
+                  add_time: '2020-09-16 11:19:36'
+                  update_time: '2020-09-16 11:19:36'
+                  file_name: 95781006_794143070992462_4330873630616453120_n_60817458877506f9eb74d03e5ef9ba061915b797998.jpg
+                  file_type: img
+                  file_size: 95116
+                  active_flag: true
+                  inline_flag: false
+                  remote_location: s3
+                  remote_id: 95781006_794143070992462_4330873630616453120_n.jpg
+                  cid: ''
+                  s3_bucket: ''
+                  mail_message_id: ''
+                  mail_template_id: ''
+                  deal_name: nice deal
+                  person_name: ''
+                  people_name: ''
+                  org_name: Pipedrive Inc.
+                  product_name: ''
+                  lead_name: nice lead
+                  url: https://app.pipedrive.com/api/v1/files/304/download
+                  name: 95781006_794143070992462_4330873630616453120_n.jpg
+                  description: ''
+                additional_data:
+                  pagination:
+                    start: 0
+                    limit: 100
+                    more_items_in_collection: true
+  /persons/{id}/flow:
+    get:
+      summary: List updates about a person
+      description: Lists updates about a person.<br>If a company uses the [Campaigns product](https://pipedrive.readme.io/docs/campaigns-in-pipedrive-api), then this endpoint's response will also include updates for the `marketing_status` field.
+      x-token-cost: 40
+      operationId: getPersonUpdates
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - recents:read
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: start
+        description: Pagination start
+        schema:
+          type: integer
+          default: 0
+      - in: query
+        name: limit
+        description: Items shown per page
+        schema:
+          type: integer
+      - in: query
+        name: all_changes
+        description: Whether to show custom field updates or not. 1 = Include custom field changes. If omitted returns changes without custom field updates.
+        schema:
+          type: string
+      - in: query
+        name: items
+        description: A comma-separated string for filtering out item specific updates. (Possible values - call, activity, plannedActivity, change, note, deal, file, dealChange, personChange, organizationChange, follower, dealFollower, personFollower, organizationFollower, participant, comment, mailMessage, mailMessageWithAttachment, invoice, document, marketing_campaign_stat, marketing_status_change).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get the person updates
+          content:
+            application/json:
+              schema:
+                title: GetAssociatedPersonUpdatesResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          object:
+                            type: string
+                            description: The type of the person update. (Possible object types - personChange, note, activity, file)
+                          timestamp:
+                            type: string
+                            description: The creation date and time of the update
+                          data:
+                            type: object
+                            description: The data related to the update
+                    additional_data:
+                      description: The additional data of the list
+                      type: object
+                      properties:
+                        start:
+                          type: integer
+                          description: Pagination start
+                        limit:
+                          type: integer
+                          description: Items shown per page
+                        more_items_in_collection:
+                          type: boolean
+                          description: If there are more list items in the collection than displayed or not
+                    related_objects:
+                      type: object
+                      properties:
+                        deal:
+                          type: object
+                          title: RelatedDealData
+                          properties:
+                            DEAL_ID:
+                              type: object
+                              description: The ID of the deal which is associated with the item
+                              properties:
+                                id:
+                                  type: integer
+                                  description: The ID of the deal associated with the item
+                                title:
+                                  type: string
+                                  description: The title of the deal associated with the item
+                                status:
+                                  type: string
+                                  description: The status of the deal associated with the item
+                                value:
+                                  type: number
+                                  description: The value of the deal that is associated with the item
+                                currency:
+                                  type: string
+                                  description: The currency of the deal value
+                                stage_id:
+                                  type: integer
+                                  description: The ID of the stage the deal is currently at
+                                pipeline_id:
+                                  type: integer
+                                  description: The ID of the pipeline the deal is in
+                        organization:
+                          type: object
+                          title: RelatedOrganizationData
+                          properties:
+                            ORGANIZATION_ID:
+                              type: object
+                              title: OrganizationDataWithId
+                              description: The ID of the organization associated with the item
+                              allOf:
+                              - type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    description: The ID of the organization associated with the item
+                              - type: object
+                                properties:
+                                  name:
+                                    type: string
+                                    description: The name of the organization associated with the item
+                                  people_count:
+                                    type: integer
+                                    description: The number of people connected with the organization that is associated with the item
+                                  owner_id:
+                                    type: integer
+                                    description: The ID of the owner of the organization that is associated with the item
+                                  address:
+                                    type: string
+                                    nullable: true
+                                    description: The address of the organization
+                                  cc_email:
+                                    type: string
+                                    nullable: true
+                                    description: The BCC email of the organization associated with the item
+                        user:
+                          type: object
+                          properties:
+                            USER_ID:
+                              type: object
+                              title: userDataWithId
+                              allOf:
+                              - properties:
+                                  id:
+                                    type: integer
+                                    description: The ID of the user
+                                  name:
+                                    type: string
+                                    description: The name of the user
+                                  email:
+                                    type: string
+                                    description: The email of the user
+                                  has_pic:
+                                    type: integer
+                                    description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
+                                  pic_hash:
+                                    type: string
+                                    nullable: true
+                                    description: The user picture hash
+                                  active_flag:
+                                    type: boolean
+                                    description: Whether the user is active or not
+                              - type: object
+                                description: The ID of the user
+                        person:
+                          type: object
+                          properties:
+                            PERSON_ID:
+                              type: object
+                              description: The ID of the person associated with the item
+                              title: PersonDataWithActiveFlag
+                              allOf:
+                              - type: object
+                                properties:
+                                  active_flag:
+                                    type: boolean
+                                    description: Whether the associated person is active or not
+                              - type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    description: The ID of the person associated with the item
+                                  name:
+                                    type: string
+                                    description: The name of the person associated with the item
+                                  email:
+                                    type: array
+                                    description: The emails of the person associated with the item
+                                    items:
+                                      type: object
+                                      properties:
+                                        label:
+                                          type: string
+                                          description: The type of the email
+                                        value:
+                                          type: string
+                                          description: The email of the associated person
+                                        primary:
+                                          type: boolean
+                                          description: Whether this is the primary email or not
+                                  phone:
+                                    type: array
+                                    description: The phone numbers of the person associated with the item
+                                    items:
+                                      type: object
+                                      title: PhoneData
+                                      properties:
+                                        label:
+                                          type: string
+                                          description: The type of the phone number
+                                        value:
+                                          type: string
+                                          description: The phone number of the person associated with the item
+                                        primary:
+                                          type: boolean
+                                          description: Whether this is the primary phone number or not
+                                  owner_id:
+                                    type: integer
+                                    description: The ID of the owner of the person that is associated with the item
+              example:
+                success: true
+                data:
+                - object: personChange
+                  timestamp: '2020-08-03 11:25:21'
+                  data:
+                    id: 11158
+                    item_id: 3512
+                    user_id: 8877
+                    field_key: org_id
+                    old_value: null
+                    new_value: 1482
+                    is_bulk_update_flag: null
+                    log_time: '2020-08-03 11:25:21'
+                    change_source: app
+                    change_source_user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML like Gecko) Chrome/84.0.4147.89 Safari/537.36
+                    additional_data:
+                      new_value_formatted: Umbrella Corp.
+                - object: activity
+                  timestamp: '2020-08-07 08:15:00'
+                  data:
+                    id: 8
+                    company_id: 22122
+                    user_id: 1234
+                    done: false
+                    type: deadline
+                    reference_type: scheduler-service
+                    reference_id: 7
+                    conference_meeting_client: 871b8bc88d3a1202
+                    conference_meeting_url: https://pipedrive.zoom.us/link
+                    conference_meeting_id: '17058746701'
+                    due_date: '2020-06-09'
+                    due_time: '10:00'
+                    duration: 01:00
+                    busy_flag: true
+                    add_time: '2020-06-08 12:37:56'
+                    marked_as_done_time: '2020-08-08 08:08:38'
+                    last_notification_time: '2020-08-08 12:37:56'
+                    last_notification_user_id: 7655
+                    notification_language_id: 1
+                    subject: Deadline
+                    public_description: This is a description
+                    calendar_sync_include_context: ''
+                    location: Mustamäe tee 3, Tallinn, Estonia
+                    org_id: 5
+                    person_id: 1101
+                    deal_id: 300
+                    lead_id: 46c3b0e1-db35-59ca-1828-4817378dff71
+                    project_id: null
+                    active_flag: true
+                    update_time: '2020-08-08 12:37:56'
+                    update_user_id: 5596
+                    gcal_event_id: ''
+                    google_calendar_id: ''
+                    google_calendar_etag: ''
+                    source_timezone: ''
+                    rec_rule: RRULE:FREQ=WEEKLY;BYDAY=WE
+                    rec_rule_extension: ''
+                    rec_master_activity_id: 1
+                    series: []
+                    note: A note for the activity
+                    created_by_user_id: 1234
+                    location_subpremise: ''
+                    location_street_number: '3'
+                    location_route: Mustamäe tee
+                    location_sublocality: Kristiine
+                    location_locality: Tallinn
+                    location_admin_area_level_1: Harju maakond
+                    location_admin_area_level_2: ''
+                    location_country: Estonia
+                    location_postal_code: '10616'
+                    location_formatted_address: Mustamäe tee 3, 10616 Tallinn, Estonia
+                    attendees:
+                    - email_address: attendee@pipedrivemail.com
+                      is_organizer: 0
+                      name: Attendee
+                      person_id: 25312
+                      status: noreply
+                      user_id: null
+                    participants:
+                    - person_id: 17985
+                      primary_flag: false
+                    - person_id: 1101
+                      primary_flag: true
+                    org_name: Organization
+                    person_name: Person
+                    deal_title: Deal
+                    owner_name: Creator
+                    person_dropbox_bcc: company@pipedrivemail.com
+                    deal_dropbox_bcc: company+deal300@pipedrivemail.com
+                    assigned_to_user_id: 1235
+                    file:
+                      id: 376892,
+                      clean_name: Audio 10:55:07.m4a
+                      url: https://pipedrive-files.s3-eu-west-1.amazonaws.com/Audio-recording.m4a
+                additional_data:
+                  pagination:
+                    start: 0
+                    limit: 100
+                    more_items_in_collection: true
+                related_objects:
+                  allOf:
+                  - user:
+                      '123':
+                        id: 123
+                        name: Jane Doe
+                        email: jane@pipedrive.com
+                        has_pic: 1
+                        pic_hash: 2611ace8ac6a3afe2f69ed56f9e08c6b
+                        active_flag: true
+                  - person:
+                      '1101':
+                        active_flag: true
+                        id: 1101
+                        name: Person
+                        email:
+                        - label: work
+                          value: person@pipedrive.com
+                          primary: true
+                        phone:
+                        - label: work
+                          value: '3421787767'
+                          primary: true
+                        owner_id: 8877
+                  - organization:
+                      '1':
+                        id: 1
+                        name: Org Name
+                        people_count: 1
+                        owner_id: 123
+                        address: Mustamäe tee 3a, 10615 Tallinn
+                        active_flag: true
+                        cc_email: org@pipedrivemail.com
+  /persons/{id}/followers:
+    get:
+      summary: List followers of a person
+      description: Lists the followers of a person.
+      x-token-cost: 20
+      operationId: getPersonFollowers
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:read
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: GetListFollowersResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      description: The list of followers
+                      items:
+                        type: object
+                        properties:
+                          user_id:
+                            type: integer
+                            description: The ID of the user
+                          id:
+                            type: integer
+                            description: The ID of the user follower
+                          deal_id:
+                            type: integer
+                            description: The ID of the deal which the follower was added to
+                          add_time:
+                            type: string
+                            description: The date and time when the follower was added to the person
+                    additional_data:
+                      description: The additional data of the list
+                      type: object
+                      properties:
+                        start:
+                          type: integer
+                          description: Pagination start
+                        limit:
+                          type: integer
+                          description: Items shown per page
+                        more_items_in_collection:
+                          type: boolean
+                          description: If there are more list items in the collection than displayed or not
+              example:
+                success: true
+                data:
+                - user_id: 123
+                  id: 456
+                  deal_id: 789
+                  add_time: '2020-09-09 11:36:23'
+                additional_data:
+                  pagination:
+                    start: 0
+                    limit: 100
+                    more_items_in_collection: true
+    post:
+      summary: Add a follower to a person
+      description: Adds a follower to a person.
+      x-token-cost: 10
+      operationId: addPersonFollower
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: addPersonFollowerRequest
+              type: object
+              required:
+              - user_id
+              properties:
+                user_id:
+                  type: integer
+                  description: The ID of the user
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: AddPersonFollowerResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        user_id:
+                          type: integer
+                          description: The ID of the user who was added as a follower to a person
+                        id:
+                          type: integer
+                          description: The ID of the follower
+                        person_id:
+                          type: integer
+                          description: The ID of the person to whom the follower was added
+                        add_time:
+                          type: string
+                          description: 'The date and time when the follower was added to a person. Format: YYYY-MM-DD HH:MM:SS'
+              example:
+                success: true
+                data:
+                  user_id: 1
+                  id: 2
+                  person_id: 3
+                  add_time: '2020-04-03 11:44:31'
+  /persons/{id}/followers/{follower_id}:
+    delete:
+      summary: Delete a follower from a person
+      description: Deletes a follower from a person.
+      x-token-cost: 6
+      operationId: deletePersonFollower
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: follower_id
+        required: true
+        schema:
+          type: integer
+        description: The ID of the relationship between the follower and the person
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: DeletePersonResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the deleted person
+              example:
+                success: true
+                data:
+                  id: 12
+  /persons/{id}/mailMessages:
+    get:
+      summary: List mail messages associated with a person
+      description: Lists mail messages associated with a person.
+      x-token-cost: 20
+      operationId: getPersonMailMessages
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - mail:read
+        - mail:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: start
+        description: Pagination start
+        schema:
+          type: integer
+          default: 0
+      - in: query
+        name: limit
+        description: Items shown per page
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: GetAssociatedMailMessagesResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      description: The array of mail messages
+                      items:
+                        type: object
+                        properties:
+                          object:
+                            type: string
+                            description: The type of the data item
+                          timestamp:
+                            type: string
+                            description: The date and time when the item was created
+                          data:
+                            title: mailMessageItemForList
+                            allOf:
+                            - type: object
+                              title: MailMessageData
+                              properties:
+                                id:
+                                  description: ID of the mail message.
+                                  type: integer
+                                from:
+                                  type: array
+                                  description: The array of mail message sender (object)
+                                  items:
+                                    type: object
+                                    properties:
+                                      id:
+                                        description: ID of the mail participant
+                                        type: integer
+                                      email_address:
+                                        description: Mail address of the mail participant
+                                        type: string
+                                      name:
+                                        description: Name of the mail participant
+                                        type: string
+                                      linked_person_id:
+                                        description: ID of the linked person to the mail message
+                                        type: integer
+                                      linked_person_name:
+                                        description: Name of the linked person to the mail message
+                                        type: string
+                                      mail_message_party_id:
+                                        description: ID of the mail message participant
+                                        type: integer
+                                to:
+                                  type: array
+                                  description: The array of mail message receiver (object)
+                                  items:
+                                    type: object
+                                    properties:
+                                      id:
+                                        description: ID of the mail participant
+                                        type: integer
+                                      email_address:
+                                        description: Mail address of the mail participant
+                                        type: string
+                                      name:
+                                        description: Name of the mail participant
+                                        type: string
+                                      linked_person_id:
+                                        description: ID of the linked person to the mail message
+                                        type: integer
+                                      linked_person_name:
+                                        description: Name of the linked person to the mail message
+                                        type: string
+                                      mail_message_party_id:
+                                        description: ID of the mail message participant
+                                        type: integer
+                                cc:
+                                  type: array
+                                  description: The array of mail message copies (object)
+                                  items:
+                                    type: object
+                                    properties:
+                                      id:
+                                        description: ID of the mail participant
+                                        type: integer
+                                      email_address:
+                                        description: Mail address of the mail participant
+                                        type: string
+                                      name:
+                                        description: Name of the mail participant
+                                        type: string
+                                      linked_person_id:
+                                        description: ID of the linked person to the mail message
+                                        type: integer
+                                      linked_person_name:
+                                        description: Name of the linked person to the mail message
+                                        type: string
+                                      mail_message_party_id:
+                                        description: ID of the mail message participant
+                                        type: integer
+                                bcc:
+                                  type: array
+                                  description: The array of mail message blind copies (object)
+                                  items:
+                                    type: object
+                                    properties:
+                                      id:
+                                        description: ID of the mail participant
+                                        type: integer
+                                      email_address:
+                                        description: Mail address of the mail participant
+                                        type: string
+                                      name:
+                                        description: Name of the mail participant
+                                        type: string
+                                      linked_person_id:
+                                        description: ID of the linked person to the mail message
+                                        type: integer
+                                      linked_person_name:
+                                        description: Name of the linked person to the mail message
+                                        type: string
+                                      mail_message_party_id:
+                                        description: ID of the mail message participant
+                                        type: integer
+                                body_url:
+                                  type: string
+                                  description: The mail message body URL
+                                account_id:
+                                  type: string
+                                  description: The connection account ID
+                                user_id:
+                                  type: integer
+                                  description: ID of the user whom mail message will be assigned to
+                                mail_thread_id:
+                                  type: integer
+                                  description: ID of the mail message thread
+                                subject:
+                                  type: string
+                                  description: The subject of mail message
+                                snippet:
+                                  type: string
+                                  description: The snippet of mail message. Snippet length is up to 225 characters.
+                                mail_tracking_status:
+                                  type: string
+                                  nullable: true
+                                  description: The status of tracking mail message. Value is `null` if tracking is not enabled.
+                                  enum:
+                                  - opened
+                                  - not opened
+                                mail_link_tracking_enabled_flag:
+                                  description: Whether the link tracking in mail message body is enabled.
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                read_flag:
+                                  description: Whether the mail message is read or not by the user
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                draft:
+                                  type: string
+                                  description: If the mail message has a draft status then the value is the mail message object as JSON formatted string, otherwise `null`.
+                                draft_flag:
+                                  description: Whether the mail message is a draft or not
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                synced_flag:
+                                  description: Whether the mail message is synced with the provider or not
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                deleted_flag:
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                  description: Whether the mail message is deleted or not
+                                has_body_flag:
+                                  description: Whether the mail message has a body or not
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                sent_flag:
+                                  description: Whether the mail message has been sent or not
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                sent_from_pipedrive_flag:
+                                  description: Whether the mail message has been sent from Pipedrive app or not
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                smart_bcc_flag:
+                                  description: Whether the mail message has been created by Smart Email BCC feature or not
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                message_time:
+                                  type: string
+                                  format: date-time
+                                  description: Creation or receival time of the mail message
+                                add_time:
+                                  type: string
+                                  format: date-time
+                                  description: The insertion into the database time of the mail message
+                                update_time:
+                                  type: string
+                                  format: date-time
+                                  description: The updating time in the database of the mail message
+                                has_attachments_flag:
+                                  description: Whether the mail message has an attachment or not
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                has_inline_attachments_flag:
+                                  description: Whether the mail message has an inline attachment or not
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                                has_real_attachments_flag:
+                                  description: Whether the mail message has an attachment (which is not inline) or not
+                                  allOf:
+                                  - title: numberBooleanDefault0
+                                    type: number
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 1
+                            - type: object
+                              properties:
+                                nylas_id:
+                                  type: string
+                                  description: The Mail Message ID assigned by the sync provider
+                                s3_bucket:
+                                  type: string
+                                  description: The name of the S3 bucket
+                                s3_bucket_path:
+                                  type: string
+                                  description: The path of the S3 bucket
+                                external_deleted_flag:
+                                  type: boolean
+                                  description: If the Mail Message has been deleted on the provider side or not
+                                mua_message_id:
+                                  type: string
+                                  description: The Mail Message ID assigned by the mail user agent
+                                template_id:
+                                  type: integer
+                                  description: The ID of the mail template
+                                timestamp:
+                                  type: string
+                                  description: The add date and time of the Mail Message
+                                item_type:
+                                  type: string
+                                  description: The type of the data item
+                                company_id:
+                                  type: integer
+                                  description: The ID of the company
+                    additional_data:
+                      description: The additional data of the list
+                      type: object
+                      properties:
+                        start:
+                          type: integer
+                          description: Pagination start
+                        limit:
+                          type: integer
+                          description: Items shown per page
+                        more_items_in_collection:
+                          type: boolean
+                          description: If there are more list items in the collection than displayed or not
+              example:
+                success: true
+                data:
+                - object: mailMessage
+                  timestamp: '2020-09-16 13:38:17'
+                  data:
+                    id: 1
+                    from:
+                    - id: 1
+                      email_address: mail@example.org
+                      name: Test
+                      linked_person_id: 1
+                      linked_person_name: ''
+                      mail_message_party_id: 1
+                    to:
+                    - id: 1
+                      email_address: mail@example.org
+                      name: Test
+                      linked_person_id: 1
+                      linked_person_name: ''
+                      mail_message_party_id: 1
+                    cc:
+                    - id: 1
+                      email_address: mail@example.org
+                      name: Test
+                      linked_person_id: 1
+                      linked_person_name: ''
+                      mail_message_party_id: 1
+                    bcc:
+                    - id: 1
+                      email_address: mail@example.org
+                      name: Test
+                      linked_person_id: 1
+                      linked_person_name: ''
+                      mail_message_party_id: 1
+                    body_url: https://example.org
+                    nylas_id: 8cfw8n7l4iy24xxxxxxxxx
+                    account_id: ao5gpry0zykr1xxxxxxxxx
+                    user_id: 1
+                    mail_thread_id: 1
+                    subject: test subject
+                    snippet: test subject
+                    mail_tracking_status: opened
+                    mail_link_tracking_enabled_flag: 0
+                    read_flag: 1
+                    draft: ''
+                    s3_bucket: pipedrive-mail-live-fr
+                    s3_bucket_path: e9cf-6081745/77777/nylas/111/1111/body
+                    draft_flag: 0
+                    synced_flag: 1
+                    deleted_flag: 0
+                    external_deleted_flag: false
+                    has_body_flag: 1
+                    sent_flag: 0
+                    sent_from_pipedrive_flag: 0
+                    smart_bcc_flag: 0
+                    message_time: '2019-11-14T06:02:06.000Z'
+                    add_time: '2019-11-14T06:02:06.000Z'
+                    update_time: '2019-11-14T07:15:49.000Z'
+                    has_attachments_flag: 1
+                    has_inline_attachments_flag: 0
+                    has_real_attachments_flag: 1
+                    mua_message_id: 8cfw8n7l4iy24lfhnexxxxxx-0@mailer.nylas.com
+                    template_id: 1
+                    item_type: mailMessage
+                    timestamp: '2020-09-16T13:37:50.000Z'
+                    company_id: 6081745
+                additional_data:
+                  pagination:
+                    start: 0
+                    limit: 100
+                    more_items_in_collection: true
+  /persons/{id}/merge:
+    put:
+      summary: Merge two persons
+      description: Merges a person with another person. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/merging-two-persons" target="_blank" rel="noopener noreferrer">merging two persons</a>.
+      x-token-cost: 40
+      operationId: mergePersons
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: mergePersonsRequest
+              type: object
+              required:
+              - merge_with_id
+              properties:
+                merge_with_id:
+                  type: integer
+                  description: The ID of the person that will not be overwritten. This person’s data will be prioritized in case of conflict with the other person.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: MergePersonsResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      title: mergePersonItem
+                      allOf:
+                      - type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the person
+                          company_id:
+                            type: integer
+                            description: The ID of the company related to the person
+                          active_flag:
+                            type: boolean
+                            description: Whether the person is active or not
+                          phone:
+                            type: array
+                            description: 'A phone number supplied as a string or an array of phone objects related to the person. The structure of the array is as follows: `[{ "value": "12345", "primary": "true", "label": "mobile" }]`. Please note that only `value` is required.'
+                            items:
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                                  description: The phone number
+                                primary:
+                                  type: boolean
+                                  description: Boolean that indicates if phone number is primary for the person or not
+                                label:
+                                  type: string
+                                  description: The label that indicates the type of the phone number. (Possible values - work, home, mobile or other)
+                          email:
+                            type: array
+                            description: 'An email address as a string or an array of email objects related to the person. The structure of the array is as follows: `[{ "value": "mail@example.com", "primary": "true", "label": "main" } ]`. Please note that only `value` is required.'
+                            items:
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                                  description: Email
+                                primary:
+                                  type: boolean
+                                  description: Boolean that indicates if email is primary for the person or not
+                                label:
+                                  type: string
+                                  description: The label that indicates the type of the email. (Possible values - work, home or other)
+                          first_char:
+                            type: string
+                            description: The first letter of the name of the person
+                          add_time:
+                            type: string
+                            description: 'The date and time when the person was added/created. Format: YYYY-MM-DD HH:MM:SS'
+                          update_time:
+                            type: string
+                            description: 'The last updated date and time of the person. Format: YYYY-MM-DD HH:MM:SS'
+                          visible_to:
+                            type: string
+                            description: The visibility group ID of who can see the person
+                          picture_id:
+                            type: object
+                            nullable: true
+                            title: PictureDataWithID
+                            properties:
+                              id:
+                                type: integer
+                                description: The ID of the picture associated with the item
+                              item_type:
+                                type: string
+                                description: The type of item the picture is related to
+                              item_id:
+                                type: integer
+                                description: The ID of related item
+                              active_flag:
+                                type: boolean
+                                description: Whether the associated picture is active or not
+                              add_time:
+                                type: string
+                                description: The add time of the picture
+                              update_time:
+                                type: string
+                                description: The update time of the picture
+                              added_by_user_id:
+                                type: integer
+                                description: The ID of the user who added the picture
+                              pictures:
+                                type: object
+                                properties:
+                                  '128':
+                                    type: string
+                                    description: The URL of the 128*128 picture
+                                  '512':
+                                    type: string
+                                    description: The URL of the 512*512 picture
+                          label:
+                            type: integer
+                            nullable: true
+                            description: The label assigned to the person. When the `label` field is updated, the `label_ids` field value will be overwritten by the `label` field value.
+                          label_ids:
+                            type: array
+                            items:
+                              type: integer
+                            description: The IDs of labels assigned to the person. When the `label_ids` field is updated, the `label` field value will be set to the first value of the `label_ids` field.
+                          org_name:
+                            type: string
+                            nullable: true
+                            description: The name of the organization associated with the person
+                          owner_name:
+                            type: string
+                            description: The name of the owner associated with the person
+                          cc_email:
+                            type: string
+                            nullable: true
+                            description: The BCC email associated with the person
+                      - type: object
+                        title: additionalMergePersonInfo
+                        allOf:
+                        - type: object
+                          title: personNameCountAndEmailInfoWithIds
+                          allOf:
+                          - type: object
+                            properties:
+                              owner_id:
+                                type: integer
+                                description: The ID of the owner related to the person
+                              org_id:
+                                type: integer
+                                description: The ID of the organization related to the person
+                              merge_what_id:
+                                type: integer
+                                description: The ID of the person with what the main person was merged
+                          - type: object
+                            title: personNameCountAndEmailInfo
+                            allOf:
+                            - type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: The name of the person
+                                first_name:
+                                  type: string
+                                  description: The first name of the person
+                                last_name:
+                                  type: string
+                                  nullable: true
+                                  description: The last name of the person
+                            - type: object
+                              title: personCountAndEmailInfo
+                              allOf:
+                              - type: object
+                                properties:
+                                  email_messages_count:
+                                    type: integer
+                                    description: The count of email messages related to the person
+                                  activities_count:
+                                    type: integer
+                                    description: The count of activities related to the person
+                                  done_activities_count:
+                                    type: integer
+                                    description: The count of done activities related to the person
+                                  undone_activities_count:
+                                    type: integer
+                                    description: The count of undone activities related to the person
+                                  files_count:
+                                    type: integer
+                                    description: The count of files related to the person
+                                  notes_count:
+                                    type: integer
+                                    description: The count of notes related to the person
+                                  followers_count:
+                                    type: integer
+                                    description: The count of followers related to the person
+                              - type: object
+                                properties:
+                                  last_incoming_mail_time:
+                                    type: string
+                                    nullable: true
+                                    description: The date and time of the last incoming email associated with the person
+                                  last_outgoing_mail_time:
+                                    type: string
+                                    nullable: true
+                                    description: The date and time of the last outgoing email associated with the person
+                        - type: object
+                          title: mergePersonDealRelatedInfo
+                          allOf:
+                          - type: object
+                            title: dealCountAndActivityInfo
+                            allOf:
+                            - type: object
+                              properties:
+                                open_deals_count:
+                                  type: integer
+                                  description: The count of open deals related with the item
+                                related_open_deals_count:
+                                  type: integer
+                                  description: The count of related open deals related with the item
+                                closed_deals_count:
+                                  type: integer
+                                  description: The count of closed deals related with the item
+                                related_closed_deals_count:
+                                  type: integer
+                                  description: The count of related closed deals related with the item
+                                won_deals_count:
+                                  type: integer
+                                  description: The count of won deals related with the item
+                                related_won_deals_count:
+                                  type: integer
+                                  description: The count of related won deals related with the item
+                                lost_deals_count:
+                                  type: integer
+                                  description: The count of lost deals related with the item
+                                related_lost_deals_count:
+                                  type: integer
+                                  description: The count of related lost deals related with the item
+                            - type: object
+                              properties:
+                                next_activity_date:
+                                  type: string
+                                  nullable: true
+                                  description: The date of the next activity associated with the deal
+                                next_activity_time:
+                                  type: string
+                                  nullable: true
+                                  description: The time of the next activity associated with the deal
+                                next_activity_id:
+                                  type: integer
+                                  nullable: true
+                                  description: The ID of the next activity associated with the deal
+                                last_activity_id:
+                                  type: integer
+                                  nullable: true
+                                  description: The ID of the last activity associated with the deal
+                                last_activity_date:
+                                  type: string
+                                  nullable: true
+                                  description: The date of the last activity associated with the deal
+                          - type: object
+                            properties:
+                              participant_open_deals_count:
+                                type: integer
+                                description: The count of open participant deals related with the item
+                              participant_closed_deals_count:
+                                type: integer
+                                description: The count of closed participant deals related with the item
+              example:
+                success: true
+                data:
+                  id: 1
+                  company_id: 12
+                  owner_id: 123
+                  org_id: 123
+                  name: Will Smith
+                  first_name: Will
+                  last_name: Smith
+                  open_deals_count: 2
+                  related_open_deals_count: 2
+                  closed_deals_count: 3
+                  related_closed_deals_count: 3
+                  participant_open_deals_count: 1
+                  participant_closed_deals_count: 1
+                  email_messages_count: 1
+                  activities_count: 1
+                  done_activities_count: 1
+                  undone_activities_count: 2
+                  files_count: 2
+                  notes_count: 2
+                  followers_count: 3
+                  won_deals_count: 3
+                  related_won_deals_count: 3
+                  lost_deals_count: 1
+                  related_lost_deals_count: 1
+                  active_flag: true
+                  phone:
+                  - value: '12345'
+                    primary: true
+                    label: work
+                  email:
+                  - value: some@email.com
+                    primary: true
+                    label: work
+                  first_char: w
+                  update_time: '2020-05-08 05:30:20'
+                  add_time: '2017-10-18 13:23:07'
+                  visible_to: '3'
+                  picture_id:
+                    item_type: person
+                    item_id: 25
+                    active_flag: true
+                    add_time: '2020-09-08 08:17:52'
+                    update_time: '0000-00-00 00:00:00'
+                    added_by_user_id: 967055
+                    pictures:
+                      '128': https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_128.jpg
+                      '512': https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_512.jpg
+                    value: 4
+                  next_activity_date: '2019-11-29'
+                  next_activity_time: '11:30:00'
+                  next_activity_id: 128
+                  last_activity_id: 34
+                  last_activity_date: '2019-11-28'
+                  last_incoming_mail_time: '2019-05-29 18:21:42'
+                  last_outgoing_mail_time: '2019-05-30 03:45:35'
+                  label: 1
+                  label_ids:
+                  - 1
+                  - 2
+                  - 3
+                  org_name: Organization name
+                  owner_name: Jane Doe
+                  cc_email: org@pipedrivemail.com
+                  merge_what_id: 456
+  /persons/{id}/permittedUsers:
+    get:
+      summary: List permitted users
+      description: List users permitted to access a person.
+      x-token-cost: 10
+      operationId: getPersonUsers
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:read
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: GetPermittedUsersResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      description: The list of permitted user IDs
+                      items:
+                        type: number
+              example:
+                success: true
+                data:
+                - 123
+                - 777
+  /persons/{id}/picture:
+    delete:
+      summary: Delete person picture
+      description: Deletes a person’s picture.
+      x-token-cost: 6
+      operationId: deletePersonPicture
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: DeletePersonResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the deleted person
+              example:
+                success: true
+                data:
+                  id: 12
+    post:
+      summary: Add person picture
+      description: Adds a picture to a person. If a picture is already set, the old picture will be replaced. Added image (or the cropping parameters supplied with the request) should have an equal width and height and should be at least 128 pixels. GIF, JPG and PNG are accepted. All added images will be resized to 128 and 512 pixel wide squares.
+      x-token-cost: 10
+      operationId: addPersonPicture
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              title: addPersonPictureRequest
+              type: object
+              required:
+              - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: One image supplied in the multipart/form-data encoding
+                crop_x:
+                  type: integer
+                  description: X coordinate to where start cropping form (in pixels)
+                crop_y:
+                  type: integer
+                  description: Y coordinate to where start cropping form (in pixels)
+                crop_width:
+                  type: integer
+                  description: The width of the cropping area (in pixels)
+                crop_height:
+                  type: integer
+                  description: The height of the cropping area (in pixels)
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: AddPersonPictureResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      title: RelatedPictureData
+                      description: The picture that is associated with the item
+                      properties:
+                        PICTURE_ID:
+                          type: object
+                          description: The ID of the picture
+                          allOf:
+                          - allOf:
+                            - type: object
+                              title: PictureDataWithID
+                              properties:
+                                id:
+                                  type: integer
+                                  description: The ID of the picture associated with the item
+                            - type: object
+                              title: PictureData
+                              properties:
+                                item_type:
+                                  type: string
+                                  description: The type of item the picture is related to
+                                item_id:
+                                  type: integer
+                                  description: The ID of related item
+                                active_flag:
+                                  type: boolean
+                                  description: Whether the associated picture is active or not
+                                add_time:
+                                  type: string
+                                  description: The add time of the picture
+                                update_time:
+                                  type: string
+                                  description: The update time of the picture
+                                added_by_user_id:
+                                  type: integer
+                                  description: The ID of the user who added the picture
+                                pictures:
+                                  type: object
+                                  properties:
+                                    '128':
+                                      type: string
+                                      description: The URL of the 128*128 picture
+                                    '512':
+                                      type: string
+                                      description: The URL of the 512*512 picture
+              example:
+                success: true
+                data:
+                  id: 1
+                  item_type: person
+                  item_id: 25
+                  active_flag: true
+                  add_time: '2020-09-08 08:17:52'
+                  update_time: '0000-00-00 00:00:00'
+                  added_by_user_id: 967055
+                  pictures:
+                    '128': https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_128.jpg
+                    '512': https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_512.jpg
+    get:
+      summary: Get picture of a person
+      description: Returns the picture associated with a person. The picture URLs include both 128x128 and 512x512 pixel versions.
+      x-token-cost: 1
+      operationId: getPersonPicture
+      x-tool-description: Retrieves the profile picture for a specific person, including URLs for both thumbnail (128x128) and full-size (512x512) versions. Use for displaying contact pictures in UI or exporting contact data. Returns 404 if the person has no picture.
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:read
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Get person picture
+          content:
+            application/json:
+              schema:
+                title: GetPersonPictureResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the picture.
+                      item_type:
+                        type: string
+                        description: The type of item the picture is associated with.
+                      item_id:
+                        type: integer
+                        description: The ID of the person this picture belongs to.
+                      added_by_user_id:
+                        type: integer
+                        description: The ID of the user who added the picture.
+                      active_flag:
+                        type: boolean
+                        description: Whether the picture is active or not.
+                      file_size:
+                        type: integer
+                        description: The file size in bytes.
+                      pictures:
+                        type: object
+                        description: Picture URLs indexed by size.
+                        properties:
+                          '128':
+                            type: string
+                            description: The URL of the 128x128 picture.
+                          '512':
+                            type: string
+                            description: The URL of the 512x512 picture.
+              example:
+                success: true
+                data:
+                  id: 1
+                  item_type: person
+                  item_id: 25
+                  added_by_user_id: 967055
+                  active_flag: true
+                  file_size: 524288
+                  pictures:
+                    '128': https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_128.jpg
+                    '512': https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_512.jpg
+  /persons/{id}/products:
+    get:
+      summary: List products associated with a person
+      description: Lists products associated with a person.
+      x-token-cost: 20
+      operationId: getPersonProducts
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:read
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: start
+        description: Pagination start
+        schema:
+          type: integer
+          default: 0
+      - in: query
+        name: limit
+        description: Items shown per page
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: GetPersonProductsResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      description: The array of deal products
+                      items:
+                        type: object
+                        properties:
+                          DEAL_ID:
+                            type: object
+                            properties:
+                              deal:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    description: The ID of the deal
+                                  company_id:
+                                    type: integer
+                                    description: The ID of the company
+                                  creator_user_id:
+                                    type: integer
+                                    description: The ID of the deal creator
+                                  user_id:
+                                    type: integer
+                                    description: The ID of the user
+                                  person_id:
+                                    type: integer
+                                    description: The ID of the person associated with the deal
+                                  org_id:
+                                    type: integer
+                                    description: The ID of the organization associated with the deal
+                                  stage_id:
+                                    type: integer
+                                    description: The ID of the deal stage
+                                  title:
+                                    type: string
+                                    description: The title of the deal
+                                  value:
+                                    type: number
+                                    description: The value of the deal
+                                  currency:
+                                    type: string
+                                    description: The currency associated with the deal
+                                  add_time:
+                                    type: string
+                                    description: The creation date and time of the deal
+                                  first_add_time:
+                                    type: string
+                                    description: The first creation date and time of the deal
+                                  update_time:
+                                    type: string
+                                    description: The last updated date and time of the deal
+                                  stage_change_time:
+                                    type: string
+                                    description: The last updated date and time of the deal stage
+                                  active:
+                                    type: boolean
+                                    description: Whether the deal is active or not
+                                  deleted:
+                                    type: boolean
+                                    description: Whether the deal is deleted or not
+                                  status:
+                                    type: string
+                                    description: The status of the deal
+                                  probability:
+                                    type: number
+                                    nullable: true
+                                    description: The success probability percentage of the deal
+                                  next_activity_date:
+                                    type: string
+                                    description: The date of the next activity associated with the deal
+                                  next_activity_time:
+                                    type: string
+                                    description: The time of the next activity associated with the deal
+                                  next_activity_id:
+                                    type: integer
+                                    nullable: true
+                                    description: The ID of the next activity associated with the deal
+                                  last_activity_id:
+                                    type: integer
+                                    nullable: true
+                                    description: The ID of the last activity associated with the deal
+                                  last_activity_date:
+                                    type: string
+                                    nullable: true
+                                    description: The date of the last activity associated with the deal
+                                  lost_reason:
+                                    type: string
+                                    nullable: true
+                                    description: The reason for losing the deal
+                                  visible_to:
+                                    type: string
+                                    description: The visibility of the deal
+                                  close_time:
+                                    type: string
+                                    nullable: true
+                                    description: The date and time of closing the deal
+                                  pipeline_id:
+                                    type: integer
+                                    description: The ID of the pipeline associated with the deal
+                                  won_time:
+                                    type: string
+                                    description: The date and time of changing the deal status as won
+                                  first_won_time:
+                                    type: string
+                                    description: The date and time of the first time changing the deal status as won
+                                  lost_time:
+                                    type: string
+                                    description: The date and time of changing the deal status as lost
+                                  products_count:
+                                    type: integer
+                                    description: The number of products associated with the deal
+                                  files_count:
+                                    type: integer
+                                    description: The number of files associated with the deal
+                                  notes_count:
+                                    type: integer
+                                    description: The number of notes associated with the deal
+                                  followers_count:
+                                    type: integer
+                                    description: The number of followers associated with the deal
+                                  email_messages_count:
+                                    type: integer
+                                    description: The number of emails associated with the deal
+                                  activities_count:
+                                    type: integer
+                                    description: The number of activities associated with the deal
+                                  done_activities_count:
+                                    type: integer
+                                    description: The number of completed activities associated with the deal
+                                  undone_activities_count:
+                                    type: integer
+                                    description: The number of incomplete activities associated with the deal
+                                  participants_count:
+                                    type: integer
+                                    description: The number of participants associated with the deal
+                                  expected_close_date:
+                                    type: string
+                                    format: date
+                                    description: The expected close date of the deal
+                                  last_incoming_mail_time:
+                                    type: string
+                                    description: The date and time of the last incoming email associated with the deal
+                                  last_outgoing_mail_time:
+                                    type: string
+                                    description: The date and time of the last outgoing email associated with the deal
+                                  label:
+                                    type: string
+                                    description: The label or multiple labels assigned to the deal
+                              product:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    description: The ID of the product
+                                  company_id:
+                                    type: integer
+                                    description: The ID of the company
+                                  name:
+                                    type: string
+                                    description: The name of the product
+                                  code:
+                                    type: string
+                                    description: The product code
+                                  description:
+                                    type: string
+                                    description: The description of the product
+                                  unit:
+                                    type: string
+                                    description: The unit in which this product is sold
+                                  tax:
+                                    type: number
+                                    description: The tax percentage
+                                    default: 0
+                                  category:
+                                    type: string
+                                    description: The category of the product
+                                  active_flag:
+                                    type: boolean
+                                    description: Whether this product will be made active or not
+                                    default: true
+                                  selectable:
+                                    type: boolean
+                                    description: Whether this product can be selected in deals or not
+                                    default: true
+                                  first_char:
+                                    type: string
+                                    description: The first letter of the product name
+                                  visible_to:
+                                    allOf:
+                                    - type: string
+                                      enum:
+                                      - '1'
+                                      - '3'
+                                      - '5'
+                                      - '7'
+                                    description: The visibility of the product. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.<table><tr><th>Value</th><th>Description</th></tr><tr><td>`1`</td><td>Owner &amp; followers (private)</td></tr><tr><td>`3`</td><td>Entire company (shared)</td></tr></table>
+                                  owner_id:
+                                    type: integer
+                                    description: The ID of the user who will be marked as the owner of this product. When omitted, the authorized user ID will be used
+                                  files_count:
+                                    type: integer
+                                    description: The count of files
+                                  add_time:
+                                    type: string
+                                    description: The date and time when the product was added to the deal
+                                  update_time:
+                                    type: string
+                                    description: The date and time when the product was updated to the deal
+                                  deal_id:
+                                    type: integer
+                                    description: The ID of the deal
+                    additional_data:
+                      type: object
+                      properties:
+                        pagination:
+                          description: Pagination details of the list
+                          type: object
+                          properties:
+                            start:
+                              type: integer
+                              description: Pagination start
+                            limit:
+                              type: integer
+                              description: Items shown per page
+                            more_items_in_collection:
+                              type: boolean
+                              description: Whether there are more list items in the collection than displayed
+                            next_start:
+                              type: integer
+                              description: Next pagination start
+              example:
+                success: true
+                data:
+                - '123':
+                    deal:
+                      id: 123
+                      company_id: 1938610
+                      creator_user_id: 599218
+                      user_id: 599218
+                      person_id: 25
+                      org_id: 1
+                      stage_id: 2
+                      title: tervist
+                      value: 3342.79
+                      currency: EUR
+                      add_time: '2017-10-18 13:23:07'
+                      first_add_time: '2017-10-18 13:23:07'
+                      update_time: '2020-09-18 12:12:54'
+                      stage_change_time: '2020-05-07 11:44:00'
+                      active: true
+                      deleted: false
+                      status: open
+                      probability: null
+                      next_activity_date: '2020-01-17'
+                      next_activity_time: null
+                      next_activity_id: 7
+                      last_activity_id: null
+                      last_activity_date: null
+                      lost_reason: null
+                      visible_to: '3'
+                      close_time: null
+                      pipeline_id: 1
+                      won_time: null
+                      first_won_time: null
+                      lost_time: null
+                      products_count: 6
+                      files_count: 1
+                      notes_count: 0
+                      email_messages_count: 0
+                      activities_count: 1
+                      done_activities_count: 0
+                      undone_activities_count: 1
+                      participants_count: 2
+                      expected_close_date: null
+                      last_incoming_mail_time: '2020-09-18 12:12:54'
+                      last_outgoing_mail_time: '2020-09-18 12:12:54'
+                      label: null
+                    product:
+                      id: 4
+                      company_id: 1938610
+                      name: '1234'
+                      code: '444'
+                      description: '123'
+                      unit: ''
+                      tax: 0
+                      category: '40'
+                      active_flag: true
+                      selectable: true
+                      first_char: '1'
+                      visible_to: '3'
+                      owner_id: 967055
+                      files_count: null
+                      add_time: '2020-01-28 11:54:41'
+                      update_time: '2020-09-18 11:54:36'
+                      deal_id: 5
+                additional_data:
+                  pagination:
+                    start: 0
+                    limit: 100
+                    more_items_in_collection: true
+  /persons:
+    get:
+      summary: Get all persons
+      description: Returns data about all persons. Fields `ims`, `postal_address`, `notes`, `birthday`, and `job_title` are only included if contact sync is enabled for the company.
+      x-token-cost: 10
+      operationId: getPersons
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:read
+        - contacts:full
+      parameters:
+      - in: query
+        name: filter_id
+        schema:
+          type: integer
+        description: If supplied, only persons matching the specified filter are returned
+      - in: query
+        name: ids
+        description: Optional comma separated string array of up to 100 entity ids to fetch. If filter_id is provided, this is ignored. If any of the requested entities do not exist or are not visible, they are not included in the response.
+        schema:
+          type: string
+      - in: query
+        name: owner_id
+        schema:
+          type: integer
+        description: If supplied, only persons owned by the specified user are returned. If filter_id is provided, this is ignored.
+      - in: query
+        name: org_id
+        schema:
+          type: integer
+        description: If supplied, only persons linked to the specified organization are returned. If filter_id is provided, this is ignored.
+      - in: query
+        name: deal_id
+        schema:
+          type: integer
+        description: If supplied, only persons linked to the specified deal are returned. If filter_id is provided, this is ignored.
+      - in: query
+        name: updated_since
+        schema:
+          type: string
+        description: If set, only persons with an `update_time` later than or equal to this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z.
+      - in: query
+        name: updated_until
+        schema:
+          type: string
+        description: If set, only persons with an `update_time` earlier than this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z.
+      - in: query
+        name: sort_by
+        description: 'The field to sort by. Supported fields: `id`, `update_time`, `add_time`.'
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - update_time
+          - add_time
+      - in: query
+        name: sort_direction
+        description: 'The sorting direction. Supported values: `asc`, `desc`.'
+        schema:
+          type: string
+          default: asc
+          enum:
+          - asc
+          - desc
+      - in: query
+        name: include_fields
+        description: Optional comma separated string array of additional fields to include. `marketing_status` and `doi_status` can only be included if the company has marketing app enabled.
+        schema:
+          type: string
+          enum:
+          - next_activity_id
+          - last_activity_id
+          - open_deals_count
+          - related_open_deals_count
+          - closed_deals_count
+          - related_closed_deals_count
+          - participant_open_deals_count
+          - participant_closed_deals_count
+          - email_messages_count
+          - activities_count
+          - done_activities_count
+          - undone_activities_count
+          - files_count
+          - notes_count
+          - followers_count
+          - won_deals_count
+          - related_won_deals_count
+          - lost_deals_count
+          - related_lost_deals_count
+          - last_incoming_mail_time
+          - last_outgoing_mail_time
+          - marketing_status
+          - doi_status
+          - smart_bcc_email
+      - in: query
+        name: custom_fields
+        description: Optional comma separated string array of custom fields keys to include. If you are only interested in a particular set of custom fields, please use this parameter for faster results and smaller response.<br/>A maximum of 15 keys is allowed.
+        schema:
+          type: string
+      - in: query
+        name: include_option_labels
+        description: 'When provided with a ''true'' value, single option and multiple option custom fields values contain objects in the form of ''{ id: number, label: string }'' instead of plain id'
+        schema:
+          type: boolean
+      - in: query
+        name: include_labels
+        description: 'When provided with ''true'' value, response will include an array of label objects in the form of ''{ id: number, label: string }'''
+        schema:
+          type: boolean
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.
+        schema:
+          type: integer
+          example: 100
+      - in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      responses:
+        '200':
+          description: Get all persons
+          content:
+            application/json:
+              schema:
+                type: object
+                title: GetPersonsResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      description: Persons array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the person
+                          name:
+                            type: string
+                            description: The name of the person
+                          first_name:
+                            type: string
+                            description: The first name of the person
+                          last_name:
+                            type: string
+                            description: The last name of the person
+                          owner_id:
+                            type: integer
+                            description: The ID of the user who owns the person
+                          org_id:
+                            type: integer
+                            description: The ID of the organization linked to the person
+                          add_time:
+                            type: string
+                            description: The creation date and time of the person
+                          update_time:
+                            type: string
+                            description: The last updated date and time of the person
+                          emails:
+                            type: array
+                            description: The emails of the person
+                            items:
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                                  description: The email address of the person
+                                primary:
+                                  type: boolean
+                                  description: Whether the email is primary or not
+                                label:
+                                  type: string
+                                  description: The email address classification label
+                          phones:
+                            type: array
+                            description: The phones of the person
+                            items:
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                                  description: The phone number of the person
+                                primary:
+                                  type: boolean
+                                  description: Whether the phone number is primary or not
+                                label:
+                                  type: string
+                                  description: The phone number classification label
+                          is_deleted:
+                            type: boolean
+                            description: Whether the person is deleted or not
+                          visible_to:
+                            type: integer
+                            description: The visibility of the person
+                          label_ids:
+                            type: array
+                            description: The IDs of labels assigned to the person
+                            items:
+                              type: integer
+                          picture_id:
+                            type: integer
+                            description: The ID of the picture associated with the person
+                          postal_address:
+                            type: object
+                            description: Postal address of the person, included if contact sync is enabled for the company
+                            properties:
+                              value:
+                                type: string
+                                description: The full address of the person
+                              country:
+                                type: string
+                                description: Country of the person
+                              admin_area_level_1:
+                                type: string
+                                description: Admin area level 1 (e.g. state) of the person
+                              admin_area_level_2:
+                                type: string
+                                description: Admin area level 2 (e.g. county) of the person
+                              locality:
+                                type: string
+                                description: Locality (e.g. city) of the person
+                              sublocality:
+                                type: string
+                                description: Sublocality (e.g. neighborhood) of the person
+                              route:
+                                type: string
+                                description: Route (e.g. street) of the person
+                              street_number:
+                                type: string
+                                description: Street number of the person
+                              subpremise:
+                                type: string
+                                description: Subpremise (e.g. apartment/suite number) of the person
+                              postal_code:
+                                type: string
+                                description: Postal code of the person
+                          notes:
+                            type: string
+                            description: Contact sync notes of the person, maximum 10 000 characters, included if contact sync is enabled for the company
+                          im:
+                            type: array
+                            description: The instant messaging accounts of the person, included if contact sync is enabled for the company
+                            items:
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                                  description: The instant messaging account of the person
+                                primary:
+                                  type: boolean
+                                  description: Whether the instant messaging account is primary or not
+                                label:
+                                  type: string
+                                  description: The instant messaging account classification label
+                          birthday:
+                            type: string
+                            description: The birthday of the person, included if contact sync is enabled for the company
+                          job_title:
+                            type: string
+                            description: The job title of the person, included if contact sync is enabled for the company
+                          custom_fields:
+                            type: object
+                            additionalProperties: true
+                            description: An object where each key represents a custom field. All custom fields are referenced as randomly generated 40-character hashes. To clear a custom field value, set it to `null`. For multi-option fields (field type `set`), use `null` to clear the selection — sending an empty array `[]` is not supported and will result in a validation error.
+                    additional_data:
+                      type: object
+                      description: The additional data of the list
+                      properties:
+                        next_cursor:
+                          type: string
+                          description: The first item on the next page. The value of the `next_cursor` field will be `null` if you have reached the end of the dataset and there’s no more pages to be returned.
+              example:
+                success: true
+                data:
+                - id: 1
+                  name: Person Name
+                  first_name: Person
+                  last_name: Name
+                  owner_id: 1
+                  org_id: 1
+                  add_time: '2021-01-01T00:00:00Z'
+                  update_time: '2021-01-01T00:00:00Z'
+                  emails:
+                  - value: email1@email.com
+                    primary: true
+                    label: work
+                  - value: email2@email.com
+                    primary: false
+                    label: home
+                  phones:
+                  - value: '12345'
+                    primary: true
+                    label: work
+                  - value: '54321'
+                    primary: false
+                    label: home
+                  is_deleted: false
+                  visible_to: 7
+                  label_ids:
+                  - 1
+                  - 2
+                  - 3
+                  picture_id: 1
+                  custom_fields: {}
+                  notes: Notes from contact sync
+                  im:
+                  - value: skypeusername
+                    primary: true
+                    label: skype
+                  - value: whatsappusername
+                    primary: false
+                    label: whatsapp
+                  birthday: '2000-12-31'
+                  job_title: Manager
+                  postal_address:
+                    value: 123 Main St
+                    country: USA
+                    admin_area_level_1: CA
+                    admin_area_level_2: Santa Clara
+                    locality: Sunnyvale
+                    sublocality: Downtown
+                    route: Main St
+                    street_number: '123'
+                    subpremise: Apt 1
+                    postal_code: '94085'
+                additional_data:
+                  next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    post:
+      summary: Add a new person
+      description: Adds a new person. If the company uses the [Campaigns product](https://pipedrive.readme.io/docs/campaigns-in-pipedrive-api), then this endpoint will also accept and return the `marketing_status` field.
+      x-token-cost: 5
+      operationId: addPerson
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:full
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the person
+                owner_id:
+                  type: integer
+                  description: The ID of the user who owns the person
+                org_id:
+                  type: integer
+                  description: The ID of the organization linked to the person
+                add_time:
+                  type: string
+                  description: The creation date and time of the person
+                update_time:
+                  type: string
+                  description: The last updated date and time of the person
+                emails:
+                  type: array
+                  description: The emails of the person
+                  items:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                        description: The email address of the person
+                      primary:
+                        type: boolean
+                        description: Whether the email is primary or not
+                      label:
+                        type: string
+                        description: The email address classification label
+                phones:
+                  type: array
+                  description: The phones of the person
+                  items:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                        description: The phone number of the person
+                      primary:
+                        type: boolean
+                        description: Whether the phone number is primary or not
+                      label:
+                        type: string
+                        description: The phone number classification label
+                visible_to:
+                  type: integer
+                  description: The visibility of the person
+                label_ids:
+                  type: array
+                  description: The IDs of labels assigned to the person
+                  items:
+                    type: integer
+                marketing_status:
+                  type: string
+                  description: If the person does not have a valid email address, then the marketing status is **not set** and `no_consent` is returned for the `marketing_status` value when the new person is created. If the change is forbidden, the status will remain unchanged for every call that tries to modify the marketing status. Please be aware that it is only allowed **once** to change the marketing status from an old status to a new one.<table><tr><th>Value</th><th>Description</th></tr><tr><td>`no_consent`</td><td>The customer has not given consent to receive any marketing communications</td></tr><tr><td>`unsubscribed`</td><td>The customers have unsubscribed from ALL marketing communications</td></tr><tr><td>`subscribed`</td><td>The customers are subscribed and are counted towards marketing caps</td></tr><tr><td>`archived`</td><td>The customers with `subscribed` status can be moved to `archived` to save consent, but they are not paid for</td></tr></table>
+                  enum:
+                  - no_consent
+                  - unsubscribed
+                  - subscribed
+                  - archived
+                custom_fields:
+                  type: object
+                  additionalProperties: true
+                  description: An object where each key represents a custom field. All custom fields are referenced as randomly generated 40-character hashes. To clear a custom field value, set it to `null`. For multi-option fields (field type `set`), use `null` to clear the selection — sending an empty array `[]` is not supported and will result in a validation error.
+      responses:
+        '200':
+          description: Add person
+          content:
+            application/json:
+              schema:
+                type: object
+                title: UpsertPersonResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: UpsertPersonResponseData
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the person
+                        name:
+                          type: string
+                          description: The name of the person
+                        first_name:
+                          type: string
+                          description: The first name of the person
+                        last_name:
+                          type: string
+                          description: The last name of the person
+                        owner_id:
+                          type: integer
+                          description: The ID of the user who owns the person
+                        org_id:
+                          type: integer
+                          description: The ID of the organization linked to the person
+                        add_time:
+                          type: string
+                          description: The creation date and time of the person
+                        update_time:
+                          type: string
+                          description: The last updated date and time of the person
+                        emails:
+                          type: array
+                          description: The emails of the person
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                                description: The email address of the person
+                              primary:
+                                type: boolean
+                                description: Whether the email is primary or not
+                              label:
+                                type: string
+                                description: The email address classification label
+                        phones:
+                          type: array
+                          description: The phones of the person
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                                description: The phone number of the person
+                              primary:
+                                type: boolean
+                                description: Whether the phone number is primary or not
+                              label:
+                                type: string
+                                description: The phone number classification label
+                        is_deleted:
+                          type: boolean
+                          description: Whether the person is deleted or not
+                        visible_to:
+                          type: integer
+                          description: The visibility of the person
+                        label_ids:
+                          type: array
+                          description: The IDs of labels assigned to the person
+                          items:
+                            type: integer
+                        picture_id:
+                          type: integer
+                          description: The ID of the picture associated with the person
+                        postal_address:
+                          type: object
+                          description: Postal address of the person, included if contact sync is enabled for the company
+                          properties:
+                            value:
+                              type: string
+                              description: The full address of the person
+                            country:
+                              type: string
+                              description: Country of the person
+                            admin_area_level_1:
+                              type: string
+                              description: Admin area level 1 (e.g. state) of the person
+                            admin_area_level_2:
+                              type: string
+                              description: Admin area level 2 (e.g. county) of the person
+                            locality:
+                              type: string
+                              description: Locality (e.g. city) of the person
+                            sublocality:
+                              type: string
+                              description: Sublocality (e.g. neighborhood) of the person
+                            route:
+                              type: string
+                              description: Route (e.g. street) of the person
+                            street_number:
+                              type: string
+                              description: Street number of the person
+                            subpremise:
+                              type: string
+                              description: Subpremise (e.g. apartment/suite number) of the person
+                            postal_code:
+                              type: string
+                              description: Postal code of the person
+                        notes:
+                          type: string
+                          description: Contact sync notes of the person, maximum 10 000 characters, included if contact sync is enabled for the company
+                        im:
+                          type: array
+                          description: The instant messaging accounts of the person, included if contact sync is enabled for the company
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                                description: The instant messaging account of the person
+                              primary:
+                                type: boolean
+                                description: Whether the instant messaging account is primary or not
+                              label:
+                                type: string
+                                description: The instant messaging account classification label
+                        birthday:
+                          type: string
+                          description: The birthday of the person, included if contact sync is enabled for the company
+                        job_title:
+                          type: string
+                          description: The job title of the person, included if contact sync is enabled for the company
+                        custom_fields:
+                          type: object
+                          additionalProperties: true
+                          description: An object where each key represents a custom field. All custom fields are referenced as randomly generated 40-character hashes. To clear a custom field value, set it to `null`. For multi-option fields (field type `set`), use `null` to clear the selection — sending an empty array `[]` is not supported and will result in a validation error.
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Person Name
+                  first_name: Person
+                  last_name: Name
+                  owner_id: 1
+                  org_id: 1
+                  add_time: '2021-01-01T00:00:00Z'
+                  update_time: '2021-01-01T00:00:00Z'
+                  emails:
+                  - value: email1@email.com
+                    primary: true
+                    label: work
+                  - value: email2@email.com
+                    primary: false
+                    label: home
+                  phones:
+                  - value: '12345'
+                    primary: true
+                    label: work
+                  - value: '54321'
+                    primary: false
+                    label: home
+                  is_deleted: false
+                  visible_to: 7
+                  label_ids:
+                  - 1
+                  - 2
+                  - 3
+                  picture_id: 1
+                  custom_fields: {}
+                  notes: Notes from contact sync
+                  im:
+                  - value: skypeusername
+                    primary: true
+                    label: skype
+                  - value: whatsappusername
+                    primary: false
+                    label: whatsapp
+                  birthday: '2000-12-31'
+                  job_title: Manager
+                  postal_address:
+                    value: 123 Main St
+                    country: USA
+                    admin_area_level_1: CA
+                    admin_area_level_2: Santa Clara
+                    locality: Sunnyvale
+                    sublocality: Downtown
+                    route: Main St
+                    street_number: '123'
+                    subpremise: Apt 1
+                    postal_code: '94085'
+  /persons/{id}:
+    delete:
+      summary: Delete a person
+      description: Marks a person as deleted. After 30 days, the person will be permanently deleted.
+      x-token-cost: 3
+      operationId: deletePerson
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Delete person
+          content:
+            application/json:
+              schema:
+                title: DeletePersonResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: Deleted person ID
+              example:
+                success: true
+                data:
+                  id: 1
+    get:
+      summary: Get details of a person
+      description: Returns the details of a specific person. Fields `ims`, `postal_address`, `notes`, `birthday`, and `job_title` are only included if contact sync is enabled for the company.
+      x-token-cost: 1
+      operationId: getPerson
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:read
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: include_fields
+        description: Optional comma separated string array of additional fields to include. `marketing_status` and `doi_status` can only be included if the company has marketing app enabled.
+        schema:
+          type: string
+          enum:
+          - next_activity_id
+          - last_activity_id
+          - open_deals_count
+          - related_open_deals_count
+          - closed_deals_count
+          - related_closed_deals_count
+          - participant_open_deals_count
+          - participant_closed_deals_count
+          - email_messages_count
+          - activities_count
+          - done_activities_count
+          - undone_activities_count
+          - files_count
+          - notes_count
+          - followers_count
+          - won_deals_count
+          - related_won_deals_count
+          - lost_deals_count
+          - related_lost_deals_count
+          - last_incoming_mail_time
+          - last_outgoing_mail_time
+          - marketing_status
+          - doi_status
+          - smart_bcc_email
+      - in: query
+        name: custom_fields
+        description: Optional comma separated string array of custom fields keys to include. If you are only interested in a particular set of custom fields, please use this parameter for faster results and smaller response.<br/>A maximum of 15 keys is allowed.
+        schema:
+          type: string
+      - in: query
+        name: include_option_labels
+        description: 'When provided with a ''true'' value, single option and multiple option custom fields values contain objects in the form of ''{ id: number, label: string }'' instead of plain id'
+        schema:
+          type: boolean
+      - in: query
+        name: include_labels
+        description: 'When provided with ''true'' value, response will include an array of label objects in the form of ''{ id: number, label: string }'''
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Get person
+          content:
+            application/json:
+              schema:
+                type: object
+                title: UpsertPersonResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: UpsertPersonResponseData
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the person
+                        name:
+                          type: string
+                          description: The name of the person
+                        first_name:
+                          type: string
+                          description: The first name of the person
+                        last_name:
+                          type: string
+                          description: The last name of the person
+                        owner_id:
+                          type: integer
+                          description: The ID of the user who owns the person
+                        org_id:
+                          type: integer
+                          description: The ID of the organization linked to the person
+                        add_time:
+                          type: string
+                          description: The creation date and time of the person
+                        update_time:
+                          type: string
+                          description: The last updated date and time of the person
+                        emails:
+                          type: array
+                          description: The emails of the person
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                                description: The email address of the person
+                              primary:
+                                type: boolean
+                                description: Whether the email is primary or not
+                              label:
+                                type: string
+                                description: The email address classification label
+                        phones:
+                          type: array
+                          description: The phones of the person
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                                description: The phone number of the person
+                              primary:
+                                type: boolean
+                                description: Whether the phone number is primary or not
+                              label:
+                                type: string
+                                description: The phone number classification label
+                        is_deleted:
+                          type: boolean
+                          description: Whether the person is deleted or not
+                        visible_to:
+                          type: integer
+                          description: The visibility of the person
+                        label_ids:
+                          type: array
+                          description: The IDs of labels assigned to the person
+                          items:
+                            type: integer
+                        picture_id:
+                          type: integer
+                          description: The ID of the picture associated with the person
+                        postal_address:
+                          type: object
+                          description: Postal address of the person, included if contact sync is enabled for the company
+                          properties:
+                            value:
+                              type: string
+                              description: The full address of the person
+                            country:
+                              type: string
+                              description: Country of the person
+                            admin_area_level_1:
+                              type: string
+                              description: Admin area level 1 (e.g. state) of the person
+                            admin_area_level_2:
+                              type: string
+                              description: Admin area level 2 (e.g. county) of the person
+                            locality:
+                              type: string
+                              description: Locality (e.g. city) of the person
+                            sublocality:
+                              type: string
+                              description: Sublocality (e.g. neighborhood) of the person
+                            route:
+                              type: string
+                              description: Route (e.g. street) of the person
+                            street_number:
+                              type: string
+                              description: Street number of the person
+                            subpremise:
+                              type: string
+                              description: Subpremise (e.g. apartment/suite number) of the person
+                            postal_code:
+                              type: string
+                              description: Postal code of the person
+                        notes:
+                          type: string
+                          description: Contact sync notes of the person, maximum 10 000 characters, included if contact sync is enabled for the company
+                        im:
+                          type: array
+                          description: The instant messaging accounts of the person, included if contact sync is enabled for the company
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                                description: The instant messaging account of the person
+                              primary:
+                                type: boolean
+                                description: Whether the instant messaging account is primary or not
+                              label:
+                                type: string
+                                description: The instant messaging account classification label
+                        birthday:
+                          type: string
+                          description: The birthday of the person, included if contact sync is enabled for the company
+                        job_title:
+                          type: string
+                          description: The job title of the person, included if contact sync is enabled for the company
+                        custom_fields:
+                          type: object
+                          additionalProperties: true
+                          description: An object where each key represents a custom field. All custom fields are referenced as randomly generated 40-character hashes. To clear a custom field value, set it to `null`. For multi-option fields (field type `set`), use `null` to clear the selection — sending an empty array `[]` is not supported and will result in a validation error.
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Person Name
+                  first_name: Person
+                  last_name: Name
+                  owner_id: 1
+                  org_id: 1
+                  add_time: '2021-01-01T00:00:00Z'
+                  update_time: '2021-01-01T00:00:00Z'
+                  emails:
+                  - value: email1@email.com
+                    primary: true
+                    label: work
+                  - value: email2@email.com
+                    primary: false
+                    label: home
+                  phones:
+                  - value: '12345'
+                    primary: true
+                    label: work
+                  - value: '54321'
+                    primary: false
+                    label: home
+                  is_deleted: false
+                  visible_to: 7
+                  label_ids:
+                  - 1
+                  - 2
+                  - 3
+                  picture_id: 1
+                  custom_fields: {}
+                  notes: Notes from contact sync
+                  im:
+                  - value: skypeusername
+                    primary: true
+                    label: skype
+                  - value: whatsappusername
+                    primary: false
+                    label: whatsapp
+                  birthday: '2000-12-31'
+                  job_title: Manager
+                  postal_address:
+                    value: 123 Main St
+                    country: USA
+                    admin_area_level_1: CA
+                    admin_area_level_2: Santa Clara
+                    locality: Sunnyvale
+                    sublocality: Downtown
+                    route: Main St
+                    street_number: '123'
+                    subpremise: Apt 1
+                    postal_code: '94085'
+    patch:
+      summary: Update a person
+      description: Updates the properties of a person. <br>If the company uses the [Campaigns product](https://pipedrive.readme.io/docs/campaigns-in-pipedrive-api), then this endpoint will also accept and return the `marketing_status` field.
+      x-token-cost: 5
+      operationId: updatePerson
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the person
+                owner_id:
+                  type: integer
+                  description: The ID of the user who owns the person
+                org_id:
+                  type: integer
+                  description: The ID of the organization linked to the person
+                add_time:
+                  type: string
+                  description: The creation date and time of the person
+                update_time:
+                  type: string
+                  description: The last updated date and time of the person
+                emails:
+                  type: array
+                  description: The emails of the person
+                  items:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                        description: The email address of the person
+                      primary:
+                        type: boolean
+                        description: Whether the email is primary or not
+                      label:
+                        type: string
+                        description: The email address classification label
+                phones:
+                  type: array
+                  description: The phones of the person
+                  items:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                        description: The phone number of the person
+                      primary:
+                        type: boolean
+                        description: Whether the phone number is primary or not
+                      label:
+                        type: string
+                        description: The phone number classification label
+                visible_to:
+                  type: integer
+                  description: The visibility of the person
+                label_ids:
+                  type: array
+                  description: The IDs of labels assigned to the person
+                  items:
+                    type: integer
+                marketing_status:
+                  type: string
+                  description: If the person does not have a valid email address, then the marketing status is **not set** and `no_consent` is returned for the `marketing_status` value when the new person is created. If the change is forbidden, the status will remain unchanged for every call that tries to modify the marketing status. Please be aware that it is only allowed **once** to change the marketing status from an old status to a new one.<table><tr><th>Value</th><th>Description</th></tr><tr><td>`no_consent`</td><td>The customer has not given consent to receive any marketing communications</td></tr><tr><td>`unsubscribed`</td><td>The customers have unsubscribed from ALL marketing communications</td></tr><tr><td>`subscribed`</td><td>The customers are subscribed and are counted towards marketing caps</td></tr><tr><td>`archived`</td><td>The customers with `subscribed` status can be moved to `archived` to save consent, but they are not paid for</td></tr></table>
+                  enum:
+                  - no_consent
+                  - unsubscribed
+                  - subscribed
+                  - archived
+                custom_fields:
+                  type: object
+                  additionalProperties: true
+                  description: An object where each key represents a custom field. All custom fields are referenced as randomly generated 40-character hashes. To clear a custom field value, set it to `null`. For multi-option fields (field type `set`), use `null` to clear the selection — sending an empty array `[]` is not supported and will result in a validation error.
+      responses:
+        '200':
+          description: Edit person
+          content:
+            application/json:
+              schema:
+                type: object
+                title: UpsertPersonResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: UpsertPersonResponseData
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the person
+                        name:
+                          type: string
+                          description: The name of the person
+                        first_name:
+                          type: string
+                          description: The first name of the person
+                        last_name:
+                          type: string
+                          description: The last name of the person
+                        owner_id:
+                          type: integer
+                          description: The ID of the user who owns the person
+                        org_id:
+                          type: integer
+                          description: The ID of the organization linked to the person
+                        add_time:
+                          type: string
+                          description: The creation date and time of the person
+                        update_time:
+                          type: string
+                          description: The last updated date and time of the person
+                        emails:
+                          type: array
+                          description: The emails of the person
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                                description: The email address of the person
+                              primary:
+                                type: boolean
+                                description: Whether the email is primary or not
+                              label:
+                                type: string
+                                description: The email address classification label
+                        phones:
+                          type: array
+                          description: The phones of the person
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                                description: The phone number of the person
+                              primary:
+                                type: boolean
+                                description: Whether the phone number is primary or not
+                              label:
+                                type: string
+                                description: The phone number classification label
+                        is_deleted:
+                          type: boolean
+                          description: Whether the person is deleted or not
+                        visible_to:
+                          type: integer
+                          description: The visibility of the person
+                        label_ids:
+                          type: array
+                          description: The IDs of labels assigned to the person
+                          items:
+                            type: integer
+                        picture_id:
+                          type: integer
+                          description: The ID of the picture associated with the person
+                        postal_address:
+                          type: object
+                          description: Postal address of the person, included if contact sync is enabled for the company
+                          properties:
+                            value:
+                              type: string
+                              description: The full address of the person
+                            country:
+                              type: string
+                              description: Country of the person
+                            admin_area_level_1:
+                              type: string
+                              description: Admin area level 1 (e.g. state) of the person
+                            admin_area_level_2:
+                              type: string
+                              description: Admin area level 2 (e.g. county) of the person
+                            locality:
+                              type: string
+                              description: Locality (e.g. city) of the person
+                            sublocality:
+                              type: string
+                              description: Sublocality (e.g. neighborhood) of the person
+                            route:
+                              type: string
+                              description: Route (e.g. street) of the person
+                            street_number:
+                              type: string
+                              description: Street number of the person
+                            subpremise:
+                              type: string
+                              description: Subpremise (e.g. apartment/suite number) of the person
+                            postal_code:
+                              type: string
+                              description: Postal code of the person
+                        notes:
+                          type: string
+                          description: Contact sync notes of the person, maximum 10 000 characters, included if contact sync is enabled for the company
+                        im:
+                          type: array
+                          description: The instant messaging accounts of the person, included if contact sync is enabled for the company
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                                description: The instant messaging account of the person
+                              primary:
+                                type: boolean
+                                description: Whether the instant messaging account is primary or not
+                              label:
+                                type: string
+                                description: The instant messaging account classification label
+                        birthday:
+                          type: string
+                          description: The birthday of the person, included if contact sync is enabled for the company
+                        job_title:
+                          type: string
+                          description: The job title of the person, included if contact sync is enabled for the company
+                        custom_fields:
+                          type: object
+                          additionalProperties: true
+                          description: An object where each key represents a custom field. All custom fields are referenced as randomly generated 40-character hashes. To clear a custom field value, set it to `null`. For multi-option fields (field type `set`), use `null` to clear the selection — sending an empty array `[]` is not supported and will result in a validation error.
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Person Name
+                  first_name: Person
+                  last_name: Name
+                  owner_id: 1
+                  org_id: 1
+                  add_time: '2021-01-01T00:00:00Z'
+                  update_time: '2021-01-01T00:00:00Z'
+                  emails:
+                  - value: email1@email.com
+                    primary: true
+                    label: work
+                  - value: email2@email.com
+                    primary: false
+                    label: home
+                  phones:
+                  - value: '12345'
+                    primary: true
+                    label: work
+                  - value: '54321'
+                    primary: false
+                    label: home
+                  is_deleted: false
+                  visible_to: 7
+                  label_ids:
+                  - 1
+                  - 2
+                  - 3
+                  picture_id: 1
+                  custom_fields: {}
+                  notes: Notes from contact sync
+                  im:
+                  - value: skypeusername
+                    primary: true
+                    label: skype
+                  - value: whatsappusername
+                    primary: false
+                    label: whatsapp
+                  birthday: '2000-12-31'
+                  job_title: Manager
+                  postal_address:
+                    value: 123 Main St
+                    country: USA
+                    admin_area_level_1: CA
+                    admin_area_level_2: Santa Clara
+                    locality: Sunnyvale
+                    sublocality: Downtown
+                    route: Main St
+                    street_number: '123'
+                    subpremise: Apt 1
+                    postal_code: '94085'
+  /persons/{id}/followers/changelog:
+    get:
+      summary: List followers changelog of a person
+      description: Lists changelogs about users have followed the person.
+      x-token-cost: 10
+      operationId: getPersonFollowersChangelog
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:read
+        - contacts:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the person
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.
+        schema:
+          type: integer
+          example: 100
+      - in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      responses:
+        '200':
+          description: List entity followers
+          content:
+            application/json:
+              schema:
+                type: object
+                title: GetFollowerChangelogsResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      description: Follower changelogs array
+                      items:
+                        type: object
+                        title: FollowerChangelogItem
+                        properties:
+                          action:
+                            type: string
+                            description: The type of change
+                          actor_user_id:
+                            type: integer
+                            description: The ID of the user who did the change
+                          follower_user_id:
+                            type: integer
+                            description: The ID of the user who was following the entity
+                          time:
+                            type: string
+                            description: The time at which the change happened
+                    additional_data:
+                      type: object
+                      description: The additional data of the list
+                      properties:
+                        next_cursor:
+                          type: string
+                          description: The first item on the next page. The value of the `next_cursor` field will be `null` if you have reached the end of the dataset and there’s no more pages to be returned.
+              example:
+                success: true
+                data:
+                - action: added
+                  actor_user_id: 1
+                  follower_user_id: 1
+                  time: '2024-01-01T00:00:00Z'
+                additional_data:
+                  next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+  /persons/search:
+    get:
+      summary: Search persons
+      description: Searches all persons by name, email, phone, notes and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope. Found persons can be filtered by organization ID.
+      x-token-cost: 20
+      operationId: searchPersons
+      tags:
+      - Persons
+      security:
+      - api_key: []
+      - oauth2:
+        - contacts:read
+        - contacts:full
+        - search:read
+      parameters:
+      - in: query
+        name: term
+        required: true
+        schema:
+          type: string
+        description: The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded.
+      - in: query
+        name: fields
+        schema:
+          type: string
+          enum:
+          - custom_fields
+          - email
+          - notes
+          - phone
+          - name
+        description: 'A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href="https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields" target="_blank" rel="noopener noreferrer">here</a>.'
+      - in: query
+        name: exact_match
+        schema:
+          type: boolean
+        description: When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.
+      - in: query
+        name: organization_id
+        schema:
+          type: integer
+        description: Will filter persons by the provided organization ID. The upper limit of found persons associated with the organization is 2000.
+      - in: query
+        name: include_fields
+        schema:
+          type: string
+          enum:
+          - person.picture
+        description: Supports including optional fields in the results which are not provided by default
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.
+        schema:
+          type: integer
+          example: 100
+      - in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: GetPersonSearchResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        items:
+                          type: array
+                          description: The array of found items
+                          items:
+                            type: object
+                            properties:
+                              result_score:
+                                type: number
+                                description: Search result relevancy
+                              item:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    description: The ID of the person
+                                  type:
+                                    type: string
+                                    description: The type of the item
+                                  name:
+                                    type: string
+                                    description: The name of the person
+                                  phones:
+                                    type: array
+                                    description: An array of phone numbers
+                                    items:
+                                      type: string
+                                  emails:
+                                    type: array
+                                    description: An array of email addresses
+                                    items:
+                                      type: string
+                                  visible_to:
+                                    type: integer
+                                    description: The visibility of the person
+                                  owner:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: integer
+                                        description: The ID of the owner of the person
+                                  organization:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: integer
+                                        description: The ID of the organization the person is associated with
+                                      name:
+                                        type: string
+                                        description: The name of the organization the person is associated with
+                                  custom_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: Custom fields
+                                  notes:
+                                    type: array
+                                    description: An array of notes
+                                    items:
+                                      type: string
+                    additional_data:
+                      type: object
+                      description: Pagination related data
+                      properties:
+                        next_cursor:
+                          type: string
+                          description: The first item on the next page. The value of the `next_cursor` field will be `null` if you have reached the end of the dataset and there’s no more pages to be returned.
+              example:
+                success: true
+                data:
+                  items:
+                  - result_score: 0.5092
+                    item:
+                      id: 1
+                      type: person
+                      name: Jane Doe
+                      phones:
+                      - +372 555555555
+                      emails:
+                      - jane@pipedrive.com
+                      visible_to: 3
+                      owner:
+                        id: 1
+                      organization:
+                        id: 1
+                        name: Organization name
+                        address: null
+                      custom_fields: []
+                      notes: []
+                additional_data:
+                  next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+components:
+  securitySchemes:
+    basic_authentication:
+      type: http
+      scheme: basic
+      description: Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.
+    api_key:
+      type: apiKey
+      name: x-api-token
+      in: header
+    oauth2:
+      type: oauth2
+      description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+          tokenUrl: https://oauth.pipedrive.com/oauth/token
+          refreshUrl: https://oauth.pipedrive.com/oauth/token
+          scopes:
+            base: Read settings of the authorized user and currencies in an account
+            deals:read: Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            deals:full: Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            mail:read: Read mail threads and messages
+            mail:full: Read, update and delete mail threads. Also grants read access to mail messages
+            activities:read: Read activities, its fields and types; all files and filters
+            activities:full: Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types
+            contacts:read: Read the data about persons and organizations, their related fields and followers; also all notes, files, filters
+            contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
+            products:read: Read products, its fields, files, followers and products connected to a deal
+            products:full: Create, read, update and delete products and its fields; add products to deals
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            projects:read: Read projects and its fields, tasks and project templates
+            projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
+            users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
+            recents:read: Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users
+            search:read: Search across the account for deals, persons, organizations, files and products, and see details about the returned results
+            admin: Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app
+            leads:read: Read data about leads and lead labels
+            leads:full: Create, read, update and delete leads and lead labels
+            phone-integration: Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive
+            goals:read: Read data on all goals
+            goals:full: Create, read, update and delete goals
+            video-calls: Allows application to register as a video call integration provider and create conference links
+            messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses

@@ -1,0 +1,820 @@
+openapi: 3.0.1
+info:
+  title: Pipedrive API v1 Activities Goals API
+  version: 1.0.0
+  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
+
+    '
+servers:
+- url: https://api.pipedrive.com/v1
+tags:
+- name: Goals
+  description: 'Goals help your team meet your sales targets. There are three types of goals - company, team and user.
+
+    '
+paths:
+  /goals:
+    post:
+      summary: Add a new goal
+      description: Adds a new goal. Along with adding a new goal, a report is created to track the progress of your goal.
+      x-token-cost: 10
+      operationId: addGoal
+      tags:
+      - Goals
+      security:
+      - api_key: []
+      - oauth2:
+        - goals:full
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: addGoalRequest
+              type: object
+              required:
+              - type
+              - assignee
+              - expected_outcome
+              - duration
+              - interval
+              properties:
+                title:
+                  type: string
+                  description: The title of the goal
+                assignee:
+                  type: object
+                  description: 'Who this goal is assigned to. It requires the following JSON structure: `{ "id": "1", "type": "person" }`. `type` can be either `person`, `company` or `team`. ID of the assignee person, company or team.'
+                type:
+                  type: object
+                  description: 'The type of the goal. It requires the following JSON structure: `{ "name": "deals_started", "params": { "pipeline_id": [1, 2], "activity_type_id": [9] } }`. Type can be one of: `deals_won`, `deals_progressed`, `activities_completed`, `activities_added`, `deals_started` or `revenue_forecast`. `params` can include `pipeline_id`, `stage_id` or `activity_type_id`. `stage_id` is related to only `deals_progressed` type of goals and `activity_type_id` to `activities_completed` or `activities_added` types of goals. The `pipeline_id` and `activity_type_id` need to be given as an array of integers. To track the goal in all pipelines, set `pipeline_id` as `null` and similarly, to track the goal for all activities, set `activity_type_id` as `null`.”'
+                expected_outcome:
+                  type: object
+                  description: 'The expected outcome of the goal. Expected outcome can be tracked either by `quantity` or by `sum`. It requires the following JSON structure: `{ "target": "50", "tracking_metric": "quantity" }` or `{ "target": "50", "tracking_metric": "sum", "currency_id": 1 }`. `currency_id` should only be added to `sum` type of goals.'
+                duration:
+                  type: object
+                  description: 'The date when the goal starts and ends. It requires the following JSON structure: `{ "start": "2019-01-01", "end": "2022-12-31" }`. Date in format of YYYY-MM-DD. "end" can be set to `null` for an infinite, open-ended goal.'
+                interval:
+                  type: string
+                  enum:
+                  - weekly
+                  - monthly
+                  - quarterly
+                  - yearly
+                  description: The interval of the goal
+      responses:
+        '200':
+          description: Successful response containing payload in the `data.goal` object
+          content:
+            application/json:
+              schema:
+                title: UpsertGoalResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the request was successful or not
+                  data:
+                    type: object
+                    properties:
+                      goal:
+                        type: object
+                        title: Goal
+                        properties:
+                          id:
+                            type: string
+                            description: The ID of the goal
+                          owner_id:
+                            type: integer
+                            description: The ID of the creator of the goal
+                          title:
+                            type: string
+                            description: The title of the goal
+                          type:
+                            type: object
+                            description: The type of the goal
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the goal type
+                              params:
+                                type: object
+                                description: The parameters that accompany the goal type
+                                properties:
+                                  pipeline_id:
+                                    type: array
+                                    description: The IDs of pipelines of the goal
+                                    items:
+                                      type: integer
+                                  activity_type_id:
+                                    type: array
+                                    description: The IDs of activity types of the goal
+                                    items:
+                                      type: integer
+                          assignee:
+                            type: object
+                            description: Who the goal is assigned to
+                            properties:
+                              id:
+                                type: integer
+                                description: The ID of the goal assignee
+                              type:
+                                type: string
+                                description: The type of the assignee
+                          interval:
+                            type: string
+                            description: The interval of the goal
+                          duration:
+                            type: object
+                            description: The duration of the goal
+                            properties:
+                              start:
+                                type: string
+                                description: The start date of the goal
+                              end:
+                                type: string
+                                description: The end date of the goal
+                          expected_outcome:
+                            type: object
+                            description: The expected outcome of the goal
+                            properties:
+                              target:
+                                type: integer
+                                description: The numeric target of the goal
+                              tracking_metric:
+                                type: string
+                                description: The tracking metric of the goal
+                          is_active:
+                            type: boolean
+                            description: Whether the goal is currently active or not
+                          report_ids:
+                            type: array
+                            description: The IDs of the reports that belong to the goal
+                            items:
+                              type: string
+              example:
+                success: true
+                statusCode: 20000
+                statusText: OK
+                service: statistics-goals-api
+                data:
+                  goal:
+                    id: 5665cef556ddff22606fc8f6c0004807
+                    owner_id: 987654
+                    title: Some example goal
+                    type:
+                      name: Deals started
+                      params:
+                        pipeline_id:
+                        - 5
+                        - 2
+                        activity_type_id:
+                        - 9
+                    assignee:
+                      type: company
+                      id: 123456
+                    interval: weekly
+                    duration:
+                      start: '2019-11-01'
+                      end: '2020-10-30'
+                    expected_outcome:
+                      target: 100
+                      tracking_metric: quantity
+                    is_active: false
+                    report_ids:
+                    - f37bd66a2ab64d28ff6a9b6d2289813a
+  /goals/find:
+    get:
+      summary: Find goals
+      description: Returns data about goals based on criteria. For searching, append `{searchField}={searchValue}` to the URL, where `searchField` can be any one of the lowest-level fields in dot-notation (e.g. `type.params.pipeline_id`; `title`). `searchValue` should be the value you are looking for on that field. Additionally, `is_active=<true|false>` can be provided to search for only active/inactive goals. When providing `period.start`, `period.end` must also be provided and vice versa.
+      x-token-cost: 20
+      operationId: getGoals
+      tags:
+      - Goals
+      security:
+      - api_key: []
+      - oauth2:
+        - goals:read
+        - goals:full
+      parameters:
+      - in: query
+        name: type.name
+        schema:
+          type: string
+          enum:
+          - deals_won
+          - deals_progressed
+          - activities_completed
+          - activities_added
+          - deals_started
+        description: The type of the goal. If provided, everyone's goals will be returned.
+      - in: query
+        name: title
+        schema:
+          type: string
+        description: The title of the goal
+      - in: query
+        name: is_active
+        schema:
+          type: boolean
+          default: true
+        description: Whether the goal is active or not
+      - in: query
+        name: assignee.id
+        schema:
+          type: integer
+        description: The ID of the user who's goal to fetch. When omitted, only your goals will be returned.
+      - in: query
+        name: assignee.type
+        schema:
+          type: string
+          enum:
+          - person
+          - company
+          - team
+        description: The type of the goal's assignee. If provided, everyone's goals will be returned.
+      - in: query
+        name: expected_outcome.target
+        schema:
+          type: number
+        description: The numeric value of the outcome. If provided, everyone's goals will be returned.
+      - in: query
+        name: expected_outcome.tracking_metric
+        schema:
+          type: string
+          enum:
+          - quantity
+          - sum
+        description: The tracking metric of the expected outcome of the goal. If provided, everyone's goals will be returned.
+      - in: query
+        name: expected_outcome.currency_id
+        schema:
+          type: integer
+        description: The numeric ID of the goal's currency. Only applicable to goals with `expected_outcome.tracking_metric` with value `sum`. If provided, everyone's goals will be returned.
+      - in: query
+        name: type.params.pipeline_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: An array of pipeline IDs or `null` for all pipelines. If provided, everyone's goals will be returned.
+      - in: query
+        name: type.params.stage_id
+        schema:
+          type: integer
+        description: The ID of the stage. Applicable to only `deals_progressed` type of goals. If provided, everyone's goals will be returned.
+      - in: query
+        name: type.params.activity_type_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: An array of IDs or `null` for all activity types. Only applicable for `activities_completed` and/or `activities_added` types of goals. If provided, everyone's goals will be returned.
+      - in: query
+        name: period.start
+        schema:
+          type: string
+          format: date
+        description: The start date of the period for which to find goals. Date in format of YYYY-MM-DD. When `period.start` is provided, `period.end` must be provided too.
+      - in: query
+        name: period.end
+        schema:
+          type: string
+          format: date
+        description: The end date of the period for which to find goals. Date in format of YYYY-MM-DD.
+      responses:
+        '200':
+          description: Successful response containing payload in the `data.goal` object
+          content:
+            application/json:
+              schema:
+                title: GetGoalsResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the request was successful or not
+                  data:
+                    type: object
+                    properties:
+                      goals:
+                        type: array
+                        items:
+                          type: object
+                          title: Goal
+                          properties:
+                            id:
+                              type: string
+                              description: The ID of the goal
+                            owner_id:
+                              type: integer
+                              description: The ID of the creator of the goal
+                            title:
+                              type: string
+                              description: The title of the goal
+                            type:
+                              type: object
+                              description: The type of the goal
+                              properties:
+                                name:
+                                  type: string
+                                  description: The name of the goal type
+                                params:
+                                  type: object
+                                  description: The parameters that accompany the goal type
+                                  properties:
+                                    pipeline_id:
+                                      type: array
+                                      description: The IDs of pipelines of the goal
+                                      items:
+                                        type: integer
+                                    activity_type_id:
+                                      type: array
+                                      description: The IDs of activity types of the goal
+                                      items:
+                                        type: integer
+                            assignee:
+                              type: object
+                              description: Who the goal is assigned to
+                              properties:
+                                id:
+                                  type: integer
+                                  description: The ID of the goal assignee
+                                type:
+                                  type: string
+                                  description: The type of the assignee
+                            interval:
+                              type: string
+                              description: The interval of the goal
+                            duration:
+                              type: object
+                              description: The duration of the goal
+                              properties:
+                                start:
+                                  type: string
+                                  description: The start date of the goal
+                                end:
+                                  type: string
+                                  description: The end date of the goal
+                            expected_outcome:
+                              type: object
+                              description: The expected outcome of the goal
+                              properties:
+                                target:
+                                  type: integer
+                                  description: The numeric target of the goal
+                                tracking_metric:
+                                  type: string
+                                  description: The tracking metric of the goal
+                            is_active:
+                              type: boolean
+                              description: Whether the goal is currently active or not
+                            report_ids:
+                              type: array
+                              description: The IDs of the reports that belong to the goal
+                              items:
+                                type: string
+              example:
+                success: true
+                statusCode: 20000
+                statusText: OK
+                service: statistics-goals-api
+                data:
+                  goals:
+                  - id: 5665cef556ddff22606fc8f6c0004807
+                    owner_id: 987654
+                    title: Some example goal
+                    type:
+                      name: Deals started
+                      params:
+                        pipeline_id:
+                        - 5
+                        - 2
+                        activity_type_id:
+                        - 9
+                    assignee:
+                      type: company
+                      id: 123456
+                    interval: weekly
+                    duration:
+                      start: '2019-11-01'
+                      end: '2020-10-30'
+                    expected_outcome:
+                      target: 100
+                      tracking_metric: quantity
+                    is_active: false
+                    report_ids:
+                    - f37bd66a2ab64d28ff6a9b6d2289813a
+  /goals/{id}:
+    put:
+      summary: Update existing goal
+      description: Updates an existing goal.
+      x-token-cost: 10
+      operationId: updateGoal
+      tags:
+      - Goals
+      security:
+      - api_key: []
+      - oauth2:
+        - goals:full
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        description: The ID of the goal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: basicGoalRequest
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The title of the goal
+                assignee:
+                  type: object
+                  description: 'Who this goal is assigned to. It requires the following JSON structure: `{ "id": "1", "type": "person" }`. `type` can be either `person`, `company` or `team`. ID of the assignee person, company or team.'
+                type:
+                  type: object
+                  description: 'The type of the goal. It requires the following JSON structure: `{ "name": "deals_started", "params": { "pipeline_id": [1, 2], "activity_type_id": [9] } }`. Type can be one of: `deals_won`, `deals_progressed`, `activities_completed`, `activities_added`, `deals_started` or `revenue_forecast`. `params` can include `pipeline_id`, `stage_id` or `activity_type_id`. `stage_id` is related to only `deals_progressed` type of goals and `activity_type_id` to `activities_completed` or `activities_added` types of goals. The `pipeline_id` and `activity_type_id` need to be given as an array of integers. To track the goal in all pipelines, set `pipeline_id` as `null` and similarly, to track the goal for all activities, set `activity_type_id` as `null`.”'
+                expected_outcome:
+                  type: object
+                  description: 'The expected outcome of the goal. Expected outcome can be tracked either by `quantity` or by `sum`. It requires the following JSON structure: `{ "target": "50", "tracking_metric": "quantity" }` or `{ "target": "50", "tracking_metric": "sum", "currency_id": 1 }`. `currency_id` should only be added to `sum` type of goals.'
+                duration:
+                  type: object
+                  description: 'The date when the goal starts and ends. It requires the following JSON structure: `{ "start": "2019-01-01", "end": "2022-12-31" }`. Date in format of YYYY-MM-DD. "end" can be set to `null` for an infinite, open-ended goal.'
+                interval:
+                  type: string
+                  enum:
+                  - weekly
+                  - monthly
+                  - quarterly
+                  - yearly
+                  description: The interval of the goal
+      responses:
+        '200':
+          description: Successful response containing payload in the `data.goal` object
+          content:
+            application/json:
+              schema:
+                title: UpsertGoalResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the request was successful or not
+                  data:
+                    type: object
+                    properties:
+                      goal:
+                        type: object
+                        title: Goal
+                        properties:
+                          id:
+                            type: string
+                            description: The ID of the goal
+                          owner_id:
+                            type: integer
+                            description: The ID of the creator of the goal
+                          title:
+                            type: string
+                            description: The title of the goal
+                          type:
+                            type: object
+                            description: The type of the goal
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the goal type
+                              params:
+                                type: object
+                                description: The parameters that accompany the goal type
+                                properties:
+                                  pipeline_id:
+                                    type: array
+                                    description: The IDs of pipelines of the goal
+                                    items:
+                                      type: integer
+                                  activity_type_id:
+                                    type: array
+                                    description: The IDs of activity types of the goal
+                                    items:
+                                      type: integer
+                          assignee:
+                            type: object
+                            description: Who the goal is assigned to
+                            properties:
+                              id:
+                                type: integer
+                                description: The ID of the goal assignee
+                              type:
+                                type: string
+                                description: The type of the assignee
+                          interval:
+                            type: string
+                            description: The interval of the goal
+                          duration:
+                            type: object
+                            description: The duration of the goal
+                            properties:
+                              start:
+                                type: string
+                                description: The start date of the goal
+                              end:
+                                type: string
+                                description: The end date of the goal
+                          expected_outcome:
+                            type: object
+                            description: The expected outcome of the goal
+                            properties:
+                              target:
+                                type: integer
+                                description: The numeric target of the goal
+                              tracking_metric:
+                                type: string
+                                description: The tracking metric of the goal
+                          is_active:
+                            type: boolean
+                            description: Whether the goal is currently active or not
+                          report_ids:
+                            type: array
+                            description: The IDs of the reports that belong to the goal
+                            items:
+                              type: string
+              example:
+                success: true
+                statusCode: 20000
+                statusText: OK
+                service: statistics-goals-api
+                data:
+                  goal:
+                    id: 5665cef556ddff22606fc8f6c0004807
+                    owner_id: 987654
+                    title: Some example goal
+                    type:
+                      name: Deals started
+                      params:
+                        pipeline_id:
+                        - 5
+                        - 2
+                        activity_type_id:
+                        - 9
+                    assignee:
+                      type: company
+                      id: 123456
+                    interval: weekly
+                    duration:
+                      start: '2019-11-01'
+                      end: '2020-10-30'
+                    expected_outcome:
+                      target: 100
+                      tracking_metric: quantity
+                    is_active: false
+                    report_ids:
+                    - f37bd66a2ab64d28ff6a9b6d2289813a
+    delete:
+      summary: Delete existing goal
+      description: Marks a goal as deleted.
+      x-token-cost: 6
+      operationId: deleteGoal
+      tags:
+      - Goals
+      security:
+      - api_key: []
+      - oauth2:
+        - goals:full
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        description: The ID of the goal
+      responses:
+        '200':
+          description: Successful response with id 'success' field only
+          content:
+            application/json:
+              schema:
+                title: DeleteGoalResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the request was successful or not
+              example:
+                success: true
+                statusCode: 20000
+                statusText: OK
+                service: statistics-goals-api
+  /goals/{id}/results:
+    get:
+      summary: Get result of a goal
+      description: Gets the progress of a goal for the specified period.
+      x-token-cost: 20
+      operationId: getGoalResult
+      tags:
+      - Goals
+      security:
+      - api_key: []
+      - oauth2:
+        - goals:read
+        - goals:full
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        description: The ID of the goal that the results are looked for
+      - in: query
+        name: period.start
+        required: true
+        schema:
+          type: string
+          format: date
+        description: 'The start date of the period for which to find the goal''s progress. Format: YYYY-MM-DD. This date must be the same or after the goal duration start date.
+
+          '
+      - in: query
+        name: period.end
+        required: true
+        schema:
+          type: string
+          format: date
+        description: 'The end date of the period for which to find the goal''s progress. Format: YYYY-MM-DD. This date must be the same or before the goal duration end date.
+
+          '
+      responses:
+        '200':
+          description: Successful response containing payload in the `data.goal` object
+          content:
+            application/json:
+              schema:
+                title: GetGoalResultResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the request was successful or not
+                  data:
+                    type: object
+                    properties:
+                      progress:
+                        type: integer
+                        description: The numeric progress of the goal
+                      goal:
+                        type: object
+                        title: Goal
+                        properties:
+                          id:
+                            type: string
+                            description: The ID of the goal
+                          owner_id:
+                            type: integer
+                            description: The ID of the creator of the goal
+                          title:
+                            type: string
+                            description: The title of the goal
+                          type:
+                            type: object
+                            description: The type of the goal
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the goal type
+                              params:
+                                type: object
+                                description: The parameters that accompany the goal type
+                                properties:
+                                  pipeline_id:
+                                    type: array
+                                    description: The IDs of pipelines of the goal
+                                    items:
+                                      type: integer
+                                  activity_type_id:
+                                    type: array
+                                    description: The IDs of activity types of the goal
+                                    items:
+                                      type: integer
+                          assignee:
+                            type: object
+                            description: Who the goal is assigned to
+                            properties:
+                              id:
+                                type: integer
+                                description: The ID of the goal assignee
+                              type:
+                                type: string
+                                description: The type of the assignee
+                          interval:
+                            type: string
+                            description: The interval of the goal
+                          duration:
+                            type: object
+                            description: The duration of the goal
+                            properties:
+                              start:
+                                type: string
+                                description: The start date of the goal
+                              end:
+                                type: string
+                                description: The end date of the goal
+                          expected_outcome:
+                            type: object
+                            description: The expected outcome of the goal
+                            properties:
+                              target:
+                                type: integer
+                                description: The numeric target of the goal
+                              tracking_metric:
+                                type: string
+                                description: The tracking metric of the goal
+                          is_active:
+                            type: boolean
+                            description: Whether the goal is currently active or not
+                          report_ids:
+                            type: array
+                            description: The IDs of the reports that belong to the goal
+                            items:
+                              type: string
+              example:
+                success: true
+                statusCode: 20000
+                statusText: OK
+                service: statistics-goals-api
+                data:
+                  goal:
+                    id: 5665cef556ddff22606fc8f6c0004807
+                    owner_id: 987654
+                    title: Some example goal
+                    type:
+                      name: Deals started
+                      params:
+                        pipeline_id:
+                        - 5
+                        - 2
+                        activity_type_id:
+                        - 9
+                    assignee:
+                      type: company
+                      id: 123456
+                    interval: weekly
+                    duration:
+                      start: '2019-11-01'
+                      end: '2020-10-30'
+                    expected_outcome:
+                      target: 100
+                      tracking_metric: quantity
+                    is_active: false
+                    report_ids:
+                    - f37bd66a2ab64d28ff6a9b6d2289813a
+                  progress: 3
+components:
+  securitySchemes:
+    basic_authentication:
+      type: http
+      scheme: basic
+      description: Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.
+    api_key:
+      type: apiKey
+      name: x-api-token
+      in: header
+    oauth2:
+      type: oauth2
+      description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+          tokenUrl: https://oauth.pipedrive.com/oauth/token
+          refreshUrl: https://oauth.pipedrive.com/oauth/token
+          scopes:
+            base: Read settings of the authorized user and currencies in an account
+            deals:read: Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            deals:full: Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            mail:read: Read mail threads and messages
+            mail:full: Read, update and delete mail threads. Also grants read access to mail messages
+            activities:read: Read activities, its fields and types; all files and filters
+            activities:full: Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types
+            contacts:read: Read the data about persons and organizations, their related fields and followers; also all notes, files, filters
+            contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
+            products:read: Read products, its fields, files, followers and products connected to a deal
+            products:full: Create, read, update and delete products and its fields; add products to deals
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            projects:read: Read projects and its fields, tasks and project templates
+            projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
+            users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
+            recents:read: Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users
+            search:read: Search across the account for deals, persons, organizations, files and products, and see details about the returned results
+            admin: Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app
+            leads:read: Read data about leads and lead labels
+            leads:full: Create, read, update and delete leads and lead labels
+            phone-integration: Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive
+            goals:read: Read data on all goals
+            goals:full: Create, read, update and delete goals
+            video-calls: Allows application to register as a video call integration provider and create conference links
+            messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses

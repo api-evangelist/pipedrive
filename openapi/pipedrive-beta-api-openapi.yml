@@ -1,0 +1,2735 @@
+openapi: 3.0.1
+info:
+  title: Pipedrive API v1 Activities Beta API
+  version: 1.0.0
+  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
+
+    '
+servers:
+- url: https://api.pipedrive.com/v1
+tags:
+- name: Beta
+  description: 'Beta endpoints are endpoints that may have changes without a regular 60-90 day notice period.
+
+    '
+paths:
+  /projectFields:
+    get:
+      summary: Get all project fields
+      description: Returns metadata about all project fields in the company.
+      x-token-cost: 10
+      operationId: getProjectFields
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:read
+        - projects:full
+        - project-fields:full
+      parameters:
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.
+        schema:
+          type: integer
+          example: 100
+      - in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      responses:
+        '200':
+          description: Get all project fields
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the request was successful
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - field_name
+                      - field_code
+                      - field_type
+                      - is_custom_field
+                      - is_optional_response_field
+                      properties:
+                        field_name:
+                          type: string
+                          description: The display name/label of the field
+                        field_code:
+                          type: string
+                          description: The unique identifier for the field (40-character hash for custom fields)
+                        field_type:
+                          type: string
+                          description: The type of the field
+                          enum:
+                          - int
+                          - double
+                          - boolean
+                          - varchar
+                          - text
+                          - phone
+                          - varchar_options
+                          - varchar_auto
+                          - date
+                          - daterange
+                          - time
+                          - timerange
+                          - enum
+                          - set
+                          - address
+                          - monetary
+                          - deal
+                          - deals
+                          - lead
+                          - org
+                          - people
+                          - project
+                          - stage
+                          - user
+                          - activity
+                          - json
+                          - picture
+                          - status
+                          - visible_to
+                          - price_list
+                          - billing_frequency
+                          - projects_board
+                          - projects_phase
+                        options:
+                          type: array
+                          nullable: true
+                          description: Array of available options for enum/set fields, null for other field types
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The option ID
+                              label:
+                                type: string
+                                description: The option display label
+                              color:
+                                type: string
+                                nullable: true
+                                description: Optional color code for the option
+                              update_time:
+                                type: string
+                                format: date-time
+                                nullable: true
+                                description: When the option was last updated
+                              add_time:
+                                type: string
+                                format: date-time
+                                nullable: true
+                                description: When the option was created
+                        subfields:
+                          type: array
+                          nullable: true
+                          description: Array of subfields for complex field types (address, monetary), null for simple field types
+                          items:
+                            type: object
+                            properties:
+                              field_code:
+                                type: string
+                                description: The subfield identifier
+                              field_name:
+                                type: string
+                                description: The subfield display name
+                              field_type:
+                                type: string
+                                description: The subfield type
+                        is_custom_field:
+                          type: boolean
+                          description: Whether this is a user-created custom field
+                        is_optional_response_field:
+                          type: boolean
+                          description: Whether this field is not returned by default in entity responses
+                        ui_visibility:
+                          type: object
+                          description: UI visibility settings (only included when requested via include_fields parameter)
+                          properties:
+                            add_visible_flag:
+                              type: boolean
+                              description: Whether the field is shown in the add modal
+                            details_visible_flag:
+                              type: boolean
+                              description: Whether the field is shown in the details view
+                        important_fields:
+                          type: object
+                          description: Important fields configuration
+                          properties:
+                            enabled:
+                              type: boolean
+                              description: Whether the field is marked as important
+                            stage_ids:
+                              type: array
+                              items:
+                                type: integer
+                              description: Array of deal stage IDs where the field is important
+                        required_fields:
+                          type: object
+                          description: Required fields configuration
+                          properties:
+                            enabled:
+                              type: boolean
+                              description: Whether the field is required
+                  additional_data:
+                    type: object
+                    properties:
+                      next_cursor:
+                        type: string
+                        nullable: true
+                        description: Base64url-encoded cursor for fetching the next page of results, null if no more pages
+              example:
+                success: true
+                data:
+                - field_name: Project Name
+                  field_code: name
+                  field_type: varchar
+                  options: null
+                  subfields: null
+                  is_custom_field: false
+                  is_optional_response_field: false
+                  ui_visibility:
+                    add_visible_flag: true
+                    details_visible_flag: true
+                  important_fields:
+                    enabled: false
+                    stage_ids: []
+                  required_fields:
+                    enabled: true
+                - field_name: Category
+                  field_code: 40characterhashforcustomfieldidentifier
+                  field_type: enum
+                  options:
+                  - id: 1
+                    label: Internal
+                  - id: 2
+                    label: External
+                  - id: 3
+                    label: Research
+                  subfields: null
+                  is_custom_field: true
+                  is_optional_response_field: false
+                  ui_visibility:
+                    add_visible_flag: true
+                    details_visible_flag: true
+                  important_fields:
+                    enabled: false
+                    stage_ids: []
+                  required_fields:
+                    enabled: false
+                additional_data:
+                  next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    post:
+      summary: Create one project field
+      description: Creates a new project custom field.
+      x-token-cost: 5
+      operationId: addProjectField
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - project-fields:full
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - field_name
+              - field_type
+              properties:
+                field_name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  description: Field name
+                field_type:
+                  type: string
+                  description: The type of the field<table><tr><th>Value</th><th>Description</th></tr><tr><td>`varchar`</td><td>Text (up to 255 characters)</td><tr><td>`varchar_auto`</td><td>Autocomplete text (up to 255 characters)</td><tr><td>`text`</td><td>Long text (up to 65k characters)</td><tr><td>`double`</td><td>Numeric value</td><tr><td>`monetary`</td><td>Monetary field (has a numeric value and a currency value)</td><tr><td>`date`</td><td>Date (format YYYY-MM-DD)</td><tr><td>`set`</td><td>Options field with a possibility of having multiple chosen options</td><tr><td>`enum`</td><td>Options field with a single possible chosen option</td><tr><td>`user`</td><td>User field (contains a user ID of another Pipedrive user)</td><tr><td>`org`</td><td>Organization field (contains an organization ID which is stored on the same account)</td><tr><td>`people`</td><td>Person field (contains a person ID which is stored on the same account)</td><tr><td>`phone`</td><td>Phone field (up to 255 numbers and/or characters)</td><tr><td>`time`</td><td>Time field (format HH:MM:SS)</td><tr><td>`timerange`</td><td>Time-range field (has a start time and end time value, both HH:MM:SS)</td><tr><td>`daterange`</td><td>Date-range field (has a start date and end date value, both YYYY-MM-DD)</td><tr><td>`address`</td><td>Address field</dd></table>
+                  enum:
+                  - varchar
+                  - text
+                  - double
+                  - phone
+                  - date
+                  - daterange
+                  - time
+                  - timerange
+                  - set
+                  - enum
+                  - varchar_auto
+                  - address
+                  - monetary
+                  - org
+                  - people
+                  - user
+                options:
+                  type: array
+                  description: Field options (required for enum and set field types)
+                  items:
+                    type: object
+                    required:
+                    - label
+                    properties:
+                      label:
+                        type: string
+                        description: The option label
+                ui_visibility:
+                  type: object
+                  description: UI visibility settings for the field. Controls where the field appears in the Pipedrive web UI.
+                  additionalProperties: true
+                  properties:
+                    add_visible_flag:
+                      type: boolean
+                      description: Whether the field is shown in the add project modal. Default is false.
+                      default: false
+                    details_visible_flag:
+                      type: boolean
+                      description: Whether the field is shown in the project details view. Default is true.
+                      default: true
+                important_fields:
+                  type: object
+                  description: Configuration for highlighting the field at specific stages.
+                  additionalProperties: true
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Whether the field is marked as important. When false, the field is not highlighted. When true with empty stage_ids, the field is important everywhere. When true with specific stage_ids, the field is important only at those deal stages. Default is false.
+                      default: false
+                    stage_ids:
+                      type: array
+                      items:
+                        type: integer
+                      description: Array of deal stage IDs where this project field should be highlighted as important. Must reference valid, active deal stages. Empty array when enabled is false.
+                      default: []
+                required_fields:
+                  type: object
+                  description: Required fields configuration for marking the field as mandatory when interacted with in the Pipedrive web UI.
+                  additionalProperties: true
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Whether the field is required. When false, the field is optional. When true, the field is required when creating or updating projects. Default is false.
+                      default: false
+      responses:
+        '200':
+          description: Create one project field
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the request was successful
+                  data:
+                    type: object
+                    required:
+                    - field_name
+                    - field_code
+                    - field_type
+                    - is_custom_field
+                    - is_optional_response_field
+                    properties:
+                      field_name:
+                        type: string
+                        description: The display name/label of the field
+                      field_code:
+                        type: string
+                        description: The unique identifier for the field (40-character hash for custom fields)
+                      field_type:
+                        type: string
+                        description: The type of the field
+                        enum:
+                        - int
+                        - double
+                        - boolean
+                        - varchar
+                        - text
+                        - phone
+                        - varchar_options
+                        - varchar_auto
+                        - date
+                        - daterange
+                        - time
+                        - timerange
+                        - enum
+                        - set
+                        - address
+                        - monetary
+                        - deal
+                        - deals
+                        - lead
+                        - org
+                        - people
+                        - project
+                        - stage
+                        - user
+                        - activity
+                        - json
+                        - picture
+                        - status
+                        - visible_to
+                        - price_list
+                        - billing_frequency
+                        - projects_board
+                        - projects_phase
+                      options:
+                        type: array
+                        nullable: true
+                        description: Array of available options for enum/set fields, null for other field types
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: The option ID
+                            label:
+                              type: string
+                              description: The option display label
+                            color:
+                              type: string
+                              nullable: true
+                              description: Optional color code for the option
+                            update_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was last updated
+                            add_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was created
+                      subfields:
+                        type: array
+                        nullable: true
+                        description: Array of subfields for complex field types (address, monetary), null for simple field types
+                        items:
+                          type: object
+                          properties:
+                            field_code:
+                              type: string
+                              description: The subfield identifier
+                            field_name:
+                              type: string
+                              description: The subfield display name
+                            field_type:
+                              type: string
+                              description: The subfield type
+                      is_custom_field:
+                        type: boolean
+                        description: Whether this is a user-created custom field
+                      is_optional_response_field:
+                        type: boolean
+                        description: Whether this field is not returned by default in entity responses
+                      ui_visibility:
+                        type: object
+                        description: UI visibility settings (only included when requested via include_fields parameter)
+                        properties:
+                          add_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the add modal
+                          details_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the details view
+                      important_fields:
+                        type: object
+                        description: Important fields configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether the field is marked as important
+                          stage_ids:
+                            type: array
+                            items:
+                              type: integer
+                            description: Array of deal stage IDs where the field is important
+                      required_fields:
+                        type: object
+                        description: Required fields configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether the field is required
+              example:
+                success: true
+                data:
+                  field_name: Category
+                  field_code: 946947d1b02fd3ef20798d6112ec5d895a686a21
+                  field_type: enum
+                  options:
+                  - id: 1
+                    label: Internal
+                  - id: 2
+                    label: External
+                  - id: 3
+                    label: Research
+                  subfields: null
+                  is_custom_field: true
+                  is_optional_response_field: false
+                  ui_visibility:
+                    add_visible_flag: true
+                    details_visible_flag: true
+                  important_fields:
+                    enabled: false
+                    stage_ids: []
+                  required_fields:
+                    enabled: false
+  /projectFields/{field_code}:
+    get:
+      summary: Get one project field
+      description: Returns metadata about a specific project field.
+      x-token-cost: 1
+      operationId: getProjectField
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:read
+        - projects:full
+        - project-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get one project field
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the request was successful
+                  data:
+                    type: object
+                    required:
+                    - field_name
+                    - field_code
+                    - field_type
+                    - is_custom_field
+                    - is_optional_response_field
+                    properties:
+                      field_name:
+                        type: string
+                        description: The display name/label of the field
+                      field_code:
+                        type: string
+                        description: The unique identifier for the field (40-character hash for custom fields)
+                      field_type:
+                        type: string
+                        description: The type of the field
+                        enum:
+                        - int
+                        - double
+                        - boolean
+                        - varchar
+                        - text
+                        - phone
+                        - varchar_options
+                        - varchar_auto
+                        - date
+                        - daterange
+                        - time
+                        - timerange
+                        - enum
+                        - set
+                        - address
+                        - monetary
+                        - deal
+                        - deals
+                        - lead
+                        - org
+                        - people
+                        - project
+                        - stage
+                        - user
+                        - activity
+                        - json
+                        - picture
+                        - status
+                        - visible_to
+                        - price_list
+                        - billing_frequency
+                        - projects_board
+                        - projects_phase
+                      options:
+                        type: array
+                        nullable: true
+                        description: Array of available options for enum/set fields, null for other field types
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: The option ID
+                            label:
+                              type: string
+                              description: The option display label
+                            color:
+                              type: string
+                              nullable: true
+                              description: Optional color code for the option
+                            update_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was last updated
+                            add_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was created
+                      subfields:
+                        type: array
+                        nullable: true
+                        description: Array of subfields for complex field types (address, monetary), null for simple field types
+                        items:
+                          type: object
+                          properties:
+                            field_code:
+                              type: string
+                              description: The subfield identifier
+                            field_name:
+                              type: string
+                              description: The subfield display name
+                            field_type:
+                              type: string
+                              description: The subfield type
+                      is_custom_field:
+                        type: boolean
+                        description: Whether this is a user-created custom field
+                      is_optional_response_field:
+                        type: boolean
+                        description: Whether this field is not returned by default in entity responses
+                      ui_visibility:
+                        type: object
+                        description: UI visibility settings (only included when requested via include_fields parameter)
+                        properties:
+                          add_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the add modal
+                          details_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the details view
+                      important_fields:
+                        type: object
+                        description: Important fields configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether the field is marked as important
+                          stage_ids:
+                            type: array
+                            items:
+                              type: integer
+                            description: Array of deal stage IDs where the field is important
+                      required_fields:
+                        type: object
+                        description: Required fields configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether the field is required
+              example:
+                success: true
+                data:
+                  field_name: Project Name
+                  field_code: name
+                  field_type: varchar
+                  options: null
+                  subfields: null
+                  is_custom_field: false
+                  is_optional_response_field: false
+                  ui_visibility:
+                    add_visible_flag: true
+                    details_visible_flag: true
+                  important_fields:
+                    enabled: false
+                    stage_ids: []
+                  required_fields:
+                    enabled: true
+    patch:
+      summary: Update one project field
+      description: Updates a project custom field. The field_code and field_type cannot be changed. At least one field must be provided in the request body.
+      x-token-cost: 5
+      operationId: updateProjectField
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - project-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              minProperties: 1
+              properties:
+                field_name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  description: Field name
+                ui_visibility:
+                  type: object
+                  description: UI visibility settings for the field. Controls where the field appears in the Pipedrive web UI.
+                  additionalProperties: true
+                  properties:
+                    add_visible_flag:
+                      type: boolean
+                      description: Whether the field is shown in the add project modal. Default is false.
+                      default: false
+                    details_visible_flag:
+                      type: boolean
+                      description: Whether the field is shown in the project details view. Default is true.
+                      default: true
+                important_fields:
+                  type: object
+                  description: Configuration for highlighting the field at specific stages.
+                  additionalProperties: true
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Whether the field is marked as important. When false, the field is not highlighted. When true with empty stage_ids, the field is important everywhere. When true with specific stage_ids, the field is important only at those deal stages. Default is false.
+                      default: false
+                    stage_ids:
+                      type: array
+                      items:
+                        type: integer
+                      description: Array of deal stage IDs where this project field should be highlighted as important. Must reference valid, active deal stages. Empty array when enabled is false.
+                      default: []
+                required_fields:
+                  type: object
+                  description: Required fields configuration for marking the field as mandatory when interacted with in the Pipedrive web UI.
+                  additionalProperties: true
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Whether the field is required. When false, the field is optional. When true, the field is required when creating or updating projects. Default is false.
+                      default: false
+      responses:
+        '200':
+          description: Get one project field
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the request was successful
+                  data:
+                    type: object
+                    required:
+                    - field_name
+                    - field_code
+                    - field_type
+                    - is_custom_field
+                    - is_optional_response_field
+                    properties:
+                      field_name:
+                        type: string
+                        description: The display name/label of the field
+                      field_code:
+                        type: string
+                        description: The unique identifier for the field (40-character hash for custom fields)
+                      field_type:
+                        type: string
+                        description: The type of the field
+                        enum:
+                        - int
+                        - double
+                        - boolean
+                        - varchar
+                        - text
+                        - phone
+                        - varchar_options
+                        - varchar_auto
+                        - date
+                        - daterange
+                        - time
+                        - timerange
+                        - enum
+                        - set
+                        - address
+                        - monetary
+                        - deal
+                        - deals
+                        - lead
+                        - org
+                        - people
+                        - project
+                        - stage
+                        - user
+                        - activity
+                        - json
+                        - picture
+                        - status
+                        - visible_to
+                        - price_list
+                        - billing_frequency
+                        - projects_board
+                        - projects_phase
+                      options:
+                        type: array
+                        nullable: true
+                        description: Array of available options for enum/set fields, null for other field types
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: The option ID
+                            label:
+                              type: string
+                              description: The option display label
+                            color:
+                              type: string
+                              nullable: true
+                              description: Optional color code for the option
+                            update_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was last updated
+                            add_time:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the option was created
+                      subfields:
+                        type: array
+                        nullable: true
+                        description: Array of subfields for complex field types (address, monetary), null for simple field types
+                        items:
+                          type: object
+                          properties:
+                            field_code:
+                              type: string
+                              description: The subfield identifier
+                            field_name:
+                              type: string
+                              description: The subfield display name
+                            field_type:
+                              type: string
+                              description: The subfield type
+                      is_custom_field:
+                        type: boolean
+                        description: Whether this is a user-created custom field
+                      is_optional_response_field:
+                        type: boolean
+                        description: Whether this field is not returned by default in entity responses
+                      ui_visibility:
+                        type: object
+                        description: UI visibility settings (only included when requested via include_fields parameter)
+                        properties:
+                          add_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the add modal
+                          details_visible_flag:
+                            type: boolean
+                            description: Whether the field is shown in the details view
+                      important_fields:
+                        type: object
+                        description: Important fields configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether the field is marked as important
+                          stage_ids:
+                            type: array
+                            items:
+                              type: integer
+                            description: Array of deal stage IDs where the field is important
+                      required_fields:
+                        type: object
+                        description: Required fields configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether the field is required
+              example:
+                success: true
+                data:
+                  field_name: Project Name
+                  field_code: name
+                  field_type: varchar
+                  options: null
+                  subfields: null
+                  is_custom_field: false
+                  is_optional_response_field: false
+                  ui_visibility:
+                    add_visible_flag: true
+                    details_visible_flag: true
+                  important_fields:
+                    enabled: false
+                    stage_ids: []
+                  required_fields:
+                    enabled: true
+    delete:
+      summary: Delete one project field
+      description: Marks a custom field as deleted.
+      x-token-cost: 3
+      operationId: deleteProjectField
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - project-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Delete one project field
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the request was successful
+                  data:
+                    type: object
+                    required:
+                    - field_name
+                    - field_code
+                    - field_type
+                    - is_custom_field
+                    - is_optional_response_field
+                    properties:
+                      field_name:
+                        type: string
+                        description: The display name/label of the field
+                      field_code:
+                        type: string
+                        description: The unique identifier for the field (40-character hash for custom fields)
+                      field_type:
+                        type: string
+                        description: The type of the field
+                      options:
+                        type: array
+                        nullable: true
+                        description: Array of available options for enum/set fields, null for other field types
+                        items:
+                          type: object
+                      subfields:
+                        type: array
+                        nullable: true
+                        description: Array of subfields for complex field types, null for simple field types
+                        items:
+                          type: object
+                      is_custom_field:
+                        type: boolean
+                        description: Whether this is a user-created custom field
+                      is_optional_response_field:
+                        type: boolean
+                        description: Whether this field is not returned by default in entity responses
+              example:
+                success: true
+                data:
+                  field_name: Custom text field
+                  field_code: 946947d1b02fd3ef20798d6112ec5d895a686a21
+                  field_type: varchar
+                  options: null
+                  subfields: null
+                  is_custom_field: true
+                  is_optional_response_field: false
+  /projectFields/{field_code}/options:
+    post:
+      summary: Add project field options in bulk
+      description: Adds new options to a project custom field that supports options (enum or set field types). This operation is atomic - all options are added or none are added. Returns only the newly added options.
+      x-token-cost: 5
+      operationId: addProjectFieldOptions
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - project-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Array of options to add. Each item must contain a label. At least one option is required.
+              items:
+                type: object
+                required:
+                - label
+                properties:
+                  label:
+                    type: string
+                    minLength: 1
+                    maxLength: 255
+                    description: The display label for the new option
+      responses:
+        '200':
+          description: Field options operation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - label
+                      properties:
+                        id:
+                          type: integer
+                          description: The unique identifier of the option
+                        label:
+                          type: string
+                          description: The display label of the option
+                  additional_data:
+                    type: object
+                    nullable: true
+              example:
+                success: true
+                data:
+                - id: 4
+                  label: Research & Development
+                additional_data: null
+    delete:
+      summary: Delete project field options in bulk
+      description: Removes existing options from a project custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the deleted options.
+      x-token-cost: 3
+      operationId: deleteProjectFieldOptions
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - project-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Array of option IDs to delete. Each item must contain an ID of the option to delete. At least one option ID is required. The entire request fails if any option does not exist.
+              items:
+                type: object
+                required:
+                - id
+                properties:
+                  id:
+                    type: integer
+                    description: The unique identifier of the option to delete
+      responses:
+        '200':
+          description: Field options operation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - label
+                      properties:
+                        id:
+                          type: integer
+                          description: The unique identifier of the option
+                        label:
+                          type: string
+                          description: The display label of the option
+                  additional_data:
+                    type: object
+                    nullable: true
+              example:
+                success: true
+                data:
+                - id: 4
+                  label: Research & Development
+                additional_data: null
+    patch:
+      summary: Update project field options in bulk
+      description: Updates existing options for a project custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the updated options.
+      x-token-cost: 5
+      operationId: updateProjectFieldOptions
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - project-fields:full
+      parameters:
+      - in: path
+        name: field_code
+        description: The unique code identifying the field
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Array of options to update. Each item must contain an ID and the updated label. At least one option is required. The entire request fails if any option does not exist.
+              items:
+                type: object
+                required:
+                - id
+                - label
+                properties:
+                  id:
+                    type: integer
+                    description: The unique identifier of the option to update
+                  label:
+                    type: string
+                    minLength: 1
+                    maxLength: 255
+                    description: The new display label for the option
+      responses:
+        '200':
+          description: Field options operation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - label
+                      properties:
+                        id:
+                          type: integer
+                          description: The unique identifier of the option
+                        label:
+                          type: string
+                          description: The display label of the option
+                  additional_data:
+                    type: object
+                    nullable: true
+              example:
+                success: true
+                data:
+                - id: 4
+                  label: Research & Development
+                additional_data: null
+  /projects/search:
+    get:
+      summary: Search projects
+      description: Searches all projects by title, description, notes and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope. Found projects can be filtered by person ID or organization ID.
+      x-token-cost: 20
+      operationId: searchProjects
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:read
+        - projects:full
+        - search:read
+      parameters:
+      - in: query
+        name: term
+        required: true
+        schema:
+          type: string
+        description: The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded.
+      - in: query
+        name: fields
+        schema:
+          type: string
+          enum:
+          - custom_fields
+          - notes
+          - title
+          - description
+        description: 'A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href="https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields" target="_blank" rel="noopener noreferrer">here</a>.'
+      - in: query
+        name: exact_match
+        schema:
+          type: boolean
+        description: When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.
+      - in: query
+        name: person_id
+        schema:
+          type: integer
+        description: Will filter projects by the provided person ID
+      - in: query
+        name: organization_id
+        schema:
+          type: integer
+        description: Will filter projects by the provided organization ID
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.
+        schema:
+          type: integer
+          example: 100
+      - in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: GetProjectSearchResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        items:
+                          type: array
+                          description: The array of found projects
+                          items:
+                            type: object
+                            properties:
+                              result_score:
+                                type: number
+                                description: Search result relevancy
+                              item:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    description: The ID of the project
+                                  type:
+                                    type: string
+                                    description: The type of the item
+                                  title:
+                                    type: string
+                                    description: The title of the project
+                                  status:
+                                    type: string
+                                    nullable: true
+                                    description: The status of the project
+                                  owner:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: integer
+                                        nullable: true
+                                        description: The ID of the owner of the project
+                                  board_id:
+                                    type: integer
+                                    nullable: true
+                                    description: The ID of the board the project belongs to
+                                  phase:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: integer
+                                        description: The ID of the phase
+                                      name:
+                                        type: string
+                                        description: The name of the phase
+                                  person:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: integer
+                                        description: The ID of the person the project is associated with
+                                      name:
+                                        type: string
+                                        nullable: true
+                                        description: The name of the person the project is associated with
+                                  organization:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: integer
+                                        description: The ID of the organization the project is associated with
+                                      name:
+                                        type: string
+                                        nullable: true
+                                        description: The name of the organization the project is associated with
+                                      address:
+                                        type: string
+                                        nullable: true
+                                        description: The address of the organization the project is associated with
+                                  deal:
+                                    type: object
+                                    nullable: true
+                                    properties:
+                                      id:
+                                        type: integer
+                                        description: The ID of the deal the project is associated with
+                                      title:
+                                        type: string
+                                        nullable: true
+                                        description: The title of the deal the project is associated with
+                                  deal_count:
+                                    type: integer
+                                    description: The number of deals associated with the project
+                                  description:
+                                    type: string
+                                    nullable: true
+                                    description: The description of the project
+                                  end_date:
+                                    type: string
+                                    nullable: true
+                                    description: The end date of the project
+                                  custom_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: Custom fields
+                                  notes:
+                                    type: array
+                                    description: An array of notes
+                                    items:
+                                      type: string
+                    additional_data:
+                      description: The additional data of the list
+                      type: object
+                      properties:
+                        next_cursor:
+                          type: string
+                          description: The first item on the next page. The value of the `next_cursor` field will be `null` if you have reached the end of the dataset and there’s no more pages to be returned.
+              example:
+                success: true
+                data:
+                  items:
+                  - result_score: 0.8412
+                    item:
+                      id: 1
+                      type: project
+                      title: Office renovation
+                      status: open
+                      owner:
+                        id: 1
+                      board_id: 2
+                      phase:
+                        id: 3
+                        name: In progress
+                      person:
+                        id: 10
+                        name: Jane Doe
+                      organization:
+                        id: 5
+                        name: Pipedrive
+                        address: null
+                      deal:
+                        id: 42
+                        title: Renovation deal
+                      deal_count: 1
+                      description: Full office renovation project
+                      end_date: '2025-12-31'
+                      custom_fields: []
+                      notes: []
+                additional_data:
+                  next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+  /tasks:
+    get:
+      summary: Get all tasks
+      description: Returns all tasks.
+      x-token-cost: 10
+      operationId: getTasks
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:read
+        - projects:full
+      parameters:
+      - in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        description: For pagination, the marker (an opaque string value) representing the first item on the next page
+      - in: query
+        name: limit
+        description: For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.
+        schema:
+          type: integer
+          example: 100
+      - in: query
+        name: is_done
+        required: false
+        schema:
+          type: boolean
+        description: Whether the task is done or not. If omitted, both done and not done tasks are returned.
+      - in: query
+        name: is_milestone
+        required: false
+        schema:
+          type: boolean
+        description: Whether the task is a milestone or not. If omitted, both milestone and non-milestone tasks are returned.
+      - in: query
+        name: assignee_id
+        required: false
+        schema:
+          type: integer
+        description: If supplied, only tasks assigned to this user are returned
+      - in: query
+        name: project_id
+        required: false
+        schema:
+          type: integer
+        description: If supplied, only tasks belonging to this project are returned
+      - in: query
+        name: parent_task_id
+        required: false
+        schema:
+          type: string
+        description: If `null` is supplied, only root-level tasks (without a parent) are returned. If an integer is supplied, only subtasks of that specific task are returned. By default all tasks are returned.
+      responses:
+        '200':
+          description: A list of tasks.
+          content:
+            application/json:
+              schema:
+                title: GetTasksResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the task
+                        title:
+                          type: string
+                          minLength: 1
+                          maxLength: 255
+                          description: The title of the task
+                        creator_id:
+                          type: integer
+                          description: The ID of the user who created the task
+                        description:
+                          type: string
+                          nullable: true
+                          description: The description of the task
+                        project_id:
+                          type: integer
+                          description: The ID of the project this task is associated with
+                        is_done:
+                          type: boolean
+                          description: Whether the task is done or not.
+                        is_milestone:
+                          type: boolean
+                          description: Whether the task is a milestone or not.
+                        due_date:
+                          type: string
+                          format: date
+                          nullable: true
+                          description: 'The due date of the task. Format: YYYY-MM-DD.'
+                        start_date:
+                          type: string
+                          format: date
+                          nullable: true
+                          description: 'The start date of the task. Format: YYYY-MM-DD.'
+                        parent_task_id:
+                          type: integer
+                          nullable: true
+                          description: The ID of the parent task. If `null`, the task is a root-level task.
+                        assignee_ids:
+                          type: array
+                          items:
+                            type: integer
+                          description: The IDs of users assigned to the task
+                        priority:
+                          type: integer
+                          minimum: 0
+                          nullable: true
+                          description: The priority of the task
+                        add_time:
+                          type: string
+                          description: The creation date and time of the task in ISO 8601 format
+                        update_time:
+                          type: string
+                          description: The update date and time of the task in ISO 8601 format
+                        marked_as_done_time:
+                          type: string
+                          nullable: true
+                          description: The date and time the task was marked as done in ISO 8601 format
+                  additional_data:
+                    description: The additional data of the list
+                    type: object
+                    properties:
+                      next_cursor:
+                        type: string
+                        description: The first item on the next page. The value of the `next_cursor` field will be `null` if you have reached the end of the dataset and there’s no more pages to be returned.
+              example:
+                success: true
+                data:
+                - id: 1
+                  title: Task 1
+                  creator_id: 2
+                  description: Task description
+                  project_id: 1
+                  is_done: false
+                  is_milestone: false
+                  due_date: '2026-10-11'
+                  start_date: '2026-09-01'
+                  parent_task_id: null
+                  assignee_ids:
+                  - 2
+                  - 3
+                  priority: null
+                  add_time: '2026-09-14T08:14:40.000Z'
+                  update_time: '2026-09-14T08:14:40.000Z'
+                  marked_as_done_time: null
+                additional_data:
+                  next_cursor: eyJhY3Rpdml0aWVzIjoyN30
+    post:
+      summary: Add a task
+      description: Adds a new task.
+      x-token-cost: 5
+      operationId: addTask
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:full
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: addTaskRequest
+              type: object
+              required:
+              - title
+              - project_id
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  description: The title of the task
+                project_id:
+                  type: integer
+                  description: The ID of the project this task is associated with
+                parent_task_id:
+                  type: integer
+                  nullable: true
+                  description: The ID of the parent task. Cannot be the ID of a task that is already a subtask.
+                description:
+                  type: string
+                  nullable: true
+                  description: The description of the task
+                done:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Whether the task is done or not. `0` = Not done, `1` = Done.
+                milestone:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Whether the task is a milestone or not. `0` = Not a milestone, `1` = Milestone.
+                due_date:
+                  type: string
+                  format: date
+                  nullable: true
+                  description: 'The due date of the task. Format: YYYY-MM-DD.'
+                start_date:
+                  type: string
+                  format: date
+                  nullable: true
+                  description: 'The start date of the task. Format: YYYY-MM-DD.'
+                assignee_id:
+                  type: integer
+                  nullable: true
+                  description: The ID of the user assigned to the task. When set, the `assignee_ids` field will be overwritten with this value.
+                assignee_ids:
+                  type: array
+                  items:
+                    type: integer
+                  maxItems: 10
+                  description: The IDs of users assigned to the task. When set, the `assignee_id` field will be set to the first value in this array, or `null` if empty.
+                priority:
+                  type: integer
+                  minimum: 0
+                  nullable: true
+                  description: The priority of the task
+      responses:
+        '201':
+          description: Created task.
+          content:
+            application/json:
+              schema:
+                title: AddTaskResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the task
+                      title:
+                        type: string
+                        minLength: 1
+                        maxLength: 255
+                        description: The title of the task
+                      creator_id:
+                        type: integer
+                        description: The ID of the user who created the task
+                      description:
+                        type: string
+                        nullable: true
+                        description: The description of the task
+                      project_id:
+                        type: integer
+                        description: The ID of the project this task is associated with
+                      is_done:
+                        type: boolean
+                        description: Whether the task is done or not.
+                      is_milestone:
+                        type: boolean
+                        description: Whether the task is a milestone or not.
+                      due_date:
+                        type: string
+                        format: date
+                        nullable: true
+                        description: 'The due date of the task. Format: YYYY-MM-DD.'
+                      start_date:
+                        type: string
+                        format: date
+                        nullable: true
+                        description: 'The start date of the task. Format: YYYY-MM-DD.'
+                      parent_task_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of the parent task. If `null`, the task is a root-level task.
+                      assignee_ids:
+                        type: array
+                        items:
+                          type: integer
+                        description: The IDs of users assigned to the task
+                      priority:
+                        type: integer
+                        minimum: 0
+                        nullable: true
+                        description: The priority of the task
+                      add_time:
+                        type: string
+                        description: The creation date and time of the task in ISO 8601 format
+                      update_time:
+                        type: string
+                        description: The update date and time of the task in ISO 8601 format
+                      marked_as_done_time:
+                        type: string
+                        nullable: true
+                        description: The date and time the task was marked as done in ISO 8601 format
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: true
+                data:
+                  id: 1
+                  title: Task 1
+                  creator_id: 2
+                  description: Task description
+                  project_id: 1
+                  is_done: false
+                  is_milestone: false
+                  due_date: '2026-10-11'
+                  start_date: '2026-09-01'
+                  parent_task_id: null
+                  assignee_ids:
+                  - 2
+                  - 3
+                  priority: null
+                  add_time: '2026-09-14T08:14:40.000Z'
+                  update_time: '2026-09-14T08:14:40.000Z'
+                  marked_as_done_time: null
+                additional_data: null
+  /tasks/{id}:
+    get:
+      summary: Get details of a task
+      description: Returns the details of a specific task.
+      x-token-cost: 1
+      operationId: getTask
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:read
+        - projects:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the task
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Get a task.
+          content:
+            application/json:
+              schema:
+                title: GetTaskResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the task
+                      title:
+                        type: string
+                        minLength: 1
+                        maxLength: 255
+                        description: The title of the task
+                      creator_id:
+                        type: integer
+                        description: The ID of the user who created the task
+                      description:
+                        type: string
+                        nullable: true
+                        description: The description of the task
+                      project_id:
+                        type: integer
+                        description: The ID of the project this task is associated with
+                      is_done:
+                        type: boolean
+                        description: Whether the task is done or not.
+                      is_milestone:
+                        type: boolean
+                        description: Whether the task is a milestone or not.
+                      due_date:
+                        type: string
+                        format: date
+                        nullable: true
+                        description: 'The due date of the task. Format: YYYY-MM-DD.'
+                      start_date:
+                        type: string
+                        format: date
+                        nullable: true
+                        description: 'The start date of the task. Format: YYYY-MM-DD.'
+                      parent_task_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of the parent task. If `null`, the task is a root-level task.
+                      assignee_ids:
+                        type: array
+                        items:
+                          type: integer
+                        description: The IDs of users assigned to the task
+                      priority:
+                        type: integer
+                        minimum: 0
+                        nullable: true
+                        description: The priority of the task
+                      add_time:
+                        type: string
+                        description: The creation date and time of the task in ISO 8601 format
+                      update_time:
+                        type: string
+                        description: The update date and time of the task in ISO 8601 format
+                      marked_as_done_time:
+                        type: string
+                        nullable: true
+                        description: The date and time the task was marked as done in ISO 8601 format
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: true
+                data:
+                  id: 1
+                  title: Task 1
+                  creator_id: 2
+                  description: Task description
+                  project_id: 1
+                  is_done: false
+                  is_milestone: false
+                  due_date: '2026-10-11'
+                  start_date: '2026-09-01'
+                  parent_task_id: null
+                  assignee_ids:
+                  - 2
+                  - 3
+                  priority: null
+                  add_time: '2026-09-14T08:14:40.000Z'
+                  update_time: '2026-09-14T08:14:40.000Z'
+                  marked_as_done_time: null
+                additional_data: null
+    patch:
+      summary: Update a task
+      description: Updates a task.
+      x-token-cost: 5
+      operationId: updateTask
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the task
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: updateTaskRequest
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  description: The title of the task
+                project_id:
+                  type: integer
+                  description: The ID of the project this task is associated with
+                parent_task_id:
+                  type: integer
+                  nullable: true
+                  description: The ID of the parent task. Cannot be the ID of a task that is already a subtask.
+                description:
+                  type: string
+                  nullable: true
+                  description: The description of the task
+                done:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Whether the task is done or not. `0` = Not done, `1` = Done.
+                milestone:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Whether the task is a milestone or not. `0` = Not a milestone, `1` = Milestone.
+                due_date:
+                  type: string
+                  format: date
+                  nullable: true
+                  description: 'The due date of the task. Format: YYYY-MM-DD.'
+                start_date:
+                  type: string
+                  format: date
+                  nullable: true
+                  description: 'The start date of the task. Format: YYYY-MM-DD.'
+                assignee_id:
+                  type: integer
+                  nullable: true
+                  description: The ID of the user assigned to the task. When set, the `assignee_ids` field will be overwritten with this value.
+                assignee_ids:
+                  type: array
+                  items:
+                    type: integer
+                  maxItems: 10
+                  description: The IDs of users assigned to the task. When set, the `assignee_id` field will be set to the first value in this array, or `null` if empty.
+                priority:
+                  type: integer
+                  minimum: 0
+                  nullable: true
+                  description: The priority of the task
+      responses:
+        '200':
+          description: Updated task.
+          content:
+            application/json:
+              schema:
+                title: UpdateTaskResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the task
+                      title:
+                        type: string
+                        minLength: 1
+                        maxLength: 255
+                        description: The title of the task
+                      creator_id:
+                        type: integer
+                        description: The ID of the user who created the task
+                      description:
+                        type: string
+                        nullable: true
+                        description: The description of the task
+                      project_id:
+                        type: integer
+                        description: The ID of the project this task is associated with
+                      is_done:
+                        type: boolean
+                        description: Whether the task is done or not.
+                      is_milestone:
+                        type: boolean
+                        description: Whether the task is a milestone or not.
+                      due_date:
+                        type: string
+                        format: date
+                        nullable: true
+                        description: 'The due date of the task. Format: YYYY-MM-DD.'
+                      start_date:
+                        type: string
+                        format: date
+                        nullable: true
+                        description: 'The start date of the task. Format: YYYY-MM-DD.'
+                      parent_task_id:
+                        type: integer
+                        nullable: true
+                        description: The ID of the parent task. If `null`, the task is a root-level task.
+                      assignee_ids:
+                        type: array
+                        items:
+                          type: integer
+                        description: The IDs of users assigned to the task
+                      priority:
+                        type: integer
+                        minimum: 0
+                        nullable: true
+                        description: The priority of the task
+                      add_time:
+                        type: string
+                        description: The creation date and time of the task in ISO 8601 format
+                      update_time:
+                        type: string
+                        description: The update date and time of the task in ISO 8601 format
+                      marked_as_done_time:
+                        type: string
+                        nullable: true
+                        description: The date and time the task was marked as done in ISO 8601 format
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: true
+                data:
+                  id: 1
+                  title: Task 1
+                  creator_id: 2
+                  description: Task description
+                  project_id: 1
+                  is_done: false
+                  is_milestone: false
+                  due_date: '2026-10-11'
+                  start_date: '2026-09-01'
+                  parent_task_id: null
+                  assignee_ids:
+                  - 2
+                  - 3
+                  priority: null
+                  add_time: '2026-09-14T08:14:40.000Z'
+                  update_time: '2026-09-14T08:14:40.000Z'
+                  marked_as_done_time: null
+                additional_data: null
+    delete:
+      summary: Delete a task
+      description: Marks a task as deleted. If the task has subtasks, those will also be deleted.
+      x-token-cost: 3
+      operationId: deleteTask
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the task
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Deleted task.
+          content:
+            application/json:
+              schema:
+                title: DeleteTaskResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the deleted task
+                  additional_data:
+                    type: object
+                    nullable: true
+                    example: null
+              example:
+                success: true
+                data:
+                  id: 1
+                additional_data: null
+  /boards:
+    get:
+      summary: Get all project boards
+      description: Returns all active project boards.
+      x-token-cost: 10
+      operationId: getProjectsBoards
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:read
+        - projects:full
+      responses:
+        '200':
+          description: Get all project boards
+          content:
+            application/json:
+              schema:
+                title: GetProjectBoardsResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: array
+                    description: The array of project boards
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the project board
+                        name:
+                          type: string
+                          description: The name of the project board
+                        order_nr:
+                          type: integer
+                          description: The order of the board
+                        add_time:
+                          type: string
+                          description: The creation date and time of the board in ISO 8601 format
+                        update_time:
+                          type: string
+                          description: The update date and time of the board in ISO 8601 format
+                  additional_data:
+                    type: object
+                    nullable: true
+              example:
+                success: true
+                data:
+                - id: 1
+                  name: Project Board
+                  order_nr: 1
+                  add_time: '2024-01-01T00:00:00.000Z'
+                  update_time: '2024-01-01T00:00:00.000Z'
+                additional_data: null
+    post:
+      summary: Add a project board
+      description: Adds a new project board.
+      x-token-cost: 5
+      operationId: addProjectBoard
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:full
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: addProjectBoardRequest
+              required:
+              - name
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the project board
+                order_nr:
+                  type: integer
+                  minimum: 1
+                  description: The order of the board. Must be between 1 and the total number of boards + 1.
+      responses:
+        '200':
+          description: Add a project board
+          content:
+            application/json:
+              schema:
+                title: UpsertProjectBoardResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the project board
+                      name:
+                        type: string
+                        description: The name of the project board
+                      order_nr:
+                        type: integer
+                        description: The order of the board
+                      add_time:
+                        type: string
+                        description: The creation date and time of the board in ISO 8601 format
+                      update_time:
+                        type: string
+                        description: The update date and time of the board in ISO 8601 format
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Project Board
+                  order_nr: 1
+                  add_time: '2024-01-01T00:00:00.000Z'
+                  update_time: '2024-01-01T00:00:00.000Z'
+  /boards/{id}:
+    get:
+      summary: Get details of a project board
+      description: Returns the details of a specific project board.
+      x-token-cost: 10
+      operationId: getProjectsBoard
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:read
+        - projects:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the project board
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Get a project board
+          content:
+            application/json:
+              schema:
+                title: UpsertProjectBoardResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the project board
+                      name:
+                        type: string
+                        description: The name of the project board
+                      order_nr:
+                        type: integer
+                        description: The order of the board
+                      add_time:
+                        type: string
+                        description: The creation date and time of the board in ISO 8601 format
+                      update_time:
+                        type: string
+                        description: The update date and time of the board in ISO 8601 format
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Project Board
+                  order_nr: 1
+                  add_time: '2024-01-01T00:00:00.000Z'
+                  update_time: '2024-01-01T00:00:00.000Z'
+    patch:
+      summary: Update a project board
+      description: Updates the properties of a project board.
+      x-token-cost: 5
+      operationId: updateProjectBoard
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the project board
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: updateProjectBoardRequest
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the project board
+                order_nr:
+                  type: integer
+                  minimum: 1
+                  description: The order of the board. Must be between 1 and the total number of boards + 1.
+      responses:
+        '200':
+          description: Update a project board
+          content:
+            application/json:
+              schema:
+                title: UpsertProjectBoardResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the project board
+                      name:
+                        type: string
+                        description: The name of the project board
+                      order_nr:
+                        type: integer
+                        description: The order of the board
+                      add_time:
+                        type: string
+                        description: The creation date and time of the board in ISO 8601 format
+                      update_time:
+                        type: string
+                        description: The update date and time of the board in ISO 8601 format
+              example:
+                success: true
+                data:
+                  id: 1
+                  name: Project Board
+                  order_nr: 1
+                  add_time: '2024-01-01T00:00:00.000Z'
+                  update_time: '2024-01-01T00:00:00.000Z'
+    delete:
+      summary: Delete a project board
+      description: Marks a project board as deleted.
+      x-token-cost: 3
+      operationId: deleteProjectBoard
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the project board
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Delete a project board
+          content:
+            application/json:
+              schema:
+                title: DeleteProjectBoardResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the deleted project board
+              example:
+                success: true
+                data:
+                  id: 1
+  /phases:
+    get:
+      summary: Get project phases
+      description: Returns all active project phases under a specific board.
+      x-token-cost: 10
+      operationId: getProjectsPhases
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:read
+        - projects:full
+      parameters:
+      - in: query
+        name: board_id
+        required: true
+        description: The ID of the board for which phases are requested
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: Get all project phases for a board
+          content:
+            application/json:
+              schema:
+                title: GetProjectPhasesResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: array
+                    description: The array of project phases
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the project phase
+                        name:
+                          type: string
+                          description: The name of the project phase
+                        board_id:
+                          type: integer
+                          description: The ID of the project board this phase belongs to
+                        order_nr:
+                          type: integer
+                          description: The order of the phase within its board
+                        add_time:
+                          type: string
+                          description: The creation date and time of the phase in ISO 8601 format
+                        update_time:
+                          type: string
+                          description: The update date and time of the phase in ISO 8601 format
+                  additional_data:
+                    type: object
+                    nullable: true
+              example:
+                success: true
+                data:
+                - id: 2
+                  name: Project Phase
+                  board_id: 1
+                  order_nr: 1
+                  add_time: '2024-01-01T00:00:00.000Z'
+                  update_time: '2024-01-01T00:00:00.000Z'
+                additional_data: null
+    post:
+      summary: Add a project phase
+      description: Adds a new project phase to a board.
+      x-token-cost: 5
+      operationId: addProjectPhase
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:full
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: addProjectPhaseRequest
+              required:
+              - name
+              - board_id
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the project phase
+                board_id:
+                  type: integer
+                  description: The ID of the project board to add the phase to
+                order_nr:
+                  type: integer
+                  minimum: 1
+                  description: The order of the phase within its board. Must be between 1 and the total number of phases on the board + 1.
+      responses:
+        '200':
+          description: Add a project phase
+          content:
+            application/json:
+              schema:
+                title: UpsertProjectPhaseResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the project phase
+                      name:
+                        type: string
+                        description: The name of the project phase
+                      board_id:
+                        type: integer
+                        description: The ID of the project board this phase belongs to
+                      order_nr:
+                        type: integer
+                        description: The order of the phase within its board
+                      add_time:
+                        type: string
+                        description: The creation date and time of the phase in ISO 8601 format
+                      update_time:
+                        type: string
+                        description: The update date and time of the phase in ISO 8601 format
+              example:
+                success: true
+                data:
+                  id: 2
+                  name: Project Phase
+                  board_id: 1
+                  order_nr: 1
+                  add_time: '2024-01-01T00:00:00.000Z'
+                  update_time: '2024-01-01T00:00:00.000Z'
+  /phases/{id}:
+    get:
+      summary: Get details of a project phase
+      description: Returns the details of a specific project phase.
+      x-token-cost: 10
+      operationId: getProjectsPhase
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:read
+        - projects:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the project phase
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Get a project phase
+          content:
+            application/json:
+              schema:
+                title: UpsertProjectPhaseResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the project phase
+                      name:
+                        type: string
+                        description: The name of the project phase
+                      board_id:
+                        type: integer
+                        description: The ID of the project board this phase belongs to
+                      order_nr:
+                        type: integer
+                        description: The order of the phase within its board
+                      add_time:
+                        type: string
+                        description: The creation date and time of the phase in ISO 8601 format
+                      update_time:
+                        type: string
+                        description: The update date and time of the phase in ISO 8601 format
+              example:
+                success: true
+                data:
+                  id: 2
+                  name: Project Phase
+                  board_id: 1
+                  order_nr: 1
+                  add_time: '2024-01-01T00:00:00.000Z'
+                  update_time: '2024-01-01T00:00:00.000Z'
+    patch:
+      summary: Update a project phase
+      description: Updates the properties of a project phase.
+      x-token-cost: 5
+      operationId: updateProjectPhase
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the project phase
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: updateProjectPhaseRequest
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the project phase
+                board_id:
+                  type: integer
+                  description: The ID of the project board to add the phase to
+                order_nr:
+                  type: integer
+                  minimum: 1
+                  description: The order of the phase within its board. Must be between 1 and the total number of phases on the board + 1.
+      responses:
+        '200':
+          description: Update a project phase
+          content:
+            application/json:
+              schema:
+                title: UpsertProjectPhaseResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the project phase
+                      name:
+                        type: string
+                        description: The name of the project phase
+                      board_id:
+                        type: integer
+                        description: The ID of the project board this phase belongs to
+                      order_nr:
+                        type: integer
+                        description: The order of the phase within its board
+                      add_time:
+                        type: string
+                        description: The creation date and time of the phase in ISO 8601 format
+                      update_time:
+                        type: string
+                        description: The update date and time of the phase in ISO 8601 format
+              example:
+                success: true
+                data:
+                  id: 2
+                  name: Project Phase
+                  board_id: 1
+                  order_nr: 1
+                  add_time: '2024-01-01T00:00:00.000Z'
+                  update_time: '2024-01-01T00:00:00.000Z'
+    delete:
+      summary: Delete a project phase
+      description: Marks a project phase as deleted.
+      x-token-cost: 3
+      operationId: deleteProjectPhase
+      tags:
+      - Beta
+      security:
+      - api_key: []
+      - oauth2:
+        - projects:full
+      parameters:
+      - in: path
+        name: id
+        description: The ID of the project phase
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Delete a project phase
+          content:
+            application/json:
+              schema:
+                title: DeleteProjectPhaseResponse
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: If the response is successful or not
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the deleted project phase
+              example:
+                success: true
+                data:
+                  id: 2
+components:
+  securitySchemes:
+    basic_authentication:
+      type: http
+      scheme: basic
+      description: Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.
+    api_key:
+      type: apiKey
+      name: x-api-token
+      in: header
+    oauth2:
+      type: oauth2
+      description: For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.pipedrive.com/oauth/authorize
+          tokenUrl: https://oauth.pipedrive.com/oauth/token
+          refreshUrl: https://oauth.pipedrive.com/oauth/token
+          scopes:
+            base: Read settings of the authorized user and currencies in an account
+            deals:read: Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            deals:full: Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)
+            mail:read: Read mail threads and messages
+            mail:full: Read, update and delete mail threads. Also grants read access to mail messages
+            activities:read: Read activities, its fields and types; all files and filters
+            activities:full: Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types
+            contacts:read: Read the data about persons and organizations, their related fields and followers; also all notes, files, filters
+            contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
+            products:read: Read products, its fields, files, followers and products connected to a deal
+            products:full: Create, read, update and delete products and its fields; add products to deals
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            projects:read: Read projects and its fields, tasks and project templates
+            projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
+            users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
+            recents:read: Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users
+            search:read: Search across the account for deals, persons, organizations, files and products, and see details about the returned results
+            admin: Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app
+            leads:read: Read data about leads and lead labels
+            leads:full: Create, read, update and delete leads and lead labels
+            phone-integration: Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive
+            goals:read: Read data on all goals
+            goals:full: Create, read, update and delete goals
+            video-calls: Allows application to register as a video call integration provider and create conference links
+            messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
