@@ -6,7 +6,20 @@ description: Pipedrive is a sales CRM and pipeline management tool focused on sm
   and mid-market teams. The Pipedrive REST API exposes deals, persons, organizations,
   activities, leads, products, pipelines, stages, mail, calls, files, notes, users,
   permissions, filters, goals, subscriptions, and webhooks.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pipedrive.png
 tags:
 - CRM
 - Sales
@@ -17,289 +30,2968 @@ created: '2026-05-08'
 modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
+- aid: pipedrive:pipedrive-activities-api
+  name: Pipedrive Activities API
+  description: >-
+    Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead,
+    a person and an organization. Activities can be of different type (such as call, meeting, lunch or
+    a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities
+    can also be created without a specific date/time.
+  tags:
+  - Activities
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-activities-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-activityfields-api
+  name: Pipedrive ActivityFields API
+  description: Activity fields represent different fields that an activity has.
+  tags:
+  - ActivityFields
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-activityfields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-activitytypes-api
+  name: Pipedrive ActivityTypes API
+  description: >-
+    Activity types represent different kinds of activities that can be stored. Each activity type is presented
+    to the user with an icon and a name. Additionally, a color can be defined (not implemented in the
+    Pipedrive app as of today). Activity types are linked to activities via `ActivityType.key_string =
+    Activity.type`. The `key_string` will be generated by the API based on the given name of the activity
+    type upon creation, and cannot be changed. Activity types should be presented to the user in an ordered
+    manner, using the `ActivityType.order_nr` value.
+  tags:
+  - ActivityTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-activitytypes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-beta-api
+  name: Pipedrive Beta API
+  description: >-
+    Beta endpoints are endpoints that may have changes without a regular 60-90 day notice period.
+  tags:
+  - Beta
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-beta-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-billing-api
+  name: Pipedrive Billing API
+  description: Billing is responsible for handling your subscriptions, payments, plans and add-ons.
+  tags:
+  - Billing
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-billing-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-calllogs-api
+  name: Pipedrive CallLogs API
+  description: >-
+    Call logs describe the outcome of a phone call managed by an integrated provider. Since these logs
+    are also considered activities, they can be associated with a deal or a lead, a person and/or an organization.
+    Call logs do differ from other activities, as they only receive the information needed to describe
+    the phone call.
+  tags:
+  - CallLogs
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-calllogs-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-channels-api
+  name: Pipedrive Channels API
+  description: >-
+    Channels API allows you to integrate your existing messaging channels into Pipedrive through [Messaging
+    app extension](https://pipedrive.readme.io/docs/messaging-app-extension). It enables you to manage
+    and interact with the channel’s conversations, participants and messages inside Pipedrive Messaging
+    inbox: get the historical conversation, receive and send new messages. These endpoints are accessible
+    only through **Messengers integration** OAuth scope together with Messaging manifest in building the
+    [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+  tags:
+  - Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-channels-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-currencies-api
+  name: Pipedrive Currencies API
+  description: >-
+    Supported currencies which can be used to represent the monetary value of a deal, or a value of any
+    monetary type custom field. The `Currency.code` field must be used to point to a currency. `Currency.code`
+    is the ISO-4217 format currency code for non-custom currencies. You can differentiate custom and non-custom
+    currencies using the `is_custom_flag` property. For custom currencies, it is intended that the formatted
+    sums are displayed in the UI using the following format: [sum][non-breaking space character][currency.symbol],
+    for example: 500 users. Custom currencies cannot be added or removed via the API yet — rather the
+    admin users of the account must configure them from the Pipedrive app.
+  tags:
+  - Currencies
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-currencies-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-dealfields-api
+  name: Pipedrive DealFields API
+  description: >-
+    Deal fields represent the near-complete schema for a deal in the context of the company of the authorized
+    user. Each company can have a different schema for their deals, with various custom fields. In the
+    context of using deal fields as a schema for defining the data fields of a deal, it must be kept in
+    mind that some types of custom fields can have additional data fields which are not separate deal
+    fields per se. Such is the case with monetary, daterange and timerange fields – each of these fields
+    will have one additional data field in addition to the one presented in the context of deal fields.
+    For example, if there is a monetary field with the key `ffk9s9` stored on the account, `ffk9s9` would
+    hold the numeric value of the field, and `ffk9s9_currency` would hold the ISO currency code that goes
+    along with the numeric value. To find out which data fields are available, fetch one deal and list
+    its keys.
+  tags:
+  - DealFields
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-dealfields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-dealinstallments-api
+  name: Pipedrive DealInstallments API
+  description: >-
+    Deal installments are scheduled payment entries attached to a deal, enabling split payment arrangements.
+  tags:
+  - DealInstallments
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-dealinstallments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-dealproducts-api
+  name: Pipedrive DealProducts API
+  description: >-
+    Deal products are goods or services attached to a deal. Each deal product links a product to a deal
+    with configurable quantity, pricing, and discounts, and contributes to the total value of the deal.
+  tags:
+  - DealProducts
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-dealproducts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
 - aid: pipedrive:pipedrive-deals-api
   name: Pipedrive Deals API
+  description: >-
+    Deals represent ongoing, lost or won sales to an organization or to a person. Each deal has a monetary
+    value and must be placed in a stage. Deals can be owned by a user, and followed by one or many users.
+    Each deal consists of standard data fields but can also contain a number of custom fields. The custom
+    fields can be recognized by long hashes as keys. These hashes can be mapped against `DealField.key`.
+    The corresponding label for each such custom field can be obtained from `DealField.name`.
   tags:
   - Deals
-  - Pipeline
   properties:
-  - url: https://developers.pipedrive.com/
-    type: Documentation
-  - url: https://developers.pipedrive.com/docs/api/v1/Deals
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  - url: graphql/pipedrive-graphql.md
-    type: GraphQL
-  description: Manage deals — the core sales-pipeline entity. Create, retrieve, update,
-    search, and merge deals; advance them through pipeline stages and track value,
-    status, and probability.
+  - type: OpenAPI
+    url: openapi/pipedrive-deals-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-files-api
+  name: Pipedrive Files API
+  description: >-
+    Files are documents of any kind (images, spreadsheets, text files, etc.) that are uploaded to Pipedrive,
+    and usually associated with a particular deal, person, organization, product, note or activity. Remote
+    files can only be associated with a particular deal, person or organization. Note that the API currently
+    does not support downloading files although it lets you retrieve a file’s meta-info along with a URL
+    which can be used to download the file by using a standard HTTP GET request.
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-files-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-filters-api
+  name: Pipedrive Filters API
+  description: >-
+    Each filter is essentially a set of data validation conditions. A filter of the same kind can be applied
+    when fetching a list of deals, leads, persons, organizations or products in the context of a pipeline.
+    Filters are limited to a maximum of 16 conditions. When applied, only items matching the conditions
+    of the filter are returned. Detailed definitions of filter conditions and additional functionality
+    is not yet available.
+  tags:
+  - Filters
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-filters-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-goals-api
+  name: Pipedrive Goals API
+  description: >-
+    Goals help your team meet your sales targets. There are three types of goals - company, team and user.
+  tags:
+  - Goals
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-goals-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-itemsearch-api
+  name: Pipedrive ItemSearch API
+  description: >-
+    Ordered reference objects, pointing to either deals, persons, organizations, leads, products, files
+    or mail attachments.
+  tags:
+  - ItemSearch
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-itemsearch-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-leadfields-api
+  name: Pipedrive LeadFields API
+  description: >-
+    Lead fields represent the near-complete schema for a lead in the context of the company of the authorized
+    user. Each company can have a different schema for their leads, with various custom fields. In the
+    context of using lead fields as a schema for defining the data fields of a lead, it must be kept in
+    mind that some types of custom fields can have additional data fields which are not separate lead
+    fields per se. Such is the case with monetary, daterange and timerange fields – each of these fields
+    will have one additional data field in addition to the one presented in the context of lead fields.
+    For example, if there is a monetary field with the key `ffk9s9` stored on the account, `ffk9s9` would
+    hold the numeric value of the field, and `ffk9s9_currency` would hold the ISO currency code that goes
+    along with the numeric value. To find out which data fields are available, fetch one lead and list
+    its keys.
+  tags:
+  - LeadFields
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-leadfields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-leadlabels-api
+  name: Pipedrive LeadLabels API
+  description: >-
+    Lead labels allow you to visually categorize your leads. There are three default lead labels: hot,
+    cold, and warm, but you can add as many new custom labels as you want.
+  tags:
+  - LeadLabels
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-leadlabels-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
 - aid: pipedrive:pipedrive-leads-api
   name: Pipedrive Leads API
+  description: >-
+    Leads are potential deals stored in Leads Inbox before they are archived or converted to a deal. Each
+    lead needs to be named (using the `title` field) and be linked to a person or an organization. In
+    addition to that, a lead can contain most of the fields a deal can (such as `value` or `expected_close_date`).
   tags:
   - Leads
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Leads
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Manage leads — pre-qualified deal candidates living in the Leads Inbox
-    before being converted to deals.
-- aid: pipedrive:pipedrive-persons-api
-  name: Pipedrive Persons API
+  - type: OpenAPI
+    url: openapi/pipedrive-leads-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-leadsources-api
+  name: Pipedrive LeadSources API
+  description: >-
+    A lead source indicates where your lead came from. Currently, these are the possible lead sources:
+    `Manually created`, `Deal`, `Web forms`, `Prospector`, `Leadbooster`, `Live chat`, `Import`, `Website
+    visitors`, `Workflow automation`, and `API`. Lead sources are pre-defined and cannot be edited. Please
+    note that leads sourced from the Chatbot feature are assigned the value `Leadbooster`. Please also
+    note that this list is not final and new sources may be added as needed.
   tags:
-  - Persons
-  - Contacts
+  - LeadSources
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Persons
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Manage person (contact) records — names, emails, phones, social profiles
-    — associated with deals and organizations.
-- aid: pipedrive:pipedrive-organizations-api
-  name: Pipedrive Organizations API
+  - type: OpenAPI
+    url: openapi/pipedrive-leadsources-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-legacyteams-api
+  name: Pipedrive LegacyTeams API
+  description: >-
+    Legacy teams allow you to form groups of users withing the organization for more efficient management.
+    Previously Legacy Teams were called Teams and occupied the `v1/teams*` path. They're being deprecated
+    because we are preparing for an upgraded version of the Teams API, which requires migrating the current
+    functionality to a new path URL `v1/legacyTeams*`. The functionality and [OAuth scopes](https://pipedrive.readme.io/docs/marketplace-scopes-and-permissions-explanations)
+    of all the Teams API endpoints will remain the same.
   tags:
-  - Organizations
-  - Companies
+  - LegacyTeams
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Organizations
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Manage organization (company) records that group persons and deals
-    under a single business relationship.
-- aid: pipedrive:pipedrive-activities-api
-  name: Pipedrive Activities API
+  - type: OpenAPI
+    url: openapi/pipedrive-legacyteams-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-mailbox-api
+  name: Pipedrive Mailbox API
+  description: >-
+    Mailbox was designed to be the email control hub inside Pipedrive. Pipedrive supports all major providers
+    (including Gmail, Outlook and also custom IMAP/SMTP). There are 2 options for syncing user emails:
+    2-way sync: Mail Connection is established with the mail provider (example Gmail). There can be only
+    1 active Mail Connection per user in company. 1-way sync: SmartBCC feature which stores the copies
+    of email messages to Pipedrive by adding the SmartBCC specific address to mail recipients.
   tags:
-  - Activities
-  - Tasks
-  - Calendar
+  - Mailbox
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Activities
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Manage activities (calls, meetings, emails, tasks, deadlines) scheduled
-    against deals, persons, or organizations.
-- aid: pipedrive:pipedrive-pipelines-api
-  name: Pipedrive Pipelines API
+  - type: OpenAPI
+    url: openapi/pipedrive-mailbox-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-meetings-api
+  name: Pipedrive Meetings API
+  description: >-
+    Meetings API allows integrating video calling apps into Pipedrive through [Video Calling App extension](https://pipedrive.readme.io/docs/video-calling-app-extension).
+    It enables you to manage and interact with your video calls and meetings inside Pipedrive. These endpoints
+    are accessible only through apps with video calls integration [OAuth scope](https://pipedrive.readme.io/docs/marketplace-scopes-and-permissions-explanations).
   tags:
-  - Pipelines
+  - Meetings
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Pipelines
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Manage pipelines — the top-level sales process containers grouping
-    ordered stages.
-- aid: pipedrive:pipedrive-stages-api
-  name: Pipedrive Stages API
+  - type: OpenAPI
+    url: openapi/pipedrive-meetings-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-notefields-api
+  name: Pipedrive NoteFields API
+  description: Note fields represent different fields that a note has.
   tags:
-  - Stages
+  - NoteFields
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Stages
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Manage stages within pipelines and the per-stage probability and ordering
-    used to compute weighted forecasts.
-- aid: pipedrive:pipedrive-products-api
-  name: Pipedrive Products API
-  tags:
-  - Products
-  - Catalog
-  properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Products
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Manage product catalog entries (SKU, price, currency variants) attached
-    to deals as line items.
+  - type: OpenAPI
+    url: openapi/pipedrive-notefields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
 - aid: pipedrive:pipedrive-notes-api
   name: Pipedrive Notes API
+  description: >-
+    Notes are pieces of textual (HTML-formatted) information that can be attached to deals, persons and
+    organizations. Notes are usually displayed in the UI in chronological order – newest first – and in
+    context with other updates regarding the item they are attached to. The maximum note size is approximately
+    100,000 characters (or 100KB per note).
   tags:
   - Notes
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Notes
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  description: Add and retrieve free-form notes attached to deals, persons, organizations,
-    and leads.
-- aid: pipedrive:pipedrive-files-api
-  name: Pipedrive Files API
+  - type: OpenAPI
+    url: openapi/pipedrive-notes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-oauth-api
+  name: Pipedrive Oauth API
+  description: >-
+    Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace.
+    Authorization via OAuth 2.0 is a well-known and stable way to get fine-grained access to an API. To
+    retrieve OAuth2 tokens you should send requests to the `https://oauth.pipedrive.com` domain. After
+    registering the app, you must add the necessary server-side logic to your app to establish the OAuth
+    flow. Please read more about authorization step on the [Pipedrive Developers page](https://pipedrive.readme.io/docs/marketplace-oauth-authorization).
   tags:
-  - Files
-  - Attachments
+  - Oauth
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Files
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  description: Upload and link files (contracts, proposals, attachments) to deals,
-    persons, and organizations.
-- aid: pipedrive:pipedrive-mailbox-api
-  name: Pipedrive Mailbox API
+  - type: OpenAPI
+    url: openapi/pipedrive-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-organizationfields-api
+  name: Pipedrive OrganizationFields API
+  description: >-
+    Organization fields represent the near-complete schema for an organization in the context of the company
+    of the authorized user. Each company can have a different schema for their organizations, with various
+    custom fields. In the context of using organization fields as a schema for defining the data fields
+    of an organization, it must be kept in mind that some types of custom fields can have additional data
+    fields which are not separate organization fields per se. Such is the case with monetary, daterange
+    and timerange fields – each of these fields will have one additional data field in addition to the
+    one presented in the context of organization fields. For example, if there is a monetary field with
+    the key `ffk9s9` stored on the account, `ffk9s9` would hold the numeric value of the field, and `ffk9s9_currency`
+    would hold the ISO currency code that goes along with the numeric value. To find out which data fields
+    are available, fetch one organization and list its keys.
   tags:
-  - Mailbox
-  - Email
+  - OrganizationFields
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Mailbox
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  description: Read mailbox messages and threads synced via the Pipedrive Smart Email
-    Bcc and 2-way email sync features.
-- aid: pipedrive:pipedrive-calls-api
-  name: Pipedrive Calls API
+  - type: OpenAPI
+    url: openapi/pipedrive-organizationfields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-organizationrelationships-api
+  name: Pipedrive OrganizationRelationships API
+  description: >-
+    Organization relationships represent how different organizations are related to each other. The relationship
+    can be hierarchical (parent-child companies) or lateral as defined by the `type` field - either `parent`
+    or `related`.
   tags:
-  - Calls
-  - Telephony
+  - OrganizationRelationships
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/CallLogs
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  description: Log call activities and connect with telephony providers via the Caller
-    integration framework.
-- aid: pipedrive:pipedrive-users-api
-  name: Pipedrive Users API
+  - type: OpenAPI
+    url: openapi/pipedrive-organizationrelationships-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-organizations-api
+  name: Pipedrive Organizations API
+  description: >-
+    Organizations are companies and other kinds of organizations you are making deals with. Persons can
+    be associated with organizations so that each organization can contain one or more persons.
   tags:
-  - Users
-  - Seats
+  - Organizations
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Users
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Manage Pipedrive users (sales reps, managers, admins) and their activation
-    state.
-- aid: pipedrive:pipedrive-permissions-api
-  name: Pipedrive Permissions API
+  - type: OpenAPI
+    url: openapi/pipedrive-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-permissionsets-api
+  name: Pipedrive PermissionSets API
+  description: >-
+    Permission sets define what users in the account can do: which actions they are allowed to perform
+    and which features they can access. Permission sets are app-specific, where apps are large parts of
+    functionality, e.g., sales app, which allows accessing sales data, global permissions, which oversee
+    cross-product features (for example contacts, insights, products) or account settings, which provides
+    access to billing, user management, company settings and security center. Some permission sets with
+    types such as admin and regular are pre-created for the account, while other custom ones can be created
+    by users (depending on the tier the account is on).
   tags:
-  - Permissions
-  - Roles
-  - Groups
+  - PermissionSets
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Roles
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  description: Manage user roles and permission sets that govern visibility across
-    deals, persons, and organizations.
-- aid: pipedrive:pipedrive-filters-api
-  name: Pipedrive Filters API
+  - type: OpenAPI
+    url: openapi/pipedrive-permissionsets-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-personfields-api
+  name: Pipedrive PersonFields API
+  description: >-
+    Person fields represent the near-complete schema for a person in the context of the company of the
+    authorized user. Each company can have a different schema for their persons, with various custom fields.
+    In the context of using person fields as a schema for defining the data fields of a person, it must
+    be kept in mind that some types of custom fields can have additional data fields which are not separate
+    person fields per se. Such is the case with monetary, daterange and timerange fields – each of these
+    fields will have one additional data field in addition to the one presented in the context of person
+    fields. For example, if there is a monetary field with the key `ffk9s9` stored on the account, `ffk9s9`
+    would hold the numeric value of the field, and `ffk9s9_currency` would hold the ISO currency code
+    that goes along with the numeric value. To find out which data fields are available, fetch one person
+    and list its keys.
   tags:
-  - Filters
-  - Saved Views
+  - PersonFields
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Filters
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  description: Manage saved filters (saved query / view definitions) used across lists
-    and reports.
-- aid: pipedrive:pipedrive-goals-api
-  name: Pipedrive Goals API
+  - type: OpenAPI
+    url: openapi/pipedrive-personfields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-persons-api
+  name: Pipedrive Persons API
+  description: >-
+    Persons are your contacts, the customers you are doing deals with. Each person can belong to an organization.
+    Persons should not be confused with users.
   tags:
-  - Goals
-  - Forecasting
+  - Persons
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Goals
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  description: Set, retrieve, and report on user / team / pipeline goals (deal count,
-    won value, weighted value).
-- aid: pipedrive:pipedrive-subscriptions-api
-  name: Pipedrive Subscriptions API
+  - type: OpenAPI
+    url: openapi/pipedrive-persons-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-pipelines-api
+  name: Pipedrive Pipelines API
+  description: Pipelines are essentially ordered collections of stages.
   tags:
-  - Subscriptions
-  - Recurring
+  - Pipelines
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  description: Manage recurring revenue subscriptions attached to a deal — schedule,
-    cancellation, and renewal tracking.
+  - type: OpenAPI
+    url: openapi/pipedrive-pipelines-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-productfields-api
+  name: Pipedrive ProductFields API
+  description: >-
+    Product fields represent the near-complete schema for a product in the context of the company of the
+    authorized user. Each company can have a different schema for their products, with various custom
+    fields. In the context of using product fields as a schema for defining the data fields of a product,
+    it must be kept in mind that some types of custom fields can have additional data fields which are
+    not separate product fields per se. Such is the case with monetary, daterange and timerange fields
+    – each of these fields will have one additional data field in addition to the one presented in the
+    context of product fields. For example, if there is a monetary field with the key `ffk9s9` stored
+    on the account, `ffk9s9` would hold the numeric value of the field, and `ffk9s9_currency` would hold
+    the ISO currency code that goes along with the numeric value. To find out which data fields are available,
+    fetch one product and list its keys.
+  tags:
+  - ProductFields
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-productfields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-products-api
+  name: Pipedrive Products API
+  description: >-
+    Products are the goods or services you are dealing with. Each product can have N different price points
+    - firstly, each product can have a price in N different currencies, and secondly, each product can
+    have N variations of itself, each having N prices in different currencies. Note that only one price
+    per variation per currency is supported. Products can be instantiated to deals. In the context of
+    instatiation, a custom price, quantity, duration and discount can be applied.
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-products-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-projectboards-api
+  name: Pipedrive ProjectBoards API
+  description: >-
+    Project boards are used to organize projects into different phases. Each board contains phases that
+    define the workflow for projects.
+  tags:
+  - ProjectBoards
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-projectboards-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-projectfields-api
+  name: Pipedrive ProjectFields API
+  description: >-
+    Project fields represent the schema for a project in the context of the company of the authorized
+    user. Each company can have a different schema for their projects, with various custom fields.
+  tags:
+  - ProjectFields
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-projectfields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-projectphases-api
+  name: Pipedrive ProjectPhases API
+  description: >-
+    Project phases represent the stages within a project board. Each phase belongs to a board and defines
+    a step in the project workflow.
+  tags:
+  - ProjectPhases
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-projectphases-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
 - aid: pipedrive:pipedrive-projects-api
   name: Pipedrive Projects API
+  description: >-
+    Projects represent ongoing, completed or canceled projects attached to an organization, person or
+    to deals. Each project has an owner and must be placed in a phase. Each project consists of standard
+    data fields but can also contain a number of custom fields. The custom fields can be recognized by
+    long hashes as keys.
   tags:
   - Projects
-  - Delivery
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Projects
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Manage post-sale projects and tasks linked to a closed-won deal in
-    the Pipedrive Projects (delivery) module.
-- aid: pipedrive:pipedrive-product-fields-api
-  name: Pipedrive Custom Fields API
+  - type: OpenAPI
+    url: openapi/pipedrive-projects-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-projecttemplates-api
+  name: Pipedrive ProjectTemplates API
+  description: >-
+    Project templates allow you to have reusable and dynamic structure to simplify creation of a project.
+    Project template can contain information about activities, tasks and groups that will be used when
+    creating a project.
   tags:
-  - Custom Fields
-  - Metadata
+  - ProjectTemplates
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/DealFields
-    type: APIReference
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: openapi/pipedrive-v2-openapi.yml
-    type: OpenAPI
-  description: Read and manage custom field definitions on Deals, Persons, Organizations,
-    Products, and Leads.
+  - type: OpenAPI
+    url: openapi/pipedrive-projecttemplates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-recents-api
+  name: Pipedrive Recents API
+  description: Recent changes across all item types in Pipedrive (deals, persons, etc).
+  tags:
+  - Recents
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-recents-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-roles-api
+  name: Pipedrive Roles API
+  description: >-
+    Roles are a part of the Visibility groups’ feature that allow the admin user to categorize other users
+    and dictate what items they will be allowed access to see.
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-roles-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-stages-api
+  name: Pipedrive Stages API
+  description: >-
+    Stage is a logical component of a pipeline, and essentially a bucket that can hold a number of deals.
+    In the context of the pipeline a stage belongs to, it has an order number which defines the order
+    of stages in that pipeline.
+  tags:
+  - Stages
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-stages-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-tasks-api
+  name: Pipedrive Tasks API
+  description: >-
+    Tasks represent actions that need to be completed and must be associated with a project. Tasks have
+    an optional due date, can be assigned to a user and can have subtasks.
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-userconnections-api
+  name: Pipedrive UserConnections API
+  description: Manage user connections.
+  tags:
+  - UserConnections
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-userconnections-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-users-api
+  name: Pipedrive Users API
+  description: >-
+    Users are people with access to your Pipedrive account. A user may belong to one or many Pipedrive
+    accounts, so deleting a user from one Pipedrive account will not remove the user from the data store
+    if he/she is connected to multiple accounts. Users should not be confused with persons.
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
+- aid: pipedrive:pipedrive-usersettings-api
+  name: Pipedrive UserSettings API
+  description: View user settings.
+  tags:
+  - UserSettings
+  properties:
+  - type: OpenAPI
+    url: openapi/pipedrive-usersettings-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
 - aid: pipedrive:pipedrive-webhooks-api
   name: Pipedrive Webhooks API
+  description: >-
+    See <a href="https://pipedrive.readme.io/docs/guide-for-webhooks-v2?ref=api_reference" target="_blank"
+    rel="noopener noreferrer">the guide for Webhooks</a> for more information.
   tags:
   - Webhooks
-  - Events
   properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/Webhooks
-    type: APIReference
-  - url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
-    type: Documentation
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  - url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
-    type: AsyncAPI
-  description: Subscribe to Pipedrive events (deal.added, deal.updated, person.added,
-    activity.added) and receive HTTP callbacks for downstream automation.
-- aid: pipedrive:pipedrive-marketplace-api
-  name: Pipedrive Marketplace App API
-  tags:
-  - Marketplace
-  - OAuth
-  - Apps
-  properties:
-  - url: https://developers.pipedrive.com/docs/api/v1/oauth2
-    type: Documentation
-  - url: openapi/pipedrive-v1-openapi.yml
-    type: OpenAPI
-  description: OAuth 2 endpoints, app distribution, and embedded UI extensions (panels,
-    modals, link actions) for building Pipedrive Marketplace apps.
+  - type: OpenAPI
+    url: openapi/pipedrive-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Deals
+  - type: GraphQL
+    url: graphql/pipedrive-graphql.md
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Leads
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Persons
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Organizations
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Activities
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Pipelines
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Stages
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Products
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Notes
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Files
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Mailbox
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/CallLogs
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Users
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Roles
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Filters
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Goals
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Subscriptions
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Projects
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/DealFields
+  - type: APIReference
+    url: https://developers.pipedrive.com/docs/api/v1/Webhooks
+  - type: Documentation
+    url: https://pipedrive.readme.io/docs/guide-for-webhooks-v2
+  - type: AsyncAPI
+    url: asyncapi/pipedrive-webhooks-v2-asyncapi.yml
+  - type: Documentation
+    url: https://developers.pipedrive.com/docs/api/v1/oauth2
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/pipedrive/overview
 - type: AgenticAccess
   url: agentic-access/pipedrive-agentic-access.yml
 - type: DomainSecurity
