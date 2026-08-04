@@ -1,0 +1,837 @@
+{
+  "info": {
+    "_postman_id": "6f40be30-7810-4dc5-8ea7-cef6e44b7c31",
+    "name": "Pipedrive API v1 Activities Mailbox API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:31.000Z",
+    "updatedAt": "2026-07-28T02:37:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6f40be30-7810-4dc5-8ea7-cef6e44b7c31"
+  },
+  "item": [
+    {
+      "name": "mailbox",
+      "item": [
+        {
+          "name": "mailMessages",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Get one mail message",
+                  "id": "58f74a61-4d90-494e-ac3c-7beec3007c80",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/mailbox/mailMessages/:id?include_body=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mailbox",
+                        "mailMessages",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to include the full message body or not. `0` = Don't include, `1` = Include.",
+                          "key": "include_body",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ab33d48f-d43b-40c9-b03a-6384117a93a3",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the mail message to fetch"
+                        }
+                      ]
+                    },
+                    "description": "Returns data about a specific mail message."
+                  },
+                  "response": [
+                    {
+                      "id": "33258087-d574-4a79-9e57-24a979899c9a",
+                      "name": "The mail messages that are being synced with Pipedrive",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/mailbox/mailMessages/:id?include_body=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mailbox",
+                            "mailMessages",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to include the full message body or not. `0` = Don't include, `1` = Include.",
+                              "key": "include_body",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"statusCode\": \"<integer>\",\n  \"statusText\": \"<string>\",\n  \"service\": \"<string>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"from\": [\n      {\n        \"id\": \"<integer>\",\n        \"email_address\": \"<string>\",\n        \"name\": \"<string>\",\n        \"linked_person_id\": \"<integer>\",\n        \"linked_person_name\": \"<string>\",\n        \"mail_message_party_id\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"email_address\": \"<string>\",\n        \"name\": \"<string>\",\n        \"linked_person_id\": \"<integer>\",\n        \"linked_person_name\": \"<string>\",\n        \"mail_message_party_id\": \"<integer>\"\n      }\n    ],\n    \"to\": [\n      {\n        \"id\": \"<integer>\",\n        \"email_address\": \"<string>\",\n        \"name\": \"<string>\",\n        \"linked_person_id\": \"<integer>\",\n        \"linked_person_name\": \"<string>\",\n        \"mail_message_party_id\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"email_address\": \"<string>\",\n        \"name\": \"<string>\",\n        \"linked_person_id\": \"<integer>\",\n        \"linked_person_name\": \"<string>\",\n        \"mail_message_party_id\": \"<integer>\"\n      }\n    ],\n    \"cc\": [\n      {\n        \"id\": \"<integer>\",\n        \"email_address\": \"<string>\",\n        \"name\": \"<string>\",\n        \"linked_person_id\": \"<integer>\",\n        \"linked_person_name\": \"<string>\",\n        \"mail_message_party_id\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"email_address\": \"<string>\",\n        \"name\": \"<string>\",\n        \"linked_person_id\": \"<integer>\",\n        \"linked_person_name\": \"<string>\",\n        \"mail_message_party_id\": \"<integer>\"\n      }\n    ],\n    \"bcc\": [\n      {\n        \"id\": \"<integer>\",\n        \"email_address\": \"<string>\",\n        \"name\": \"<string>\",\n        \"linked_person_id\": \"<integer>\",\n        \"linked_person_name\": \"<string>\",\n        \"mail_message_party_id\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"email_address\": \"<string>\",\n        \"name\": \"<string>\",\n        \"linked_person_id\": \"<integer>\",\n        \"linked_person_name\": \"<string>\",\n        \"mail_message_party_id\": \"<integer>\"\n      }\n    ],\n    \"body_url\": \"<string>\",\n    \"account_id\": \"<string>\",\n    \"user_id\": \"<integer>\",\n    \"mail_thread_id\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"snippet\": \"<string>\",\n    \"mail_tracking_status\": \"not opened\",\n    \"mail_link_tracking_enabled_flag\": 0,\n    \"read_flag\": 0,\n    \"draft\": \"<string>\",\n    \"draft_flag\": 0,\n    \"synced_flag\": 0,\n    \"deleted_flag\": 0,\n    \"has_body_flag\": 0,\n    \"sent_flag\": 0,\n    \"sent_from_pipedrive_flag\": 0,\n    \"smart_bcc_flag\": 0,\n    \"message_time\": \"<dateTime>\",\n    \"add_time\": \"<dateTime>\",\n    \"update_time\": \"<dateTime>\",\n    \"has_attachments_flag\": 0,\n    \"has_inline_attachments_flag\": 0,\n    \"has_real_attachments_flag\": 0\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:32.000Z",
+                      "updatedAt": "2026-07-28T02:37:32.000Z",
+                      "uid": "35240-33258087-d574-4a79-9e57-24a979899c9a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:32.000Z",
+                  "updatedAt": "2026-07-28T02:37:32.000Z",
+                  "uid": "35240-58f74a61-4d90-494e-ac3c-7beec3007c80"
+                }
+              ],
+              "id": "3f52a372-2e97-49b0-9d0b-4c2e494f0ca8",
+              "createdAt": "2026-07-28T02:37:32.000Z",
+              "updatedAt": "2026-07-28T02:37:32.000Z",
+              "uid": "35240-3f52a372-2e97-49b0-9d0b-4c2e494f0ca8"
+            }
+          ],
+          "id": "04940cfe-30c7-4e95-8505-e07cc3a924eb",
+          "createdAt": "2026-07-28T02:37:32.000Z",
+          "updatedAt": "2026-07-28T02:37:32.000Z",
+          "uid": "35240-04940cfe-30c7-4e95-8505-e07cc3a924eb"
+        },
+        {
+          "name": "mailThreads",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "mailMessages",
+                  "item": [
+                    {
+                      "name": "Get all mail messages of mail thread",
+                      "id": "219c0ec8-2cc8-4e59-a8b0-fd4f510a0911",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/mailbox/mailThreads/:id/mailMessages",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mailbox",
+                            "mailThreads",
+                            ":id",
+                            "mailMessages"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b47c1bc8-e37c-49ad-a4a4-bcd6213f072e",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the mail thread"
+                            }
+                          ]
+                        },
+                        "description": "Returns all the mail messages inside a specified mail thread."
+                      },
+                      "response": [
+                        {
+                          "id": "e25358af-8f11-402e-8963-ed262018868d",
+                          "name": "Get mail messages from thread",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/mailbox/mailThreads/:id/mailMessages",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "mailbox",
+                                "mailThreads",
+                                ":id",
+                                "mailMessages"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"account_id\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"subject\": \"<string>\",\n      \"snippet\": \"<string>\",\n      \"read_flag\": 0,\n      \"mail_tracking_status\": \"<string>\",\n      \"has_attachments_flag\": 0,\n      \"has_inline_attachments_flag\": 0,\n      \"has_real_attachments_flag\": 0,\n      \"deleted_flag\": 0,\n      \"synced_flag\": 0,\n      \"smart_bcc_flag\": 0,\n      \"mail_link_tracking_enabled_flag\": 0,\n      \"from\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"to\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"cc\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"bcc\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"body_url\": \"<string>\",\n      \"mail_thread_id\": \"<integer>\",\n      \"draft\": \"<string>\",\n      \"has_body_flag\": 0,\n      \"sent_flag\": 0,\n      \"sent_from_pipedrive_flag\": 0,\n      \"message_time\": \"<dateTime>\",\n      \"add_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"account_id\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"subject\": \"<string>\",\n      \"snippet\": \"<string>\",\n      \"read_flag\": 0,\n      \"mail_tracking_status\": \"<string>\",\n      \"has_attachments_flag\": 0,\n      \"has_inline_attachments_flag\": 0,\n      \"has_real_attachments_flag\": 0,\n      \"deleted_flag\": 0,\n      \"synced_flag\": 0,\n      \"smart_bcc_flag\": 0,\n      \"mail_link_tracking_enabled_flag\": 0,\n      \"from\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"to\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"cc\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"bcc\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"body_url\": \"<string>\",\n      \"mail_thread_id\": \"<integer>\",\n      \"draft\": \"<string>\",\n      \"has_body_flag\": 0,\n      \"sent_flag\": 0,\n      \"sent_from_pipedrive_flag\": 0,\n      \"message_time\": \"<dateTime>\",\n      \"add_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:37:32.000Z",
+                          "updatedAt": "2026-07-28T02:37:32.000Z",
+                          "uid": "35240-e25358af-8f11-402e-8963-ed262018868d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:32.000Z",
+                      "updatedAt": "2026-07-28T02:37:32.000Z",
+                      "uid": "35240-219c0ec8-2cc8-4e59-a8b0-fd4f510a0911"
+                    }
+                  ],
+                  "id": "9b222067-4fa7-4503-b98a-2398a478346b",
+                  "createdAt": "2026-07-28T02:37:32.000Z",
+                  "updatedAt": "2026-07-28T02:37:32.000Z",
+                  "uid": "35240-9b222067-4fa7-4503-b98a-2398a478346b"
+                },
+                {
+                  "name": "Delete mail thread",
+                  "id": "f91b71c2-b9f8-4f62-aad8-8ce206e810e2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/mailbox/mailThreads/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mailbox",
+                        "mailThreads",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "518ca51e-f78d-4119-b8e5-e1a946b06ce7",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the mail thread"
+                        }
+                      ]
+                    },
+                    "description": "Marks a mail thread as deleted."
+                  },
+                  "response": [
+                    {
+                      "id": "23626e9b-1fcc-4e10-a416-f82d1518dbbd",
+                      "name": "Marks mail thread as deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/mailbox/mailThreads/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mailbox",
+                            "mailThreads",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:32.000Z",
+                      "updatedAt": "2026-07-28T02:37:32.000Z",
+                      "uid": "35240-23626e9b-1fcc-4e10-a416-f82d1518dbbd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:32.000Z",
+                  "updatedAt": "2026-07-28T02:37:32.000Z",
+                  "uid": "35240-f91b71c2-b9f8-4f62-aad8-8ce206e810e2"
+                },
+                {
+                  "name": "Get one mail thread",
+                  "id": "246d479e-ec26-4b46-81d1-c6414d541cd8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/mailbox/mailThreads/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mailbox",
+                        "mailThreads",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7ee65990-94ea-4838-aff0-cbd02ec374b5",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the mail thread"
+                        }
+                      ]
+                    },
+                    "description": "Returns a specific mail thread."
+                  },
+                  "response": [
+                    {
+                      "id": "36767224-ee9d-4f7a-a15c-daecbd6aa297",
+                      "name": "Get mail threads",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/mailbox/mailThreads/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mailbox",
+                            "mailThreads",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"account_id\": \"<string>\",\n    \"user_id\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"snippet\": \"<string>\",\n    \"read_flag\": 0,\n    \"mail_tracking_status\": \"<string>\",\n    \"has_attachments_flag\": 0,\n    \"has_inline_attachments_flag\": 0,\n    \"has_real_attachments_flag\": 0,\n    \"deleted_flag\": 0,\n    \"synced_flag\": 0,\n    \"smart_bcc_flag\": 0,\n    \"mail_link_tracking_enabled_flag\": 0,\n    \"parties\": {\n      \"to\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"from\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ]\n    },\n    \"folders\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"version\": \"<number>\",\n    \"snippet_draft\": \"<string>\",\n    \"snippet_sent\": \"<string>\",\n    \"message_count\": \"<integer>\",\n    \"has_draft_flag\": 0,\n    \"has_sent_flag\": 0,\n    \"archived_flag\": 0,\n    \"shared_flag\": 0,\n    \"external_deleted_flag\": 0,\n    \"first_message_to_me_flag\": 0,\n    \"last_message_timestamp\": \"<dateTime>\",\n    \"first_message_timestamp\": \"<dateTime>\",\n    \"last_message_sent_timestamp\": \"<dateTime>\",\n    \"last_message_received_timestamp\": \"<dateTime>\",\n    \"add_time\": \"<dateTime>\",\n    \"update_time\": \"<dateTime>\",\n    \"deal_id\": \"<integer>\",\n    \"deal_status\": \"<string>\",\n    \"lead_id\": \"<uuid>\",\n    \"all_messages_sent_flag\": 0\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:32.000Z",
+                      "updatedAt": "2026-07-28T02:37:32.000Z",
+                      "uid": "35240-36767224-ee9d-4f7a-a15c-daecbd6aa297"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:32.000Z",
+                  "updatedAt": "2026-07-28T02:37:32.000Z",
+                  "uid": "35240-246d479e-ec26-4b46-81d1-c6414d541cd8"
+                },
+                {
+                  "name": "Update mail thread details",
+                  "id": "8df16fcc-1b2f-482c-b356-a6622ae12768",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The ID of the deal this thread is associated with",
+                          "key": "deal_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The ID of the lead this thread is associated with",
+                          "key": "lead_id",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Whether this thread is shared with other users in your company",
+                          "key": "shared_flag",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Whether this thread is read or unread",
+                          "key": "read_flag",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Whether this thread is archived or not. You can only archive threads that belong to Inbox folder. Archived threads will disappear from Inbox.",
+                          "key": "archived_flag",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/mailbox/mailThreads/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mailbox",
+                        "mailThreads",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f0b95e0d-9621-484f-9dfa-f8e05e5e2f5b",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the mail thread"
+                        }
+                      ]
+                    },
+                    "description": "Updates the properties of a mail thread."
+                  },
+                  "response": [
+                    {
+                      "id": "daaf8237-3bcf-4ffe-a057-8441ea2d40d2",
+                      "name": "Updates the properties of a mail thread",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "The ID of the deal this thread is associated with",
+                              "key": "deal_id",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The ID of the lead this thread is associated with",
+                              "key": "lead_id",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Whether this thread is shared with other users in your company",
+                              "key": "shared_flag",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Whether this thread is read or unread",
+                              "key": "read_flag",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Whether this thread is archived or not. You can only archive threads that belong to Inbox folder. Archived threads will disappear from Inbox.",
+                              "key": "archived_flag",
+                              "value": "0"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mailbox/mailThreads/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mailbox",
+                            "mailThreads",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"account_id\": \"<string>\",\n    \"user_id\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"snippet\": \"<string>\",\n    \"read_flag\": 0,\n    \"mail_tracking_status\": \"<string>\",\n    \"has_attachments_flag\": 0,\n    \"has_inline_attachments_flag\": 0,\n    \"has_real_attachments_flag\": 0,\n    \"deleted_flag\": 0,\n    \"synced_flag\": 0,\n    \"smart_bcc_flag\": 0,\n    \"mail_link_tracking_enabled_flag\": 0,\n    \"parties\": {\n      \"to\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ],\n      \"from\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"latest_sent\": \"<boolean>\",\n          \"email_address\": \"<string>\",\n          \"message_time\": \"<number>\",\n          \"linked_person_id\": \"<integer>\",\n          \"linked_person_name\": \"<string>\",\n          \"mail_message_party_id\": \"<integer>\",\n          \"linked_organization_id\": \"<integer>\"\n        }\n      ]\n    },\n    \"folders\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"version\": \"<number>\",\n    \"snippet_draft\": \"<string>\",\n    \"snippet_sent\": \"<string>\",\n    \"message_count\": \"<integer>\",\n    \"has_draft_flag\": 0,\n    \"has_sent_flag\": 0,\n    \"archived_flag\": 0,\n    \"shared_flag\": 0,\n    \"external_deleted_flag\": 0,\n    \"first_message_to_me_flag\": 0,\n    \"last_message_timestamp\": \"<dateTime>\",\n    \"first_message_timestamp\": \"<dateTime>\",\n    \"last_message_sent_timestamp\": \"<dateTime>\",\n    \"last_message_received_timestamp\": \"<dateTime>\",\n    \"add_time\": \"<dateTime>\",\n    \"update_time\": \"<dateTime>\",\n    \"deal_id\": \"<integer>\",\n    \"deal_status\": \"<string>\",\n    \"lead_id\": \"<uuid>\",\n    \"all_messages_sent_flag\": 0\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:32.000Z",
+                      "updatedAt": "2026-07-28T02:37:32.000Z",
+                      "uid": "35240-daaf8237-3bcf-4ffe-a057-8441ea2d40d2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:32.000Z",
+                  "updatedAt": "2026-07-28T02:37:32.000Z",
+                  "uid": "35240-8df16fcc-1b2f-482c-b356-a6622ae12768"
+                }
+              ],
+              "id": "e7f34cc3-b5ef-4662-abf6-deb90da3dc23",
+              "createdAt": "2026-07-28T02:37:32.000Z",
+              "updatedAt": "2026-07-28T02:37:32.000Z",
+              "uid": "35240-e7f34cc3-b5ef-4662-abf6-deb90da3dc23"
+            },
+            {
+              "name": "Get mail threads",
+              "id": "a4bc5645-2b0d-4184-901c-028584b5b85d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/mailbox/mailThreads?folder=inbox&start=0&limit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "mailbox",
+                    "mailThreads"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The type of folder to fetch",
+                      "key": "folder",
+                      "value": "inbox"
+                    },
+                    {
+                      "description": "Pagination start",
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Items shown per page",
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Returns mail threads in a specified folder ordered by the most recent message within."
+              },
+              "response": [
+                {
+                  "id": "c1d391cc-d084-4621-a3bd-39add78d5711",
+                  "name": "Get mail threads",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/mailbox/mailThreads?folder=inbox&start=0&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mailbox",
+                        "mailThreads"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The type of folder to fetch",
+                          "key": "folder",
+                          "value": "inbox"
+                        },
+                        {
+                          "description": "Pagination start",
+                          "key": "start",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Items shown per page",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"account_id\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"subject\": \"<string>\",\n      \"snippet\": \"<string>\",\n      \"read_flag\": 0,\n      \"mail_tracking_status\": \"<string>\",\n      \"has_attachments_flag\": 0,\n      \"has_inline_attachments_flag\": 0,\n      \"has_real_attachments_flag\": 0,\n      \"deleted_flag\": 0,\n      \"synced_flag\": 0,\n      \"smart_bcc_flag\": 0,\n      \"mail_link_tracking_enabled_flag\": 0,\n      \"parties\": {\n        \"to\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"latest_sent\": \"<boolean>\",\n            \"email_address\": \"<string>\",\n            \"message_time\": \"<number>\",\n            \"linked_person_id\": \"<integer>\",\n            \"linked_person_name\": \"<string>\",\n            \"mail_message_party_id\": \"<integer>\",\n            \"linked_organization_id\": \"<integer>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"latest_sent\": \"<boolean>\",\n            \"email_address\": \"<string>\",\n            \"message_time\": \"<number>\",\n            \"linked_person_id\": \"<integer>\",\n            \"linked_person_name\": \"<string>\",\n            \"mail_message_party_id\": \"<integer>\",\n            \"linked_organization_id\": \"<integer>\"\n          }\n        ],\n        \"from\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"latest_sent\": \"<boolean>\",\n            \"email_address\": \"<string>\",\n            \"message_time\": \"<number>\",\n            \"linked_person_id\": \"<integer>\",\n            \"linked_person_name\": \"<string>\",\n            \"mail_message_party_id\": \"<integer>\",\n            \"linked_organization_id\": \"<integer>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"latest_sent\": \"<boolean>\",\n            \"email_address\": \"<string>\",\n            \"message_time\": \"<number>\",\n            \"linked_person_id\": \"<integer>\",\n            \"linked_person_name\": \"<string>\",\n            \"mail_message_party_id\": \"<integer>\",\n            \"linked_organization_id\": \"<integer>\"\n          }\n        ]\n      },\n      \"folders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"version\": \"<number>\",\n      \"snippet_draft\": \"<string>\",\n      \"snippet_sent\": \"<string>\",\n      \"message_count\": \"<integer>\",\n      \"has_draft_flag\": 0,\n      \"has_sent_flag\": 0,\n      \"archived_flag\": 0,\n      \"shared_flag\": 0,\n      \"external_deleted_flag\": 0,\n      \"first_message_to_me_flag\": 0,\n      \"last_message_timestamp\": \"<dateTime>\",\n      \"first_message_timestamp\": \"<dateTime>\",\n      \"last_message_sent_timestamp\": \"<dateTime>\",\n      \"last_message_received_timestamp\": \"<dateTime>\",\n      \"add_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\",\n      \"deal_id\": \"<integer>\",\n      \"deal_status\": \"<string>\",\n      \"lead_id\": \"<uuid>\",\n      \"all_messages_sent_flag\": 0\n    },\n    {\n      \"id\": \"<integer>\",\n      \"account_id\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"subject\": \"<string>\",\n      \"snippet\": \"<string>\",\n      \"read_flag\": 0,\n      \"mail_tracking_status\": \"<string>\",\n      \"has_attachments_flag\": 0,\n      \"has_inline_attachments_flag\": 0,\n      \"has_real_attachments_flag\": 0,\n      \"deleted_flag\": 0,\n      \"synced_flag\": 0,\n      \"smart_bcc_flag\": 0,\n      \"mail_link_tracking_enabled_flag\": 0,\n      \"parties\": {\n        \"to\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"latest_sent\": \"<boolean>\",\n            \"email_address\": \"<string>\",\n            \"message_time\": \"<number>\",\n            \"linked_person_id\": \"<integer>\",\n            \"linked_person_name\": \"<string>\",\n            \"mail_message_party_id\": \"<integer>\",\n            \"linked_organization_id\": \"<integer>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"latest_sent\": \"<boolean>\",\n            \"email_address\": \"<string>\",\n            \"message_time\": \"<number>\",\n            \"linked_person_id\": \"<integer>\",\n            \"linked_person_name\": \"<string>\",\n            \"mail_message_party_id\": \"<integer>\",\n            \"linked_organization_id\": \"<integer>\"\n          }\n        ],\n        \"from\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"latest_sent\": \"<boolean>\",\n            \"email_address\": \"<string>\",\n            \"message_time\": \"<number>\",\n            \"linked_person_id\": \"<integer>\",\n            \"linked_person_name\": \"<string>\",\n            \"mail_message_party_id\": \"<integer>\",\n            \"linked_organization_id\": \"<integer>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"latest_sent\": \"<boolean>\",\n            \"email_address\": \"<string>\",\n            \"message_time\": \"<number>\",\n            \"linked_person_id\": \"<integer>\",\n            \"linked_person_name\": \"<string>\",\n            \"mail_message_party_id\": \"<integer>\",\n            \"linked_organization_id\": \"<integer>\"\n          }\n        ]\n      },\n      \"folders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"version\": \"<number>\",\n      \"snippet_draft\": \"<string>\",\n      \"snippet_sent\": \"<string>\",\n      \"message_count\": \"<integer>\",\n      \"has_draft_flag\": 0,\n      \"has_sent_flag\": 0,\n      \"archived_flag\": 0,\n      \"shared_flag\": 0,\n      \"external_deleted_flag\": 0,\n      \"first_message_to_me_flag\": 0,\n      \"last_message_timestamp\": \"<dateTime>\",\n      \"first_message_timestamp\": \"<dateTime>\",\n      \"last_message_sent_timestamp\": \"<dateTime>\",\n      \"last_message_received_timestamp\": \"<dateTime>\",\n      \"add_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\",\n      \"deal_id\": \"<integer>\",\n      \"deal_status\": \"<string>\",\n      \"lead_id\": \"<uuid>\",\n      \"all_messages_sent_flag\": 0\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:37:32.000Z",
+                  "updatedAt": "2026-07-28T02:37:32.000Z",
+                  "uid": "35240-c1d391cc-d084-4621-a3bd-39add78d5711"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:32.000Z",
+              "updatedAt": "2026-07-28T02:37:32.000Z",
+              "uid": "35240-a4bc5645-2b0d-4184-901c-028584b5b85d"
+            }
+          ],
+          "id": "e1c73082-ed9c-4be9-94d1-5f74965a6b22",
+          "createdAt": "2026-07-28T02:37:32.000Z",
+          "updatedAt": "2026-07-28T02:37:32.000Z",
+          "uid": "35240-e1c73082-ed9c-4be9-94d1-5f74965a6b22"
+        }
+      ],
+      "id": "d543eb45-5e67-4341-a639-8565d8988e08",
+      "createdAt": "2026-07-28T02:37:32.000Z",
+      "updatedAt": "2026-07-28T02:37:32.000Z",
+      "uid": "35240-d543eb45-5e67-4341-a639-8565d8988e08"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

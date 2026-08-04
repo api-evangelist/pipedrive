@@ -1,0 +1,1548 @@
+{
+  "info": {
+    "_postman_id": "1c1ceebd-0ef0-478c-964b-e741d6f2e2cb",
+    "name": "Pipedrive API v1 Activities Users API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:45.000Z",
+    "updatedAt": "2026-07-28T02:38:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1c1ceebd-0ef0-478c-964b-e741d6f2e2cb"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "find",
+          "item": [
+            {
+              "name": "Find users by name",
+              "id": "e12bbdea-5390-4a75-926b-1a1d894507c1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/find?term=<string>&search_by_email=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    "find"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The search term to look for",
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When enabled, the term will only be matched against email addresses of users. Default: `false`.",
+                      "key": "search_by_email",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Finds users by their name."
+              },
+              "response": [
+                {
+                  "id": "b4fb08df-79a1-451a-965e-5ab3d20d5fc6",
+                  "name": "The list of user objects",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/find?term=<string>&search_by_email=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "find"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The search term to look for",
+                          "key": "term",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When enabled, the term will only be matched against email addresses of users. Default: `false`.",
+                          "key": "search_by_email",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"lang\": \"<integer>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"activated\": \"<boolean>\",\n      \"last_login\": \"<string>\",\n      \"created\": \"<string>\",\n      \"modified\": \"<string>\",\n      \"has_created_company\": \"<boolean>\",\n      \"access\": [\n        {\n          \"app\": \"projects\",\n          \"admin\": \"<boolean>\",\n          \"permission_set_id\": \"<string>\"\n        },\n        {\n          \"app\": \"projects\",\n          \"admin\": \"<boolean>\",\n          \"permission_set_id\": \"<string>\"\n        }\n      ],\n      \"active_flag\": \"<boolean>\",\n      \"timezone_name\": \"<string>\",\n      \"timezone_offset\": \"<string>\",\n      \"role_id\": \"<integer>\",\n      \"icon_url\": \"<string>\",\n      \"is_you\": \"<boolean>\",\n      \"is_deleted\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"lang\": \"<integer>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"activated\": \"<boolean>\",\n      \"last_login\": \"<string>\",\n      \"created\": \"<string>\",\n      \"modified\": \"<string>\",\n      \"has_created_company\": \"<boolean>\",\n      \"access\": [\n        {\n          \"app\": \"sales\",\n          \"admin\": \"<boolean>\",\n          \"permission_set_id\": \"<string>\"\n        },\n        {\n          \"app\": \"projects\",\n          \"admin\": \"<boolean>\",\n          \"permission_set_id\": \"<string>\"\n        }\n      ],\n      \"active_flag\": \"<boolean>\",\n      \"timezone_name\": \"<string>\",\n      \"timezone_offset\": \"<string>\",\n      \"role_id\": \"<integer>\",\n      \"icon_url\": \"<string>\",\n      \"is_you\": \"<boolean>\",\n      \"is_deleted\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-b4fb08df-79a1-451a-965e-5ab3d20d5fc6"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-e12bbdea-5390-4a75-926b-1a1d894507c1"
+            }
+          ],
+          "id": "5946e6d5-322d-4876-afe4-25c6ac21b0d5",
+          "createdAt": "2026-07-28T02:38:46.000Z",
+          "updatedAt": "2026-07-28T02:38:46.000Z",
+          "uid": "35240-5946e6d5-322d-4876-afe4-25c6ac21b0d5"
+        },
+        {
+          "name": "me",
+          "item": [
+            {
+              "name": "Get current user data",
+              "id": "d1480d20-19f4-423b-a478-1a7c4acf8b0c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me"
+                  ]
+                },
+                "description": "Returns data about an authorized user within the company with bound company data: company ID, company name, and domain. Note that the `locale` property means 'Date/number format' in the Pipedrive account settings, not the chosen language."
+              },
+              "response": [
+                {
+                  "id": "b0c1c675-8534-4ce5-a0dd-9c2af01b4179",
+                  "name": "The data of the logged in user",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "me"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"default_currency\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"lang\": \"<integer>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"activated\": \"<boolean>\",\n    \"last_login\": \"<string>\",\n    \"created\": \"<string>\",\n    \"modified\": \"<string>\",\n    \"has_created_company\": \"<boolean>\",\n    \"access\": [\n      {\n        \"app\": \"campaigns\",\n        \"admin\": \"<boolean>\",\n        \"permission_set_id\": \"<string>\"\n      },\n      {\n        \"app\": \"campaigns\",\n        \"admin\": \"<boolean>\",\n        \"permission_set_id\": \"<string>\"\n      }\n    ],\n    \"active_flag\": \"<boolean>\",\n    \"timezone_name\": \"<string>\",\n    \"timezone_offset\": \"<string>\",\n    \"role_id\": \"<integer>\",\n    \"icon_url\": \"<string>\",\n    \"is_you\": \"<boolean>\",\n    \"is_deleted\": \"<boolean>\",\n    \"company_id\": \"<integer>\",\n    \"company_name\": \"<string>\",\n    \"company_domain\": \"<string>\",\n    \"company_country\": \"<string>\",\n    \"company_industry\": \"<string>\",\n    \"language\": {\n      \"language_code\": \"<string>\",\n      \"country_code\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-b0c1c675-8534-4ce5-a0dd-9c2af01b4179"
+                },
+                {
+                  "id": "abb8c184-5880-4b05-b933-dc02c6281b16",
+                  "name": "Unauthorized response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "me"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"errorCode\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-abb8c184-5880-4b05-b933-dc02c6281b16"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-d1480d20-19f4-423b-a478-1a7c4acf8b0c"
+            }
+          ],
+          "id": "fd54deab-da5d-4e23-91b3-8a964eb5cbb6",
+          "createdAt": "2026-07-28T02:38:46.000Z",
+          "updatedAt": "2026-07-28T02:38:46.000Z",
+          "uid": "35240-fd54deab-da5d-4e23-91b3-8a964eb5cbb6"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "followers",
+              "item": [
+                {
+                  "name": "List followers of a user",
+                  "id": "7c736bc8-ad4a-414b-93fd-6a20fb28baca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/followers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "followers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "92e4b3be-ff83-401f-90ed-8e098f415339",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the user"
+                        }
+                      ]
+                    },
+                    "description": "Lists the followers of a specific user."
+                  },
+                  "response": [
+                    {
+                      "id": "441f6d01-cd21-49f8-b534-290c9b4ddb32",
+                      "name": "The list of user IDs",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:38:46.000Z",
+                      "updatedAt": "2026-07-28T02:38:46.000Z",
+                      "uid": "35240-441f6d01-cd21-49f8-b534-290c9b4ddb32"
+                    },
+                    {
+                      "id": "90c14120-943e-474b-994a-7ecdd02c8965",
+                      "name": "Forbidden response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:38:46.000Z",
+                      "updatedAt": "2026-07-28T02:38:46.000Z",
+                      "uid": "35240-90c14120-943e-474b-994a-7ecdd02c8965"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-7c736bc8-ad4a-414b-93fd-6a20fb28baca"
+                }
+              ],
+              "id": "b907f925-6e48-4383-8711-a92236c35dcd",
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-b907f925-6e48-4383-8711-a92236c35dcd"
+            },
+            {
+              "name": "permissions",
+              "item": [
+                {
+                  "name": "List user permissions",
+                  "id": "5e576816-2299-4f9a-884d-b8526bb9b704",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/permissions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "permissions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bfcb75ac-b3cc-4628-9d54-5b26ff1c2c8e",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the user"
+                        }
+                      ]
+                    },
+                    "description": "Lists aggregated permissions over all assigned permission sets for a user."
+                  },
+                  "response": [
+                    {
+                      "id": "f0a0dde6-2e7d-4642-82b1-2afcd5c57394",
+                      "name": "The list of user permissions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"can_add_custom_fields\": \"<boolean>\",\n    \"can_add_products\": \"<boolean>\",\n    \"can_add_prospects_as_leads\": \"<boolean>\",\n    \"can_bulk_edit_items\": \"<boolean>\",\n    \"can_change_visibility_of_items\": \"<boolean>\",\n    \"can_convert_deals_to_leads\": \"<boolean>\",\n    \"can_create_own_workflow\": \"<boolean>\",\n    \"can_delete_activities\": \"<boolean>\",\n    \"can_delete_custom_fields\": \"<boolean>\",\n    \"can_delete_deals\": \"<boolean>\",\n    \"can_edit_custom_fields\": \"<boolean>\",\n    \"can_edit_deals_closed_date\": \"<boolean>\",\n    \"can_edit_products\": \"<boolean>\",\n    \"can_edit_shared_filters\": \"<boolean>\",\n    \"can_export_data_from_lists\": \"<boolean>\",\n    \"can_follow_other_users\": \"<boolean>\",\n    \"can_merge_deals\": \"<boolean>\",\n    \"can_merge_organizations\": \"<boolean>\",\n    \"can_merge_people\": \"<boolean>\",\n    \"can_modify_labels\": \"<boolean>\",\n    \"can_see_company_wide_statistics\": \"<boolean>\",\n    \"can_see_deals_list_summary\": \"<boolean>\",\n    \"can_see_hidden_items_names\": \"<boolean>\",\n    \"can_see_other_users\": \"<boolean>\",\n    \"can_see_other_users_statistics\": \"<boolean>\",\n    \"can_see_security_dashboard\": \"<boolean>\",\n    \"can_share_filters\": \"<boolean>\",\n    \"can_share_insights\": \"<boolean>\",\n    \"can_use_api\": \"<boolean>\",\n    \"can_use_email_tracking\": \"<boolean>\",\n    \"can_use_import\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:46.000Z",
+                      "updatedAt": "2026-07-28T02:38:46.000Z",
+                      "uid": "35240-f0a0dde6-2e7d-4642-82b1-2afcd5c57394"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-5e576816-2299-4f9a-884d-b8526bb9b704"
+                }
+              ],
+              "id": "919d1fee-6197-4f53-b3c9-83a28d9a9f14",
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-919d1fee-6197-4f53-b3c9-83a28d9a9f14"
+            },
+            {
+              "name": "roleAssignments",
+              "item": [
+                {
+                  "name": "List role assignments",
+                  "id": "0ca79511-a3a3-4ee8-aaad-bb8e3499825a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/roleAssignments?start=0&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "roleAssignments"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination start",
+                          "key": "start",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Items shown per page",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "9941fe82-a42f-4d1d-b89c-3a8997e1c888",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the user"
+                        }
+                      ]
+                    },
+                    "description": "Lists role assignments for a user."
+                  },
+                  "response": [
+                    {
+                      "id": "8c536846-9ef6-43fa-8179-a8969af60485",
+                      "name": "List assignments for a role",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/roleAssignments?start=0&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "roleAssignments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination start",
+                              "key": "start",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Items shown per page",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"parent_role_id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"role_id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"parent_role_id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"role_id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": \"<integer>\",\n      \"limit\": \"<integer>\",\n      \"more_items_in_collection\": \"<boolean>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:46.000Z",
+                      "updatedAt": "2026-07-28T02:38:46.000Z",
+                      "uid": "35240-8c536846-9ef6-43fa-8179-a8969af60485"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-0ca79511-a3a3-4ee8-aaad-bb8e3499825a"
+                }
+              ],
+              "id": "71a96f1c-66dd-4add-8326-89f40c204219",
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-71a96f1c-66dd-4add-8326-89f40c204219"
+            },
+            {
+              "name": "roleSettings",
+              "item": [
+                {
+                  "name": "List user role settings",
+                  "id": "6f980192-f4c0-4393-b96a-6043ca4eb828",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/roleSettings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "roleSettings"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c6d1373f-5fa9-4e2c-99ba-29cc61035c8d",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the user"
+                        }
+                      ]
+                    },
+                    "description": "Lists the settings of user's assigned role."
+                  },
+                  "response": [
+                    {
+                      "id": "bd3823ac-e949-44b4-b952-6046b8d6211a",
+                      "name": "List role settings",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/roleSettings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "roleSettings"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"deal_default_visibility\": \"<number>\",\n    \"lead_default_visibility\": \"<number>\",\n    \"org_default_visibility\": \"<number>\",\n    \"person_default_visibility\": \"<number>\",\n    \"product_default_visibility\": \"<number>\",\n    \"deal_access_level\": \"<number>\",\n    \"org_access_level\": \"<number>\",\n    \"person_access_level\": \"<number>\",\n    \"product_access_level\": \"<number>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:46.000Z",
+                      "updatedAt": "2026-07-28T02:38:46.000Z",
+                      "uid": "35240-bd3823ac-e949-44b4-b952-6046b8d6211a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-6f980192-f4c0-4393-b96a-6043ca4eb828"
+                }
+              ],
+              "id": "fa78a44f-eb8d-40fa-8f80-f96eab2fe2a9",
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-fa78a44f-eb8d-40fa-8f80-f96eab2fe2a9"
+            },
+            {
+              "name": "Get one user",
+              "id": "752a64f3-b6e9-4204-9ba9-5d35bea86c8a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "87e91f30-0734-4b66-84c6-05157f37095d",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "description": "Returns data about a specific user within the company."
+              },
+              "response": [
+                {
+                  "id": "1d2e38c0-88e8-4fb7-95c2-71c98e05b525",
+                  "name": "The data of the user",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"default_currency\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"lang\": \"<integer>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"activated\": \"<boolean>\",\n    \"last_login\": \"<string>\",\n    \"created\": \"<string>\",\n    \"modified\": \"<string>\",\n    \"has_created_company\": \"<boolean>\",\n    \"access\": [\n      {\n        \"app\": \"account_settings\",\n        \"admin\": \"<boolean>\",\n        \"permission_set_id\": \"<string>\"\n      },\n      {\n        \"app\": \"sales\",\n        \"admin\": \"<boolean>\",\n        \"permission_set_id\": \"<string>\"\n      }\n    ],\n    \"active_flag\": \"<boolean>\",\n    \"timezone_name\": \"<string>\",\n    \"timezone_offset\": \"<string>\",\n    \"role_id\": \"<integer>\",\n    \"icon_url\": \"<string>\",\n    \"is_you\": \"<boolean>\",\n    \"is_deleted\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-1d2e38c0-88e8-4fb7-95c2-71c98e05b525"
+                },
+                {
+                  "id": "a1802a9d-9110-4566-af2a-2e9ad184ef68",
+                  "name": "User with specified ID does not exist or is inaccessible",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-a1802a9d-9110-4566-af2a-2e9ad184ef68"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-752a64f3-b6e9-4204-9ba9-5d35bea86c8a"
+            },
+            {
+              "name": "Update user details",
+              "id": "0eac6a9f-5f14-4eb4-8e44-fa22927d8eb0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active_flag\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cad29936-2d76-4114-a5c4-4949906b7358",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "description": "Updates the properties of a user. Currently, only `active_flag` can be updated."
+              },
+              "response": [
+                {
+                  "id": "de77dd35-6a71-4bdb-8759-9d7b24f567b1",
+                  "name": "The data of the user",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active_flag\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"default_currency\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"lang\": \"<integer>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"activated\": \"<boolean>\",\n    \"last_login\": \"<string>\",\n    \"created\": \"<string>\",\n    \"modified\": \"<string>\",\n    \"has_created_company\": \"<boolean>\",\n    \"access\": [\n      {\n        \"app\": \"account_settings\",\n        \"admin\": \"<boolean>\",\n        \"permission_set_id\": \"<string>\"\n      },\n      {\n        \"app\": \"sales\",\n        \"admin\": \"<boolean>\",\n        \"permission_set_id\": \"<string>\"\n      }\n    ],\n    \"active_flag\": \"<boolean>\",\n    \"timezone_name\": \"<string>\",\n    \"timezone_offset\": \"<string>\",\n    \"role_id\": \"<integer>\",\n    \"icon_url\": \"<string>\",\n    \"is_you\": \"<boolean>\",\n    \"is_deleted\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-de77dd35-6a71-4bdb-8759-9d7b24f567b1"
+                },
+                {
+                  "id": "fbb445a6-f5c4-4689-a295-36ddce395d57",
+                  "name": "Forbidden response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active_flag\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-fbb445a6-f5c4-4689-a295-36ddce395d57"
+                },
+                {
+                  "id": "0e3531f9-2b91-4e91-b5a0-b22938ca446f",
+                  "name": "User with specified ID does not exist or is inaccessible",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active_flag\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:46.000Z",
+                  "updatedAt": "2026-07-28T02:38:46.000Z",
+                  "uid": "35240-0e3531f9-2b91-4e91-b5a0-b22938ca446f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-0eac6a9f-5f14-4eb4-8e44-fa22927d8eb0"
+            }
+          ],
+          "id": "5589c3b2-9f85-4cdb-bafe-cfb30b092b77",
+          "createdAt": "2026-07-28T02:38:46.000Z",
+          "updatedAt": "2026-07-28T02:38:46.000Z",
+          "uid": "35240-5589c3b2-9f85-4cdb-bafe-cfb30b092b77"
+        },
+        {
+          "name": "Get all users",
+          "id": "c7f02c8e-17b6-4e2e-b991-c42ddc2211bb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Returns data about all users within the company."
+          },
+          "response": [
+            {
+              "id": "15b7098f-f81c-4bb2-a2ae-7e422204f6d0",
+              "name": "The list of user objects",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"lang\": \"<integer>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"activated\": \"<boolean>\",\n      \"last_login\": \"<string>\",\n      \"created\": \"<string>\",\n      \"modified\": \"<string>\",\n      \"has_created_company\": \"<boolean>\",\n      \"access\": [\n        {\n          \"app\": \"projects\",\n          \"admin\": \"<boolean>\",\n          \"permission_set_id\": \"<string>\"\n        },\n        {\n          \"app\": \"projects\",\n          \"admin\": \"<boolean>\",\n          \"permission_set_id\": \"<string>\"\n        }\n      ],\n      \"active_flag\": \"<boolean>\",\n      \"timezone_name\": \"<string>\",\n      \"timezone_offset\": \"<string>\",\n      \"role_id\": \"<integer>\",\n      \"icon_url\": \"<string>\",\n      \"is_you\": \"<boolean>\",\n      \"is_deleted\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"default_currency\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"lang\": \"<integer>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"activated\": \"<boolean>\",\n      \"last_login\": \"<string>\",\n      \"created\": \"<string>\",\n      \"modified\": \"<string>\",\n      \"has_created_company\": \"<boolean>\",\n      \"access\": [\n        {\n          \"app\": \"sales\",\n          \"admin\": \"<boolean>\",\n          \"permission_set_id\": \"<string>\"\n        },\n        {\n          \"app\": \"projects\",\n          \"admin\": \"<boolean>\",\n          \"permission_set_id\": \"<string>\"\n        }\n      ],\n      \"active_flag\": \"<boolean>\",\n      \"timezone_name\": \"<string>\",\n      \"timezone_offset\": \"<string>\",\n      \"role_id\": \"<integer>\",\n      \"icon_url\": \"<string>\",\n      \"is_you\": \"<boolean>\",\n      \"is_deleted\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-15b7098f-f81c-4bb2-a2ae-7e422204f6d0"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:46.000Z",
+          "updatedAt": "2026-07-28T02:38:46.000Z",
+          "uid": "35240-c7f02c8e-17b6-4e2e-b991-c42ddc2211bb"
+        },
+        {
+          "name": "Add a new user",
+          "id": "5568ac2d-12be-4db4-ba84-c8b2040e060c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"access\": [\n    {\n      \"app\": \"sales\"\n    }\n  ],\n  \"active_flag\": true\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Adds a new user to the company, returns the ID upon success."
+          },
+          "response": [
+            {
+              "id": "91ca0b5e-a89c-44c1-990b-3fcdb47712f2",
+              "name": "The data of the user",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"access\": [\n    {\n      \"app\": \"sales\"\n    }\n  ],\n  \"active_flag\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"default_currency\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"lang\": \"<integer>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"activated\": \"<boolean>\",\n    \"last_login\": \"<string>\",\n    \"created\": \"<string>\",\n    \"modified\": \"<string>\",\n    \"has_created_company\": \"<boolean>\",\n    \"access\": [\n      {\n        \"app\": \"account_settings\",\n        \"admin\": \"<boolean>\",\n        \"permission_set_id\": \"<string>\"\n      },\n      {\n        \"app\": \"sales\",\n        \"admin\": \"<boolean>\",\n        \"permission_set_id\": \"<string>\"\n      }\n    ],\n    \"active_flag\": \"<boolean>\",\n    \"timezone_name\": \"<string>\",\n    \"timezone_offset\": \"<string>\",\n    \"role_id\": \"<integer>\",\n    \"icon_url\": \"<string>\",\n    \"is_you\": \"<boolean>\",\n    \"is_deleted\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-91ca0b5e-a89c-44c1-990b-3fcdb47712f2"
+            },
+            {
+              "id": "be582d07-511e-4572-aea3-026272112b2e",
+              "name": "Forbidden response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"access\": [\n    {\n      \"app\": \"sales\"\n    }\n  ],\n  \"active_flag\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:38:46.000Z",
+              "updatedAt": "2026-07-28T02:38:46.000Z",
+              "uid": "35240-be582d07-511e-4572-aea3-026272112b2e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:46.000Z",
+          "updatedAt": "2026-07-28T02:38:46.000Z",
+          "uid": "35240-5568ac2d-12be-4db4-ba84-c8b2040e060c"
+        }
+      ],
+      "id": "7201be5f-833f-48d7-a365-f2c807620637",
+      "createdAt": "2026-07-28T02:38:46.000Z",
+      "updatedAt": "2026-07-28T02:38:46.000Z",
+      "uid": "35240-7201be5f-833f-48d7-a365-f2c807620637"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,1617 @@
+{
+  "info": {
+    "_postman_id": "438a6132-fc5a-4fea-8797-4151df986122",
+    "name": "Pipedrive API v1 Activities LegacyTeams API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:30.000Z",
+    "updatedAt": "2026-07-28T02:37:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-438a6132-fc5a-4fea-8797-4151df986122"
+  },
+  "item": [
+    {
+      "name": "legacyTeams",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "Get all users in a team",
+                  "id": "4035cfd9-15b6-4b3f-a881-5095dd708d7d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "legacyTeams",
+                        ":id",
+                        "users"
+                      ],
+                      "variable": [
+                        {
+                          "id": "586414dc-04b3-4801-b7eb-822412f157e0",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the team"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of all user IDs within a team."
+                  },
+                  "response": [
+                    {
+                      "id": "5bc93b44-11a4-4e94-893c-865783bf2e09",
+                      "name": "A list of user IDs within a team",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "legacyTeams",
+                            ":id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-5bc93b44-11a4-4e94-893c-865783bf2e09"
+                    },
+                    {
+                      "id": "28f379c5-4cea-4c82-9b53-81312d381a90",
+                      "name": "Team with specified ID does not exist or is inaccessible",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "legacyTeams",
+                            ":id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-28f379c5-4cea-4c82-9b53-81312d381a90"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-4035cfd9-15b6-4b3f-a881-5095dd708d7d"
+                },
+                {
+                  "name": "Add users to a team",
+                  "id": "335c148e-f45d-43e5-a53f-c72d2811077d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "legacyTeams",
+                        ":id",
+                        "users"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6083f10f-1d89-46c9-83fa-fb1be2cd94bb",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the team"
+                        }
+                      ]
+                    },
+                    "description": "Adds users to an existing team."
+                  },
+                  "response": [
+                    {
+                      "id": "a03f3b1c-029c-4514-bc0b-c077af1e53ac",
+                      "name": "A list of user IDs within a team",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "legacyTeams",
+                            ":id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-a03f3b1c-029c-4514-bc0b-c077af1e53ac"
+                    },
+                    {
+                      "id": "68b077f1-6823-4937-ab17-33e4adf29b29",
+                      "name": "Forbidden response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "legacyTeams",
+                            ":id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-68b077f1-6823-4937-ab17-33e4adf29b29"
+                    },
+                    {
+                      "id": "84ce7989-dd97-4bca-b49f-51c918726cf1",
+                      "name": "Team with specified ID does not exist or is inaccessible",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "legacyTeams",
+                            ":id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-84ce7989-dd97-4bca-b49f-51c918726cf1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-335c148e-f45d-43e5-a53f-c72d2811077d"
+                },
+                {
+                  "name": "Delete users from a team",
+                  "id": "134b514c-457e-4e2f-a96f-85d5f0f41f55",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "legacyTeams",
+                        ":id",
+                        "users"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bf2c6b1e-78d4-41be-9f80-5edde87b1bfb",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the team"
+                        }
+                      ]
+                    },
+                    "description": "Deletes users from an existing team."
+                  },
+                  "response": [
+                    {
+                      "id": "b36166d3-67c6-4b90-b2c1-1dd363fc84d3",
+                      "name": "A list of user IDs within a team",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "legacyTeams",
+                            ":id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-b36166d3-67c6-4b90-b2c1-1dd363fc84d3"
+                    },
+                    {
+                      "id": "fcf26f28-6794-43ad-8467-1027ed58f0e1",
+                      "name": "Forbidden response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "legacyTeams",
+                            ":id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-fcf26f28-6794-43ad-8467-1027ed58f0e1"
+                    },
+                    {
+                      "id": "f0e0312b-f14a-4cda-bfae-803d88e0bb7d",
+                      "name": "Team with specified ID does not exist or is inaccessible",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/legacyTeams/:id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "legacyTeams",
+                            ":id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-f0e0312b-f14a-4cda-bfae-803d88e0bb7d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-134b514c-457e-4e2f-a96f-85d5f0f41f55"
+                }
+              ],
+              "id": "0fc4b96f-f359-468e-aa68-6dba735c2be8",
+              "createdAt": "2026-07-28T02:37:31.000Z",
+              "updatedAt": "2026-07-28T02:37:31.000Z",
+              "uid": "35240-0fc4b96f-f359-468e-aa68-6dba735c2be8"
+            },
+            {
+              "name": "Get a single team",
+              "id": "f03836e3-4619-44a5-9d76-8149004da80d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/legacyTeams/:id?skip_users=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "legacyTeams",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "When enabled, the teams will not include IDs of member users",
+                      "key": "skip_users",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "b0149e1a-381a-457c-9769-4ebc44b25ae6",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the team"
+                    }
+                  ]
+                },
+                "description": "Returns data about a specific team."
+              },
+              "response": [
+                {
+                  "id": "d86f5264-8839-4abf-8b87-33829e557c3d",
+                  "name": "The team data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/legacyTeams/:id?skip_users=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "legacyTeams",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "When enabled, the teams will not include IDs of member users",
+                          "key": "skip_users",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"manager_id\": \"<integer>\",\n    \"users\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"active_flag\": 0,\n    \"deleted_flag\": 0,\n    \"add_time\": \"<string>\",\n    \"created_by_user_id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-d86f5264-8839-4abf-8b87-33829e557c3d"
+                },
+                {
+                  "id": "1f0b568c-8618-471c-82c7-89a0b50dd136",
+                  "name": "Team with specified ID does not exist or is inaccessible",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/legacyTeams/:id?skip_users=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "legacyTeams",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "When enabled, the teams will not include IDs of member users",
+                          "key": "skip_users",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-1f0b568c-8618-471c-82c7-89a0b50dd136"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:31.000Z",
+              "updatedAt": "2026-07-28T02:37:31.000Z",
+              "uid": "35240-f03836e3-4619-44a5-9d76-8149004da80d"
+            },
+            {
+              "name": "Update a team",
+              "id": "2dd60848-7eba-4727-8bfd-a837f4e6ed5f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"active_flag\": 0,\n  \"deleted_flag\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/legacyTeams/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "legacyTeams",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b2b41c0b-823c-4bd3-a8c4-3a32760426ad",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the team"
+                    }
+                  ]
+                },
+                "description": "Updates an existing team and returns the updated object."
+              },
+              "response": [
+                {
+                  "id": "ee09ce20-2646-4492-8576-51c985d80945",
+                  "name": "The team data",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"active_flag\": 0,\n  \"deleted_flag\": 0\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/legacyTeams/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "legacyTeams",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"manager_id\": \"<integer>\",\n    \"users\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"active_flag\": 0,\n    \"deleted_flag\": 0,\n    \"add_time\": \"<string>\",\n    \"created_by_user_id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-ee09ce20-2646-4492-8576-51c985d80945"
+                },
+                {
+                  "id": "2651e21b-d42e-4873-a728-1166ef47ea04",
+                  "name": "Forbidden response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"active_flag\": 0,\n  \"deleted_flag\": 0\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/legacyTeams/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "legacyTeams",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-2651e21b-d42e-4873-a728-1166ef47ea04"
+                },
+                {
+                  "id": "cfc00b63-25a6-4f5d-a782-3e7d283778eb",
+                  "name": "Team with specified ID does not exist or is inaccessible",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"active_flag\": 0,\n  \"deleted_flag\": 0\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/legacyTeams/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "legacyTeams",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-cfc00b63-25a6-4f5d-a782-3e7d283778eb"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:31.000Z",
+              "updatedAt": "2026-07-28T02:37:31.000Z",
+              "uid": "35240-2dd60848-7eba-4727-8bfd-a837f4e6ed5f"
+            }
+          ],
+          "id": "d9ba889f-b8a3-4132-acfb-086f14ec67f9",
+          "createdAt": "2026-07-28T02:37:31.000Z",
+          "updatedAt": "2026-07-28T02:37:31.000Z",
+          "uid": "35240-d9ba889f-b8a3-4132-acfb-086f14ec67f9"
+        },
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Get all teams of a user",
+                  "id": "c2696d84-a76d-457f-bb3a-92473f56adc8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/legacyTeams/user/:id?order_by=id&skip_users=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "legacyTeams",
+                        "user",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "The field name to sort returned teams by",
+                          "key": "order_by",
+                          "value": "id"
+                        },
+                        {
+                          "description": "When enabled, the teams will not include IDs of member users",
+                          "key": "skip_users",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "d3ceb346-b709-4c58-b686-602a1b549d47",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the user"
+                        }
+                      ]
+                    },
+                    "description": "Returns data about all teams which have the specified user as a member."
+                  },
+                  "response": [
+                    {
+                      "id": "65977af6-1255-4062-8a3b-cdcf2ba93685",
+                      "name": "The list of team objects",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/legacyTeams/user/:id?order_by=id&skip_users=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "legacyTeams",
+                            "user",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "The field name to sort returned teams by",
+                              "key": "order_by",
+                              "value": "id"
+                            },
+                            {
+                              "description": "When enabled, the teams will not include IDs of member users",
+                              "key": "skip_users",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"manager_id\": \"<integer>\",\n      \"users\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"active_flag\": 0,\n      \"deleted_flag\": 1,\n      \"add_time\": \"<string>\",\n      \"created_by_user_id\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"manager_id\": \"<integer>\",\n      \"users\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"active_flag\": 0,\n      \"deleted_flag\": 1,\n      \"add_time\": \"<string>\",\n      \"created_by_user_id\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-65977af6-1255-4062-8a3b-cdcf2ba93685"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-c2696d84-a76d-457f-bb3a-92473f56adc8"
+                }
+              ],
+              "id": "dca0b74a-e5a1-429e-9bb3-f0d896155a14",
+              "createdAt": "2026-07-28T02:37:31.000Z",
+              "updatedAt": "2026-07-28T02:37:31.000Z",
+              "uid": "35240-dca0b74a-e5a1-429e-9bb3-f0d896155a14"
+            }
+          ],
+          "id": "d83bbdb7-d9a4-40eb-a973-89a1d94af8c2",
+          "createdAt": "2026-07-28T02:37:31.000Z",
+          "updatedAt": "2026-07-28T02:37:31.000Z",
+          "uid": "35240-d83bbdb7-d9a4-40eb-a973-89a1d94af8c2"
+        },
+        {
+          "name": "Get all teams",
+          "id": "01088e88-4be1-401d-8ac1-74f05ddcf7a0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/legacyTeams?order_by=id&skip_users=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "legacyTeams"
+              ],
+              "query": [
+                {
+                  "description": "The field name to sort returned teams by",
+                  "key": "order_by",
+                  "value": "id"
+                },
+                {
+                  "description": "When enabled, the teams will not include IDs of member users",
+                  "key": "skip_users",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns data about teams within the company."
+          },
+          "response": [
+            {
+              "id": "0c85bdb2-44a6-4420-9497-5ec0c7284118",
+              "name": "The list of team objects",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/legacyTeams?order_by=id&skip_users=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "legacyTeams"
+                  ],
+                  "query": [
+                    {
+                      "description": "The field name to sort returned teams by",
+                      "key": "order_by",
+                      "value": "id"
+                    },
+                    {
+                      "description": "When enabled, the teams will not include IDs of member users",
+                      "key": "skip_users",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"manager_id\": \"<integer>\",\n      \"users\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"active_flag\": 0,\n      \"deleted_flag\": 1,\n      \"add_time\": \"<string>\",\n      \"created_by_user_id\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"manager_id\": \"<integer>\",\n      \"users\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"active_flag\": 0,\n      \"deleted_flag\": 1,\n      \"add_time\": \"<string>\",\n      \"created_by_user_id\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:37:31.000Z",
+              "updatedAt": "2026-07-28T02:37:31.000Z",
+              "uid": "35240-0c85bdb2-44a6-4420-9497-5ec0c7284118"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:31.000Z",
+          "updatedAt": "2026-07-28T02:37:31.000Z",
+          "uid": "35240-01088e88-4be1-401d-8ac1-74f05ddcf7a0"
+        },
+        {
+          "name": "Add a new team",
+          "id": "18da7898-4f8a-4c50-9541-9c20d6450349",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/legacyTeams",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "legacyTeams"
+              ]
+            },
+            "description": "Adds a new team to the company and returns the created object."
+          },
+          "response": [
+            {
+              "id": "857badd4-efa2-47ef-af48-68942b041131",
+              "name": "The team data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/legacyTeams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "legacyTeams"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"manager_id\": \"<integer>\",\n    \"users\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"active_flag\": 0,\n    \"deleted_flag\": 0,\n    \"add_time\": \"<string>\",\n    \"created_by_user_id\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:31.000Z",
+              "updatedAt": "2026-07-28T02:37:31.000Z",
+              "uid": "35240-857badd4-efa2-47ef-af48-68942b041131"
+            },
+            {
+              "id": "55dd04b3-27c6-4653-a67f-f2d04fd639ae",
+              "name": "Forbidden response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"users\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/legacyTeams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "legacyTeams"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:37:31.000Z",
+              "updatedAt": "2026-07-28T02:37:31.000Z",
+              "uid": "35240-55dd04b3-27c6-4653-a67f-f2d04fd639ae"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:31.000Z",
+          "updatedAt": "2026-07-28T02:37:31.000Z",
+          "uid": "35240-18da7898-4f8a-4c50-9541-9c20d6450349"
+        }
+      ],
+      "id": "748bb74f-0db8-47a1-95f9-ac31e5ea0b79",
+      "createdAt": "2026-07-28T02:37:31.000Z",
+      "updatedAt": "2026-07-28T02:37:31.000Z",
+      "uid": "35240-748bb74f-0db8-47a1-95f9-ac31e5ea0b79"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

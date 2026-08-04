@@ -1,0 +1,122 @@
+{
+  "info": {
+    "_postman_id": "1d865a53-b3ee-4e43-9c02-8ec8ffe06c06",
+    "name": "Pipedrive API v1 Activities LeadSources API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:29.000Z",
+    "updatedAt": "2026-07-28T02:37:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1d865a53-b3ee-4e43-9c02-8ec8ffe06c06"
+  },
+  "item": [
+    {
+      "name": "leadSources",
+      "item": [
+        {
+          "name": "Get all lead sources",
+          "id": "029e7d45-533a-4bbf-a622-9b59d90327a9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/leadSources",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leadSources"
+              ]
+            },
+            "description": "Returns all lead sources. Please note that the list of lead sources is fixed, it cannot be modified. All leads created through the Pipedrive API will have a lead source `API` assigned.\n"
+          },
+          "response": [
+            {
+              "id": "0365ed2c-cf79-4b14-8976-fb5cb34c097f",
+              "name": "The successful response containing payload in the `data` field.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/leadSources",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leadSources"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:37:30.000Z",
+              "updatedAt": "2026-07-28T02:37:30.000Z",
+              "uid": "35240-0365ed2c-cf79-4b14-8976-fb5cb34c097f"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:29.000Z",
+          "updatedAt": "2026-07-28T02:37:29.000Z",
+          "uid": "35240-029e7d45-533a-4bbf-a622-9b59d90327a9"
+        }
+      ],
+      "id": "cb9b04f4-e08f-444b-9af1-675363ca8606",
+      "createdAt": "2026-07-28T02:37:29.000Z",
+      "updatedAt": "2026-07-28T02:37:29.000Z",
+      "uid": "35240-cb9b04f4-e08f-444b-9af1-675363ca8606"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

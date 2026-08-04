@@ -1,0 +1,293 @@
+{
+  "info": {
+    "_postman_id": "227caa4d-6aac-4f22-ad77-a69286cd90fd",
+    "name": "Pipedrive API v1 Activities Oauth API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:36.000Z",
+    "updatedAt": "2026-07-28T02:37:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-227caa4d-6aac-4f22-ad77-a69286cd90fd"
+  },
+  "item": [
+    {
+      "name": "oauth",
+      "item": [
+        {
+          "name": "authorize",
+          "item": [
+            {
+              "name": "Requesting authorization",
+              "id": "ad5fc69d-0068-40e4-9ef0-00c6f75b86c5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "url": {
+                  "raw": "https://oauth.pipedrive.com/oauth/authorize?client_id=<string>&redirect_uri=<string>&state=<string>",
+                  "protocol": "https",
+                  "host": [
+                    "oauth",
+                    "pipedrive",
+                    "com"
+                  ],
+                  "path": [
+                    "oauth",
+                    "authorize"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The client ID provided to you by the Pipedrive Marketplace when you register your app",
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The callback URL you provided when you registered your app. Authorization code will be sent to that URL (if it matches with the value you entered in the registration form) if a user approves the app install. Or, if a customer declines, the corresponding error will also be sent to this URL.",
+                      "key": "redirect_uri",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "You may pass any random string as the state parameter and the same string will be returned to your app after a user authorizes access. It may be used to store the user's session ID from your app or distinguish different responses. Using state may increase security; see RFC-6749.\n",
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Authorize a user by redirecting them to the Pipedrive OAuth authorization page and request their permissions to act on their behalf. This step is necessary to implement only when you allow app installation outside of the Marketplace."
+              },
+              "response": [
+                {
+                  "id": "8e9a249e-c8ea-4044-a69e-1fd02978654e",
+                  "name": "Authorize user in the app.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/html"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://oauth.pipedrive.com/oauth/authorize?client_id=<string>&redirect_uri=<string>&state=<string>",
+                      "protocol": "https",
+                      "host": [
+                        "oauth",
+                        "pipedrive",
+                        "com"
+                      ],
+                      "path": [
+                        "oauth",
+                        "authorize"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The client ID provided to you by the Pipedrive Marketplace when you register your app",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The callback URL you provided when you registered your app. Authorization code will be sent to that URL (if it matches with the value you entered in the registration form) if a user approves the app install. Or, if a customer declines, the corresponding error will also be sent to this URL.",
+                          "key": "redirect_uri",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "You may pass any random string as the state parameter and the same string will be returned to your app after a user authorizes access. It may be used to store the user's session ID from your app or distinguish different responses. Using state may increase security; see RFC-6749.\n",
+                          "key": "state",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/html"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": \"As a result of the request, the customer will see a page with the confirmation dialog, which will present the details of your app (title, company name, icon) and explain the permission scopes that you have set for the app. Customers should confirm their wish to install the app by clicking \\\"Allow and install\\\" or deny authorization by clicking \\\"Cancel\\\".\\n\"\n}",
+                  "createdAt": "2026-07-28T02:37:36.000Z",
+                  "updatedAt": "2026-07-28T02:37:36.000Z",
+                  "uid": "35240-8e9a249e-c8ea-4044-a69e-1fd02978654e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:36.000Z",
+              "updatedAt": "2026-07-28T02:37:36.000Z",
+              "uid": "35240-ad5fc69d-0068-40e4-9ef0-00c6f75b86c5"
+            }
+          ],
+          "id": "641135ae-7172-4873-9b16-9e43c276d07e",
+          "createdAt": "2026-07-28T02:37:36.000Z",
+          "updatedAt": "2026-07-28T02:37:36.000Z",
+          "uid": "35240-641135ae-7172-4873-9b16-9e43c276d07e"
+        },
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Refreshing the tokens",
+              "id": "02f08633-8f27-41cf-9c35-8dda357e06f6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "Since you are to refresh your access_token, you must use the value \"refresh_token\"",
+                      "key": "grant_type",
+                      "value": "refresh_token"
+                    },
+                    {
+                      "description": "The refresh token that you received after you exchanged the authorization code",
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "https://oauth.pipedrive.com/oauth/token/",
+                  "protocol": "https",
+                  "host": [
+                    "oauth",
+                    "pipedrive",
+                    "com"
+                  ],
+                  "path": [
+                    "oauth",
+                    "token",
+                    ""
+                  ]
+                },
+                "description": "The `access_token` has a lifetime. After a period of time, which was returned to you in `expires_in` JSON property, the `access_token` will be invalid, and you can no longer use it to get data from our API. To refresh the `access_token`, you must use the `refresh_token`."
+              },
+              "response": [
+                {
+                  "id": "a3110989-f174-46b5-bd3a-5a853257ec0d",
+                  "name": "Returns user Oauth2 tokens.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Since you are to refresh your access_token, you must use the value \"refresh_token\"",
+                          "key": "grant_type",
+                          "value": "refresh_token"
+                        },
+                        {
+                          "description": "The refresh token that you received after you exchanged the authorization code",
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "https://oauth.pipedrive.com/oauth/token/",
+                      "protocol": "https",
+                      "host": [
+                        "oauth",
+                        "pipedrive",
+                        "com"
+                      ],
+                      "path": [
+                        "oauth",
+                        "token",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"refresh_token\": \"<string>\",\n  \"scope\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"api_domain\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:37:36.000Z",
+                  "updatedAt": "2026-07-28T02:37:36.000Z",
+                  "uid": "35240-a3110989-f174-46b5-bd3a-5a853257ec0d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:36.000Z",
+              "updatedAt": "2026-07-28T02:37:36.000Z",
+              "uid": "35240-02f08633-8f27-41cf-9c35-8dda357e06f6"
+            }
+          ],
+          "id": "04a5b23d-80ab-4bbd-a267-fd9c61fcfde4",
+          "createdAt": "2026-07-28T02:37:36.000Z",
+          "updatedAt": "2026-07-28T02:37:36.000Z",
+          "uid": "35240-04a5b23d-80ab-4bbd-a267-fd9c61fcfde4"
+        }
+      ],
+      "id": "0a663dfb-db86-420e-8e46-c8df44c14cf2",
+      "createdAt": "2026-07-28T02:37:36.000Z",
+      "updatedAt": "2026-07-28T02:37:36.000Z",
+      "uid": "35240-0a663dfb-db86-420e-8e46-c8df44c14cf2"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "info": {
+    "_postman_id": "260d9923-48df-4085-9cba-7fe7433f564e",
+    "name": "Pipedrive API v1 Activities Meetings API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:32.000Z",
+    "updatedAt": "2026-07-28T02:37:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-260d9923-48df-4085-9cba-7fe7433f564e"
+  },
+  "item": [
+    {
+      "name": "meetings",
+      "item": [
+        {
+          "name": "userProviderLinks",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Delete the link between a user and the installed video call integration",
+                  "id": "cdc39aec-8ff3-49f9-bcbe-c260f2fea020",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/meetings/userProviderLinks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meetings",
+                        "userProviderLinks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "76eaaa5b-febf-49ea-b437-c55b4c092293",
+                          "key": "id",
+                          "value": "<uuid>",
+                          "description": "(Required) Unique identifier linking a user to the installed integration"
+                        }
+                      ]
+                    },
+                    "description": "A video calling provider must call this endpoint to remove the link between a user and the installed video calling app."
+                  },
+                  "response": [
+                    {
+                      "id": "ce63c6a7-cb00-47e1-801a-e7034a83350a",
+                      "name": "User provider link successfully removed",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/meetings/userProviderLinks/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "meetings",
+                            "userProviderLinks",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:33.000Z",
+                      "updatedAt": "2026-07-28T02:37:33.000Z",
+                      "uid": "35240-ce63c6a7-cb00-47e1-801a-e7034a83350a"
+                    },
+                    {
+                      "id": "32a3e983-10b1-448a-8f4a-a9ac2ab5d991",
+                      "name": "No permission to remove user provider link",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/meetings/userProviderLinks/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "meetings",
+                            "userProviderLinks",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:37:33.000Z",
+                      "updatedAt": "2026-07-28T02:37:33.000Z",
+                      "uid": "35240-32a3e983-10b1-448a-8f4a-a9ac2ab5d991"
+                    },
+                    {
+                      "id": "7672f4de-3321-4164-b1e7-90874d63c609",
+                      "name": "Incorrect parameter provided",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/meetings/userProviderLinks/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "meetings",
+                            "userProviderLinks",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:37:33.000Z",
+                      "updatedAt": "2026-07-28T02:37:33.000Z",
+                      "uid": "35240-7672f4de-3321-4164-b1e7-90874d63c609"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:33.000Z",
+                  "updatedAt": "2026-07-28T02:37:33.000Z",
+                  "uid": "35240-cdc39aec-8ff3-49f9-bcbe-c260f2fea020"
+                }
+              ],
+              "id": "aa1059e9-5913-443d-abc9-4d68b237a7da",
+              "createdAt": "2026-07-28T02:37:33.000Z",
+              "updatedAt": "2026-07-28T02:37:33.000Z",
+              "uid": "35240-aa1059e9-5913-443d-abc9-4d68b237a7da"
+            },
+            {
+              "name": "Link a user with the installed video call integration",
+              "id": "493971ba-7f5a-496b-b233-42127fddd143",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_provider_id\": \"<uuid>\",\n  \"user_id\": \"<integer>\",\n  \"company_id\": \"<integer>\",\n  \"marketplace_client_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/meetings/userProviderLinks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "meetings",
+                    "userProviderLinks"
+                  ]
+                },
+                "description": "A video calling provider must call this endpoint after a user has installed the video calling app so that the new user's information is sent."
+              },
+              "response": [
+                {
+                  "id": "afd00d24-c425-4e3d-a2b4-60651f53b5ba",
+                  "name": "User provider link was successfully created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"user_provider_id\": \"<uuid>\",\n  \"user_id\": \"<integer>\",\n  \"company_id\": \"<integer>\",\n  \"marketplace_client_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meetings/userProviderLinks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meetings",
+                        "userProviderLinks"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:33.000Z",
+                  "updatedAt": "2026-07-28T02:37:33.000Z",
+                  "uid": "35240-afd00d24-c425-4e3d-a2b4-60651f53b5ba"
+                },
+                {
+                  "id": "4f41b8f6-f659-4b01-ba16-297f0d1149ad",
+                  "name": "No permission to create user provider link",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"user_provider_id\": \"<uuid>\",\n  \"user_id\": \"<integer>\",\n  \"company_id\": \"<integer>\",\n  \"marketplace_client_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meetings/userProviderLinks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meetings",
+                        "userProviderLinks"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:37:33.000Z",
+                  "updatedAt": "2026-07-28T02:37:33.000Z",
+                  "uid": "35240-4f41b8f6-f659-4b01-ba16-297f0d1149ad"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:33.000Z",
+              "updatedAt": "2026-07-28T02:37:33.000Z",
+              "uid": "35240-493971ba-7f5a-496b-b233-42127fddd143"
+            }
+          ],
+          "id": "8e1c6bd2-97ab-4911-b611-4d87440a4861",
+          "createdAt": "2026-07-28T02:37:33.000Z",
+          "updatedAt": "2026-07-28T02:37:33.000Z",
+          "uid": "35240-8e1c6bd2-97ab-4911-b611-4d87440a4861"
+        }
+      ],
+      "id": "3bd058df-fb07-49cb-9235-9ef77be86546",
+      "createdAt": "2026-07-28T02:37:33.000Z",
+      "updatedAt": "2026-07-28T02:37:33.000Z",
+      "uid": "35240-3bd058df-fb07-49cb-9235-9ef77be86546"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

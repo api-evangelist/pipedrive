@@ -1,0 +1,882 @@
+{
+  "info": {
+    "_postman_id": "4e95ca1f-3980-4e82-8067-32cfb5dcad49",
+    "name": "Pipedrive API v1 Activities Channels API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:08.000Z",
+    "updatedAt": "2026-07-28T02:37:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4e95ca1f-3980-4e82-8067-32cfb5dcad49"
+  },
+  "item": [
+    {
+      "name": "channels",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Delete a channel",
+              "id": "28e668ee-1b91-4b46-9d83-0cbc449a5f9f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/channels/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "channels",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1985edf0-edde-48b1-9df5-cb2e22766c03",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the channel provided by the integration"
+                    }
+                  ]
+                },
+                "description": "Deletes an existing messenger\u2019s channel and all related entities (conversations and messages). To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension)."
+              },
+              "response": [
+                {
+                  "id": "524bb3f3-6153-4c6f-a2b3-0081ee89c2a1",
+                  "name": "The channel was deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/channels/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "channels",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:37:08.000Z",
+                  "updatedAt": "2026-07-28T02:37:08.000Z",
+                  "uid": "35240-524bb3f3-6153-4c6f-a2b3-0081ee89c2a1"
+                },
+                {
+                  "id": "402d0b37-07d2-4b0e-8ed0-2700af57f3cb",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/channels/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "channels",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"additional_data\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:08.000Z",
+                  "updatedAt": "2026-07-28T02:37:08.000Z",
+                  "uid": "35240-402d0b37-07d2-4b0e-8ed0-2700af57f3cb"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:08.000Z",
+              "updatedAt": "2026-07-28T02:37:08.000Z",
+              "uid": "35240-28e668ee-1b91-4b46-9d83-0cbc449a5f9f"
+            }
+          ],
+          "id": "74408935-0bde-4bbf-8d7e-c68e5ea58fc3",
+          "createdAt": "2026-07-28T02:37:08.000Z",
+          "updatedAt": "2026-07-28T02:37:08.000Z",
+          "uid": "35240-74408935-0bde-4bbf-8d7e-c68e5ea58fc3"
+        },
+        {
+          "name": "messages",
+          "item": [
+            {
+              "name": "receive",
+              "item": [
+                {
+                  "name": "Receives an incoming message",
+                  "id": "34a82270-9283-4fcd-a3bd-02b22c31e497",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"channel_id\": \"<string>\",\n  \"sender_id\": \"<string>\",\n  \"conversation_id\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"delivered\",\n  \"created_at\": \"<dateTime>\",\n  \"reply_by\": \"<dateTime>\",\n  \"conversation_link\": \"<string>\",\n  \"attachments\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"size\": \"<number>\",\n      \"preview_url\": \"<string>\",\n      \"link_expires\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"size\": \"<number>\",\n      \"preview_url\": \"<string>\",\n      \"link_expires\": false\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/channels/messages/receive",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "channels",
+                        "messages",
+                        "receive"
+                      ]
+                    },
+                    "description": "Adds a message to a conversation. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension)."
+                  },
+                  "response": [
+                    {
+                      "id": "3d110dab-bdc8-4044-a3d1-b8f8bf212063",
+                      "name": "The message was registered in the conversation",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"channel_id\": \"<string>\",\n  \"sender_id\": \"<string>\",\n  \"conversation_id\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"delivered\",\n  \"created_at\": \"<dateTime>\",\n  \"reply_by\": \"<dateTime>\",\n  \"conversation_link\": \"<string>\",\n  \"attachments\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"size\": \"<number>\",\n      \"preview_url\": \"<string>\",\n      \"link_expires\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"size\": \"<number>\",\n      \"preview_url\": \"<string>\",\n      \"link_expires\": false\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/channels/messages/receive",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "channels",
+                            "messages",
+                            "receive"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<string>\",\n    \"channel_id\": \"<string>\",\n    \"sender_id\": \"<string>\",\n    \"conversation_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"delivered\",\n    \"created_at\": \"<dateTime>\",\n    \"reply_by\": \"<dateTime>\",\n    \"conversation_link\": \"<string>\",\n    \"attachments\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\",\n        \"name\": \"<string>\",\n        \"size\": \"<number>\",\n        \"preview_url\": \"<string>\",\n        \"link_expires\": false\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\",\n        \"name\": \"<string>\",\n        \"size\": \"<number>\",\n        \"preview_url\": \"<string>\",\n        \"link_expires\": false\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:08.000Z",
+                      "updatedAt": "2026-07-28T02:37:08.000Z",
+                      "uid": "35240-3d110dab-bdc8-4044-a3d1-b8f8bf212063"
+                    },
+                    {
+                      "id": "2416a6db-78c0-4829-bede-f03de4b6052c",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"channel_id\": \"<string>\",\n  \"sender_id\": \"<string>\",\n  \"conversation_id\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"delivered\",\n  \"created_at\": \"<dateTime>\",\n  \"reply_by\": \"<dateTime>\",\n  \"conversation_link\": \"<string>\",\n  \"attachments\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"size\": \"<number>\",\n      \"preview_url\": \"<string>\",\n      \"link_expires\": false\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"size\": \"<number>\",\n      \"preview_url\": \"<string>\",\n      \"link_expires\": false\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/channels/messages/receive",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "channels",
+                            "messages",
+                            "receive"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"additional_data\": {\n    \"code\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:08.000Z",
+                      "updatedAt": "2026-07-28T02:37:08.000Z",
+                      "uid": "35240-2416a6db-78c0-4829-bede-f03de4b6052c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:08.000Z",
+                  "updatedAt": "2026-07-28T02:37:08.000Z",
+                  "uid": "35240-34a82270-9283-4fcd-a3bd-02b22c31e497"
+                }
+              ],
+              "id": "0dcb56e8-abce-4072-b811-6eada6938535",
+              "createdAt": "2026-07-28T02:37:08.000Z",
+              "updatedAt": "2026-07-28T02:37:08.000Z",
+              "uid": "35240-0dcb56e8-abce-4072-b811-6eada6938535"
+            }
+          ],
+          "id": "a06bff6e-0136-45a2-a269-bf16f95649c1",
+          "createdAt": "2026-07-28T02:37:08.000Z",
+          "updatedAt": "2026-07-28T02:37:08.000Z",
+          "uid": "35240-a06bff6e-0136-45a2-a269-bf16f95649c1"
+        },
+        {
+          "name": "{channel-id}",
+          "item": [
+            {
+              "name": "conversations",
+              "item": [
+                {
+                  "name": "{conversation-id}",
+                  "item": [
+                    {
+                      "name": "Delete a conversation",
+                      "id": "93dce954-2cd8-41a7-9145-e926ee226d75",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/channels/:channel-id/conversations/:conversation-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "channels",
+                            ":channel-id",
+                            "conversations",
+                            ":conversation-id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "dc3a73b4-4829-45be-9276-e3ddfdc41319",
+                              "key": "channel-id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the channel provided by the integration"
+                            },
+                            {
+                              "id": "cb589aa6-a07e-4caa-ab40-cbe192bbc0f0",
+                              "key": "conversation-id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the conversation provided by the integration"
+                            }
+                          ]
+                        },
+                        "description": "Deletes an existing conversation. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension)."
+                      },
+                      "response": [
+                        {
+                          "id": "ca7b60ef-856f-4957-9b00-13be785fa8e5",
+                          "name": "The conversation was deleted",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/channels/:channel-id/conversations/:conversation-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "channels",
+                                ":channel-id",
+                                "conversations",
+                                ":conversation-id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "channel-id"
+                                },
+                                {
+                                  "key": "conversation-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T02:37:08.000Z",
+                          "updatedAt": "2026-07-28T02:37:08.000Z",
+                          "uid": "35240-ca7b60ef-856f-4957-9b00-13be785fa8e5"
+                        },
+                        {
+                          "id": "7a352dae-1526-4670-9374-28a93501cac1",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/channels/:channel-id/conversations/:conversation-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "channels",
+                                ":channel-id",
+                                "conversations",
+                                ":conversation-id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "channel-id"
+                                },
+                                {
+                                  "key": "conversation-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"additional_data\": {\n    \"code\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:08.000Z",
+                          "updatedAt": "2026-07-28T02:37:08.000Z",
+                          "uid": "35240-7a352dae-1526-4670-9374-28a93501cac1"
+                        },
+                        {
+                          "id": "486772d7-bd37-43b7-ad9f-31d8fbea0eb9",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/channels/:channel-id/conversations/:conversation-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "channels",
+                                ":channel-id",
+                                "conversations",
+                                ":conversation-id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "channel-id"
+                                },
+                                {
+                                  "key": "conversation-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"additional_data\": {\n    \"code\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:08.000Z",
+                          "updatedAt": "2026-07-28T02:37:08.000Z",
+                          "uid": "35240-486772d7-bd37-43b7-ad9f-31d8fbea0eb9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:08.000Z",
+                      "updatedAt": "2026-07-28T02:37:08.000Z",
+                      "uid": "35240-93dce954-2cd8-41a7-9145-e926ee226d75"
+                    }
+                  ],
+                  "id": "acc7587e-668d-4f31-9d60-44a8b0c19d6b",
+                  "createdAt": "2026-07-28T02:37:08.000Z",
+                  "updatedAt": "2026-07-28T02:37:08.000Z",
+                  "uid": "35240-acc7587e-668d-4f31-9d60-44a8b0c19d6b"
+                }
+              ],
+              "id": "e5105b27-8eac-4b34-9019-eda660c9c795",
+              "createdAt": "2026-07-28T02:37:08.000Z",
+              "updatedAt": "2026-07-28T02:37:08.000Z",
+              "uid": "35240-e5105b27-8eac-4b34-9019-eda660c9c795"
+            }
+          ],
+          "id": "109820a4-a2a6-4d80-9995-bb7b8f4def35",
+          "createdAt": "2026-07-28T02:37:08.000Z",
+          "updatedAt": "2026-07-28T02:37:08.000Z",
+          "uid": "35240-109820a4-a2a6-4d80-9995-bb7b8f4def35"
+        },
+        {
+          "name": "Add a channel",
+          "id": "da0893e4-876d-4f80-bf7a-e7c9daa05ea1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"provider_channel_id\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"template_support\": false,\n  \"provider_type\": \"other\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/channels",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "channels"
+              ]
+            },
+            "description": "Adds a new messaging channel, only admins are able to register new channels. It will use the getConversations endpoint to fetch conversations, participants and messages afterward. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension)."
+          },
+          "response": [
+            {
+              "id": "8a571ee7-7aac-477e-9de8-58b49dc7f25d",
+              "name": "The channel registered",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"provider_channel_id\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"template_support\": false,\n  \"provider_type\": \"other\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/channels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "channels"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"avatar_url\": \"<string>\",\n    \"provider_channel_id\": \"<string>\",\n    \"marketplace_client_id\": \"<string>\",\n    \"pd_company_id\": \"<integer>\",\n    \"pd_user_id\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"provider_type\": \"whatsapp\",\n    \"template_support\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:08.000Z",
+              "updatedAt": "2026-07-28T02:37:08.000Z",
+              "uid": "35240-8a571ee7-7aac-477e-9de8-58b49dc7f25d"
+            },
+            {
+              "id": "acfc3379-9ec9-47be-b01e-d1aa0ec52e0e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"provider_channel_id\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"template_support\": false,\n  \"provider_type\": \"other\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/channels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "channels"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"additional_data\": {\n    \"code\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:08.000Z",
+              "updatedAt": "2026-07-28T02:37:08.000Z",
+              "uid": "35240-acfc3379-9ec9-47be-b01e-d1aa0ec52e0e"
+            },
+            {
+              "id": "bc9f3396-9a71-48ed-85fd-3766424d141a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"provider_channel_id\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"template_support\": false,\n  \"provider_type\": \"other\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/channels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "channels"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"additional_data\": {\n    \"code\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:08.000Z",
+              "updatedAt": "2026-07-28T02:37:08.000Z",
+              "uid": "35240-bc9f3396-9a71-48ed-85fd-3766424d141a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:08.000Z",
+          "updatedAt": "2026-07-28T02:37:08.000Z",
+          "uid": "35240-da0893e4-876d-4f80-bf7a-e7c9daa05ea1"
+        }
+      ],
+      "id": "580ce5a6-bc8b-43f2-97a0-ac0cd3585376",
+      "createdAt": "2026-07-28T02:37:08.000Z",
+      "updatedAt": "2026-07-28T02:37:08.000Z",
+      "uid": "35240-580ce5a6-bc8b-43f2-97a0-ac0cd3585376"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

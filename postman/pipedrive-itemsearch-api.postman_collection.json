@@ -1,0 +1,374 @@
+{
+  "info": {
+    "_postman_id": "645f3407-0d99-4b5b-95eb-f4100cc4458a",
+    "name": "Pipedrive API v1 Activities ItemSearch API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:25.000Z",
+    "updatedAt": "2026-07-28T02:37:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-645f3407-0d99-4b5b-95eb-f4100cc4458a"
+  },
+  "item": [
+    {
+      "name": "itemSearch",
+      "item": [
+        {
+          "name": "field",
+          "item": [
+            {
+              "name": "Perform a search using a specific field from an item type",
+              "id": "9ea085a7-6ba2-4e78-b8f0-4d5dd922c760",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/itemSearch/field?term=<string>&entity_type=project&match=exact&field=<string>&limit=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "itemSearch",
+                    "field"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if `match` is `exact`). Please note that the search term has to be URL encoded.",
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The type of the field to perform the search from",
+                      "key": "entity_type",
+                      "value": "project"
+                    },
+                    {
+                      "description": "The type of match used against the term. The search <b>is</b> case sensitive.<br/><br/> E.g. in case of searching for a value `monkey`, <ul> <li>with `exact` match, you will only find it if term is `monkey`</li> <li>with `beginning` match, you will only find it if the term matches the beginning or the whole string, e.g. `monk` and `monkey`</li> <li>with `middle` match, you will find the it if the term matches any substring of the value, e.g. `onk` and `ke`</li> </ul>.",
+                      "key": "match",
+                      "value": "exact"
+                    },
+                    {
+                      "description": "(Required) The key of the field to search from. The field key can be obtained by fetching the list of the fields using any of the fields' API GET methods (dealFields, personFields, etc.). Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.",
+                      "key": "field",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Performs a search from the values of a specific field. Results can either be the distinct values of the field (useful for searching autocomplete field values), or the IDs of actual items (deals, leads, persons, organizations or products)."
+              },
+              "response": [
+                {
+                  "id": "4fd311e7-1938-4567-a6c4-028956bf50e8",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/itemSearch/field?term=<string>&entity_type=project&match=exact&field=<string>&limit=<integer>&cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "itemSearch",
+                        "field"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if `match` is `exact`). Please note that the search term has to be URL encoded.",
+                          "key": "term",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The type of the field to perform the search from",
+                          "key": "entity_type",
+                          "value": "project"
+                        },
+                        {
+                          "description": "The type of match used against the term. The search <b>is</b> case sensitive.<br/><br/> E.g. in case of searching for a value `monkey`, <ul> <li>with `exact` match, you will only find it if term is `monkey`</li> <li>with `beginning` match, you will only find it if the term matches the beginning or the whole string, e.g. `monk` and `monkey`</li> <li>with `middle` match, you will find the it if the term matches any substring of the value, e.g. `onk` and `ke`</li> </ul>.",
+                          "key": "match",
+                          "value": "exact"
+                        },
+                        {
+                          "description": "(Required) The key of the field to search from. The field key can be obtained by fetching the list of the fields using any of the fields' API GET methods (dealFields, personFields, etc.). Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.",
+                          "key": "field",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"result_score\": \"<number>\",\n      \"item\": {}\n    },\n    {\n      \"result_score\": \"<number>\",\n      \"item\": {}\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:26.000Z",
+                  "updatedAt": "2026-07-28T02:37:26.000Z",
+                  "uid": "35240-4fd311e7-1938-4567-a6c4-028956bf50e8"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:26.000Z",
+              "updatedAt": "2026-07-28T02:37:26.000Z",
+              "uid": "35240-9ea085a7-6ba2-4e78-b8f0-4d5dd922c760"
+            }
+          ],
+          "id": "cdfbeff1-854d-451c-8bd2-cdcacae8e5eb",
+          "createdAt": "2026-07-28T02:37:26.000Z",
+          "updatedAt": "2026-07-28T02:37:26.000Z",
+          "uid": "35240-cdfbeff1-854d-451c-8bd2-cdcacae8e5eb"
+        },
+        {
+          "name": "Perform a search from multiple item types",
+          "id": "6306ddda-d4a2-4ed0-995c-1b469001246f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/itemSearch?term=<string>&item_types=deal&fields=code&search_for_related_items=<boolean>&exact_match=<boolean>&include_fields=product.price&limit=<integer>&cursor=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "itemSearch"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded.",
+                  "key": "term",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A comma-separated string array. The type of items to perform the search from. Defaults to all.",
+                  "key": "item_types",
+                  "value": "deal"
+                },
+                {
+                  "description": "A comma-separated string array. The fields to perform the search from. Defaults to all. Relevant for each item type are:<br> <table> <tr><th><b>Item type</b></th><th><b>Field</b></th></tr> <tr><td>Deal</td><td>`custom_fields`, `notes`, `title`</td></tr> <tr><td>Person</td><td>`custom_fields`, `email`, `name`, `notes`, `phone`</td></tr> <tr><td>Organization</td><td>`address`, `custom_fields`, `name`, `notes`</td></tr> <tr><td>Product</td><td>`code`, `custom_fields`, `name`</td></tr> <tr><td>Lead</td><td>`custom_fields`, `notes`, `title`</td></tr> <tr><td>File</td><td>`name`</td></tr> <tr><td>Mail attachment</td><td>`name`</td></tr> <tr><td>Project</td><td> `custom_fields`, `notes`, `title`, `description` </td></tr> </table> <br> Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.",
+                  "key": "fields",
+                  "value": "code"
+                },
+                {
+                  "description": "When enabled, the response will include up to 100 newest related leads and 100 newest related deals for each found person and organization and up to 100 newest related persons for each found organization",
+                  "key": "search_for_related_items",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.",
+                  "key": "exact_match",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "A comma-separated string array. Supports including optional fields in the results which are not provided by default.",
+                  "key": "include_fields",
+                  "value": "product.price"
+                },
+                {
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 100 is allowed.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Performs a search from your choice of item types and fields."
+          },
+          "response": [
+            {
+              "id": "85789a43-a35d-4bab-93dd-95a1b88fd891",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/itemSearch?term=<string>&item_types=deal&fields=code&search_for_related_items=<boolean>&exact_match=<boolean>&include_fields=product.price&limit=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "itemSearch"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded.",
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated string array. The type of items to perform the search from. Defaults to all.",
+                      "key": "item_types",
+                      "value": "deal"
+                    },
+                    {
+                      "description": "A comma-separated string array. The fields to perform the search from. Defaults to all. Relevant for each item type are:<br> <table> <tr><th><b>Item type</b></th><th><b>Field</b></th></tr> <tr><td>Deal</td><td>`custom_fields`, `notes`, `title`</td></tr> <tr><td>Person</td><td>`custom_fields`, `email`, `name`, `notes`, `phone`</td></tr> <tr><td>Organization</td><td>`address`, `custom_fields`, `name`, `notes`</td></tr> <tr><td>Product</td><td>`code`, `custom_fields`, `name`</td></tr> <tr><td>Lead</td><td>`custom_fields`, `notes`, `title`</td></tr> <tr><td>File</td><td>`name`</td></tr> <tr><td>Mail attachment</td><td>`name`</td></tr> <tr><td>Project</td><td> `custom_fields`, `notes`, `title`, `description` </td></tr> </table> <br> Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.",
+                      "key": "fields",
+                      "value": "code"
+                    },
+                    {
+                      "description": "When enabled, the response will include up to 100 newest related leads and 100 newest related deals for each found person and organization and up to 100 newest related persons for each found organization",
+                      "key": "search_for_related_items",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.",
+                      "key": "exact_match",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "A comma-separated string array. Supports including optional fields in the results which are not provided by default.",
+                      "key": "include_fields",
+                      "value": "product.price"
+                    },
+                    {
+                      "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 100 is allowed.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"items\": [\n      {\n        \"result_score\": \"<number>\",\n        \"item\": {}\n      },\n      {\n        \"result_score\": \"<number>\",\n        \"item\": {}\n      }\n    ],\n    \"related_items\": [\n      {\n        \"result_score\": \"<number>\",\n        \"item\": {}\n      },\n      {\n        \"result_score\": \"<number>\",\n        \"item\": {}\n      }\n    ]\n  },\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:26.000Z",
+              "updatedAt": "2026-07-28T02:37:26.000Z",
+              "uid": "35240-85789a43-a35d-4bab-93dd-95a1b88fd891"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:26.000Z",
+          "updatedAt": "2026-07-28T02:37:26.000Z",
+          "uid": "35240-6306ddda-d4a2-4ed0-995c-1b469001246f"
+        }
+      ],
+      "id": "434ea8c9-5fbe-4267-8d0e-07e3f2aeed42",
+      "createdAt": "2026-07-28T02:37:26.000Z",
+      "updatedAt": "2026-07-28T02:37:26.000Z",
+      "uid": "35240-434ea8c9-5fbe-4267-8d0e-07e3f2aeed42"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

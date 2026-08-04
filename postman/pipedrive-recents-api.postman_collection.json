@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "8b23c5bb-31ad-4e65-ad59-05be3475c920",
+    "name": "Pipedrive API v1 Activities Recents API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:16.000Z",
+    "updatedAt": "2026-07-28T02:38:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8b23c5bb-31ad-4e65-ad59-05be3475c920"
+  },
+  "item": [
+    {
+      "name": "recents",
+      "item": [
+        {
+          "name": "Get recents",
+          "id": "5b70fbe1-73bc-4610-9acb-96cc3f8a3553",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/recents?since_timestamp=<string>&items=organization&start=0&limit=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "recents"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The timestamp in UTC. Format: YYYY-MM-DD HH:MM:SS.",
+                  "key": "since_timestamp",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Multiple selection of item types to include in the query (optional)",
+                  "key": "items",
+                  "value": "organization"
+                },
+                {
+                  "description": "Pagination start",
+                  "key": "start",
+                  "value": "0"
+                },
+                {
+                  "description": "Items shown per page",
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns data about all recent changes occurred after the given timestamp."
+          },
+          "response": [
+            {
+              "id": "3a91f995-9a74-4c77-aae2-b0490c9f7cee",
+              "name": "List of items changed since \"since_timestamp\"",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/recents?since_timestamp=<string>&items=organization&start=0&limit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "recents"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The timestamp in UTC. Format: YYYY-MM-DD HH:MM:SS.",
+                      "key": "since_timestamp",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Multiple selection of item types to include in the query (optional)",
+                      "key": "items",
+                      "value": "organization"
+                    },
+                    {
+                      "description": "Pagination start",
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Items shown per page",
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"item\": \"activity\",\n      \"id\": \"<integer>\",\n      \"data\": {\n        \"due_date\": \"<date>\",\n        \"due_time\": \"<string>\",\n        \"duration\": \"<string>\",\n        \"deal_id\": \"<integer>\",\n        \"lead_id\": \"<uuid>\",\n        \"person_id\": \"<integer>\",\n        \"project_id\": \"<integer>\",\n        \"org_id\": \"<integer>\",\n        \"location\": \"<string>\",\n        \"public_description\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"note\": \"<string>\",\n        \"done\": \"<boolean>\",\n        \"subject\": \"<string>\",\n        \"type\": \"<string>\",\n        \"user_id\": \"<integer>\",\n        \"busy_flag\": \"<boolean>\",\n        \"company_id\": \"<integer>\",\n        \"reference_type\": \"<string>\",\n        \"reference_id\": \"<integer>\",\n        \"conference_meeting_client\": \"<string>\",\n        \"conference_meeting_url\": \"<string>\",\n        \"conference_meeting_id\": \"<string>\",\n        \"add_time\": \"<string>\",\n        \"marked_as_done_time\": \"<string>\",\n        \"last_notification_time\": \"<string>\",\n        \"last_notification_user_id\": \"<integer>\",\n        \"notification_language_id\": \"<integer>\",\n        \"active_flag\": \"<boolean>\",\n        \"update_time\": \"<string>\",\n        \"update_user_id\": \"<integer>\",\n        \"gcal_event_id\": \"<string>\",\n        \"google_calendar_id\": \"<string>\",\n        \"google_calendar_etag\": \"<string>\",\n        \"calendar_sync_include_context\": \"<string>\",\n        \"source_timezone\": \"<string>\",\n        \"rec_rule\": \"<string>\",\n        \"rec_rule_extension\": \"<string>\",\n        \"rec_master_activity_id\": \"<integer>\",\n        \"created_by_user_id\": \"<integer>\",\n        \"location_subpremise\": \"<string>\",\n        \"location_street_number\": \"<string>\",\n        \"location_route\": \"<string>\",\n        \"location_sublocality\": \"<string>\",\n        \"location_locality\": \"<string>\",\n        \"location_admin_area_level_1\": \"<string>\",\n        \"location_admin_area_level_2\": \"<string>\",\n        \"location_country\": \"<string>\",\n        \"location_postal_code\": \"<string>\",\n        \"location_formatted_address\": \"<string>\",\n        \"org_name\": \"<string>\",\n        \"person_name\": \"<string>\",\n        \"deal_title\": \"<string>\",\n        \"owner_name\": \"<string>\",\n        \"person_dropbox_bcc\": \"<string>\",\n        \"deal_dropbox_bcc\": \"<string>\",\n        \"assigned_to_user_id\": \"<integer>\",\n        \"file\": {}\n      }\n    },\n    {\n      \"item\": \"activity\",\n      \"id\": \"<integer>\",\n      \"data\": {\n        \"due_date\": \"<date>\",\n        \"due_time\": \"<string>\",\n        \"duration\": \"<string>\",\n        \"deal_id\": \"<integer>\",\n        \"lead_id\": \"<uuid>\",\n        \"person_id\": \"<integer>\",\n        \"project_id\": \"<integer>\",\n        \"org_id\": \"<integer>\",\n        \"location\": \"<string>\",\n        \"public_description\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"note\": \"<string>\",\n        \"done\": \"<boolean>\",\n        \"subject\": \"<string>\",\n        \"type\": \"<string>\",\n        \"user_id\": \"<integer>\",\n        \"busy_flag\": \"<boolean>\",\n        \"company_id\": \"<integer>\",\n        \"reference_type\": \"<string>\",\n        \"reference_id\": \"<integer>\",\n        \"conference_meeting_client\": \"<string>\",\n        \"conference_meeting_url\": \"<string>\",\n        \"conference_meeting_id\": \"<string>\",\n        \"add_time\": \"<string>\",\n        \"marked_as_done_time\": \"<string>\",\n        \"last_notification_time\": \"<string>\",\n        \"last_notification_user_id\": \"<integer>\",\n        \"notification_language_id\": \"<integer>\",\n        \"active_flag\": \"<boolean>\",\n        \"update_time\": \"<string>\",\n        \"update_user_id\": \"<integer>\",\n        \"gcal_event_id\": \"<string>\",\n        \"google_calendar_id\": \"<string>\",\n        \"google_calendar_etag\": \"<string>\",\n        \"calendar_sync_include_context\": \"<string>\",\n        \"source_timezone\": \"<string>\",\n        \"rec_rule\": \"<string>\",\n        \"rec_rule_extension\": \"<string>\",\n        \"rec_master_activity_id\": \"<integer>\",\n        \"created_by_user_id\": \"<integer>\",\n        \"location_subpremise\": \"<string>\",\n        \"location_street_number\": \"<string>\",\n        \"location_route\": \"<string>\",\n        \"location_sublocality\": \"<string>\",\n        \"location_locality\": \"<string>\",\n        \"location_admin_area_level_1\": \"<string>\",\n        \"location_admin_area_level_2\": \"<string>\",\n        \"location_country\": \"<string>\",\n        \"location_postal_code\": \"<string>\",\n        \"location_formatted_address\": \"<string>\",\n        \"org_name\": \"<string>\",\n        \"person_name\": \"<string>\",\n        \"deal_title\": \"<string>\",\n        \"owner_name\": \"<string>\",\n        \"person_dropbox_bcc\": \"<string>\",\n        \"deal_dropbox_bcc\": \"<string>\",\n        \"assigned_to_user_id\": \"<integer>\",\n        \"file\": {}\n      }\n    }\n  ],\n  \"additional_data\": {\n    \"since_timestamp\": \"<string>\",\n    \"last_timestamp_on_page\": \"<string>\",\n    \"pagination\": {\n      \"start\": \"<integer>\",\n      \"limit\": \"<integer>\",\n      \"more_items_in_collection\": \"<boolean>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:38:17.000Z",
+              "updatedAt": "2026-07-28T02:38:17.000Z",
+              "uid": "35240-3a91f995-9a74-4c77-aae2-b0490c9f7cee"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:17.000Z",
+          "updatedAt": "2026-07-28T02:38:17.000Z",
+          "uid": "35240-5b70fbe1-73bc-4610-9acb-96cc3f8a3553"
+        }
+      ],
+      "id": "8072e77f-888d-4982-ade9-d87755d236e5",
+      "createdAt": "2026-07-28T02:38:17.000Z",
+      "updatedAt": "2026-07-28T02:38:17.000Z",
+      "uid": "35240-8072e77f-888d-4982-ade9-d87755d236e5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

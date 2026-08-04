@@ -1,0 +1,146 @@
+{
+  "info": {
+    "_postman_id": "665fb8a2-0653-4502-bc43-013f5cc83a99",
+    "name": "Pipedrive API v1 Activities LeadFields API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:26.000Z",
+    "updatedAt": "2026-07-28T02:37:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-665fb8a2-0653-4502-bc43-013f5cc83a99"
+  },
+  "item": [
+    {
+      "name": "leadFields",
+      "item": [
+        {
+          "name": "Get all lead fields",
+          "id": "cb00384b-484e-4f2d-ada9-5c1c57ab9125",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/leadFields?start=0&limit=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leadFields"
+              ],
+              "query": [
+                {
+                  "description": "Pagination start",
+                  "key": "start",
+                  "value": "0"
+                },
+                {
+                  "description": "Items shown per page",
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns data about all lead fields."
+          },
+          "response": [
+            {
+              "id": "97aef8bd-bb3e-4d53-bf20-ed4cc97f4509",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/leadFields?start=0&limit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leadFields"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination start",
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Items shown per page",
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"order_nr\": \"<integer>\",\n      \"field_type\": \"projects_board\",\n      \"add_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\",\n      \"last_updated_by_user_id\": \"<integer>\",\n      \"created_by_user_id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"edit_flag\": \"<boolean>\",\n      \"index_visible_flag\": \"<boolean>\",\n      \"details_visible_flag\": \"<boolean>\",\n      \"add_visible_flag\": \"<boolean>\",\n      \"important_flag\": \"<boolean>\",\n      \"bulk_edit_allowed\": \"<boolean>\",\n      \"searchable_flag\": \"<boolean>\",\n      \"filtering_allowed\": \"<boolean>\",\n      \"sortable_flag\": \"<boolean>\",\n      \"mandatory_flag\": \"<boolean>\",\n      \"is_subfield\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"order_nr\": \"<integer>\",\n      \"field_type\": \"varchar\",\n      \"add_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\",\n      \"last_updated_by_user_id\": \"<integer>\",\n      \"created_by_user_id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"edit_flag\": \"<boolean>\",\n      \"index_visible_flag\": \"<boolean>\",\n      \"details_visible_flag\": \"<boolean>\",\n      \"add_visible_flag\": \"<boolean>\",\n      \"important_flag\": \"<boolean>\",\n      \"bulk_edit_allowed\": \"<boolean>\",\n      \"searchable_flag\": \"<boolean>\",\n      \"filtering_allowed\": \"<boolean>\",\n      \"sortable_flag\": \"<boolean>\",\n      \"mandatory_flag\": \"<boolean>\",\n      \"is_subfield\": \"<boolean>\"\n    }\n  ],\n  \"additional_data\": {\n    \"start\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"more_items_in_collection\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:27.000Z",
+              "updatedAt": "2026-07-28T02:37:27.000Z",
+              "uid": "35240-97aef8bd-bb3e-4d53-bf20-ed4cc97f4509"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:27.000Z",
+          "updatedAt": "2026-07-28T02:37:27.000Z",
+          "uid": "35240-cb00384b-484e-4f2d-ada9-5c1c57ab9125"
+        }
+      ],
+      "id": "fac12ae9-fe19-4c50-be22-cc6056412310",
+      "createdAt": "2026-07-28T02:37:26.000Z",
+      "updatedAt": "2026-07-28T02:37:26.000Z",
+      "uid": "35240-fac12ae9-fe19-4c50-be22-cc6056412310"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

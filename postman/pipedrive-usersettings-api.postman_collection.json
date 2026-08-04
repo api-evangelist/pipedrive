@@ -1,0 +1,164 @@
+{
+  "info": {
+    "_postman_id": "d0067124-0dd0-4ecf-b391-3d90b2f742f8",
+    "name": "Pipedrive API v1 Activities UserSettings API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:47.000Z",
+    "updatedAt": "2026-07-28T02:38:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d0067124-0dd0-4ecf-b391-3d90b2f742f8"
+  },
+  "item": [
+    {
+      "name": "userSettings",
+      "item": [
+        {
+          "name": "List settings of an authorized user",
+          "id": "1ab67001-2391-41d9-9d0c-90d59d9863ef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/userSettings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "userSettings"
+              ]
+            },
+            "description": "Lists the settings of an authorized user. Example response contains a shortened list of settings."
+          },
+          "response": [
+            {
+              "id": "512bfe5c-908b-48d7-a8ee-222074e36e14",
+              "name": "The list of user settings",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/userSettings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSettings"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"marketplace_team\": \"<boolean>\",\n    \"list_limit\": \"<number>\",\n    \"beta_app\": \"<boolean>\",\n    \"prevent_salesphone_callto_override\": \"<boolean>\",\n    \"file_upload_destination\": \"<string>\",\n    \"callto_link_syntax\": \"<string>\",\n    \"autofill_deal_expected_close_date\": \"<boolean>\",\n    \"person_duplicate_condition\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:38:47.000Z",
+              "updatedAt": "2026-07-28T02:38:47.000Z",
+              "uid": "35240-512bfe5c-908b-48d7-a8ee-222074e36e14"
+            },
+            {
+              "id": "61934891-4bd6-4b06-a86b-205d49b17819",
+              "name": "Unauthorized response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/userSettings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSettings"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"errorCode\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:38:47.000Z",
+              "updatedAt": "2026-07-28T02:38:47.000Z",
+              "uid": "35240-61934891-4bd6-4b06-a86b-205d49b17819"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:47.000Z",
+          "updatedAt": "2026-07-28T02:38:47.000Z",
+          "uid": "35240-1ab67001-2391-41d9-9d0c-90d59d9863ef"
+        }
+      ],
+      "id": "fab5af47-b3b1-4d24-949c-4d7f183cfe9f",
+      "createdAt": "2026-07-28T02:38:47.000Z",
+      "updatedAt": "2026-07-28T02:38:47.000Z",
+      "uid": "35240-fab5af47-b3b1-4d24-949c-4d7f183cfe9f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

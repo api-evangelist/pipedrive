@@ -1,0 +1,606 @@
+{
+  "info": {
+    "_postman_id": "afdca9fa-e11c-4b11-9631-3388517384d2",
+    "name": "Pipedrive API v1 Activities LeadLabels API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:27.000Z",
+    "updatedAt": "2026-07-28T02:37:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-afdca9fa-e11c-4b11-9631-3388517384d2"
+  },
+  "item": [
+    {
+      "name": "leadLabels",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Update a lead label",
+              "id": "b8d93fe2-5f87-464c-8982-039bc87f1014",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"dark-gray\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/leadLabels/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leadLabels",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "548e0723-f0d0-412e-9d84-4c85a9281496",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) The ID of the lead label"
+                    }
+                  ]
+                },
+                "description": "Updates one or more properties of a lead label. Only properties included in the request will be updated.\n"
+              },
+              "response": [
+                {
+                  "id": "7d8a0590-b071-4cdc-b328-7aab4cdf5501",
+                  "name": "Successful response containing payload in the `data` field",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"dark-gray\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/leadLabels/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "leadLabels",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"color\": \"red\",\n    \"add_time\": \"<dateTime>\",\n    \"update_time\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:27.000Z",
+                  "updatedAt": "2026-07-28T02:37:27.000Z",
+                  "uid": "35240-7d8a0590-b071-4cdc-b328-7aab4cdf5501"
+                },
+                {
+                  "id": "69c59fb8-e63c-45e7-b9ee-ce88a338efe7",
+                  "name": "A resource describing an error",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"dark-gray\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/leadLabels/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "leadLabels",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:27.000Z",
+                  "updatedAt": "2026-07-28T02:37:27.000Z",
+                  "uid": "35240-69c59fb8-e63c-45e7-b9ee-ce88a338efe7"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:27.000Z",
+              "updatedAt": "2026-07-28T02:37:27.000Z",
+              "uid": "35240-b8d93fe2-5f87-464c-8982-039bc87f1014"
+            },
+            {
+              "name": "Delete a lead label",
+              "id": "847160b6-d23d-457a-9e77-13bcb7d0aeb4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/leadLabels/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leadLabels",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "471b34f5-aabf-4e7a-88d0-46b4e4b7b430",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) The ID of the lead label"
+                    }
+                  ]
+                },
+                "description": "Deletes a specific lead label."
+              },
+              "response": [
+                {
+                  "id": "93aff666-fef5-4b07-8e65-b7454a2996c1",
+                  "name": "Successful response with id value only. Used in DELETE calls.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/leadLabels/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "leadLabels",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<uuid>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:27.000Z",
+                  "updatedAt": "2026-07-28T02:37:27.000Z",
+                  "uid": "35240-93aff666-fef5-4b07-8e65-b7454a2996c1"
+                },
+                {
+                  "id": "6e5f01bd-fed1-4eca-9000-1e2e158cc911",
+                  "name": "A resource describing an error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/leadLabels/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "leadLabels",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:27.000Z",
+                  "updatedAt": "2026-07-28T02:37:27.000Z",
+                  "uid": "35240-6e5f01bd-fed1-4eca-9000-1e2e158cc911"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:27.000Z",
+              "updatedAt": "2026-07-28T02:37:27.000Z",
+              "uid": "35240-847160b6-d23d-457a-9e77-13bcb7d0aeb4"
+            }
+          ],
+          "id": "359f5149-5b18-4d9a-ac34-88a2d7297649",
+          "createdAt": "2026-07-28T02:37:27.000Z",
+          "updatedAt": "2026-07-28T02:37:27.000Z",
+          "uid": "35240-359f5149-5b18-4d9a-ac34-88a2d7297649"
+        },
+        {
+          "name": "Get all lead labels",
+          "id": "1dbaa43b-559c-4a8a-8945-6d39ac90cc10",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/leadLabels",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leadLabels"
+              ]
+            },
+            "description": "Returns details of all lead labels. This endpoint does not support pagination and all labels are always returned."
+          },
+          "response": [
+            {
+              "id": "6380b3ae-1fa8-4a1c-86c8-7e494d7f697d",
+              "name": "Successful response containing payload in the `data` field",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/leadLabels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leadLabels"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"color\": \"pink\",\n      \"add_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"color\": \"blue\",\n      \"add_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:37:27.000Z",
+              "updatedAt": "2026-07-28T02:37:27.000Z",
+              "uid": "35240-6380b3ae-1fa8-4a1c-86c8-7e494d7f697d"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:27.000Z",
+          "updatedAt": "2026-07-28T02:37:27.000Z",
+          "uid": "35240-1dbaa43b-559c-4a8a-8945-6d39ac90cc10"
+        },
+        {
+          "name": "Add a lead label",
+          "id": "4e5b9fc4-8783-4db6-bfd0-76feb1505368",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"gray\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leadLabels",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leadLabels"
+              ]
+            },
+            "description": "Creates a lead label."
+          },
+          "response": [
+            {
+              "id": "0886746d-a18b-476b-917d-52f47108e9c9",
+              "name": "Successful response containing payload in the `data` field",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"gray\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/leadLabels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leadLabels"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"color\": \"red\",\n    \"add_time\": \"<dateTime>\",\n    \"update_time\": \"<dateTime>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:27.000Z",
+              "updatedAt": "2026-07-28T02:37:27.000Z",
+              "uid": "35240-0886746d-a18b-476b-917d-52f47108e9c9"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:27.000Z",
+          "updatedAt": "2026-07-28T02:37:27.000Z",
+          "uid": "35240-4e5b9fc4-8783-4db6-bfd0-76feb1505368"
+        }
+      ],
+      "id": "a86aa8fd-9b66-4dcc-88b9-d2890f76bd2c",
+      "createdAt": "2026-07-28T02:37:27.000Z",
+      "updatedAt": "2026-07-28T02:37:27.000Z",
+      "uid": "35240-a86aa8fd-9b66-4dcc-88b9-d2890f76bd2c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

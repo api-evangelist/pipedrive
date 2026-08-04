@@ -1,0 +1,1293 @@
+{
+  "info": {
+    "_postman_id": "d3ddba4c-b60c-4989-8a7b-c883f680b2f4",
+    "name": "Pipedrive API v1 Activities CallLogs API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:06.000Z",
+    "updatedAt": "2026-07-28T02:37:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d3ddba4c-b60c-4989-8a7b-c883f680b2f4"
+  },
+  "item": [
+    {
+      "name": "callLogs",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "recordings",
+              "item": [
+                {
+                  "name": "Attach an audio file to the call log",
+                  "id": "bd8184cf-0ae5-4c3a-82c3-665f9670f27f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) Audio file supported by the HTML5 specification",
+                          "key": "file",
+                          "type": "file",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/callLogs/:id/recordings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "callLogs",
+                        ":id",
+                        "recordings"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ef3be4e7-e86f-445b-ae14-93d1995ea903",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The ID received when you create the call log"
+                        }
+                      ]
+                    },
+                    "description": "Adds an audio recording to the call log. That audio can be played by those who have access to the call log object."
+                  },
+                  "response": [
+                    {
+                      "id": "6ded8b64-c6a0-40f1-b10e-6fdda257688b",
+                      "name": "The audio recording was successfully added to the log.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) Audio file supported by the HTML5 specification",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/callLogs/:id/recordings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "callLogs",
+                            ":id",
+                            "recordings"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:37:07.000Z",
+                      "updatedAt": "2026-07-28T02:37:07.000Z",
+                      "uid": "35240-6ded8b64-c6a0-40f1-b10e-6fdda257688b"
+                    },
+                    {
+                      "id": "4f9b165b-8f1b-4bd9-8b29-3488e1356006",
+                      "name": "A resource required to process the request was not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) Audio file supported by the HTML5 specification",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/callLogs/:id/recordings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "callLogs",
+                            ":id",
+                            "recordings"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                      "createdAt": "2026-07-28T02:37:07.000Z",
+                      "updatedAt": "2026-07-28T02:37:07.000Z",
+                      "uid": "35240-4f9b165b-8f1b-4bd9-8b29-3488e1356006"
+                    },
+                    {
+                      "id": "35c43b36-a83b-44fe-8bdf-3d505b1856be",
+                      "name": "Recording for this call already exists.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) Audio file supported by the HTML5 specification",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/callLogs/:id/recordings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "callLogs",
+                            ":id",
+                            "recordings"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                      "createdAt": "2026-07-28T02:37:07.000Z",
+                      "updatedAt": "2026-07-28T02:37:07.000Z",
+                      "uid": "35240-35c43b36-a83b-44fe-8bdf-3d505b1856be"
+                    },
+                    {
+                      "id": "aa9b61cf-7781-483e-9680-a61b92c59f63",
+                      "name": "There was an error processing the request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) Audio file supported by the HTML5 specification",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/callLogs/:id/recordings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "callLogs",
+                            ":id",
+                            "recordings"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                      "createdAt": "2026-07-28T02:37:07.000Z",
+                      "updatedAt": "2026-07-28T02:37:07.000Z",
+                      "uid": "35240-aa9b61cf-7781-483e-9680-a61b92c59f63"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:07.000Z",
+                  "updatedAt": "2026-07-28T02:37:07.000Z",
+                  "uid": "35240-bd8184cf-0ae5-4c3a-82c3-665f9670f27f"
+                }
+              ],
+              "id": "afc47735-56a7-4f05-8c03-8e54ba015376",
+              "createdAt": "2026-07-28T02:37:07.000Z",
+              "updatedAt": "2026-07-28T02:37:07.000Z",
+              "uid": "35240-afc47735-56a7-4f05-8c03-8e54ba015376"
+            },
+            {
+              "name": "Delete a call log",
+              "id": "e9e5631b-f2c1-4adf-9db4-939a7cb118bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/callLogs/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "callLogs",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "140a30f9-9768-4eea-8c3b-a984fe90dbbc",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "description": "Deletes a call log. If there is an audio recording attached to it, it will also be deleted. The related activity will not be removed by this request. If you want to remove the related activities, please use the endpoint which is specific for activities."
+              },
+              "response": [
+                {
+                  "id": "648bf858-fddf-47c7-ae6e-c66696309ae9",
+                  "name": "The call log was successfully deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/callLogs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "callLogs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:37:07.000Z",
+                  "updatedAt": "2026-07-28T02:37:07.000Z",
+                  "uid": "35240-648bf858-fddf-47c7-ae6e-c66696309ae9"
+                },
+                {
+                  "id": "57b3a71c-bde6-406a-8a63-ae30068344ef",
+                  "name": "You don't have permission to access the resource.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/callLogs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "callLogs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:07.000Z",
+                  "updatedAt": "2026-07-28T02:37:07.000Z",
+                  "uid": "35240-57b3a71c-bde6-406a-8a63-ae30068344ef"
+                },
+                {
+                  "id": "37c5e3d7-6d32-413b-83a6-19e26be13c9f",
+                  "name": "A resource required to process the request was not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/callLogs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "callLogs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:07.000Z",
+                  "updatedAt": "2026-07-28T02:37:07.000Z",
+                  "uid": "35240-37c5e3d7-6d32-413b-83a6-19e26be13c9f"
+                },
+                {
+                  "id": "c9a2e065-ca74-445e-be00-7a8620a332d0",
+                  "name": "The callLog you are trying to access is no longer available.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/callLogs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "callLogs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Gone",
+                  "code": 410,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:07.000Z",
+                  "updatedAt": "2026-07-28T02:37:07.000Z",
+                  "uid": "35240-c9a2e065-ca74-445e-be00-7a8620a332d0"
+                },
+                {
+                  "id": "4fb6ae9c-9e0a-47ba-bc44-ec24f58fbdee",
+                  "name": "There was an error processing the request.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/callLogs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "callLogs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:07.000Z",
+                  "updatedAt": "2026-07-28T02:37:07.000Z",
+                  "uid": "35240-4fb6ae9c-9e0a-47ba-bc44-ec24f58fbdee"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:07.000Z",
+              "updatedAt": "2026-07-28T02:37:07.000Z",
+              "uid": "35240-e9e5631b-f2c1-4adf-9db4-939a7cb118bf"
+            },
+            {
+              "name": "Get details of a call log",
+              "id": "68387d82-faae-486a-9a9f-826757ed6ece",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/callLogs/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "callLogs",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8c85853f-f79a-427a-bdea-4e772f9e33fb",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "description": "Returns details of a specific call log."
+              },
+              "response": [
+                {
+                  "id": "eda9722c-8154-44a6-b12d-9c6b18ce7fa1",
+                  "name": "The requested call log object.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/callLogs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "callLogs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"to_phone_number\": \"<string>\",\n    \"outcome\": \"connected\",\n    \"start_time\": \"<dateTime>\",\n    \"end_time\": \"<dateTime>\",\n    \"user_id\": \"<integer>\",\n    \"activity_id\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"duration\": \"<string>\",\n    \"from_phone_number\": \"<string>\",\n    \"person_id\": \"<integer>\",\n    \"org_id\": \"<integer>\",\n    \"deal_id\": \"<integer>\",\n    \"lead_id\": \"<uuid>\",\n    \"note\": \"<string>\",\n    \"id\": \"<string>\",\n    \"has_recording\": \"<boolean>\",\n    \"company_id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:07.000Z",
+                  "updatedAt": "2026-07-28T02:37:07.000Z",
+                  "uid": "35240-eda9722c-8154-44a6-b12d-9c6b18ce7fa1"
+                },
+                {
+                  "id": "0823771d-3f85-40a0-ba10-cd2442e07ba1",
+                  "name": "A resource required to process the request was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/callLogs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "callLogs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:07.000Z",
+                  "updatedAt": "2026-07-28T02:37:07.000Z",
+                  "uid": "35240-0823771d-3f85-40a0-ba10-cd2442e07ba1"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:07.000Z",
+              "updatedAt": "2026-07-28T02:37:07.000Z",
+              "uid": "35240-68387d82-faae-486a-9a9f-826757ed6ece"
+            }
+          ],
+          "id": "6d308578-7253-44d5-8e78-62d6ded071d8",
+          "createdAt": "2026-07-28T02:37:07.000Z",
+          "updatedAt": "2026-07-28T02:37:07.000Z",
+          "uid": "35240-6d308578-7253-44d5-8e78-62d6ded071d8"
+        },
+        {
+          "name": "Add a call log",
+          "id": "5291f8cf-e44e-4242-ab7e-b86930ced635",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"connected\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/callLogs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "callLogs"
+              ]
+            },
+            "description": "Adds a new call log."
+          },
+          "response": [
+            {
+              "id": "cfd9e225-26a7-45a7-87c1-0ae8202961dd",
+              "name": "The call log was successfully created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"connected\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/callLogs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "callLogs"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"to_phone_number\": \"<string>\",\n    \"outcome\": \"connected\",\n    \"start_time\": \"<dateTime>\",\n    \"end_time\": \"<dateTime>\",\n    \"user_id\": \"<integer>\",\n    \"activity_id\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"duration\": \"<string>\",\n    \"from_phone_number\": \"<string>\",\n    \"person_id\": \"<integer>\",\n    \"org_id\": \"<integer>\",\n    \"deal_id\": \"<integer>\",\n    \"lead_id\": \"<uuid>\",\n    \"note\": \"<string>\",\n    \"id\": \"<string>\",\n    \"has_recording\": \"<boolean>\",\n    \"company_id\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:07.000Z",
+              "updatedAt": "2026-07-28T02:37:07.000Z",
+              "uid": "35240-cfd9e225-26a7-45a7-87c1-0ae8202961dd"
+            },
+            {
+              "id": "6ba6743b-12e4-468f-b88e-eabd707b892c",
+              "name": "The request contains wrong or incorrectly formatted arguments.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"connected\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/callLogs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "callLogs"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+              "createdAt": "2026-07-28T02:37:07.000Z",
+              "updatedAt": "2026-07-28T02:37:07.000Z",
+              "uid": "35240-6ba6743b-12e4-468f-b88e-eabd707b892c"
+            },
+            {
+              "id": "83cc5b86-4abc-489b-870b-55e9331772df",
+              "name": "You don't have permission to access the resource.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"connected\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/callLogs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "callLogs"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+              "createdAt": "2026-07-28T02:37:07.000Z",
+              "updatedAt": "2026-07-28T02:37:07.000Z",
+              "uid": "35240-83cc5b86-4abc-489b-870b-55e9331772df"
+            },
+            {
+              "id": "c4c23e7c-a696-4ea1-ba22-8cd4dea3fa1e",
+              "name": "A resource required to process the request was not found.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"connected\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/callLogs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "callLogs"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+              "createdAt": "2026-07-28T02:37:07.000Z",
+              "updatedAt": "2026-07-28T02:37:07.000Z",
+              "uid": "35240-c4c23e7c-a696-4ea1-ba22-8cd4dea3fa1e"
+            },
+            {
+              "id": "ce5328c5-3c13-49c8-962c-09047003d818",
+              "name": "There was an error processing the request.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"connected\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/callLogs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "callLogs"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"error_info\": \"<string>\",\n  \"data\": {},\n  \"additional_data\": {}\n}",
+              "createdAt": "2026-07-28T02:37:07.000Z",
+              "updatedAt": "2026-07-28T02:37:07.000Z",
+              "uid": "35240-ce5328c5-3c13-49c8-962c-09047003d818"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:07.000Z",
+          "updatedAt": "2026-07-28T02:37:07.000Z",
+          "uid": "35240-5291f8cf-e44e-4242-ab7e-b86930ced635"
+        },
+        {
+          "name": "Get all call logs assigned to a particular user",
+          "id": "3d766b94-1715-4b52-8970-dd0683f70df0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/callLogs?start=0&limit=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "callLogs"
+              ],
+              "query": [
+                {
+                  "description": "Pagination start",
+                  "key": "start",
+                  "value": "0"
+                },
+                {
+                  "description": "For pagination, the limit of entries to be returned. The upper limit is 50.",
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns all call logs assigned to a particular user."
+          },
+          "response": [
+            {
+              "id": "6170aeac-c7d3-4b31-b9bd-85f0600b09e6",
+              "name": "A list of call logs.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/callLogs?start=0&limit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "callLogs"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination start",
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "description": "For pagination, the limit of entries to be returned. The upper limit is 50.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"to_phone_number\": \"<string>\",\n      \"outcome\": \"connected\",\n      \"start_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"user_id\": \"<integer>\",\n      \"activity_id\": \"<integer>\",\n      \"subject\": \"<string>\",\n      \"duration\": \"<string>\",\n      \"from_phone_number\": \"<string>\",\n      \"person_id\": \"<integer>\",\n      \"org_id\": \"<integer>\",\n      \"deal_id\": \"<integer>\",\n      \"lead_id\": \"<uuid>\",\n      \"note\": \"<string>\",\n      \"id\": \"<string>\",\n      \"has_recording\": \"<boolean>\",\n      \"company_id\": \"<integer>\"\n    },\n    {\n      \"to_phone_number\": \"<string>\",\n      \"outcome\": \"left_voicemail\",\n      \"start_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"user_id\": \"<integer>\",\n      \"activity_id\": \"<integer>\",\n      \"subject\": \"<string>\",\n      \"duration\": \"<string>\",\n      \"from_phone_number\": \"<string>\",\n      \"person_id\": \"<integer>\",\n      \"org_id\": \"<integer>\",\n      \"deal_id\": \"<integer>\",\n      \"lead_id\": \"<uuid>\",\n      \"note\": \"<string>\",\n      \"id\": \"<string>\",\n      \"has_recording\": \"<boolean>\",\n      \"company_id\": \"<integer>\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": \"<integer>\",\n      \"limit\": \"<integer>\",\n      \"more_items_in_collection\": \"<boolean>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:37:07.000Z",
+              "updatedAt": "2026-07-28T02:37:07.000Z",
+              "uid": "35240-6170aeac-c7d3-4b31-b9bd-85f0600b09e6"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:07.000Z",
+          "updatedAt": "2026-07-28T02:37:07.000Z",
+          "uid": "35240-3d766b94-1715-4b52-8970-dd0683f70df0"
+        }
+      ],
+      "id": "2b3a0a29-85be-491a-99ce-f9c3890f4e32",
+      "createdAt": "2026-07-28T02:37:07.000Z",
+      "updatedAt": "2026-07-28T02:37:07.000Z",
+      "uid": "35240-2b3a0a29-85be-491a-99ce-f9c3890f4e32"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,1479 @@
+{
+  "info": {
+    "_postman_id": "9dc7c287-3dde-41ba-9fac-df2a26b93707",
+    "name": "Pipedrive API v1 Activities Notes API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:35.000Z",
+    "updatedAt": "2026-07-28T02:37:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9dc7c287-3dde-41ba-9fac-df2a26b93707"
+  },
+  "item": [
+    {
+      "name": "notes",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "comments",
+              "item": [
+                {
+                  "name": "{commentId}",
+                  "item": [
+                    {
+                      "name": "Get one comment",
+                      "id": "a0ef1b28-08f0-4fa9-ba1d-155aa3c987f3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/notes/:id/comments/:commentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "notes",
+                            ":id",
+                            "comments",
+                            ":commentId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "59a74f13-9464-41d9-841b-47948f59d272",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the note"
+                            },
+                            {
+                              "id": "c1066ac6-d9a3-4e9c-b035-3abc85ca8761",
+                              "key": "commentId",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the comment"
+                            }
+                          ]
+                        },
+                        "description": "Returns the details of a comment."
+                      },
+                      "response": [
+                        {
+                          "id": "1d6d052c-7e75-4062-91aa-c87cafb1eaa8",
+                          "name": "Add, update or get a comment",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/notes/:id/comments/:commentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "notes",
+                                ":id",
+                                "comments",
+                                ":commentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "commentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"uuid\": \"<uuid>\",\n    \"active_flag\": \"<boolean>\",\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"content\": \"<string>\",\n    \"object_id\": \"<string>\",\n    \"object_type\": \"<string>\",\n    \"user_id\": \"<integer>\",\n    \"updater_id\": \"<integer>\",\n    \"company_id\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:35.000Z",
+                          "updatedAt": "2026-07-28T02:37:35.000Z",
+                          "uid": "35240-1d6d052c-7e75-4062-91aa-c87cafb1eaa8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:35.000Z",
+                      "updatedAt": "2026-07-28T02:37:35.000Z",
+                      "uid": "35240-a0ef1b28-08f0-4fa9-ba1d-155aa3c987f3"
+                    },
+                    {
+                      "name": "Update a comment related to a note",
+                      "id": "74f8f11e-93e1-4b64-860d-47c99ec3a164",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"content\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/notes/:id/comments/:commentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "notes",
+                            ":id",
+                            "comments",
+                            ":commentId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "14f0b515-b497-4ed3-a787-d8e8b0f43f79",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the note"
+                            },
+                            {
+                              "id": "fcda20d8-204e-45df-bf78-240041fba0c5",
+                              "key": "commentId",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the comment"
+                            }
+                          ]
+                        },
+                        "description": "Updates a comment related to a note."
+                      },
+                      "response": [
+                        {
+                          "id": "3132199e-8ff2-4f4b-96d7-550b49afd15f",
+                          "name": "Add, update or get a comment",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"content\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/notes/:id/comments/:commentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "notes",
+                                ":id",
+                                "comments",
+                                ":commentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "commentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"uuid\": \"<uuid>\",\n    \"active_flag\": \"<boolean>\",\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"content\": \"<string>\",\n    \"object_id\": \"<string>\",\n    \"object_type\": \"<string>\",\n    \"user_id\": \"<integer>\",\n    \"updater_id\": \"<integer>\",\n    \"company_id\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:35.000Z",
+                          "updatedAt": "2026-07-28T02:37:35.000Z",
+                          "uid": "35240-3132199e-8ff2-4f4b-96d7-550b49afd15f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:35.000Z",
+                      "updatedAt": "2026-07-28T02:37:35.000Z",
+                      "uid": "35240-74f8f11e-93e1-4b64-860d-47c99ec3a164"
+                    },
+                    {
+                      "name": "Delete a comment related to a note",
+                      "id": "80293b1a-959e-4d8b-a80c-50cc0472cb0c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/notes/:id/comments/:commentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "notes",
+                            ":id",
+                            "comments",
+                            ":commentId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0c41cf72-44f3-4038-b460-3092e20caa60",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the note"
+                            },
+                            {
+                              "id": "36453b3a-b60e-4dfb-8c76-b3c074d28ba7",
+                              "key": "commentId",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the comment"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a comment."
+                      },
+                      "response": [
+                        {
+                          "id": "281003f5-4bac-444e-b00b-96a363e387d7",
+                          "name": "Delete a comment",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/notes/:id/comments/:commentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "notes",
+                                ":id",
+                                "comments",
+                                ":commentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "commentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T02:37:35.000Z",
+                          "updatedAt": "2026-07-28T02:37:35.000Z",
+                          "uid": "35240-281003f5-4bac-444e-b00b-96a363e387d7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:35.000Z",
+                      "updatedAt": "2026-07-28T02:37:35.000Z",
+                      "uid": "35240-80293b1a-959e-4d8b-a80c-50cc0472cb0c"
+                    }
+                  ],
+                  "id": "a10c3985-03a6-4bb8-a1dc-a51ab9a59b77",
+                  "createdAt": "2026-07-28T02:37:35.000Z",
+                  "updatedAt": "2026-07-28T02:37:35.000Z",
+                  "uid": "35240-a10c3985-03a6-4bb8-a1dc-a51ab9a59b77"
+                },
+                {
+                  "name": "Get all comments for a note",
+                  "id": "0963fd70-9bde-45fe-95e9-439cd2f7e372",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id/comments?start=0&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id",
+                        "comments"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination start",
+                          "key": "start",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Items shown per page",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c46dc79b-05b4-442c-9f40-c276aedf2fc7",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the note"
+                        }
+                      ]
+                    },
+                    "description": "Returns all comments associated with a note."
+                  },
+                  "response": [
+                    {
+                      "id": "3aa4b5fa-ec20-4c64-83a3-4a98e8a3750c",
+                      "name": "Get all comments",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/notes/:id/comments?start=0&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "notes",
+                            ":id",
+                            "comments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination start",
+                              "key": "start",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Items shown per page",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"uuid\": \"<uuid>\",\n      \"active_flag\": \"<boolean>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"content\": \"<string>\",\n      \"object_id\": \"<string>\",\n      \"object_type\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"updater_id\": \"<integer>\",\n      \"company_id\": \"<integer>\"\n    },\n    {\n      \"uuid\": \"<uuid>\",\n      \"active_flag\": \"<boolean>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"content\": \"<string>\",\n      \"object_id\": \"<string>\",\n      \"object_type\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"updater_id\": \"<integer>\",\n      \"company_id\": \"<integer>\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"next_start\": \"<integer>\",\n      \"start\": \"<integer>\",\n      \"limit\": \"<integer>\",\n      \"more_items_in_collection\": \"<boolean>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:35.000Z",
+                      "updatedAt": "2026-07-28T02:37:35.000Z",
+                      "uid": "35240-3aa4b5fa-ec20-4c64-83a3-4a98e8a3750c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:35.000Z",
+                  "updatedAt": "2026-07-28T02:37:35.000Z",
+                  "uid": "35240-0963fd70-9bde-45fe-95e9-439cd2f7e372"
+                },
+                {
+                  "name": "Add a comment to a note",
+                  "id": "44d716cb-7584-4f9b-a36d-2535d2cad20e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"content\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id/comments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id",
+                        "comments"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c01aa0e7-25b1-4bc9-92d8-6c560e88225b",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the note"
+                        }
+                      ]
+                    },
+                    "description": "Adds a new comment to a note."
+                  },
+                  "response": [
+                    {
+                      "id": "1816dd43-a1a0-49fb-9801-9ca4d4f1fb68",
+                      "name": "Add, update or get a comment",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"content\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/notes/:id/comments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "notes",
+                            ":id",
+                            "comments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"uuid\": \"<uuid>\",\n    \"active_flag\": \"<boolean>\",\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"content\": \"<string>\",\n    \"object_id\": \"<string>\",\n    \"object_type\": \"<string>\",\n    \"user_id\": \"<integer>\",\n    \"updater_id\": \"<integer>\",\n    \"company_id\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:35.000Z",
+                      "updatedAt": "2026-07-28T02:37:35.000Z",
+                      "uid": "35240-1816dd43-a1a0-49fb-9801-9ca4d4f1fb68"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:35.000Z",
+                  "updatedAt": "2026-07-28T02:37:35.000Z",
+                  "uid": "35240-44d716cb-7584-4f9b-a36d-2535d2cad20e"
+                }
+              ],
+              "id": "172c307c-fd2d-4399-b23f-5c0b1ecae03b",
+              "createdAt": "2026-07-28T02:37:35.000Z",
+              "updatedAt": "2026-07-28T02:37:35.000Z",
+              "uid": "35240-172c307c-fd2d-4399-b23f-5c0b1ecae03b"
+            },
+            {
+              "name": "Delete a note",
+              "id": "fa8d1e8f-9a47-4ccb-8631-f03b2c0e3e53",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notes/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4914781a-863a-4ae5-b16a-d973714e3fb9",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the note"
+                    }
+                  ]
+                },
+                "description": "Deletes a specific note."
+              },
+              "response": [
+                {
+                  "id": "45472b76-d4f3-434f-bb99-4ee63808ef0c",
+                  "name": "Delete a note",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:37:35.000Z",
+                  "updatedAt": "2026-07-28T02:37:35.000Z",
+                  "uid": "35240-45472b76-d4f3-434f-bb99-4ee63808ef0c"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:35.000Z",
+              "updatedAt": "2026-07-28T02:37:35.000Z",
+              "uid": "35240-fa8d1e8f-9a47-4ccb-8631-f03b2c0e3e53"
+            },
+            {
+              "name": "Get one note",
+              "id": "e55ad2be-f1bb-4907-9c10-cfd0ccbf0a2b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notes/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d7d3aec3-79b1-4060-a77b-b7c683055137",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the note"
+                    }
+                  ]
+                },
+                "description": "Returns details about a specific note."
+              },
+              "response": [
+                {
+                  "id": "16f6cbef-8c5e-47b3-aeea-7ffceb935a0a",
+                  "name": "Add, update or get a note",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"active_flag\": \"<boolean>\",\n    \"add_time\": \"<string>\",\n    \"content\": \"<string>\",\n    \"deal\": {\n      \"title\": \"<string>\"\n    },\n    \"lead_id\": \"<uuid>\",\n    \"deal_id\": \"<integer>\",\n    \"last_update_user_id\": \"<integer>\",\n    \"org_id\": \"<integer>\",\n    \"organization\": {\n      \"name\": \"<string>\"\n    },\n    \"person\": {\n      \"name\": \"<string>\"\n    },\n    \"person_id\": \"<integer>\",\n    \"project_id\": \"<integer>\",\n    \"project\": {\n      \"title\": \"<string>\"\n    },\n    \"task_id\": \"<integer>\",\n    \"task\": {\n      \"title\": \"<string>\"\n    },\n    \"pinned_to_deal_flag\": \"<boolean>\",\n    \"pinned_to_organization_flag\": \"<boolean>\",\n    \"pinned_to_person_flag\": \"<boolean>\",\n    \"pinned_to_project_flag\": \"<boolean>\",\n    \"pinned_to_task_flag\": \"<boolean>\",\n    \"update_time\": \"<string>\",\n    \"user\": {\n      \"email\": \"<string>\",\n      \"icon_url\": \"<string>\",\n      \"is_you\": \"<boolean>\",\n      \"name\": \"<string>\"\n    },\n    \"user_id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:35.000Z",
+                  "updatedAt": "2026-07-28T02:37:35.000Z",
+                  "uid": "35240-16f6cbef-8c5e-47b3-aeea-7ffceb935a0a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:35.000Z",
+              "updatedAt": "2026-07-28T02:37:35.000Z",
+              "uid": "35240-e55ad2be-f1bb-4907-9c10-cfd0ccbf0a2b"
+            },
+            {
+              "name": "Update a note",
+              "id": "18e994e7-0d42-4661-a911-45f9288c533d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"lead_id\": \"<uuid>\",\n  \"deal_id\": \"<integer>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"project_id\": \"<integer>\",\n  \"task_id\": \"<integer>\",\n  \"user_id\": \"<integer>\",\n  \"add_time\": \"<string>\",\n  \"pinned_to_lead_flag\": 1,\n  \"pinned_to_deal_flag\": 0,\n  \"pinned_to_organization_flag\": 0,\n  \"pinned_to_person_flag\": 1,\n  \"pinned_to_project_flag\": 1,\n  \"pinned_to_task_flag\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/notes/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ec8ea924-f2ec-424a-ae04-6033d5fc94cc",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the note"
+                    }
+                  ]
+                },
+                "description": "Updates a note."
+              },
+              "response": [
+                {
+                  "id": "eaec7054-7257-4906-b344-bfdb4931d173",
+                  "name": "Add, update or get a note",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"content\": \"<string>\",\n  \"lead_id\": \"<uuid>\",\n  \"deal_id\": \"<integer>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"project_id\": \"<integer>\",\n  \"task_id\": \"<integer>\",\n  \"user_id\": \"<integer>\",\n  \"add_time\": \"<string>\",\n  \"pinned_to_lead_flag\": 1,\n  \"pinned_to_deal_flag\": 0,\n  \"pinned_to_organization_flag\": 0,\n  \"pinned_to_person_flag\": 1,\n  \"pinned_to_project_flag\": 1,\n  \"pinned_to_task_flag\": 0\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"active_flag\": \"<boolean>\",\n    \"add_time\": \"<string>\",\n    \"content\": \"<string>\",\n    \"deal\": {\n      \"title\": \"<string>\"\n    },\n    \"lead_id\": \"<uuid>\",\n    \"deal_id\": \"<integer>\",\n    \"last_update_user_id\": \"<integer>\",\n    \"org_id\": \"<integer>\",\n    \"organization\": {\n      \"name\": \"<string>\"\n    },\n    \"person\": {\n      \"name\": \"<string>\"\n    },\n    \"person_id\": \"<integer>\",\n    \"project_id\": \"<integer>\",\n    \"project\": {\n      \"title\": \"<string>\"\n    },\n    \"task_id\": \"<integer>\",\n    \"task\": {\n      \"title\": \"<string>\"\n    },\n    \"pinned_to_deal_flag\": \"<boolean>\",\n    \"pinned_to_organization_flag\": \"<boolean>\",\n    \"pinned_to_person_flag\": \"<boolean>\",\n    \"pinned_to_project_flag\": \"<boolean>\",\n    \"pinned_to_task_flag\": \"<boolean>\",\n    \"update_time\": \"<string>\",\n    \"user\": {\n      \"email\": \"<string>\",\n      \"icon_url\": \"<string>\",\n      \"is_you\": \"<boolean>\",\n      \"name\": \"<string>\"\n    },\n    \"user_id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:35.000Z",
+                  "updatedAt": "2026-07-28T02:37:35.000Z",
+                  "uid": "35240-eaec7054-7257-4906-b344-bfdb4931d173"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:35.000Z",
+              "updatedAt": "2026-07-28T02:37:35.000Z",
+              "uid": "35240-18e994e7-0d42-4661-a911-45f9288c533d"
+            }
+          ],
+          "id": "16507bac-dd75-4ccb-b09f-f95a3eaf384c",
+          "createdAt": "2026-07-28T02:37:35.000Z",
+          "updatedAt": "2026-07-28T02:37:35.000Z",
+          "uid": "35240-16507bac-dd75-4ccb-b09f-f95a3eaf384c"
+        },
+        {
+          "name": "Get all notes",
+          "id": "847a22b7-026f-4038-b2cd-e1d058d7e8f5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/notes?user_id=<integer>&lead_id=<uuid>&deal_id=<integer>&person_id=<integer>&org_id=<integer>&project_id=<integer>&task_id=<integer>&start=0&limit=<integer>&sort=<string>&start_date=<date>&end_date=<date>&updated_since=<dateTime>&pinned_to_lead_flag=0&pinned_to_deal_flag=1&pinned_to_organization_flag=1&pinned_to_person_flag=1&pinned_to_project_flag=1&pinned_to_task_flag=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notes"
+              ],
+              "query": [
+                {
+                  "description": "The ID of the user whose notes to fetch. If omitted, notes by all users will be returned.",
+                  "key": "user_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The ID of the lead which notes to fetch. If omitted, notes about all leads will be returned.",
+                  "key": "lead_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "description": "The ID of the deal which notes to fetch. If omitted, notes about all deals will be returned.",
+                  "key": "deal_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The ID of the person whose notes to fetch. If omitted, notes about all persons will be returned.",
+                  "key": "person_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The ID of the organization which notes to fetch. If omitted, notes about all organizations will be returned.",
+                  "key": "org_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The ID of the project which notes to fetch. If omitted, notes about all projects will be returned.",
+                  "key": "project_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The ID of the task which notes to fetch. If omitted, notes about all tasks will be returned.",
+                  "key": "task_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Pagination start",
+                  "key": "start",
+                  "value": "0"
+                },
+                {
+                  "description": "Items shown per page",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The field names and sorting mode separated by a comma (`field_name_1 ASC`, `field_name_2 DESC`). Only first-level field keys are supported (no nested keys). Supported fields: `id`, `user_id`, `deal_id`, `person_id`, `org_id`, `content`, `add_time`, `update_time`.",
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The date in format of YYYY-MM-DD from which notes to fetch",
+                  "key": "start_date",
+                  "value": "<date>"
+                },
+                {
+                  "description": "The date in format of YYYY-MM-DD until which notes to fetch to",
+                  "key": "end_date",
+                  "value": "<date>"
+                },
+                {
+                  "description": "If set, only notes with an `update_time` later than or equal to this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z.",
+                  "key": "updated_since",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "If set, the results are filtered by note to lead pinning state",
+                  "key": "pinned_to_lead_flag",
+                  "value": "0"
+                },
+                {
+                  "description": "If set, the results are filtered by note to deal pinning state",
+                  "key": "pinned_to_deal_flag",
+                  "value": "1"
+                },
+                {
+                  "description": "If set, the results are filtered by note to organization pinning state",
+                  "key": "pinned_to_organization_flag",
+                  "value": "1"
+                },
+                {
+                  "description": "If set, the results are filtered by note to person pinning state",
+                  "key": "pinned_to_person_flag",
+                  "value": "1"
+                },
+                {
+                  "description": "If set, the results are filtered by note to project pinning state",
+                  "key": "pinned_to_project_flag",
+                  "value": "1"
+                },
+                {
+                  "description": "If set, the results are filtered by note to task pinning state",
+                  "key": "pinned_to_task_flag",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Returns all notes."
+          },
+          "response": [
+            {
+              "id": "d2f0158b-8479-4519-baec-430d9df67632",
+              "name": "Get all notes",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notes?user_id=<integer>&lead_id=<uuid>&deal_id=<integer>&person_id=<integer>&org_id=<integer>&project_id=<integer>&task_id=<integer>&start=0&limit=<integer>&sort=<string>&start_date=<date>&end_date=<date>&updated_since=<dateTime>&pinned_to_lead_flag=0&pinned_to_deal_flag=1&pinned_to_organization_flag=1&pinned_to_person_flag=1&pinned_to_project_flag=1&pinned_to_task_flag=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes"
+                  ],
+                  "query": [
+                    {
+                      "description": "The ID of the user whose notes to fetch. If omitted, notes by all users will be returned.",
+                      "key": "user_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The ID of the lead which notes to fetch. If omitted, notes about all leads will be returned.",
+                      "key": "lead_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "description": "The ID of the deal which notes to fetch. If omitted, notes about all deals will be returned.",
+                      "key": "deal_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The ID of the person whose notes to fetch. If omitted, notes about all persons will be returned.",
+                      "key": "person_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The ID of the organization which notes to fetch. If omitted, notes about all organizations will be returned.",
+                      "key": "org_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The ID of the project which notes to fetch. If omitted, notes about all projects will be returned.",
+                      "key": "project_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The ID of the task which notes to fetch. If omitted, notes about all tasks will be returned.",
+                      "key": "task_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination start",
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Items shown per page",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The field names and sorting mode separated by a comma (`field_name_1 ASC`, `field_name_2 DESC`). Only first-level field keys are supported (no nested keys). Supported fields: `id`, `user_id`, `deal_id`, `person_id`, `org_id`, `content`, `add_time`, `update_time`.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date in format of YYYY-MM-DD from which notes to fetch",
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "The date in format of YYYY-MM-DD until which notes to fetch to",
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "If set, only notes with an `update_time` later than or equal to this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z.",
+                      "key": "updated_since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "If set, the results are filtered by note to lead pinning state",
+                      "key": "pinned_to_lead_flag",
+                      "value": "0"
+                    },
+                    {
+                      "description": "If set, the results are filtered by note to deal pinning state",
+                      "key": "pinned_to_deal_flag",
+                      "value": "1"
+                    },
+                    {
+                      "description": "If set, the results are filtered by note to organization pinning state",
+                      "key": "pinned_to_organization_flag",
+                      "value": "1"
+                    },
+                    {
+                      "description": "If set, the results are filtered by note to person pinning state",
+                      "key": "pinned_to_person_flag",
+                      "value": "1"
+                    },
+                    {
+                      "description": "If set, the results are filtered by note to project pinning state",
+                      "key": "pinned_to_project_flag",
+                      "value": "1"
+                    },
+                    {
+                      "description": "If set, the results are filtered by note to task pinning state",
+                      "key": "pinned_to_task_flag",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"add_time\": \"<string>\",\n      \"content\": \"<string>\",\n      \"deal\": {\n        \"title\": \"<string>\"\n      },\n      \"lead_id\": \"<uuid>\",\n      \"deal_id\": \"<integer>\",\n      \"last_update_user_id\": \"<integer>\",\n      \"org_id\": \"<integer>\",\n      \"organization\": {\n        \"name\": \"<string>\"\n      },\n      \"person\": {\n        \"name\": \"<string>\"\n      },\n      \"person_id\": \"<integer>\",\n      \"project_id\": \"<integer>\",\n      \"project\": {\n        \"title\": \"<string>\"\n      },\n      \"task_id\": \"<integer>\",\n      \"task\": {\n        \"title\": \"<string>\"\n      },\n      \"pinned_to_deal_flag\": \"<boolean>\",\n      \"pinned_to_organization_flag\": \"<boolean>\",\n      \"pinned_to_person_flag\": \"<boolean>\",\n      \"pinned_to_project_flag\": \"<boolean>\",\n      \"pinned_to_task_flag\": \"<boolean>\",\n      \"update_time\": \"<string>\",\n      \"user\": {\n        \"email\": \"<string>\",\n        \"icon_url\": \"<string>\",\n        \"is_you\": \"<boolean>\",\n        \"name\": \"<string>\"\n      },\n      \"user_id\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"add_time\": \"<string>\",\n      \"content\": \"<string>\",\n      \"deal\": {\n        \"title\": \"<string>\"\n      },\n      \"lead_id\": \"<uuid>\",\n      \"deal_id\": \"<integer>\",\n      \"last_update_user_id\": \"<integer>\",\n      \"org_id\": \"<integer>\",\n      \"organization\": {\n        \"name\": \"<string>\"\n      },\n      \"person\": {\n        \"name\": \"<string>\"\n      },\n      \"person_id\": \"<integer>\",\n      \"project_id\": \"<integer>\",\n      \"project\": {\n        \"title\": \"<string>\"\n      },\n      \"task_id\": \"<integer>\",\n      \"task\": {\n        \"title\": \"<string>\"\n      },\n      \"pinned_to_deal_flag\": \"<boolean>\",\n      \"pinned_to_organization_flag\": \"<boolean>\",\n      \"pinned_to_person_flag\": \"<boolean>\",\n      \"pinned_to_project_flag\": \"<boolean>\",\n      \"pinned_to_task_flag\": \"<boolean>\",\n      \"update_time\": \"<string>\",\n      \"user\": {\n        \"email\": \"<string>\",\n        \"icon_url\": \"<string>\",\n        \"is_you\": \"<boolean>\",\n        \"name\": \"<string>\"\n      },\n      \"user_id\": \"<integer>\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"next_start\": \"<integer>\",\n      \"start\": \"<integer>\",\n      \"limit\": \"<integer>\",\n      \"more_items_in_collection\": \"<boolean>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:37:35.000Z",
+              "updatedAt": "2026-07-28T02:37:35.000Z",
+              "uid": "35240-d2f0158b-8479-4519-baec-430d9df67632"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:35.000Z",
+          "updatedAt": "2026-07-28T02:37:35.000Z",
+          "uid": "35240-847a22b7-026f-4038-b2cd-e1d058d7e8f5"
+        },
+        {
+          "name": "Add a note",
+          "id": "aada3c96-7158-4c31-9822-77e9fe0148c1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"<string>\",\n  \"lead_id\": \"<uuid>\",\n  \"deal_id\": \"<integer>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"project_id\": \"<integer>\",\n  \"task_id\": \"<integer>\",\n  \"user_id\": \"<integer>\",\n  \"add_time\": \"<string>\",\n  \"pinned_to_lead_flag\": 1,\n  \"pinned_to_deal_flag\": 1,\n  \"pinned_to_organization_flag\": 0,\n  \"pinned_to_person_flag\": 1,\n  \"pinned_to_project_flag\": 0,\n  \"pinned_to_task_flag\": 1\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/notes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notes"
+              ]
+            },
+            "description": "Adds a new note."
+          },
+          "response": [
+            {
+              "id": "ad9b52ca-70cf-4bbd-8af2-da165325b93f",
+              "name": "Add, update or get a note",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"lead_id\": \"<uuid>\",\n  \"deal_id\": \"<integer>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"project_id\": \"<integer>\",\n  \"task_id\": \"<integer>\",\n  \"user_id\": \"<integer>\",\n  \"add_time\": \"<string>\",\n  \"pinned_to_lead_flag\": 1,\n  \"pinned_to_deal_flag\": 1,\n  \"pinned_to_organization_flag\": 0,\n  \"pinned_to_person_flag\": 1,\n  \"pinned_to_project_flag\": 0,\n  \"pinned_to_task_flag\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/notes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"active_flag\": \"<boolean>\",\n    \"add_time\": \"<string>\",\n    \"content\": \"<string>\",\n    \"deal\": {\n      \"title\": \"<string>\"\n    },\n    \"lead_id\": \"<uuid>\",\n    \"deal_id\": \"<integer>\",\n    \"last_update_user_id\": \"<integer>\",\n    \"org_id\": \"<integer>\",\n    \"organization\": {\n      \"name\": \"<string>\"\n    },\n    \"person\": {\n      \"name\": \"<string>\"\n    },\n    \"person_id\": \"<integer>\",\n    \"project_id\": \"<integer>\",\n    \"project\": {\n      \"title\": \"<string>\"\n    },\n    \"task_id\": \"<integer>\",\n    \"task\": {\n      \"title\": \"<string>\"\n    },\n    \"pinned_to_deal_flag\": \"<boolean>\",\n    \"pinned_to_organization_flag\": \"<boolean>\",\n    \"pinned_to_person_flag\": \"<boolean>\",\n    \"pinned_to_project_flag\": \"<boolean>\",\n    \"pinned_to_task_flag\": \"<boolean>\",\n    \"update_time\": \"<string>\",\n    \"user\": {\n      \"email\": \"<string>\",\n      \"icon_url\": \"<string>\",\n      \"is_you\": \"<boolean>\",\n      \"name\": \"<string>\"\n    },\n    \"user_id\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:35.000Z",
+              "updatedAt": "2026-07-28T02:37:35.000Z",
+              "uid": "35240-ad9b52ca-70cf-4bbd-8af2-da165325b93f"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:35.000Z",
+          "updatedAt": "2026-07-28T02:37:35.000Z",
+          "uid": "35240-aada3c96-7158-4c31-9822-77e9fe0148c1"
+        }
+      ],
+      "id": "c4f0722b-4ae1-4d62-ab80-a51da55f8cc1",
+      "createdAt": "2026-07-28T02:37:35.000Z",
+      "updatedAt": "2026-07-28T02:37:35.000Z",
+      "uid": "35240-c4f0722b-4ae1-4d62-ab80-a51da55f8cc1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

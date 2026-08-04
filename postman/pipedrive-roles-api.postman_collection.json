@@ -1,0 +1,1575 @@
+{
+  "info": {
+    "_postman_id": "56e190b0-df00-41f3-91d3-88ef7d0b402f",
+    "name": "Pipedrive API v1 Activities Roles API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:28.000Z",
+    "updatedAt": "2026-07-28T02:38:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-56e190b0-df00-41f3-91d3-88ef7d0b402f"
+  },
+  "item": [
+    {
+      "name": "roles",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "assignments",
+              "item": [
+                {
+                  "name": "Delete a role assignment",
+                  "id": "d66f41f5-4a56-445a-8022-e8a3e9e9a7fa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"user_id\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id/assignments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id",
+                        "assignments"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2506ebac-2610-4274-b1d4-6c642e5294cf",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the role"
+                        }
+                      ]
+                    },
+                    "description": "Removes the assigned user from a role and adds to the default role."
+                  },
+                  "response": [
+                    {
+                      "id": "a42b0564-288b-48e6-8d38-07183499ee17",
+                      "name": "Delete assignment from a role",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/roles/:id/assignments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "roles",
+                            ":id",
+                            "assignments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:28.000Z",
+                      "updatedAt": "2026-07-28T02:38:28.000Z",
+                      "uid": "35240-a42b0564-288b-48e6-8d38-07183499ee17"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-d66f41f5-4a56-445a-8022-e8a3e9e9a7fa"
+                },
+                {
+                  "name": "List role assignments",
+                  "id": "a20444e3-2514-4697-8b72-7226e4ca1c95",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id/assignments?start=0&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id",
+                        "assignments"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination start",
+                          "key": "start",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Items shown per page",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "36614ac1-17c5-4234-806c-37eba88f82c3",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the role"
+                        }
+                      ]
+                    },
+                    "description": "Returns all users assigned to a role."
+                  },
+                  "response": [
+                    {
+                      "id": "3dd9419a-755f-4b09-b8c2-0450bb356295",
+                      "name": "List assignments for a role",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/roles/:id/assignments?start=0&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "roles",
+                            ":id",
+                            "assignments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination start",
+                              "key": "start",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Items shown per page",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"parent_role_id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"role_id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"parent_role_id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"role_id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": \"<integer>\",\n      \"limit\": \"<integer>\",\n      \"more_items_in_collection\": \"<boolean>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:28.000Z",
+                      "updatedAt": "2026-07-28T02:38:28.000Z",
+                      "uid": "35240-3dd9419a-755f-4b09-b8c2-0450bb356295"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-a20444e3-2514-4697-8b72-7226e4ca1c95"
+                },
+                {
+                  "name": "Add role assignment",
+                  "id": "e678e4cf-caab-4435-ac1a-ee10ba6f7593",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"user_id\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id/assignments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id",
+                        "assignments"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cd7aa6b0-707f-4cc1-b775-a281453b7cf9",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the role"
+                        }
+                      ]
+                    },
+                    "description": "Assigns a user to a role."
+                  },
+                  "response": [
+                    {
+                      "id": "75f336fb-d1ce-4df4-9140-2633506df25a",
+                      "name": "Add assignment for a role",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/roles/:id/assignments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "roles",
+                            ":id",
+                            "assignments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"user_id\": \"<integer>\",\n    \"role_id\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:28.000Z",
+                      "updatedAt": "2026-07-28T02:38:28.000Z",
+                      "uid": "35240-75f336fb-d1ce-4df4-9140-2633506df25a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-e678e4cf-caab-4435-ac1a-ee10ba6f7593"
+                }
+              ],
+              "id": "ce4fca87-6601-411d-b775-b8564fc83f7a",
+              "createdAt": "2026-07-28T02:38:28.000Z",
+              "updatedAt": "2026-07-28T02:38:28.000Z",
+              "uid": "35240-ce4fca87-6601-411d-b775-b8564fc83f7a"
+            },
+            {
+              "name": "settings",
+              "item": [
+                {
+                  "name": "List role settings",
+                  "id": "075811a4-dfae-4b32-afbf-581a73428784",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id/settings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id",
+                        "settings"
+                      ],
+                      "variable": [
+                        {
+                          "id": "aedf5bbe-036b-4114-b09f-26f3e9deff66",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the role"
+                        }
+                      ]
+                    },
+                    "description": "Returns the visibility settings of a specific role."
+                  },
+                  "response": [
+                    {
+                      "id": "8e324c09-0be2-48d2-ae89-2477e07a6f36",
+                      "name": "List role settings",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/roles/:id/settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "roles",
+                            ":id",
+                            "settings"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"deal_default_visibility\": \"<number>\",\n    \"lead_default_visibility\": \"<number>\",\n    \"org_default_visibility\": \"<number>\",\n    \"person_default_visibility\": \"<number>\",\n    \"product_default_visibility\": \"<number>\",\n    \"deal_access_level\": \"<number>\",\n    \"org_access_level\": \"<number>\",\n    \"person_access_level\": \"<number>\",\n    \"product_access_level\": \"<number>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:28.000Z",
+                      "updatedAt": "2026-07-28T02:38:28.000Z",
+                      "uid": "35240-8e324c09-0be2-48d2-ae89-2477e07a6f36"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-075811a4-dfae-4b32-afbf-581a73428784"
+                },
+                {
+                  "name": "Add or update role setting",
+                  "id": "a1489bae-abf2-4c63-a13c-f9c58bd22d7d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"setting_key\": \"person_default_visibility\",\n  \"value\": 1\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id/settings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id",
+                        "settings"
+                      ],
+                      "variable": [
+                        {
+                          "id": "41b58832-cd0b-4b6f-91a2-861e327ec0fc",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the role"
+                        }
+                      ]
+                    },
+                    "description": "Adds or updates the visibility setting for a role."
+                  },
+                  "response": [
+                    {
+                      "id": "05cd2753-f1de-4d3d-893f-79ec58057e20",
+                      "name": "List role settings",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"setting_key\": \"person_default_visibility\",\n  \"value\": 1\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/roles/:id/settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "roles",
+                            ":id",
+                            "settings"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"deal_default_visibility\": 5\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:28.000Z",
+                      "updatedAt": "2026-07-28T02:38:28.000Z",
+                      "uid": "35240-05cd2753-f1de-4d3d-893f-79ec58057e20"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-a1489bae-abf2-4c63-a13c-f9c58bd22d7d"
+                }
+              ],
+              "id": "bc311a36-b187-4d01-af60-1222642d1f30",
+              "createdAt": "2026-07-28T02:38:28.000Z",
+              "updatedAt": "2026-07-28T02:38:28.000Z",
+              "uid": "35240-bc311a36-b187-4d01-af60-1222642d1f30"
+            },
+            {
+              "name": "pipelines",
+              "item": [
+                {
+                  "name": "List pipeline visibility for a role",
+                  "id": "b9b19ff4-09ac-44da-96b6-0f75a52eb2fc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id/pipelines?visible=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id",
+                        "pipelines"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to return the visible or hidden pipelines for the role",
+                          "key": "visible",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "faac8c31-3787-4afb-94f0-16fe2c9cffec",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the role"
+                        }
+                      ]
+                    },
+                    "description": "Returns the list of either visible or hidden pipeline IDs for a specific role. For more information on pipeline visibility, please refer to the <a href=\"https://support.pipedrive.com/en/article/visibility-groups\" target=\"_blank\" rel=\"noopener noreferrer\">Visibility groups article</a>."
+                  },
+                  "response": [
+                    {
+                      "id": "0ef9261a-df19-4b73-ae70-5613d1ffcecf",
+                      "name": "Get either visible or hidden pipeline ids for a role",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/roles/:id/pipelines?visible=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "roles",
+                            ":id",
+                            "pipelines"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to return the visible or hidden pipelines for the role",
+                              "key": "visible",
+                              "value": "true"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"pipeline_ids\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"visible\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:28.000Z",
+                      "updatedAt": "2026-07-28T02:38:28.000Z",
+                      "uid": "35240-0ef9261a-df19-4b73-ae70-5613d1ffcecf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-b9b19ff4-09ac-44da-96b6-0f75a52eb2fc"
+                },
+                {
+                  "name": "Update pipeline visibility for a role",
+                  "id": "50dce1e3-d8e7-40d5-bb33-6563764fcf62",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"visible_pipeline_ids\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id/pipelines",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id",
+                        "pipelines"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2b55d48b-d2a9-408c-bc44-fbd6c1e8301e",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the role"
+                        }
+                      ]
+                    },
+                    "description": "Updates the specified pipelines to be visible and/or hidden for a specific role. For more information on pipeline visibility, please refer to the <a href=\"https://support.pipedrive.com/en/article/visibility-groups\" target=\"_blank\" rel=\"noopener noreferrer\">Visibility groups article</a>."
+                  },
+                  "response": [
+                    {
+                      "id": "f1248553-178f-43a2-9abe-75abf2c8aee5",
+                      "name": "Update pipeline visibility for a role",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"visible_pipeline_ids\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/roles/:id/pipelines",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "roles",
+                            ":id",
+                            "pipelines"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"pipeline_ids\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"visible\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:38:28.000Z",
+                      "updatedAt": "2026-07-28T02:38:28.000Z",
+                      "uid": "35240-f1248553-178f-43a2-9abe-75abf2c8aee5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-50dce1e3-d8e7-40d5-bb33-6563764fcf62"
+                }
+              ],
+              "id": "e556ebfa-1343-4064-a3c9-422b6f1cff28",
+              "createdAt": "2026-07-28T02:38:28.000Z",
+              "updatedAt": "2026-07-28T02:38:28.000Z",
+              "uid": "35240-e556ebfa-1343-4064-a3c9-422b6f1cff28"
+            },
+            {
+              "name": "Delete a role",
+              "id": "c096d157-9ce9-4041-8a8e-8c5d05402fc6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/roles/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "roles",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c60acc71-2b5a-4b30-8e90-cad639f8bb73",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the role"
+                    }
+                  ]
+                },
+                "description": "Marks a role as deleted."
+              },
+              "response": [
+                {
+                  "id": "29e54a20-339c-4984-8127-d63dab7e5000",
+                  "name": "Delete a role",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-29e54a20-339c-4984-8127-d63dab7e5000"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:28.000Z",
+              "updatedAt": "2026-07-28T02:38:28.000Z",
+              "uid": "35240-c096d157-9ce9-4041-8a8e-8c5d05402fc6"
+            },
+            {
+              "name": "Get one role",
+              "id": "ef6e1e51-9bbe-4339-9df6-48a67013cb22",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/roles/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "roles",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ba2ede29-9ee9-4206-affa-55585e506c46",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the role"
+                    }
+                  ]
+                },
+                "description": "Returns the details of a specific role."
+              },
+              "response": [
+                {
+                  "id": "f983ddbe-e12f-4ba0-9344-a593ae35b9c0",
+                  "name": "Get one role",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"parent_role_id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"active_flag\": \"<boolean>\",\n    \"assignment_count\": \"<string>\",\n    \"sub_role_count\": \"<string>\"\n  },\n  \"additional_data\": {\n    \"settings\": {\n      \"deal_default_visibility\": \"<number>\",\n      \"lead_default_visibility\": \"<number>\",\n      \"org_default_visibility\": \"<number>\",\n      \"person_default_visibility\": \"<number>\",\n      \"product_default_visibility\": \"<number>\",\n      \"deal_access_level\": \"<number>\",\n      \"org_access_level\": \"<number>\",\n      \"person_access_level\": \"<number>\",\n      \"product_access_level\": \"<number>\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-f983ddbe-e12f-4ba0-9344-a593ae35b9c0"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:28.000Z",
+              "updatedAt": "2026-07-28T02:38:28.000Z",
+              "uid": "35240-ef6e1e51-9bbe-4339-9df6-48a67013cb22"
+            },
+            {
+              "name": "Update role details",
+              "id": "47dcecef-05ce-401b-a8c6-8c13d68719a9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parent_role_id\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/roles/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "roles",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4f679d09-0fa8-4940-8d38-07412dbe592b",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the role"
+                    }
+                  ]
+                },
+                "description": "Updates the parent role and/or the name of a specific role."
+              },
+              "response": [
+                {
+                  "id": "2ecc9cb4-e17c-4db3-ae26-78e9d5d19529",
+                  "name": "Update role details",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"parent_role_id\": \"<integer>\",\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/roles/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "roles",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:38:28.000Z",
+                  "updatedAt": "2026-07-28T02:38:28.000Z",
+                  "uid": "35240-2ecc9cb4-e17c-4db3-ae26-78e9d5d19529"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:28.000Z",
+              "updatedAt": "2026-07-28T02:38:28.000Z",
+              "uid": "35240-47dcecef-05ce-401b-a8c6-8c13d68719a9"
+            }
+          ],
+          "id": "ce43fda3-9875-4a01-8dd1-49bfed53d32e",
+          "createdAt": "2026-07-28T02:38:28.000Z",
+          "updatedAt": "2026-07-28T02:38:28.000Z",
+          "uid": "35240-ce43fda3-9875-4a01-8dd1-49bfed53d32e"
+        },
+        {
+          "name": "Get all roles",
+          "id": "065a6c08-1c95-46b6-9366-1785716308ec",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/roles?start=0&limit=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "roles"
+              ],
+              "query": [
+                {
+                  "description": "Pagination start",
+                  "key": "start",
+                  "value": "0"
+                },
+                {
+                  "description": "Items shown per page",
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns all the roles within the company."
+          },
+          "response": [
+            {
+              "id": "ce6f00a1-3e8a-4f7a-86af-bb7104a46867",
+              "name": "Get all roles",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/roles?start=0&limit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination start",
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Items shown per page",
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"parent_role_id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"assignment_count\": \"<string>\",\n      \"sub_role_count\": \"<string>\",\n      \"level\": \"<integer>\"\n    },\n    {\n      \"parent_role_id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"assignment_count\": \"<string>\",\n      \"sub_role_count\": \"<string>\",\n      \"level\": \"<integer>\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": \"<integer>\",\n      \"limit\": \"<integer>\",\n      \"more_items_in_collection\": \"<boolean>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:38:28.000Z",
+              "updatedAt": "2026-07-28T02:38:28.000Z",
+              "uid": "35240-ce6f00a1-3e8a-4f7a-86af-bb7104a46867"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:28.000Z",
+          "updatedAt": "2026-07-28T02:38:28.000Z",
+          "uid": "35240-065a6c08-1c95-46b6-9366-1785716308ec"
+        },
+        {
+          "name": "Add a role",
+          "id": "fc4c0d6c-e217-4c28-8632-cb45f50cb9ee",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"parent_role_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/roles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "roles"
+              ]
+            },
+            "description": "Adds a new role."
+          },
+          "response": [
+            {
+              "id": "be4c1f72-10d0-46c9-89fa-6e7d3041cd75",
+              "name": "Add a role",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"parent_role_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/roles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "roles"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:38:28.000Z",
+              "updatedAt": "2026-07-28T02:38:28.000Z",
+              "uid": "35240-be4c1f72-10d0-46c9-89fa-6e7d3041cd75"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:28.000Z",
+          "updatedAt": "2026-07-28T02:38:28.000Z",
+          "uid": "35240-fc4c0d6c-e217-4c28-8632-cb45f50cb9ee"
+        }
+      ],
+      "id": "101b931a-3333-4289-b052-169b0b9af611",
+      "createdAt": "2026-07-28T02:38:28.000Z",
+      "updatedAt": "2026-07-28T02:38:28.000Z",
+      "uid": "35240-101b931a-3333-4289-b052-169b0b9af611"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

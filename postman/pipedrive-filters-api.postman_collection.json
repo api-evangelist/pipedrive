@@ -1,0 +1,871 @@
+{
+  "info": {
+    "_postman_id": "560f819a-deed-49ef-a812-b31737bce5a6",
+    "name": "Pipedrive API v1 Activities Filters API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:22.000Z",
+    "updatedAt": "2026-07-28T02:37:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-560f819a-deed-49ef-a812-b31737bce5a6"
+  },
+  "item": [
+    {
+      "name": "filters",
+      "item": [
+        {
+          "name": "helpers",
+          "item": [
+            {
+              "name": "Get all filter helpers",
+              "id": "ce9d0311-2619-4a1a-b556-4bed1f91ce75",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/filters/helpers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "filters",
+                    "helpers"
+                  ]
+                },
+                "description": "Returns all supported filter helpers. It helps to know what conditions and helpers are available when you want to <a href=\"/docs/api/v1/Filters#addFilter\">add</a> or <a href=\"/docs/api/v1/Filters#updateFilter\">update</a> filters. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-filter\" target=\"_blank\" rel=\"noopener noreferrer\">adding a filter</a>."
+              },
+              "response": [
+                {
+                  "id": "65311d1a-da52-4a91-8432-e48dbc9b6208",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/filters/helpers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "filters",
+                        "helpers"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T02:37:22.000Z",
+                  "updatedAt": "2026-07-28T02:37:22.000Z",
+                  "uid": "35240-65311d1a-da52-4a91-8432-e48dbc9b6208"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:22.000Z",
+              "updatedAt": "2026-07-28T02:37:22.000Z",
+              "uid": "35240-ce9d0311-2619-4a1a-b556-4bed1f91ce75"
+            }
+          ],
+          "id": "dba2a909-3e37-4127-95f6-b70eeca66a6b",
+          "createdAt": "2026-07-28T02:37:22.000Z",
+          "updatedAt": "2026-07-28T02:37:22.000Z",
+          "uid": "35240-dba2a909-3e37-4127-95f6-b70eeca66a6b"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Delete a filter",
+              "id": "b3b8ecee-7007-466d-ae97-309f398ffc5f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/filters/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "filters",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "844ddd77-0bf3-4a0d-b038-b521457834cc",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the filter"
+                    }
+                  ]
+                },
+                "description": "Marks a filter as deleted."
+              },
+              "response": [
+                {
+                  "id": "03b82370-2344-4e85-a4c9-e58c29c449be",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/filters/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "filters",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:22.000Z",
+                  "updatedAt": "2026-07-28T02:37:22.000Z",
+                  "uid": "35240-03b82370-2344-4e85-a4c9-e58c29c449be"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:22.000Z",
+              "updatedAt": "2026-07-28T02:37:22.000Z",
+              "uid": "35240-b3b8ecee-7007-466d-ae97-309f398ffc5f"
+            },
+            {
+              "name": "Get one filter",
+              "id": "43911535-466e-43b5-a2f0-30c531e16105",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/filters/:id?include_field_code=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "filters",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name",
+                      "key": "include_field_code",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "dd59d0a9-23a3-4056-bad9-c96f1cbe8921",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the filter"
+                    }
+                  ]
+                },
+                "description": "Returns data about a specific filter. Note that this also returns the condition lines of the filter."
+              },
+              "response": [
+                {
+                  "id": "ba244ff5-dd75-400c-870c-a410f571e572",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/filters/:id?include_field_code=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "filters",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name",
+                          "key": "include_field_code",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"filter_code\": \"<string>\",\n    \"is_editable\": \"<boolean>\",\n    \"active_flag\": \"<boolean>\",\n    \"type\": \"org\",\n    \"temporary_flag\": \"<boolean>\",\n    \"user_id\": \"<integer>\",\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"visible_to\": \"7\",\n    \"last_used_time\": \"<string>\",\n    \"custom_view_id\": \"<integer>\",\n    \"conditions\": {\n      \"glue\": \"and\",\n      \"conditions\": [\n        {\n          \"glue\": \"and\",\n          \"conditions\": [\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            },\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"glue\": \"or\",\n          \"conditions\": [\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            },\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:22.000Z",
+                  "updatedAt": "2026-07-28T02:37:22.000Z",
+                  "uid": "35240-ba244ff5-dd75-400c-870c-a410f571e572"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:22.000Z",
+              "updatedAt": "2026-07-28T02:37:22.000Z",
+              "uid": "35240-43911535-466e-43b5-a2f0-30c531e16105"
+            },
+            {
+              "name": "Update filter",
+              "id": "1a5d7d08-dcbb-4565-8982-552b061a961b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": {},\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/filters/:id?include_field_code=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "filters",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name",
+                      "key": "include_field_code",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "ae0a7be7-66f9-4b25-8b97-558f751a926a",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the filter"
+                    }
+                  ]
+                },
+                "description": "Updates an existing filter."
+              },
+              "response": [
+                {
+                  "id": "f6bd6a5c-6d83-4a60-940b-662dd9a9aec3",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"conditions\": {},\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/filters/:id?include_field_code=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "filters",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name",
+                          "key": "include_field_code",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"filter_code\": \"<string>\",\n    \"is_editable\": \"<boolean>\",\n    \"active_flag\": \"<boolean>\",\n    \"type\": \"activity\",\n    \"temporary_flag\": \"<boolean>\",\n    \"user_id\": \"<integer>\",\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"visible_to\": \"7\",\n    \"last_used_time\": \"<string>\",\n    \"custom_view_id\": \"<integer>\",\n    \"conditions\": {\n      \"glue\": \"and\",\n      \"conditions\": [\n        {\n          \"glue\": \"and\",\n          \"conditions\": [\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            },\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"glue\": \"or\",\n          \"conditions\": [\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            },\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:22.000Z",
+                  "updatedAt": "2026-07-28T02:37:22.000Z",
+                  "uid": "35240-f6bd6a5c-6d83-4a60-940b-662dd9a9aec3"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:22.000Z",
+              "updatedAt": "2026-07-28T02:37:22.000Z",
+              "uid": "35240-1a5d7d08-dcbb-4565-8982-552b061a961b"
+            }
+          ],
+          "id": "24efa17b-481c-4afd-83e9-8e15884e0058",
+          "createdAt": "2026-07-28T02:37:22.000Z",
+          "updatedAt": "2026-07-28T02:37:22.000Z",
+          "uid": "35240-24efa17b-481c-4afd-83e9-8e15884e0058"
+        },
+        {
+          "name": "Delete multiple filters in bulk",
+          "id": "9aeb88d3-3ed1-4284-beca-e5501488d311",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/filters?ids=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "filters"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The comma-separated filter IDs to delete",
+                  "key": "ids",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Marks multiple filters as deleted."
+          },
+          "response": [
+            {
+              "id": "c884e8fb-5c88-4137-a9f8-228895eb5ef3",
+              "name": "Success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/filters?ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "filters"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The comma-separated filter IDs to delete",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:37:22.000Z",
+              "updatedAt": "2026-07-28T02:37:22.000Z",
+              "uid": "35240-c884e8fb-5c88-4137-a9f8-228895eb5ef3"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:22.000Z",
+          "updatedAt": "2026-07-28T02:37:22.000Z",
+          "uid": "35240-9aeb88d3-3ed1-4284-beca-e5501488d311"
+        },
+        {
+          "name": "Get all filters",
+          "id": "1128d935-063c-403c-a8e6-8c5ae71d3143",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/filters?type=people",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "filters"
+              ],
+              "query": [
+                {
+                  "description": "The types of filters to fetch",
+                  "key": "type",
+                  "value": "people"
+                }
+              ]
+            },
+            "description": "Returns data about all filters."
+          },
+          "response": [
+            {
+              "id": "54e5a025-825f-4612-bbe3-76e8c49560c5",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/filters?type=people",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "filters"
+                  ],
+                  "query": [
+                    {
+                      "description": "The types of filters to fetch",
+                      "key": "type",
+                      "value": "people"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"filter_code\": \"<string>\",\n      \"is_editable\": \"<boolean>\",\n      \"active_flag\": \"<boolean>\",\n      \"type\": \"leads\",\n      \"temporary_flag\": \"<boolean>\",\n      \"user_id\": \"<integer>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"visible_to\": \"3\",\n      \"last_used_time\": \"<string>\",\n      \"custom_view_id\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"filter_code\": \"<string>\",\n      \"is_editable\": \"<boolean>\",\n      \"active_flag\": \"<boolean>\",\n      \"type\": \"products\",\n      \"temporary_flag\": \"<boolean>\",\n      \"user_id\": \"<integer>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"visible_to\": \"1\",\n      \"last_used_time\": \"<string>\",\n      \"custom_view_id\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:37:22.000Z",
+              "updatedAt": "2026-07-28T02:37:22.000Z",
+              "uid": "35240-54e5a025-825f-4612-bbe3-76e8c49560c5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:22.000Z",
+          "updatedAt": "2026-07-28T02:37:22.000Z",
+          "uid": "35240-1128d935-063c-403c-a8e6-8c5ae71d3143"
+        },
+        {
+          "name": "Add a new filter",
+          "id": "3a36b07e-26ed-4539-91ea-096a77a50512",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"conditions\": {},\n  \"type\": \"projects\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/filters?include_field_code=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "filters"
+              ],
+              "query": [
+                {
+                  "description": "If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name",
+                  "key": "include_field_code",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Adds a new filter, returns the ID upon success. Note that in the conditions JSON object only one first-level condition group is supported, and it must be glued with 'AND', and only two second level condition groups are supported of which one must be glued with 'AND' and the second with 'OR'. Other combinations do not work (yet) but the syntax supports introducing them in future. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-filter\" target=\"_blank\" rel=\"noopener noreferrer\">adding a filter</a>."
+          },
+          "response": [
+            {
+              "id": "9a804f75-617e-45bd-a781-5cd3b6e0c984",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"conditions\": {},\n  \"type\": \"projects\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/filters?include_field_code=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "filters"
+                  ],
+                  "query": [
+                    {
+                      "description": "If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name",
+                      "key": "include_field_code",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"filter_code\": \"<string>\",\n    \"is_editable\": \"<boolean>\",\n    \"active_flag\": \"<boolean>\",\n    \"type\": \"activity\",\n    \"temporary_flag\": \"<boolean>\",\n    \"user_id\": \"<integer>\",\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"visible_to\": \"7\",\n    \"last_used_time\": \"<string>\",\n    \"custom_view_id\": \"<integer>\",\n    \"conditions\": {\n      \"glue\": \"and\",\n      \"conditions\": [\n        {\n          \"glue\": \"and\",\n          \"conditions\": [\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            },\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"glue\": \"or\",\n          \"conditions\": [\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            },\n            {\n              \"object\": \"<string>\",\n              \"field_id\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": \"<string>\",\n              \"extra_value\": \"<string>\",\n              \"json_value_flag\": \"<boolean>\",\n              \"field_code\": \"<string>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:37:22.000Z",
+              "updatedAt": "2026-07-28T02:37:22.000Z",
+              "uid": "35240-9a804f75-617e-45bd-a781-5cd3b6e0c984"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:22.000Z",
+          "updatedAt": "2026-07-28T02:37:22.000Z",
+          "uid": "35240-3a36b07e-26ed-4539-91ea-096a77a50512"
+        }
+      ],
+      "id": "f48cf6c0-f88c-47ef-b088-c5c0bfcfd08b",
+      "createdAt": "2026-07-28T02:37:22.000Z",
+      "updatedAt": "2026-07-28T02:37:22.000Z",
+      "uid": "35240-f48cf6c0-f88c-47ef-b088-c5c0bfcfd08b"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

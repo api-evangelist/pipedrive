@@ -1,0 +1,627 @@
+{
+  "info": {
+    "_postman_id": "6cb598b7-5013-470c-9e88-5ec99917a765",
+    "name": "Pipedrive API v1 Activities DealInstallments API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:12.000Z",
+    "updatedAt": "2026-07-28T02:37:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6cb598b7-5013-470c-9e88-5ec99917a765"
+  },
+  "item": [
+    {
+      "name": "deals",
+      "item": [
+        {
+          "name": "installments",
+          "item": [
+            {
+              "name": "List installments added to a list of deals",
+              "id": "7afbeb21-330f-45f3-a55f-21de61410d4c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deals/installments?deal_ids=<integer>&deal_ids=<integer>&cursor=<string>&limit=<integer>&sort_by=id&sort_direction=asc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deals",
+                    "installments"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) An array of integers with the IDs of the deals for which the attached installments will be returned. A maximum of 100 deal IDs can be provided.",
+                      "key": "deal_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) An array of integers with the IDs of the deals for which the attached installments will be returned. A maximum of 100 deal IDs can be provided.",
+                      "key": "deal_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The field to sort by. Supported fields: `id`, `billing_date`, `deal_id`.",
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "description": "The sorting direction. Supported values: `asc`, `desc`.",
+                      "key": "sort_direction",
+                      "value": "asc"
+                    }
+                  ]
+                },
+                "description": "Lists installments attached to a list of deals.\n\nOnly available in Growth and above plans.\n"
+              },
+              "response": [
+                {
+                  "id": "51fcf68c-f7c2-410b-930e-f35c4fd9b88a",
+                  "name": "List installments added to a deal",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/deals/installments?deal_ids=<integer>&cursor=<string>&limit=<integer>&sort_by=id&sort_direction=asc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deals",
+                        "installments"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) An array of integers with the IDs of the deals for which the attached installments will be returned. A maximum of 100 deal IDs can be provided.",
+                          "key": "deal_ids",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                          "key": "cursor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The field to sort by. Supported fields: `id`, `billing_date`, `deal_id`.",
+                          "key": "sort_by",
+                          "value": "id"
+                        },
+                        {
+                          "description": "The sorting direction. Supported values: `asc`, `desc`.",
+                          "key": "sort_direction",
+                          "value": "asc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"billing_date\": \"<string>\",\n      \"description\": \"<string>\",\n      \"deal_id\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"billing_date\": \"<string>\",\n      \"description\": \"<string>\",\n      \"deal_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:37:13.000Z",
+                  "updatedAt": "2026-07-28T02:37:13.000Z",
+                  "uid": "35240-51fcf68c-f7c2-410b-930e-f35c4fd9b88a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:13.000Z",
+              "updatedAt": "2026-07-28T02:37:13.000Z",
+              "uid": "35240-7afbeb21-330f-45f3-a55f-21de61410d4c"
+            }
+          ],
+          "id": "c47b84a6-9609-46ea-a3bb-86342434de8f",
+          "createdAt": "2026-07-28T02:37:13.000Z",
+          "updatedAt": "2026-07-28T02:37:13.000Z",
+          "uid": "35240-c47b84a6-9609-46ea-a3bb-86342434de8f"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "installments",
+              "item": [
+                {
+                  "name": "{installment_id}",
+                  "item": [
+                    {
+                      "name": "Update an installment added to a deal",
+                      "id": "3db5b7ed-2e2a-4c04-978f-cd16ae10e978",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"billing_date\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deals/:id/installments/:installment_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deals",
+                            ":id",
+                            "installments",
+                            ":installment_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9b8bdb47-da48-46a3-9bed-348434a73f4c",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the deal"
+                            },
+                            {
+                              "id": "d029ff11-fc8c-4c26-bf97-34c40c68eeb8",
+                              "key": "installment_id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the installment"
+                            }
+                          ]
+                        },
+                        "description": "Edits an installment added to a deal.\n\nOnly available in Growth and above plans.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "35726c40-a8ad-4776-9609-c3cbd335fedc",
+                          "name": "Edited installment.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"description\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"billing_date\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/deals/:id/installments/:installment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deals",
+                                ":id",
+                                "installments",
+                                ":installment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "installment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"amount\": \"<number>\",\n    \"billing_date\": \"<string>\",\n    \"description\": \"<string>\",\n    \"deal_id\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:13.000Z",
+                          "updatedAt": "2026-07-28T02:37:13.000Z",
+                          "uid": "35240-35726c40-a8ad-4776-9609-c3cbd335fedc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:13.000Z",
+                      "updatedAt": "2026-07-28T02:37:13.000Z",
+                      "uid": "35240-3db5b7ed-2e2a-4c04-978f-cd16ae10e978"
+                    },
+                    {
+                      "name": "Delete an installment from a deal",
+                      "id": "f5334c5d-b0c3-4890-ae53-24631c3f3e0a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/deals/:id/installments/:installment_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deals",
+                            ":id",
+                            "installments",
+                            ":installment_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9ae9455b-f58b-45f2-ae3a-089c0fe3f22e",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the deal"
+                            },
+                            {
+                              "id": "a51f4de8-51e1-47aa-86da-5e81915a9d0c",
+                              "key": "installment_id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the installment"
+                            }
+                          ]
+                        },
+                        "description": "Removes an installment from a deal.\n\nOnly available in Growth and above plans.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "ff58847a-689b-4447-a4d0-210087a42fb8",
+                          "name": "The ID of the deleted installment.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/deals/:id/installments/:installment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "deals",
+                                ":id",
+                                "installments",
+                                ":installment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "installment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:13.000Z",
+                          "updatedAt": "2026-07-28T02:37:13.000Z",
+                          "uid": "35240-ff58847a-689b-4447-a4d0-210087a42fb8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:13.000Z",
+                      "updatedAt": "2026-07-28T02:37:13.000Z",
+                      "uid": "35240-f5334c5d-b0c3-4890-ae53-24631c3f3e0a"
+                    }
+                  ],
+                  "id": "8b809727-1d66-47f6-ac95-d88bacbf05ab",
+                  "createdAt": "2026-07-28T02:37:13.000Z",
+                  "updatedAt": "2026-07-28T02:37:13.000Z",
+                  "uid": "35240-8b809727-1d66-47f6-ac95-d88bacbf05ab"
+                },
+                {
+                  "name": "Add an installment to a deal",
+                  "id": "1ce6efca-848a-4815-85e4-05f97507ded2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"billing_date\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/deals/:id/installments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "deals",
+                        ":id",
+                        "installments"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d0587cc5-b8bb-4c8f-85c5-a7a6a63741c5",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the deal"
+                        }
+                      ]
+                    },
+                    "description": "Adds an installment to a deal.\n\nAn installment can only be added if the deal includes at least one one-time product. \nIf the deal contains at least one recurring product, adding installments is not allowed.\n\nOnly available in Growth and above plans.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "e9464941-0636-487e-a993-4efc8561b5f1",
+                      "name": "Installment added to deal",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"billing_date\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/deals/:id/installments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "deals",
+                            ":id",
+                            "installments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"amount\": \"<number>\",\n    \"billing_date\": \"<string>\",\n    \"description\": \"<string>\",\n    \"deal_id\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:13.000Z",
+                      "updatedAt": "2026-07-28T02:37:13.000Z",
+                      "uid": "35240-e9464941-0636-487e-a993-4efc8561b5f1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:13.000Z",
+                  "updatedAt": "2026-07-28T02:37:13.000Z",
+                  "uid": "35240-1ce6efca-848a-4815-85e4-05f97507ded2"
+                }
+              ],
+              "id": "5985046b-a49a-403d-a68e-b0e53e62cfac",
+              "createdAt": "2026-07-28T02:37:13.000Z",
+              "updatedAt": "2026-07-28T02:37:13.000Z",
+              "uid": "35240-5985046b-a49a-403d-a68e-b0e53e62cfac"
+            }
+          ],
+          "id": "522cba7a-cc61-4aa0-a1b0-cdfee4e427ad",
+          "createdAt": "2026-07-28T02:37:13.000Z",
+          "updatedAt": "2026-07-28T02:37:13.000Z",
+          "uid": "35240-522cba7a-cc61-4aa0-a1b0-cdfee4e427ad"
+        }
+      ],
+      "id": "2f14e1bd-8f3c-4714-b9d1-bd0277c17e92",
+      "createdAt": "2026-07-28T02:37:13.000Z",
+      "updatedAt": "2026-07-28T02:37:13.000Z",
+      "uid": "35240-2f14e1bd-8f3c-4714-b9d1-bd0277c17e92"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

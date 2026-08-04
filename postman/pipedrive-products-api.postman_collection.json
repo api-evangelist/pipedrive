@@ -1,0 +1,3023 @@
+{
+  "info": {
+    "_postman_id": "2a48dfac-e237-4366-bdec-dc18d8e13c51",
+    "name": "Pipedrive API v1 Activities Products API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:52.000Z",
+    "updatedAt": "2026-07-28T02:37:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2a48dfac-e237-4366-bdec-dc18d8e13c51"
+  },
+  "item": [
+    {
+      "name": "products",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "deals",
+              "item": [
+                {
+                  "name": "Get deals where a product is attached to",
+                  "id": "13db3583-5f22-41a6-8166-b485f8179c89",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/deals?start=0&limit=<integer>&status=all_not_deleted",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "deals"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination start",
+                          "key": "start",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Items shown per page",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Only fetch deals with a specific status. If omitted, all not deleted deals are returned. If set to deleted, deals that have been deleted up to 30 days ago will be included.",
+                          "key": "status",
+                          "value": "all_not_deleted"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "912b1595-a1bb-4041-afd1-3635bfe3622d",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Returns data about deals that have a product attached to it."
+                  },
+                  "response": [
+                    {
+                      "id": "6f451be8-6235-4018-8fa9-d7e2bbd4fd50",
+                      "name": "The data of deals that have a product attached",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/deals?start=0&limit=<integer>&status=all_not_deleted",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "deals"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination start",
+                              "key": "start",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Items shown per page",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Only fetch deals with a specific status. If omitted, all not deleted deals are returned. If set to deleted, deals that have been deleted up to 30 days ago will be included.",
+                              "key": "status",
+                              "value": "all_not_deleted"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"creator_user_id\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"has_pic\": \"<boolean>\",\n        \"pic_hash\": \"<string>\",\n        \"active_flag\": \"<boolean>\",\n        \"value\": \"<integer>\"\n      },\n      \"user_id\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"has_pic\": \"<boolean>\",\n        \"pic_hash\": \"<string>\",\n        \"active_flag\": \"<boolean>\",\n        \"value\": \"<integer>\"\n      },\n      \"person_id\": {\n        \"active_flag\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"email\": [\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          },\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          }\n        ],\n        \"phone\": [\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          },\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          }\n        ],\n        \"owner_id\": \"<integer>\",\n        \"value\": \"<integer>\"\n      },\n      \"org_id\": {\n        \"name\": \"<string>\",\n        \"people_count\": \"<integer>\",\n        \"owner_id\": \"<integer>\",\n        \"address\": \"<string>\",\n        \"active_flag\": \"<boolean>\",\n        \"cc_email\": \"<string>\",\n        \"value\": \"<integer>\"\n      },\n      \"stage_id\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"value\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"stage_change_time\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"deleted\": \"<boolean>\",\n      \"is_archived\": \"<boolean>\",\n      \"status\": \"<string>\",\n      \"probability\": \"<number>\",\n      \"next_activity_date\": \"<string>\",\n      \"next_activity_time\": \"<string>\",\n      \"next_activity_id\": \"<integer>\",\n      \"last_activity_id\": \"<integer>\",\n      \"last_activity_date\": \"<string>\",\n      \"lost_reason\": \"<string>\",\n      \"visible_to\": \"<string>\",\n      \"close_time\": \"<string>\",\n      \"pipeline_id\": \"<integer>\",\n      \"won_time\": \"<string>\",\n      \"first_won_time\": \"<string>\",\n      \"lost_time\": \"<string>\",\n      \"products_count\": \"<integer>\",\n      \"files_count\": \"<integer>\",\n      \"notes_count\": \"<integer>\",\n      \"followers_count\": \"<integer>\",\n      \"email_messages_count\": \"<integer>\",\n      \"activities_count\": \"<integer>\",\n      \"done_activities_count\": \"<integer>\",\n      \"undone_activities_count\": \"<integer>\",\n      \"participants_count\": \"<integer>\",\n      \"expected_close_date\": \"<date>\",\n      \"last_incoming_mail_time\": \"<string>\",\n      \"last_outgoing_mail_time\": \"<string>\",\n      \"label\": \"<string>\",\n      \"stage_order_nr\": \"<integer>\",\n      \"person_name\": \"<string>\",\n      \"org_name\": \"<string>\",\n      \"next_activity_subject\": \"<string>\",\n      \"next_activity_type\": \"<string>\",\n      \"next_activity_duration\": \"<string>\",\n      \"next_activity_note\": \"<string>\",\n      \"formatted_value\": \"<string>\",\n      \"weighted_value\": \"<number>\",\n      \"formatted_weighted_value\": \"<string>\",\n      \"weighted_value_currency\": \"<string>\",\n      \"rotten_time\": \"<string>\",\n      \"owner_name\": \"<string>\",\n      \"cc_email\": \"<string>\",\n      \"org_hidden\": \"<boolean>\",\n      \"person_hidden\": \"<boolean>\",\n      \"origin\": \"<string>\",\n      \"origin_id\": \"<string>\",\n      \"channel\": \"<integer>\",\n      \"channel_id\": \"<string>\",\n      \"arr\": \"<number>\",\n      \"mrr\": \"<number>\",\n      \"acv\": \"<number>\",\n      \"arr_currency\": \"<string>\",\n      \"mrr_currency\": \"<string>\",\n      \"acv_currency\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"creator_user_id\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"has_pic\": \"<boolean>\",\n        \"pic_hash\": \"<string>\",\n        \"active_flag\": \"<boolean>\",\n        \"value\": \"<integer>\"\n      },\n      \"user_id\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"has_pic\": \"<boolean>\",\n        \"pic_hash\": \"<string>\",\n        \"active_flag\": \"<boolean>\",\n        \"value\": \"<integer>\"\n      },\n      \"person_id\": {\n        \"active_flag\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"email\": [\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          },\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          }\n        ],\n        \"phone\": [\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          },\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          }\n        ],\n        \"owner_id\": \"<integer>\",\n        \"value\": \"<integer>\"\n      },\n      \"org_id\": {\n        \"name\": \"<string>\",\n        \"people_count\": \"<integer>\",\n        \"owner_id\": \"<integer>\",\n        \"address\": \"<string>\",\n        \"active_flag\": \"<boolean>\",\n        \"cc_email\": \"<string>\",\n        \"value\": \"<integer>\"\n      },\n      \"stage_id\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"value\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"stage_change_time\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"deleted\": \"<boolean>\",\n      \"is_archived\": \"<boolean>\",\n      \"status\": \"<string>\",\n      \"probability\": \"<number>\",\n      \"next_activity_date\": \"<string>\",\n      \"next_activity_time\": \"<string>\",\n      \"next_activity_id\": \"<integer>\",\n      \"last_activity_id\": \"<integer>\",\n      \"last_activity_date\": \"<string>\",\n      \"lost_reason\": \"<string>\",\n      \"visible_to\": \"<string>\",\n      \"close_time\": \"<string>\",\n      \"pipeline_id\": \"<integer>\",\n      \"won_time\": \"<string>\",\n      \"first_won_time\": \"<string>\",\n      \"lost_time\": \"<string>\",\n      \"products_count\": \"<integer>\",\n      \"files_count\": \"<integer>\",\n      \"notes_count\": \"<integer>\",\n      \"followers_count\": \"<integer>\",\n      \"email_messages_count\": \"<integer>\",\n      \"activities_count\": \"<integer>\",\n      \"done_activities_count\": \"<integer>\",\n      \"undone_activities_count\": \"<integer>\",\n      \"participants_count\": \"<integer>\",\n      \"expected_close_date\": \"<date>\",\n      \"last_incoming_mail_time\": \"<string>\",\n      \"last_outgoing_mail_time\": \"<string>\",\n      \"label\": \"<string>\",\n      \"stage_order_nr\": \"<integer>\",\n      \"person_name\": \"<string>\",\n      \"org_name\": \"<string>\",\n      \"next_activity_subject\": \"<string>\",\n      \"next_activity_type\": \"<string>\",\n      \"next_activity_duration\": \"<string>\",\n      \"next_activity_note\": \"<string>\",\n      \"formatted_value\": \"<string>\",\n      \"weighted_value\": \"<number>\",\n      \"formatted_weighted_value\": \"<string>\",\n      \"weighted_value_currency\": \"<string>\",\n      \"rotten_time\": \"<string>\",\n      \"owner_name\": \"<string>\",\n      \"cc_email\": \"<string>\",\n      \"org_hidden\": \"<boolean>\",\n      \"person_hidden\": \"<boolean>\",\n      \"origin\": \"<string>\",\n      \"origin_id\": \"<string>\",\n      \"channel\": \"<integer>\",\n      \"channel_id\": \"<string>\",\n      \"arr\": \"<number>\",\n      \"mrr\": \"<number>\",\n      \"acv\": \"<number>\",\n      \"arr_currency\": \"<string>\",\n      \"mrr_currency\": \"<string>\",\n      \"acv_currency\": \"<string>\"\n    }\n  ],\n  \"additional_data\": {\n    \"start\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"more_items_in_collection\": \"<boolean>\"\n  },\n  \"related_objects\": {\n    \"organization\": {\n      \"ORGANIZATION_ID\": {\n        \"active_flag\": \"<boolean>\",\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"people_count\": \"<integer>\",\n        \"owner_id\": \"<integer>\",\n        \"address\": \"<string>\",\n        \"cc_email\": \"<string>\"\n      }\n    },\n    \"person\": {\n      \"PERSON_ID\": {\n        \"active_flag\": \"<boolean>\",\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"email\": [\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          },\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          }\n        ],\n        \"phone\": [\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          },\n          {\n            \"label\": \"<string>\",\n            \"value\": \"<string>\",\n            \"primary\": \"<boolean>\"\n          }\n        ],\n        \"owner_id\": \"<integer>\"\n      }\n    },\n    \"user\": {\n      \"USER_ID\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"has_pic\": \"<integer>\",\n        \"pic_hash\": \"<string>\",\n        \"active_flag\": \"<boolean>\"\n      }\n    },\n    \"stage\": {\n      \"id\": \"<integer>\",\n      \"order_nr\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"active_flag\": \"<boolean>\",\n      \"deal_probability\": \"<integer>\",\n      \"pipeline_id\": \"<integer>\",\n      \"rotten_flag\": \"<boolean>\",\n      \"rotten_days\": \"<integer>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\"\n    },\n    \"pipeline\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"url_title\": \"<string>\",\n      \"order_nr\": \"<integer>\",\n      \"active\": \"<boolean>\",\n      \"deal_probability\": \"<boolean>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-6f451be8-6235-4018-8fa9-d7e2bbd4fd50"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-13db3583-5f22-41a6-8166-b485f8179c89"
+                }
+              ],
+              "id": "d1bf2ee3-25f7-47df-9a3c-0211c7d36df7",
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-d1bf2ee3-25f7-47df-9a3c-0211c7d36df7"
+            },
+            {
+              "name": "files",
+              "item": [
+                {
+                  "name": "List files attached to a product",
+                  "id": "3cea3cd9-c280-43a7-93ca-4742a0b00d01",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/files?start=0&limit=<integer>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "files"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination start",
+                          "key": "start",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Items shown per page. Please note that a maximum value of 100 is allowed.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Supported fields: `id`, `update_time`",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c8d3baf4-0ed2-4e68-999b-17a877a2d1ec",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Lists files associated with a product."
+                  },
+                  "response": [
+                    {
+                      "id": "dab7c1f7-f5af-4350-801a-f16ec64118b8",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/files?start=0&limit=<integer>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "files"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination start",
+                              "key": "start",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Items shown per page. Please note that a maximum value of 100 is allowed.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Supported fields: `id`, `update_time`",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"product_id\": \"<integer>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"file_name\": \"<string>\",\n      \"file_size\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"inline_flag\": \"<boolean>\",\n      \"remote_location\": \"<string>\",\n      \"remote_id\": \"<string>\",\n      \"s3_bucket\": \"<string>\",\n      \"product_name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"product_id\": \"<integer>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"file_name\": \"<string>\",\n      \"file_size\": \"<integer>\",\n      \"active_flag\": \"<boolean>\",\n      \"inline_flag\": \"<boolean>\",\n      \"remote_location\": \"<string>\",\n      \"remote_id\": \"<string>\",\n      \"s3_bucket\": \"<string>\",\n      \"product_name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"additional_data\": {\n    \"start\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"more_items_in_collection\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-dab7c1f7-f5af-4350-801a-f16ec64118b8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-3cea3cd9-c280-43a7-93ca-4742a0b00d01"
+                }
+              ],
+              "id": "08cd3ec0-5195-4356-a569-c039d402b0be",
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-08cd3ec0-5195-4356-a569-c039d402b0be"
+            },
+            {
+              "name": "followers",
+              "item": [
+                {
+                  "name": "{follower_id}",
+                  "item": [
+                    {
+                      "name": "Delete a follower from a product",
+                      "id": "b4c374fb-441c-4843-a94b-68f167d5c245",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/followers/:follower_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "followers",
+                            ":follower_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a45e8232-3c9d-4963-b386-30d9cdfb5d02",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the product"
+                            },
+                            {
+                              "id": "cc2f7fca-b8d8-4129-82e9-98ce3aea2136",
+                              "key": "follower_id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the relationship between the follower and the product"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a follower from a product."
+                      },
+                      "response": [
+                        {
+                          "id": "9bfd3e3b-cfc2-4725-8def-b86d6c65a387",
+                          "name": "Deletes a follower from a product",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/products/:id/followers/:follower_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "products",
+                                ":id",
+                                "followers",
+                                ":follower_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "follower_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:52.000Z",
+                          "updatedAt": "2026-07-28T02:37:52.000Z",
+                          "uid": "35240-9bfd3e3b-cfc2-4725-8def-b86d6c65a387"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-b4c374fb-441c-4843-a94b-68f167d5c245"
+                    }
+                  ],
+                  "id": "514d5d72-6e6d-431a-a4d4-1fa1c815d923",
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-514d5d72-6e6d-431a-a4d4-1fa1c815d923"
+                },
+                {
+                  "name": "changelog",
+                  "item": [
+                    {
+                      "name": "List followers changelog of a product",
+                      "id": "e919ea06-7c29-4aa7-868c-79df27a2d7d2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/followers/changelog?limit=<integer>&cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "followers",
+                            "changelog"
+                          ],
+                          "query": [
+                            {
+                              "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e6c507c3-d03c-4e52-af0c-6e444184ee0b",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the product"
+                            }
+                          ]
+                        },
+                        "description": "Lists changelogs about users have followed the product."
+                      },
+                      "response": [
+                        {
+                          "id": "1cccffe3-510a-4b8a-a9a1-ebd55dbf6575",
+                          "name": "List entity followers",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/products/:id/followers/changelog?limit=<integer>&cursor=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "products",
+                                ":id",
+                                "followers",
+                                "changelog"
+                              ],
+                              "query": [
+                                {
+                                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"action\": \"<string>\",\n      \"actor_user_id\": \"<integer>\",\n      \"follower_user_id\": \"<integer>\",\n      \"time\": \"<string>\"\n    },\n    {\n      \"action\": \"<string>\",\n      \"actor_user_id\": \"<integer>\",\n      \"follower_user_id\": \"<integer>\",\n      \"time\": \"<string>\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:52.000Z",
+                          "updatedAt": "2026-07-28T02:37:52.000Z",
+                          "uid": "35240-1cccffe3-510a-4b8a-a9a1-ebd55dbf6575"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-e919ea06-7c29-4aa7-868c-79df27a2d7d2"
+                    }
+                  ],
+                  "id": "1dec1169-ce8f-4a7c-9288-7b7cdcdea2fb",
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-1dec1169-ce8f-4a7c-9288-7b7cdcdea2fb"
+                },
+                {
+                  "name": "List followers of a product",
+                  "id": "ec7ad485-8b83-4c35-96db-6c47c4458dbf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/followers?start=0&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "followers"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination start",
+                          "key": "start",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Items shown per page",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2b94a47e-1c4a-4426-9e40-586384e2342e",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Lists the followers of a product."
+                  },
+                  "response": [
+                    {
+                      "id": "e628c470-0f05-4f44-81bf-866bcda1864a",
+                      "name": "Lists the followers of a product",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/followers?start=0&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "followers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination start",
+                              "key": "start",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Items shown per page",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"user_id\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"product_id\": \"<integer>\",\n      \"add_time\": \"<string>\"\n    },\n    {\n      \"user_id\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"product_id\": \"<integer>\",\n      \"add_time\": \"<string>\"\n    }\n  ],\n  \"additional_data\": {\n    \"start\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"more_items_in_collection\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-e628c470-0f05-4f44-81bf-866bcda1864a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-ec7ad485-8b83-4c35-96db-6c47c4458dbf"
+                },
+                {
+                  "name": "Add a follower to a product",
+                  "id": "51023f69-51ad-403d-baba-e14c42245b6f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"user_id\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/followers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "followers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "432d5c56-c13e-43b6-adb1-f9c24cc88c99",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Adds a follower to a product."
+                  },
+                  "response": [
+                    {
+                      "id": "7162fbd5-1fcf-4a2a-a49e-2df169f08ee0",
+                      "name": "Adds a follower to a product",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"user_id\": \"<integer>\",\n    \"id\": \"<integer>\",\n    \"product_id\": \"<integer>\",\n    \"add_time\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-7162fbd5-1fcf-4a2a-a49e-2df169f08ee0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-51023f69-51ad-403d-baba-e14c42245b6f"
+                }
+              ],
+              "id": "97841335-f9ef-4d34-a90d-0910e53467af",
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-97841335-f9ef-4d34-a90d-0910e53467af"
+            },
+            {
+              "name": "permittedUsers",
+              "item": [
+                {
+                  "name": "List permitted users",
+                  "id": "fed86c39-2169-49b0-a4c5-9063881c0afb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/permittedUsers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "permittedUsers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "edcb98fb-1320-4612-8f47-564f76cf8d52",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Lists users permitted to access a product."
+                  },
+                  "response": [
+                    {
+                      "id": "f92120c2-0255-441a-b3e0-0ac6f153140f",
+                      "name": "Lists users permitted to access a product",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/permittedUsers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "permittedUsers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-f92120c2-0255-441a-b3e0-0ac6f153140f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-fed86c39-2169-49b0-a4c5-9063881c0afb"
+                }
+              ],
+              "id": "e0c5f4bb-1b98-4573-93aa-638a16654999",
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-e0c5f4bb-1b98-4573-93aa-638a16654999"
+            },
+            {
+              "name": "duplicate",
+              "item": [
+                {
+                  "name": "Duplicate a product",
+                  "id": "f5a0cf0d-da6d-4810-803d-61ca84578013",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/duplicate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "duplicate"
+                      ],
+                      "variable": [
+                        {
+                          "id": "836d33e1-9197-4c8c-88db-940a4d36f24f",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Creates a duplicate of an existing product including all variations, prices, and custom fields."
+                  },
+                  "response": [
+                    {
+                      "id": "3a4a7fad-e6fb-4470-8932-0534d8e789b3",
+                      "name": "Duplicate product data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/duplicate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "duplicate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<number>\",\n    \"name\": \"<string>\",\n    \"code\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"tax\": 0,\n    \"is_deleted\": false,\n    \"is_linkable\": true,\n    \"visible_to\": 5,\n    \"owner_id\": \"<integer>\",\n    \"custom_fields\": {\n      \"sint78\": \"officia laboris ad irure\",\n      \"ex_3c0\": true\n    },\n    \"billing_frequency\": \"one-time\",\n    \"billing_frequency_cycles\": null\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-3a4a7fad-e6fb-4470-8932-0534d8e789b3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-f5a0cf0d-da6d-4810-803d-61ca84578013"
+                }
+              ],
+              "id": "a68628ff-ef95-4931-8ab7-fc942b94be48",
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-a68628ff-ef95-4931-8ab7-fc942b94be48"
+            },
+            {
+              "name": "variations",
+              "item": [
+                {
+                  "name": "{product_variation_id}",
+                  "item": [
+                    {
+                      "name": "Update a product variation",
+                      "id": "c71a3d21-0398-4e1c-82a9-34cccb8f1498",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/variations/:product_variation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "variations",
+                            ":product_variation_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "dcad13a2-72ca-4757-a852-42f6c638c96e",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the product"
+                            },
+                            {
+                              "id": "1df03f90-67dd-4bd8-a5b4-f5bffdd858e4",
+                              "key": "product_variation_id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the product variation"
+                            }
+                          ]
+                        },
+                        "description": "Updates product variation data."
+                      },
+                      "response": [
+                        {
+                          "id": "8523ba1d-b265-4e56-bedf-decdfd88e6fc",
+                          "name": "Update product variation data",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/products/:id/variations/:product_variation_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "products",
+                                ":id",
+                                "variations",
+                                ":product_variation_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "product_variation_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<number>\",\n    \"name\": \"<string>\",\n    \"product_id\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:52.000Z",
+                          "updatedAt": "2026-07-28T02:37:52.000Z",
+                          "uid": "35240-8523ba1d-b265-4e56-bedf-decdfd88e6fc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-c71a3d21-0398-4e1c-82a9-34cccb8f1498"
+                    },
+                    {
+                      "name": "Delete a product variation",
+                      "id": "3cf52f6b-3d84-4fe9-8e21-6b0badf7d2b3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/variations/:product_variation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "variations",
+                            ":product_variation_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "034f6e80-aa00-4ac6-8205-521ad336f632",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the product"
+                            },
+                            {
+                              "id": "cc06e77f-ffd5-4361-bc95-126b59ed19d0",
+                              "key": "product_variation_id",
+                              "value": "<integer>",
+                              "description": "(Required) The ID of the product variation"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a product variation."
+                      },
+                      "response": [
+                        {
+                          "id": "d8914b15-4a24-4171-90a2-3453a9b88f1d",
+                          "name": "Delete a product variation",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/products/:id/variations/:product_variation_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "products",
+                                ":id",
+                                "variations",
+                                ":product_variation_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "product_variation_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:37:52.000Z",
+                          "updatedAt": "2026-07-28T02:37:52.000Z",
+                          "uid": "35240-d8914b15-4a24-4171-90a2-3453a9b88f1d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-3cf52f6b-3d84-4fe9-8e21-6b0badf7d2b3"
+                    }
+                  ],
+                  "id": "aaf6a6e6-9c4c-472c-ab39-46cd294e55f3",
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-aaf6a6e6-9c4c-472c-ab39-46cd294e55f3"
+                },
+                {
+                  "name": "Get all product variations",
+                  "id": "508304d6-229b-455a-9cef-98e0556cbd07",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/variations?cursor=<string>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "variations"
+                      ],
+                      "query": [
+                        {
+                          "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                          "key": "cursor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "3e9c4635-da5e-41ff-aa2c-ba58a8664d55",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Returns data about all product variations."
+                  },
+                  "response": [
+                    {
+                      "id": "8928f8ec-2490-4194-a4db-e19e44cb91e9",
+                      "name": "List of product variations",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/variations?cursor=<string>&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "variations"
+                          ],
+                          "query": [
+                            {
+                              "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"product_id\": \"<integer>\"\n    },\n    {\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"product_id\": \"<integer>\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-8928f8ec-2490-4194-a4db-e19e44cb91e9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-508304d6-229b-455a-9cef-98e0556cbd07"
+                },
+                {
+                  "name": "Add a product variation",
+                  "id": "8b863004-99ff-4f41-8bf5-5c37e7a9afcb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/variations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "variations"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ec8a9dd6-fc20-454d-96fb-f1a037e16870",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Adds a new product variation."
+                  },
+                  "response": [
+                    {
+                      "id": "93498adc-c485-4910-b7f7-152b61406024",
+                      "name": "Add a product variation",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/variations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "variations"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<number>\",\n    \"name\": \"<string>\",\n    \"product_id\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-93498adc-c485-4910-b7f7-152b61406024"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-8b863004-99ff-4f41-8bf5-5c37e7a9afcb"
+                }
+              ],
+              "id": "ccd4bef5-1535-4b28-a0b4-73e4675455c0",
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-ccd4bef5-1535-4b28-a0b4-73e4675455c0"
+            },
+            {
+              "name": "images",
+              "item": [
+                {
+                  "name": "Get image of a product",
+                  "id": "989eb53f-6f06-478f-b24b-0b59f0c1aafc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "images"
+                      ],
+                      "variable": [
+                        {
+                          "id": "50886830-0702-4df4-a34e-49526fa34a01",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the image of a product. The public URL has a limited lifetime of 7 days."
+                  },
+                  "response": [
+                    {
+                      "id": "51bbcaeb-3176-4859-b032-16b75f88ebfe",
+                      "name": "Retrieves the image of a product. The public URL has a limited lifetime of 7 days.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/images",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "images"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"product_id\": \"<integer>\",\n    \"company_id\": \"<string>\",\n    \"public_url\": \"<string>\",\n    \"add_time\": \"<string>\",\n    \"mime_type\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-51bbcaeb-3176-4859-b032-16b75f88ebfe"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-989eb53f-6f06-478f-b24b-0b59f0c1aafc"
+                },
+                {
+                  "name": "Upload an image for a product",
+                  "id": "0047ab7d-8f8b-44c6-be35-04896d3eb31f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) One image supplied in the multipart/form-data encoding",
+                          "key": "data",
+                          "type": "file",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "images"
+                      ],
+                      "variable": [
+                        {
+                          "id": "68358d83-cd7b-4e17-8841-ec3bc7e65074",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Uploads an image for a product."
+                  },
+                  "response": [
+                    {
+                      "id": "77d56fca-4e77-497d-8980-50f9a453a558",
+                      "name": "Image added to product.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) One image supplied in the multipart/form-data encoding",
+                              "key": "data",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/images",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "images"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"product_id\": \"<number>\",\n    \"company_id\": \"<string>\",\n    \"add_time\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-77d56fca-4e77-497d-8980-50f9a453a558"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-0047ab7d-8f8b-44c6-be35-04896d3eb31f"
+                },
+                {
+                  "name": "Update an image for a product",
+                  "id": "7b6b2c86-bbde-4f3c-b027-2a4a76a66e1c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) One image supplied in the multipart/form-data encoding",
+                          "key": "data",
+                          "type": "file",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "images"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a425d07a-8fb5-431c-bb3c-1a94a00ac444",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Updates the image of a product."
+                  },
+                  "response": [
+                    {
+                      "id": "4a487cca-63e8-4d85-8f06-367fcc46796f",
+                      "name": "Edited product image.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) One image supplied in the multipart/form-data encoding",
+                              "key": "data",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/images",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "images"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"product_id\": \"<number>\",\n    \"company_id\": \"<string>\",\n    \"add_time\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-4a487cca-63e8-4d85-8f06-367fcc46796f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-7b6b2c86-bbde-4f3c-b027-2a4a76a66e1c"
+                },
+                {
+                  "name": "Delete an image of a product",
+                  "id": "342a8880-5d89-4dbd-b5ab-49928d693f66",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "images"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ea6c1336-70dc-4f63-9290-990e1bfa4190",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the product"
+                        }
+                      ]
+                    },
+                    "description": "Deletes the image of a product."
+                  },
+                  "response": [
+                    {
+                      "id": "ca349920-8782-4a88-a94c-3352638d55a2",
+                      "name": "The ID of the deleted product image.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/images",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "images"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:52.000Z",
+                      "updatedAt": "2026-07-28T02:37:52.000Z",
+                      "uid": "35240-ca349920-8782-4a88-a94c-3352638d55a2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-342a8880-5d89-4dbd-b5ab-49928d693f66"
+                }
+              ],
+              "id": "d45a09ed-4be2-438c-9427-d97ef344d347",
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-d45a09ed-4be2-438c-9427-d97ef344d347"
+            },
+            {
+              "name": "Delete a product",
+              "id": "0343c4e5-7342-41d3-8418-8c8d4ab72b52",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "42eb2b62-946b-498e-b40e-8469c09de99d",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the product"
+                    }
+                  ]
+                },
+                "description": "Marks a product as deleted. After 30 days, the product will be permanently deleted."
+              },
+              "response": [
+                {
+                  "id": "cb58ea92-bc84-4762-922e-77922011b63c",
+                  "name": "Deletes a product",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-cb58ea92-bc84-4762-922e-77922011b63c"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-0343c4e5-7342-41d3-8418-8c8d4ab72b52"
+            },
+            {
+              "name": "Get one product",
+              "id": "ae8efc7a-4ebc-45db-8749-5c7aa465dc45",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ebaa76a4-db15-40fc-9aa6-995d833f3794",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the product"
+                    }
+                  ]
+                },
+                "description": "Returns data about a specific product."
+              },
+              "response": [
+                {
+                  "id": "01a7d27c-b18e-4a95-beb0-3cbfed496ada",
+                  "name": "Get product information by id",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<number>\",\n    \"name\": \"<string>\",\n    \"code\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"tax\": 0,\n    \"is_deleted\": false,\n    \"is_linkable\": true,\n    \"visible_to\": 5,\n    \"owner_id\": \"<integer>\",\n    \"custom_fields\": {\n      \"sint78\": \"officia laboris ad irure\",\n      \"ex_3c0\": true\n    },\n    \"billing_frequency\": \"one-time\",\n    \"billing_frequency_cycles\": null\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-01a7d27c-b18e-4a95-beb0-3cbfed496ada"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-ae8efc7a-4ebc-45db-8749-5c7aa465dc45"
+            },
+            {
+              "name": "Update a product",
+              "id": "c6e1a183-7240-446d-81d3-e6de2b55834b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"tax\": 0,\n  \"category\": \"<number>\",\n  \"owner_id\": \"<integer>\",\n  \"is_linkable\": true,\n  \"visible_to\": 1,\n  \"custom_fields\": {\n    \"labore_d\": false,\n    \"aliquip_996\": false\n  },\n  \"billing_frequency\": \"weekly\",\n  \"billing_frequency_cycles\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/products/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f5d28bcc-5e26-43ae-b042-8e5914219913",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the product"
+                    }
+                  ]
+                },
+                "description": "Updates product data."
+              },
+              "response": [
+                {
+                  "id": "48ba29ec-9961-48dd-b233-79dfce8191df",
+                  "name": "Updates product data",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"tax\": 0,\n  \"category\": \"<number>\",\n  \"owner_id\": \"<integer>\",\n  \"is_linkable\": true,\n  \"visible_to\": 1,\n  \"custom_fields\": {\n    \"labore_d\": false,\n    \"aliquip_996\": false\n  },\n  \"billing_frequency\": \"weekly\",\n  \"billing_frequency_cycles\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<number>\",\n    \"name\": \"<string>\",\n    \"code\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"tax\": 0,\n    \"is_deleted\": false,\n    \"is_linkable\": true,\n    \"visible_to\": 5,\n    \"owner_id\": \"<integer>\",\n    \"custom_fields\": {\n      \"etb_\": 53399459,\n      \"et_52e\": 40540798,\n      \"ea_2\": -68351626\n    },\n    \"billing_frequency\": \"one-time\",\n    \"billing_frequency_cycles\": null\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-48ba29ec-9961-48dd-b233-79dfce8191df"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-c6e1a183-7240-446d-81d3-e6de2b55834b"
+            }
+          ],
+          "id": "e95f2349-60b4-4831-8258-5a4e32699b87",
+          "createdAt": "2026-07-28T02:37:52.000Z",
+          "updatedAt": "2026-07-28T02:37:52.000Z",
+          "uid": "35240-e95f2349-60b4-4831-8258-5a4e32699b87"
+        },
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "Search products",
+              "id": "856a75b4-6de3-4bc1-b904-eedbc124708d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products/search?term=<string>&fields=custom_fields&exact_match=<boolean>&include_fields=product.price&limit=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded.",
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.",
+                      "key": "fields",
+                      "value": "custom_fields"
+                    },
+                    {
+                      "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.",
+                      "key": "exact_match",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Supports including optional fields in the results which are not provided by default",
+                      "key": "include_fields",
+                      "value": "product.price"
+                    },
+                    {
+                      "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Searches all products by name, code and/or custom fields. This endpoint is a wrapper of <a href=\"https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem\">/v1/itemSearch</a> with a narrower OAuth scope."
+              },
+              "response": [
+                {
+                  "id": "d6374af7-a16d-44b8-bf30-fadf2501988c",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/search?term=<string>&fields=custom_fields&exact_match=<boolean>&include_fields=product.price&limit=<integer>&cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded.",
+                          "key": "term",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.",
+                          "key": "fields",
+                          "value": "custom_fields"
+                        },
+                        {
+                          "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.",
+                          "key": "exact_match",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Supports including optional fields in the results which are not provided by default",
+                          "key": "include_fields",
+                          "value": "product.price"
+                        },
+                        {
+                          "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"items\": [\n      {\n        \"result_score\": \"<number>\",\n        \"item\": {\n          \"id\": \"<integer>\",\n          \"type\": \"<string>\",\n          \"name\": \"<string>\",\n          \"code\": \"<integer>\",\n          \"visible_to\": \"<integer>\",\n          \"owner\": {\n            \"id\": \"<integer>\"\n          },\n          \"custom_fields\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      },\n      {\n        \"result_score\": \"<number>\",\n        \"item\": {\n          \"id\": \"<integer>\",\n          \"type\": \"<string>\",\n          \"name\": \"<string>\",\n          \"code\": \"<integer>\",\n          \"visible_to\": \"<integer>\",\n          \"owner\": {\n            \"id\": \"<integer>\"\n          },\n          \"custom_fields\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      }\n    ]\n  },\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:52.000Z",
+                  "updatedAt": "2026-07-28T02:37:52.000Z",
+                  "uid": "35240-d6374af7-a16d-44b8-bf30-fadf2501988c"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-856a75b4-6de3-4bc1-b904-eedbc124708d"
+            }
+          ],
+          "id": "775c3ccd-0b09-4d3d-b26e-0d2f322685b5",
+          "createdAt": "2026-07-28T02:37:52.000Z",
+          "updatedAt": "2026-07-28T02:37:52.000Z",
+          "uid": "35240-775c3ccd-0b09-4d3d-b26e-0d2f322685b5"
+        },
+        {
+          "name": "Get all products",
+          "id": "f2ecc2a5-7666-40cf-9109-500799896502",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/products?owner_id=<integer>&ids=<string>&filter_id=<integer>&cursor=<string>&limit=<integer>&sort_by=id&sort_direction=asc&custom_fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "description": "If supplied, only products owned by the given user will be returned",
+                  "key": "owner_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Optional comma separated string array of up to 100 entity ids to fetch. If filter_id is provided, this is ignored. If any of the requested entities do not exist or are not visible, they are not included in the response.",
+                  "key": "ids",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The ID of the filter to use",
+                  "key": "filter_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                  "key": "cursor",
+                  "value": "<string>"
+                },
+                {
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The field to sort by. Supported fields: `id`, `name`, `add_time`, `update_time`.",
+                  "key": "sort_by",
+                  "value": "id"
+                },
+                {
+                  "description": "The sorting direction. Supported values: `asc`, `desc`.",
+                  "key": "sort_direction",
+                  "value": "asc"
+                },
+                {
+                  "description": "Comma separated string array of custom fields keys to include. If you are only interested in a particular set of custom fields, please use this parameter for a smaller response.<br/>A maximum of 15 keys is allowed.",
+                  "key": "custom_fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns data about all products."
+          },
+          "response": [
+            {
+              "id": "f585122f-f616-47b3-925c-14d6da8bc0f2",
+              "name": "List of products",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products?owner_id=<integer>&ids=<string>&filter_id=<integer>&cursor=<string>&limit=<integer>&sort_by=id&sort_direction=asc&custom_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "description": "If supplied, only products owned by the given user will be returned",
+                      "key": "owner_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional comma separated string array of up to 100 entity ids to fetch. If filter_id is provided, this is ignored. If any of the requested entities do not exist or are not visible, they are not included in the response.",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ID of the filter to use",
+                      "key": "filter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The field to sort by. Supported fields: `id`, `name`, `add_time`, `update_time`.",
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "description": "The sorting direction. Supported values: `asc`, `desc`.",
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "description": "Comma separated string array of custom fields keys to include. If you are only interested in a particular set of custom fields, please use this parameter for a smaller response.<br/>A maximum of 15 keys is allowed.",
+                      "key": "custom_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"success\": \"<boolean>\",\n      \"data\": {\n        \"id\": \"<number>\",\n        \"name\": \"<string>\",\n        \"code\": \"<string>\",\n        \"unit\": \"<string>\",\n        \"tax\": 0,\n        \"is_deleted\": false,\n        \"is_linkable\": true,\n        \"visible_to\": 5,\n        \"owner_id\": \"<integer>\",\n        \"custom_fields\": {\n          \"ut_5\": -5084000,\n          \"tempor_0b5\": 90951776\n        },\n        \"billing_frequency\": \"one-time\",\n        \"billing_frequency_cycles\": null\n      }\n    },\n    {\n      \"success\": \"<boolean>\",\n      \"data\": {\n        \"id\": \"<number>\",\n        \"name\": \"<string>\",\n        \"code\": \"<string>\",\n        \"unit\": \"<string>\",\n        \"tax\": 0,\n        \"is_deleted\": false,\n        \"is_linkable\": true,\n        \"visible_to\": 3,\n        \"owner_id\": \"<integer>\",\n        \"custom_fields\": {\n          \"in_ae\": 21676039.72941725,\n          \"culpa93\": \"ullamco quis\",\n          \"est_3\": true\n        },\n        \"billing_frequency\": \"one-time\",\n        \"billing_frequency_cycles\": null\n      }\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-f585122f-f616-47b3-925c-14d6da8bc0f2"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:52.000Z",
+          "updatedAt": "2026-07-28T02:37:52.000Z",
+          "uid": "35240-f2ecc2a5-7666-40cf-9109-500799896502"
+        },
+        {
+          "name": "Add a product",
+          "id": "3fd47b9a-9d96-4db1-8ae8-ca1c8343e1e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"tax\": 0,\n  \"category\": \"<number>\",\n  \"owner_id\": \"<integer>\",\n  \"is_linkable\": true,\n  \"visible_to\": 3,\n  \"custom_fields\": {\n    \"in3\": 89316398.48818281,\n    \"ut5\": \"dolore consequat ipsum\",\n    \"eiusmod_6c\": \"ea in dolore enim proident\"\n  },\n  \"billing_frequency\": \"one-time\",\n  \"billing_frequency_cycles\": null\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ]
+            },
+            "description": "Adds a new product to the Products inventory. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-product\" target=\"_blank\" rel=\"noopener noreferrer\">adding a product</a>."
+          },
+          "response": [
+            {
+              "id": "cc680b79-7be1-46ac-9381-86073d0aef46",
+              "name": "Add product data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"tax\": 0,\n  \"category\": \"<number>\",\n  \"owner_id\": \"<integer>\",\n  \"is_linkable\": true,\n  \"visible_to\": 3,\n  \"custom_fields\": {\n    \"in3\": 89316398.48818281,\n    \"ut5\": \"dolore consequat ipsum\",\n    \"eiusmod_6c\": \"ea in dolore enim proident\"\n  },\n  \"billing_frequency\": \"one-time\",\n  \"billing_frequency_cycles\": null\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/products",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<number>\",\n    \"name\": \"<string>\",\n    \"code\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"tax\": 0,\n    \"is_deleted\": false,\n    \"is_linkable\": true,\n    \"visible_to\": 5,\n    \"owner_id\": \"<integer>\",\n    \"custom_fields\": {\n      \"sint78\": \"officia laboris ad irure\",\n      \"ex_3c0\": true\n    },\n    \"billing_frequency\": \"one-time\",\n    \"billing_frequency_cycles\": null\n  }\n}",
+              "createdAt": "2026-07-28T02:37:52.000Z",
+              "updatedAt": "2026-07-28T02:37:52.000Z",
+              "uid": "35240-cc680b79-7be1-46ac-9381-86073d0aef46"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:52.000Z",
+          "updatedAt": "2026-07-28T02:37:52.000Z",
+          "uid": "35240-3fd47b9a-9d96-4db1-8ae8-ca1c8343e1e5"
+        }
+      ],
+      "id": "4d510818-2555-4510-87d1-8e1f0f1f2ab3",
+      "createdAt": "2026-07-28T02:37:52.000Z",
+      "updatedAt": "2026-07-28T02:37:52.000Z",
+      "uid": "35240-4d510818-2555-4510-87d1-8e1f0f1f2ab3"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

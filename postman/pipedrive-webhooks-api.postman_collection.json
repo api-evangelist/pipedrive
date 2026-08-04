@@ -1,0 +1,658 @@
+{
+  "info": {
+    "_postman_id": "bde1fd75-76ba-4ae9-9414-1e4efbc8d4ad",
+    "name": "Pipedrive API v1 Activities Webhooks API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:48.000Z",
+    "updatedAt": "2026-07-28T02:38:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bde1fd75-76ba-4ae9-9414-1e4efbc8d4ad"
+  },
+  "item": [
+    {
+      "name": "webhooks",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Delete existing Webhook",
+              "id": "29a6367c-aae8-4866-8c3c-b131a550b6b8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d7ca1343-593b-465e-aa52-e3d8dfffd9fd",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the Webhook to delete"
+                    }
+                  ]
+                },
+                "description": "Deletes the specified Webhook."
+              },
+              "response": [
+                {
+                  "id": "92b8e056-ca38-4fde-8ccb-82634885feb0",
+                  "name": "The webhook deletion success response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:48.000Z",
+                  "updatedAt": "2026-07-28T02:38:48.000Z",
+                  "uid": "35240-92b8e056-ca38-4fde-8ccb-82634885feb0"
+                },
+                {
+                  "id": "e4909fb6-4171-4b49-acd4-ae6cd19074ae",
+                  "name": "Unauthorized response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"errorCode\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:38:48.000Z",
+                  "updatedAt": "2026-07-28T02:38:48.000Z",
+                  "uid": "35240-e4909fb6-4171-4b49-acd4-ae6cd19074ae"
+                },
+                {
+                  "id": "e65f0df2-3071-4717-ac9c-eee3107b0476",
+                  "name": "The webhook deletion forbidden response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:48.000Z",
+                  "updatedAt": "2026-07-28T02:38:48.000Z",
+                  "uid": "35240-e65f0df2-3071-4717-ac9c-eee3107b0476"
+                },
+                {
+                  "id": "286877a7-71ca-4e11-8840-d00f5c015653",
+                  "name": "The webhook deletion not found response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"status\": \"<string>\",\n  \"errors\": {}\n}",
+                  "createdAt": "2026-07-28T02:38:48.000Z",
+                  "updatedAt": "2026-07-28T02:38:48.000Z",
+                  "uid": "35240-286877a7-71ca-4e11-8840-d00f5c015653"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:48.000Z",
+              "updatedAt": "2026-07-28T02:38:48.000Z",
+              "uid": "35240-29a6367c-aae8-4866-8c3c-b131a550b6b8"
+            }
+          ],
+          "id": "69ebe576-70d4-47ac-ba08-1b3803dcb4e4",
+          "createdAt": "2026-07-28T02:38:48.000Z",
+          "updatedAt": "2026-07-28T02:38:48.000Z",
+          "uid": "35240-69ebe576-70d4-47ac-ba08-1b3803dcb4e4"
+        },
+        {
+          "name": "Get all Webhooks",
+          "id": "9eac193d-e7d3-448f-b4ac-55d91bfa85cd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webhooks"
+              ]
+            },
+            "description": "Returns data about all the Webhooks of a company."
+          },
+          "response": [
+            {
+              "id": "5bcb1b80-fa47-42b8-a9eb-98e0bf8b2bf4",
+              "name": "The list of webhooks objects from the logged in company and user",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"status\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"company_id\": \"<integer>\",\n      \"owner_id\": \"<integer>\",\n      \"user_id\": \"<integer>\",\n      \"event_action\": \"<string>\",\n      \"event_object\": \"<string>\",\n      \"subscription_url\": \"<string>\",\n      \"version\": \"<string>\",\n      \"is_active\": 1,\n      \"add_time\": \"<dateTime>\",\n      \"remove_time\": \"<dateTime>\",\n      \"type\": \"general\",\n      \"http_auth_user\": \"<string>\",\n      \"http_auth_password\": \"<string>\",\n      \"remove_reason\": \"<string>\",\n      \"last_delivery_time\": \"<dateTime>\",\n      \"last_http_status\": \"<integer>\",\n      \"admin_id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"company_id\": \"<integer>\",\n      \"owner_id\": \"<integer>\",\n      \"user_id\": \"<integer>\",\n      \"event_action\": \"<string>\",\n      \"event_object\": \"<string>\",\n      \"subscription_url\": \"<string>\",\n      \"version\": \"<string>\",\n      \"is_active\": 1,\n      \"add_time\": \"<dateTime>\",\n      \"remove_time\": \"<dateTime>\",\n      \"type\": \"application\",\n      \"http_auth_user\": \"<string>\",\n      \"http_auth_password\": \"<string>\",\n      \"remove_reason\": \"<string>\",\n      \"last_delivery_time\": \"<dateTime>\",\n      \"last_http_status\": \"<integer>\",\n      \"admin_id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:38:48.000Z",
+              "updatedAt": "2026-07-28T02:38:48.000Z",
+              "uid": "35240-5bcb1b80-fa47-42b8-a9eb-98e0bf8b2bf4"
+            },
+            {
+              "id": "dcade8d6-471b-4eb6-a1ab-30d9912096b0",
+              "name": "Unauthorized response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"errorCode\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:38:48.000Z",
+              "updatedAt": "2026-07-28T02:38:48.000Z",
+              "uid": "35240-dcade8d6-471b-4eb6-a1ab-30d9912096b0"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:48.000Z",
+          "updatedAt": "2026-07-28T02:38:48.000Z",
+          "uid": "35240-9eac193d-e7d3-448f-b4ac-55d91bfa85cd"
+        },
+        {
+          "name": "Create a new Webhook",
+          "id": "d5f7edfe-0969-4231-8525-eb4063374e69",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscription_url\": \"<string>\",\n  \"event_action\": \"delete\",\n  \"event_object\": \"user\",\n  \"name\": \"<string>\",\n  \"user_id\": \"<integer>\",\n  \"http_auth_user\": \"<string>\",\n  \"http_auth_password\": \"<string>\",\n  \"version\": \"2.0\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webhooks"
+              ]
+            },
+            "description": "Creates a new Webhook and returns its details. Note that specifying an event which triggers the Webhook combines 2 parameters - `event_action` and `event_object`. E.g., use `*.*` for getting notifications about all events, `create.deal` for any newly added deals, `delete.persons` for any deleted persons, etc. See <a href=\"https://pipedrive.readme.io/docs/guide-for-webhooks-v2?ref=api_reference\" target=\"_blank\" rel=\"noopener noreferrer\">the guide for Webhooks</a> for more details."
+          },
+          "response": [
+            {
+              "id": "bf810855-ffb6-45c6-b060-38e854433465",
+              "name": "The created webhook object",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscription_url\": \"<string>\",\n  \"event_action\": \"delete\",\n  \"event_object\": \"user\",\n  \"name\": \"<string>\",\n  \"user_id\": \"<integer>\",\n  \"http_auth_user\": \"<string>\",\n  \"http_auth_password\": \"<string>\",\n  \"version\": \"2.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"status\": \"<string>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"company_id\": \"<integer>\",\n    \"owner_id\": \"<integer>\",\n    \"user_id\": \"<integer>\",\n    \"event_action\": \"<string>\",\n    \"event_object\": \"<string>\",\n    \"subscription_url\": \"<string>\",\n    \"version\": \"<string>\",\n    \"is_active\": 1,\n    \"add_time\": \"<dateTime>\",\n    \"remove_time\": \"<dateTime>\",\n    \"type\": \"general\",\n    \"http_auth_user\": \"<string>\",\n    \"http_auth_password\": \"<string>\",\n    \"remove_reason\": \"<string>\",\n    \"last_delivery_time\": \"<dateTime>\",\n    \"last_http_status\": \"<integer>\",\n    \"admin_id\": \"<integer>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:38:48.000Z",
+              "updatedAt": "2026-07-28T02:38:48.000Z",
+              "uid": "35240-bf810855-ffb6-45c6-b060-38e854433465"
+            },
+            {
+              "id": "ef237305-2b72-44a1-b132-c4068b3601c1",
+              "name": "The bad response on webhook creation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscription_url\": \"<string>\",\n  \"event_action\": \"delete\",\n  \"event_object\": \"user\",\n  \"name\": \"<string>\",\n  \"user_id\": \"<integer>\",\n  \"http_auth_user\": \"<string>\",\n  \"http_auth_password\": \"<string>\",\n  \"version\": \"2.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"status\": \"<string>\",\n  \"errors\": {}\n}",
+              "createdAt": "2026-07-28T02:38:48.000Z",
+              "updatedAt": "2026-07-28T02:38:48.000Z",
+              "uid": "35240-ef237305-2b72-44a1-b132-c4068b3601c1"
+            },
+            {
+              "id": "f55c3f17-d2a7-4ea4-867a-2ff1c9a62728",
+              "name": "Unauthorized response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscription_url\": \"<string>\",\n  \"event_action\": \"delete\",\n  \"event_object\": \"user\",\n  \"name\": \"<string>\",\n  \"user_id\": \"<integer>\",\n  \"http_auth_user\": \"<string>\",\n  \"http_auth_password\": \"<string>\",\n  \"version\": \"2.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"errorCode\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:38:48.000Z",
+              "updatedAt": "2026-07-28T02:38:48.000Z",
+              "uid": "35240-f55c3f17-d2a7-4ea4-867a-2ff1c9a62728"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:48.000Z",
+          "updatedAt": "2026-07-28T02:38:48.000Z",
+          "uid": "35240-d5f7edfe-0969-4231-8525-eb4063374e69"
+        }
+      ],
+      "id": "b51580fb-9347-4830-9cc2-9fbb190744fd",
+      "createdAt": "2026-07-28T02:38:48.000Z",
+      "updatedAt": "2026-07-28T02:38:48.000Z",
+      "uid": "35240-b51580fb-9347-4830-9cc2-9fbb190744fd"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

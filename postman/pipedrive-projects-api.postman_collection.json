@@ -1,0 +1,2335 @@
+{
+  "info": {
+    "_postman_id": "6c440f7c-e6cc-48e2-9bd7-3d2dbfcce2de",
+    "name": "Pipedrive API v1 Activities Projects API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:59.000Z",
+    "updatedAt": "2026-07-28T02:37:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6c440f7c-e6cc-48e2-9bd7-3d2dbfcce2de"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "archive",
+              "item": [
+                {
+                  "name": "Archive a project",
+                  "id": "b1a0d89a-d7cf-403a-9bc0-f93b82aa6258",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id/archive",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id",
+                        "archive"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8bd3efe2-9fc2-4248-82b7-45d7af0466da",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the project"
+                        }
+                      ]
+                    },
+                    "description": "Archives a project."
+                  },
+                  "response": [
+                    {
+                      "id": "6d4410a6-df7f-4126-bff5-e5fb85811827",
+                      "name": "Updated project.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:id/archive",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":id",
+                            "archive"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"board_id\": \"<number>\",\n    \"phase_id\": \"<number>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"owner_id\": \"<number>\",\n    \"start_date\": \"<date>\",\n    \"end_date\": \"<date>\",\n    \"deal_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"org_id\": \"<number>\",\n    \"person_id\": \"<number>\",\n    \"labels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"status_change_time\": \"<string>\",\n    \"archive_time\": \"<string>\"\n  },\n  \"additional_data\": {}\n}",
+                      "createdAt": "2026-07-28T02:37:59.000Z",
+                      "updatedAt": "2026-07-28T02:37:59.000Z",
+                      "uid": "35240-6d4410a6-df7f-4126-bff5-e5fb85811827"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-b1a0d89a-d7cf-403a-9bc0-f93b82aa6258"
+                }
+              ],
+              "id": "4906bad0-20a1-4128-8f54-f9658a6033cf",
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-4906bad0-20a1-4128-8f54-f9658a6033cf"
+            },
+            {
+              "name": "plan",
+              "item": [
+                {
+                  "name": "activities",
+                  "item": [
+                    {
+                      "name": "{activityId}",
+                      "item": [
+                        {
+                          "name": "Update activity in project plan",
+                          "id": "c9fc95eb-c4d4-47c2-aca9-0c3b3cb15c4c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"phase_id\": \"<number>\",\n  \"group_id\": \"<number>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:id/plan/activities/:activityId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":id",
+                                "plan",
+                                "activities",
+                                ":activityId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f46a6f25-31c1-48b5-a4e5-145ede64e03c",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) The ID of the project"
+                                },
+                                {
+                                  "id": "8afd77dc-c6a1-4697-a487-99d20464c4ba",
+                                  "key": "activityId",
+                                  "value": "<integer>",
+                                  "description": "(Required) The ID of the activity"
+                                }
+                              ]
+                            },
+                            "description": "Updates an activity phase or group in a project."
+                          },
+                          "response": [
+                            {
+                              "id": "f850662e-4678-45d3-92c7-9cb19f19cfff",
+                              "name": "Updated activity in plan.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"phase_id\": \"<number>\",\n  \"group_id\": \"<number>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:id/plan/activities/:activityId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":id",
+                                    "plan",
+                                    "activities",
+                                    ":activityId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    },
+                                    {
+                                      "key": "activityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"item_id\": \"<number>\",\n    \"item_type\": \"<string>\",\n    \"phase_id\": \"<number>\",\n    \"group_id\": \"<number>\"\n  },\n  \"additional_data\": {}\n}",
+                              "createdAt": "2026-07-28T02:37:59.000Z",
+                              "updatedAt": "2026-07-28T02:37:59.000Z",
+                              "uid": "35240-f850662e-4678-45d3-92c7-9cb19f19cfff"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:37:59.000Z",
+                          "updatedAt": "2026-07-28T02:37:59.000Z",
+                          "uid": "35240-c9fc95eb-c4d4-47c2-aca9-0c3b3cb15c4c"
+                        }
+                      ],
+                      "id": "b05deb8a-11c1-4797-b386-6ff2587140ba",
+                      "createdAt": "2026-07-28T02:37:59.000Z",
+                      "updatedAt": "2026-07-28T02:37:59.000Z",
+                      "uid": "35240-b05deb8a-11c1-4797-b386-6ff2587140ba"
+                    }
+                  ],
+                  "id": "fc48f122-4057-4a98-a1a7-49bb8c5042a6",
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-fc48f122-4057-4a98-a1a7-49bb8c5042a6"
+                },
+                {
+                  "name": "tasks",
+                  "item": [
+                    {
+                      "name": "{taskId}",
+                      "item": [
+                        {
+                          "name": "Update task in project plan",
+                          "id": "4d75e996-0fce-46c7-84e9-391ee6f18c7f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"phase_id\": \"<number>\",\n  \"group_id\": \"<number>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:id/plan/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":id",
+                                "plan",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f0df8723-da2b-4711-8c62-d2fb1795b9de",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) The ID of the project"
+                                },
+                                {
+                                  "id": "05921c42-30cf-4bbf-9db8-21ba14986245",
+                                  "key": "taskId",
+                                  "value": "<integer>",
+                                  "description": "(Required) The ID of the task"
+                                }
+                              ]
+                            },
+                            "description": "Updates a task phase or group in a project."
+                          },
+                          "response": [
+                            {
+                              "id": "756a710d-2598-4059-8c76-67b0c807a829",
+                              "name": "Updated task in plan.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"phase_id\": \"<number>\",\n  \"group_id\": \"<number>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:id/plan/tasks/:taskId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":id",
+                                    "plan",
+                                    "tasks",
+                                    ":taskId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    },
+                                    {
+                                      "key": "taskId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"item_id\": \"<number>\",\n    \"item_type\": \"<string>\",\n    \"phase_id\": \"<number>\",\n    \"group_id\": \"<number>\"\n  },\n  \"additional_data\": {}\n}",
+                              "createdAt": "2026-07-28T02:37:59.000Z",
+                              "updatedAt": "2026-07-28T02:37:59.000Z",
+                              "uid": "35240-756a710d-2598-4059-8c76-67b0c807a829"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:37:59.000Z",
+                          "updatedAt": "2026-07-28T02:37:59.000Z",
+                          "uid": "35240-4d75e996-0fce-46c7-84e9-391ee6f18c7f"
+                        }
+                      ],
+                      "id": "8efbbdc8-c7f2-459b-be44-e87d03308d77",
+                      "createdAt": "2026-07-28T02:37:59.000Z",
+                      "updatedAt": "2026-07-28T02:37:59.000Z",
+                      "uid": "35240-8efbbdc8-c7f2-459b-be44-e87d03308d77"
+                    }
+                  ],
+                  "id": "fa7d8e76-a119-46ad-82db-11b0f4a4d6f3",
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-fa7d8e76-a119-46ad-82db-11b0f4a4d6f3"
+                },
+                {
+                  "name": "Returns project plan",
+                  "id": "2d6deb22-a177-4bb3-81c6-15175a60b5a8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id/plan",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id",
+                        "plan"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4eb0aae0-9705-4a57-8a77-4c02c34c58b3",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the project"
+                        }
+                      ]
+                    },
+                    "description": "Returns information about items in a project plan. Items consists of tasks and activities and are linked to specific project phase and group."
+                  },
+                  "response": [
+                    {
+                      "id": "bb4f1141-8d10-4371-8579-14fbaa035339",
+                      "name": "Get a project plan.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:id/plan",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":id",
+                            "plan"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"item_id\": \"<number>\",\n      \"item_type\": \"<string>\",\n      \"phase_id\": \"<number>\",\n      \"group_id\": \"<number>\"\n    },\n    {\n      \"item_id\": \"<number>\",\n      \"item_type\": \"<string>\",\n      \"phase_id\": \"<number>\",\n      \"group_id\": \"<number>\"\n    }\n  ],\n  \"additional_data\": {}\n}",
+                      "createdAt": "2026-07-28T02:37:59.000Z",
+                      "updatedAt": "2026-07-28T02:37:59.000Z",
+                      "uid": "35240-bb4f1141-8d10-4371-8579-14fbaa035339"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-2d6deb22-a177-4bb3-81c6-15175a60b5a8"
+                }
+              ],
+              "id": "ad1e19d1-56ac-40a4-bb96-3e8b8d180315",
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-ad1e19d1-56ac-40a4-bb96-3e8b8d180315"
+            },
+            {
+              "name": "groups",
+              "item": [
+                {
+                  "name": "Returns project groups",
+                  "id": "18ea38a6-51f9-4446-b1a1-4f7082a00625",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id/groups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id",
+                        "groups"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a83c7bdd-3be4-4f63-a451-0a57436849b4",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the project"
+                        }
+                      ]
+                    },
+                    "description": "Returns all active groups under a specific project."
+                  },
+                  "response": [
+                    {
+                      "id": "69145ae9-cfaf-4e61-aaed-e7832bdd85dd",
+                      "name": "Get a project groups.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"order_nr\": \"<number>\"\n    },\n    {\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"order_nr\": \"<number>\"\n    }\n  ],\n  \"additional_data\": {}\n}",
+                      "createdAt": "2026-07-28T02:37:59.000Z",
+                      "updatedAt": "2026-07-28T02:37:59.000Z",
+                      "uid": "35240-69145ae9-cfaf-4e61-aaed-e7832bdd85dd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-18ea38a6-51f9-4446-b1a1-4f7082a00625"
+                }
+              ],
+              "id": "f8aa7266-2b99-4723-b2db-8517dc9f3367",
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-f8aa7266-2b99-4723-b2db-8517dc9f3367"
+            },
+            {
+              "name": "tasks",
+              "item": [
+                {
+                  "name": "Returns project tasks",
+                  "id": "80ec0c2a-8c20-486c-b5f1-65ba98e2eb90",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id/tasks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id",
+                        "tasks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a662fb78-ee78-4063-abb0-e96506bae65e",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the project"
+                        }
+                      ]
+                    },
+                    "description": "Returns tasks linked to a specific project."
+                  },
+                  "response": [
+                    {
+                      "id": "e92912a1-c076-496d-8f6e-eab8e8a75785",
+                      "name": "A list of tasks.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:id/tasks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":id",
+                            "tasks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"project_id\": \"<number>\",\n      \"description\": \"<string>\",\n      \"parent_task_id\": \"<number>\",\n      \"assignee_id\": \"<number>\",\n      \"assignee_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"done\": 0,\n      \"due_date\": \"<date>\",\n      \"creator_id\": \"<number>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"marked_as_done_time\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"project_id\": \"<number>\",\n      \"description\": \"<string>\",\n      \"parent_task_id\": \"<number>\",\n      \"assignee_id\": \"<number>\",\n      \"assignee_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"done\": 0,\n      \"due_date\": \"<date>\",\n      \"creator_id\": \"<number>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"marked_as_done_time\": \"<string>\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:59.000Z",
+                      "updatedAt": "2026-07-28T02:37:59.000Z",
+                      "uid": "35240-e92912a1-c076-496d-8f6e-eab8e8a75785"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-80ec0c2a-8c20-486c-b5f1-65ba98e2eb90"
+                }
+              ],
+              "id": "eaaf2550-f4e4-4524-9f1f-af071fac3852",
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-eaaf2550-f4e4-4524-9f1f-af071fac3852"
+            },
+            {
+              "name": "activities",
+              "item": [
+                {
+                  "name": "Returns project activities",
+                  "id": "54e8092d-d15a-4ca7-ac52-043aed0e8053",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id/activities",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id",
+                        "activities"
+                      ],
+                      "variable": [
+                        {
+                          "id": "597ae79d-b1d9-40c6-88e1-f93c824ff72e",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the project"
+                        }
+                      ]
+                    },
+                    "description": "Returns activities linked to a specific project."
+                  },
+                  "response": [
+                    {
+                      "id": "4ec5aaa0-3573-48c5-b031-b71d4102a418",
+                      "name": "A collection of activities",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:id/activities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":id",
+                            "activities"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"due_date\": \"<date>\",\n      \"due_time\": \"<string>\",\n      \"duration\": \"<string>\",\n      \"deal_id\": \"<integer>\",\n      \"lead_id\": \"<uuid>\",\n      \"person_id\": \"<integer>\",\n      \"project_id\": \"<integer>\",\n      \"org_id\": \"<integer>\",\n      \"location\": \"<string>\",\n      \"public_description\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"done\": \"<boolean>\",\n      \"subject\": \"<string>\",\n      \"type\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"busy_flag\": \"<boolean>\",\n      \"company_id\": \"<integer>\",\n      \"conference_meeting_client\": \"<string>\",\n      \"conference_meeting_url\": \"<string>\",\n      \"conference_meeting_id\": \"<string>\",\n      \"add_time\": \"<string>\",\n      \"marked_as_done_time\": \"<string>\",\n      \"active_flag\": \"<boolean>\",\n      \"update_time\": \"<string>\",\n      \"update_user_id\": \"<integer>\",\n      \"source_timezone\": \"<string>\",\n      \"location_subpremise\": \"<string>\",\n      \"location_street_number\": \"<string>\",\n      \"location_route\": \"<string>\",\n      \"location_sublocality\": \"<string>\",\n      \"location_locality\": \"<string>\",\n      \"location_admin_area_level_1\": \"<string>\",\n      \"location_admin_area_level_2\": \"<string>\",\n      \"location_country\": \"<string>\",\n      \"location_postal_code\": \"<string>\",\n      \"location_formatted_address\": \"<string>\"\n    },\n    {\n      \"due_date\": \"<date>\",\n      \"due_time\": \"<string>\",\n      \"duration\": \"<string>\",\n      \"deal_id\": \"<integer>\",\n      \"lead_id\": \"<uuid>\",\n      \"person_id\": \"<integer>\",\n      \"project_id\": \"<integer>\",\n      \"org_id\": \"<integer>\",\n      \"location\": \"<string>\",\n      \"public_description\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"done\": \"<boolean>\",\n      \"subject\": \"<string>\",\n      \"type\": \"<string>\",\n      \"user_id\": \"<integer>\",\n      \"busy_flag\": \"<boolean>\",\n      \"company_id\": \"<integer>\",\n      \"conference_meeting_client\": \"<string>\",\n      \"conference_meeting_url\": \"<string>\",\n      \"conference_meeting_id\": \"<string>\",\n      \"add_time\": \"<string>\",\n      \"marked_as_done_time\": \"<string>\",\n      \"active_flag\": \"<boolean>\",\n      \"update_time\": \"<string>\",\n      \"update_user_id\": \"<integer>\",\n      \"source_timezone\": \"<string>\",\n      \"location_subpremise\": \"<string>\",\n      \"location_street_number\": \"<string>\",\n      \"location_route\": \"<string>\",\n      \"location_sublocality\": \"<string>\",\n      \"location_locality\": \"<string>\",\n      \"location_admin_area_level_1\": \"<string>\",\n      \"location_admin_area_level_2\": \"<string>\",\n      \"location_country\": \"<string>\",\n      \"location_postal_code\": \"<string>\",\n      \"location_formatted_address\": \"<string>\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:59.000Z",
+                      "updatedAt": "2026-07-28T02:37:59.000Z",
+                      "uid": "35240-4ec5aaa0-3573-48c5-b031-b71d4102a418"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-54e8092d-d15a-4ca7-ac52-043aed0e8053"
+                }
+              ],
+              "id": "8b1e07a1-5216-41ca-9934-bb04893a4168",
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-8b1e07a1-5216-41ca-9934-bb04893a4168"
+            },
+            {
+              "name": "permittedUsers",
+              "item": [
+                {
+                  "name": "List permitted users",
+                  "id": "c82c6f61-fc42-4cb4-85f3-42f4c4eb5cfe",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id/permittedUsers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id",
+                        "permittedUsers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "da997218-60b1-4620-a5cd-725d74f8208d",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the project"
+                        }
+                      ]
+                    },
+                    "description": "Lists the users permitted to access a project."
+                  },
+                  "response": [
+                    {
+                      "id": "d12b4c65-93d9-46e8-a442-25e36c70b63f",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:id/permittedUsers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":id",
+                            "permittedUsers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:37:59.000Z",
+                      "updatedAt": "2026-07-28T02:37:59.000Z",
+                      "uid": "35240-d12b4c65-93d9-46e8-a442-25e36c70b63f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-c82c6f61-fc42-4cb4-85f3-42f4c4eb5cfe"
+                }
+              ],
+              "id": "5296aea7-7a1a-40ad-81b0-0c5c9b238f4e",
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-5296aea7-7a1a-40ad-81b0-0c5c9b238f4e"
+            },
+            {
+              "name": "changelog",
+              "item": [
+                {
+                  "name": "List updates about project field values",
+                  "id": "b452f67d-191a-4a24-b955-dec4c6d3054d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id/changelog?limit=<integer>&cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id",
+                        "changelog"
+                      ],
+                      "query": [
+                        {
+                          "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "a82855a9-78d3-4cdb-b542-9606ead9060a",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the project"
+                        }
+                      ]
+                    },
+                    "description": "Lists updates about field values of a project."
+                  },
+                  "response": [
+                    {
+                      "id": "6db6cdf3-b5a3-4d3d-9908-f63a854823d6",
+                      "name": "Get changelog of a project",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:id/changelog?limit=<integer>&cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":id",
+                            "changelog"
+                          ],
+                          "query": [
+                            {
+                              "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"change_source\": \"<string>\",\n      \"change_source_user_agent\": \"<string>\",\n      \"time\": \"<string>\",\n      \"new_values\": {\n        \"dolore565\": \"fugiat laboris\",\n        \"nostrude1\": false\n      },\n      \"old_values\": {\n        \"reprehenderit_11\": \"reprehenderit in\",\n        \"adipisicing9\": -74400942.9575626\n      },\n      \"actor_user_id\": \"<integer>\"\n    },\n    {\n      \"change_source\": \"<string>\",\n      \"change_source_user_agent\": \"<string>\",\n      \"time\": \"<string>\",\n      \"new_values\": {\n        \"dolore86e\": \"aliqua eiusmod commodo veniam\",\n        \"exb87\": true\n      },\n      \"old_values\": {\n        \"dolor6\": \"reprehenderit Lorem\",\n        \"et61\": -41425134.68269175\n      },\n      \"actor_user_id\": \"<integer>\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:37:59.000Z",
+                      "updatedAt": "2026-07-28T02:37:59.000Z",
+                      "uid": "35240-6db6cdf3-b5a3-4d3d-9908-f63a854823d6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-b452f67d-191a-4a24-b955-dec4c6d3054d"
+                }
+              ],
+              "id": "4d57bb33-3d0b-4447-a2fc-5d5b2a59026d",
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-4d57bb33-3d0b-4447-a2fc-5d5b2a59026d"
+            },
+            {
+              "name": "Get details of a project",
+              "id": "2bf014d9-32ef-40b2-965a-33ff4fdd23ed",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5fdc7f99-6639-4a36-b210-e1d2b11517a4",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the project"
+                    }
+                  ]
+                },
+                "description": "Returns the details of a specific project. Also note that custom fields appear as long hashes in the resulting data. These hashes can be mapped against the `key` value of project fields."
+              },
+              "response": [
+                {
+                  "id": "4975b80e-5760-45fb-aa67-6350328cf73d",
+                  "name": "Get a project.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"board_id\": \"<number>\",\n    \"phase_id\": \"<number>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"owner_id\": \"<number>\",\n    \"start_date\": \"<date>\",\n    \"end_date\": \"<date>\",\n    \"deal_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"org_id\": \"<number>\",\n    \"person_id\": \"<number>\",\n    \"labels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"status_change_time\": \"<string>\",\n    \"archive_time\": \"<string>\"\n  },\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-4975b80e-5760-45fb-aa67-6350328cf73d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-2bf014d9-32ef-40b2-965a-33ff4fdd23ed"
+            },
+            {
+              "name": "Update a project",
+              "id": "096b786a-1bc5-43bf-91ae-d63cbb438cd7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"board_id\": \"<number>\",\n  \"phase_id\": \"<number>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"owner_id\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"deal_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"org_id\": \"<number>\",\n  \"person_id\": \"<number>\",\n  \"labels\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c503f61f-46ea-4e0a-91bc-e485028d0592",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the project"
+                    }
+                  ]
+                },
+                "description": "Updates a project."
+              },
+              "response": [
+                {
+                  "id": "9aef2a77-89db-4dc3-8986-d551d943ddfa",
+                  "name": "Updated project.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"board_id\": \"<number>\",\n  \"phase_id\": \"<number>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"owner_id\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"deal_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"org_id\": \"<number>\",\n  \"person_id\": \"<number>\",\n  \"labels\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"board_id\": \"<number>\",\n    \"phase_id\": \"<number>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"owner_id\": \"<number>\",\n    \"start_date\": \"<date>\",\n    \"end_date\": \"<date>\",\n    \"deal_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"org_id\": \"<number>\",\n    \"person_id\": \"<number>\",\n    \"labels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"status_change_time\": \"<string>\",\n    \"archive_time\": \"<string>\"\n  },\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-9aef2a77-89db-4dc3-8986-d551d943ddfa"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-096b786a-1bc5-43bf-91ae-d63cbb438cd7"
+            },
+            {
+              "name": "Delete a project",
+              "id": "ed5e58f2-c8c0-4f97-85ed-35b9abcc4a99",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "afbcb435-7373-4f79-b570-7944738b0971",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the project"
+                    }
+                  ]
+                },
+                "description": "Marks a project as deleted."
+              },
+              "response": [
+                {
+                  "id": "2ea6d1cc-ee05-4836-8178-89229c9ef9bb",
+                  "name": "Delete a project.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"success\": \"<boolean>\",\n    \"data\": {\n      \"id\": \"<integer>\"\n    }\n  },\n  \"additional_data\": {}\n}",
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-2ea6d1cc-ee05-4836-8178-89229c9ef9bb"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-ed5e58f2-c8c0-4f97-85ed-35b9abcc4a99"
+            },
+            {
+              "name": "Update a project",
+              "id": "29c7445a-44c7-4140-b644-825d8bd39d4a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"board_id\": \"<integer>\",\n  \"phase_id\": \"<integer>\",\n  \"owner_id\": \"<integer>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"deal_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"person_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"org_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"label_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"template_id\": \"<integer>\",\n  \"custom_fields\": {\n    \"aliquipc_\": true,\n    \"voluptate33\": true,\n    \"sed23b\": 62892384\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "698fb295-3451-4351-b80d-c4d3bcc8d1b5",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The ID of the project"
+                    }
+                  ]
+                },
+                "description": "Updates the properties of a project."
+              },
+              "response": [
+                {
+                  "id": "b0d5096e-b73f-45b7-9218-927fa957d2fa",
+                  "name": "Update project",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"board_id\": \"<integer>\",\n  \"phase_id\": \"<integer>\",\n  \"owner_id\": \"<integer>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"deal_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"person_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"org_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"label_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"template_id\": \"<integer>\",\n  \"custom_fields\": {\n    \"aliquipc_\": true,\n    \"voluptate33\": true,\n    \"sed23b\": 62892384\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"board_id\": \"<integer>\",\n    \"phase_id\": \"<integer>\",\n    \"owner_id\": \"<integer>\",\n    \"start_date\": \"<date>\",\n    \"end_date\": \"<date>\",\n    \"deal_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"person_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"org_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"label_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"health_status\": \"<string>\",\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"status_change_time\": \"<string>\",\n    \"archive_time\": \"<string>\",\n    \"custom_fields\": {\n      \"proident_217\": 91251400,\n      \"adipisicing_59\": false,\n      \"ullamco4\": \"id ex esse\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-b0d5096e-b73f-45b7-9218-927fa957d2fa"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-29c7445a-44c7-4140-b644-825d8bd39d4a"
+            }
+          ],
+          "id": "e561817b-aa09-4c23-97d4-bdcf20fdca8f",
+          "createdAt": "2026-07-28T02:37:59.000Z",
+          "updatedAt": "2026-07-28T02:37:59.000Z",
+          "uid": "35240-e561817b-aa09-4c23-97d4-bdcf20fdca8f"
+        },
+        {
+          "name": "archived",
+          "item": [
+            {
+              "name": "Get all archived projects",
+              "id": "552a2ed2-eda8-4f87-a9e7-1209061d4af0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/archived?filter_id=<integer>&status=<string>&phase_id=<integer>&limit=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "archived"
+                  ],
+                  "query": [
+                    {
+                      "description": "If supplied, only projects matching the specified filter are returned",
+                      "key": "filter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "If supplied, includes only projects with the specified statuses. Possible values are `open`, `completed`, `canceled` and `deleted`. By default `deleted` projects are not returned.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, only projects in the specified phase are returned",
+                      "key": "phase_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns all archived projects."
+              },
+              "response": [
+                {
+                  "id": "084ae90c-f80a-40dd-aff1-eca2954f16bb",
+                  "name": "Get all projects",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/archived?filter_id=<integer>&status=<string>&phase_id=<integer>&limit=<integer>&cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        "archived"
+                      ],
+                      "query": [
+                        {
+                          "description": "If supplied, only projects matching the specified filter are returned",
+                          "key": "filter_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "If supplied, includes only projects with the specified statuses. Possible values are `open`, `completed`, `canceled` and `deleted`. By default `deleted` projects are not returned.",
+                          "key": "status",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "If supplied, only projects in the specified phase are returned",
+                          "key": "phase_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"status\": \"<string>\",\n      \"board_id\": \"<integer>\",\n      \"phase_id\": \"<integer>\",\n      \"owner_id\": \"<integer>\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"deal_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"person_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"org_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"label_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"health_status\": \"<string>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"status_change_time\": \"<string>\",\n      \"archive_time\": \"<string>\",\n      \"custom_fields\": {\n        \"Duisdf\": true\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"status\": \"<string>\",\n      \"board_id\": \"<integer>\",\n      \"phase_id\": \"<integer>\",\n      \"owner_id\": \"<integer>\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"deal_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"person_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"org_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"label_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"health_status\": \"<string>\",\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"status_change_time\": \"<string>\",\n      \"archive_time\": \"<string>\",\n      \"custom_fields\": {\n        \"adipisicing_e8\": \"do elit aliqua irure\",\n        \"ex6c\": 32479403.81194821\n      }\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-084ae90c-f80a-40dd-aff1-eca2954f16bb"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-552a2ed2-eda8-4f87-a9e7-1209061d4af0"
+            }
+          ],
+          "id": "f63de368-a59b-4655-bdb9-06dce55c469e",
+          "createdAt": "2026-07-28T02:37:59.000Z",
+          "updatedAt": "2026-07-28T02:37:59.000Z",
+          "uid": "35240-f63de368-a59b-4655-bdb9-06dce55c469e"
+        },
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "Search projects",
+              "id": "786893ca-3ed3-46eb-ae53-317cf04c572b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "x-api-token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/search?term=<string>&fields=custom_fields&exact_match=<boolean>&person_id=<integer>&organization_id=<integer>&limit=<integer>&cursor=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded.",
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.",
+                      "key": "fields",
+                      "value": "custom_fields"
+                    },
+                    {
+                      "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.",
+                      "key": "exact_match",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Will filter projects by the provided person ID",
+                      "key": "person_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Will filter projects by the provided organization ID",
+                      "key": "organization_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Searches all projects by title, description, notes and/or custom fields. This endpoint is a wrapper of <a href=\"https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem\">/v1/itemSearch</a> with a narrower OAuth scope. Found projects can be filtered by person ID or organization ID."
+              },
+              "response": [
+                {
+                  "id": "efcc66ba-4cea-4aff-936e-07a3c5178948",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/search?term=<string>&fields=custom_fields&exact_match=<boolean>&person_id=<integer>&organization_id=<integer>&limit=<integer>&cursor=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded.",
+                          "key": "term",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.",
+                          "key": "fields",
+                          "value": "custom_fields"
+                        },
+                        {
+                          "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive.",
+                          "key": "exact_match",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Will filter projects by the provided person ID",
+                          "key": "person_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Will filter projects by the provided organization ID",
+                          "key": "organization_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                          "key": "cursor",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"items\": [\n      {\n        \"result_score\": \"<number>\",\n        \"item\": {\n          \"id\": \"<integer>\",\n          \"type\": \"<string>\",\n          \"title\": \"<string>\",\n          \"status\": \"<string>\",\n          \"owner\": {\n            \"id\": \"<integer>\"\n          },\n          \"board_id\": \"<integer>\",\n          \"phase\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\"\n          },\n          \"person\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\"\n          },\n          \"organization\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"address\": \"<string>\"\n          },\n          \"deal\": {\n            \"id\": \"<integer>\",\n            \"title\": \"<string>\"\n          },\n          \"deal_count\": \"<integer>\",\n          \"description\": \"<string>\",\n          \"end_date\": \"<string>\",\n          \"custom_fields\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"notes\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      },\n      {\n        \"result_score\": \"<number>\",\n        \"item\": {\n          \"id\": \"<integer>\",\n          \"type\": \"<string>\",\n          \"title\": \"<string>\",\n          \"status\": \"<string>\",\n          \"owner\": {\n            \"id\": \"<integer>\"\n          },\n          \"board_id\": \"<integer>\",\n          \"phase\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\"\n          },\n          \"person\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\"\n          },\n          \"organization\": {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"address\": \"<string>\"\n          },\n          \"deal\": {\n            \"id\": \"<integer>\",\n            \"title\": \"<string>\"\n          },\n          \"deal_count\": \"<integer>\",\n          \"description\": \"<string>\",\n          \"end_date\": \"<string>\",\n          \"custom_fields\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"notes\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      }\n    ]\n  },\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:37:59.000Z",
+                  "updatedAt": "2026-07-28T02:37:59.000Z",
+                  "uid": "35240-efcc66ba-4cea-4aff-936e-07a3c5178948"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-786893ca-3ed3-46eb-ae53-317cf04c572b"
+            }
+          ],
+          "id": "98da1f82-c0ab-4b59-b0bc-7e03fc38942d",
+          "createdAt": "2026-07-28T02:37:59.000Z",
+          "updatedAt": "2026-07-28T02:37:59.000Z",
+          "uid": "35240-98da1f82-c0ab-4b59-b0bc-7e03fc38942d"
+        },
+        {
+          "name": "Get all projects",
+          "id": "b2cafd15-f0d9-40a5-b045-15bce99a4a02",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects?cursor=<string>&limit=<integer>&filter_id=<integer>&status=<string>&phase_id=<integer>&include_archived=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ],
+              "query": [
+                {
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                  "key": "cursor",
+                  "value": "<string>"
+                },
+                {
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The ID of the filter to use",
+                  "key": "filter_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "If supplied, includes only projects with the specified statuses. Possible values are `open`, `completed`, `canceled` and `deleted`. By default `deleted` projects are not returned.",
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "description": "If supplied, only projects in specified phase are returned",
+                  "key": "phase_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "If supplied with `true` then archived projects are also included in the response. By default only not archived projects are returned.",
+                  "key": "include_archived",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Returns all projects. This is a cursor-paginated endpoint. For more information, please refer to our documentation on <a href=\"https://pipedrive.readme.io/docs/core-api-concepts-pagination\" target=\"_blank\" rel=\"noopener noreferrer\">pagination</a>."
+          },
+          "response": [
+            {
+              "id": "7013fae4-b15d-4294-8927-16962afaa25b",
+              "name": "A list of projects.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects?cursor=<string>&limit=<integer>&filter_id=<integer>&status=<string>&phase_id=<integer>&include_archived=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ],
+                  "query": [
+                    {
+                      "description": "For pagination, the marker (an opaque string value) representing the first item on the next page",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The ID of the filter to use",
+                      "key": "filter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "If supplied, includes only projects with the specified statuses. Possible values are `open`, `completed`, `canceled` and `deleted`. By default `deleted` projects are not returned.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, only projects in specified phase are returned",
+                      "key": "phase_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "If supplied with `true` then archived projects are also included in the response. By default only not archived projects are returned.",
+                      "key": "include_archived",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"board_id\": \"<number>\",\n      \"phase_id\": \"<number>\",\n      \"description\": \"<string>\",\n      \"status\": \"<string>\",\n      \"owner_id\": \"<number>\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"deal_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"org_id\": \"<number>\",\n      \"person_id\": \"<number>\",\n      \"labels\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"status_change_time\": \"<string>\",\n      \"archive_time\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"board_id\": \"<number>\",\n      \"phase_id\": \"<number>\",\n      \"description\": \"<string>\",\n      \"status\": \"<string>\",\n      \"owner_id\": \"<number>\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"deal_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"org_id\": \"<number>\",\n      \"person_id\": \"<number>\",\n      \"labels\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"add_time\": \"<string>\",\n      \"update_time\": \"<string>\",\n      \"status_change_time\": \"<string>\",\n      \"archive_time\": \"<string>\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-7013fae4-b15d-4294-8927-16962afaa25b"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:59.000Z",
+          "updatedAt": "2026-07-28T02:37:59.000Z",
+          "uid": "35240-b2cafd15-f0d9-40a5-b045-15bce99a4a02"
+        },
+        {
+          "name": "Add a project",
+          "id": "a7c7d1f8-5cfa-412c-a8f0-2366cb0ffd0d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"board_id\": \"<number>\",\n  \"phase_id\": \"<number>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"owner_id\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"deal_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"org_id\": \"<number>\",\n  \"person_id\": \"<number>\",\n  \"labels\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"template_id\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "Adds a new project. Note that you can supply additional custom fields along with the request that are not described here. These custom fields are different for each Pipedrive account and can be recognized by long hashes as keys."
+          },
+          "response": [
+            {
+              "id": "e9f37a92-8e5b-49be-9035-3a46fd6242d1",
+              "name": "Created project.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"board_id\": \"<number>\",\n  \"phase_id\": \"<number>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"owner_id\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"deal_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"org_id\": \"<number>\",\n  \"person_id\": \"<number>\",\n  \"labels\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"template_id\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"board_id\": \"<number>\",\n    \"phase_id\": \"<number>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"owner_id\": \"<number>\",\n    \"start_date\": \"<date>\",\n    \"end_date\": \"<date>\",\n    \"deal_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"org_id\": \"<number>\",\n    \"person_id\": \"<number>\",\n    \"labels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"add_time\": \"<string>\",\n    \"update_time\": \"<string>\",\n    \"status_change_time\": \"<string>\",\n    \"archive_time\": \"<string>\"\n  },\n  \"additional_data\": {}\n}",
+              "createdAt": "2026-07-28T02:37:59.000Z",
+              "updatedAt": "2026-07-28T02:37:59.000Z",
+              "uid": "35240-e9f37a92-8e5b-49be-9035-3a46fd6242d1"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:59.000Z",
+          "updatedAt": "2026-07-28T02:37:59.000Z",
+          "uid": "35240-a7c7d1f8-5cfa-412c-a8f0-2366cb0ffd0d"
+        }
+      ],
+      "id": "f4e8218d-a0c0-4c2e-9c64-07c29c5a874f",
+      "createdAt": "2026-07-28T02:37:59.000Z",
+      "updatedAt": "2026-07-28T02:37:59.000Z",
+      "uid": "35240-f4e8218d-a0c0-4c2e-9c64-07c29c5a874f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}

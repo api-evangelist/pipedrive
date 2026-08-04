@@ -1,0 +1,122 @@
+{
+  "info": {
+    "_postman_id": "f5179bd1-0f16-4dea-81e6-a6f0a2063d1c",
+    "name": "Pipedrive API v1 Activities NoteFields API",
+    "description": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:34.000Z",
+    "updatedAt": "2026-07-28T02:37:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f5179bd1-0f16-4dea-81e6-a6f0a2063d1c"
+  },
+  "item": [
+    {
+      "name": "noteFields",
+      "item": [
+        {
+          "name": "Get all note fields",
+          "id": "b38a1c4d-f221-4cd8-a128-4a1a1134bb54",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/noteFields",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "noteFields"
+              ]
+            },
+            "description": "Returns data about all note fields."
+          },
+          "response": [
+            {
+              "id": "67c7b096-18b4-4b42-991a-e87bc63697c6",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/noteFields",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "noteFields"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"field_type\": \"monetary\",\n      \"active_flag\": \"<boolean>\",\n      \"edit_flag\": \"<boolean>\",\n      \"bulk_edit_allowed\": \"<boolean>\",\n      \"mandatory_flag\": \"<boolean>\",\n      \"options\": [\n        {\n          \"id\": \"<integer>\",\n          \"label\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"label\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"field_type\": \"set\",\n      \"active_flag\": \"<boolean>\",\n      \"edit_flag\": \"<boolean>\",\n      \"bulk_edit_allowed\": \"<boolean>\",\n      \"mandatory_flag\": \"<boolean>\",\n      \"options\": [\n        {\n          \"id\": \"<integer>\",\n          \"label\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"label\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"additional_data\": {\n    \"start\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"more_items_in_collection\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:37:34.000Z",
+              "updatedAt": "2026-07-28T02:37:34.000Z",
+              "uid": "35240-67c7b096-18b4-4b42-991a-e87bc63697c6"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:34.000Z",
+          "updatedAt": "2026-07-28T02:37:34.000Z",
+          "uid": "35240-b38a1c4d-f221-4cd8-a128-4a1a1134bb54"
+        }
+      ],
+      "id": "f2349fc6-54c6-47eb-9ae7-f8d520b24b9f",
+      "createdAt": "2026-07-28T02:37:34.000Z",
+      "updatedAt": "2026-07-28T02:37:34.000Z",
+      "uid": "35240-f2349fc6-54c6-47eb-9ae7-f8d520b24b9f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipedrive.com/v1"
+    }
+  ]
+}
