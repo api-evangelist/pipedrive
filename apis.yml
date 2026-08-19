@@ -28,7 +28,7 @@ tags:
 - Small Business
 created: '2026-05-08'
 modified: '2026-05-30'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: pipedrive:pipedrive-activities-api
   name: Pipedrive Activities API
