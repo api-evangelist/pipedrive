@@ -1,0 +1,630 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities Organizations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List updates about organization field values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/changelog",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists updates about field values of an organization."
+        },
+        {
+          "info": {
+            "name": "List files attached to an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/files",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page. Please note that a maximum value of 100 is allowed."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Supported fields: `id`, `update_time`"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists files associated with an organization."
+        },
+        {
+          "info": {
+            "name": "List updates about an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/flow",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page"
+              },
+              {
+                "name": "all_changes",
+                "value": "",
+                "type": "query",
+                "description": "Whether to show custom field updates or not. 1 = Include custom field changes. If omitted, returns changes without custom field updates."
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated string for filtering out item specific updates. (Possible values - activity, plannedActivity, note, file, change, deal, follower, participant, mailMessage, mailMessageWithAttachment, invoice, activityFile, document)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists updates about an organization."
+        },
+        {
+          "info": {
+            "name": "List followers of an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/followers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists the followers of an organization."
+        },
+        {
+          "info": {
+            "name": "Add a follower to an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/followers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a follower to an organization."
+        },
+        {
+          "info": {
+            "name": "Delete a follower from an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/followers/:follower_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              },
+              {
+                "name": "follower_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the relationship between the follower and the organization"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a follower from an organization. You can retrieve the `follower_id` from the <a href=\"https://developers.pipedrive.com/docs/api/v1/Organizations#getOrganizationFollowers\">List followers of an organization</a> endpoint."
+        },
+        {
+          "info": {
+            "name": "List mail messages associated with an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/mailMessages",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists mail messages associated with an organization."
+        },
+        {
+          "info": {
+            "name": "Merge two organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/merge",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Merges an organization with another organization. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/merging-two-organizations\" target=\"_blank\" rel=\"noopener noreferrer\">merging two organizations</a>."
+        },
+        {
+          "info": {
+            "name": "List permitted users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/permittedUsers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List users permitted to access an organization."
+        },
+        {
+          "info": {
+            "name": "Get all organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "",
+                "type": "query",
+                "description": "If supplied, only organizations matching the specified filter are returned"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma separated string array of up to 100 entity ids to fetch. If filter_id is provided, this is ignored. If any of the requested entities do not exist or are not visible, they are not included in the response."
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "If supplied, only organizations owned by the specified user are returned. If filter_id is provided, this is ignored."
+              },
+              {
+                "name": "updated_since",
+                "value": "",
+                "type": "query",
+                "description": "If set, only organizations with an `update_time` later than or equal to this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z."
+              },
+              {
+                "name": "updated_until",
+                "value": "",
+                "type": "query",
+                "description": "If set, only organizations with an `update_time` earlier than this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to sort by. Supported fields: `id`, `update_time`, `add_time`."
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "The sorting direction. Supported values: `asc`, `desc`."
+              },
+              {
+                "name": "include_fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma separated string array of additional fields to include"
+              },
+              {
+                "name": "custom_fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma separated string array of custom fields keys to include. If you are only interested in a particular set of custom fields, please use this parameter for faster results and smaller response.<br/>A maximum of 15 keys is allowed."
+              },
+              {
+                "name": "include_option_labels",
+                "value": "",
+                "type": "query",
+                "description": "When provided with a 'true' value, single option and multiple option custom fields values contain objects in the form of '{ id: number, label: string }' instead of plain id"
+              },
+              {
+                "name": "include_labels",
+                "value": "",
+                "type": "query",
+                "description": "When provided with 'true' value, response will include an array of label objects in the form of '{ id: number, label: string }'"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns data about all organizations."
+        },
+        {
+          "info": {
+            "name": "Add a new organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new organization."
+        },
+        {
+          "info": {
+            "name": "Get details of a organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              },
+              {
+                "name": "include_fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma separated string array of additional fields to include"
+              },
+              {
+                "name": "custom_fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma separated string array of custom fields keys to include. If you are only interested in a particular set of custom fields, please use this parameter for faster results and smaller response.<br/>A maximum of 15 keys is allowed."
+              },
+              {
+                "name": "include_option_labels",
+                "value": "",
+                "type": "query",
+                "description": "When provided with a 'true' value, single option and multiple option custom fields values contain objects in the form of '{ id: number, label: string }' instead of plain id"
+              },
+              {
+                "name": "include_labels",
+                "value": "",
+                "type": "query",
+                "description": "When provided with 'true' value, response will include an array of label objects in the form of '{ id: number, label: string }'"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the details of a specific organization."
+        },
+        {
+          "info": {
+            "name": "Update a organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pipedrive.com/v1/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the properties of a organization."
+        },
+        {
+          "info": {
+            "name": "Delete a organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Marks a organization as deleted. After 30 days, the organization will be permanently deleted."
+        },
+        {
+          "info": {
+            "name": "List followers changelog of an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations/:id/followers/changelog",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists changelogs about users have followed the organization."
+        },
+        {
+          "info": {
+            "name": "Search organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/organizations/search",
+            "params": [
+              {
+                "name": "term",
+                "value": "",
+                "type": "query",
+                "description": "The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>."
+              },
+              {
+                "name": "exact_match",
+                "value": "",
+                "type": "query",
+                "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Searches all organizations by name, address, notes and/or custom fields. This endpoint is a wrapper of <a href=\"https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem\">/v1/itemSearch</a> with a narrower OAuth scope."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

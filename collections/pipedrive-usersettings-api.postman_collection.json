@@ -1,0 +1,169 @@
+{
+  "item": [
+    {
+      "id": "6e57474e-af84-4ad6-8204-d23c15fe34e2",
+      "name": "UserSettings",
+      "description": {
+        "content": "View user settings.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c7d0e723-622e-4934-a3a1-550f26cd0a20",
+          "name": "List settings of an authorized user",
+          "request": {
+            "name": "List settings of an authorized user",
+            "description": {
+              "content": "Lists the settings of an authorized user. Example response contains a shortened list of settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userSettings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "02ba893a-11e0-4198-a38c-230b41fef737",
+              "name": "The list of user settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userSettings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"marketplace_team\": false,\n    \"list_limit\": 100,\n    \"beta_app\": true,\n    \"prevent_salesphone_callto_override\": false,\n    \"file_upload_destination\": \"s3\",\n    \"callto_link_syntax\": \"callto:[number]\",\n    \"autofill_deal_expected_close_date\": false,\n    \"person_duplicate_condition\": \"name && (org_id || email || phone)\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f6526fd-a4db-4bfa-b334-eba7000ebc11",
+              "name": "Unauthorized response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userSettings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"unauthorized access\",\n  \"errorCode\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "37b667af-2792-4ff2-859d-04f140053e6b",
+    "name": "Pipedrive API v1 Activities UserSettings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

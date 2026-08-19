@@ -1,0 +1,1215 @@
+{
+  "item": [
+    {
+      "id": "530be1aa-f804-4e47-aa3a-fcf54fe04ec6",
+      "name": "Files",
+      "description": {
+        "content": "Files are documents of any kind (images, spreadsheets, text files, etc.) that are uploaded to Pipedrive, and usually associated with a particular deal, person, organization, product, note or activity. Remote files can only be associated with a particular deal, person or organization. Note that the API currently does not support downloading files although it lets you retrieve a file’s meta-info along with a URL which can be used to download the file by using a standard HTTP GET request.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fcbc0ff2-a1cb-4bf4-a2a5-a764e86e225a",
+          "name": "Get all files",
+          "request": {
+            "name": "Get all files",
+            "description": {
+              "content": "Returns data about all files.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page. Please note that a maximum value of 100 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Supported fields: `id`, `update_time`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "19373e89-87cd-445c-806f-15999751d913",
+              "name": "Get data about all files uploaded to Pipedrive",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 123,\n      \"user_id\": 456,\n      \"deal_id\": 1,\n      \"person_id\": 789,\n      \"org_id\": 1,\n      \"product_id\": 1,\n      \"activity_id\": 1,\n      \"lead_id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n      \"log_id\": null,\n      \"add_time\": \"2020-02-20 14:36:35\",\n      \"update_time\": \"2020-02-20 14:57:33\",\n      \"file_name\": \"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\n      \"file_type\": \"img\",\n      \"file_size\": 7801780,\n      \"active_flag\": true,\n      \"inline_flag\": false,\n      \"remote_location\": \"googledocs\",\n      \"remote_id\": \"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\n      \"cid\": \"\",\n      \"s3_bucket\": \"\",\n      \"mail_message_id\": \"\",\n      \"mail_template_id\": \"\",\n      \"deal_name\": \"\",\n      \"person_name\": \"Person\",\n      \"lead_name\": \"Test lead name\",\n      \"org_name\": \"\",\n      \"product_name\": \"\",\n      \"url\": \"https://2a7f.pipedrive.com/v1/files/123/download\",\n      \"name\": \"test file name\",\n      \"description\": \"test file description\"\n    },\n    {\n      \"id\": 123321,\n      \"user_id\": 456,\n      \"deal_id\": 1,\n      \"person_id\": 789987,\n      \"org_id\": 1,\n      \"product_id\": 1,\n      \"activity_id\": 1,\n      \"lead_id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n      \"log_id\": null,\n      \"add_time\": \"2020-02-20 14:36:35\",\n      \"update_time\": \"2020-02-20 14:57:33\",\n      \"file_name\": \"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\n      \"file_type\": \"img\",\n      \"file_size\": 7801780,\n      \"active_flag\": true,\n      \"inline_flag\": false,\n      \"remote_location\": \"googledocs\",\n      \"remote_id\": \"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\n      \"cid\": \"\",\n      \"s3_bucket\": \"\",\n      \"mail_message_id\": \"\",\n      \"mail_template_id\": \"\",\n      \"deal_name\": \"\",\n      \"person_name\": \"Person\",\n      \"org_name\": \"\",\n      \"product_name\": \"\",\n      \"lead_name\": \"Test lead name\",\n      \"url\": \"https://2a7f.pipedrive.com/v1/files/123321/download\",\n      \"name\": \"second test file name\",\n      \"description\": \"second test file description\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": true,\n      \"next_start\": 100\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94fafddd-2e69-44aa-af08-d50006590156",
+          "name": "Add file",
+          "request": {
+            "name": "Add file",
+            "description": {
+              "content": "Lets you upload a file and associate it with a deal, person, organization, activity, product or lead. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-file\" target=\"_blank\" rel=\"noopener noreferrer\">adding a file</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) A single file, supplied in the multipart/form-data encoding and contained within the given boundaries"
+                },
+                {
+                  "key": "deal_id",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "The ID of the deal to associate file(s) with"
+                },
+                {
+                  "key": "person_id",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "The ID of the person to associate file(s) with"
+                },
+                {
+                  "key": "org_id",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "The ID of the organization to associate file(s) with"
+                },
+                {
+                  "key": "product_id",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "The ID of the product to associate file(s) with"
+                },
+                {
+                  "key": "activity_id",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "The ID of the activity to associate file(s) with"
+                },
+                {
+                  "key": "lead_id",
+                  "value": "<uuid>",
+                  "type": "text",
+                  "description": "The ID of the lead to associate file(s) with"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9a2143f7-89b5-4704-90c9-5986cca5d78b",
+              "name": "Add a file from computer or Google Drive and associate it with deal, person, organization, activity or product",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) A single file, supplied in the multipart/form-data encoding and contained within the given boundaries",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the deal to associate file(s) with",
+                        "type": "text/plain"
+                      },
+                      "key": "deal_id",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the person to associate file(s) with",
+                        "type": "text/plain"
+                      },
+                      "key": "person_id",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the organization to associate file(s) with",
+                        "type": "text/plain"
+                      },
+                      "key": "org_id",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the product to associate file(s) with",
+                        "type": "text/plain"
+                      },
+                      "key": "product_id",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the activity to associate file(s) with",
+                        "type": "text/plain"
+                      },
+                      "key": "activity_id",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the lead to associate file(s) with",
+                        "type": "text/plain"
+                      },
+                      "key": "lead_id",
+                      "value": "<uuid>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 123,\n    \"user_id\": 456,\n    \"deal_id\": 1,\n    \"person_id\": 789,\n    \"org_id\": 1,\n    \"product_id\": 1,\n    \"activity_id\": 1,\n    \"lead_id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n    \"log_id\": null,\n    \"add_time\": \"2020-02-20 14:36:35\",\n    \"update_time\": \"2020-02-20 14:36:31\",\n    \"file_name\": \"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\n    \"file_type\": \"img\",\n    \"file_size\": 7801780,\n    \"active_flag\": true,\n    \"inline_flag\": false,\n    \"remote_location\": \"googledocs\",\n    \"remote_id\": \"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\n    \"cid\": \"\",\n    \"s3_bucket\": \"\",\n    \"mail_message_id\": \"\",\n    \"mail_template_id\": \"\",\n    \"deal_name\": \"\",\n    \"person_name\": \"Person\",\n    \"org_name\": \"\",\n    \"product_name\": \"\",\n    \"lead_name\": \"Test lead name\",\n    \"url\": \"https://2a7f.pipedrive.com/v1/files/123/download\",\n    \"name\": \"IMG_8189.jpg\",\n    \"description\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d95b228-5548-43b9-beb5-dcf67cd69889",
+          "name": "Create a remote file and link it to an item",
+          "request": {
+            "name": "Create a remote file and link it to an item",
+            "description": {
+              "content": "Creates a new empty file in the remote location (`googledrive`) that will be linked to the item you supply. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-remote-file\" target=\"_blank\" rel=\"noopener noreferrer\">adding a remote file</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                "remote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "file_type",
+                  "value": "<string>",
+                  "description": "(Required) The file type"
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>",
+                  "description": "(Required) The title of the file"
+                },
+                {
+                  "disabled": false,
+                  "key": "item_type",
+                  "value": "<string>",
+                  "description": "(Required) The item type"
+                },
+                {
+                  "disabled": false,
+                  "key": "item_id",
+                  "value": "<integer>",
+                  "description": "(Required) The ID of the item to associate the file with"
+                },
+                {
+                  "disabled": false,
+                  "key": "remote_location",
+                  "value": "<string>",
+                  "description": "(Required) The location type to send the file to. Only `googledrive` is supported at the moment."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ba48185b-7f0f-4825-9723-1418a2d7fb69",
+              "name": "Creates a new empty file in the remote location (googledrive) that will be linked to the item you supply - deal, person or organization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    "remote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The file type",
+                        "type": "text/plain"
+                      },
+                      "key": "file_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The title of the file",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The item type",
+                        "type": "text/plain"
+                      },
+                      "key": "item_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the item to associate the file with",
+                        "type": "text/plain"
+                      },
+                      "key": "item_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The location type to send the file to. Only `googledrive` is supported at the moment.",
+                        "type": "text/plain"
+                      },
+                      "key": "remote_location",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 7195,\n    \"user_id\": 456,\n    \"deal_id\": 36,\n    \"person_id\": 1,\n    \"org_id\": 15,\n    \"product_id\": 1,\n    \"activity_id\": 1,\n    \"lead_id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n    \"log_id\": null,\n    \"add_time\": \"2020-02-21 11:52:28\",\n    \"update_time\": \"2020-02-21 11:52:24\",\n    \"file_name\": \"\",\n    \"file_type\": \"gdoc\",\n    \"file_size\": 0,\n    \"active_flag\": true,\n    \"inline_flag\": false,\n    \"remote_location\": \"googledocs\",\n    \"remote_id\": \"1gzyh6ExBxIb4RBZbAZxsrrBp45yuXhZWq3Zash5b75c\",\n    \"cid\": \"\",\n    \"s3_bucket\": \"\",\n    \"mail_message_id\": \"\",\n    \"mail_template_id\": \"\",\n    \"deal_name\": \"test deal\",\n    \"person_name\": \"\",\n    \"org_name\": \"test org\",\n    \"product_name\": \"\",\n    \"lead_name\": \"Test lead name 1\",\n    \"url\": \"https://app.pipedrive.com/api/v1/files/7195/download\",\n    \"name\": \"Test title for remote file\",\n    \"description\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ea7519b-025b-477b-b65d-4e084ade3ce5",
+          "name": "Link a remote file to an item",
+          "request": {
+            "name": "Link a remote file to an item",
+            "description": {
+              "content": "Links an existing remote file (`googledrive`) to the item you supply. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-remote-file\" target=\"_blank\" rel=\"noopener noreferrer\">adding a remote file</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                "remoteLink"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "item_type",
+                  "value": "<string>",
+                  "description": "(Required) The item type"
+                },
+                {
+                  "disabled": false,
+                  "key": "item_id",
+                  "value": "<integer>",
+                  "description": "(Required) The ID of the item to associate the file with"
+                },
+                {
+                  "disabled": false,
+                  "key": "remote_id",
+                  "value": "<string>",
+                  "description": "(Required) The remote item ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "remote_location",
+                  "value": "<string>",
+                  "description": "(Required) The location type to send the file to. Only `googledrive` is supported at the moment."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9a339920-b228-4bd0-8541-ced3f85e6d56",
+              "name": "Links an existing remote file (googledrive) to the item you supply - deal, person, organization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    "remoteLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The item type",
+                        "type": "text/plain"
+                      },
+                      "key": "item_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the item to associate the file with",
+                        "type": "text/plain"
+                      },
+                      "key": "item_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The remote item ID",
+                        "type": "text/plain"
+                      },
+                      "key": "remote_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The location type to send the file to. Only `googledrive` is supported at the moment.",
+                        "type": "text/plain"
+                      },
+                      "key": "remote_location",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 7196,\n    \"user_id\": 456,\n    \"deal_id\": 35,\n    \"person_id\": 1,\n    \"org_id\": 1,\n    \"product_id\": 1,\n    \"activity_id\": 1,\n    \"lead_id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n    \"log_id\": null,\n    \"add_time\": \"2020-02-21 12:02:37\",\n    \"update_time\": \"2020-02-21 12:02:37\",\n    \"file_name\": \"Test title to remote file\",\n    \"file_type\": \"gdoc\",\n    \"file_size\": 0,\n    \"active_flag\": true,\n    \"inline_flag\": false,\n    \"remote_location\": \"googledocs\",\n    \"remote_id\": \"1gzyh6ExBxIb4RBZbAZxsrrBp45yuXhZWq3Zash5b75c\",\n    \"cid\": \"\",\n    \"s3_bucket\": \"\",\n    \"mail_message_id\": \"\",\n    \"mail_template_id\": \"\",\n    \"deal_name\": \"Test deal name\",\n    \"person_name\": \"Test person name\",\n    \"org_name\": \"\",\n    \"product_name\": \"\",\n    \"lead_name\": \"Test lead name\",\n    \"url\": \"https://app.pipedrive.com/api/v1/files/7196/download\",\n    \"name\": \"Test title for remote file\",\n    \"description\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e90ae73-c6f6-4526-8b2d-b7b2edf14967",
+          "name": "Delete a file",
+          "request": {
+            "name": "Delete a file",
+            "description": {
+              "content": "Marks a file as deleted. After 30 days, the file will be permanently deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the file"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ef3866ce-ba2e-492e-8eca-3123003ce2dc",
+              "name": "Delete a file from Pipedrive",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the file"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 123\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5717de89-a896-441a-a2be-b5d16e28a4bd",
+          "name": "Get one file",
+          "request": {
+            "name": "Get one file",
+            "description": {
+              "content": "Returns data about a specific file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the file"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a36c4013-aa40-4320-bd65-91164153217f",
+              "name": "Get data about one specific file uploaded to Pipedrive",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the file"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 123,\n    \"user_id\": 456,\n    \"deal_id\": 1,\n    \"person_id\": 789,\n    \"org_id\": 1,\n    \"product_id\": 1,\n    \"activity_id\": 1,\n    \"lead_id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n    \"log_id\": null,\n    \"add_time\": \"2020-02-20 14:36:35\",\n    \"update_time\": \"2020-02-20 14:57:33\",\n    \"file_name\": \"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\n    \"file_type\": \"img\",\n    \"file_size\": 7801780,\n    \"active_flag\": true,\n    \"inline_flag\": false,\n    \"remote_location\": \"googledocs\",\n    \"remote_id\": \"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\n    \"cid\": \"\",\n    \"s3_bucket\": \"\",\n    \"mail_message_id\": \"\",\n    \"mail_template_id\": \"\",\n    \"deal_name\": \"\",\n    \"person_name\": \"Person\",\n    \"org_name\": \"\",\n    \"product_name\": \"\",\n    \"lead_name\": \"Test lead name\",\n    \"url\": \"https://2a7f.pipedrive.com/v1/files/123/download\",\n    \"name\": \"test file name\",\n    \"description\": \"test file description\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36f2605f-d4ec-4859-bed9-02325ac2a987",
+          "name": "Update file details",
+          "request": {
+            "name": "Update file details",
+            "description": {
+              "content": "Updates the properties of a file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the file"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The visible name of the file"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>",
+                  "description": "The description of the file"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e3b8e319-00d8-4e22-8298-9f4df6322e1f",
+              "name": "Update file name and description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the file"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The visible name of the file",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The description of the file",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 123,\n    \"user_id\": 456,\n    \"deal_id\": 1,\n    \"person_id\": 789,\n    \"org_id\": 1,\n    \"product_id\": 1,\n    \"activity_id\": 1,\n    \"lead_id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n    \"log_id\": null,\n    \"add_time\": \"2020-02-20 14:36:35\",\n    \"update_time\": \"2020-02-20 14:57:33\",\n    \"file_name\": \"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\n    \"file_type\": \"img\",\n    \"file_size\": 7801780,\n    \"active_flag\": true,\n    \"inline_flag\": false,\n    \"remote_location\": \"googledocs\",\n    \"remote_id\": \"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\n    \"cid\": \"\",\n    \"s3_bucket\": \"\",\n    \"mail_message_id\": \"\",\n    \"mail_template_id\": \"\",\n    \"deal_name\": \"\",\n    \"person_name\": \"Person\",\n    \"org_name\": \"\",\n    \"product_name\": \"\",\n    \"lead_name\": \"Test lead name\",\n    \"url\": \"https://2a7f.pipedrive.com/v1/files/123/download\",\n    \"name\": \"test file name\",\n    \"description\": \"test file description\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ee1bfef-448c-43e2-9bb1-650bef64651a",
+          "name": "Download one file",
+          "request": {
+            "name": "Download one file",
+            "description": {
+              "content": "Initializes a file download.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":id",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the file"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "16fed8cf-7e13-4486-a694-43d2c99bfbe0",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":id",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the file"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0677272f-e85b-4e29-bdf4-c66d74f94450",
+    "name": "Pipedrive API v1 Activities Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

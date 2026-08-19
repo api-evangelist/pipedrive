@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities Stages API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get deals in a stage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/stages/:id/deals",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the stage"
+              },
+              {
+                "name": "filter_id",
+                "value": "",
+                "type": "query",
+                "description": "If supplied, only deals matching the given filter will be returned"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "If supplied, `filter_id` will not be considered and only deals owned by the given user will be returned. If omitted, deals owned by the authorized user will be returned."
+              },
+              {
+                "name": "everyone",
+                "value": "",
+                "type": "query",
+                "description": "If supplied, `filter_id` and `user_id` will not be considered – instead, deals owned by everyone will be returned"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists deals in a specific stage. If no parameters are provided open deals owned by the authorized user will be returned. <br>This endpoint has been deprecated. Please use <a href=\"https://developers.pipedrive.com/docs/api/v1/Deals#getDeals\" target=\"_blank\" rel=\"noopener noreferrer\">GET /api/v2/deals?stage_id={id}</a> instead."
+        },
+        {
+          "info": {
+            "name": "Get all stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/stages",
+            "params": [
+              {
+                "name": "pipeline_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the pipeline to fetch stages for. If omitted, stages for all pipelines will be fetched."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to sort by. Supported fields: `id`, `update_time`, `add_time`, `order_nr`."
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "The sorting direction. Supported values: `asc`, `desc`."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns data about all stages."
+        },
+        {
+          "info": {
+            "name": "Add a new stage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/stages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new stage, returns the ID upon success."
+        },
+        {
+          "info": {
+            "name": "Get one stage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/stages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the stage"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns data about a specific stage."
+        },
+        {
+          "info": {
+            "name": "Update stage details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pipedrive.com/v1/stages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the stage"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the properties of a stage."
+        },
+        {
+          "info": {
+            "name": "Delete a stage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/stages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the stage"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Marks a stage as deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

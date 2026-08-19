@@ -1,0 +1,270 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities Users API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/users",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns data about all users within the company."
+        },
+        {
+          "info": {
+            "name": "Add a new user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new user to the company, returns the ID upon success."
+        },
+        {
+          "info": {
+            "name": "Find users by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/users/find",
+            "params": [
+              {
+                "name": "term",
+                "value": "",
+                "type": "query",
+                "description": "The search term to look for"
+              },
+              {
+                "name": "search_by_email",
+                "value": "",
+                "type": "query",
+                "description": "When enabled, the term will only be matched against email addresses of users. Default: `false`."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Finds users by their name."
+        },
+        {
+          "info": {
+            "name": "Get current user data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/users/me",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns data about an authorized user within the company with bound company data: company ID, company name, and domain. Note that the `locale` property means 'Date/number format' in the Pipedrive account settings, not the chosen language."
+        },
+        {
+          "info": {
+            "name": "Get one user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns data about a specific user within the company."
+        },
+        {
+          "info": {
+            "name": "Update user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pipedrive.com/v1/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the properties of a user. Currently, only `active_flag` can be updated."
+        },
+        {
+          "info": {
+            "name": "List followers of a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/users/:id/followers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists the followers of a specific user."
+        },
+        {
+          "info": {
+            "name": "List user permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/users/:id/permissions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists aggregated permissions over all assigned permission sets for a user."
+        },
+        {
+          "info": {
+            "name": "List role assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/users/:id/roleAssignments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists role assignments for a user."
+        },
+        {
+          "info": {
+            "name": "List user role settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/users/:id/roleSettings",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists the settings of user's assigned role."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

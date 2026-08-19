@@ -1,0 +1,2260 @@
+{
+  "item": [
+    {
+      "id": "40ae34fa-bd22-4206-9716-c671b49fe4d3",
+      "name": "Organizations",
+      "description": {
+        "content": "Organizations are companies and other kinds of organizations you are making deals with. Persons can be associated with organizations so that each organization can contain one or more persons.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8dc66ba8-70f7-4578-bfcc-eef57ae1ce71",
+          "name": "List updates about organization field values",
+          "request": {
+            "name": "List updates about organization field values",
+            "description": {
+              "content": "Lists updates about field values of an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "changelog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1607d9fc-61af-4a7a-aa13-c46b32c3e660",
+              "name": "Get changelog of an organization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"field_key\": \"name\",\n      \"old_value\": \"Org 10\",\n      \"new_value\": \"Org 11\",\n      \"actor_user_id\": 26,\n      \"time\": \"2024-02-12 09:14:35\",\n      \"change_source\": \"app\",\n      \"change_source_user_agent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36\",\n      \"is_bulk_update_flag\": false\n    },\n    {\n      \"field_key\": \"51c27e4a19c3bedd91162a9d446707c1f95174ea\",\n      \"old_value\": \"0\",\n      \"new_value\": \"20\",\n      \"actor_user_id\": 26,\n      \"time\": \"2024-02-12 09:10:12\",\n      \"change_source\": \"app\",\n      \"change_source_user_agent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36\",\n      \"is_bulk_update_flag\": false\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"aWQ6NTQ0\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bedea252-8506-422b-b986-b8877671ec97",
+          "name": "List files attached to an organization",
+          "request": {
+            "name": "List files attached to an organization",
+            "description": {
+              "content": "Lists files associated with an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page. Please note that a maximum value of 100 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Supported fields: `id`, `update_time`"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b471caf5-8ab4-47d4-9a60-9343d96b8d86",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"user_id\": 8877,\n      \"deal_id\": 1,\n      \"person_id\": 1,\n      \"org_id\": 1480,\n      \"product_id\": 1,\n      \"activity_id\": 1,\n      \"lead_id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n      \"log_id\": null,\n      \"add_time\": \"2020-09-16 11:19:36\",\n      \"update_time\": \"2020-09-16 11:19:36\",\n      \"file_name\": \"95781006_794143070992462_4330873630616453120_n_60817458877506f9eb74d03e5ef9ba061915b797998.jpg\",\n      \"file_type\": \"img\",\n      \"file_size\": 95116,\n      \"active_flag\": true,\n      \"inline_flag\": false,\n      \"remote_location\": \"s3\",\n      \"remote_id\": \"95781006_794143070992462_4330873630616453120_n.jpg\",\n      \"cid\": \"\",\n      \"s3_bucket\": \"\",\n      \"mail_message_id\": \"\",\n      \"mail_template_id\": \"\",\n      \"deal_name\": \"nice deal\",\n      \"person_name\": \"\",\n      \"people_name\": \"\",\n      \"org_name\": \"Pipedrive Inc.\",\n      \"product_name\": \"\",\n      \"lead_name\": \"nice lead\",\n      \"url\": \"https://app.pipedrive.com/api/v1/files/304/download\",\n      \"name\": \"95781006_794143070992462_4330873630616453120_n.jpg\",\n      \"description\": \"\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0a44d24-3317-49e2-838a-d19c6b567762",
+          "name": "List updates about an organization",
+          "request": {
+            "name": "List updates about an organization",
+            "description": {
+              "content": "Lists updates about an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "flow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "all_changes",
+                  "value": "<string>",
+                  "description": "Whether to show custom field updates or not. 1 = Include custom field changes. If omitted, returns changes without custom field updates."
+                },
+                {
+                  "disabled": false,
+                  "key": "items",
+                  "value": "<string>",
+                  "description": "A comma-separated string for filtering out item specific updates. (Possible values - activity, plannedActivity, note, file, change, deal, follower, participant, mailMessage, mailMessageWithAttachment, invoice, activityFile, document)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "748f07d0-0590-4d05-b0a9-dc6d14bcc2d0",
+              "name": "Get the organization updates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "all_changes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "items",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"object\": \"organizationChange\",\n      \"timestamp\": \"2020-09-15 11:55:14\",\n      \"data\": {\n        \"id\": 3694,\n        \"item_id\": 1480,\n        \"user_id\": 9271535,\n        \"field_key\": \"owner_id\",\n        \"old_value\": 9271535,\n        \"new_value\": 8877,\n        \"is_bulk_update_flag\": null,\n        \"log_time\": \"2020-09-15 11:55:14\",\n        \"change_source\": \"app\",\n        \"change_source_user_agent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML like Gecko) Chrome/84.0.4147.135 Safari/537.36\",\n        \"additional_data\": {\n          \"new_value_formatted\": \"Will Smith\",\n          \"old_value_formatted\": \"Robert Smith\"\n        }\n      }\n    },\n    {\n      \"object\": \"activity\",\n      \"timestamp\": \"2020-08-07 08:15:00\",\n      \"data\": {\n        \"id\": 8,\n        \"company_id\": 22122,\n        \"user_id\": 1234,\n        \"done\": false,\n        \"type\": \"deadline\",\n        \"reference_type\": \"scheduler-service\",\n        \"reference_id\": 7,\n        \"conference_meeting_client\": \"871b8bc88d3a1202\",\n        \"conference_meeting_url\": \"https://pipedrive.zoom.us/link\",\n        \"conference_meeting_id\": \"17058746701\",\n        \"due_date\": \"2020-06-09\",\n        \"due_time\": \"10:00\",\n        \"duration\": \"01:00\",\n        \"busy_flag\": true,\n        \"add_time\": \"2020-06-08 12:37:56\",\n        \"marked_as_done_time\": \"2020-08-08 08:08:38\",\n        \"last_notification_time\": \"2020-08-08 12:37:56\",\n        \"last_notification_user_id\": 7655,\n        \"notification_language_id\": 1,\n        \"subject\": \"Deadline\",\n        \"public_description\": \"This is a description\",\n        \"calendar_sync_include_context\": \"\",\n        \"location\": \"Mustamäe tee 3, Tallinn, Estonia\",\n        \"org_id\": 5,\n        \"person_id\": 1101,\n        \"deal_id\": 300,\n        \"lead_id\": \"46c3b0e1-db35-59ca-1828-4817378dff71\",\n        \"project_id\": null,\n        \"active_flag\": true,\n        \"update_time\": \"2020-08-08 12:37:56\",\n        \"update_user_id\": 5596,\n        \"gcal_event_id\": \"\",\n        \"google_calendar_id\": \"\",\n        \"google_calendar_etag\": \"\",\n        \"source_timezone\": \"\",\n        \"rec_rule\": \"RRULE:FREQ=WEEKLY;BYDAY=WE\",\n        \"rec_rule_extension\": \"\",\n        \"rec_master_activity_id\": 1,\n        \"series\": [],\n        \"note\": \"A note for the activity\",\n        \"created_by_user_id\": 1234,\n        \"location_subpremise\": \"\",\n        \"location_street_number\": \"3\",\n        \"location_route\": \"Mustamäe tee\",\n        \"location_sublocality\": \"Kristiine\",\n        \"location_locality\": \"Tallinn\",\n        \"location_admin_area_level_1\": \"Harju maakond\",\n        \"location_admin_area_level_2\": \"\",\n        \"location_country\": \"Estonia\",\n        \"location_postal_code\": \"10616\",\n        \"location_formatted_address\": \"Mustamäe tee 3, 10616 Tallinn, Estonia\",\n        \"attendees\": [\n          {\n            \"email_address\": \"attendee@pipedrivemail.com\",\n            \"is_organizer\": 0,\n            \"name\": \"Attendee\",\n            \"person_id\": 25312,\n            \"status\": \"noreply\",\n            \"user_id\": null\n          }\n        ],\n        \"participants\": [\n          {\n            \"person_id\": 17985,\n            \"primary_flag\": false\n          },\n          {\n            \"person_id\": 1101,\n            \"primary_flag\": true\n          }\n        ],\n        \"org_name\": \"Organization\",\n        \"person_name\": \"Person\",\n        \"deal_title\": \"Deal\",\n        \"owner_name\": \"Creator\",\n        \"person_dropbox_bcc\": \"company@pipedrivemail.com\",\n        \"deal_dropbox_bcc\": \"company+deal300@pipedrivemail.com\",\n        \"assigned_to_user_id\": 1235,\n        \"file\": {\n          \"id\": \"376892,\",\n          \"clean_name\": \"Audio 10:55:07.m4a\",\n          \"url\": \"https://pipedrive-files.s3-eu-west-1.amazonaws.com/Audio-recording.m4a\"\n        }\n      }\n    },\n    {\n      \"object\": \"file\",\n      \"timestamp\": \"2020-08-10 11:52:26\",\n      \"data\": {\n        \"id\": 1,\n        \"user_id\": 8877,\n        \"deal_id\": 1,\n        \"person_id\": 1,\n        \"org_id\": 1480,\n        \"product_id\": 1,\n        \"activity_id\": 1,\n        \"lead_id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n        \"log_id\": null,\n        \"add_time\": \"2020-09-16 11:19:36\",\n        \"update_time\": \"2020-09-16 11:19:36\",\n        \"file_name\": \"95781006_794143070992462_4330873630616453120_n_60817458877506f9eb74d03e5ef9ba061915b797998.jpg\",\n        \"file_type\": \"img\",\n        \"file_size\": 95116,\n        \"active_flag\": true,\n        \"inline_flag\": false,\n        \"remote_location\": \"s3\",\n        \"remote_id\": \"95781006_794143070992462_4330873630616453120_n.jpg\",\n        \"cid\": \"\",\n        \"s3_bucket\": \"\",\n        \"mail_message_id\": \"\",\n        \"mail_template_id\": \"\",\n        \"deal_name\": \"nice deal\",\n        \"person_name\": \"\",\n        \"people_name\": \"\",\n        \"org_name\": \"Pipedrive Inc.\",\n        \"product_name\": \"\",\n        \"lead_name\": \"nice lead\",\n        \"url\": \"https://app.pipedrive.com/api/v1/files/304/download\",\n        \"name\": \"95781006_794143070992462_4330873630616453120_n.jpg\",\n        \"description\": \"\"\n      }\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": true\n    }\n  },\n  \"related_objects\": {\n    \"allOf\": [\n      {\n        \"user\": {\n          \"123\": {\n            \"id\": 123,\n            \"name\": \"Jane Doe\",\n            \"email\": \"jane@pipedrive.com\",\n            \"has_pic\": 1,\n            \"pic_hash\": \"2611ace8ac6a3afe2f69ed56f9e08c6b\",\n            \"active_flag\": true\n          }\n        }\n      },\n      {\n        \"organization\": {\n          \"1\": {\n            \"id\": 1,\n            \"name\": \"Org Name\",\n            \"people_count\": 1,\n            \"owner_id\": 123,\n            \"address\": \"Mustamäe tee 3a, 10615 Tallinn\",\n            \"active_flag\": true,\n            \"cc_email\": \"org@pipedrivemail.com\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2227543-622f-4c7d-95e9-27ec1b04c2d1",
+          "name": "List followers of an organization",
+          "request": {
+            "name": "List followers of an organization",
+            "description": {
+              "content": "Lists the followers of an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "followers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "682dbbd5-4bac-4add-af74-84a9f0eb99d8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "followers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"user_id\": 100,\n      \"id\": 123,\n      \"org_id\": 77,\n      \"add_time\": \"2020-09-08 08:17:52\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": false,\n      \"next_start\": 100\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d64bd71a-28fb-4783-bff3-98143338c593",
+          "name": "Add a follower to an organization",
+          "request": {
+            "name": "Add a follower to an organization",
+            "description": {
+              "content": "Adds a follower to an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "followers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9aae0ac4-7d1e-49f5-8f50-a02f0e6dfd1f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "followers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"user_id\": 100,\n    \"id\": 123,\n    \"org_id\": 77,\n    \"add_time\": \"2020-09-08 08:17:52\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92ed1ee3-4d66-4f83-9218-c7157c1d2acb",
+          "name": "Delete a follower from an organization",
+          "request": {
+            "name": "Delete a follower from an organization",
+            "description": {
+              "content": "Deletes a follower from an organization. You can retrieve the `follower_id` from the <a href=\"https://developers.pipedrive.com/docs/api/v1/Organizations#getOrganizationFollowers\">List followers of an organization</a> endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "followers",
+                ":follower_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "follower_id",
+                  "description": "(Required) The ID of the relationship between the follower and the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c9db412d-0b71-48de-bc65-9aaeb5b4549c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "followers",
+                    ":follower_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "follower_id",
+                      "description": "(Required) The ID of the relationship between the follower and the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 123\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7417e247-7f54-4a48-901d-1ba00c89f76d",
+          "name": "List mail messages associated with an organization",
+          "request": {
+            "name": "List mail messages associated with an organization",
+            "description": {
+              "content": "Lists mail messages associated with an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "mailMessages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7adf6642-7f9e-4093-9cad-f424d13deffe",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "mailMessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"object\": \"mailMessage\",\n      \"timestamp\": \"2020-09-16 13:38:17\",\n      \"data\": {\n        \"id\": 1,\n        \"from\": [\n          {\n            \"id\": 1,\n            \"email_address\": \"mail@example.org\",\n            \"name\": \"Test\",\n            \"linked_person_id\": 1,\n            \"linked_person_name\": \"\",\n            \"mail_message_party_id\": 1\n          }\n        ],\n        \"to\": [\n          {\n            \"id\": 1,\n            \"email_address\": \"mail@example.org\",\n            \"name\": \"Test\",\n            \"linked_person_id\": 1,\n            \"linked_person_name\": \"\",\n            \"mail_message_party_id\": 1\n          }\n        ],\n        \"cc\": [\n          {\n            \"id\": 1,\n            \"email_address\": \"mail@example.org\",\n            \"name\": \"Test\",\n            \"linked_person_id\": 1,\n            \"linked_person_name\": \"\",\n            \"mail_message_party_id\": 1\n          }\n        ],\n        \"bcc\": [\n          {\n            \"id\": 1,\n            \"email_address\": \"mail@example.org\",\n            \"name\": \"Test\",\n            \"linked_person_id\": 1,\n            \"linked_person_name\": \"\",\n            \"mail_message_party_id\": 1\n          }\n        ],\n        \"body_url\": \"https://example.org\",\n        \"nylas_id\": \"8cfw8n7l4iy24xxxxxxxxx\",\n        \"account_id\": \"ao5gpry0zykr1xxxxxxxxx\",\n        \"user_id\": 1,\n        \"mail_thread_id\": 1,\n        \"subject\": \"test subject\",\n        \"snippet\": \"test subject\",\n        \"mail_tracking_status\": \"opened\",\n        \"mail_link_tracking_enabled_flag\": 0,\n        \"read_flag\": 1,\n        \"draft\": \"\",\n        \"s3_bucket\": \"pipedrive-mail-live-fr\",\n        \"s3_bucket_path\": \"e9cf-6081745/77777/nylas/111/1111/body\",\n        \"draft_flag\": 0,\n        \"synced_flag\": 1,\n        \"deleted_flag\": 0,\n        \"external_deleted_flag\": false,\n        \"has_body_flag\": 1,\n        \"sent_flag\": 0,\n        \"sent_from_pipedrive_flag\": 0,\n        \"smart_bcc_flag\": 0,\n        \"message_time\": \"2019-11-14T06:02:06.000Z\",\n        \"add_time\": \"2019-11-14T06:02:06.000Z\",\n        \"update_time\": \"2019-11-14T07:15:49.000Z\",\n        \"has_attachments_flag\": 1,\n        \"has_inline_attachments_flag\": 0,\n        \"has_real_attachments_flag\": 1,\n        \"mua_message_id\": \"8cfw8n7l4iy24lfhnexxxxxx-0@mailer.nylas.com\",\n        \"template_id\": 1,\n        \"item_type\": \"mailMessage\",\n        \"timestamp\": \"2020-09-16T13:37:50.000Z\",\n        \"company_id\": 6081745\n      }\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d267d311-108a-497d-9a52-0d8a99ec7ef3",
+          "name": "Merge two organizations",
+          "request": {
+            "name": "Merge two organizations",
+            "description": {
+              "content": "Merges an organization with another organization. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/merging-two-organizations\" target=\"_blank\" rel=\"noopener noreferrer\">merging two organizations</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merge_with_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e324aea-10c4-4d8e-be36-32853c68bc52",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merge_with_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 123\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbaa5249-295c-4037-b004-84a2210aa22d",
+          "name": "List permitted users",
+          "request": {
+            "name": "List permitted users",
+            "description": {
+              "content": "List users permitted to access an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "permittedUsers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "14fed20e-0886-48eb-8cfd-1fdafc55533d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "permittedUsers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    123,\n    777\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73786961-a38d-4afe-9ac1-35967a61130b",
+          "name": "Get all organizations",
+          "request": {
+            "name": "Get all organizations",
+            "description": {
+              "content": "Returns data about all organizations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only organizations matching the specified filter are returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of up to 100 entity ids to fetch. If filter_id is provided, this is ignored. If any of the requested entities do not exist or are not visible, they are not included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only organizations owned by the specified user are returned. If filter_id is provided, this is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_since",
+                  "value": "<string>",
+                  "description": "If set, only organizations with an `update_time` later than or equal to this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_until",
+                  "value": "<string>",
+                  "description": "If set, only organizations with an `update_time` earlier than this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "id",
+                  "description": "The field to sort by. Supported fields: `id`, `update_time`, `add_time`."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "asc",
+                  "description": "The sorting direction. Supported values: `asc`, `desc`."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of additional fields to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "custom_fields",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of custom fields keys to include. If you are only interested in a particular set of custom fields, please use this parameter for faster results and smaller response.<br/>A maximum of 15 keys is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_option_labels",
+                  "value": "<boolean>",
+                  "description": "When provided with a 'true' value, single option and multiple option custom fields values contain objects in the form of '{ id: number, label: string }' instead of plain id"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_labels",
+                  "value": "<boolean>",
+                  "description": "When provided with 'true' value, response will include an array of label objects in the form of '{ id: number, label: string }'"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94ba5421-9ed4-4572-afb4-12ff430ba3df",
+              "name": "Get all organizations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updated_since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_until",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "custom_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_option_labels",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_labels",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Organization Name\",\n      \"owner_id\": 1,\n      \"org_id\": 1,\n      \"add_time\": \"2021-01-01T00:00:00Z\",\n      \"update_time\": \"2021-01-01T00:00:00Z\",\n      \"address\": {\n        \"value\": \"123 Main St\",\n        \"country\": \"USA\",\n        \"admin_area_level_1\": \"CA\",\n        \"admin_area_level_2\": \"Santa Clara\",\n        \"locality\": \"Sunnyvale\",\n        \"sublocality\": \"Downtown\",\n        \"route\": \"Main St\",\n        \"street_number\": \"123\",\n        \"subpremise\": \"123A\",\n        \"postal_code\": \"94085\"\n      },\n      \"is_deleted\": false,\n      \"visible_to\": 7,\n      \"label_ids\": [\n        1,\n        2,\n        3\n      ],\n      \"custom_fields\": {}\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45d8c82d-7b95-4c7e-aa6d-b04331eb6afd",
+          "name": "Add a new organization",
+          "request": {
+            "name": "Add a new organization",
+            "description": {
+              "content": "Adds a new organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"add_time\": \"<string>\",\n  \"update_time\": \"<string>\",\n  \"visible_to\": \"<integer>\",\n  \"label_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"address\": {\n    \"value\": \"<string>\",\n    \"country\": \"<string>\",\n    \"admin_area_level_1\": \"<string>\",\n    \"admin_area_level_2\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"sublocality\": \"<string>\",\n    \"route\": \"<string>\",\n    \"street_number\": \"<string>\",\n    \"subpremise\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"custom_fields\": {\n    \"key_0\": false,\n    \"key_1\": 9691,\n    \"key_2\": 348.9281975302838\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec1d4c8f-7a2e-4798-a077-fad77573457d",
+              "name": "Add organization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"add_time\": \"<string>\",\n  \"update_time\": \"<string>\",\n  \"visible_to\": \"<integer>\",\n  \"label_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"address\": {\n    \"value\": \"<string>\",\n    \"country\": \"<string>\",\n    \"admin_area_level_1\": \"<string>\",\n    \"admin_area_level_2\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"sublocality\": \"<string>\",\n    \"route\": \"<string>\",\n    \"street_number\": \"<string>\",\n    \"subpremise\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"custom_fields\": {\n    \"key_0\": false,\n    \"key_1\": 8210.822115767387,\n    \"key_2\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Organization Name\",\n    \"owner_id\": 1,\n    \"org_id\": 1,\n    \"add_time\": \"2021-01-01T00:00:00Z\",\n    \"update_time\": \"2021-01-01T00:00:00Z\",\n    \"address\": {\n      \"value\": \"123 Main St\",\n      \"country\": \"USA\",\n      \"admin_area_level_1\": \"CA\",\n      \"admin_area_level_2\": \"Santa Clara\",\n      \"locality\": \"Sunnyvale\",\n      \"sublocality\": \"Downtown\",\n      \"route\": \"Main St\",\n      \"street_number\": \"123\",\n      \"subpremise\": \"123A\",\n      \"postal_code\": \"94085\"\n    },\n    \"is_deleted\": false,\n    \"visible_to\": 7,\n    \"label_ids\": [\n      1,\n      2,\n      3\n    ],\n    \"custom_fields\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b894284c-6ab5-4ab8-8567-d2c98834d632",
+          "name": "Delete a organization",
+          "request": {
+            "name": "Delete a organization",
+            "description": {
+              "content": "Marks a organization as deleted. After 30 days, the organization will be permanently deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "32cd62d3-2af9-43fa-b409-969727909a5a",
+              "name": "Delete organization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd5163f6-2477-46ef-a6c4-fd9c57ba87c8",
+          "name": "Get details of a organization",
+          "request": {
+            "name": "Get details of a organization",
+            "description": {
+              "content": "Returns the details of a specific organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of additional fields to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "custom_fields",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of custom fields keys to include. If you are only interested in a particular set of custom fields, please use this parameter for faster results and smaller response.<br/>A maximum of 15 keys is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_option_labels",
+                  "value": "<boolean>",
+                  "description": "When provided with a 'true' value, single option and multiple option custom fields values contain objects in the form of '{ id: number, label: string }' instead of plain id"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_labels",
+                  "value": "<boolean>",
+                  "description": "When provided with 'true' value, response will include an array of label objects in the form of '{ id: number, label: string }'"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e792edf0-5378-4bb8-94b4-e96858e22048",
+              "name": "Get organization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "custom_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_option_labels",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_labels",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Organization Name\",\n    \"owner_id\": 1,\n    \"org_id\": 1,\n    \"add_time\": \"2021-01-01T00:00:00Z\",\n    \"update_time\": \"2021-01-01T00:00:00Z\",\n    \"address\": {\n      \"value\": \"123 Main St\",\n      \"country\": \"USA\",\n      \"admin_area_level_1\": \"CA\",\n      \"admin_area_level_2\": \"Santa Clara\",\n      \"locality\": \"Sunnyvale\",\n      \"sublocality\": \"Downtown\",\n      \"route\": \"Main St\",\n      \"street_number\": \"123\",\n      \"subpremise\": \"123A\",\n      \"postal_code\": \"94085\"\n    },\n    \"is_deleted\": false,\n    \"visible_to\": 7,\n    \"label_ids\": [\n      1,\n      2,\n      3\n    ],\n    \"custom_fields\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f4b0e65-fbcf-4462-bd76-4fcfb3934e5f",
+          "name": "Update a organization",
+          "request": {
+            "name": "Update a organization",
+            "description": {
+              "content": "Updates the properties of a organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"add_time\": \"<string>\",\n  \"update_time\": \"<string>\",\n  \"visible_to\": \"<integer>\",\n  \"label_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"address\": {\n    \"value\": \"<string>\",\n    \"country\": \"<string>\",\n    \"admin_area_level_1\": \"<string>\",\n    \"admin_area_level_2\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"sublocality\": \"<string>\",\n    \"route\": \"<string>\",\n    \"street_number\": \"<string>\",\n    \"subpremise\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"custom_fields\": {\n    \"key_0\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de7b52c9-cbcd-4755-b4f9-3cd3aa8aa0c9",
+              "name": "Edit organization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"add_time\": \"<string>\",\n  \"update_time\": \"<string>\",\n  \"visible_to\": \"<integer>\",\n  \"label_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"address\": {\n    \"value\": \"<string>\",\n    \"country\": \"<string>\",\n    \"admin_area_level_1\": \"<string>\",\n    \"admin_area_level_2\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"sublocality\": \"<string>\",\n    \"route\": \"<string>\",\n    \"street_number\": \"<string>\",\n    \"subpremise\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"custom_fields\": {\n    \"key_0\": 5957,\n    \"key_1\": 9703\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Organization Name\",\n    \"owner_id\": 1,\n    \"org_id\": 1,\n    \"add_time\": \"2021-01-01T00:00:00Z\",\n    \"update_time\": \"2021-01-01T00:00:00Z\",\n    \"address\": {\n      \"value\": \"123 Main St\",\n      \"country\": \"USA\",\n      \"admin_area_level_1\": \"CA\",\n      \"admin_area_level_2\": \"Santa Clara\",\n      \"locality\": \"Sunnyvale\",\n      \"sublocality\": \"Downtown\",\n      \"route\": \"Main St\",\n      \"street_number\": \"123\",\n      \"subpremise\": \"123A\",\n      \"postal_code\": \"94085\"\n    },\n    \"is_deleted\": false,\n    \"visible_to\": 7,\n    \"label_ids\": [\n      1,\n      2,\n      3\n    ],\n    \"custom_fields\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73fc9314-712d-4b5c-8607-aff4385d2d95",
+          "name": "List followers changelog of an organization",
+          "request": {
+            "name": "List followers changelog of an organization",
+            "description": {
+              "content": "Lists changelogs about users have followed the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id",
+                "followers",
+                "changelog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fa29fbf7-7ff2-4265-a6da-85fecf976f13",
+              "name": "List entity followers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id",
+                    "followers",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"action\": \"added\",\n      \"actor_user_id\": 1,\n      \"follower_user_id\": 1,\n      \"time\": \"2024-01-01T00:00:00Z\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8576974e-921a-43a9-87cb-b24486dc6690",
+          "name": "Search organizations",
+          "request": {
+            "name": "Search organizations",
+            "description": {
+              "content": "Searches all organizations by name, address, notes and/or custom fields. This endpoint is a wrapper of <a href=\"https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem\">/v1/itemSearch</a> with a narrower OAuth scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>",
+                  "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A comma-separated string array. The fields to perform the search from. Defaults to all of them. Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>."
+                },
+                {
+                  "disabled": false,
+                  "key": "exact_match",
+                  "value": "<boolean>",
+                  "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fc9db196-f65d-4e51-ba25-6dba71d1cf95",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exact_match",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"items\": [\n      {\n        \"result_score\": 0.316,\n        \"item\": {\n          \"id\": 1,\n          \"type\": \"organization\",\n          \"name\": \"Organization name\",\n          \"address\": \"Mustamäe tee 3a, 10615 Tallinn\",\n          \"visible_to\": 3,\n          \"owner\": {\n            \"id\": 1\n          },\n          \"custom_fields\": [],\n          \"notes\": []\n        }\n      }\n    ]\n  },\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6da5e228-0dfa-4045-bfda-6bdf7377e967",
+    "name": "Pipedrive API v1 Activities Organizations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

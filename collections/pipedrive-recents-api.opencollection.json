@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities Recents API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get recents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/recents",
+            "params": [
+              {
+                "name": "since_timestamp",
+                "value": "",
+                "type": "query",
+                "description": "The timestamp in UTC. Format: YYYY-MM-DD HH:MM:SS."
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "Multiple selection of item types to include in the query (optional)"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns data about all recent changes occurred after the given timestamp."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

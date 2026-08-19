@@ -1,0 +1,1025 @@
+{
+  "item": [
+    {
+      "id": "6aa7e2c3-b275-4ba2-a620-ac49099582c9",
+      "name": "ProjectFields",
+      "description": {
+        "content": "Project fields represent the schema for a project in the context of the company of the authorized user. Each company can have a different schema for their projects, with various custom fields.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "95a1eaf1-9774-4d68-9ad2-177085ef8b98",
+          "name": "Get all project fields",
+          "request": {
+            "name": "Get all project fields",
+            "description": {
+              "content": "Returns metadata about all project fields in the company.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projectFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6c48262-356b-49eb-b6ce-6dc26bd6823a",
+              "name": "Get all project fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projectFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"field_name\": \"Project Name\",\n      \"field_code\": \"name\",\n      \"field_type\": \"varchar\",\n      \"options\": null,\n      \"subfields\": null,\n      \"is_custom_field\": false,\n      \"is_optional_response_field\": false,\n      \"ui_visibility\": {\n        \"add_visible_flag\": true,\n        \"details_visible_flag\": true\n      },\n      \"important_fields\": {\n        \"enabled\": false,\n        \"stage_ids\": []\n      },\n      \"required_fields\": {\n        \"enabled\": true\n      }\n    },\n    {\n      \"field_name\": \"Category\",\n      \"field_code\": \"40characterhashforcustomfieldidentifier\",\n      \"field_type\": \"enum\",\n      \"options\": [\n        {\n          \"id\": 1,\n          \"label\": \"Internal\"\n        },\n        {\n          \"id\": 2,\n          \"label\": \"External\"\n        },\n        {\n          \"id\": 3,\n          \"label\": \"Research\"\n        }\n      ],\n      \"subfields\": null,\n      \"is_custom_field\": true,\n      \"is_optional_response_field\": false,\n      \"ui_visibility\": {\n        \"add_visible_flag\": true,\n        \"details_visible_flag\": true\n      },\n      \"important_fields\": {\n        \"enabled\": false,\n        \"stage_ids\": []\n      },\n      \"required_fields\": {\n        \"enabled\": false\n      }\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "870a0ea3-e46f-40b7-9c32-e7976547de78",
+          "name": "Create one project field",
+          "request": {
+            "name": "Create one project field",
+            "description": {
+              "content": "Creates a new project custom field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projectFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field_name\": \"<string>\",\n  \"field_type\": \"<string>\",\n  \"options\": [\n    {\n      \"label\": \"<string>\"\n    },\n    {\n      \"label\": \"<string>\"\n    }\n  ],\n  \"ui_visibility\": {\n    \"add_visible_flag\": false,\n    \"details_visible_flag\": true\n  },\n  \"important_fields\": {\n    \"enabled\": false,\n    \"key_0\": \"string\"\n  },\n  \"required_fields\": {\n    \"enabled\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "973fb80c-3adb-49a4-a9c3-3b466e5f9581",
+              "name": "Create one project field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projectFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field_name\": \"<string>\",\n  \"field_type\": \"<string>\",\n  \"options\": [\n    {\n      \"label\": \"<string>\"\n    },\n    {\n      \"label\": \"<string>\"\n    }\n  ],\n  \"ui_visibility\": {\n    \"add_visible_flag\": false,\n    \"details_visible_flag\": true,\n    \"key_0\": 4695,\n    \"key_1\": true,\n    \"key_2\": 6302\n  },\n  \"important_fields\": {\n    \"enabled\": false,\n    \"key_0\": 2769.3481966153013\n  },\n  \"required_fields\": {\n    \"enabled\": false,\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Category\",\n    \"field_code\": \"946947d1b02fd3ef20798d6112ec5d895a686a21\",\n    \"field_type\": \"enum\",\n    \"options\": [\n      {\n        \"id\": 1,\n        \"label\": \"Internal\"\n      },\n      {\n        \"id\": 2,\n        \"label\": \"External\"\n      },\n      {\n        \"id\": 3,\n        \"label\": \"Research\"\n      }\n    ],\n    \"subfields\": null,\n    \"is_custom_field\": true,\n    \"is_optional_response_field\": false,\n    \"ui_visibility\": {\n      \"add_visible_flag\": true,\n      \"details_visible_flag\": true\n    },\n    \"important_fields\": {\n      \"enabled\": false,\n      \"stage_ids\": []\n    },\n    \"required_fields\": {\n      \"enabled\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cec407c-afe3-4436-97d0-722fe7265bfa",
+          "name": "Get one project field",
+          "request": {
+            "name": "Get one project field",
+            "description": {
+              "content": "Returns metadata about a specific project field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projectFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e635bb18-bc4e-49b1-b280-66718546409e",
+              "name": "Get one project field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projectFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Project Name\",\n    \"field_code\": \"name\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": false,\n    \"is_optional_response_field\": false,\n    \"ui_visibility\": {\n      \"add_visible_flag\": true,\n      \"details_visible_flag\": true\n    },\n    \"important_fields\": {\n      \"enabled\": false,\n      \"stage_ids\": []\n    },\n    \"required_fields\": {\n      \"enabled\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0db01a3-431f-4461-9288-6aa861584150",
+          "name": "Update one project field",
+          "request": {
+            "name": "Update one project field",
+            "description": {
+              "content": "Updates a project custom field. The field_code and field_type cannot be changed. At least one field must be provided in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projectFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field_name\": \"<string>\",\n  \"ui_visibility\": {\n    \"add_visible_flag\": false,\n    \"details_visible_flag\": true,\n    \"key_0\": 4894.516311086149,\n    \"key_1\": 7012,\n    \"key_2\": false\n  },\n  \"important_fields\": {\n    \"enabled\": false\n  },\n  \"required_fields\": {\n    \"enabled\": false,\n    \"key_0\": 1405,\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dee9afb4-ad5f-4ac4-9642-3f3e0ddea43f",
+              "name": "Get one project field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projectFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field_name\": \"<string>\",\n  \"ui_visibility\": {\n    \"add_visible_flag\": false,\n    \"details_visible_flag\": true,\n    \"key_0\": true,\n    \"key_1\": true\n  },\n  \"important_fields\": {\n    \"enabled\": false\n  },\n  \"required_fields\": {\n    \"enabled\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Project Name\",\n    \"field_code\": \"name\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": false,\n    \"is_optional_response_field\": false,\n    \"ui_visibility\": {\n      \"add_visible_flag\": true,\n      \"details_visible_flag\": true\n    },\n    \"important_fields\": {\n      \"enabled\": false,\n      \"stage_ids\": []\n    },\n    \"required_fields\": {\n      \"enabled\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fde80e3-926f-43d3-a0a0-f0e664100b32",
+          "name": "Delete one project field",
+          "request": {
+            "name": "Delete one project field",
+            "description": {
+              "content": "Marks a custom field as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projectFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fc292fd0-178a-42ef-84c8-464765ef97bd",
+              "name": "Delete one project field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projectFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Custom text field\",\n    \"field_code\": \"946947d1b02fd3ef20798d6112ec5d895a686a21\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": true,\n    \"is_optional_response_field\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad5b351c-1749-4fa0-b6f4-89f57ff45602",
+          "name": "Add project field options in bulk",
+          "request": {
+            "name": "Add project field options in bulk",
+            "description": {
+              "content": "Adds new options to a project custom field that supports options (enum or set field types). This operation is atomic - all options are added or none are added. Returns only the newly added options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projectFields",
+                ":field_code",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"label\": \"<string>\"\n  },\n  {\n    \"label\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43a7bde9-06da-4fef-9b26-3bb92a5db13c",
+              "name": "Field options operation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projectFields",
+                    ":field_code",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"label\": \"<string>\"\n  },\n  {\n    \"label\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"label\": \"Research & Development\"\n    }\n  ],\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4faf32e8-3fc1-4152-8d12-20e1d513f5aa",
+          "name": "Delete project field options in bulk",
+          "request": {
+            "name": "Delete project field options in bulk",
+            "description": {
+              "content": "Removes existing options from a project custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the deleted options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projectFields",
+                ":field_code",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<integer>\"\n  },\n  {\n    \"id\": \"<integer>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "380f5691-27e4-4785-a596-4f6475eb358a",
+              "name": "Field options operation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projectFields",
+                    ":field_code",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<integer>\"\n  },\n  {\n    \"id\": \"<integer>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"label\": \"Research & Development\"\n    }\n  ],\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3fab95af-3dd2-4b0a-af11-df3d6b045845",
+          "name": "Update project field options in bulk",
+          "request": {
+            "name": "Update project field options in bulk",
+            "description": {
+              "content": "Updates existing options for a project custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the updated options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projectFields",
+                ":field_code",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e3ecab25-ac96-4421-9d46-6f727ec0a136",
+              "name": "Field options operation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projectFields",
+                    ":field_code",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"label\": \"Research & Development\"\n    }\n  ],\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "44763d0e-7039-4dcc-9530-5e76739e64ab",
+    "name": "Pipedrive API v1 Activities ProjectFields API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities ActivityTypes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ActivityTypes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all activity types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/activityTypes",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all activity types."
+        },
+        {
+          "info": {
+            "name": "Add new activity type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/activityTypes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new activity type."
+        },
+        {
+          "info": {
+            "name": "Update an activity type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pipedrive.com/v1/activityTypes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the activity type"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an activity type."
+        },
+        {
+          "info": {
+            "name": "Delete an activity type",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/activityTypes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the activity type"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Marks an activity type as deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

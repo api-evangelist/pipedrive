@@ -1,0 +1,1128 @@
+{
+  "item": [
+    {
+      "id": "6557b14b-4bdc-4c2a-876c-3e48c27fc57a",
+      "name": "Pipelines",
+      "description": {
+        "content": "Pipelines are essentially ordered collections of stages.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ff7fe0f-bce1-4465-82b4-3df6d5452a98",
+          "name": "Get deals conversion rates in pipeline",
+          "request": {
+            "name": "Get deals conversion rates in pipeline",
+            "description": {
+              "content": "Returns all stage-to-stage conversion and pipeline-to-close rates for the given time period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pipelines",
+                ":id",
+                "conversion_statistics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) The start of the period. Date in format of YYYY-MM-DD."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) The end of the period. Date in format of YYYY-MM-DD."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<integer>",
+                  "description": "The ID of the user who's pipeline metrics statistics to fetch. If omitted, the authorized user will be used."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ce4be72c-0758-44ab-a379-7e76a0495130",
+              "name": "Get pipeline deals conversion rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":id",
+                    "conversion_statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"stage_conversions\": [\n      {\n        \"from_stage_id\": 1,\n        \"to_stage_id\": 2,\n        \"conversion_rate\": 0\n      }\n    ],\n    \"won_conversion\": 0,\n    \"lost_conversion\": 0\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ae99db3-cda5-4a71-8059-8e5563eaa219",
+          "name": "Get deals in a pipeline",
+          "request": {
+            "name": "Get deals in a pipeline",
+            "description": {
+              "content": "Lists deals in a specific pipeline across all its stages. If no parameters are provided open deals owned by the authorized user will be returned. <br>This endpoint has been deprecated. Please use <a href=\"https://developers.pipedrive.com/docs/api/v1/Deals#getDeals\" target=\"_blank\" rel=\"noopener noreferrer\">GET /api/v2/deals?pipeline_id={id}</a> instead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pipelines",
+                ":id",
+                "deals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only deals matching the given filter will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<integer>",
+                  "description": "If supplied, `filter_id` will not be considered and only deals owned by the given user will be returned. If omitted, deals owned by the authorized user will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "everyone",
+                  "value": "<number>",
+                  "description": "If supplied, `filter_id` and `user_id` will not be considered – instead, deals owned by everyone will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "stage_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only deals within the given stage will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "get_summary",
+                  "value": "<number>",
+                  "description": "Whether to include a summary of the pipeline in the `additional_data` or not"
+                },
+                {
+                  "disabled": false,
+                  "key": "totals_convert_currency",
+                  "value": "<string>",
+                  "description": "The 3-letter currency code of any of the supported currencies. When supplied, `per_stages_converted` is returned inside `deals_summary` inside `additional_data` which contains the currency-converted total amounts in the given currency per each stage. You may also set this parameter to `default_currency` in which case users default currency is used. Only works when `get_summary` parameter flag is enabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "35e85cc8-a971-41ec-99d5-16ad97c00e55",
+              "name": "Get deals in a stage",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":id",
+                    "deals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "everyone",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "stage_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "get_summary",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "totals_convert_currency",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"creator_user_id\": 123,\n      \"user_id\": 456,\n      \"person_id\": 1,\n      \"org_id\": 2,\n      \"stage_id\": 2,\n      \"title\": \"Deal One\",\n      \"value\": 5000,\n      \"currency\": \"EUR\",\n      \"add_time\": \"2019-05-29 04:21:51\",\n      \"update_time\": \"2019-05-29 04:21:51\",\n      \"stage_change_time\": \"2019-11-28 15:41:22\",\n      \"active\": true,\n      \"deleted\": false,\n      \"status\": \"open\",\n      \"probability\": null,\n      \"next_activity_date\": \"2019-11-29\",\n      \"next_activity_time\": \"11:30:00\",\n      \"next_activity_id\": 128,\n      \"last_activity_id\": null,\n      \"last_activity_date\": null,\n      \"lost_reason\": null,\n      \"visible_to\": \"1\",\n      \"close_time\": null,\n      \"pipeline_id\": 1,\n      \"won_time\": \"2019-11-27 11:40:36\",\n      \"first_won_time\": \"2019-11-27 11:40:36\",\n      \"lost_time\": \"2019-11-27 11:40:36\",\n      \"products_count\": 0,\n      \"files_count\": 0,\n      \"notes_count\": 2,\n      \"followers_count\": 0,\n      \"email_messages_count\": 4,\n      \"activities_count\": 1,\n      \"done_activities_count\": 0,\n      \"undone_activities_count\": 1,\n      \"participants_count\": 1,\n      \"expected_close_date\": \"2019-06-29\",\n      \"last_incoming_mail_time\": \"2019-05-29 18:21:42\",\n      \"last_outgoing_mail_time\": \"2019-05-30 03:45:35\",\n      \"label\": \"11\",\n      \"stage_order_nr\": 2,\n      \"person_name\": \"Person\",\n      \"org_name\": \"Organization\",\n      \"next_activity_subject\": \"Call\",\n      \"next_activity_type\": \"call\",\n      \"next_activity_duration\": \"00:30:00\",\n      \"next_activity_note\": \"Note content\",\n      \"formatted_value\": \"€5,000\",\n      \"weighted_value\": 5000,\n      \"formatted_weighted_value\": \"€5,000\",\n      \"weighted_value_currency\": \"EUR\",\n      \"rotten_time\": null,\n      \"owner_name\": \"Creator\",\n      \"cc_email\": \"company+deal1@pipedrivemail.com\",\n      \"org_hidden\": false,\n      \"person_hidden\": false\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81720b18-11a7-4c09-8980-d0c443313a8f",
+          "name": "Get deals movements in pipeline",
+          "request": {
+            "name": "Get deals movements in pipeline",
+            "description": {
+              "content": "Returns statistics for deals movements for the given time period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pipelines",
+                ":id",
+                "movement_statistics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) The start of the period. Date in format of YYYY-MM-DD."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) The end of the period. Date in format of YYYY-MM-DD."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<integer>",
+                  "description": "The ID of the user who's pipeline statistics to fetch. If omitted, the authorized user will be used."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bd7cc2e7-2941-4089-b683-e5f1b7d016eb",
+              "name": "Get pipeline deals conversion rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":id",
+                    "movement_statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"movements_between_stages\": {\n      \"count\": 1\n    },\n    \"new_deals\": {\n      \"count\": 1,\n      \"deals_ids\": [\n        1,\n        2\n      ],\n      \"values\": {\n        \"USD\": 10\n      },\n      \"formatted_values\": {\n        \"USD\": \"US$10\"\n      }\n    },\n    \"deals_left_open\": {\n      \"count\": 1,\n      \"deals_ids\": [\n        1,\n        2\n      ],\n      \"values\": {\n        \"USD\": 10\n      },\n      \"formatted_values\": {\n        \"USD\": \"US$10\"\n      }\n    },\n    \"won_deals\": {\n      \"count\": 1,\n      \"deals_ids\": [\n        1,\n        2\n      ],\n      \"values\": {\n        \"USD\": 10\n      },\n      \"formatted_values\": {\n        \"USD\": \"US$10\"\n      }\n    },\n    \"lost_deals\": {\n      \"count\": 1,\n      \"deals_ids\": [\n        1,\n        2\n      ],\n      \"values\": {\n        \"USD\": 10\n      },\n      \"formatted_values\": {\n        \"USD\": \"US$10\"\n      }\n    },\n    \"average_age_in_days\": {\n      \"across_all_stages\": 2,\n      \"by_stages\": [\n        {\n          \"stage_id\": 10,\n          \"value\": 15\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7957d68-66f2-40e0-b6aa-9e9abc17cece",
+          "name": "Get all pipelines",
+          "request": {
+            "name": "Get all pipelines",
+            "description": {
+              "content": "Returns data about all pipelines.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "id",
+                  "description": "The field to sort by. Supported fields: `id`, `update_time`, `add_time`."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "asc",
+                  "description": "The sorting direction. Supported values: `asc`, `desc`."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f19d83e4-e0b1-46ae-9d18-26a21a79d9bc",
+              "name": "Get all pipelines",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Pipeline Name\",\n      \"order_nr\": 1,\n      \"is_deleted\": false,\n      \"is_deal_probability_enabled\": true,\n      \"add_time\": \"2024-01-01T00:00:00Z\",\n      \"update_time\": \"2024-01-01T00:00:00Z\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35ce3aa9-10f4-45fa-923b-0e400fcafe08",
+          "name": "Add a new pipeline",
+          "request": {
+            "name": "Add a new pipeline",
+            "description": {
+              "content": "Adds a new pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"is_deal_probability_enabled\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1f1a8cd7-de4a-4bd7-9cd2-2e486a39da21",
+              "name": "Add pipeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_deal_probability_enabled\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Pipeline Name\",\n    \"order_nr\": 1,\n    \"is_deleted\": false,\n    \"is_deal_probability_enabled\": true,\n    \"add_time\": \"2024-01-01T00:00:00Z\",\n    \"update_time\": \"2024-01-01T00:00:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2243dc55-c2a8-47d9-8ec8-f9c516c22415",
+          "name": "Delete a pipeline",
+          "request": {
+            "name": "Delete a pipeline",
+            "description": {
+              "content": "Marks a pipeline as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pipelines",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "28e14fa6-9e8b-4b59-8566-db5990eec6a3",
+              "name": "Delete pipeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11630ec3-e341-4688-9d64-ea70e1a314e3",
+          "name": "Get one pipeline",
+          "request": {
+            "name": "Get one pipeline",
+            "description": {
+              "content": "Returns data about a specific pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pipelines",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "191db852-d8bb-473d-bb03-32cad6b5b926",
+              "name": "Get pipeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Pipeline Name\",\n    \"order_nr\": 1,\n    \"is_deleted\": false,\n    \"is_deal_probability_enabled\": true,\n    \"add_time\": \"2024-01-01T00:00:00Z\",\n    \"update_time\": \"2024-01-01T00:00:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a7aa36d-c598-4c4d-af55-f7ab8e404c7d",
+          "name": "Update a pipeline",
+          "request": {
+            "name": "Update a pipeline",
+            "description": {
+              "content": "Updates the properties of a pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pipelines",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"is_deal_probability_enabled\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5911c35-451c-44e2-8a50-14f09ec0b722",
+              "name": "Edit pipeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_deal_probability_enabled\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Pipeline Name\",\n    \"order_nr\": 1,\n    \"is_deleted\": false,\n    \"is_deal_probability_enabled\": true,\n    \"add_time\": \"2024-01-01T00:00:00Z\",\n    \"update_time\": \"2024-01-01T00:00:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "13c07715-9e8c-4dec-a68c-26cd2fe72c8b",
+    "name": "Pipedrive API v1 Activities Pipelines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities ProjectFields API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProjectFields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all project fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/projectFields",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns metadata about all project fields in the company."
+        },
+        {
+          "info": {
+            "name": "Create one project field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/projectFields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new project custom field."
+        },
+        {
+          "info": {
+            "name": "Get one project field",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/projectFields/:field_code",
+            "params": [
+              {
+                "name": "field_code",
+                "value": "",
+                "type": "path",
+                "description": "The unique code identifying the field"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns metadata about a specific project field."
+        },
+        {
+          "info": {
+            "name": "Update one project field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pipedrive.com/v1/projectFields/:field_code",
+            "params": [
+              {
+                "name": "field_code",
+                "value": "",
+                "type": "path",
+                "description": "The unique code identifying the field"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a project custom field. The field_code and field_type cannot be changed. At least one field must be provided in the request body."
+        },
+        {
+          "info": {
+            "name": "Delete one project field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/projectFields/:field_code",
+            "params": [
+              {
+                "name": "field_code",
+                "value": "",
+                "type": "path",
+                "description": "The unique code identifying the field"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Marks a custom field as deleted."
+        },
+        {
+          "info": {
+            "name": "Add project field options in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/projectFields/:field_code/options",
+            "params": [
+              {
+                "name": "field_code",
+                "value": "",
+                "type": "path",
+                "description": "The unique code identifying the field"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds new options to a project custom field that supports options (enum or set field types). This operation is atomic - all options are added or none are added. Returns only the newly added options."
+        },
+        {
+          "info": {
+            "name": "Update project field options in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pipedrive.com/v1/projectFields/:field_code/options",
+            "params": [
+              {
+                "name": "field_code",
+                "value": "",
+                "type": "path",
+                "description": "The unique code identifying the field"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates existing options for a project custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the updated options."
+        },
+        {
+          "info": {
+            "name": "Delete project field options in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/projectFields/:field_code/options",
+            "params": [
+              {
+                "name": "field_code",
+                "value": "",
+                "type": "path",
+                "description": "The unique code identifying the field"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes existing options from a project custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the deleted options."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

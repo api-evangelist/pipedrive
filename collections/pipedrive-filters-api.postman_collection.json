@@ -1,0 +1,848 @@
+{
+  "item": [
+    {
+      "id": "93a01699-7352-43f7-8a74-5c9b63e5938c",
+      "name": "Filters",
+      "description": {
+        "content": "Each filter is essentially a set of data validation conditions. A filter of the same kind can be applied when fetching a list of deals, leads, persons, organizations or products in the context of a pipeline. Filters are limited to a maximum of 16 conditions. When applied, only items matching the conditions of the filter are returned. Detailed definitions of filter conditions and additional functionality is not yet available.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b8341b05-756b-4413-a939-9255855f73a5",
+          "name": "Delete multiple filters in bulk",
+          "request": {
+            "name": "Delete multiple filters in bulk",
+            "description": {
+              "content": "Marks multiple filters as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) The comma-separated filter IDs to delete"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bc83dc62-262c-40b4-ab26-b15e995033d7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": [\n      1,\n      2,\n      3\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3c629db-d0b0-4727-8ebf-5488358ae293",
+          "name": "Get all filters",
+          "request": {
+            "name": "Get all filters",
+            "description": {
+              "content": "Returns data about all filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The types of filters to fetch"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f02b4876-e885-4b2a-b725-29a74ef3e358",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"All open deals\",\n      \"filter_code\": null,\n      \"is_editable\": true,\n      \"active_flag\": true,\n      \"type\": \"deals\",\n      \"temporary_flag\": null,\n      \"user_id\": 927097,\n      \"add_time\": \"2019-10-15 11:01:53\",\n      \"update_time\": \"2019-10-15 11:01:53\",\n      \"visible_to\": \"7\",\n      \"last_used_time\": null,\n      \"custom_view_id\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d36477f8-a5d6-4465-8be7-25c70363154d",
+          "name": "Add a new filter",
+          "request": {
+            "name": "Add a new filter",
+            "description": {
+              "content": "Adds a new filter, returns the ID upon success. Note that in the conditions JSON object only one first-level condition group is supported, and it must be glued with 'AND', and only two second level condition groups are supported of which one must be glued with 'AND' and the second with 'OR'. Other combinations do not work (yet) but the syntax supports introducing them in future. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-filter\" target=\"_blank\" rel=\"noopener noreferrer\">adding a filter</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_field_code",
+                  "value": "<boolean>",
+                  "description": "If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"conditions\": \"<object>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d159f09-ca48-44e2-b113-9e00ad6ad8c4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_field_code",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"conditions\": \"<object>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Deal title is 'my title'\",\n    \"filter_code\": null,\n    \"is_editable\": true,\n    \"active_flag\": true,\n    \"type\": \"deals\",\n    \"temporary_flag\": false,\n    \"user_id\": 1,\n    \"add_time\": \"2018-01-27 08:49:26\",\n    \"update_time\": \"2018-01-27 08:49:26\",\n    \"visible_to\": \"1\",\n    \"last_used_time\": null,\n    \"custom_view_id\": null,\n    \"conditions\": {\n      \"glue\": \"and\",\n      \"conditions\": [\n        {\n          \"glue\": \"and\",\n          \"conditions\": [\n            {\n              \"object\": \"deal\",\n              \"field_id\": \"123141\",\n              \"operator\": \"=\",\n              \"value\": \"my title\",\n              \"extra_value\": null,\n              \"json_value_flag\": false,\n              \"field_code\": \"title\"\n            }\n          ]\n        },\n        {\n          \"glue\": \"or\",\n          \"conditions\": []\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5de8e444-96db-49ad-b2a7-f52ddbb62241",
+          "name": "Get all filter helpers",
+          "request": {
+            "name": "Get all filter helpers",
+            "description": {
+              "content": "Returns all supported filter helpers. It helps to know what conditions and helpers are available when you want to <a href=\"/docs/api/v1/Filters#addFilter\">add</a> or <a href=\"/docs/api/v1/Filters#updateFilter\">update</a> filters. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-filter\" target=\"_blank\" rel=\"noopener noreferrer\">adding a filter</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filters",
+                "helpers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "41e2d50e-ba25-43ae-92b5-3f49afb8d8b3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filters",
+                    "helpers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"operators\": {\n      \"int\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \">\": \"is more than\",\n        \"<\": \"is less than\",\n        \">=\": \"is more or equal to\",\n        \"<=\": \"is less or equal to\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"double\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \">\": \"is more than\",\n        \"<\": \"is less than\",\n        \">=\": \"is more or equal to\",\n        \"<=\": \"is less or equal to\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"monetary\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \">\": \"is more than\",\n        \"<\": \"is less than\",\n        \">=\": \"is more or equal to\",\n        \"<=\": \"is less or equal to\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"time\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \"<\": \"is before\",\n        \">\": \"is after\",\n        \">=\": \"is exactly or after than\",\n        \"<=\": \"is exactly or before than\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"date\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \">\": \"is later than\",\n        \"<\": \"is earlier than\",\n        \">=\": \"is exactly or later than\",\n        \"<=\": \"is exactly or earlier than\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"entered_stage\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \">\": \"is later than\",\n        \"<\": \"is earlier than\",\n        \">=\": \"is exactly or later than\",\n        \"<=\": \"is exactly or earlier than\"\n      },\n      \"timerange\": {\n        \"=\": \"starts at\",\n        \"!=\": \"does not start at\",\n        \"ends_at\": \"ends at\",\n        \"does_not_end_at\": \"does not end at\",\n        \"<\": \"starts before\",\n        \"<=\": \"starts exactly on or before\",\n        \"ends_before\": \"ends before\",\n        \"ends_e_before\": \"ends exactly on or before\",\n        \">\": \"starts after\",\n        \"ends_after\": \"ends after\",\n        \">=\": \"starts exactly or after\",\n        \"ends_e_after\": \"ends exactly or after\",\n        \"includes\": \"does include\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"daterange\": {\n        \"=\": \"starts at\",\n        \"!=\": \"does not start at\",\n        \"ends_at\": \"ends at\",\n        \"does_not_end_at\": \"does not end at\",\n        \"<\": \"starts before\",\n        \"<=\": \"starts exactly on or before\",\n        \"ends_before\": \"ends before\",\n        \"ends_e_before\": \"ends exactly on or before\",\n        \">\": \"starts after\",\n        \"ends_after\": \"ends after\",\n        \">=\": \"starts exactly or after\",\n        \"ends_e_after\": \"ends exactly or after\",\n        \"includes\": \"does include\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"varchar\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\",\n        \"LIKE '%$%'\": \"contains\",\n        \"LIKE '$%'\": \"starts with\",\n        \"NOT LIKE '$%'\": \"does not start with\"\n      },\n      \"stage\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \"has_been\": \"has been\"\n      },\n      \"title\": {\n        \"=\": \"is\",\n        \"LIKE '$%'\": \"starts with\",\n        \"LIKE '%$%'\": \"contains\",\n        \"NOT LIKE '$%'\": \"does not start with\"\n      },\n      \"set\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \"contains\": \"contains\",\n        \"not_contains\": \"does not contain\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"enum\": [\n        {\n          \"=\": \"is\"\n        },\n        {\n          \"!=\": \"is not\"\n        },\n        {\n          \"IS NULL\": \"is empty\"\n        },\n        {\n          \"IS NOT NULL\": \"is not empty\"\n        }\n      ],\n      \"deal\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"product\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"user\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\",\n        \"belongs_to_team\": \"belongs to team\"\n      },\n      \"status\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\"\n      },\n      \"visible_to\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\"\n      },\n      \"currency\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\"\n      },\n      \"pipeline\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\"\n      },\n      \"person\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      },\n      \"organization\": {\n        \"=\": \"is\",\n        \"!=\": \"is not\",\n        \"IS NULL\": \"is empty\",\n        \"IS NOT NULL\": \"is not empty\"\n      }\n    },\n    \"deprecated_operators\": {\n      \"NOT LIKE '%$%'\": \"does not contain\",\n      \"LIKE '%$'\": \"ends with\",\n      \"NOT LIKE '%$'\": \"does not end with\"\n    },\n    \"relative_dates\": {\n      \"Relative date intervals\": {\n        \"last_quarter\": \"last quarter\",\n        \"this_quarter\": \"this quarter\",\n        \"last_month\": \"last month\",\n        \"this_month\": \"this month\",\n        \"last_week\": \"last week\",\n        \"this_week\": \"this week\",\n        \"next_week\": \"next week\",\n        \"next_month\": \"next month\"\n      },\n      \"Relative dates\": {\n        \"6_months_ago\": \"6 months ago\",\n        \"5_months_ago\": \"5 months ago\",\n        \"4_months_ago\": \"4 months ago\",\n        \"3_months_ago\": \"3 months ago\",\n        \"2_months_ago\": \"2 months ago\",\n        \"1_months_ago\": \"1 month ago\",\n        \"3_weeks_ago\": \"3 weeks ago\",\n        \"2_weeks_ago\": \"2 weeks ago\",\n        \"1_week_ago\": \"1 week ago\",\n        \"yesterday\": \"yesterday\",\n        \"before_today\": \"before today\",\n        \"today\": \"today\",\n        \"now\": \"now\",\n        \"later_or_today\": \"today or later\",\n        \"before_tomorrow\": \"before tomorrow\",\n        \"tomorrow\": \"tomorrow\",\n        \"later_or_tomorrow\": \"tomorrow or later\",\n        \"in_1_week\": \"in 1 week\",\n        \"in_2_weeks\": \"in 2 weeks\",\n        \"in_3_weeks\": \"in 3 weeks\",\n        \"in_1_month\": \"in 1 month\",\n        \"in_2_months\": \"in 2 months\",\n        \"in_3_months\": \"in 3 months\",\n        \"in_4_months\": \"in 4 months\",\n        \"in_5_months\": \"in 5 months\",\n        \"in_6_months\": \"in 6 months\"\n      },\n      \"Deal specific\": {\n        \"rotten_time\": \"Rotten time\"\n      }\n    },\n    \"address_field_components\": {\n      \"subpremise\": \"Apartment/suite no\",\n      \"street_number\": \"House number\",\n      \"route\": \"Street/road name\",\n      \"sublocality\": \"District/sublocality\",\n      \"locality\": \"City/town/village/locality\",\n      \"admin_area_level_1\": \"State/county\",\n      \"admin_area_level_2\": \"Region\",\n      \"country\": \"Country\",\n      \"postal_code\": \"ZIP/Postal code\",\n      \"formatted_address\": \"Full/combined address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e653a04c-3dc5-49c7-b0ff-1c30a0af9d94",
+          "name": "Delete a filter",
+          "request": {
+            "name": "Delete a filter",
+            "description": {
+              "content": "Marks a filter as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the filter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "28257aff-0c7e-4ad4-9e5a-48812c8aadf2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the filter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0553762-9ebd-4e26-b77a-19bef997981c",
+          "name": "Get one filter",
+          "request": {
+            "name": "Get one filter",
+            "description": {
+              "content": "Returns data about a specific filter. Note that this also returns the condition lines of the filter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_field_code",
+                  "value": "<boolean>",
+                  "description": "If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the filter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "321ce9e5-75a3-47ac-a565-c279cbe8c04c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_field_code",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the filter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"All open deals\",\n    \"filter_code\": null,\n    \"is_editable\": true,\n    \"active_flag\": true,\n    \"type\": \"deals\",\n    \"temporary_flag\": null,\n    \"user_id\": 927097,\n    \"add_time\": \"2019-10-15 11:01:53\",\n    \"update_time\": \"2019-10-15 11:01:53\",\n    \"visible_to\": \"7\",\n    \"last_used_time\": null,\n    \"custom_view_id\": null,\n    \"conditions\": {\n      \"glue\": \"and\",\n      \"conditions\": [\n        {\n          \"glue\": \"and\",\n          \"conditions\": [\n            {\n              \"object\": \"deal\",\n              \"field_id\": \"123\",\n              \"operator\": \"IS NOT NULL\",\n              \"extra_value\": null,\n              \"value\": null,\n              \"json_value_flag\": false,\n              \"field_code\": \"status\"\n            }\n          ]\n        },\n        {\n          \"glue\": \"or\",\n          \"conditions\": []\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8a03c83-a4c6-41db-bfae-7b2a25af6fd0",
+          "name": "Update filter",
+          "request": {
+            "name": "Update filter",
+            "description": {
+              "content": "Updates an existing filter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_field_code",
+                  "value": "<boolean>",
+                  "description": "If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the filter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conditions\": \"<object>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e364ea1-2b79-473e-ae28-2c7e0af0e433",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_field_code",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the filter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": \"<object>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Deal title is 'my title'\",\n    \"filter_code\": null,\n    \"is_editable\": true,\n    \"active_flag\": true,\n    \"type\": \"deals\",\n    \"temporary_flag\": false,\n    \"user_id\": 1,\n    \"add_time\": \"2018-01-27 08:49:26\",\n    \"update_time\": \"2018-01-27 08:49:26\",\n    \"visible_to\": \"1\",\n    \"last_used_time\": null,\n    \"custom_view_id\": null,\n    \"conditions\": {\n      \"glue\": \"and\",\n      \"conditions\": [\n        {\n          \"glue\": \"and\",\n          \"conditions\": [\n            {\n              \"object\": \"deal\",\n              \"field_id\": \"123141\",\n              \"operator\": \"=\",\n              \"value\": \"my title\",\n              \"extra_value\": null,\n              \"json_value_flag\": false,\n              \"field_code\": \"title\"\n            }\n          ]\n        },\n        {\n          \"glue\": \"or\",\n          \"conditions\": []\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b9c32fc0-ebe1-44b4-b77c-a9e1f11af7cd",
+    "name": "Pipedrive API v1 Activities Filters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

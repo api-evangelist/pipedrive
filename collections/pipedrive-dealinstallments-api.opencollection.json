@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities DealInstallments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DealInstallments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List installments added to a list of deals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/deals/installments",
+            "params": [
+              {
+                "name": "deal_ids",
+                "value": "",
+                "type": "query",
+                "description": "An array of integers with the IDs of the deals for which the attached installments will be returned. A maximum of 100 deal IDs can be provided."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to sort by. Supported fields: `id`, `billing_date`, `deal_id`."
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "The sorting direction. Supported values: `asc`, `desc`."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists installments attached to a list of deals.\n\nOnly available in Growth and above plans.\n"
+        },
+        {
+          "info": {
+            "name": "Add an installment to a deal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/deals/:id/installments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the deal"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds an installment to a deal.\n\nAn installment can only be added if the deal includes at least one one-time product. \nIf the deal contains at least one recurring product, adding installments is not allowed.\n\nOnly available in Growth and above plans.\n"
+        },
+        {
+          "info": {
+            "name": "Update an installment added to a deal",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pipedrive.com/v1/deals/:id/installments/:installment_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the deal"
+              },
+              {
+                "name": "installment_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the installment"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Edits an installment added to a deal.\n\nOnly available in Growth and above plans.\n"
+        },
+        {
+          "info": {
+            "name": "Delete an installment from a deal",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/deals/:id/installments/:installment_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the deal"
+              },
+              {
+                "name": "installment_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the installment"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes an installment from a deal.\n\nOnly available in Growth and above plans.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

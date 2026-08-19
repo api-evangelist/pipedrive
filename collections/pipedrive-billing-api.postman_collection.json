@@ -1,0 +1,130 @@
+{
+  "item": [
+    {
+      "id": "fd6b48ed-56c3-4039-a80d-fb2080cd0343",
+      "name": "Billing",
+      "description": {
+        "content": "Billing is responsible for handling your subscriptions, payments, plans and add-ons.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ebc64d67-1ce7-43b4-ae68-654f402872ce",
+          "name": "Get all add-ons for a single company",
+          "request": {
+            "name": "Get all add-ons for a single company",
+            "description": {
+              "content": "Returns the add-ons for a single company.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing",
+                "subscriptions",
+                "addons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aaa3647e-f7e2-4acd-a39d-29a75224b1ff",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "subscriptions",
+                    "addons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"code\": \"leadbooster_v2\"\n    },\n    {\n      \"code\": \"prospector\"\n    },\n    {\n      \"code\": \"smart_docs_v2\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1e7f6728-fc71-4324-b37e-e2da62e654a7",
+    "name": "Pipedrive API v1 Activities Billing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

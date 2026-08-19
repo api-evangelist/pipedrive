@@ -1,0 +1,1290 @@
+{
+  "item": [
+    {
+      "id": "e623b96d-96dd-4387-a97f-4eb3c7195503",
+      "name": "CallLogs",
+      "description": {
+        "content": "Call logs describe the outcome of a phone call managed by an integrated provider. Since these logs are also considered activities, they can be associated with a deal or a lead, a person and/or an organization. Call logs do differ from other activities, as they only receive the information needed to describe the phone call.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d44d5cf4-0e19-4d92-bdba-6d3a363672aa",
+          "name": "Add a call log",
+          "request": {
+            "name": "Add a call log",
+            "description": {
+              "content": "Adds a new call log.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "callLogs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"<string>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f591535-b450-4807-86c4-b53331682a65",
+              "name": "The call log was successfully created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"<string>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"CAd92b224eb4a39b5ad8fea92ff0e\",\n    \"activity_id\": 7007,\n    \"person_id\": 333222111,\n    \"org_id\": 123456789,\n    \"deal_id\": 553229734,\n    \"subject\": \"Just call me maybe\",\n    \"duration\": \"0\",\n    \"outcome\": \"busy\",\n    \"from_phone_number\": \"+37277774841\",\n    \"to_phone_number\": \"+37249234343\",\n    \"has_recording\": false,\n    \"start_time\": \"2022-12-12T01:01:01.000Z\",\n    \"end_time\": \"2022-12-12T01:02:01.000Z\",\n    \"user_id\": 777707777,\n    \"company_id\": 66660666,\n    \"note\": \"A note for the call log\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b29ee400-5b5c-488d-995b-9e3adbcea3ee",
+              "name": "The request contains wrong or incorrectly formatted arguments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"<string>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"\\\"outcome\\\" is required.\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e549f595-5fa1-4290-9b60-e246742f67cc",
+              "name": "You don't have permission to access the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"<string>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"You don't have permission to change this resource.\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74535945-b4b3-4dd3-ba0b-123b1078e9ed",
+              "name": "A resource required to process the request was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"<string>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"A resource required for this operation was not found.\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6b5018c-6426-4e38-a6ef-85f7a2c98007",
+              "name": "There was an error processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_phone_number\": \"<string>\",\n  \"outcome\": \"<string>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"user_id\": \"<integer>\",\n  \"activity_id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"from_phone_number\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"An internal server error occurred\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ec657af-9116-4db8-b61b-eceab59204f6",
+          "name": "Get all call logs assigned to a particular user",
+          "request": {
+            "name": "Get all call logs assigned to a particular user",
+            "description": {
+              "content": "Returns all call logs assigned to a particular user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "callLogs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. The upper limit is 50."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1d96bb02-78d7-4553-8201-d0d9177cf5b5",
+              "name": "A list of call logs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"CAd92b224eb4a39b5ad8fea92ff0e\",\n      \"activity_id\": 7007,\n      \"person_id\": 333222111,\n      \"org_id\": 123456789,\n      \"deal_id\": 553229734,\n      \"subject\": \"Just call me maybe\",\n      \"duration\": \"0\",\n      \"outcome\": \"busy\",\n      \"from_phone_number\": \"+37277774841\",\n      \"to_phone_number\": \"+37249234343\",\n      \"has_recording\": false,\n      \"start_time\": \"2022-12-12T01:01:01.000Z\",\n      \"end_time\": \"2022-12-12T01:01:01.000Z\",\n      \"user_id\": 777707777,\n      \"company_id\": 66660666,\n      \"note\": \"A note for the call log\"\n    },\n    {\n      \"id\": \"CAd92b224eb4a39b11a8fea92ff0e\",\n      \"activity_id\": 1,\n      \"person_id\": 1,\n      \"duration\": \"0\",\n      \"outcome\": \"no_answer\",\n      \"to_phone_number\": \"+3728439832\",\n      \"has_recording\": true,\n      \"start_time\": \"2022-12-12T01:01:01.000Z\",\n      \"end_time\": \"2022-12-12T01:01:01.000Z\",\n      \"user_id\": 777777777,\n      \"company_id\": 66666666,\n      \"note\": \"A note for the call log\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 50,\n      \"more_items_in_collection\": false,\n      \"next_start\": 1\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bd1c8b5-14ae-447d-b244-ff96e59d9064",
+          "name": "Delete a call log",
+          "request": {
+            "name": "Delete a call log",
+            "description": {
+              "content": "Deletes a call log. If there is an audio recording attached to it, it will also be deleted. The related activity will not be removed by this request. If you want to remove the related activities, please use the endpoint which is specific for activities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "callLogs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID received when you create the call log"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7f466091-95c2-4feb-91cb-b008cc084e2c",
+              "name": "The call log was successfully deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc28322c-c73d-4d75-9d8d-229688924602",
+              "name": "You don't have permission to access the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"You don't have permission to change this resource.\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ac64c8c-a2dc-43f3-89ed-39f354ae2097",
+              "name": "A resource required to process the request was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"A resource required for this operation was not found.\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db4ee49f-5eec-4b9c-9320-78b27535ed3a",
+              "name": "The callLog you are trying to access is no longer available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"The callLog you are trying to access is no longer available\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9154ba7-8fc5-4796-b962-1fe5f73fc65f",
+              "name": "There was an error processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"An internal server error occurred\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d3871e1-404f-4bc8-be2e-7e4eda40c7e5",
+          "name": "Get details of a call log",
+          "request": {
+            "name": "Get details of a call log",
+            "description": {
+              "content": "Returns details of a specific call log.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "callLogs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID received when you create the call log"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0ac26c65-0158-46dc-853b-0d431204619b",
+              "name": "The requested call log object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"CAd92b224eb4a39b5ad8fea92ff0e\",\n    \"activity_id\": 7007,\n    \"person_id\": 333222111,\n    \"org_id\": 123456789,\n    \"deal_id\": 553229734,\n    \"subject\": \"Just call me maybe\",\n    \"duration\": \"0\",\n    \"outcome\": \"busy\",\n    \"from_phone_number\": \"+37277774841\",\n    \"to_phone_number\": \"+37249234343\",\n    \"has_recording\": false,\n    \"start_time\": \"2022-12-12T01:01:01.000Z\",\n    \"end_time\": \"2022-12-12T01:02:01.000Z\",\n    \"user_id\": 777707777,\n    \"company_id\": 66660666,\n    \"note\": \"A note for the call log\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b55ca53-a5fa-4e2c-9ae8-1a1dc69952ac",
+              "name": "A resource required to process the request was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"A resource required for this operation was not found.\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b60a82b-8a00-424e-99dc-9e25c1831dd6",
+          "name": "Attach an audio file to the call log",
+          "request": {
+            "name": "Attach an audio file to the call log",
+            "description": {
+              "content": "Adds an audio recording to the call log. That audio can be played by those who have access to the call log object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "callLogs",
+                ":id",
+                "recordings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID received when you create the call log"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) Audio file supported by the HTML5 specification"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "38246d83-8e52-428a-bbbc-ec3dbad5ca6d",
+              "name": "The audio recording was successfully added to the log.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id",
+                    "recordings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Audio file supported by the HTML5 specification",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b7811db-b1d7-4088-be6c-7e9255569170",
+              "name": "A resource required to process the request was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id",
+                    "recordings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Audio file supported by the HTML5 specification",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"A resource required for this operation was not found.\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "567b76db-8e84-4fb3-8b46-a3afa9ed22f9",
+              "name": "Recording for this call already exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id",
+                    "recordings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Audio file supported by the HTML5 specification",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"A recording for this call already exists\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c14c51ec-6207-4b3a-b081-462e2c14bf9c",
+              "name": "There was an error processing the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "callLogs",
+                    ":id",
+                    "recordings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID received when you create the call log"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Audio file supported by the HTML5 specification",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"An internal server error occurred\",\n  \"error_info\": \"Please check developers.pipedrive.com for more information about Pipedrive API.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a510ff23-5911-4dfa-b9b1-0cc76d1b9bdb",
+    "name": "Pipedrive API v1 Activities CallLogs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

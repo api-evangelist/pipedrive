@@ -1,0 +1,138 @@
+{
+  "item": [
+    {
+      "id": "026efa84-29b4-42eb-b15e-dfcad5eca083",
+      "name": "Currencies",
+      "description": {
+        "content": "Supported currencies which can be used to represent the monetary value of a deal, or a value of any monetary type custom field. The `Currency.code` field must be used to point to a currency. `Currency.code` is the ISO-4217 format currency code for non-custom currencies. You can differentiate custom and non-custom currencies using the `is_custom_flag` property. For custom currencies, it is intended that the formatted sums are displayed in the UI using the following format: [sum][non-breaking space character][currency.symbol], for example: 500 users. Custom currencies cannot be added or removed via the API yet — rather the admin users of the account must configure them from the Pipedrive app.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e926a462-ede7-41ab-9abc-02a79a53df3e",
+          "name": "Get all supported currencies",
+          "request": {
+            "name": "Get all supported currencies",
+            "description": {
+              "content": "Returns all supported currencies in given account which should be used when saving monetary values with other objects. The `code` parameter of the returning objects is the currency code according to ISO 4217 for all non-custom currencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "currencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>",
+                  "description": "Optional search term that is searched for from currency's name and/or code"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "133bc233-5d2f-46a3-8a6d-733d1bb309c1",
+              "name": "The list of supported currencies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"code\": \"EUR\",\n      \"name\": \"Euro\",\n      \"decimal_points\": 2,\n      \"symbol\": \"€\",\n      \"active_flag\": true,\n      \"is_custom_flag\": false\n    },\n    {\n      \"id\": 2,\n      \"code\": \"USD\",\n      \"name\": \"US Dollar\",\n      \"decimal_points\": 2,\n      \"symbol\": \"$\",\n      \"active_flag\": true,\n      \"is_custom_flag\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2f444daa-9597-4c74-8702-b79c61f3126b",
+    "name": "Pipedrive API v1 Activities Currencies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

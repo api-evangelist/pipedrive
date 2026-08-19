@@ -1,0 +1,1025 @@
+{
+  "item": [
+    {
+      "id": "72410a13-eeeb-4583-9539-e427d58c721a",
+      "name": "DealProducts",
+      "description": {
+        "content": "Deal products are goods or services attached to a deal. Each deal product links a product to a deal with configurable quantity, pricing, and discounts, and contributes to the total value of the deal.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30eeeb2e-066d-42df-bac6-3cf9842de156",
+          "name": "Get deal products of several deals",
+          "request": {
+            "name": "Get deal products of several deals",
+            "description": {
+              "content": "Returns data about products attached to deals",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deals",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deal_ids",
+                  "value": "<integer>",
+                  "description": "(Required) An array of integers with the IDs of the deals for which the attached products will be returned. A maximum of 100 deal IDs can be provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "deal_ids",
+                  "value": "<integer>",
+                  "description": "(Required) An array of integers with the IDs of the deals for which the attached products will be returned. A maximum of 100 deal IDs can be provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "id",
+                  "description": "The field to sort by. Supported fields: `id`, `deal_id`, `add_time`, `update_time`, `order_nr`."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "asc",
+                  "description": "The sorting direction. Supported values: `asc`, `desc`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4cf5d914-cd76-4e96-bdc5-701cd19ed479",
+              "name": "List of products attached to deals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deals",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deal_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "deal_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 3,\n      \"sum\": 90,\n      \"tax\": 0,\n      \"deal_id\": 1,\n      \"name\": \"Mechanical Pencil\",\n      \"product_id\": 1,\n      \"product_variation_id\": null,\n      \"order_nr\": 50,\n      \"add_time\": \"2019-12-19T11:36:49Z\",\n      \"update_time\": \"2019-12-19T11:36:49Z\",\n      \"comments\": \"\",\n      \"currency\": \"USD\",\n      \"discount\": 0,\n      \"quantity\": 1,\n      \"item_price\": 90,\n      \"tax_method\": \"inclusive\",\n      \"discount_type\": \"percentage\",\n      \"is_enabled\": true,\n      \"billing_frequency\": \"one-time\",\n      \"billing_frequency_cycles\": null,\n      \"billing_start_date\": \"2019-12-19\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d947951-43f0-4060-bb33-b71f7ef4d81a",
+          "name": "List products attached to a deal",
+          "request": {
+            "name": "List products attached to a deal",
+            "description": {
+              "content": "Lists products attached to a deal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deals",
+                ":id",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "id",
+                  "description": "The field to sort by. Supported fields: `id`, `add_time`, `update_time`, `order_nr`."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "asc",
+                  "description": "The sorting direction. Supported values: `asc`, `desc`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the deal"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1139556b-5063-4ea7-8a26-face600c7434",
+              "name": "List of products attached to deals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deals",
+                    ":id",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the deal"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 3,\n      \"sum\": 90,\n      \"tax\": 0,\n      \"deal_id\": 1,\n      \"name\": \"Mechanical Pencil\",\n      \"product_id\": 1,\n      \"product_variation_id\": null,\n      \"order_nr\": 50,\n      \"add_time\": \"2019-12-19T11:36:49Z\",\n      \"update_time\": \"2019-12-19T11:36:49Z\",\n      \"comments\": \"\",\n      \"currency\": \"USD\",\n      \"discount\": 0,\n      \"quantity\": 1,\n      \"item_price\": 90,\n      \"tax_method\": \"inclusive\",\n      \"discount_type\": \"percentage\",\n      \"is_enabled\": true,\n      \"billing_frequency\": \"one-time\",\n      \"billing_frequency_cycles\": null,\n      \"billing_start_date\": \"2019-12-19\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "227a38a5-276a-4b4f-8745-6f4b5200bb1f",
+          "name": "Add a product to a deal",
+          "request": {
+            "name": "Add a product to a deal",
+            "description": {
+              "content": "Adds a product to a deal, creating a new item called a deal-product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deals",
+                ":id",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the deal"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item_price\": \"<number>\",\n  \"quantity\": \"<number>\",\n  \"product_id\": \"<integer>\",\n  \"tax\": 0,\n  \"comments\": \"<string>\",\n  \"discount\": 0,\n  \"is_enabled\": true,\n  \"tax_method\": \"<string>\",\n  \"discount_type\": \"percentage\",\n  \"product_variation_id\": \"<integer>\",\n  \"billing_frequency\": \"one-time\",\n  \"billing_frequency_cycles\": null,\n  \"billing_start_date\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f24f172c-44a5-4521-9ff9-d22e984d986b",
+              "name": "Add a product to the deal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deals",
+                    ":id",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the deal"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"item_price\": \"<number>\",\n  \"quantity\": \"<number>\",\n  \"product_id\": \"<integer>\",\n  \"tax\": 0,\n  \"comments\": \"<string>\",\n  \"discount\": 0,\n  \"is_enabled\": true,\n  \"tax_method\": \"<string>\",\n  \"discount_type\": \"percentage\",\n  \"product_variation_id\": \"<integer>\",\n  \"billing_frequency\": \"one-time\",\n  \"billing_frequency_cycles\": null,\n  \"billing_start_date\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 3,\n    \"sum\": 90,\n    \"tax\": 0,\n    \"deal_id\": 1,\n    \"name\": \"Mechanical Pencil\",\n    \"product_id\": 1,\n    \"product_variation_id\": null,\n    \"order_nr\": 50,\n    \"add_time\": \"2019-12-19T11:36:49Z\",\n    \"update_time\": \"2019-12-19T11:36:49Z\",\n    \"comments\": \"\",\n    \"currency\": \"USD\",\n    \"discount\": 0,\n    \"quantity\": 1,\n    \"item_price\": 90,\n    \"tax_method\": \"inclusive\",\n    \"discount_type\": \"percentage\",\n    \"is_enabled\": true,\n    \"billing_frequency\": \"one-time\",\n    \"billing_frequency_cycles\": null,\n    \"billing_start_date\": \"2019-12-19\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95fbc591-b153-4873-9ba3-753c9462b6e7",
+          "name": "Delete many products from a deal",
+          "request": {
+            "name": "Delete many products from a deal",
+            "description": {
+              "content": "Deletes multiple products from a deal. If no product IDs are specified, up to 100 products will be removed from the deal. A maximum of 100 product IDs can be provided per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deals",
+                ":id",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Comma-separated list of deal product IDs to delete. If not provided, all deal products will be deleted up to 100 items. Maximum 100 IDs allowed."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the deal"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8a78f178-5f04-436c-b642-ed4ffcd35652",
+              "name": "Delete many products from a deal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deals",
+                    ":id",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "1,2,3"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the deal"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"ids\": [\n      1,\n      2,\n      3\n    ]\n  },\n  \"additional_data\": {\n    \"more_items_in_collection\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bcc3742-6433-406a-a0fa-6d650e114e5d",
+          "name": "Update the product attached to a deal",
+          "request": {
+            "name": "Update the product attached to a deal",
+            "description": {
+              "content": "Updates the details of the product that has been attached to a deal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deals",
+                ":id",
+                "products",
+                ":product_attachment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the deal"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_attachment_id",
+                  "description": "(Required) The ID of the deal-product (the ID of the product attached to the deal)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_id\": \"<integer>\",\n  \"item_price\": \"<number>\",\n  \"quantity\": \"<number>\",\n  \"tax\": 0,\n  \"comments\": \"<string>\",\n  \"discount\": 0,\n  \"is_enabled\": true,\n  \"tax_method\": \"<string>\",\n  \"discount_type\": \"percentage\",\n  \"product_variation_id\": \"<integer>\",\n  \"billing_frequency\": \"<string>\",\n  \"billing_frequency_cycles\": \"<integer>\",\n  \"billing_start_date\": \"<YYYY-MM-DD>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0a841ba-d8f5-44cb-b798-81e29420ae33",
+              "name": "Add a product to the deal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deals",
+                    ":id",
+                    "products",
+                    ":product_attachment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the deal"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_attachment_id",
+                      "description": "(Required) The ID of the deal-product (the ID of the product attached to the deal)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product_id\": \"<integer>\",\n  \"item_price\": \"<number>\",\n  \"quantity\": \"<number>\",\n  \"tax\": 0,\n  \"comments\": \"<string>\",\n  \"discount\": 0,\n  \"is_enabled\": true,\n  \"tax_method\": \"<string>\",\n  \"discount_type\": \"percentage\",\n  \"product_variation_id\": \"<integer>\",\n  \"billing_frequency\": \"<string>\",\n  \"billing_frequency_cycles\": \"<integer>\",\n  \"billing_start_date\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 3,\n    \"sum\": 90,\n    \"tax\": 0,\n    \"deal_id\": 1,\n    \"name\": \"Mechanical Pencil\",\n    \"product_id\": 1,\n    \"product_variation_id\": null,\n    \"order_nr\": 50,\n    \"add_time\": \"2019-12-19T11:36:49Z\",\n    \"update_time\": \"2019-12-19T11:36:49Z\",\n    \"comments\": \"\",\n    \"currency\": \"USD\",\n    \"discount\": 0,\n    \"quantity\": 1,\n    \"item_price\": 90,\n    \"tax_method\": \"inclusive\",\n    \"discount_type\": \"percentage\",\n    \"is_enabled\": true,\n    \"billing_frequency\": \"one-time\",\n    \"billing_frequency_cycles\": null,\n    \"billing_start_date\": \"2019-12-19\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf97d44e-c475-4692-a67c-bef8042decf6",
+          "name": "Delete an attached product from a deal",
+          "request": {
+            "name": "Delete an attached product from a deal",
+            "description": {
+              "content": "Deletes a product attachment from a deal, using the `product_attachment_id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deals",
+                ":id",
+                "products",
+                ":product_attachment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the deal"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "product_attachment_id",
+                  "description": "(Required) The product attachment ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bd3aae1a-e179-43ba-b620-cdb7d494c503",
+              "name": "Delete an attached product from a deal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deals",
+                    ":id",
+                    "products",
+                    ":product_attachment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the deal"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "product_attachment_id",
+                      "description": "(Required) The product attachment ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 123\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdb91913-013f-4b12-bc0e-41e7d45f0327",
+          "name": "Add multiple products to a deal",
+          "request": {
+            "name": "Add multiple products to a deal",
+            "description": {
+              "content": "Adds multiple products to a deal in a single request. Maximum of 100 products allowed per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deals",
+                ":id",
+                "products",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the deal"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"item_price\": \"<number>\",\n      \"quantity\": \"<number>\",\n      \"product_id\": \"<integer>\",\n      \"tax\": 0,\n      \"comments\": \"<string>\",\n      \"discount\": 0,\n      \"is_enabled\": true,\n      \"tax_method\": \"<string>\",\n      \"discount_type\": \"percentage\",\n      \"product_variation_id\": \"<integer>\",\n      \"billing_frequency\": \"one-time\",\n      \"billing_frequency_cycles\": null,\n      \"billing_start_date\": null\n    },\n    {\n      \"item_price\": \"<number>\",\n      \"quantity\": \"<number>\",\n      \"product_id\": \"<integer>\",\n      \"tax\": 0,\n      \"comments\": \"<string>\",\n      \"discount\": 0,\n      \"is_enabled\": true,\n      \"tax_method\": \"<string>\",\n      \"discount_type\": \"percentage\",\n      \"product_variation_id\": \"<integer>\",\n      \"billing_frequency\": \"one-time\",\n      \"billing_frequency_cycles\": null,\n      \"billing_start_date\": null\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d0fa7b1-59d5-44b6-893a-455ab21c0a6f",
+              "name": "Add many products to a deal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deals",
+                    ":id",
+                    "products",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the deal"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"item_price\": \"<number>\",\n      \"quantity\": \"<number>\",\n      \"product_id\": \"<integer>\",\n      \"tax\": 0,\n      \"comments\": \"<string>\",\n      \"discount\": 0,\n      \"is_enabled\": true,\n      \"tax_method\": \"<string>\",\n      \"discount_type\": \"percentage\",\n      \"product_variation_id\": \"<integer>\",\n      \"billing_frequency\": \"one-time\",\n      \"billing_frequency_cycles\": null,\n      \"billing_start_date\": null\n    },\n    {\n      \"item_price\": \"<number>\",\n      \"quantity\": \"<number>\",\n      \"product_id\": \"<integer>\",\n      \"tax\": 0,\n      \"comments\": \"<string>\",\n      \"discount\": 0,\n      \"is_enabled\": true,\n      \"tax_method\": \"<string>\",\n      \"discount_type\": \"percentage\",\n      \"product_variation_id\": \"<integer>\",\n      \"billing_frequency\": \"one-time\",\n      \"billing_frequency_cycles\": null,\n      \"billing_start_date\": null\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"sum\": 60.46,\n      \"tax\": 0,\n      \"deal_id\": 1,\n      \"name\": \"Product 1\",\n      \"product_id\": 1,\n      \"product_variation_id\": null,\n      \"order_nr\": 10,\n      \"add_time\": \"2019-12-19T11:36:49Z\",\n      \"update_time\": \"2019-12-19T11:36:49Z\",\n      \"comments\": \"\",\n      \"currency\": \"USD\",\n      \"discount\": 0,\n      \"quantity\": 2,\n      \"item_price\": 30.23,\n      \"tax_method\": \"none\",\n      \"discount_type\": \"percentage\",\n      \"is_enabled\": true,\n      \"billing_frequency\": \"one-time\",\n      \"billing_frequency_cycles\": null,\n      \"billing_start_date\": null\n    },\n    {\n      \"id\": 2,\n      \"sum\": 40.5,\n      \"tax\": 0,\n      \"deal_id\": 1,\n      \"name\": \"Product 2\",\n      \"product_id\": 2,\n      \"product_variation_id\": null,\n      \"order_nr\": 20,\n      \"add_time\": \"2019-12-19T11:36:49Z\",\n      \"update_time\": \"2019-12-19T11:36:49Z\",\n      \"comments\": \"\",\n      \"currency\": \"USD\",\n      \"discount\": 0,\n      \"quantity\": 1,\n      \"item_price\": 40.5,\n      \"tax_method\": \"none\",\n      \"discount_type\": \"percentage\",\n      \"is_enabled\": true,\n      \"billing_frequency\": \"one-time\",\n      \"billing_frequency_cycles\": null,\n      \"billing_start_date\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea98cb23-9a46-4628-8923-9aef4917ee21",
+    "name": "Pipedrive API v1 Activities DealProducts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

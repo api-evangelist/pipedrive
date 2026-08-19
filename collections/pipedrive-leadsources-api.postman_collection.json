@@ -1,0 +1,126 @@
+{
+  "item": [
+    {
+      "id": "9020a27e-2969-4ff2-bde9-6dab54590f2f",
+      "name": "LeadSources",
+      "description": {
+        "content": "A lead source indicates where your lead came from. Currently, these are the possible lead sources: `Manually created`, `Deal`, `Web forms`, `Prospector`, `Leadbooster`, `Live chat`, `Import`, `Website visitors`, `Workflow automation`, and `API`. Lead sources are pre-defined and cannot be edited. Please note that leads sourced from the Chatbot feature are assigned the value `Leadbooster`. Please also note that this list is not final and new sources may be added as needed.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7766946d-5100-4afe-9f51-cef7e6a27d51",
+          "name": "Get all lead sources",
+          "request": {
+            "name": "Get all lead sources",
+            "description": {
+              "content": "Returns all lead sources. Please note that the list of lead sources is fixed, it cannot be modified. All leads created through the Pipedrive API will have a lead source `API` assigned.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leadSources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ae63a46f-9c6d-4c96-a91f-34c639741acc",
+              "name": "The successful response containing payload in the `data` field.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leadSources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"name\": \"Manually created\"\n    },\n    {\n      \"name\": \"Deal\"\n    },\n    {\n      \"name\": \"Web forms\"\n    },\n    {\n      \"name\": \"Prospector\"\n    },\n    {\n      \"name\": \"Leadbooster\"\n    },\n    {\n      \"name\": \"Live chat\"\n    },\n    {\n      \"name\": \"Import\"\n    },\n    {\n      \"name\": \"Website visitors\"\n    },\n    {\n      \"name\": \"Workflow automation\"\n    },\n    {\n      \"name\": \"API\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "05623ca7-56bb-4b78-b650-9e380bf3c714",
+    "name": "Pipedrive API v1 Activities LeadSources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

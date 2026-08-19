@@ -1,0 +1,168 @@
+{
+  "item": [
+    {
+      "id": "bb31de4c-5a6a-4808-91ec-43cfcd026633",
+      "name": "Recents",
+      "description": {
+        "content": "Recent changes across all item types in Pipedrive (deals, persons, etc).\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b6b7192d-5046-498c-8db5-9f754f78e14c",
+          "name": "Get recents",
+          "request": {
+            "name": "Get recents",
+            "description": {
+              "content": "Returns data about all recent changes occurred after the given timestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "since_timestamp",
+                  "value": "<string>",
+                  "description": "(Required) The timestamp in UTC. Format: YYYY-MM-DD HH:MM:SS."
+                },
+                {
+                  "disabled": false,
+                  "key": "items",
+                  "value": "<string>",
+                  "description": "Multiple selection of item types to include in the query (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9e654302-65fb-4b02-bc59-45397fbee190",
+              "name": "List of items changed since \"since_timestamp\"",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since_timestamp",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "items",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"item\": \"activity\",\n      \"id\": 8,\n      \"data\": {\n        \"id\": 8,\n        \"company_id\": 22122,\n        \"user_id\": 1234,\n        \"done\": false,\n        \"type\": \"deadline\",\n        \"reference_type\": \"scheduler-service\",\n        \"reference_id\": 7,\n        \"conference_meeting_client\": \"871b8bc88d3a1202\",\n        \"conference_meeting_url\": \"https://pipedrive.zoom.us/link\",\n        \"conference_meeting_id\": \"17058746701\",\n        \"due_date\": \"2020-06-09\",\n        \"due_time\": \"10:00\",\n        \"duration\": \"01:00\",\n        \"busy_flag\": true,\n        \"add_time\": \"2020-06-08 12:37:56\",\n        \"marked_as_done_time\": \"2020-08-08 08:08:38\",\n        \"last_notification_time\": \"2020-08-08 12:37:56\",\n        \"last_notification_user_id\": 7655,\n        \"notification_language_id\": 1,\n        \"subject\": \"Deadline\",\n        \"public_description\": \"This is a description\",\n        \"calendar_sync_include_context\": \"\",\n        \"location\": \"Mustamäe tee 3, Tallinn, Estonia\",\n        \"org_id\": 5,\n        \"person_id\": 1101,\n        \"deal_id\": 300,\n        \"lead_id\": \"46c3b0e1-db35-59ca-1828-4817378dff71\",\n        \"project_id\": null,\n        \"active_flag\": true,\n        \"update_time\": \"2020-08-08 12:37:56\",\n        \"update_user_id\": 5596,\n        \"gcal_event_id\": \"\",\n        \"google_calendar_id\": \"\",\n        \"google_calendar_etag\": \"\",\n        \"source_timezone\": \"\",\n        \"rec_rule\": \"RRULE:FREQ=WEEKLY;BYDAY=WE\",\n        \"rec_rule_extension\": \"\",\n        \"rec_master_activity_id\": 1,\n        \"series\": [],\n        \"note\": \"A note for the activity\",\n        \"created_by_user_id\": 1234,\n        \"location_subpremise\": \"\",\n        \"location_street_number\": \"3\",\n        \"location_route\": \"Mustamäe tee\",\n        \"location_sublocality\": \"Kristiine\",\n        \"location_locality\": \"Tallinn\",\n        \"location_admin_area_level_1\": \"Harju maakond\",\n        \"location_admin_area_level_2\": \"\",\n        \"location_country\": \"Estonia\",\n        \"location_postal_code\": \"10616\",\n        \"location_formatted_address\": \"Mustamäe tee 3, 10616 Tallinn, Estonia\",\n        \"attendees\": [\n          {\n            \"email_address\": \"attendee@pipedrivemail.com\",\n            \"is_organizer\": 0,\n            \"name\": \"Attendee\",\n            \"person_id\": 25312,\n            \"status\": \"noreply\",\n            \"user_id\": null\n          }\n        ],\n        \"participants\": [\n          {\n            \"person_id\": 17985,\n            \"primary_flag\": false\n          },\n          {\n            \"person_id\": 1101,\n            \"primary_flag\": true\n          }\n        ],\n        \"org_name\": \"Organization\",\n        \"person_name\": \"Person\",\n        \"deal_title\": \"Deal\",\n        \"owner_name\": \"Creator\",\n        \"person_dropbox_bcc\": \"company@pipedrivemail.com\",\n        \"deal_dropbox_bcc\": \"company+deal300@pipedrivemail.com\",\n        \"assigned_to_user_id\": 1235,\n        \"file\": {\n          \"id\": \"376892,\",\n          \"clean_name\": \"Audio 10:55:07.m4a\",\n          \"url\": \"https://pipedrive-files.s3-eu-west-1.amazonaws.com/Audio-recording.m4a\"\n        }\n      }\n    },\n    {\n      \"item\": \"deal\",\n      \"id\": 1,\n      \"data\": {\n        \"id\": 1,\n        \"creator_user_id\": 8877,\n        \"user_id\": 8877,\n        \"person_id\": 1101,\n        \"org_id\": 5,\n        \"stage_id\": 2,\n        \"title\": \"Deal One\",\n        \"value\": 5000,\n        \"currency\": \"EUR\",\n        \"add_time\": \"2019-05-29 04:21:51\",\n        \"update_time\": \"2019-11-28 16:19:50\",\n        \"stage_change_time\": \"2019-11-28 15:41:22\",\n        \"active\": true,\n        \"deleted\": false,\n        \"status\": \"open\",\n        \"probability\": null,\n        \"next_activity_date\": \"2019-11-29\",\n        \"next_activity_time\": \"11:30:00\",\n        \"next_activity_id\": 128,\n        \"last_activity_id\": null,\n        \"last_activity_date\": null,\n        \"lost_reason\": null,\n        \"visible_to\": \"1\",\n        \"close_time\": null,\n        \"pipeline_id\": 1,\n        \"won_time\": \"2019-11-27 11:40:36\",\n        \"first_won_time\": \"2019-11-27 11:40:36\",\n        \"lost_time\": \"2019-11-27 11:40:36\",\n        \"products_count\": 0,\n        \"files_count\": 0,\n        \"notes_count\": 2,\n        \"followers_count\": 0,\n        \"email_messages_count\": 4,\n        \"activities_count\": 1,\n        \"done_activities_count\": 0,\n        \"undone_activities_count\": 1,\n        \"participants_count\": 1,\n        \"expected_close_date\": \"2019-06-29\",\n        \"last_incoming_mail_time\": \"2019-05-29 18:21:42\",\n        \"last_outgoing_mail_time\": \"2019-05-30 03:45:35\",\n        \"label\": \"11\",\n        \"stage_order_nr\": 2,\n        \"person_name\": \"Person\",\n        \"org_name\": \"Organization\",\n        \"next_activity_subject\": \"Call\",\n        \"next_activity_type\": \"call\",\n        \"next_activity_duration\": \"00:30:00\",\n        \"next_activity_note\": \"Note content\",\n        \"formatted_value\": \"€5,000\",\n        \"weighted_value\": 5000,\n        \"formatted_weighted_value\": \"€5,000\",\n        \"weighted_value_currency\": \"EUR\",\n        \"rotten_time\": null,\n        \"owner_name\": \"Creator\",\n        \"cc_email\": \"company+deal1@pipedrivemail.com\",\n        \"org_hidden\": false,\n        \"person_hidden\": false\n      }\n    }\n  ],\n  \"additional_data\": {\n    \"since_timestamp\": \"2020-10-10 00:00:00\",\n    \"last_timestamp_on_page\": \"2020-10-15 18:18:41\",\n    \"pagination\\\"\": {\n      \"start\": \"0,\",\n      \"limit\": \"100,\",\n      \"more_items_in_collection\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cde85b15-343f-4c3a-a901-e2b4d04c0f15",
+    "name": "Pipedrive API v1 Activities Recents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,622 @@
+{
+  "item": [
+    {
+      "id": "5ac6a5c3-3901-434c-8598-dd501a1850cc",
+      "name": "OrganizationRelationships",
+      "description": {
+        "content": "Organization relationships represent how different organizations are related to each other. The relationship can be hierarchical (parent-child companies) or lateral as defined by the `type` field - either `parent` or `related`.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "393a3923-2ee9-4146-8bfc-7bc09b83b450",
+          "name": "Get all relationships for organization",
+          "request": {
+            "name": "Get all relationships for organization",
+            "description": {
+              "content": "Gets all of the relationships for a supplied organization ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationRelationships"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<integer>",
+                  "description": "(Required) The ID of the organization to get relationships for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1c1c27d9-2ec9-4083-95e5-a68f5df18504",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationRelationships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"related_organization_name\": \"Telia\",\n      \"calculated_type\": \"daughter\",\n      \"calculated_related_org_id\": 1480,\n      \"id\": 1,\n      \"type\": \"parent\",\n      \"rel_owner_org_id\": {\n        \"name\": \"Pipedrive Inc.\",\n        \"people_count\": 1,\n        \"owner_id\": 925000,\n        \"address\": \"Mustamäe tee 3a, 10615 Tallinn\",\n        \"active_flag\": true,\n        \"cc_email\": \"company@pipedrivemail.com\",\n        \"value\": 1481\n      },\n      \"rel_linked_org_id\": {\n        \"name\": \"Telia\",\n        \"people_count\": 2,\n        \"owner_id\": 925000,\n        \"address\": \"USA\",\n        \"active_flag\": true,\n        \"cc_email\": \"company@pipedrivemail.com\",\n        \"value\": 1480\n      },\n      \"add_time\": \"2020-09-22 08:58:28\",\n      \"update_time\": \"2020-09-22 08:58:28\",\n      \"active_flag\": \"true\"\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": true\n    }\n  },\n  \"related_objects\": {\n    \"organization\": {\n      \"1482\": {\n        \"id\": 457,\n        \"name\": \"Yandex\",\n        \"people_count\": 2,\n        \"owner_id\": 9271535,\n        \"address\": \"Mustamäe tee 4b, 10615 Tallinn\",\n        \"active_flag\": true,\n        \"cc_email\": \"org@pipedrivemail.com\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bcdb788-c448-44cf-9366-7f0564af7f75",
+          "name": "Create an organization relationship",
+          "request": {
+            "name": "Create an organization relationship",
+            "description": {
+              "content": "Creates and returns an organization relationship.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationRelationships"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"rel_owner_org_id\": \"<integer>\",\n  \"rel_linked_org_id\": \"<integer>\",\n  \"org_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2bcdea16-3a2b-4222-b60c-079e8e838c1f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationRelationships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"rel_owner_org_id\": \"<integer>\",\n  \"rel_linked_org_id\": \"<integer>\",\n  \"org_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"type\": \"parent\",\n    \"rel_owner_org_id\": {\n      \"name\": \"Pipedrive Inc.\",\n      \"people_count\": 1,\n      \"owner_id\": 925000,\n      \"address\": \"Mustamäe tee 3a, 10615 Tallinn\",\n      \"active_flag\": true,\n      \"cc_email\": \"company@pipedrivemail.com\",\n      \"value\": 1481\n    },\n    \"rel_linked_org_id\": {\n      \"name\": \"Telia\",\n      \"people_count\": 2,\n      \"owner_id\": 925000,\n      \"address\": \"USA\",\n      \"active_flag\": true,\n      \"cc_email\": \"company@pipedrivemail.com\",\n      \"value\": 1480\n    },\n    \"add_time\": \"2020-09-22 08:58:28\",\n    \"update_time\": \"2020-09-22 08:58:28\",\n    \"active_flag\": \"true\"\n  },\n  \"related_objects\": {\n    \"organization\": {\n      \"1482\": {\n        \"id\": 457,\n        \"name\": \"Yandex\",\n        \"people_count\": 2,\n        \"owner_id\": 9271535,\n        \"address\": \"Mustamäe tee 4b, 10615 Tallinn\",\n        \"active_flag\": true,\n        \"cc_email\": \"org@pipedrivemail.com\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b78e564-328f-4644-aeb5-52031243cffd",
+          "name": "Delete an organization relationship",
+          "request": {
+            "name": "Delete an organization relationship",
+            "description": {
+              "content": "Deletes an organization relationship and returns the deleted ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationRelationships",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization relationship"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "79e90954-7406-44b0-a02a-b590b966491d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationRelationships",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization relationship"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 10\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f05ffe84-2ec1-43de-b878-c537d23db331",
+          "name": "Get one organization relationship",
+          "request": {
+            "name": "Get one organization relationship",
+            "description": {
+              "content": "Finds and returns an organization relationship from its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationRelationships",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<integer>",
+                  "description": "The ID of the base organization for the returned calculated values"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization relationship"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a4cf4781-68be-4419-80b7-b1da91229a8b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationRelationships",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization relationship"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"type\": \"parent\",\n    \"rel_owner_org_id\": {\n      \"name\": \"Pipedrive Inc.\",\n      \"people_count\": 1,\n      \"owner_id\": 925000,\n      \"address\": \"Mustamäe tee 3a, 10615 Tallinn\",\n      \"active_flag\": true,\n      \"cc_email\": \"company@pipedrivemail.com\",\n      \"value\": 1481\n    },\n    \"rel_linked_org_id\": {\n      \"name\": \"Telia\",\n      \"people_count\": 2,\n      \"owner_id\": 925000,\n      \"address\": \"USA\",\n      \"active_flag\": true,\n      \"cc_email\": \"company@pipedrivemail.com\",\n      \"value\": 1480\n    },\n    \"add_time\": \"2020-09-22 08:58:28\",\n    \"update_time\": \"2020-09-22 08:58:28\",\n    \"active_flag\": \"true\",\n    \"calculated_type\": \"daughter\",\n    \"calculated_related_org_id\": 1480\n  },\n  \"related_objects\": {\n    \"organization\": {\n      \"1482\": {\n        \"id\": 457,\n        \"name\": \"Yandex\",\n        \"people_count\": 2,\n        \"owner_id\": 9271535,\n        \"address\": \"Mustamäe tee 4b, 10615 Tallinn\",\n        \"active_flag\": true,\n        \"cc_email\": \"org@pipedrivemail.com\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "911dc949-0e21-46f8-a2e5-80f1249278df",
+          "name": "Update an organization relationship",
+          "request": {
+            "name": "Update an organization relationship",
+            "description": {
+              "content": "Updates and returns an organization relationship.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationRelationships",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the organization relationship"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"org_id\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"rel_owner_org_id\": \"<integer>\",\n  \"rel_linked_org_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dea6f932-c084-4e77-8185-9a3ee5ffe4eb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationRelationships",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the organization relationship"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"org_id\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"rel_owner_org_id\": \"<integer>\",\n  \"rel_linked_org_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"type\": \"parent\",\n    \"rel_owner_org_id\": {\n      \"name\": \"Pipedrive Inc.\",\n      \"people_count\": 1,\n      \"owner_id\": 925000,\n      \"address\": \"Mustamäe tee 3a, 10615 Tallinn\",\n      \"active_flag\": true,\n      \"cc_email\": \"company@pipedrivemail.com\",\n      \"value\": 1481\n    },\n    \"rel_linked_org_id\": {\n      \"name\": \"Telia\",\n      \"people_count\": 2,\n      \"owner_id\": 925000,\n      \"address\": \"USA\",\n      \"active_flag\": true,\n      \"cc_email\": \"company@pipedrivemail.com\",\n      \"value\": 1480\n    },\n    \"add_time\": \"2020-09-22 08:58:28\",\n    \"update_time\": \"2020-09-22 08:58:28\",\n    \"active_flag\": \"true\"\n  },\n  \"related_objects\": {\n    \"organization\": {\n      \"1482\": {\n        \"id\": 457,\n        \"name\": \"Yandex\",\n        \"people_count\": 2,\n        \"owner_id\": 9271535,\n        \"address\": \"Mustamäe tee 4b, 10615 Tallinn\",\n        \"active_flag\": true,\n        \"cc_email\": \"org@pipedrivemail.com\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4af19b87-5c1e-4dc8-9cfa-cc902b132130",
+    "name": "Pipedrive API v1 Activities OrganizationRelationships API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

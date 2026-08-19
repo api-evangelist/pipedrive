@@ -1,0 +1,1604 @@
+{
+  "item": [
+    {
+      "id": "37d0e433-db7e-4faa-b799-da232389e183",
+      "name": "ProductFields",
+      "description": {
+        "content": "Product fields represent the near-complete schema for a product in the context of the company of the authorized user. Each company can have a different schema for their products, with various custom fields. In the context of using product fields as a schema for defining the data fields of a product, it must be kept in mind that some types of custom fields can have additional data fields which are not separate product fields per se. Such is the case with monetary, daterange and timerange fields – each of these fields will have one additional data field in addition to the one presented in the context of product fields. For example, if there is a monetary field with the key `ffk9s9` stored on the account, `ffk9s9` would hold the numeric value of the field, and `ffk9s9_currency` would hold the ISO currency code that goes along with the numeric value. To find out which data fields are available, fetch one product and list its keys.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3a1550d-f1c0-4928-aefa-19038812b8bf",
+          "name": "Delete multiple product fields in bulk",
+          "request": {
+            "name": "Delete multiple product fields in bulk",
+            "description": {
+              "content": "Marks multiple fields as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) The comma-separated field IDs to delete"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f74612f7-2b68-4bf4-a49f-3a2253d5e4b6",
+              "name": "Mark multiple product fields as deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": [\n      32,\n      35\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40c5b180-1fde-4f0b-a08b-6e7634ead97d",
+          "name": "Get all product fields",
+          "request": {
+            "name": "Get all product fields",
+            "description": {
+              "content": "Returns data about all product fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a01cf70-ef45-4159-a992-5a714b544e9f",
+              "name": "Get data about all product fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 20,\n      \"key\": \"name\",\n      \"name\": \"Name\",\n      \"order_nr\": 1,\n      \"picklist_data\": null,\n      \"field_type\": \"varchar\",\n      \"add_time\": \"2019-11-25 13:34:03\",\n      \"update_time\": \"2019-11-25 13:34:02\",\n      \"last_updated_by_user_id\": 1,\n      \"created_by_user_id\": 1,\n      \"active_flag\": true,\n      \"edit_flag\": false,\n      \"index_visible_flag\": true,\n      \"details_visible_flag\": false,\n      \"add_visible_flag\": true,\n      \"important_flag\": false,\n      \"bulk_edit_allowed\": true,\n      \"searchable_flag\": false,\n      \"filtering_allowed\": true,\n      \"sortable_flag\": true,\n      \"mandatory_flag\": true\n    },\n    {\n      \"id\": 24,\n      \"key\": \"visible_to\",\n      \"name\": \"Visible to\",\n      \"order_nr\": 5,\n      \"field_type\": \"double\",\n      \"add_time\": \"2019-11-25 13:34:03\",\n      \"update_time\": \"2019-11-25 13:34:02\",\n      \"last_updated_by_user_id\": 1,\n      \"created_by_user_id\": 1,\n      \"active_flag\": true,\n      \"edit_flag\": false,\n      \"index_visible_flag\": true,\n      \"details_visible_flag\": true,\n      \"add_visible_flag\": false,\n      \"important_flag\": false,\n      \"bulk_edit_allowed\": true,\n      \"searchable_flag\": false,\n      \"filtering_allowed\": true,\n      \"sortable_flag\": true,\n      \"options\": [\n        {\n          \"id\": 1,\n          \"label\": \"Owner & followers\"\n        },\n        {\n          \"id\": 3,\n          \"label\": \"Entire company\"\n        }\n      ],\n      \"mandatory_flag\": true\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41939d9a-2782-45ce-abff-a8bb6b5e08fd",
+          "name": "Add a new product field",
+          "request": {
+            "name": "Add a new product field",
+            "description": {
+              "content": "Adds a new product field. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-new-custom-field\" target=\"_blank\" rel=\"noopener noreferrer\">adding a new custom field</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"field_type\": \"<string>\",\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7eb6af6-f806-4115-b7ee-868a5c992efc",
+              "name": "Get the data for a single product field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"field_type\": \"<string>\",\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 32,\n    \"key\": \"397b0f545d134b479a5485041b33b0f0f3da2333\",\n    \"name\": \"Color\",\n    \"order_nr\": 13,\n    \"field_type\": \"enum\",\n    \"add_time\": \"2019-12-20 11:01:24\",\n    \"update_time\": \"2019-12-20 11:01:24\",\n    \"last_updated_by_user_id\": 10999910,\n    \"created_by_user_id\": 10999910,\n    \"active_flag\": true,\n    \"edit_flag\": true,\n    \"index_visible_flag\": true,\n    \"details_visible_flag\": true,\n    \"add_visible_flag\": true,\n    \"important_flag\": false,\n    \"bulk_edit_allowed\": true,\n    \"searchable_flag\": false,\n    \"filtering_allowed\": true,\n    \"sortable_flag\": true,\n    \"options\": [\n      {\n        \"id\": 9,\n        \"label\": \"red\"\n      },\n      {\n        \"id\": 10,\n        \"label\": \"blue\"\n      },\n      {\n        \"id\": 11,\n        \"label\": \"lilac\"\n      }\n    ],\n    \"mandatory_flag\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2769703e-ffae-4d80-8f09-f7d6453ed63f",
+          "name": "Delete a product field",
+          "request": {
+            "name": "Delete a product field",
+            "description": {
+              "content": "Marks a product field as deleted. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/deleting-a-custom-field\" target=\"_blank\" rel=\"noopener noreferrer\">deleting a custom field</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the product field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "304370bb-8385-421d-a9ca-803714a3c1e7",
+              "name": "Delete a product field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the product field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 32\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94729efb-9986-424e-a8b3-a3676906efd3",
+              "name": "The product field with the specified ID does not exist or is inaccessible",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the product field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"The field is not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33e94a52-035a-42fc-b9ca-14323adf8a53",
+          "name": "Get one product field",
+          "request": {
+            "name": "Get one product field",
+            "description": {
+              "content": "Returns data about a specific product field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the product field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08e1c23d-dc58-4f74-a847-a7340733aca5",
+              "name": "Get the data for a single product field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the product field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 32,\n    \"key\": \"397b0f545d134b479a5485041b33b0f0f3da2333\",\n    \"name\": \"Color\",\n    \"order_nr\": 13,\n    \"field_type\": \"enum\",\n    \"add_time\": \"2019-12-20 11:01:24\",\n    \"update_time\": \"2019-12-20 11:01:24\",\n    \"last_updated_by_user_id\": 10999910,\n    \"created_by_user_id\": 10999910,\n    \"active_flag\": true,\n    \"edit_flag\": true,\n    \"index_visible_flag\": true,\n    \"details_visible_flag\": true,\n    \"add_visible_flag\": true,\n    \"important_flag\": false,\n    \"bulk_edit_allowed\": true,\n    \"searchable_flag\": false,\n    \"filtering_allowed\": true,\n    \"sortable_flag\": true,\n    \"options\": [\n      {\n        \"id\": 9,\n        \"label\": \"red\"\n      },\n      {\n        \"id\": 10,\n        \"label\": \"blue\"\n      },\n      {\n        \"id\": 11,\n        \"label\": \"lilac\"\n      }\n    ],\n    \"mandatory_flag\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb3b131b-5729-4bda-821a-edf47a6d0b2e",
+              "name": "The product field with the specified ID does not exist or is inaccessible",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the product field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"The field is not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f154686-8a89-42f6-b0c9-c9c7592e709f",
+          "name": "Update a product field",
+          "request": {
+            "name": "Update a product field",
+            "description": {
+              "content": "Updates a product field. For more information, see the tutorial for <a href=\" https://pipedrive.readme.io/docs/updating-custom-field-value \" target=\"_blank\" rel=\"noopener noreferrer\">updating custom fields' values</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the product field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "596a434b-e60b-4f83-9b78-f8fdabcecac9",
+              "name": "Get the data for a single product field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the product field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 32,\n    \"key\": \"397b0f545d134b479a5485041b33b0f0f3da2333\",\n    \"name\": \"Color\",\n    \"order_nr\": 13,\n    \"field_type\": \"enum\",\n    \"add_time\": \"2019-12-20 11:01:24\",\n    \"update_time\": \"2019-12-20 11:01:24\",\n    \"last_updated_by_user_id\": 10999910,\n    \"created_by_user_id\": 10999910,\n    \"active_flag\": true,\n    \"edit_flag\": true,\n    \"index_visible_flag\": true,\n    \"details_visible_flag\": true,\n    \"add_visible_flag\": true,\n    \"important_flag\": false,\n    \"bulk_edit_allowed\": true,\n    \"searchable_flag\": false,\n    \"filtering_allowed\": true,\n    \"sortable_flag\": true,\n    \"options\": [\n      {\n        \"id\": 9,\n        \"label\": \"red\"\n      },\n      {\n        \"id\": 10,\n        \"label\": \"blue\"\n      },\n      {\n        \"id\": 11,\n        \"label\": \"lilac\"\n      }\n    ],\n    \"mandatory_flag\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e0823d1-4462-4dc5-bbdd-ce99495ae9ac",
+          "name": "Get one product field",
+          "request": {
+            "name": "Get one product field",
+            "description": {
+              "content": "Returns metadata about a specific product field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of additional data namespaces to include in response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7ed69454-6ef9-464e-badb-314b90489fe6",
+              "name": "Get one product field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Product Name\",\n    \"field_code\": \"name\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": false,\n    \"is_optional_response_field\": false,\n    \"ui_visibility\": {\n      \"add_visible_flag\": true,\n      \"details_visible_flag\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd2456c9-6d0a-4adf-bd6c-257631aea315",
+          "name": "Update one product field",
+          "request": {
+            "name": "Update one product field",
+            "description": {
+              "content": "Updates a product custom field. The field_code and field_type cannot be changed. At least one field must be provided in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field_name\": \"<string>\",\n  \"ui_visibility\": {\n    \"add_visible_flag\": false,\n    \"details_visible_flag\": true,\n    \"key_0\": \"string\",\n    \"key_1\": 1418.2872429430327\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17d3ac98-27ef-4482-ab59-5aba555b2459",
+              "name": "Get one product field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field_name\": \"<string>\",\n  \"ui_visibility\": {\n    \"add_visible_flag\": false,\n    \"details_visible_flag\": true,\n    \"key_0\": 4688\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Product Name\",\n    \"field_code\": \"name\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": false,\n    \"is_optional_response_field\": false,\n    \"ui_visibility\": {\n      \"add_visible_flag\": true,\n      \"details_visible_flag\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e979f1de-d2f6-4694-9b63-398c20550d50",
+          "name": "Delete one product field",
+          "request": {
+            "name": "Delete one product field",
+            "description": {
+              "content": "Marks a custom field as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "022606e9-19f8-4d69-b486-8875ceff0963",
+              "name": "Delete one product field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Custom text field\",\n    \"field_code\": \"946947d1b02fd3ef20798d6112ec5d895a686a21\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": true,\n    \"is_optional_response_field\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dca91df-715c-4aa1-a0c1-b5461310a260",
+          "name": "Add product field options in bulk",
+          "request": {
+            "name": "Add product field options in bulk",
+            "description": {
+              "content": "Adds new options to a product custom field that supports options (enum or set field types). This operation is atomic - all options are added or none are added. Returns only the newly added options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields",
+                ":field_code",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"label\": \"<string>\"\n  },\n  {\n    \"label\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0d82c4e-f53d-4a35-bcb1-ad215bf2950b",
+              "name": "Field options operation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":field_code",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"label\": \"<string>\"\n  },\n  {\n    \"label\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"label\": \"Consulting\"\n    }\n  ],\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96c78a5e-87da-4b1e-a203-a67f1ac7f38d",
+          "name": "Delete product field options in bulk",
+          "request": {
+            "name": "Delete product field options in bulk",
+            "description": {
+              "content": "Removes existing options from a product custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the deleted options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields",
+                ":field_code",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<integer>\"\n  },\n  {\n    \"id\": \"<integer>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07975db7-42f9-4936-a099-21082c288fe9",
+              "name": "Field options operation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":field_code",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<integer>\"\n  },\n  {\n    \"id\": \"<integer>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"label\": \"Consulting\"\n    }\n  ],\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e834694f-534c-40ba-9039-4a3d7b25a29e",
+          "name": "Update product field options in bulk",
+          "request": {
+            "name": "Update product field options in bulk",
+            "description": {
+              "content": "Updates existing options for a product custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the updated options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productFields",
+                ":field_code",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "014b5dab-8de0-4f9f-906e-2a66ef874717",
+              "name": "Field options operation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productFields",
+                    ":field_code",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"label\": \"Consulting\"\n    }\n  ],\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "39023424-6e9f-49e5-bfd4-c9ad795e9d94",
+    "name": "Pipedrive API v1 Activities ProductFields API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

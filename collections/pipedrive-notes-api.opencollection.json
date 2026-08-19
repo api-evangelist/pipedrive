@@ -1,0 +1,414 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities Notes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/notes",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the user whose notes to fetch. If omitted, notes by all users will be returned."
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the lead which notes to fetch. If omitted, notes about all leads will be returned."
+              },
+              {
+                "name": "deal_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the deal which notes to fetch. If omitted, notes about all deals will be returned."
+              },
+              {
+                "name": "person_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the person whose notes to fetch. If omitted, notes about all persons will be returned."
+              },
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the organization which notes to fetch. If omitted, notes about all organizations will be returned."
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the project which notes to fetch. If omitted, notes about all projects will be returned."
+              },
+              {
+                "name": "task_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the task which notes to fetch. If omitted, notes about all tasks will be returned."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The field names and sorting mode separated by a comma (`field_name_1 ASC`, `field_name_2 DESC`). Only first-level field keys are supported (no nested keys). Supported fields: `id`, `user_id`, `deal_id`, `person_id`, `org_id`, `content`, `add_time`, `update_time`."
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The date in format of YYYY-MM-DD from which notes to fetch"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "The date in format of YYYY-MM-DD until which notes to fetch to"
+              },
+              {
+                "name": "updated_since",
+                "value": "",
+                "type": "query",
+                "description": "If set, only notes with an `update_time` later than or equal to this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z."
+              },
+              {
+                "name": "pinned_to_lead_flag",
+                "value": "",
+                "type": "query",
+                "description": "If set, the results are filtered by note to lead pinning state"
+              },
+              {
+                "name": "pinned_to_deal_flag",
+                "value": "",
+                "type": "query",
+                "description": "If set, the results are filtered by note to deal pinning state"
+              },
+              {
+                "name": "pinned_to_organization_flag",
+                "value": "",
+                "type": "query",
+                "description": "If set, the results are filtered by note to organization pinning state"
+              },
+              {
+                "name": "pinned_to_person_flag",
+                "value": "",
+                "type": "query",
+                "description": "If set, the results are filtered by note to person pinning state"
+              },
+              {
+                "name": "pinned_to_project_flag",
+                "value": "",
+                "type": "query",
+                "description": "If set, the results are filtered by note to project pinning state"
+              },
+              {
+                "name": "pinned_to_task_flag",
+                "value": "",
+                "type": "query",
+                "description": "If set, the results are filtered by note to task pinning state"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all notes."
+        },
+        {
+          "info": {
+            "name": "Add a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/notes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new note."
+        },
+        {
+          "info": {
+            "name": "Get one note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the note"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns details about a specific note."
+        },
+        {
+          "info": {
+            "name": "Update a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pipedrive.com/v1/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the note"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a note."
+        },
+        {
+          "info": {
+            "name": "Delete a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the note"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific note."
+        },
+        {
+          "info": {
+            "name": "Get all comments for a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/notes/:id/comments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the note"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all comments associated with a note."
+        },
+        {
+          "info": {
+            "name": "Add a comment to a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipedrive.com/v1/notes/:id/comments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the note"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new comment to a note."
+        },
+        {
+          "info": {
+            "name": "Get one comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/notes/:id/comments/:commentId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the note"
+              },
+              {
+                "name": "commentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the details of a comment."
+        },
+        {
+          "info": {
+            "name": "Update a comment related to a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pipedrive.com/v1/notes/:id/comments/:commentId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the note"
+              },
+              {
+                "name": "commentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a comment related to a note."
+        },
+        {
+          "info": {
+            "name": "Delete a comment related to a note",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/notes/:id/comments/:commentId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the note"
+              },
+              {
+                "name": "commentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a comment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

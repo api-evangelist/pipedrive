@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities UserSettings API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "UserSettings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List settings of an authorized user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/userSettings",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists the settings of an authorized user. Example response contains a shortened list of settings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

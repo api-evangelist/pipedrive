@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities ActivityFields API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ActivityFields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all activity fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/activityFields",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all activity fields."
+        },
+        {
+          "info": {
+            "name": "Get one activity field",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/activityFields/:field_code",
+            "params": [
+              {
+                "name": "field_code",
+                "value": "",
+                "type": "path",
+                "description": "The unique code identifying the field"
+              },
+              {
+                "name": "include_fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma separated string array of additional data namespaces to include in response"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns metadata about a specific activity field."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

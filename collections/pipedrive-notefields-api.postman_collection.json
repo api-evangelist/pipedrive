@@ -1,0 +1,126 @@
+{
+  "item": [
+    {
+      "id": "ac8855b6-9070-4abf-a34b-9c04b2b9a471",
+      "name": "NoteFields",
+      "description": {
+        "content": "Note fields represent different fields that a note has.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "549ce8ff-ae68-4f17-b323-707c9e1ba6bd",
+          "name": "Get all note fields",
+          "request": {
+            "name": "Get all note fields",
+            "description": {
+              "content": "Returns data about all note fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "noteFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "61570b1b-2fbb-4bdc-bac0-929681ab5fcf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "noteFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"key\": \"content\",\n      \"name\": \"Content\",\n      \"field_type\": \"text\",\n      \"active_flag\": true,\n      \"edit_flag\": false,\n      \"bulk_edit_allowed\": true,\n      \"mandatory_flag\": true\n    },\n    {\n      \"id\": 2,\n      \"key\": \"pinned_to_deal_flag\",\n      \"name\": \"Note is pinned to deal\",\n      \"field_type\": \"enum\",\n      \"active_flag\": true,\n      \"edit_flag\": true,\n      \"bulk_edit_allowed\": true,\n      \"options\": [\n        {\n          \"id\": 1,\n          \"label\": \"Yes\"\n        },\n        {\n          \"id\": 0,\n          \"label\": \"No\"\n        }\n      ],\n      \"mandatory_flag\": true\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "27d94654-5810-4784-a2f1-a26ef717edc1",
+    "name": "Pipedrive API v1 Activities NoteFields API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,762 @@
+{
+  "item": [
+    {
+      "id": "806f7d86-996a-4113-9c9a-09bb9ea890c0",
+      "name": "Activities",
+      "description": {
+        "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1aa21a9c-5246-4bec-a2f9-f32d67235ebc",
+          "name": "Get all activities",
+          "request": {
+            "name": "Get all activities",
+            "description": {
+              "content": "Returns data about all activities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only activities matching the specified filter are returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of up to 100 entity ids to fetch. If filter_id is provided, this is ignored. If any of the requested entities do not exist or are not visible, they are not included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only activities owned by the specified user are returned. If filter_id is provided, this is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "deal_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only activities linked to the specified deal are returned. If filter_id is provided, this is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "If supplied, only activities linked to the specified lead are returned. If filter_id is provided, this is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "person_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only activities whose primary participant is the given person are returned. If filter_id is provided, this is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only activities linked to the specified organization are returned. If filter_id is provided, this is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "done",
+                  "value": "<boolean>",
+                  "description": "If supplied, only activities with specified 'done' flag value are returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_since",
+                  "value": "<string>",
+                  "description": "If set, only activities with an `update_time` later than or equal to this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_until",
+                  "value": "<string>",
+                  "description": "If set, only activities with an `update_time` earlier than this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "id",
+                  "description": "The field to sort by. Supported fields: `id`, `update_time`, `add_time`, `due_date`."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "asc",
+                  "description": "The sorting direction. Supported values: `asc`, `desc`."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of additional fields to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2cdeb3df-63fb-4136-8c10-0a96a3b67bd9",
+              "name": "Get all activities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "deal_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "person_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "done",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "updated_since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_until",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"subject\": \"Activity Subject\",\n      \"type\": \"activity_type\",\n      \"owner_id\": 1,\n      \"creator_user_id\": 1,\n      \"is_deleted\": false,\n      \"add_time\": \"2021-01-01T00:00:00Z\",\n      \"update_time\": \"2021-01-01T00:00:00Z\",\n      \"deal_id\": 5,\n      \"lead_id\": \"abc-def\",\n      \"person_id\": 6,\n      \"org_id\": 7,\n      \"project_id\": 8,\n      \"due_date\": \"2021-01-01\",\n      \"due_time\": \"15:00:00\",\n      \"duration\": \"01:00:00\",\n      \"busy\": true,\n      \"done\": true,\n      \"marked_as_done_time\": \"2021-01-01T00:00:00Z\",\n      \"location\": {\n        \"value\": \"123 Main St\",\n        \"country\": \"USA\",\n        \"admin_area_level_1\": \"CA\",\n        \"admin_area_level_2\": \"Santa Clara\",\n        \"locality\": \"Sunnyvale\",\n        \"sublocality\": \"Downtown\",\n        \"route\": \"Main St\",\n        \"street_number\": \"123\",\n        \"subpremise\": \"Apt 1\",\n        \"postal_code\": \"94085\"\n      },\n      \"participants\": [\n        {\n          \"person_id\": 1,\n          \"primary\": true\n        }\n      ],\n      \"attendees\": [\n        {\n          \"email\": \"some@email.com\",\n          \"name\": \"Some Name\",\n          \"status\": \"accepted\",\n          \"is_organizer\": true,\n          \"person_id\": 1,\n          \"user_id\": 1\n        }\n      ],\n      \"conference_meeting_client\": \"google_meet\",\n      \"conference_meeting_url\": \"https://meet.google.com/abc-xyz\",\n      \"conference_meeting_id\": \"abc-xyz\",\n      \"public_description\": \"Public Description\",\n      \"priority\": 263,\n      \"note\": \"Note\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a7394d8-37a3-4f48-8b8b-77986dc0ee2d",
+          "name": "Add a new activity",
+          "request": {
+            "name": "Add a new activity",
+            "description": {
+              "content": "Adds a new activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"type\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"project_id\": \"<integer>\",\n  \"due_date\": \"<string>\",\n  \"due_time\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"busy\": \"<boolean>\",\n  \"done\": \"<boolean>\",\n  \"location\": {\n    \"value\": \"<string>\",\n    \"country\": \"<string>\",\n    \"admin_area_level_1\": \"<string>\",\n    \"admin_area_level_2\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"sublocality\": \"<string>\",\n    \"route\": \"<string>\",\n    \"street_number\": \"<string>\",\n    \"subpremise\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"participants\": [\n    {\n      \"person_id\": \"<integer>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"person_id\": \"<integer>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"is_organizer\": \"<boolean>\",\n      \"person_id\": \"<integer>\",\n      \"user_id\": \"<integer>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"is_organizer\": \"<boolean>\",\n      \"person_id\": \"<integer>\",\n      \"user_id\": \"<integer>\"\n    }\n  ],\n  \"public_description\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d652491-bcd5-4812-95fb-a47727aacb18",
+              "name": "Add activity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"type\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"project_id\": \"<integer>\",\n  \"due_date\": \"<string>\",\n  \"due_time\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"busy\": \"<boolean>\",\n  \"done\": \"<boolean>\",\n  \"location\": {\n    \"value\": \"<string>\",\n    \"country\": \"<string>\",\n    \"admin_area_level_1\": \"<string>\",\n    \"admin_area_level_2\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"sublocality\": \"<string>\",\n    \"route\": \"<string>\",\n    \"street_number\": \"<string>\",\n    \"subpremise\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"participants\": [\n    {\n      \"person_id\": \"<integer>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"person_id\": \"<integer>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"is_organizer\": \"<boolean>\",\n      \"person_id\": \"<integer>\",\n      \"user_id\": \"<integer>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"is_organizer\": \"<boolean>\",\n      \"person_id\": \"<integer>\",\n      \"user_id\": \"<integer>\"\n    }\n  ],\n  \"public_description\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"subject\": \"Activity Subject\",\n    \"type\": \"activity_type\",\n    \"owner_id\": 1,\n    \"creator_user_id\": 1,\n    \"is_deleted\": false,\n    \"add_time\": \"2021-01-01T00:00:00Z\",\n    \"update_time\": \"2021-01-01T00:00:00Z\",\n    \"deal_id\": 5,\n    \"lead_id\": \"abc-def\",\n    \"person_id\": 6,\n    \"org_id\": 7,\n    \"project_id\": 8,\n    \"due_date\": \"2021-01-01\",\n    \"due_time\": \"15:00:00\",\n    \"duration\": \"01:00:00\",\n    \"busy\": true,\n    \"done\": true,\n    \"marked_as_done_time\": \"2021-01-01T00:00:00Z\",\n    \"location\": {\n      \"value\": \"123 Main St\",\n      \"country\": \"USA\",\n      \"admin_area_level_1\": \"CA\",\n      \"admin_area_level_2\": \"Santa Clara\",\n      \"locality\": \"Sunnyvale\",\n      \"sublocality\": \"Downtown\",\n      \"route\": \"Main St\",\n      \"street_number\": \"123\",\n      \"subpremise\": \"Apt 1\",\n      \"postal_code\": \"94085\"\n    },\n    \"participants\": [\n      {\n        \"person_id\": 1,\n        \"primary\": true\n      }\n    ],\n    \"attendees\": [\n      {\n        \"email\": \"some@email.com\",\n        \"name\": \"Some Name\",\n        \"status\": \"accepted\",\n        \"is_organizer\": true,\n        \"person_id\": 1,\n        \"user_id\": 1\n      }\n    ],\n    \"conference_meeting_client\": \"google_meet\",\n    \"conference_meeting_url\": \"https://meet.google.com/abc-xyz\",\n    \"conference_meeting_id\": \"abc-xyz\",\n    \"public_description\": \"Public Description\",\n    \"priority\": 263,\n    \"note\": \"Note\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3908cd2d-e864-440f-822f-dc102762de17",
+          "name": "Delete an activity",
+          "request": {
+            "name": "Delete an activity",
+            "description": {
+              "content": "Marks an activity as deleted. After 30 days, the activity will be permanently deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the activity"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5cf5d815-09ff-44cb-858f-aa17aee5585b",
+              "name": "Delete activity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the activity"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f04a91ec-0d37-47c6-b98a-546ed92a54ec",
+          "name": "Get details of an activity",
+          "request": {
+            "name": "Get details of an activity",
+            "description": {
+              "content": "Returns the details of a specific activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of additional fields to include"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the activity"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b7805a22-3479-4075-9903-7f4e9fb72030",
+              "name": "Get activity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the activity"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"subject\": \"Activity Subject\",\n    \"type\": \"activity_type\",\n    \"owner_id\": 1,\n    \"creator_user_id\": 1,\n    \"is_deleted\": false,\n    \"add_time\": \"2021-01-01T00:00:00Z\",\n    \"update_time\": \"2021-01-01T00:00:00Z\",\n    \"deal_id\": 5,\n    \"lead_id\": \"abc-def\",\n    \"person_id\": 6,\n    \"org_id\": 7,\n    \"project_id\": 8,\n    \"due_date\": \"2021-01-01\",\n    \"due_time\": \"15:00:00\",\n    \"duration\": \"01:00:00\",\n    \"busy\": true,\n    \"done\": true,\n    \"marked_as_done_time\": \"2021-01-01T00:00:00Z\",\n    \"location\": {\n      \"value\": \"123 Main St\",\n      \"country\": \"USA\",\n      \"admin_area_level_1\": \"CA\",\n      \"admin_area_level_2\": \"Santa Clara\",\n      \"locality\": \"Sunnyvale\",\n      \"sublocality\": \"Downtown\",\n      \"route\": \"Main St\",\n      \"street_number\": \"123\",\n      \"subpremise\": \"Apt 1\",\n      \"postal_code\": \"94085\"\n    },\n    \"participants\": [\n      {\n        \"person_id\": 1,\n        \"primary\": true\n      }\n    ],\n    \"attendees\": [\n      {\n        \"email\": \"some@email.com\",\n        \"name\": \"Some Name\",\n        \"status\": \"accepted\",\n        \"is_organizer\": true,\n        \"person_id\": 1,\n        \"user_id\": 1\n      }\n    ],\n    \"conference_meeting_client\": \"google_meet\",\n    \"conference_meeting_url\": \"https://meet.google.com/abc-xyz\",\n    \"conference_meeting_id\": \"abc-xyz\",\n    \"public_description\": \"Public Description\",\n    \"priority\": 263,\n    \"note\": \"Note\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c32935d-a57b-4511-a8e2-99f93fbccc2c",
+          "name": "Update an activity",
+          "request": {
+            "name": "Update an activity",
+            "description": {
+              "content": "Updates the properties of an activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the activity"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"type\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"project_id\": \"<integer>\",\n  \"due_date\": \"<string>\",\n  \"due_time\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"busy\": \"<boolean>\",\n  \"done\": \"<boolean>\",\n  \"location\": {\n    \"value\": \"<string>\",\n    \"country\": \"<string>\",\n    \"admin_area_level_1\": \"<string>\",\n    \"admin_area_level_2\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"sublocality\": \"<string>\",\n    \"route\": \"<string>\",\n    \"street_number\": \"<string>\",\n    \"subpremise\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"participants\": [\n    {\n      \"person_id\": \"<integer>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"person_id\": \"<integer>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"is_organizer\": \"<boolean>\",\n      \"person_id\": \"<integer>\",\n      \"user_id\": \"<integer>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"is_organizer\": \"<boolean>\",\n      \"person_id\": \"<integer>\",\n      \"user_id\": \"<integer>\"\n    }\n  ],\n  \"public_description\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30c27fd4-162e-44be-8eee-11449041a6ce",
+              "name": "Edit activity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the activity"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"type\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"deal_id\": \"<integer>\",\n  \"lead_id\": \"<string>\",\n  \"person_id\": \"<integer>\",\n  \"org_id\": \"<integer>\",\n  \"project_id\": \"<integer>\",\n  \"due_date\": \"<string>\",\n  \"due_time\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"busy\": \"<boolean>\",\n  \"done\": \"<boolean>\",\n  \"location\": {\n    \"value\": \"<string>\",\n    \"country\": \"<string>\",\n    \"admin_area_level_1\": \"<string>\",\n    \"admin_area_level_2\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"sublocality\": \"<string>\",\n    \"route\": \"<string>\",\n    \"street_number\": \"<string>\",\n    \"subpremise\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"participants\": [\n    {\n      \"person_id\": \"<integer>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"person_id\": \"<integer>\",\n      \"primary\": \"<boolean>\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"is_organizer\": \"<boolean>\",\n      \"person_id\": \"<integer>\",\n      \"user_id\": \"<integer>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"is_organizer\": \"<boolean>\",\n      \"person_id\": \"<integer>\",\n      \"user_id\": \"<integer>\"\n    }\n  ],\n  \"public_description\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"subject\": \"Activity Subject\",\n    \"type\": \"activity_type\",\n    \"owner_id\": 1,\n    \"creator_user_id\": 1,\n    \"is_deleted\": false,\n    \"add_time\": \"2021-01-01T00:00:00Z\",\n    \"update_time\": \"2021-01-01T00:00:00Z\",\n    \"deal_id\": 5,\n    \"lead_id\": \"abc-def\",\n    \"person_id\": 6,\n    \"org_id\": 7,\n    \"project_id\": 8,\n    \"due_date\": \"2021-01-01\",\n    \"due_time\": \"15:00:00\",\n    \"duration\": \"01:00:00\",\n    \"busy\": true,\n    \"done\": true,\n    \"marked_as_done_time\": \"2021-01-01T00:00:00Z\",\n    \"location\": {\n      \"value\": \"123 Main St\",\n      \"country\": \"USA\",\n      \"admin_area_level_1\": \"CA\",\n      \"admin_area_level_2\": \"Santa Clara\",\n      \"locality\": \"Sunnyvale\",\n      \"sublocality\": \"Downtown\",\n      \"route\": \"Main St\",\n      \"street_number\": \"123\",\n      \"subpremise\": \"Apt 1\",\n      \"postal_code\": \"94085\"\n    },\n    \"participants\": [\n      {\n        \"person_id\": 1,\n        \"primary\": true\n      }\n    ],\n    \"attendees\": [\n      {\n        \"email\": \"some@email.com\",\n        \"name\": \"Some Name\",\n        \"status\": \"accepted\",\n        \"is_organizer\": true,\n        \"person_id\": 1,\n        \"user_id\": 1\n      }\n    ],\n    \"conference_meeting_client\": \"google_meet\",\n    \"conference_meeting_url\": \"https://meet.google.com/abc-xyz\",\n    \"conference_meeting_id\": \"abc-xyz\",\n    \"public_description\": \"Public Description\",\n    \"priority\": 263,\n    \"note\": \"Note\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a3204bc6-3570-486e-871b-a0266c2d5fa3",
+    "name": "Pipedrive API v1 Activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

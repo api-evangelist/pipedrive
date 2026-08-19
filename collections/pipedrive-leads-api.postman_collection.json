@@ -1,0 +1,1697 @@
+{
+  "item": [
+    {
+      "id": "0609e1c7-b2a2-4838-aced-f9cbe63bf75e",
+      "name": "Leads",
+      "description": {
+        "content": "Leads are potential deals stored in Leads Inbox before they are archived or converted to a deal. Each lead needs to be named (using the `title` field) and be linked to a person or an organization. In addition to that, a lead can contain most of the fields a deal can (such as `value` or `expected_close_date`).\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07d9486c-a2cf-4145-90ab-d8813151daee",
+          "name": "Get all leads",
+          "request": {
+            "name": "Get all leads",
+            "description": {
+              "content": "Returns multiple not archived leads. Leads are sorted by the time they were created, from oldest to newest. Pagination can be controlled using `limit` and `start` query parameters. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields' structure from deals.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "For pagination, the position that represents the first result for the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only leads matching the given user will be returned. However, `filter_id` takes precedence over `owner_id` when supplied."
+                },
+                {
+                  "disabled": false,
+                  "key": "person_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only leads matching the given person will be returned. However, `filter_id` takes precedence over `person_id` when supplied."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only leads matching the given organization will be returned. However, `filter_id` takes precedence over `organization_id` when supplied."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter_id",
+                  "value": "<integer>",
+                  "description": "The ID of the filter to use"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_since",
+                  "value": "<string>",
+                  "description": "If set, only leads with an `update_time` later than or equal to this time are returned. In ISO 8601 format, e.g. 2025-01-01T10:20:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The field names and sorting mode separated by a comma (`field_name_1 ASC`, `field_name_2 DESC`). Only first-level field keys are supported (no nested keys)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f129903b-3b26-4f45-a560-a5c5e108c6eb",
+              "name": "Successful response containing payload in the `data` field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "owner_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "person_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "filter_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "updated_since",
+                      "value": "2025-01-01T10:20:00Z"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n      \"title\": \"Jane Doe Lead\",\n      \"owner_id\": 1,\n      \"creator_id\": 1,\n      \"label_ids\": [\n        \"f08b42a0-4e75-11ea-9643-03698ef1cfd6\",\n        \"f08b42a1-4e75-11ea-9643-03698ef1cfd6\"\n      ],\n      \"person_id\": 1092,\n      \"organization_id\": null,\n      \"source_name\": \"API\",\n      \"origin\": \"API\",\n      \"origin_id\": null,\n      \"channel\": 52,\n      \"channel_id\": \"Jun23 Billboards\",\n      \"is_archived\": false,\n      \"was_seen\": false,\n      \"value\": {\n        \"amount\": 999,\n        \"currency\": \"USD\"\n      },\n      \"expected_close_date\": null,\n      \"next_activity_id\": 1,\n      \"add_time\": \"2020-10-14T11:30:36.551Z\",\n      \"update_time\": \"2020-10-14T11:30:36.551Z\",\n      \"visible_to\": \"3\",\n      \"cc_email\": \"company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f931210c-bb90-4bac-99c8-5f7f764771d4",
+          "name": "Add a lead",
+          "request": {
+            "name": "Add a lead",
+            "description": {
+              "content": "Creates a lead. A lead always has to be linked to a person or an organization or both. All leads created through the Pipedrive API will have a lead source and origin set to `API`. Here's the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-lead\" target=\"_blank\" rel=\"noopener noreferrer\">adding a lead</a>. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields' structure from deals. See an example given in the <a href=\"https://pipedrive.readme.io/docs/updating-custom-field-value\" target=\"_blank\" rel=\"noopener noreferrer\">updating custom fields' values tutorial</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"label_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"person_id\": \"<integer>\",\n  \"organization_id\": \"<integer>\",\n  \"value\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"expected_close_date\": \"<date>\",\n  \"visible_to\": \"<string>\",\n  \"was_seen\": \"<boolean>\",\n  \"origin_id\": \"<string>\",\n  \"channel\": \"<integer>\",\n  \"channel_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c2f52bd-b295-4130-8847-e92b685fb890",
+              "name": "Successful response containing payload in the `data` field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"label_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"person_id\": \"<integer>\",\n  \"organization_id\": \"<integer>\",\n  \"value\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"expected_close_date\": \"<date>\",\n  \"visible_to\": \"<string>\",\n  \"was_seen\": \"<boolean>\",\n  \"origin_id\": \"<string>\",\n  \"channel\": \"<integer>\",\n  \"channel_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n    \"title\": \"Jane Doe Lead\",\n    \"owner_id\": 1,\n    \"creator_id\": 1,\n    \"label_ids\": [\n      \"f08b42a0-4e75-11ea-9643-03698ef1cfd6\",\n      \"f08b42a1-4e75-11ea-9643-03698ef1cfd6\"\n    ],\n    \"person_id\": 1092,\n    \"organization_id\": null,\n    \"source_name\": \"API\",\n    \"origin\": \"API\",\n    \"origin_id\": null,\n    \"channel\": 52,\n    \"channel_id\": \"Jun23 Billboards\",\n    \"is_archived\": false,\n    \"was_seen\": false,\n    \"value\": {\n      \"amount\": 999,\n      \"currency\": \"USD\"\n    },\n    \"expected_close_date\": null,\n    \"next_activity_id\": 1,\n    \"add_time\": \"2020-10-14T11:30:36.551Z\",\n    \"update_time\": \"2020-10-14T11:30:36.551Z\",\n    \"visible_to\": \"3\",\n    \"cc_email\": \"company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17a52b05-ee5c-46e8-a8d4-bc2bdde765ce",
+          "name": "Get all archived leads",
+          "request": {
+            "name": "Get all archived leads",
+            "description": {
+              "content": "Returns multiple archived leads. Leads are sorted by the time they were created, from oldest to newest. Pagination can be controlled using `limit` and `start` query parameters. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields' structure from deals.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads",
+                "archived"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "For pagination, the position that represents the first result for the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only leads matching the given user will be returned. However, `filter_id` takes precedence over `owner_id` when supplied."
+                },
+                {
+                  "disabled": false,
+                  "key": "person_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only leads matching the given person will be returned. However, `filter_id` takes precedence over `person_id` when supplied."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only leads matching the given organization will be returned. However, `filter_id` takes precedence over `organization_id` when supplied."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter_id",
+                  "value": "<integer>",
+                  "description": "The ID of the filter to use"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The field names and sorting mode separated by a comma (`field_name_1 ASC`, `field_name_2 DESC`). Only first-level field keys are supported (no nested keys)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dcd94b12-b09e-447e-8b94-9b9080b44a78",
+              "name": "Successful response containing payload in the `data` field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    "archived"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "owner_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "person_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "filter_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n      \"title\": \"Jane Doe Lead\",\n      \"owner_id\": 1,\n      \"creator_id\": 1,\n      \"label_ids\": [\n        \"f08b42a0-4e75-11ea-9643-03698ef1cfd6\",\n        \"f08b42a1-4e75-11ea-9643-03698ef1cfd6\"\n      ],\n      \"person_id\": 1092,\n      \"organization_id\": null,\n      \"source_name\": \"API\",\n      \"origin\": \"API\",\n      \"origin_id\": null,\n      \"channel\": 52,\n      \"channel_id\": \"Jun23 Billboards\",\n      \"is_archived\": true,\n      \"was_seen\": false,\n      \"value\": {\n        \"amount\": 999,\n        \"currency\": \"USD\"\n      },\n      \"expected_close_date\": null,\n      \"next_activity_id\": 1,\n      \"add_time\": \"2020-10-14T11:30:36.551Z\",\n      \"update_time\": \"2020-10-14T11:30:36.551Z\",\n      \"visible_to\": \"3\",\n      \"cc_email\": \"company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5855a9d0-0f8b-4769-a995-51f9fc966256",
+          "name": "Get one lead",
+          "request": {
+            "name": "Get one lead",
+            "description": {
+              "content": "Returns details of a specific lead. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields’ structure from deals.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of the lead"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c1277db0-0bb7-45d2-b171-7971a219f31f",
+              "name": "Successful response containing payload in the `data` field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the lead"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n    \"title\": \"Jane Doe Lead\",\n    \"owner_id\": 1,\n    \"creator_id\": 1,\n    \"label_ids\": [\n      \"f08b42a0-4e75-11ea-9643-03698ef1cfd6\",\n      \"f08b42a1-4e75-11ea-9643-03698ef1cfd6\"\n    ],\n    \"person_id\": 1092,\n    \"organization_id\": null,\n    \"source_name\": \"API\",\n    \"origin\": \"API\",\n    \"origin_id\": null,\n    \"channel\": 52,\n    \"channel_id\": \"Jun23 Billboards\",\n    \"is_archived\": false,\n    \"was_seen\": false,\n    \"value\": {\n      \"amount\": 999,\n      \"currency\": \"USD\"\n    },\n    \"expected_close_date\": null,\n    \"next_activity_id\": 1,\n    \"add_time\": \"2020-10-14T11:30:36.551Z\",\n    \"update_time\": \"2020-10-14T11:30:36.551Z\",\n    \"visible_to\": \"3\",\n    \"cc_email\": \"company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b81fdfe-6b83-470d-bad7-30f80d90ca91",
+              "name": "A resource describing an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the lead"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"requested lead not found\",\n  \"error_info\": \"Object was not found.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e2704a6-8973-4b18-9a50-7fb9891f9961",
+          "name": "Update a lead",
+          "request": {
+            "name": "Update a lead",
+            "description": {
+              "content": "Updates one or more properties of a lead. Only properties included in the request will be updated. Send `null` to unset a property (applicable for example for `value`, `person_id` or `organization_id`). If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields’ structure from deals. See an example given in the <a href=\"https://pipedrive.readme.io/docs/updating-custom-field-value\" target=\"_blank\" rel=\"noopener noreferrer\">updating custom fields’ values tutorial</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of the lead"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"label_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"person_id\": \"<integer>\",\n  \"organization_id\": \"<integer>\",\n  \"is_archived\": \"<boolean>\",\n  \"value\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"expected_close_date\": \"<date>\",\n  \"visible_to\": \"<string>\",\n  \"was_seen\": \"<boolean>\",\n  \"channel\": \"<integer>\",\n  \"channel_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44f29fbc-a7c8-4430-abec-f0221e96e291",
+              "name": "Successful response containing payload in the `data` field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the lead"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"label_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"person_id\": \"<integer>\",\n  \"organization_id\": \"<integer>\",\n  \"is_archived\": \"<boolean>\",\n  \"value\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"expected_close_date\": \"<date>\",\n  \"visible_to\": \"<string>\",\n  \"was_seen\": \"<boolean>\",\n  \"channel\": \"<integer>\",\n  \"channel_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\",\n    \"title\": \"Jane Doe Lead\",\n    \"owner_id\": 1,\n    \"creator_id\": 1,\n    \"label_ids\": [\n      \"f08b42a0-4e75-11ea-9643-03698ef1cfd6\",\n      \"f08b42a1-4e75-11ea-9643-03698ef1cfd6\"\n    ],\n    \"person_id\": 1092,\n    \"organization_id\": null,\n    \"source_name\": \"API\",\n    \"origin\": \"API\",\n    \"origin_id\": null,\n    \"channel\": 52,\n    \"channel_id\": \"Jun23 Billboards\",\n    \"is_archived\": false,\n    \"was_seen\": false,\n    \"value\": {\n      \"amount\": 999,\n      \"currency\": \"USD\"\n    },\n    \"expected_close_date\": null,\n    \"next_activity_id\": 1,\n    \"add_time\": \"2020-10-14T11:30:36.551Z\",\n    \"update_time\": \"2020-10-14T11:30:36.551Z\",\n    \"visible_to\": \"3\",\n    \"cc_email\": \"company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd575c25-5183-4444-8236-3e9f3b243f41",
+              "name": "A resource describing an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the lead"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"owner_id\": \"<integer>\",\n  \"label_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"person_id\": \"<integer>\",\n  \"organization_id\": \"<integer>\",\n  \"is_archived\": \"<boolean>\",\n  \"value\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"expected_close_date\": \"<date>\",\n  \"visible_to\": \"<string>\",\n  \"was_seen\": \"<boolean>\",\n  \"channel\": \"<integer>\",\n  \"channel_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"requested lead not found\",\n  \"error_info\": \"Object was not found.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c7e17c5-a6b0-45fe-8a09-61ffd57e237b",
+          "name": "Delete a lead",
+          "request": {
+            "name": "Delete a lead",
+            "description": {
+              "content": "Deletes a specific lead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of the lead"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0edc0797-fae0-4980-aec1-318dfd19ca02",
+              "name": "Successful response with id value only. Used in DELETE calls.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the lead"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"adf21080-0e10-11eb-879b-05d71fb426ec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0c9ebb3-7a89-44a0-ad69-550b6ba094f6",
+              "name": "A resource describing an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the lead"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"requested lead not found\",\n  \"error_info\": \"Object was not found.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f415d696-bd00-45ee-a35c-dd579c796309",
+          "name": "List permitted users",
+          "request": {
+            "name": "List permitted users",
+            "description": {
+              "content": "Lists the users permitted to access a lead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads",
+                ":id",
+                "permittedUsers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the lead"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6c8ee895-b957-42e5-ae94-38b607fb821d",
+              "name": "Lists users permitted to access a lead",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id",
+                    "permittedUsers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the lead"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    10100010,\n    22302444,\n    33511023\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e310f185-f7eb-4c32-9c6d-5ba0bbb85aec",
+          "name": "Search leads",
+          "request": {
+            "name": "Search leads",
+            "description": {
+              "content": "Searches all leads by title, notes and/or custom fields. This endpoint is a wrapper of <a href=\"https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem\">/v1/itemSearch</a> with a narrower OAuth scope. Found leads can be filtered by the person ID and the organization ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>",
+                  "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A comma-separated string array. The fields to perform the search from. Defaults to all of them."
+                },
+                {
+                  "disabled": false,
+                  "key": "exact_match",
+                  "value": "<boolean>",
+                  "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive."
+                },
+                {
+                  "disabled": false,
+                  "key": "person_id",
+                  "value": "<integer>",
+                  "description": "Will filter leads by the provided person ID. The upper limit of found leads associated with the person is 2000."
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<integer>",
+                  "description": "Will filter leads by the provided organization ID. The upper limit of found leads associated with the organization is 2000."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>",
+                  "description": "Supports including optional fields in the results which are not provided by default"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start. Note that the pagination is based on main results and does not include related items when using `search_for_related_items` parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "33aa3077-dedd-46bd-862e-cc69e98e0a06",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exact_match",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "person_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"items\": [\n      {\n        \"result_score\": 0.29,\n        \"item\": {\n          \"id\": \"39c433f0-8a4c-11ec-8728-09968f0a1ca0\",\n          \"type\": \"lead\",\n          \"title\": \"John Doe lead\",\n          \"owner\": {\n            \"id\": 1\n          },\n          \"person\": {\n            \"id\": 1,\n            \"name\": \"John Doe\"\n          },\n          \"organization\": {\n            \"id\": 1,\n            \"name\": \"John company\"\n          },\n          \"phones\": [],\n          \"emails\": [\n            \"john@doe.com\"\n          ],\n          \"custom_fields\": [],\n          \"notes\": [],\n          \"value\": 100,\n          \"currency\": \"USD\",\n          \"visible_to\": 3,\n          \"is_archived\": false\n        }\n      }\n    ]\n  },\n  \"additional_data\": {\n    \"description\": \"The additional data of the list\",\n    \"type\": \"object\",\n    \"properties\": {\n      \"start\": {\n        \"type\": \"integer\",\n        \"description\": \"Pagination start\"\n      },\n      \"limit\": {\n        \"type\": \"integer\",\n        \"description\": \"Items shown per page\"\n      },\n      \"more_items_in_collection\": {\n        \"type\": \"boolean\",\n        \"description\": \"If there are more list items in the collection than displayed or not\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be0a71fc-b5f5-47e2-ae94-23c54a4af975",
+          "name": "Convert a lead to a deal",
+          "request": {
+            "name": "Convert a lead to a deal",
+            "description": {
+              "content": "Initiates a conversion of a lead to a deal. The return value is an ID of a job that was assigned to perform the conversion. Related entities (notes, files, emails, activities, ...) are transferred during the process to the target entity. If the conversion is successful, the lead is marked as deleted. To retrieve the created entity ID and the result of the conversion, call the <a href=\"https://developers.pipedrive.com/docs/api/v1/Leads#getLeadConversionStatus\">/api/v2/leads/{lead_id}/convert/status/{conversion_id}</a> endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads",
+                ":id",
+                "convert",
+                "deal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of the lead to convert"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stage_id\": \"<integer>\",\n  \"pipeline_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e32a992d-84b2-4402-9e59-82a58a41d34d",
+              "name": "Successful response containing payload in the `data` field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id",
+                    "convert",
+                    "deal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the lead to convert"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stage_id\": \"<integer>\",\n  \"pipeline_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"conversion_id\": \"4b40248b-945a-4802-b996-60fdff8c5c69\"\n  },\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fc082e1-099e-4ffa-abbf-b276a36eb8b6",
+              "name": "A resource describing an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id",
+                    "convert",
+                    "deal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the lead to convert"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stage_id\": \"<integer>\",\n  \"pipeline_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"Entity was not found\",\n  \"error_info\": \"Object was not found.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aad04444-ebd0-41d9-99ae-b159f703e8fe",
+          "name": "Get Lead conversion status",
+          "request": {
+            "name": "Get Lead conversion status",
+            "description": {
+              "content": "Returns data about the conversion. Status is always present and its value (not_started, running, completed, failed, rejected) represents the current state of the conversion. Deal ID is only present if the conversion was successfully finished. This data is only temporary and removed after a few days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leads",
+                ":id",
+                "convert",
+                "status",
+                ":conversion_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of a lead"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "conversion_id",
+                  "description": "(Required) The ID of the conversion"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3fe697d5-c26b-4cdc-95b7-6e73a3f3630e",
+              "name": "Successful response containing payload in the `data` field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id",
+                    "convert",
+                    "status",
+                    ":conversion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of a lead"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "conversion_id",
+                      "description": "(Required) The ID of the conversion"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"deal_id\": 33,\n    \"conversion_id\": \"4b40248b-945a-4802-b996-60fdff8c5c69\",\n    \"status\": \"completed\"\n  },\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71eadab5-8cdd-4e6a-b507-c0ca93d6cf89",
+              "name": "A resource describing an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leads",
+                    ":id",
+                    "convert",
+                    "status",
+                    ":conversion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of a lead"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "conversion_id",
+                      "description": "(Required) The ID of the conversion"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"Entity was not found\",\n  \"error_info\": \"Object was not found.\",\n  \"data\": null,\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f41888d5-21d9-41e8-a91d-b2f06cd22b84",
+    "name": "Pipedrive API v1 Activities Leads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

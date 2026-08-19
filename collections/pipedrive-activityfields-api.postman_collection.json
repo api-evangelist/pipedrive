@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "6eed9e99-8d11-4d08-9c16-184cae24e072",
+      "name": "ActivityFields",
+      "description": {
+        "content": "Activity fields represent different fields that an activity has.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e13a5046-c97c-4961-a706-770bfabef3aa",
+          "name": "Get all activity fields",
+          "request": {
+            "name": "Get all activity fields",
+            "description": {
+              "content": "Returns all activity fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activityFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9aff0023-9ba9-4a63-8d13-958fd5210e16",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activityFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"key\": \"title\",\n      \"name\": \"Title\",\n      \"order_nr\": 2,\n      \"field_type\": \"varchar\",\n      \"add_time\": \"2019-02-04 13:58:03\",\n      \"update_time\": \"2019-02-04 13:58:03\",\n      \"last_updated_by_user_id\": 1,\n      \"created_by_user_id\": 1,\n      \"active_flag\": true,\n      \"edit_flag\": false,\n      \"index_visible_flag\": true,\n      \"details_visible_flag\": true,\n      \"add_visible_flag\": true,\n      \"important_flag\": false,\n      \"bulk_edit_allowed\": true,\n      \"searchable_flag\": false,\n      \"filtering_allowed\": true,\n      \"sortable_flag\": true,\n      \"options\": null,\n      \"mandatory_flag\": true\n    },\n    {\n      \"id\": 2,\n      \"key\": \"9dc80c50d78a15643bfc4ca79d76156a73a1ca0e\",\n      \"name\": \"Customer Type\",\n      \"order_nr\": 1,\n      \"field_type\": \"enum\",\n      \"add_time\": \"2019-02-04 13:58:03\",\n      \"update_time\": \"2019-02-04 13:58:03\",\n      \"last_updated_by_user_id\": 1,\n      \"created_by_user_id\": 1,\n      \"active_flag\": true,\n      \"edit_flag\": true,\n      \"index_visible_flag\": true,\n      \"details_visible_flag\": true,\n      \"add_visible_flag\": false,\n      \"important_flag\": false,\n      \"bulk_edit_allowed\": true,\n      \"searchable_flag\": false,\n      \"filtering_allowed\": true,\n      \"sortable_flag\": true,\n      \"options\": [\n        {\n          \"id\": 190,\n          \"label\": \"Private person\"\n        },\n        {\n          \"id\": 191,\n          \"label\": \"Company\"\n        },\n        {\n          \"id\": 192,\n          \"label\": \"Government\"\n        }\n      ],\n      \"mandatory_flag\": true\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad873810-8cbf-41c7-b9d7-f8b28828c165",
+          "name": "Get one activity field",
+          "request": {
+            "name": "Get one activity field",
+            "description": {
+              "content": "Returns metadata about a specific activity field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activityFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of additional data namespaces to include in response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0cc6e1a5-6173-4dbe-b88b-7174d1ebc5c7",
+              "name": "Get one activity field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activityFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Subject\",\n    \"field_code\": \"subject\",\n    \"description\": \"The subject or title of the activity\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": false,\n    \"is_optional_response_field\": false,\n    \"ui_visibility\": {\n      \"add_visible_flag\": true,\n      \"details_visible_flag\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6cb86a8c-d94c-40e4-863e-2422784b80fa",
+    "name": "Pipedrive API v1 Activities ActivityFields API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

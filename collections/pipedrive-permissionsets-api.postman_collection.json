@@ -1,0 +1,500 @@
+{
+  "item": [
+    {
+      "id": "d6358c35-e646-4f93-bd1f-0e921c5219b0",
+      "name": "PermissionSets",
+      "description": {
+        "content": "Permission sets define what users in the account can do: which actions they are allowed to perform and which features they can access. Permission sets are app-specific, where apps are large parts of functionality, e.g., sales app, which allows accessing sales data, global permissions, which oversee cross-product features (for example contacts, insights, products) or account settings, which provides access to billing, user management, company settings and security center. Some permission sets with types such as admin and regular are pre-created for the account, while other custom ones can be created by users (depending on the tier the account is on).\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a301f2ed-c812-4f23-b92a-bf07fa474754",
+          "name": "Get all permission sets",
+          "request": {
+            "name": "Get all permission sets",
+            "description": {
+              "content": "Returns data about all permission sets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "permissionSets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app",
+                  "value": "<string>",
+                  "description": "The app to filter the permission sets by"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6d250f82-f54a-469d-81be-796d8559936a",
+              "name": "Get all permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "permissionSets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"62cc4d7f-4038-4352-abf3-a8c1c822b631\",\n      \"name\": \"Deals admin\",\n      \"description\": \"See and edit all sales data (deals, leads), manage company-level sales setup (such as lost reasons and pipelines)\",\n      \"app\": \"sales\",\n      \"type\": \"admin\",\n      \"assignment_count\": 1\n    },\n    {\n      \"id\": \"f07d229d-088a-4144-a40f-1fe64295d180\",\n      \"name\": \"Deals regular user\",\n      \"description\": \"Access to sales data (deals, leads) and available actions may be limited depending on the custom permission setup. This set is the default for new users.\",\n      \"app\": \"sales\",\n      \"type\": \"regular\",\n      \"assignment_count\": 3\n    },\n    {\n      \"id\": \"233b7976-39bd-43a9-b305-ef3a2b0998e5\",\n      \"name\": \"Global admin\",\n      \"description\": \"See and edit all cross-product data (such as contacts, activities, reports) and access related features\",\n      \"app\": \"global\",\n      \"type\": \"admin\",\n      \"assignment_count\": 1\n    },\n    {\n      \"id\": \"ec8a42e5-1842-490d-9113-b3a3b4b1c0a9\",\n      \"name\": \"Global regular user\",\n      \"description\": \"Access to cross-product data (such as contacts, activities, reports) and available actions may be limited depending on the custom permission setup. This set is the default for new users.\",\n      \"app\": \"global\",\n      \"type\": \"regular\",\n      \"assignment_count\": 2\n    },\n    {\n      \"id\": \"982c5ce5-b8ba-4b47-b102-9da024f4b990\",\n      \"name\": \"Account settings\",\n      \"description\": \"Access company account level features and setup (billing, security center, company settings, user management)\",\n      \"app\": \"account_settings\",\n      \"type\": \"admin\",\n      \"assignment_count\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0951e00-16fc-4e3d-8399-332532c6be70",
+          "name": "Get one permission set",
+          "request": {
+            "name": "Get one permission set",
+            "description": {
+              "content": "Returns data about a specific permission set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "permissionSets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the permission set"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "afd10a75-3658-4fb1-beda-5857fb470d12",
+              "name": "The permission set of a specific user ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "permissionSets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the permission set"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"f07d229d-088a-4144-a40f-1fe64295d180\",\n      \"name\": \"Deals regular user\",\n      \"description\": \"Access to sales data (deals, leads) and available actions may be limited depending on the custom permission setup. This set is the default for new users.\",\n      \"app\": \"sales\",\n      \"assignment_count\": 3,\n      \"contents\": [\n        \"can_add_products\",\n        \"can_bulk_edit_items\",\n        \"can_change_visibility_of_items\",\n        \"can_delete_activities\",\n        \"can_edit_products\",\n        \"can_edit_shared_filters\",\n        \"can_export_data_from_lists\",\n        \"can_see_deals_list_summary\",\n        \"can_see_other_users\",\n        \"can_share_filters\",\n        \"can_use_api\",\n        \"can_use_email_tracking\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a08c3b0-1853-4168-9853-47bdf3e55c2a",
+              "name": "If the user ID has no assignments, then it will return NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "permissionSets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the permission set"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f96519c9-5137-483b-938f-1063b62a08b8",
+          "name": "List permission set assignments",
+          "request": {
+            "name": "List permission set assignments",
+            "description": {
+              "content": "Returns the list of assignments for a permission set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "permissionSets",
+                ":id",
+                "assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the permission set"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a78fd7f-5216-40da-aa71-a1d4055e8a50",
+              "name": "The assignments of a specific user ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "permissionSets",
+                    ":id",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the permission set"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"user_id\": 10,\n      \"permission_set_id\": \"f07d229d-088a-4144-a40f-1fe64295d180\",\n      \"name\": \"Deals regular user\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9212b51-728c-422c-a3d9-de8cbf27f909",
+              "name": "If the user ID has no assignments, then it will return NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "permissionSets",
+                    ":id",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the permission set"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "204e8329-9f86-4bd2-bdc3-981c9770e5d6",
+    "name": "Pipedrive API v1 Activities PermissionSets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

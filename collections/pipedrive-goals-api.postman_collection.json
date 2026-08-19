@@ -1,0 +1,776 @@
+{
+  "item": [
+    {
+      "id": "8ac30131-1018-417e-be22-4df7c107ef1c",
+      "name": "Goals",
+      "description": {
+        "content": "Goals help your team meet your sales targets. There are three types of goals - company, team and user.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e31f1351-7617-41e3-91ec-9a4e660d737a",
+          "name": "Add a new goal",
+          "request": {
+            "name": "Add a new goal",
+            "description": {
+              "content": "Adds a new goal. Along with adding a new goal, a report is created to track the progress of your goal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "goals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<object>\",\n  \"assignee\": \"<object>\",\n  \"expected_outcome\": \"<object>\",\n  \"duration\": \"<object>\",\n  \"interval\": \"<string>\",\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e5aed88-2f2b-44a0-a113-43b1899aa179",
+              "name": "Successful response containing payload in the `data.goal` object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "goals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<object>\",\n  \"assignee\": \"<object>\",\n  \"expected_outcome\": \"<object>\",\n  \"duration\": \"<object>\",\n  \"interval\": \"<string>\",\n  \"title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"statusCode\": 20000,\n  \"statusText\": \"OK\",\n  \"service\": \"statistics-goals-api\",\n  \"data\": {\n    \"goal\": {\n      \"id\": \"5665cef556ddff22606fc8f6c0004807\",\n      \"owner_id\": 987654,\n      \"title\": \"Some example goal\",\n      \"type\": {\n        \"name\": \"Deals started\",\n        \"params\": {\n          \"pipeline_id\": [\n            5,\n            2\n          ],\n          \"activity_type_id\": [\n            9\n          ]\n        }\n      },\n      \"assignee\": {\n        \"type\": \"company\",\n        \"id\": 123456\n      },\n      \"interval\": \"weekly\",\n      \"duration\": {\n        \"start\": \"2019-11-01\",\n        \"end\": \"2020-10-30\"\n      },\n      \"expected_outcome\": {\n        \"target\": 100,\n        \"tracking_metric\": \"quantity\"\n      },\n      \"is_active\": false,\n      \"report_ids\": [\n        \"f37bd66a2ab64d28ff6a9b6d2289813a\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fff9c967-d318-48f6-8fdc-3380d2de907f",
+          "name": "Find goals",
+          "request": {
+            "name": "Find goals",
+            "description": {
+              "content": "Returns data about goals based on criteria. For searching, append `{searchField}={searchValue}` to the URL, where `searchField` can be any one of the lowest-level fields in dot-notation (e.g. `type.params.pipeline_id`; `title`). `searchValue` should be the value you are looking for on that field. Additionally, `is_active=<true|false>` can be provided to search for only active/inactive goals. When providing `period.start`, `period.end` must also be provided and vice versa.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "goals",
+                "find"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type.name",
+                  "value": "<string>",
+                  "description": "The type of the goal. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>",
+                  "description": "The title of the goal"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "true",
+                  "description": "Whether the goal is active or not"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignee.id",
+                  "value": "<integer>",
+                  "description": "The ID of the user who's goal to fetch. When omitted, only your goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "assignee.type",
+                  "value": "<string>",
+                  "description": "The type of the goal's assignee. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "expected_outcome.target",
+                  "value": "<number>",
+                  "description": "The numeric value of the outcome. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "expected_outcome.tracking_metric",
+                  "value": "<string>",
+                  "description": "The tracking metric of the expected outcome of the goal. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "expected_outcome.currency_id",
+                  "value": "<integer>",
+                  "description": "The numeric ID of the goal's currency. Only applicable to goals with `expected_outcome.tracking_metric` with value `sum`. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "type.params.pipeline_id",
+                  "value": "<integer>",
+                  "description": "An array of pipeline IDs or `null` for all pipelines. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "type.params.pipeline_id",
+                  "value": "<integer>",
+                  "description": "An array of pipeline IDs or `null` for all pipelines. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "type.params.stage_id",
+                  "value": "<integer>",
+                  "description": "The ID of the stage. Applicable to only `deals_progressed` type of goals. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "type.params.activity_type_id",
+                  "value": "<integer>",
+                  "description": "An array of IDs or `null` for all activity types. Only applicable for `activities_completed` and/or `activities_added` types of goals. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "type.params.activity_type_id",
+                  "value": "<integer>",
+                  "description": "An array of IDs or `null` for all activity types. Only applicable for `activities_completed` and/or `activities_added` types of goals. If provided, everyone's goals will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "period.start",
+                  "value": "<date>",
+                  "description": "The start date of the period for which to find goals. Date in format of YYYY-MM-DD. When `period.start` is provided, `period.end` must be provided too."
+                },
+                {
+                  "disabled": false,
+                  "key": "period.end",
+                  "value": "<date>",
+                  "description": "The end date of the period for which to find goals. Date in format of YYYY-MM-DD."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f93ac8c9-c7e1-4b19-9d9a-bfc2040d0ee4",
+              "name": "Successful response containing payload in the `data.goal` object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "goals",
+                    "find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "true"
+                    },
+                    {
+                      "key": "assignee.id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "assignee.type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expected_outcome.target",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "expected_outcome.tracking_metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expected_outcome.currency_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type.params.pipeline_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type.params.pipeline_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type.params.stage_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type.params.activity_type_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type.params.activity_type_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "period.start",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "period.end",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"statusCode\": 20000,\n  \"statusText\": \"OK\",\n  \"service\": \"statistics-goals-api\",\n  \"data\": {\n    \"goals\": [\n      {\n        \"id\": \"5665cef556ddff22606fc8f6c0004807\",\n        \"owner_id\": 987654,\n        \"title\": \"Some example goal\",\n        \"type\": {\n          \"name\": \"Deals started\",\n          \"params\": {\n            \"pipeline_id\": [\n              5,\n              2\n            ],\n            \"activity_type_id\": [\n              9\n            ]\n          }\n        },\n        \"assignee\": {\n          \"type\": \"company\",\n          \"id\": 123456\n        },\n        \"interval\": \"weekly\",\n        \"duration\": {\n          \"start\": \"2019-11-01\",\n          \"end\": \"2020-10-30\"\n        },\n        \"expected_outcome\": {\n          \"target\": 100,\n          \"tracking_metric\": \"quantity\"\n        },\n        \"is_active\": false,\n        \"report_ids\": [\n          \"f37bd66a2ab64d28ff6a9b6d2289813a\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac6065c9-72d7-4da7-a428-2fd876e46860",
+          "name": "Update existing goal",
+          "request": {
+            "name": "Update existing goal",
+            "description": {
+              "content": "Updates an existing goal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "goals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the goal"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"assignee\": \"<object>\",\n  \"type\": \"<object>\",\n  \"expected_outcome\": \"<object>\",\n  \"duration\": \"<object>\",\n  \"interval\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0fb51389-6709-4c01-8218-45b39d6d6501",
+              "name": "Successful response containing payload in the `data.goal` object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "goals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the goal"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"assignee\": \"<object>\",\n  \"type\": \"<object>\",\n  \"expected_outcome\": \"<object>\",\n  \"duration\": \"<object>\",\n  \"interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"statusCode\": 20000,\n  \"statusText\": \"OK\",\n  \"service\": \"statistics-goals-api\",\n  \"data\": {\n    \"goal\": {\n      \"id\": \"5665cef556ddff22606fc8f6c0004807\",\n      \"owner_id\": 987654,\n      \"title\": \"Some example goal\",\n      \"type\": {\n        \"name\": \"Deals started\",\n        \"params\": {\n          \"pipeline_id\": [\n            5,\n            2\n          ],\n          \"activity_type_id\": [\n            9\n          ]\n        }\n      },\n      \"assignee\": {\n        \"type\": \"company\",\n        \"id\": 123456\n      },\n      \"interval\": \"weekly\",\n      \"duration\": {\n        \"start\": \"2019-11-01\",\n        \"end\": \"2020-10-30\"\n      },\n      \"expected_outcome\": {\n        \"target\": 100,\n        \"tracking_metric\": \"quantity\"\n      },\n      \"is_active\": false,\n      \"report_ids\": [\n        \"f37bd66a2ab64d28ff6a9b6d2289813a\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a307797-9ef9-4929-905b-af03564f54fd",
+          "name": "Delete existing goal",
+          "request": {
+            "name": "Delete existing goal",
+            "description": {
+              "content": "Marks a goal as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "goals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the goal"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "309cdebd-6bbf-4a1c-b903-a6f6ca548e21",
+              "name": "Successful response with id 'success' field only",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "goals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the goal"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"statusCode\": 20000,\n  \"statusText\": \"OK\",\n  \"service\": \"statistics-goals-api\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8acb547d-24ea-4fd1-9cb4-7bcb2e743119",
+          "name": "Get result of a goal",
+          "request": {
+            "name": "Get result of a goal",
+            "description": {
+              "content": "Gets the progress of a goal for the specified period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "goals",
+                ":id",
+                "results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period.start",
+                  "value": "<date>",
+                  "description": "(Required) The start date of the period for which to find the goal's progress. Format: YYYY-MM-DD. This date must be the same or after the goal duration start date.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "period.end",
+                  "value": "<date>",
+                  "description": "(Required) The end date of the period for which to find the goal's progress. Format: YYYY-MM-DD. This date must be the same or before the goal duration end date.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the goal that the results are looked for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aacd0209-2279-420e-b3ce-14ef276a5885",
+              "name": "Successful response containing payload in the `data.goal` object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "goals",
+                    ":id",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period.start",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "period.end",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the goal that the results are looked for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"statusCode\": 20000,\n  \"statusText\": \"OK\",\n  \"service\": \"statistics-goals-api\",\n  \"data\": {\n    \"goal\": {\n      \"id\": \"5665cef556ddff22606fc8f6c0004807\",\n      \"owner_id\": 987654,\n      \"title\": \"Some example goal\",\n      \"type\": {\n        \"name\": \"Deals started\",\n        \"params\": {\n          \"pipeline_id\": [\n            5,\n            2\n          ],\n          \"activity_type_id\": [\n            9\n          ]\n        }\n      },\n      \"assignee\": {\n        \"type\": \"company\",\n        \"id\": 123456\n      },\n      \"interval\": \"weekly\",\n      \"duration\": {\n        \"start\": \"2019-11-01\",\n        \"end\": \"2020-10-30\"\n      },\n      \"expected_outcome\": {\n        \"target\": 100,\n        \"tracking_metric\": \"quantity\"\n      },\n      \"is_active\": false,\n      \"report_ids\": [\n        \"f37bd66a2ab64d28ff6a9b6d2289813a\"\n      ]\n    },\n    \"progress\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "175b8c85-4bad-4f9f-b174-215cd0ca1c04",
+    "name": "Pipedrive API v1 Activities Goals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

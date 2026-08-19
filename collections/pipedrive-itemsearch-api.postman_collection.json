@@ -1,0 +1,366 @@
+{
+  "item": [
+    {
+      "id": "b565b066-c93b-4476-9a76-ee9383125dc4",
+      "name": "ItemSearch",
+      "description": {
+        "content": "Ordered reference objects, pointing to either deals, persons, organizations, leads, products, files or mail attachments.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92647733-f7c9-49f8-8799-4cb3a457707d",
+          "name": "Perform a search from multiple item types",
+          "request": {
+            "name": "Perform a search from multiple item types",
+            "description": {
+              "content": "Performs a search from your choice of item types and fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "itemSearch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>",
+                  "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if using `exact_match`). Please note that the search term has to be URL encoded."
+                },
+                {
+                  "disabled": false,
+                  "key": "item_types",
+                  "value": "<string>",
+                  "description": "A comma-separated string array. The type of items to perform the search from. Defaults to all."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A comma-separated string array. The fields to perform the search from. Defaults to all. Relevant for each item type are:<br> <table> <tr><th><b>Item type</b></th><th><b>Field</b></th></tr> <tr><td>Deal</td><td>`custom_fields`, `notes`, `title`</td></tr> <tr><td>Person</td><td>`custom_fields`, `email`, `name`, `notes`, `phone`</td></tr> <tr><td>Organization</td><td>`address`, `custom_fields`, `name`, `notes`</td></tr> <tr><td>Product</td><td>`code`, `custom_fields`, `name`</td></tr> <tr><td>Lead</td><td>`custom_fields`, `notes`, `title`</td></tr> <tr><td>File</td><td>`name`</td></tr> <tr><td>Mail attachment</td><td>`name`</td></tr> <tr><td>Project</td><td> `custom_fields`, `notes`, `title`, `description` </td></tr> </table> <br> Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>."
+                },
+                {
+                  "disabled": false,
+                  "key": "search_for_related_items",
+                  "value": "<boolean>",
+                  "description": "When enabled, the response will include up to 100 newest related leads and 100 newest related deals for each found person and organization and up to 100 newest related persons for each found organization"
+                },
+                {
+                  "disabled": false,
+                  "key": "exact_match",
+                  "value": "<boolean>",
+                  "description": "When enabled, only full exact matches against the given term are returned. It is <b>not</b> case sensitive."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>",
+                  "description": "A comma-separated string array. Supports including optional fields in the results which are not provided by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 100 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "59f42b9b-4a79-4872-a76c-d14cbdb2a6d8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "itemSearch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "item_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search_for_related_items",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exact_match",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"items\": [\n      {\n        \"result_score\": 1.22724,\n        \"item\": {\n          \"id\": 42,\n          \"type\": \"deal\",\n          \"title\": \"Sample Deal\",\n          \"value\": 53883,\n          \"currency\": \"USD\",\n          \"status\": \"open\",\n          \"visible_to\": 3,\n          \"owner\": {\n            \"id\": 69\n          },\n          \"stage\": {\n            \"id\": 3,\n            \"name\": \"Demo Scheduled\"\n          },\n          \"person\": {\n            \"id\": 6,\n            \"name\": \"Sample Person\"\n          },\n          \"organization\": {\n            \"id\": 9,\n            \"name\": \"Sample Organization\",\n            \"address\": \"Dabas, Hungary\"\n          },\n          \"custom_fields\": [\n            \"Sample text\"\n          ],\n          \"notes\": [\n            \"Sample note\"\n          ],\n          \"is_archived\": false\n        }\n      },\n      {\n        \"result_score\": 0.31335002,\n        \"item\": {\n          \"id\": 9,\n          \"type\": \"organization\",\n          \"name\": \"Sample Organization\",\n          \"address\": \"Dabas, Hungary\",\n          \"visible_to\": 3,\n          \"owner\": {\n            \"id\": 69\n          },\n          \"custom_fields\": [],\n          \"notes\": []\n        }\n      },\n      {\n        \"result_score\": 0.29955,\n        \"item\": {\n          \"id\": 6,\n          \"type\": \"person\",\n          \"name\": \"Sample Person\",\n          \"phones\": [\n            \"555123123\",\n            \"+372 (55) 123468\",\n            \"0231632772\"\n          ],\n          \"emails\": [\n            \"primary@email.com\",\n            \"secondary@email.com\"\n          ],\n          \"visible_to\": 1,\n          \"owner\": {\n            \"id\": 69\n          },\n          \"organization\": {\n            \"id\": 9,\n            \"name\": \"Sample Organization\",\n            \"address\": \"Dabas, Hungary\"\n          },\n          \"custom_fields\": [\n            \"Custom Field Text\"\n          ],\n          \"notes\": [\n            \"Person note\"\n          ]\n        }\n      },\n      {\n        \"result_score\": 0.0093,\n        \"item\": {\n          \"id\": 4,\n          \"type\": \"mail_attachment\",\n          \"name\": \"Sample mail attachment.txt\",\n          \"url\": \"/files/4/download\"\n        }\n      },\n      {\n        \"result_score\": 0.0093,\n        \"item\": {\n          \"id\": 3,\n          \"type\": \"file\",\n          \"name\": \"Sample file attachment.txt\",\n          \"url\": \"/files/3/download\",\n          \"deal\": {\n            \"id\": 42,\n            \"title\": \"Sample Deal\"\n          },\n          \"person\": {\n            \"id\": 6,\n            \"name\": \"Sample Person\"\n          },\n          \"organization\": {\n            \"id\": 9,\n            \"name\": \"Sample Organization\",\n            \"address\": \"Dabas, Hungary\"\n          }\n        }\n      },\n      {\n        \"result_score\": 0.0011999999,\n        \"item\": {\n          \"id\": 1,\n          \"type\": \"product\",\n          \"name\": \"Sample Product\",\n          \"code\": \"product-code\",\n          \"visible_to\": 3,\n          \"owner\": {\n            \"id\": 69\n          },\n          \"custom_fields\": []\n        }\n      }\n    ],\n    \"related_items\": [\n      {\n        \"result_score\": 0,\n        \"item\": {\n          \"id\": 2,\n          \"type\": \"deal\",\n          \"title\": \"Other deal\",\n          \"value\": 100,\n          \"currency\": \"USD\",\n          \"status\": \"open\",\n          \"visible_to\": 3,\n          \"owner\": {\n            \"id\": 1\n          },\n          \"stage\": {\n            \"id\": 1,\n            \"name\": \"Lead In\"\n          },\n          \"person\": {\n            \"id\": 1,\n            \"name\": \"Sample Person\"\n          },\n          \"is_archived\": false\n        }\n      }\n    ]\n  },\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35221f87-3447-45e6-a432-479fd01be65b",
+          "name": "Perform a search using a specific field from an item type",
+          "request": {
+            "name": "Perform a search using a specific field from an item type",
+            "description": {
+              "content": "Performs a search from the values of a specific field. Results can either be the distinct values of the field (useful for searching autocomplete field values), or the IDs of actual items (deals, leads, persons, organizations or products).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "itemSearch",
+                "field"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>",
+                  "description": "(Required) The search term to look for. Minimum 2 characters (or 1 if `match` is `exact`). Please note that the search term has to be URL encoded."
+                },
+                {
+                  "disabled": false,
+                  "key": "entity_type",
+                  "value": "<string>",
+                  "description": "(Required) The type of the field to perform the search from"
+                },
+                {
+                  "disabled": false,
+                  "key": "match",
+                  "value": "exact",
+                  "description": "The type of match used against the term. The search <b>is</b> case sensitive.<br/><br/> E.g. in case of searching for a value `monkey`, <ul> <li>with `exact` match, you will only find it if term is `monkey`</li> <li>with `beginning` match, you will only find it if the term matches the beginning or the whole string, e.g. `monk` and `monkey`</li> <li>with `middle` match, you will find the it if the term matches any substring of the value, e.g. `onk` and `ke`</li> </ul>."
+                },
+                {
+                  "disabled": false,
+                  "key": "field",
+                  "value": "<string>",
+                  "description": "(Required) The key of the field to search from. The field key can be obtained by fetching the list of the fields using any of the fields' API GET methods (dealFields, personFields, etc.). Only the following custom field types are searchable: `address`, `varchar`, `text`, `varchar_auto`, `double`, `monetary` and `phone`. Read more about searching by custom fields <a href=\"https://support.pipedrive.com/en/article/search-finding-what-you-need#searching-by-custom-fields\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "71fe1cc4-a012-45fc-83ee-e31cdd7bdf41",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "itemSearch",
+                    "field"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "exact"
+                    },
+                    {
+                      "key": "field",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Jane Doe\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"John Doe\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "032e24ba-7472-4905-beda-9da44c180f24",
+    "name": "Pipedrive API v1 Activities ItemSearch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

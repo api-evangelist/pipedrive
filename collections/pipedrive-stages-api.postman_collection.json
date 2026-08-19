@@ -1,0 +1,816 @@
+{
+  "item": [
+    {
+      "id": "6a95f7fe-f116-4915-93c2-646327b7f1e2",
+      "name": "Stages",
+      "description": {
+        "content": "Stage is a logical component of a pipeline, and essentially a bucket that can hold a number of deals. In the context of the pipeline a stage belongs to, it has an order number which defines the order of stages in that pipeline.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5ba6d49-b074-4375-a8b0-474797102de0",
+          "name": "Get deals in a stage",
+          "request": {
+            "name": "Get deals in a stage",
+            "description": {
+              "content": "Lists deals in a specific stage. If no parameters are provided open deals owned by the authorized user will be returned. <br>This endpoint has been deprecated. Please use <a href=\"https://developers.pipedrive.com/docs/api/v1/Deals#getDeals\" target=\"_blank\" rel=\"noopener noreferrer\">GET /api/v2/deals?stage_id={id}</a> instead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stages",
+                ":id",
+                "deals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter_id",
+                  "value": "<integer>",
+                  "description": "If supplied, only deals matching the given filter will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<integer>",
+                  "description": "If supplied, `filter_id` will not be considered and only deals owned by the given user will be returned. If omitted, deals owned by the authorized user will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "everyone",
+                  "value": "<number>",
+                  "description": "If supplied, `filter_id` and `user_id` will not be considered – instead, deals owned by everyone will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the stage"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a9ffb063-e9fd-4d6d-b3c4-e278eb3eec09",
+              "name": "Get deals in a stage",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stages",
+                    ":id",
+                    "deals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "everyone",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the stage"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"creator_user_id\": 123,\n      \"user_id\": 456,\n      \"person_id\": 1,\n      \"org_id\": 2,\n      \"stage_id\": 2,\n      \"title\": \"Deal One\",\n      \"value\": 5000,\n      \"currency\": \"EUR\",\n      \"add_time\": \"2019-05-29 04:21:51\",\n      \"update_time\": \"2019-05-29 04:21:51\",\n      \"stage_change_time\": \"2019-11-28 15:41:22\",\n      \"active\": true,\n      \"deleted\": false,\n      \"status\": \"open\",\n      \"probability\": null,\n      \"next_activity_date\": \"2019-11-29\",\n      \"next_activity_time\": \"11:30:00\",\n      \"next_activity_id\": 128,\n      \"last_activity_id\": null,\n      \"last_activity_date\": null,\n      \"lost_reason\": null,\n      \"visible_to\": \"1\",\n      \"close_time\": null,\n      \"pipeline_id\": 1,\n      \"won_time\": \"2019-11-27 11:40:36\",\n      \"first_won_time\": \"2019-11-27 11:40:36\",\n      \"lost_time\": \"2019-11-27 11:40:36\",\n      \"products_count\": 0,\n      \"files_count\": 0,\n      \"notes_count\": 2,\n      \"followers_count\": 0,\n      \"email_messages_count\": 4,\n      \"activities_count\": 1,\n      \"done_activities_count\": 0,\n      \"undone_activities_count\": 1,\n      \"participants_count\": 1,\n      \"expected_close_date\": \"2019-06-29\",\n      \"last_incoming_mail_time\": \"2019-05-29 18:21:42\",\n      \"last_outgoing_mail_time\": \"2019-05-30 03:45:35\",\n      \"label\": \"11\",\n      \"stage_order_nr\": 2,\n      \"person_name\": \"Person\",\n      \"org_name\": \"Organization\",\n      \"next_activity_subject\": \"Call\",\n      \"next_activity_type\": \"call\",\n      \"next_activity_duration\": \"00:30:00\",\n      \"next_activity_note\": \"Note content\",\n      \"formatted_value\": \"€5,000\",\n      \"weighted_value\": 5000,\n      \"formatted_weighted_value\": \"€5,000\",\n      \"weighted_value_currency\": \"EUR\",\n      \"rotten_time\": null,\n      \"owner_name\": \"Creator\",\n      \"cc_email\": \"company+deal1@pipedrivemail.com\",\n      \"org_hidden\": false,\n      \"person_hidden\": false\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d8f9177-0455-4688-9023-8d3f01698215",
+          "name": "Get all stages",
+          "request": {
+            "name": "Get all stages",
+            "description": {
+              "content": "Returns data about all stages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pipeline_id",
+                  "value": "<integer>",
+                  "description": "The ID of the pipeline to fetch stages for. If omitted, stages for all pipelines will be fetched."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "id",
+                  "description": "The field to sort by. Supported fields: `id`, `update_time`, `add_time`, `order_nr`."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "asc",
+                  "description": "The sorting direction. Supported values: `asc`, `desc`."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. Please note that a maximum value of 500 is allowed."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "For pagination, the marker (an opaque string value) representing the first item on the next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "83264f4a-1201-45fe-b9e4-b647079acaa4",
+              "name": "Get all stages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pipeline_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"order_nr\": 1,\n      \"name\": \"Stage Name\",\n      \"is_deleted\": false,\n      \"deal_probability\": 100,\n      \"pipeline_id\": 1,\n      \"is_deal_rot_enabled\": true,\n      \"days_to_rotten\": 2,\n      \"add_time\": \"2024-01-01T00:00:00Z\",\n      \"update_time\": \"2024-01-01T00:00:00Z\"\n    }\n  ],\n  \"additional_data\": {\n    \"next_cursor\": \"eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2df12d4-cbc1-4b68-acf4-bf1d7e6082cc",
+          "name": "Add a new stage",
+          "request": {
+            "name": "Add a new stage",
+            "description": {
+              "content": "Adds a new stage, returns the ID upon success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pipeline_id\": \"<integer>\",\n  \"deal_probability\": \"<integer>\",\n  \"is_deal_rot_enabled\": \"<boolean>\",\n  \"days_to_rotten\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "92fd1ee1-753c-41ea-bec5-91eb39f9b941",
+              "name": "Add a new stage",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pipeline_id\": \"<integer>\",\n  \"deal_probability\": \"<integer>\",\n  \"is_deal_rot_enabled\": \"<boolean>\",\n  \"days_to_rotten\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"order_nr\": 1,\n    \"name\": \"Stage Name\",\n    \"is_deleted\": false,\n    \"deal_probability\": 100,\n    \"pipeline_id\": 1,\n    \"is_deal_rot_enabled\": true,\n    \"days_to_rotten\": 2,\n    \"add_time\": \"2024-01-01T00:00:00Z\",\n    \"update_time\": \"2024-01-01T00:00:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a545526-a0d8-44b5-850b-50b3a4ff0276",
+          "name": "Delete a stage",
+          "request": {
+            "name": "Delete a stage",
+            "description": {
+              "content": "Marks a stage as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stages",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the stage"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52932323-5547-4758-acdf-5923dc177687",
+              "name": "Delete stage",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the stage"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe3cb795-485e-41a2-b778-052257c154a4",
+          "name": "Get one stage",
+          "request": {
+            "name": "Get one stage",
+            "description": {
+              "content": "Returns data about a specific stage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stages",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the stage"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2c6594ba-308e-4d62-a4ea-9b12d369f88a",
+              "name": "Get one stages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the stage"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"order_nr\": 1,\n    \"name\": \"Stage Name\",\n    \"is_deleted\": false,\n    \"deal_probability\": 100,\n    \"pipeline_id\": 1,\n    \"is_deal_rot_enabled\": true,\n    \"days_to_rotten\": 2,\n    \"add_time\": \"2024-01-01T00:00:00Z\",\n    \"update_time\": \"2024-01-01T00:00:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4947b3cc-ddff-4a37-bcce-54c5d15855dd",
+          "name": "Update stage details",
+          "request": {
+            "name": "Update stage details",
+            "description": {
+              "content": "Updates the properties of a stage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stages",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the stage"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pipeline_id\": \"<integer>\",\n  \"deal_probability\": \"<integer>\",\n  \"is_deal_rot_enabled\": \"<boolean>\",\n  \"days_to_rotten\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b63a3521-88dd-4f37-8637-ea81a8e910b2",
+              "name": "Update an existing stage",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the stage"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pipeline_id\": \"<integer>\",\n  \"deal_probability\": \"<integer>\",\n  \"is_deal_rot_enabled\": \"<boolean>\",\n  \"days_to_rotten\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"order_nr\": 1,\n    \"name\": \"Stage Name\",\n    \"is_deleted\": false,\n    \"deal_probability\": 100,\n    \"pipeline_id\": 1,\n    \"is_deal_rot_enabled\": true,\n    \"days_to_rotten\": 2,\n    \"add_time\": \"2024-01-01T00:00:00Z\",\n    \"update_time\": \"2024-01-01T00:00:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "317313d5-482d-49ba-a346-5b0fdb1ebb60",
+    "name": "Pipedrive API v1 Activities Stages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

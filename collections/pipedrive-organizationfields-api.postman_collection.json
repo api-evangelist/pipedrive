@@ -1,0 +1,1500 @@
+{
+  "item": [
+    {
+      "id": "7af897a7-c1c9-4745-8676-b076f695b307",
+      "name": "OrganizationFields",
+      "description": {
+        "content": "Organization fields represent the near-complete schema for an organization in the context of the company of the authorized user. Each company can have a different schema for their organizations, with various custom fields. In the context of using organization fields as a schema for defining the data fields of an organization, it must be kept in mind that some types of custom fields can have additional data fields which are not separate organization fields per se. Such is the case with monetary, daterange and timerange fields – each of these fields will have one additional data field in addition to the one presented in the context of organization fields. For example, if there is a monetary field with the key `ffk9s9` stored on the account, `ffk9s9` would hold the numeric value of the field, and `ffk9s9_currency` would hold the ISO currency code that goes along with the numeric value. To find out which data fields are available, fetch one organization and list its keys.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "658992f8-cffb-4073-8a5f-a06514bb49af",
+          "name": "Get all organization fields",
+          "request": {
+            "name": "Get all organization fields",
+            "description": {
+              "content": "Returns data about all organization fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Pagination start"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items shown per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2efaeb72-8e15-4fa4-87ab-4e17324ff2a5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"key\": \"title\",\n      \"name\": \"Title\",\n      \"order_nr\": 2,\n      \"field_type\": \"varchar\",\n      \"add_time\": \"2019-02-04 13:58:03\",\n      \"update_time\": \"2019-02-04 13:58:03\",\n      \"last_updated_by_user_id\": 1,\n      \"created_by_user_id\": 1,\n      \"active_flag\": true,\n      \"edit_flag\": false,\n      \"index_visible_flag\": true,\n      \"details_visible_flag\": true,\n      \"add_visible_flag\": true,\n      \"important_flag\": false,\n      \"bulk_edit_allowed\": true,\n      \"searchable_flag\": false,\n      \"filtering_allowed\": true,\n      \"sortable_flag\": true,\n      \"options\": null,\n      \"mandatory_flag\": true\n    },\n    {\n      \"id\": 2,\n      \"key\": \"9dc80c50d78a15643bfc4ca79d76156a73a1ca0e\",\n      \"name\": \"Customer Type\",\n      \"order_nr\": 1,\n      \"field_type\": \"enum\",\n      \"add_time\": \"2019-02-04 13:58:03\",\n      \"update_time\": \"2019-02-04 13:58:03\",\n      \"last_updated_by_user_id\": 1,\n      \"created_by_user_id\": 1,\n      \"active_flag\": true,\n      \"edit_flag\": true,\n      \"index_visible_flag\": true,\n      \"details_visible_flag\": true,\n      \"add_visible_flag\": false,\n      \"important_flag\": false,\n      \"bulk_edit_allowed\": true,\n      \"searchable_flag\": false,\n      \"filtering_allowed\": true,\n      \"sortable_flag\": true,\n      \"options\": [\n        {\n          \"id\": 190,\n          \"label\": \"Private person\"\n        },\n        {\n          \"id\": 191,\n          \"label\": \"Company\"\n        },\n        {\n          \"id\": 192,\n          \"label\": \"Government\"\n        }\n      ],\n      \"mandatory_flag\": true\n    }\n  ],\n  \"additional_data\": {\n    \"pagination\": {\n      \"start\": 0,\n      \"limit\": 100,\n      \"more_items_in_collection\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3a2a4d7-bd6b-42ad-bb1c-9a7e276c960b",
+          "name": "Add a new organization field",
+          "request": {
+            "name": "Add a new organization field",
+            "description": {
+              "content": "Adds a new organization field. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/adding-a-new-custom-field\" target=\"_blank\" rel=\"noopener noreferrer\">adding a new custom field</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field_type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"add_visible_flag\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9152d2df-2d0e-408a-9d5a-a612723b25cc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field_type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"add_visible_flag\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"key\": \"9dc80c50d78a15643bfc4ca79d76156a73a1ca0e\",\n    \"name\": \"Customer Type\",\n    \"order_nr\": 1,\n    \"field_type\": \"enum\",\n    \"add_time\": \"2019-02-04 13:58:03\",\n    \"update_time\": \"2019-02-04 13:58:03\",\n    \"last_updated_by_user_id\": 1,\n    \"created_by_user_id\": 1,\n    \"active_flag\": true,\n    \"edit_flag\": true,\n    \"index_visible_flag\": true,\n    \"details_visible_flag\": true,\n    \"add_visible_flag\": false,\n    \"important_flag\": false,\n    \"bulk_edit_allowed\": true,\n    \"searchable_flag\": false,\n    \"filtering_allowed\": true,\n    \"sortable_flag\": true,\n    \"options\": [\n      {\n        \"id\": 190,\n        \"label\": \"Private person\"\n      },\n      {\n        \"id\": 191,\n        \"label\": \"Company\"\n      },\n      {\n        \"id\": 192,\n        \"label\": \"Government\"\n      }\n    ],\n    \"mandatory_flag\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c613600d-70f1-413c-8775-3d565a57c10b",
+          "name": "Delete multiple organization fields in bulk",
+          "request": {
+            "name": "Delete multiple organization fields in bulk",
+            "description": {
+              "content": "Marks multiple fields as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) The comma-separated field IDs to delete"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "107f4f2e-b325-41f5-9902-8c28c9f43166",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": [\n      123,\n      456\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0564f73-7cc8-4392-b96f-4f3ccec0c55d",
+          "name": "Get one organization field",
+          "request": {
+            "name": "Get one organization field",
+            "description": {
+              "content": "Returns data about a specific organization field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6b376cd4-268c-429e-906e-961b447686b7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"key\": \"9dc80c50d78a15643bfc4ca79d76156a73a1ca0e\",\n    \"name\": \"Customer Type\",\n    \"order_nr\": 1,\n    \"field_type\": \"enum\",\n    \"add_time\": \"2019-02-04 13:58:03\",\n    \"update_time\": \"2019-02-04 13:58:03\",\n    \"last_updated_by_user_id\": 1,\n    \"created_by_user_id\": 1,\n    \"active_flag\": true,\n    \"edit_flag\": true,\n    \"index_visible_flag\": true,\n    \"details_visible_flag\": true,\n    \"add_visible_flag\": false,\n    \"important_flag\": false,\n    \"bulk_edit_allowed\": true,\n    \"searchable_flag\": false,\n    \"filtering_allowed\": true,\n    \"sortable_flag\": true,\n    \"options\": [\n      {\n        \"id\": 190,\n        \"label\": \"Private person\"\n      },\n      {\n        \"id\": 191,\n        \"label\": \"Company\"\n      },\n      {\n        \"id\": 192,\n        \"label\": \"Government\"\n      }\n    ],\n    \"mandatory_flag\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6725015e-cb7a-48a2-bdc1-3fabcc8e0712",
+          "name": "Delete an organization field",
+          "request": {
+            "name": "Delete an organization field",
+            "description": {
+              "content": "Marks a field as deleted. For more information, see the tutorial for <a href=\"https://pipedrive.readme.io/docs/deleting-a-custom-field\" target=\"_blank\" rel=\"noopener noreferrer\">deleting a custom field</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "06c6e6a9-7436-4823-a177-867ce723433f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 123\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b22bbe5-758e-408c-a6bb-52c597b7469b",
+          "name": "Update an organization field",
+          "request": {
+            "name": "Update an organization field",
+            "description": {
+              "content": "Updates an organization field. For more information, see the tutorial for <a href=\" https://pipedrive.readme.io/docs/updating-custom-field-value \" target=\"_blank\" rel=\"noopener noreferrer\">updating custom fields' values</a>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"add_visible_flag\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b7cae29-aeff-4705-84dc-e2f72e188c46",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"options\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"add_visible_flag\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"key\": \"9dc80c50d78a15643bfc4ca79d76156a73a1ca0e\",\n    \"name\": \"Customer Type\",\n    \"order_nr\": 1,\n    \"field_type\": \"enum\",\n    \"add_time\": \"2019-02-04 13:58:03\",\n    \"update_time\": \"2019-02-04 13:58:03\",\n    \"last_updated_by_user_id\": 1,\n    \"created_by_user_id\": 1,\n    \"active_flag\": true,\n    \"edit_flag\": true,\n    \"index_visible_flag\": true,\n    \"details_visible_flag\": true,\n    \"add_visible_flag\": false,\n    \"important_flag\": false,\n    \"bulk_edit_allowed\": true,\n    \"searchable_flag\": false,\n    \"filtering_allowed\": true,\n    \"sortable_flag\": true,\n    \"options\": [\n      {\n        \"id\": 190,\n        \"label\": \"Private person\"\n      },\n      {\n        \"id\": 191,\n        \"label\": \"Company\"\n      },\n      {\n        \"id\": 192,\n        \"label\": \"Government\"\n      }\n    ],\n    \"mandatory_flag\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8429678-0363-4ea9-9d89-66c443b11774",
+          "name": "Get one organization field",
+          "request": {
+            "name": "Get one organization field",
+            "description": {
+              "content": "Returns metadata about a specific organization field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>",
+                  "description": "Optional comma separated string array of additional data namespaces to include in response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0c98168f-db17-48c7-9047-808258c3a2b5",
+              "name": "Get one organization field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Organization Name\",\n    \"field_code\": \"name\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": false,\n    \"is_optional_response_field\": false,\n    \"ui_visibility\": {\n      \"add_visible_flag\": true,\n      \"details_visible_flag\": true,\n      \"org_detail_visible_flag\": true,\n      \"person_detail_visible_flag\": true,\n      \"deal_detail_visible_flag\": true,\n      \"show_in_add_deal_dialog\": {\n        \"show\": true,\n        \"order\": 1\n      },\n      \"show_in_add_person_dialog\": {\n        \"show\": true,\n        \"order\": 1\n      }\n    },\n    \"important_fields\": {\n      \"enabled\": false,\n      \"stage_ids\": []\n    },\n    \"required_fields\": {\n      \"enabled\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bed14f15-5bfe-437f-9787-b2717ff3e97b",
+          "name": "Update one organization field",
+          "request": {
+            "name": "Update one organization field",
+            "description": {
+              "content": "Updates an organization custom field. The field_code and field_type cannot be changed. At least one field must be provided in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field_name\": \"<string>\",\n  \"ui_visibility\": {\n    \"add_visible_flag\": false,\n    \"details_visible_flag\": true,\n    \"show_in_add_deal_dialog\": {\n      \"show\": false,\n      \"order\": null\n    },\n    \"show_in_add_person_dialog\": {\n      \"show\": false,\n      \"order\": null\n    }\n  },\n  \"important_fields\": {\n    \"enabled\": false,\n    \"key_0\": 8554.170869032552\n  },\n  \"required_fields\": {\n    \"enabled\": false,\n    \"key_0\": 5355\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7630d1a-eddf-46bb-89c0-802ae0578a15",
+              "name": "Get one organization field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field_name\": \"<string>\",\n  \"ui_visibility\": {\n    \"add_visible_flag\": false,\n    \"details_visible_flag\": true,\n    \"show_in_add_deal_dialog\": {\n      \"show\": false,\n      \"order\": null\n    },\n    \"show_in_add_person_dialog\": {\n      \"show\": false,\n      \"order\": null\n    },\n    \"key_0\": 8486.66004786734\n  },\n  \"important_fields\": {\n    \"enabled\": false\n  },\n  \"required_fields\": {\n    \"enabled\": false,\n    \"key_0\": 9566,\n    \"key_1\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Organization Name\",\n    \"field_code\": \"name\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": false,\n    \"is_optional_response_field\": false,\n    \"ui_visibility\": {\n      \"add_visible_flag\": true,\n      \"details_visible_flag\": true,\n      \"org_detail_visible_flag\": true,\n      \"person_detail_visible_flag\": true,\n      \"deal_detail_visible_flag\": true,\n      \"show_in_add_deal_dialog\": {\n        \"show\": true,\n        \"order\": 1\n      },\n      \"show_in_add_person_dialog\": {\n        \"show\": true,\n        \"order\": 1\n      }\n    },\n    \"important_fields\": {\n      \"enabled\": false,\n      \"stage_ids\": []\n    },\n    \"required_fields\": {\n      \"enabled\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2548ecd-2b2e-481a-90a4-dc8a2a6a7887",
+          "name": "Delete one organization field",
+          "request": {
+            "name": "Delete one organization field",
+            "description": {
+              "content": "Marks a custom field as deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields",
+                ":field_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9be4a2dc-63cb-4329-a947-43e9b3ba903e",
+              "name": "Delete one organization field",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields",
+                    ":field_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"field_name\": \"Custom text field\",\n    \"field_code\": \"946947d1b02fd3ef20798d6112ec5d895a686a21\",\n    \"field_type\": \"varchar\",\n    \"options\": null,\n    \"subfields\": null,\n    \"is_custom_field\": true,\n    \"is_optional_response_field\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07d9cec1-869d-4493-9d41-c5c94d7c87be",
+          "name": "Add organization field options in bulk",
+          "request": {
+            "name": "Add organization field options in bulk",
+            "description": {
+              "content": "Adds new options to an organization custom field that supports options (enum or set field types). This operation is atomic - all options are added or none are added. Returns only the newly added options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields",
+                ":field_code",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"label\": \"<string>\"\n  },\n  {\n    \"label\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95956f3f-fa4b-4ca5-9e5e-31eaa0be13c9",
+              "name": "Field options operation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields",
+                    ":field_code",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"label\": \"<string>\"\n  },\n  {\n    \"label\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"label\": \"Manufacturing\"\n    }\n  ],\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46eb4061-de9a-445c-919a-1c5de2752e3a",
+          "name": "Delete organization field options in bulk",
+          "request": {
+            "name": "Delete organization field options in bulk",
+            "description": {
+              "content": "Removes existing options from an organization custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the deleted options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields",
+                ":field_code",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<integer>\"\n  },\n  {\n    \"id\": \"<integer>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54984302-aee7-4d28-b6ff-7f29a1820e3f",
+              "name": "Field options operation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields",
+                    ":field_code",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<integer>\"\n  },\n  {\n    \"id\": \"<integer>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"label\": \"Manufacturing\"\n    }\n  ],\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fda41ea-9535-41b5-8e53-59141ce49a9e",
+          "name": "Update organization field options in bulk",
+          "request": {
+            "name": "Update organization field options in bulk",
+            "description": {
+              "content": "Updates existing options for an organization custom field. This operation is atomic and fails if any of the specified option IDs do not exist. Returns only the updated options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizationFields",
+                ":field_code",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_code",
+                  "description": "(Required) The unique code identifying the field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "72777bc8-b77e-49ff-b872-a4ab4c982546",
+              "name": "Field options operation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizationFields",
+                    ":field_code",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_code",
+                      "description": "(Required) The unique code identifying the field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"label\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"label\": \"Manufacturing\"\n    }\n  ],\n  \"additional_data\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipedrive.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b3618157-05f5-4476-9f8a-50eeafc83a36",
+    "name": "Pipedrive API v1 Activities OrganizationFields API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.\n",
+      "type": "text/plain"
+    }
+  }
+}

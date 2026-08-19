@@ -1,0 +1,211 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipedrive API v1 Activities Mailbox API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mailbox",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get one mail message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/mailbox/mailMessages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the mail message to fetch"
+              },
+              {
+                "name": "include_body",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the full message body or not. `0` = Don't include, `1` = Include."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns data about a specific mail message."
+        },
+        {
+          "info": {
+            "name": "Get mail threads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/mailbox/mailThreads",
+            "params": [
+              {
+                "name": "folder",
+                "value": "",
+                "type": "query",
+                "description": "The type of folder to fetch"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items shown per page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns mail threads in a specified folder ordered by the most recent message within."
+        },
+        {
+          "info": {
+            "name": "Get one mail thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/mailbox/mailThreads/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the mail thread"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a specific mail thread."
+        },
+        {
+          "info": {
+            "name": "Update mail thread details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pipedrive.com/v1/mailbox/mailThreads/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the mail thread"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "deal_id",
+                  "value": ""
+                },
+                {
+                  "name": "lead_id",
+                  "value": ""
+                },
+                {
+                  "name": "shared_flag",
+                  "value": ""
+                },
+                {
+                  "name": "read_flag",
+                  "value": ""
+                },
+                {
+                  "name": "archived_flag",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the properties of a mail thread."
+        },
+        {
+          "info": {
+            "name": "Delete mail thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipedrive.com/v1/mailbox/mailThreads/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the mail thread"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Marks a mail thread as deleted."
+        },
+        {
+          "info": {
+            "name": "Get all mail messages of mail thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipedrive.com/v1/mailbox/mailThreads/:id/mailMessages",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the mail thread"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-token",
+              "value": "{{x-api-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all the mail messages inside a specified mail thread."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
