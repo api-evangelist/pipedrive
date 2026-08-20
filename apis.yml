@@ -24,6 +24,12 @@ tags:
 - CRM
 - Sales
 - Pipeline Management
+- Software-as-a-Service
+- Small Business
+tags_raw:
+- CRM
+- Sales
+- Pipeline Management
 - SaaS
 - Small Business
 created: '2026-05-08'
@@ -160,6 +166,8 @@ apis:
     type upon creation, and cannot be changed. Activity types should be presented to the user in an ordered
     manner, using the `ActivityType.order_nr` value.
   tags:
+  - Activity Types
+  tags_raw:
   - ActivityTypes
   properties:
   - type: OpenAPI
@@ -339,6 +347,8 @@ apis:
     Call logs do differ from other activities, as they only receive the information needed to describe
     the phone call.
   tags:
+  - Call Logs
+  tags_raw:
   - CallLogs
   properties:
   - type: OpenAPI
@@ -468,6 +478,8 @@ apis:
     for example: 500 users. Custom currencies cannot be added or removed via the API yet — rather the
     admin users of the account must configure them from the Pipedrive app.
   tags:
+  - Currency
+  tags_raw:
   - Currencies
   properties:
   - type: OpenAPI
@@ -781,6 +793,8 @@ apis:
     does not support downloading files although it lets you retrieve a file’s meta-info along with a URL
     which can be used to download the file by using a standard HTTP GET request.
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -1031,6 +1045,8 @@ apis:
     along with the numeric value. To find out which data fields are available, fetch one lead and list
     its keys.
   tags:
+  - Lead Fields
+  tags_raw:
   - LeadFields
   properties:
   - type: OpenAPI
@@ -1215,6 +1231,8 @@ apis:
     note that leads sourced from the Chatbot feature are assigned the value `Leadbooster`. Please also
     note that this list is not final and new sources may be added as needed.
   tags:
+  - Lead Sources
+  tags_raw:
   - LeadSources
   properties:
   - type: OpenAPI
@@ -1585,6 +1603,8 @@ apis:
     registering the app, you must add the necessary server-side logic to your app to establish the OAuth
     flow. Please read more about authorization step on the [Pipedrive Developers page](https://pipedrive.readme.io/docs/marketplace-oauth-authorization).
   tags:
+  - Authentication
+  tags_raw:
   - Oauth
   properties:
   - type: OpenAPI
@@ -1653,6 +1673,8 @@ apis:
     would hold the ISO currency code that goes along with the numeric value. To find out which data fields
     are available, fetch one organization and list its keys.
   tags:
+  - Organization Fields
+  tags_raw:
   - OrganizationFields
   properties:
   - type: OpenAPI
@@ -1774,6 +1796,8 @@ apis:
     Organizations are companies and other kinds of organizations you are making deals with. Persons can
     be associated with organizations so that each organization can contain one or more persons.
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -2093,6 +2117,8 @@ apis:
     the ISO currency code that goes along with the numeric value. To find out which data fields are available,
     fetch one product and list its keys.
   tags:
+  - Product Fields
+  tags_raw:
   - ProductFields
   properties:
   - type: OpenAPI
@@ -2156,6 +2182,8 @@ apis:
     per variation per currency is supported. Products can be instantiated to deals. In the context of
     instatiation, a custom price, quantity, duration and discount can be applied.
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -2336,6 +2364,8 @@ apis:
     Project phases represent the stages within a project board. Each phase belongs to a board and defines
     a step in the project workflow.
   tags:
+  - Project Phases
+  tags_raw:
   - ProjectPhases
   properties:
   - type: OpenAPI
@@ -2398,6 +2428,8 @@ apis:
     data fields but can also contain a number of custom fields. The custom fields can be recognized by
     long hashes as keys.
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -2459,6 +2491,8 @@ apis:
     Project template can contain information about activities, tasks and groups that will be used when
     creating a project.
   tags:
+  - Project Templates
+  tags_raw:
   - ProjectTemplates
   properties:
   - type: OpenAPI
@@ -2698,6 +2732,8 @@ apis:
     Tasks represent actions that need to be completed and must be associated with a project. Tasks have
     an optional due date, can be assigned to a user and can have subtasks.
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -2817,6 +2853,8 @@ apis:
     accounts, so deleting a user from one Pipedrive account will not remove the user from the data store
     if he/she is connected to multiple accounts. Users should not be confused with persons.
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -2875,6 +2913,8 @@ apis:
   name: Pipedrive UserSettings API
   description: View user settings.
   tags:
+  - User Settings
+  tags_raw:
   - UserSettings
   properties:
   - type: OpenAPI
@@ -2935,6 +2975,8 @@ apis:
     See <a href="https://pipedrive.readme.io/docs/guide-for-webhooks-v2?ref=api_reference" target="_blank"
     rel="noopener noreferrer">the guide for Webhooks</a> for more information.
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
