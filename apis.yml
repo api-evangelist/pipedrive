@@ -6,6 +6,18 @@ description: Pipedrive is a sales CRM and pipeline management tool focused on sm
   and mid-market teams. The Pipedrive REST API exposes deals, persons, organizations,
   activities, leads, products, pipelines, stages, mail, calls, files, notes, users,
   permissions, filters, goals, subscriptions, and webhooks.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -3032,6 +3044,9 @@ apis:
   - type: Documentation
     url: https://developers.pipedrive.com/docs/api/v1/oauth2
 common:
+- type: CapabilityMap
+  url: capabilities/pipedrive-capability-edges.yml
+  name: Pipedrive Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/pipedrive/overview
 - type: AgenticAccess
