@@ -178,7 +178,7 @@ apis:
     type upon creation, and cannot be changed. Activity types should be presented to the user in an ordered
     manner, using the `ActivityType.order_nr` value.
   tags:
-  - Activity Types
+  - ActivityTypes
   tags_raw:
   - ActivityTypes
   properties:
@@ -359,7 +359,7 @@ apis:
     Call logs do differ from other activities, as they only receive the information needed to describe
     the phone call.
   tags:
-  - Call Logs
+  - CallLogs
   tags_raw:
   - CallLogs
   properties:
@@ -1057,7 +1057,7 @@ apis:
     along with the numeric value. To find out which data fields are available, fetch one lead and list
     its keys.
   tags:
-  - Lead Fields
+  - LeadFields
   tags_raw:
   - LeadFields
   properties:
@@ -1243,7 +1243,7 @@ apis:
     note that leads sourced from the Chatbot feature are assigned the value `Leadbooster`. Please also
     note that this list is not final and new sources may be added as needed.
   tags:
-  - Lead Sources
+  - LeadSources
   tags_raw:
   - LeadSources
   properties:
@@ -1685,7 +1685,7 @@ apis:
     would hold the ISO currency code that goes along with the numeric value. To find out which data fields
     are available, fetch one organization and list its keys.
   tags:
-  - Organization Fields
+  - OrganizationFields
   tags_raw:
   - OrganizationFields
   properties:
@@ -2129,7 +2129,7 @@ apis:
     the ISO currency code that goes along with the numeric value. To find out which data fields are available,
     fetch one product and list its keys.
   tags:
-  - Product Fields
+  - ProductFields
   tags_raw:
   - ProductFields
   properties:
@@ -2376,7 +2376,7 @@ apis:
     Project phases represent the stages within a project board. Each phase belongs to a board and defines
     a step in the project workflow.
   tags:
-  - Project Phases
+  - ProjectPhases
   tags_raw:
   - ProjectPhases
   properties:
@@ -2503,7 +2503,7 @@ apis:
     Project template can contain information about activities, tasks and groups that will be used when
     creating a project.
   tags:
-  - Project Templates
+  - ProjectTemplates
   tags_raw:
   - ProjectTemplates
   properties:
