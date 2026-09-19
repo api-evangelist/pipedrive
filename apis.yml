@@ -2332,6 +2332,8 @@ apis:
     registering the app, you must add the necessary server-side logic to your app to establish the OAuth
     flow. Please read more about authorization step on the [Pipedrive Developers page](https://pipedrive.readme.io/docs/marketplace-oauth-authorization).
   tags:
+  - Authentication
+  tags_raw:
   - Oauth
   properties:
   - type: OpenAPI
@@ -2695,6 +2697,8 @@ apis:
     Permission sets define what users in the account can do: which actions they are allowed to perform
     and which features they can access.
   tags:
+  - PermissionSets
+  tags_raw:
   - Permission Sets
   properties:
   - type: OpenAPI
