@@ -1,88 +1,82 @@
-specification: API Commons Rate Limits
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
-provider: Pipedrive
-providerId: pipedrive
-created: '2026-05-08'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-08, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-08'
-reconciled: true
-tags:
-  - CRM
-  - Sales
-  - Rate Limiting
-  - Throttling
-description: >-
-  Pipedrive enforces a token-budget rate-limit model. Each company has a
-  daily allocation of base tokens × plan multiplier × number of seats
-  (plus any purchased top-ups). Different operations cost different
-  amounts; per-user burst limits apply in 2-second windows. Resets daily
-  at server midnight.
+# Rate limits transcribed from the provider's own documentation — see provenance. Quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting
 sources:
-  - https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting
-notes: >-
-  Rolling out December 2024 for new customers and through 2025 for
-  existing customers. Token budget is shared across all users in the
-  company; purchase API token top-ups for sustained higher usage.
-responseCodes:
-  throttled: 429
+- https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting
+provenance:
+  tool: planning/api-economics/harvest_ratelimits.py
+  run: 20260920T133210
+  grounding: every limit_text was found verbatim in the fetched page text
+published: true
+note: Token costs per endpoint type also listed (e.g. 2, 20, 10, 6, 40 tokens); plan multipliers Lite
+  1, Growth 2, Premium 5, Ultimate 7. Persistent abuse may also return 403.
+limit_count: 10
 limits:
-  - name: Daily Token Budget
-    scope: company
-    metric: tokens
-    formula: 30000 * plan_multiplier * seats + topups
-    notes: >-
-      30,000 base tokens × plan multiplier × number of seats (+ top-ups).
-      Plan multiplier ranges from 1 (Lite) to 7 (Ultimate). Resets daily
-      at server midnight.
-  - name: Single Entity GET Cost
-    scope: request
-    metric: tokens
-    limit: 2
-    notes: Retrieving a single entity (e.g. GET /deals/{id}) costs 2 tokens.
-  - name: List GET Cost
-    scope: request
-    metric: tokens
-    limit: 20
-    notes: Listing multiple entities (e.g. GET /deals) costs 20 tokens.
-  - name: Update Cost
-    scope: request
-    metric: tokens
-    limit: 10
-    notes: PUT / PATCH / POST mutating a single entity costs 10 tokens.
-  - name: Search Cost
-    scope: request
-    metric: tokens
-    limit: 40
-    notes: Search endpoints cost 40 tokens per call.
-  - name: Per User Burst (2 second window)
-    scope: user
-    metric: tokens
-    notes: >-
-      Per-user burst restrictions apply in 2-second windows; e.g. Lite
-      users may make ~20 token-equivalent requests per 2-second window.
-  - name: Webhook Delivery
-    scope: subscription
-    metric: events
-    notes: >-
-      Webhook deliveries are retried on 5xx; receivers should respond 2xx
-      within the platform timeout.
-policies:
-  - name: Backoff Strategy
-    description: >-
-      Implement exponential backoff with jitter on 429. Daily exhaustion
-      requires waiting until midnight server time or buying a top-up.
-  - name: Cost-Aware Design
-    description: >-
-      Prefer single-entity GETs when possible; avoid using search when a
-      direct list+filter works. Cache responses and use webhooks instead
-      of polling.
-  - name: Pagination
-    description: >-
-      Use limit + start cursor on list endpoints to avoid exhausting the
-      list-GET budget.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- name: Daily token budget base
+  limit_text: 30,000 base tokens × subscription plan multiplier × number of seats (+ purchased API Token
+    top-ups)
+  limit: 30000
+  window: day
+  scope: account
+- name: Burst limit API token Lite
+  limit_text: 20 requests per 2 seconds
+  limit: 20
+  scope: api-key
+  plan: Lite
+  kind: burst
+- name: Burst limit OAuth Lite
+  limit_text: 80 requests per 2 seconds
+  limit: 80
+  scope: api-key
+  plan: Lite
+  kind: burst
+- name: Burst limit API token Growth
+  limit_text: 40 requests per 2 seconds
+  limit: 40
+  scope: api-key
+  plan: Growth
+  kind: burst
+- name: Burst limit OAuth Growth
+  limit_text: 160 requests per 2 seconds
+  limit: 160
+  scope: api-key
+  plan: Growth
+  kind: burst
+- name: Burst limit API token Premium
+  limit_text: 100 requests per 2 seconds
+  limit: 100
+  scope: api-key
+  plan: Premium
+  kind: burst
+- name: Burst limit OAuth Premium
+  limit_text: 400 requests per 2 seconds
+  limit: 400
+  scope: api-key
+  plan: Premium
+  kind: burst
+- name: Burst limit API token Ultimate
+  limit_text: 120 requests per 2 seconds
+  limit: 120
+  scope: api-key
+  plan: Ultimate
+  kind: burst
+- name: Burst limit OAuth Ultimate
+  limit_text: 480 requests per 2 seconds
+  limit: 480
+  scope: api-key
+  plan: Ultimate
+  kind: burst
+- name: Search API burst limit
+  limit_text: 10 requests per 2 seconds
+  limit: 10
+  scope: api-key
+  plan: all plans
+  endpoint: Search API
+  kind: burst
+headers:
+- x-ratelimit-limit
+- x-ratelimit-remaining
+- x-ratelimit-reset
+- x-daily-requests-left
+exceeded_status: 429
