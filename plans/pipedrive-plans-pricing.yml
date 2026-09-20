@@ -1,195 +1,76 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Pipedrive
-providerId: pipedrive
-created: '2026-05-08'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-08, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-08'
-reconciled: true
-tags:
-  - CRM
-  - Sales
-  - Plans
-description: >-
-  Pipedrive sells five per-user-per-month plans (Essential, Advanced,
-  Professional, Power, Enterprise) with a discount for annual commitment,
-  plus a paid Lite tier and Ultimate plan that drive the API token-budget
-  multiplier (1x to 7x). Add-ons include LeadBooster, Smart Docs, Web
-  Visitors, Projects, and Campaigns.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.pipedrive.com/en/pricing
 sources:
-  - https://www.pipedrive.com/en/pricing
-notes: >-
-  Listed prices reflect the publicly-published per-seat-per-month rates on
-  annual billing. Monthly billing is approximately 25-30% higher. Pipedrive
-  occasionally adjusts prices and discounts; verify against the live
-  pricing page at renewal.
+- https://www.pipedrive.com/en/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T131751
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-seat
+published: true
+note: CRM seat pricing page; API listed only in footer. Prices VAT exclusive; 14-day free trial. Free
+  implementation on plans over $400 a year.
+plan_count: 9
+currency: USD
 plans:
-  - id: pipedrive-essential
-    name: Essential
-    type: per-seat
-    description: Entry plan with core CRM, deal pipelines, and email integration.
-    entries:
-      - label: Per Seat / Month (annual)
-        name: pipedrive_essential_seat
-        type: flat
-        metric: seats
-        timeFrame: monthly
-        unit: 1
-        price: '14'
-        currency: USD
-        userMultiplied: true
-    elements:
-      - name: Lead, deal, contact, calendar, pipeline management
-      - name: Email integration with templates
-      - name: API access (lower token multiplier)
-  - id: pipedrive-advanced
-    name: Advanced
-    type: per-seat
-    description: Adds two-way email sync, automations, and group emails.
-    entries:
-      - label: Per Seat / Month (annual)
-        name: pipedrive_advanced_seat
-        type: flat
-        metric: seats
-        timeFrame: monthly
-        unit: 1
-        price: '34'
-        currency: USD
-        userMultiplied: true
-  - id: pipedrive-professional
-    name: Professional
-    type: per-seat
-    description: >-
-      Adds AI sales assistant, document and contract management, smart
-      contact data, and forecast reports.
-    entries:
-      - label: Per Seat / Month (annual)
-        name: pipedrive_professional_seat
-        type: flat
-        metric: seats
-        timeFrame: monthly
-        unit: 1
-        price: '49'
-        currency: USD
-        userMultiplied: true
-  - id: pipedrive-power
-    name: Power
-    type: per-seat
-    description: >-
-      Adds project planning, phone support, and increased customization.
-    entries:
-      - label: Per Seat / Month (annual)
-        name: pipedrive_power_seat
-        type: flat
-        metric: seats
-        timeFrame: monthly
-        unit: 1
-        price: '64'
-        currency: USD
-        userMultiplied: true
-  - id: pipedrive-enterprise
-    name: Enterprise
-    type: per-seat
-    description: >-
-      Highest tier with enhanced security, SSO, no feature usage limits,
-      and a 7x API token-budget multiplier.
-    entries:
-      - label: Per Seat / Month (annual)
-        name: pipedrive_enterprise_seat
-        type: flat
-        metric: seats
-        timeFrame: monthly
-        unit: 1
-        price: '99'
-        currency: USD
-        userMultiplied: true
-  - id: pipedrive-leadbooster
-    name: LeadBooster Add-On
-    type: addon
-    description: Chatbot, live chat, prospector, web forms, and scheduler.
-    entries:
-      - label: Per Company / Month
-        name: pipedrive_leadbooster
-        type: flat
-        metric: company
-        timeFrame: monthly
-        unit: 1
-        price: '32.50'
-        currency: USD
-        userMultiplied: false
-  - id: pipedrive-web-visitors
-    name: Web Visitors Add-On
-    type: addon
-    description: Identify web-site visitors and surface them in Pipedrive.
-    entries:
-      - label: Per Company / Month
-        name: pipedrive_web_visitors
-        type: flat
-        metric: company
-        timeFrame: monthly
-        unit: 1
-        price: '41'
-        currency: USD
-        userMultiplied: false
-  - id: pipedrive-projects
-    name: Projects Add-On
-    type: addon
-    description: Post-sale project delivery boards.
-    entries:
-      - label: Per Seat / Month
-        name: pipedrive_projects
-        type: flat
-        metric: seats
-        timeFrame: monthly
-        unit: 1
-        price: '8'
-        currency: USD
-        userMultiplied: true
-  - id: pipedrive-smart-docs
-    name: Smart Docs Add-On
-    type: addon
-    description: Document & contract creation and tracking (free in Pro+).
-    entries:
-      - label: Per Company / Month
-        name: pipedrive_smart_docs
-        type: flat
-        metric: company
-        timeFrame: monthly
-        unit: 1
-        price: '32.50'
-        currency: USD
-        userMultiplied: false
-  - id: pipedrive-campaigns
-    name: Campaigns Add-On
-    type: addon
-    description: Email campaigns with templated drag-and-drop builder.
-    entries:
-      - label: Per Company / Month (starting)
-        name: pipedrive_campaigns
-        type: flat
-        metric: company
-        timeFrame: monthly
-        unit: 1
-        price: '13.33'
-        currency: USD
-        userMultiplied: false
-  - id: pipedrive-api-token-topup
-    name: API Token Top-Up
-    type: addon
-    description: Additional daily API token budget purchased on demand.
-    entries:
-      - label: Custom Quote
-        name: pipedrive_token_topup
-        type: flat
-        metric: tokens
-        timeFrame: daily
-        unit: 1
-        price: contact-sales
-        currency: USD
-        userMultiplied: false
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- name: Lite
+  price_text: US$ 14
+  price: 14
+  currency: USD
+  period: month
+  unit: per seat per month, billed annually
+  included_quota: One payment of US$ 168 per seat/year
+- name: Growth
+  price_text: US$ 39
+  price: 39
+  currency: USD
+  period: month
+  unit: per seat per month, billed annually
+  included_quota: One payment of US$ 468 per seat/year
+- name: Premium
+  price_text: US$ 59
+  price: 59
+  currency: USD
+  period: month
+  unit: per seat per month, billed annually
+  included_quota: One payment of US$ 708 per seat/year
+- name: Ultimate
+  price_text: US$ 79
+  price: 79
+  currency: USD
+  period: month
+  unit: per seat per month, billed annually
+  included_quota: One payment of US$ 948 per seat/year
+- name: LeadBooster add-on
+  price_text: Starting from $32.50
+  price: 32.5
+  currency: USD
+  period: month
+  unit: add-on
+- name: Projects add-on
+  price_text: Starting from $16
+  price: 16
+  currency: USD
+  period: month
+  unit: add-on
+- name: Campaigns add-on
+  price_text: Starting from $13.33
+  price: 13.33
+  currency: USD
+  period: month
+  unit: add-on
+- name: Web Visitors add-on
+  price_text: Starting from $41
+  price: 41
+  currency: USD
+  period: month
+  unit: add-on
+- name: Smart Docs add-on
+  price_text: Starting from $32.50
+  price: 32.5
+  currency: USD
+  period: month
+  unit: add-on
