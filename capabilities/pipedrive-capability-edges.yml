@@ -1,0 +1,177 @@
+slug: pipedrive
+provider: Pipedrive
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 17
+edges:
+- tag: Deals
+  spec_file: pipedrive-deals-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.9
+  evidence: GET /deals/summary  getDealsSummary  Get deals summary; GET /deals/timeline; GET /deals/{id}/flow  getDealUpdates
+  reason: 'Core CRM deal lifecycle: deal records, archiving, timelines, followers and change history —
+    opportunity and pipeline management.'
+- tag: Leads
+  spec_file: pipedrive-leads-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.9
+  evidence: POST /leads addLead 'Add a lead'; 'Convert a lead to a deal' (convertLeadToDeal)
+  reason: Operations create, search and convert sales leads into deals — the lead-to-opportunity lifecycle
+    of a sales CRM.
+- tag: Pipelines
+  spec_file: pipedrive-pipelines-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.9
+  evidence: GET /pipelines/{id}/conversion_statistics  Get deals conversion rates in pipeline; GET /pipelines/{id}/deals  Get
+    deals in a pipeline
+  reason: Sales pipeline definition plus deal conversion and movement statistics is squarely opportunity
+    & pipeline management, not the Activities text carried over in the title.
+- tag: Projects
+  spec_file: pipedrive-projects-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.88
+  evidence: GET /projects/{id}/plan  Returns project plan; PUT /projects/{id}/plan/tasks/{taskId}  Update
+    task in project plan; POST /projects/{id}/archive  Archive a project
+  reason: Full project CRUD with plans, tasks, groups and archiving is project execution management; the
+    Activities description in the header is spec-splitting noise.
+- tag: Stages
+  spec_file: pipedrive-stages-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.85
+  evidence: GET /stages/{id}/deals  Get deals in a stage; PATCH /stages/{id}  Update stage details
+  reason: Stages are the deal progression steps within sales pipelines and expose deals per stage, i.e.
+    opportunity/deal lifecycle management.
+- tag: Organizations
+  spec_file: pipedrive-organizations-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.8
+  evidence: POST /organizations 'Add a new organization'; PUT /organizations/{id}/merge 'Merge two organizations'
+  reason: CRUD plus deduplication/merge of company records in a CRM is customer master data management;
+    merge semantics point to golden-record maintenance.
+- tag: Persons
+  spec_file: pipedrive-persons-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.78
+  evidence: GET /persons/{id}/changelog  List updates about person field values; PUT /persons/{id}/merge  Merge
+    two persons
+  reason: Persons are the CRM contact records in Pipedrive; operations maintain contact records, attachments,
+    followers and de-duplication via merge, which is customer/contact master data management within CRM.
+- tag: Roles
+  spec_file: pipedrive-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /roles/{id}/assignments  Add role assignment; PUT /roles/{id}/pipelines  Update pipeline
+    visibility for a role
+  reason: Roles, role assignments and visibility settings implement role-based access control over CRM
+    data — identity and access management.
+- tag: Webhooks
+  spec_file: pipedrive-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.75
+  evidence: '"Create a new Webhook", "Get all Webhooks", "Delete existing Webhook"'
+  reason: Vendor-exposed lifecycle management of outbound webhook subscriptions for developers integrating
+    with the SaaS platform, matching Webhook & Event Subscription Management. Slightly discounted because
+    webhook endpoints are often pure plumbing.
+- tag: Goals
+  spec_file: pipedrive-goals-api-openapi.yml
+  capability_id: BC-410.70
+  capability_id_l1: BC-410
+  capability_name: Sales Performance Management
+  confidence: 0.72
+  evidence: POST /goals  addGoal  Add a new goal; GET /goals/{id}/results  getGoalResult  Get result of
+    a goal
+  reason: Goals in a sales CRM set and measure sales targets per user/team with results tracking, matching
+    sales performance (quota/target) management.
+- tag: ProjectBoards
+  spec_file: pipedrive-projectboards-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.72
+  evidence: GET /projects/boards  Get all project boards; POST /boards  Add a project board
+  reason: Boards are structures within Pipedrive's Projects feature used to organise project work, i.e.
+    project execution tooling.
+- tag: Activities
+  spec_file: pipedrive-activities-api-openapi.yml
+  capability_id: BC-410
+  capability_id_l1: BC-410
+  capability_name: Sales Management
+  confidence: 0.7
+  evidence: '"Activities are appointments/tasks/events on a calendar that can be associated with a deal,
+    a lead, a person and an organization"; POST /activities addActivity'
+  reason: CRM sales activity tracking tied to deals and leads — part of the lead-to-order sales motion.
+    Which sub-capability (pipeline vs sales operations) is ambiguous, so only L1 is asserted.
+- tag: DealProducts
+  spec_file: pipedrive-dealproducts-api-openapi.yml
+  capability_id: BC-410
+  capability_id_l1: BC-410
+  capability_name: Sales Management
+  confidence: 0.7
+  evidence: POST /deals/{id}/products  addDealProduct  Add a product to a deal
+  reason: Attaching priced product line items to deals is deal/line-item composition in a sales CRM (between
+    pipeline and quote/configuration), so L1 Sales Management only.
+- tag: OrganizationRelationships
+  spec_file: pipedrive-organizationrelationships-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: POST /organizationRelationships 'Create an organization relationship'; 'Get all relationships
+    for organization'
+  reason: Maintains parent/child and related-company links between account records — account hierarchy
+    within the customer master data.
+- tag: PermissionSets
+  spec_file: pipedrive-permissionsets-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: GET /permissionSets 'Get all permission sets'; 'List permission set assignments'
+  reason: Read surface over permission sets and their assignment to users — access management within the
+    application.
+- tag: ProjectPhases
+  spec_file: pipedrive-projectphases-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.7
+  evidence: GET /projects/phases  Get project phases; POST /phases  Add a project phase
+  reason: Phases structure the stages of project delivery in Pipedrive's Projects module, supporting project
+    planning and tracking.
+- tag: Users
+  spec_file: pipedrive-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: '"Add a new user", "List user permissions", "List role assignments", "List user role settings"'
+  reason: Operations administer application user accounts, permissions and role assignments, which is
+    identity and access administration rather than HR employee records. Confidence held at 0.7 because
+    it is in-application user admin rather than an enterprise IAM system.
