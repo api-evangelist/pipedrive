@@ -148,7 +148,8 @@ edges:
   reason: Maintains parent/child and related-company links between account records — account hierarchy
     within the customer master data.
 - tag: PermissionSets
-  spec_file: pipedrive-permissionsets-api-openapi.yml
+  spec_file: pipedrive-permission-sets-api-openapi.yml
+  reanchored_from: pipedrive-permissionsets-api-openapi.yml
   capability_id: BC-620.20
   capability_id_l1: BC-620
   capability_name: Identity & Access Management
@@ -157,7 +158,8 @@ edges:
   reason: Read surface over permission sets and their assignment to users — access management within the
     application.
 - tag: ProjectPhases
-  spec_file: pipedrive-projectphases-api-openapi.yml
+  spec_file: pipedrive-project-phases-api-openapi.yml
+  reanchored_from: pipedrive-projectphases-api-openapi.yml
   capability_id: BC-900.30
   capability_id_l1: BC-900
   capability_name: Project Management
