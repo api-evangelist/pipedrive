@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Currencies API
+  title: Pipedrive API v1 Currencies API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Supported currencies which can be used to represent the monetary value of a deal, or a value of any monetary type custom field.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: Currencies
-  description: 'Supported currencies which can be used to represent the monetary value of a deal, or a value of any monetary type custom field. The `Currency.code` field must be used to point to a currency. `Currency.code` is the ISO-4217 format currency code for non-custom currencies. You can differentiate custom and non-custom currencies using the `is_custom_flag` property. For custom currencies, it is intended that the formatted sums are displayed in the UI using the following format: [sum][non-breaking space character][currency.symbol], for example: 500 users. Custom currencies cannot be added or removed via the API yet — rather the admin users of the account must configure them from the Pipedrive app.
-
-    '
+  description: Supported currencies which can be used to represent the monetary value of a deal, or a value of any monetary type custom field.
 paths:
   /currencies:
     get:

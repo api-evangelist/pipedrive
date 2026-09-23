@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities ProjectBoards API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Project Boards API
+  version: '1.0'
+  description: 'Operations tagged ProjectBoards across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: ProjectBoards
-  description: 'Project boards are used to organize projects into different phases. Each board contains phases that define the workflow for projects.
-
-    '
+  description: Project boards are used to organize projects into different phases. Each board contains phases that define the workflow for projects.
 paths:
   /projects/boards:
     get:
@@ -58,8 +55,9 @@ paths:
                           type: string
                           description: 'The update date and time of the board in UTC. Format: YYYY-MM-DD HH:MM:SS.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -70,6 +68,8 @@ paths:
                   add_time: '2023-09-12 11:12:18'
                   update_time: '2023-09-14 05:45:40'
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/boards/{id}:
     get:
       summary: Get details of a board
@@ -120,8 +120,9 @@ paths:
                         type: string
                         description: 'The update date and time of the board in UTC. Format: YYYY-MM-DD HH:MM:SS.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -132,6 +133,8 @@ paths:
                   add_time: '2023-09-12 11:12:18'
                   update_time: '2023-09-14 05:45:40'
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /boards:
     get:
       summary: Get all project boards
@@ -179,8 +182,9 @@ paths:
                           type: string
                           description: The update date and time of the board in ISO 8601 format
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
@@ -256,6 +260,8 @@ paths:
                   order_nr: 1
                   add_time: '2024-01-01T00:00:00.000Z'
                   update_time: '2024-01-01T00:00:00.000Z'
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /boards/{id}:
     get:
       summary: Get details of a project board
@@ -424,6 +430,8 @@ paths:
                 success: true
                 data:
                   id: 1
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -470,3 +478,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities ProjectPhases API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Project Phases API
+  version: '1.0'
+  description: 'Operations tagged ProjectPhases across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
-- name: ProjectPhases
-  description: 'Project phases represent the stages within a project board. Each phase belongs to a board and defines a step in the project workflow.
-
-    '
+- name: Project Phases
+  description: Project phases represent the stages within a project board. Each phase belongs to a board and defines a step in the project workflow.
 paths:
   /projects/phases:
     get:
@@ -20,7 +17,7 @@ paths:
       x-token-cost: 20
       operationId: getProjectsPhases
       tags:
-      - ProjectPhases
+      - Project Phases
       security:
       - api_key: []
       - oauth2:
@@ -69,8 +66,9 @@ paths:
                           type: string
                           description: 'The update date and time of the board in UTC. Format: YYYY-MM-DD HH:MM:SS.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -82,6 +80,8 @@ paths:
                   add_time: '2023-09-12 11:12:18'
                   update_time: '2023-09-14 05:45:40'
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/phases/{id}:
     get:
       summary: Get details of a phase
@@ -89,7 +89,7 @@ paths:
       x-token-cost: 2
       operationId: getProjectsPhase
       tags:
-      - ProjectPhases
+      - Project Phases
       security:
       - api_key: []
       - oauth2:
@@ -134,8 +134,9 @@ paths:
                         type: string
                         description: 'The update date and time of the board in UTC. Format: YYYY-MM-DD HH:MM:SS.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -147,6 +148,8 @@ paths:
                   add_time: '2023-09-12 11:12:18'
                   update_time: '2023-09-14 05:45:40'
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /phases:
     get:
       summary: Get project phases
@@ -154,7 +157,7 @@ paths:
       x-token-cost: 10
       operationId: getProjectsPhases
       tags:
-      - ProjectPhases
+      - Project Phases
       security:
       - api_key: []
       - oauth2:
@@ -205,8 +208,9 @@ paths:
                           type: string
                           description: The update date and time of the phase in ISO 8601 format
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
@@ -223,7 +227,7 @@ paths:
       x-token-cost: 5
       operationId: addProjectPhase
       tags:
-      - ProjectPhases
+      - Project Phases
       security:
       - api_key: []
       - oauth2:
@@ -291,6 +295,8 @@ paths:
                   order_nr: 1
                   add_time: '2024-01-01T00:00:00.000Z'
                   update_time: '2024-01-01T00:00:00.000Z'
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /phases/{id}:
     get:
       summary: Get details of a project phase
@@ -298,7 +304,7 @@ paths:
       x-token-cost: 10
       operationId: getProjectsPhase
       tags:
-      - ProjectPhases
+      - Project Phases
       security:
       - api_key: []
       - oauth2:
@@ -359,7 +365,7 @@ paths:
       x-token-cost: 5
       operationId: updateProjectPhase
       tags:
-      - ProjectPhases
+      - Project Phases
       security:
       - api_key: []
       - oauth2:
@@ -436,7 +442,7 @@ paths:
       x-token-cost: 3
       operationId: deleteProjectPhase
       tags:
-      - ProjectPhases
+      - Project Phases
       security:
       - api_key: []
       - oauth2:
@@ -470,6 +476,8 @@ paths:
                 success: true
                 data:
                   id: 2
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -516,3 +524,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

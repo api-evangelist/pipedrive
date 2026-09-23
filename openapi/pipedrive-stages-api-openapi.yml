@@ -1,22 +1,21 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Stages API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Stages API
+  version: '1.0'
+  description: 'Operations tagged Stages across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Stages
-  description: 'Stage is a logical component of a pipeline, and essentially a bucket that can hold a number of deals. In the context of the pipeline a stage belongs to, it has an order number which defines the order of stages in that pipeline.
-
-    '
+  description: Stage is a logical component of a pipeline, and essentially a bucket that can hold a number of deals. In the context of the pipeline a stage belongs to, it has an order number which defines the order of stages in that pipeline.
 paths:
   /stages/{id}/deals:
     get:
       summary: Get deals in a stage
-      description: Lists deals in a specific stage. If no parameters are provided open deals owned by the authorized user will be returned. <br>This endpoint has been deprecated. Please use <a href="https://developers.pipedrive.com/docs/api/v1/Deals#getDeals" target="_blank" rel="noopener noreferrer">GET /api/v2/deals?stage_id={id}</a> instead.
+      description: 'Lists deals in a specific stage. If no parameters are provided open deals owned by the authorized user will be returned.
+
+        This endpoint has been deprecated. Please use GET /api/v2/deals?stage_id={id} instead.'
       x-token-cost: 20
       operationId: getStageDeals
       deprecated: true
@@ -135,8 +134,9 @@ paths:
                             type: string
                             description: The status of the deal
                           probability:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: The success probability percentage of the deal
                           next_activity_date:
                             type: string
@@ -145,27 +145,32 @@ paths:
                             type: string
                             description: The time of the next activity associated with the deal
                           next_activity_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of the next activity associated with the deal
                           last_activity_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of the last activity associated with the deal
                           last_activity_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date of the last activity associated with the deal
                           lost_reason:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The reason for losing the deal
                           visible_to:
                             type: string
                             description: The visibility of the deal
                           close_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time of closing the deal
                           pipeline_id:
                             type: integer
@@ -253,8 +258,9 @@ paths:
                             type: string
                             description: The currency associated with the deal
                           rotten_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time of changing the deal status as rotten
                           owner_name:
                             type: string
@@ -272,20 +278,24 @@ paths:
                             type: string
                             description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                           origin_id:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                           channel:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                           channel_id:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The optional ID to further distinguish the Marketing channel.
                           arr:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -296,8 +306,9 @@ paths:
 
                               '
                           mrr:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -308,8 +319,9 @@ paths:
 
                               '
                           acv:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -320,8 +332,9 @@ paths:
 
                               '
                           arr_currency:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -332,8 +345,9 @@ paths:
 
                               '
                           mrr_currency:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -344,8 +358,9 @@ paths:
 
                               '
                           acv_currency:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -434,6 +449,8 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: false
+    servers:
+    - url: https://api.pipedrive.com/v1
   /stages:
     get:
       summary: Get all stages
@@ -527,8 +544,9 @@ paths:
                           type: boolean
                           description: Whether deals in this stage can become rotten
                         days_to_rotten:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The number of days the deals not updated in this stage would become rotten. Applies only if the `is_deal_rot_enabled` is set.
                         add_time:
                           type: string
@@ -632,8 +650,9 @@ paths:
                         type: boolean
                         description: Whether deals in this stage can become rotten
                       days_to_rotten:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The number of days the deals not updated in this stage would become rotten. Applies only if the `is_deal_rot_enabled` is set.
                       add_time:
                         type: string
@@ -655,6 +674,8 @@ paths:
                   days_to_rotten: 2
                   add_time: '2024-01-01T00:00:00Z'
                   update_time: '2024-01-01T00:00:00Z'
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /stages/{id}:
     delete:
       summary: Delete a stage
@@ -754,8 +775,9 @@ paths:
                         type: boolean
                         description: Whether deals in this stage can become rotten
                       days_to_rotten:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The number of days the deals not updated in this stage would become rotten. Applies only if the `is_deal_rot_enabled` is set.
                       add_time:
                         type: string
@@ -855,8 +877,9 @@ paths:
                         type: boolean
                         description: Whether deals in this stage can become rotten
                       days_to_rotten:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The number of days the deals not updated in this stage would become rotten. Applies only if the `is_deal_rot_enabled` is set.
                       add_time:
                         type: string
@@ -878,6 +901,8 @@ paths:
                   days_to_rotten: 2
                   add_time: '2024-01-01T00:00:00Z'
                   update_time: '2024-01-01T00:00:00Z'
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -924,3 +949,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Persons API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Persons API
+  version: '1.0'
+  description: 'Operations tagged Persons across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Persons
-  description: 'Persons are your contacts, the customers you are doing deals with. Each person can belong to an organization. Persons should not be confused with users.
-
-    '
+  description: Persons are your contacts, the customers you are doing deals with. Each person can belong to an organization. Persons should not be confused with users.
 paths:
   /persons/{id}/changelog:
     get:
@@ -67,12 +64,14 @@ paths:
                             type: string
                             description: The key of the field that was changed
                           old_value:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The value of the field before the change
                           new_value:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The value of the field after the change
                           actor_user_id:
                             type: integer
@@ -81,12 +80,14 @@ paths:
                             type: string
                             description: The date and time of the change
                           change_source:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The source of change, for example 'app', 'mobile', 'api', etc.
                           change_source_user_agent:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The user agent from which the change was made
                           is_bulk_update_flag:
                             type: boolean
@@ -119,6 +120,8 @@ paths:
                   is_bulk_update_flag: false
                 additional_data:
                   next_cursor: aWQ6NTQ0
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons/{id}/files:
     get:
       summary: List files attached to a person
@@ -316,10 +319,14 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: true
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons/{id}/flow:
     get:
       summary: List updates about a person
-      description: Lists updates about a person.<br>If a company uses the [Campaigns product](https://pipedrive.readme.io/docs/campaigns-in-pipedrive-api), then this endpoint's response will also include updates for the `marketing_status` field.
+      description: 'Lists updates about a person.
+
+        If a company uses the Campaigns product, then this endpoint''s response will also include updates for the `marketing_status` field.'
       x-token-cost: 40
       operationId: getPersonUpdates
       tags:
@@ -457,12 +464,14 @@ paths:
                                     type: integer
                                     description: The ID of the owner of the organization that is associated with the item
                                   address:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The address of the organization
                                   cc_email:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The BCC email of the organization associated with the item
                         user:
                           type: object
@@ -485,8 +494,9 @@ paths:
                                     type: integer
                                     description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
                                   pic_hash:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The user picture hash
                                   active_flag:
                                     type: boolean
@@ -681,6 +691,8 @@ paths:
                         address: Mustamäe tee 3a, 10615 Tallinn
                         active_flag: true
                         cc_email: org@pipedrivemail.com
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons/{id}/followers:
     get:
       summary: List followers of a person
@@ -828,6 +840,8 @@ paths:
                   id: 2
                   person_id: 3
                   add_time: '2020-04-03 11:44:31'
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons/{id}/followers/{follower_id}:
     delete:
       summary: Delete a follower from a person
@@ -879,6 +893,8 @@ paths:
                 success: true
                 data:
                   id: 12
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons/{id}/mailMessages:
     get:
       summary: List mail messages associated with a person
@@ -1062,8 +1078,9 @@ paths:
                                   type: string
                                   description: The snippet of mail message. Snippet length is up to 225 characters.
                                 mail_tracking_status:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The status of tracking mail message. Value is `null` if tracking is not enabled.
                                   enum:
                                   - opened
@@ -1305,10 +1322,12 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: true
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons/{id}/merge:
     put:
       summary: Merge two persons
-      description: Merges a person with another person. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/merging-two-persons" target="_blank" rel="noopener noreferrer">merging two persons</a>.
+      description: Merges a person with another person. For more information, see the tutorial for merging two persons.
       x-token-cost: 40
       operationId: mergePersons
       tags:
@@ -1410,8 +1429,9 @@ paths:
                             type: string
                             description: The visibility group ID of who can see the person
                           picture_id:
-                            type: object
-                            nullable: true
+                            type:
+                            - object
+                            - 'null'
                             title: PictureDataWithID
                             properties:
                               id:
@@ -1445,8 +1465,9 @@ paths:
                                     type: string
                                     description: The URL of the 512*512 picture
                           label:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The label assigned to the person. When the `label` field is updated, the `label_ids` field value will be overwritten by the `label` field value.
                           label_ids:
                             type: array
@@ -1454,15 +1475,17 @@ paths:
                               type: integer
                             description: The IDs of labels assigned to the person. When the `label_ids` field is updated, the `label` field value will be set to the first value of the `label_ids` field.
                           org_name:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The name of the organization associated with the person
                           owner_name:
                             type: string
                             description: The name of the owner associated with the person
                           cc_email:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The BCC email associated with the person
                       - type: object
                         title: additionalMergePersonInfo
@@ -1493,8 +1516,9 @@ paths:
                                   type: string
                                   description: The first name of the person
                                 last_name:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The last name of the person
                             - type: object
                               title: personCountAndEmailInfo
@@ -1525,12 +1549,14 @@ paths:
                               - type: object
                                 properties:
                                   last_incoming_mail_time:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The date and time of the last incoming email associated with the person
                                   last_outgoing_mail_time:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The date and time of the last outgoing email associated with the person
                         - type: object
                           title: mergePersonDealRelatedInfo
@@ -1567,24 +1593,29 @@ paths:
                             - type: object
                               properties:
                                 next_activity_date:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The date of the next activity associated with the deal
                                 next_activity_time:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The time of the next activity associated with the deal
                                 next_activity_id:
-                                  type: integer
-                                  nullable: true
+                                  type:
+                                  - integer
+                                  - 'null'
                                   description: The ID of the next activity associated with the deal
                                 last_activity_id:
-                                  type: integer
-                                  nullable: true
+                                  type:
+                                  - integer
+                                  - 'null'
                                   description: The ID of the last activity associated with the deal
                                 last_activity_date:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The date of the last activity associated with the deal
                           - type: object
                             properties:
@@ -1661,6 +1692,8 @@ paths:
                   owner_name: Jane Doe
                   cc_email: org@pipedrivemail.com
                   merge_what_id: 456
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons/{id}/permittedUsers:
     get:
       summary: List permitted users
@@ -1707,6 +1740,8 @@ paths:
                 data:
                 - 123
                 - 777
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons/{id}/picture:
     delete:
       summary: Delete person picture
@@ -1945,6 +1980,8 @@ paths:
                   pictures:
                     '128': https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_128.jpg
                     '512': https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_512.jpg
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons/{id}/products:
     get:
       summary: List products associated with a person
@@ -2056,8 +2093,9 @@ paths:
                                     type: string
                                     description: The status of the deal
                                   probability:
-                                    type: number
-                                    nullable: true
+                                    type:
+                                    - number
+                                    - 'null'
                                     description: The success probability percentage of the deal
                                   next_activity_date:
                                     type: string
@@ -2066,27 +2104,32 @@ paths:
                                     type: string
                                     description: The time of the next activity associated with the deal
                                   next_activity_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: The ID of the next activity associated with the deal
                                   last_activity_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: The ID of the last activity associated with the deal
                                   last_activity_date:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The date of the last activity associated with the deal
                                   lost_reason:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The reason for losing the deal
                                   visible_to:
                                     type: string
                                     description: The visibility of the deal
                                   close_time:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The date and time of closing the deal
                                   pipeline_id:
                                     type: integer
@@ -2292,6 +2335,8 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: true
+    servers:
+    - url: https://api.pipedrive.com/v1
   /persons:
     get:
       summary: Get all persons
@@ -2635,7 +2680,7 @@ paths:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
     post:
       summary: Add a new person
-      description: Adds a new person. If the company uses the [Campaigns product](https://pipedrive.readme.io/docs/campaigns-in-pipedrive-api), then this endpoint will also accept and return the `marketing_status` field.
+      description: Adds a new person. If the company uses the Campaigns product, then this endpoint will also accept and return the `marketing_status` field.
       x-token-cost: 5
       operationId: addPerson
       tags:
@@ -2920,6 +2965,8 @@ paths:
                     street_number: '123'
                     subpremise: Apt 1
                     postal_code: '94085'
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /persons/{id}:
     delete:
       summary: Delete a person
@@ -3232,7 +3279,9 @@ paths:
                     postal_code: '94085'
     patch:
       summary: Update a person
-      description: Updates the properties of a person. <br>If the company uses the [Campaigns product](https://pipedrive.readme.io/docs/campaigns-in-pipedrive-api), then this endpoint will also accept and return the `marketing_status` field.
+      description: 'Updates the properties of a person.
+
+        If the company uses the Campaigns product, then this endpoint will also accept and return the `marketing_status` field.'
       x-token-cost: 5
       operationId: updatePerson
       tags:
@@ -3524,6 +3573,8 @@ paths:
                     street_number: '123'
                     subpremise: Apt 1
                     postal_code: '94085'
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /persons/{id}/followers/changelog:
     get:
       summary: List followers changelog of a person
@@ -3608,10 +3659,12 @@ paths:
                   time: '2024-01-01T00:00:00Z'
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /persons/search:
     get:
       summary: Search persons
-      description: Searches all persons by name, email, phone, notes and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope. Found persons can be filtered by organization ID.
+      description: Searches all persons by name, email, phone, notes and/or custom fields. This endpoint is a wrapper of /v1/itemSearch with a narrower OAuth scope. Found persons can be filtered by organization ID.
       x-token-cost: 20
       operationId: searchPersons
       tags:
@@ -3778,6 +3831,8 @@ paths:
                       notes: []
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -3824,3 +3879,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

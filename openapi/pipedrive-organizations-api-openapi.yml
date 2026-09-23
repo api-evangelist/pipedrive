@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Organizations API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Organizations API
+  version: '1.0'
+  description: 'Operations tagged Organizations across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Organizations
-  description: 'Organizations are companies and other kinds of organizations you are making deals with. Persons can be associated with organizations so that each organization can contain one or more persons.
-
-    '
+  description: Organizations are companies and other kinds of organizations you are making deals with. Persons can be associated with organizations so that each organization can contain one or more persons.
 paths:
   /organizations/{id}/changelog:
     get:
@@ -67,12 +64,14 @@ paths:
                             type: string
                             description: The key of the field that was changed
                           old_value:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The value of the field before the change
                           new_value:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The value of the field after the change
                           actor_user_id:
                             type: integer
@@ -81,12 +80,14 @@ paths:
                             type: string
                             description: The date and time of the change
                           change_source:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The source of change, for example 'app', 'mobile', 'api', etc.
                           change_source_user_agent:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The user agent from which the change was made
                           is_bulk_update_flag:
                             type: boolean
@@ -119,6 +120,8 @@ paths:
                   is_bulk_update_flag: false
                 additional_data:
                   next_cursor: aWQ6NTQ0
+    servers:
+    - url: https://api.pipedrive.com/v1
   /organizations/{id}/files:
     get:
       summary: List files attached to an organization
@@ -316,6 +319,8 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: true
+    servers:
+    - url: https://api.pipedrive.com/v1
   /organizations/{id}/flow:
     get:
       summary: List updates about an organization
@@ -428,12 +433,14 @@ paths:
                                     type: integer
                                     description: The ID of the owner of the organization that is associated with the item
                                   address:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The address of the organization
                                   cc_email:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The BCC email of the organization associated with the item
                         user:
                           type: object
@@ -456,8 +463,9 @@ paths:
                                     type: integer
                                     description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
                                   pic_hash:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The user picture hash
                                   active_flag:
                                     type: boolean
@@ -618,6 +626,8 @@ paths:
                         address: Mustamäe tee 3a, 10615 Tallinn
                         active_flag: true
                         cc_email: org@pipedrivemail.com
+    servers:
+    - url: https://api.pipedrive.com/v1
   /organizations/{id}/followers:
     get:
       summary: List followers of an organization
@@ -772,10 +782,12 @@ paths:
                   id: 123
                   org_id: 77
                   add_time: '2020-09-08 08:17:52'
+    servers:
+    - url: https://api.pipedrive.com/v1
   /organizations/{id}/followers/{follower_id}:
     delete:
       summary: Delete a follower from an organization
-      description: Deletes a follower from an organization. You can retrieve the `follower_id` from the <a href="https://developers.pipedrive.com/docs/api/v1/Organizations#getOrganizationFollowers">List followers of an organization</a> endpoint.
+      description: Deletes a follower from an organization. You can retrieve the `follower_id` from the List followers of an organization endpoint.
       x-token-cost: 6
       operationId: deleteOrganizationFollower
       tags:
@@ -819,6 +831,8 @@ paths:
                 success: true
                 data:
                   id: 123
+    servers:
+    - url: https://api.pipedrive.com/v1
   /organizations/{id}/mailMessages:
     get:
       summary: List mail messages associated with an organization
@@ -1002,8 +1016,9 @@ paths:
                                   type: string
                                   description: The snippet of mail message. Snippet length is up to 225 characters.
                                 mail_tracking_status:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The status of tracking mail message. Value is `null` if tracking is not enabled.
                                   enum:
                                   - opened
@@ -1245,10 +1260,12 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: true
+    servers:
+    - url: https://api.pipedrive.com/v1
   /organizations/{id}/merge:
     put:
       summary: Merge two organizations
-      description: Merges an organization with another organization. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/merging-two-organizations" target="_blank" rel="noopener noreferrer">merging two organizations</a>.
+      description: Merges an organization with another organization. For more information, see the tutorial for merging two organizations.
       x-token-cost: 40
       operationId: mergeOrganizations
       tags:
@@ -1298,6 +1315,8 @@ paths:
                 success: true
                 data:
                   id: 123
+    servers:
+    - url: https://api.pipedrive.com/v1
   /organizations/{id}/permittedUsers:
     get:
       summary: List permitted users
@@ -1344,6 +1363,8 @@ paths:
                 data:
                 - 123
                 - 777
+    servers:
+    - url: https://api.pipedrive.com/v1
   /organizations:
     get:
       summary: Get all organizations
@@ -1769,6 +1790,8 @@ paths:
                   - 2
                   - 3
                   custom_fields: {}
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /organizations/{id}:
     delete:
       summary: Delete a organization
@@ -2178,6 +2201,8 @@ paths:
                   - 2
                   - 3
                   custom_fields: {}
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /organizations/{id}/followers/changelog:
     get:
       summary: List followers changelog of an organization
@@ -2262,10 +2287,12 @@ paths:
                   time: '2024-01-01T00:00:00Z'
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /organizations/search:
     get:
       summary: Search organizations
-      description: Searches all organizations by name, address, notes and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope.
+      description: Searches all organizations by name, address, notes and/or custom fields. This endpoint is a wrapper of /v1/itemSearch with a narrower OAuth scope.
       x-token-cost: 20
       operationId: searchOrganization
       tags:
@@ -2396,6 +2423,8 @@ paths:
                       notes: []
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -2442,3 +2471,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

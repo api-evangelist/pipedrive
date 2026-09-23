@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Meetings API
+  title: Pipedrive API v1 Meetings API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Meetings API allows integrating video calling apps into Pipedrive through Video Calling App extension. It enables you to manage and interact with your video calls and meetings inside Pipedrive. These endpoints are accessible only through apps with video calls integration OAuth scope.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: Meetings
-  description: 'Meetings API allows integrating video calling apps into Pipedrive through [Video Calling App extension](https://pipedrive.readme.io/docs/video-calling-app-extension). It enables you to manage and interact with your video calls and meetings inside Pipedrive. These endpoints are accessible only through apps with video calls integration [OAuth scope](https://pipedrive.readme.io/docs/marketplace-scopes-and-permissions-explanations).
-
-    '
+  description: Meetings API allows integrating video calling apps into Pipedrive through Video Calling App extension. It enables you to manage and interact with your video calls and meetings inside Pipedrive. These endpoints are accessible only through apps with video calls integration OAuth scope.
 paths:
   /meetings/userProviderLinks:
     post:

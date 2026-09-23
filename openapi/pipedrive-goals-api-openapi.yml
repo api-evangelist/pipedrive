@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Goals API
+  title: Pipedrive API v1 Goals API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Goals help your team meet your sales targets. There are three types of goals - company, team and user.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: Goals
-  description: 'Goals help your team meet your sales targets. There are three types of goals - company, team and user.
-
-    '
+  description: Goals help your team meet your sales targets. There are three types of goals - company, team and user.
 paths:
   /goals:
     post:
@@ -185,7 +181,7 @@ paths:
   /goals/find:
     get:
       summary: Find goals
-      description: Returns data about goals based on criteria. For searching, append `{searchField}={searchValue}` to the URL, where `searchField` can be any one of the lowest-level fields in dot-notation (e.g. `type.params.pipeline_id`; `title`). `searchValue` should be the value you are looking for on that field. Additionally, `is_active=<true|false>` can be provided to search for only active/inactive goals. When providing `period.start`, `period.end` must also be provided and vice versa.
+      description: Returns data about goals based on criteria. For searching, append `{searchField}={searchValue}` to the URL, where `searchField` can be any one of the lowest-level fields in dot-notation (e.g. `type.params.pipeline_id`; `title`). `searchValue` should be the value you are looking for on that field. Additionally, `is_active=` can be provided to search for only active/inactive goals. When providing `period.start`, `period.end` must also be provided and vice versa.
       x-token-cost: 20
       operationId: getGoals
       tags:

@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities LegacyTeams API
+  title: Pipedrive API v1 Legacy Teams API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Legacy teams allow you to form groups of users withing the organization for more efficient management. Previously Legacy Teams were called Teams and occupied the `v1/teams*` path. They're being deprecated because we are preparing for an upgraded version of the Teams API, which requires migrating the current functionality to a new path URL `v1/legacyTeams*`. The functionality and OAuth scopes of all the Teams API endpoints will remain the same.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: LegacyTeams
-  description: 'Legacy teams allow you to form groups of users withing the organization for more efficient management. Previously Legacy Teams were called Teams and occupied the `v1/teams*` path. They''re being deprecated because we are preparing for an upgraded version of the Teams API, which requires migrating the current functionality to a new path URL `v1/legacyTeams*`. The functionality and [OAuth scopes](https://pipedrive.readme.io/docs/marketplace-scopes-and-permissions-explanations) of all the Teams API endpoints will remain the same.
-
-    '
+  description: Legacy teams allow you to form groups of users withing the organization for more efficient management. Previously Legacy Teams were called Teams and occupied the `v1/teams*` path. They're being deprecated because we are preparing for an upgraded version of the Teams API, which requires migrating the current functionality to a new path URL `v1/legacyTeams*`. The functionality and OAuth scopes of all the Teams API endpoints will remain the same.
 paths:
   /legacyTeams:
     get:

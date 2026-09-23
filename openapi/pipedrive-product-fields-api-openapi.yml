@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities ProductFields API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Product Fields API
+  version: '1.0'
+  description: 'Operations tagged ProductFields across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
-- name: ProductFields
-  description: 'Product fields represent the near-complete schema for a product in the context of the company of the authorized user. Each company can have a different schema for their products, with various custom fields. In the context of using product fields as a schema for defining the data fields of a product, it must be kept in mind that some types of custom fields can have additional data fields which are not separate product fields per se. Such is the case with monetary, daterange and timerange fields – each of these fields will have one additional data field in addition to the one presented in the context of product fields. For example, if there is a monetary field with the key `ffk9s9` stored on the account, `ffk9s9` would hold the numeric value of the field, and `ffk9s9_currency` would hold the ISO currency code that goes along with the numeric value. To find out which data fields are available, fetch one product and list its keys.
-
-    '
+- name: Product Fields
+  description: Product fields represent the near-complete schema for a product in the context of the company of the authorized user.
 paths:
   /productFields:
     delete:
@@ -20,7 +17,7 @@ paths:
       x-token-cost: 10
       operationId: deleteProductFields
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -77,7 +74,7 @@ paths:
         schema:
           type: integer
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -286,11 +283,11 @@ paths:
                     more_items_in_collection: false
     post:
       summary: Add a new product field
-      description: Adds a new product field. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-new-custom-field" target="_blank" rel="noopener noreferrer">adding a new custom field</a>.
+      description: Adds a new product field. For more information, see the tutorial for adding a new custom field.
       x-token-cost: 10
       operationId: addProductField
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -463,14 +460,16 @@ paths:
                   - id: 11
                     label: lilac
                   mandatory_flag: false
+    servers:
+    - url: https://api.pipedrive.com/v1
   /productFields/{id}:
     delete:
       summary: Delete a product field
-      description: Marks a product field as deleted. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/deleting-a-custom-field" target="_blank" rel="noopener noreferrer">deleting a custom field</a>.
+      description: Marks a product field as deleted. For more information, see the tutorial for deleting a custom field.
       x-token-cost: 6
       operationId: deleteProductField
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -529,7 +528,7 @@ paths:
       x-token-cost: 2
       operationId: getProductField
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -692,11 +691,11 @@ paths:
                 error: The field is not found
     put:
       summary: Update a product field
-      description: Updates a product field. For more information, see the tutorial for <a href=" https://pipedrive.readme.io/docs/updating-custom-field-value " target="_blank" rel="noopener noreferrer">updating custom fields' values</a>.
+      description: Updates a product field. For more information, see the tutorial for updating custom fields' values.
       x-token-cost: 10
       operationId: updateProductField
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -854,6 +853,8 @@ paths:
                   - id: 11
                     label: lilac
                   mandatory_flag: false
+    servers:
+    - url: https://api.pipedrive.com/v1
   /productFields/{field_code}:
     get:
       summary: Get one product field
@@ -861,7 +862,7 @@ paths:
       x-token-cost: 1
       operationId: getProductField
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -946,8 +947,9 @@ paths:
                         - projects_board
                         - projects_phase
                       options:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of available options for enum/set fields, null for other field types
                         items:
                           type: object
@@ -959,22 +961,26 @@ paths:
                               type: string
                               description: The option display label
                             color:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Optional color code for the option
                             update_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was last updated
                             add_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was created
                       subfields:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of subfields for complex field types (address, monetary), null for simple field types
                         items:
                           type: object
@@ -1023,7 +1029,7 @@ paths:
       x-token-cost: 5
       operationId: updateProductField
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -1126,8 +1132,9 @@ paths:
                         - projects_board
                         - projects_phase
                       options:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of available options for enum/set fields, null for other field types
                         items:
                           type: object
@@ -1139,22 +1146,26 @@ paths:
                               type: string
                               description: The option display label
                             color:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Optional color code for the option
                             update_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was last updated
                             add_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was created
                       subfields:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of subfields for complex field types (address, monetary), null for simple field types
                         items:
                           type: object
@@ -1203,7 +1214,7 @@ paths:
       x-token-cost: 3
       operationId: deleteProductField
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -1246,14 +1257,16 @@ paths:
                         type: string
                         description: The type of the field
                       options:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of available options for enum/set fields, null for other field types
                         items:
                           type: object
                       subfields:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of subfields for complex field types (address, monetary), null for simple field types
                         items:
                           type: object
@@ -1273,6 +1286,8 @@ paths:
                   subfields: null
                   is_custom_field: true
                   is_optional_response_field: false
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /productFields/{field_code}/options:
     post:
       summary: Add product field options in bulk
@@ -1280,7 +1295,7 @@ paths:
       x-token-cost: 5
       operationId: addProductFieldOptions
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -1335,8 +1350,9 @@ paths:
                           type: string
                           description: The display label of the option
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
@@ -1349,7 +1365,7 @@ paths:
       x-token-cost: 3
       operationId: deleteProductFieldOptions
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -1402,8 +1418,9 @@ paths:
                           type: string
                           description: The display label of the option
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
@@ -1416,7 +1433,7 @@ paths:
       x-token-cost: 5
       operationId: updateProductFieldOptions
       tags:
-      - ProductFields
+      - Product Fields
       security:
       - api_key: []
       - oauth2:
@@ -1475,14 +1492,17 @@ paths:
                           type: string
                           description: The display label of the option
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
                 - id: 4
                   label: Consulting
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -1529,3 +1549,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

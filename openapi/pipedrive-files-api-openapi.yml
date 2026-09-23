@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Files API
+  title: Pipedrive API v1 Files API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Files are documents of any kind (images, spreadsheets, text files, etc.) that are uploaded to Pipedrive, and usually associated with a particular deal, person, organization, product, note or activity. Remote files can only be associated with a particular deal, person or organization. Note that the API currently does not support downloading files although it lets you retrieve a file’s meta-info along with a URL which can be used to download the file by using a standard HTTP GET request.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: Files
-  description: 'Files are documents of any kind (images, spreadsheets, text files, etc.) that are uploaded to Pipedrive, and usually associated with a particular deal, person, organization, product, note or activity. Remote files can only be associated with a particular deal, person or organization. Note that the API currently does not support downloading files although it lets you retrieve a file’s meta-info along with a URL which can be used to download the file by using a standard HTTP GET request.
-
-    '
+  description: Files are documents of any kind (images, spreadsheets, text files, etc.) that are uploaded to Pipedrive, and usually associated with a particular deal, person, organization, product, note or activity. Remote files can only be associated with a particular deal, person or organization. Note that the API currently does not support downloading files although it lets you retrieve a file’s meta-info along with a URL which can be used to download the file by using a standard HTTP GET request.
 paths:
   /files:
     get:
@@ -248,7 +244,7 @@ paths:
                     next_start: 100
     post:
       summary: Add file
-      description: Lets you upload a file and associate it with a deal, person, organization, activity, product or lead. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-file" target="_blank" rel="noopener noreferrer">adding a file</a>.
+      description: Lets you upload a file and associate it with a deal, person, organization, activity, product or lead. For more information, see the tutorial for adding a file.
       x-token-cost: 10
       operationId: addFile
       tags:
@@ -428,7 +424,7 @@ paths:
   /files/remote:
     post:
       summary: Create a remote file and link it to an item
-      description: Creates a new empty file in the remote location (`googledrive`) that will be linked to the item you supply. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-remote-file" target="_blank" rel="noopener noreferrer">adding a remote file</a>.
+      description: Creates a new empty file in the remote location (`googledrive`) that will be linked to the item you supply. For more information, see the tutorial for adding a remote file.
       x-token-cost: 10
       operationId: addFileAndLinkIt
       tags:
@@ -616,7 +612,7 @@ paths:
   /files/remoteLink:
     post:
       summary: Link a remote file to an item
-      description: Links an existing remote file (`googledrive`) to the item you supply. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-remote-file" target="_blank" rel="noopener noreferrer">adding a remote file</a>.
+      description: Links an existing remote file (`googledrive`) to the item you supply. For more information, see the tutorial for adding a remote file.
       x-token-cost: 10
       operationId: linkFileToItem
       tags:

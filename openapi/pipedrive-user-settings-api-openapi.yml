@@ -1,66 +1,103 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities LeadSources API
+  title: Pipedrive API v1 User Settings API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: View user settings.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
-- name: LeadSources
-  description: 'A lead source indicates where your lead came from. Currently, these are the possible lead sources: `Manually created`, `Deal`, `Web forms`, `Prospector`, `Leadbooster`, `Live chat`, `Import`, `Website visitors`, `Workflow automation`, and `API`. Lead sources are pre-defined and cannot be edited. Please note that leads sourced from the Chatbot feature are assigned the value `Leadbooster`. Please also note that this list is not final and new sources may be added as needed.
-
-    '
+- name: User Settings
+  description: View user settings.
 paths:
-  /leadSources:
+  /userSettings:
     get:
+      summary: List settings of an authorized user
+      description: Lists the settings of an authorized user. Example response contains a shortened list of settings.
+      x-token-cost: 2
+      operationId: getUserSettings
+      tags:
+      - User Settings
       security:
       - api_key: []
       - oauth2:
-        - leads:read
-        - leads:full
-      tags:
-      - LeadSources
-      summary: Get all lead sources
-      description: 'Returns all lead sources. Please note that the list of lead sources is fixed, it cannot be modified. All leads created through the Pipedrive API will have a lead source `API` assigned.
-
-        '
-      x-token-cost: 2
-      operationId: getLeadSources
+        - base
       responses:
         '200':
-          description: The successful response containing payload in the `data` field.
+          description: The list of user settings
           content:
             application/json:
               schema:
-                title: GetLeadsSourceResponse
+                title: GetUserSettingsResponse
+                allOf:
+                - title: baseResponse
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      description: If the response is successful or not
+                - type: object
+                  title: GetUserSettingsResponseData
+                  properties:
+                    data:
+                      type: object
+                      title: UserSettingsItem
+                      properties:
+                        marketplace_team:
+                          type: boolean
+                          description: If the vendors are allowed to be part of the Marketplace team or not
+                        list_limit:
+                          type: number
+                          description: The number of results shown in list by default
+                        beta_app:
+                          type: boolean
+                          description: Whether beta app is enabled
+                        prevent_salesphone_callto_override:
+                          type: boolean
+                          description: Prevent salesphone call to override
+                        file_upload_destination:
+                          type: string
+                          description: The destination of file upload
+                        callto_link_syntax:
+                          type: string
+                          description: The call to link syntax
+                        autofill_deal_expected_close_date:
+                          type: boolean
+                          description: Whether the expected close date of the deal is filled automatically or not
+                        person_duplicate_condition:
+                          type: string
+                          description: Allow the vendors to duplicate a person
+              example:
+                success: true
+                data:
+                  marketplace_team: false
+                  list_limit: 100
+                  beta_app: true
+                  prevent_salesphone_callto_override: false
+                  file_upload_destination: s3
+                  callto_link_syntax: callto:[number]
+                  autofill_deal_expected_close_date: false
+                  person_duplicate_condition: name && (org_id || email || phone)
+        '401':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                title: unathorizedResponse
                 type: object
                 properties:
                   success:
                     type: boolean
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      title: LeadSource
-                      properties:
-                        name:
-                          type: string
-                          description: The unique name of a lead source
+                    description: If the response is successful or not
+                  error:
+                    type: string
+                    description: The error message
+                  errorCode:
+                    type: integer
+                    description: The response error code
               example:
-                success: true
-                data:
-                - name: Manually created
-                - name: Deal
-                - name: Web forms
-                - name: Prospector
-                - name: Leadbooster
-                - name: Live chat
-                - name: Import
-                - name: Website visitors
-                - name: Workflow automation
-                - name: API
+                success: false
+                error: unauthorized access
+                errorCode: 401
 components:
   securitySchemes:
     basic_authentication:

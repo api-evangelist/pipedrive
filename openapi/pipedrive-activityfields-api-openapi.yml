@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities ActivityFields API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Activity Fields API
+  version: '1.0'
+  description: 'Operations tagged ActivityFields across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: ActivityFields
-  description: 'Activity fields represent different fields that an activity has.
-
-    '
+  description: Activity fields represent different fields that an activity has.
 paths:
   /activityFields:
     get:
@@ -53,8 +50,9 @@ paths:
                           type: object
                           properties:
                             id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of the field. Value is `null` in case of subfields.
                             key:
                               type: string
@@ -92,17 +90,20 @@ paths:
                               format: date-time
                               description: The creation time of the field
                             update_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: The update time of the field
                             last_updated_by_user_id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of the user who created or most recently updated the field, only applicable for custom fields
                             created_by_user_id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of the user who created the field
                             active_flag:
                               type: boolean
@@ -138,8 +139,9 @@ paths:
                               type: boolean
                               description: Whether or not the field is mandatory
                             options:
-                              type: array
-                              nullable: true
+                              type:
+                              - array
+                              - 'null'
                               items:
                                 type: object
                               description: The options of the field. When there are no options, `null` is returned.
@@ -265,6 +267,8 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: false
+    servers:
+    - url: https://api.pipedrive.com/v1
   /activityFields/{field_code}:
     get:
       summary: Get one activity field
@@ -355,8 +359,9 @@ paths:
                         - projects_board
                         - projects_phase
                       options:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of available options for enum/set fields, null for other field types
                         items:
                           type: object
@@ -368,22 +373,26 @@ paths:
                               type: string
                               description: The option display label
                             color:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Optional color code for the option
                             update_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was last updated
                             add_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was created
                       subfields:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of subfields for complex field types (address, monetary), null for simple field types
                         items:
                           type: object
@@ -427,6 +436,8 @@ paths:
                   ui_visibility:
                     add_visible_flag: true
                     details_visible_flag: true
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -473,3 +484,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

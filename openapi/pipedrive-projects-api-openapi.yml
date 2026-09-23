@@ -1,22 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Projects API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Projects API
+  version: '1.0'
+  description: 'Operations tagged Projects across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Projects
-  description: 'Projects represent ongoing, completed or canceled projects attached to an organization, person or to deals. Each project has an owner and must be placed in a phase. Each project consists of standard data fields but can also contain a number of custom fields. The custom fields can be recognized by long hashes as keys.
-
-    '
+  description: Projects represent ongoing, completed or canceled projects attached to an organization, person or to deals. Each project has an owner and must be placed in a phase. Each project consists of standard data fields but can also contain a number of custom fields. The custom fields can be recognized by long hashes as keys.
 paths:
   /projects:
     get:
       summary: Get all projects
-      description: Returns all projects. This is a cursor-paginated endpoint. For more information, please refer to our documentation on <a href="https://pipedrive.readme.io/docs/core-api-concepts-pagination" target="_blank" rel="noopener noreferrer">pagination</a>.
+      description: Returns all projects. This is a cursor-paginated endpoint. For more information, please refer to our documentation on pagination.
       x-token-cost: 20
       operationId: getProjects
       tags:
@@ -338,8 +335,9 @@ paths:
                             type: string
                             description: 'The archived date and time of the project in UTC. Format: YYYY-MM-DD HH:MM:SS. If not archived then ''null''.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -366,6 +364,8 @@ paths:
                   board_id: 1
                   phase_id: 1
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/{id}:
     get:
       summary: Get details of a project
@@ -470,8 +470,9 @@ paths:
                             type: string
                             description: 'The archived date and time of the project in UTC. Format: YYYY-MM-DD HH:MM:SS. If not archived then ''null''.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -652,8 +653,9 @@ paths:
                             type: string
                             description: 'The archived date and time of the project in UTC. Format: YYYY-MM-DD HH:MM:SS. If not archived then ''null''.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -723,8 +725,9 @@ paths:
                             type: integer
                             description: The ID of the project that was deleted
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -879,8 +882,9 @@ paths:
                           items:
                             type: integer
                         health_status:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The health status of the project
                         add_time:
                           type: string
@@ -892,8 +896,9 @@ paths:
                           type: string
                           description: The date and time of the last status change of the project in ISO 8601 format
                         archive_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time the project was archived in ISO 8601 format. If not archived, this field is null.
                         custom_fields:
                           type: object
@@ -925,6 +930,8 @@ paths:
                   status_change_time: '2026-04-14T10:45:20.852Z'
                   archive_time: null
                   custom_fields: {}
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/{id}/archive:
     post:
       summary: Archive a project
@@ -1028,8 +1035,9 @@ paths:
                             type: string
                             description: 'The archived date and time of the project in UTC. Format: YYYY-MM-DD HH:MM:SS. If not archived then ''null''.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -1056,6 +1064,8 @@ paths:
                   board_id: 1
                   phase_id: 1
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/{id}/plan:
     get:
       summary: Returns project plan
@@ -1105,8 +1115,9 @@ paths:
                           description: The ID of the board this project is associated with. If null then plan item is not in any group.
                           type: number
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -1120,6 +1131,8 @@ paths:
                   phase_id: 2
                   group_id: 3
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/{id}/plan/activities/{activityId}:
     put:
       summary: Update activity in project plan
@@ -1185,8 +1198,9 @@ paths:
                         description: The ID of the board this project is associated with. If null then plan item is not in any group.
                         type: number
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -1196,6 +1210,8 @@ paths:
                   phase_id: 2
                   group_id: 3
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/{id}/plan/tasks/{taskId}:
     put:
       summary: Update task in project plan
@@ -1261,8 +1277,9 @@ paths:
                         description: The ID of the board this project is associated with. If null then plan item is not in any group.
                         type: number
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -1272,6 +1289,8 @@ paths:
                   phase_id: 2
                   group_id: 3
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/{id}/groups:
     get:
       summary: Returns project groups
@@ -1318,8 +1337,9 @@ paths:
                           description: Order number of the group
                           type: number
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -1328,6 +1348,8 @@ paths:
                   name: Group one
                   order_nr: 1
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/{id}/tasks:
     get:
       summary: Returns project tasks
@@ -1453,6 +1475,8 @@ paths:
                   project_id: 1
                 additional_data:
                   next_cursor: eyJhY3Rpdml0aWVzIjoyN30
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/{id}/activities:
     get:
       summary: Returns project activities
@@ -1506,16 +1530,18 @@ paths:
                             type: integer
                           lead_id:
                             description: The ID of the lead in the UUID format this activity is associated with
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: uuid
-                            nullable: true
                           person_id:
                             description: The ID of the person this activity is associated with
                             type: integer
                           project_id:
                             description: The ID of the project this activity is associated with
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                           org_id:
                             description: The ID of the organization this activity is associated with
                             type: integer
@@ -1653,6 +1679,8 @@ paths:
                   location_formatted_address: Mustamäe tee 3, 10616 Tallinn, Estonia
                 additional_data:
                   next_cursor: eyJhY3Rpdml0aWVzIjoyN30
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projects/archived:
     get:
       summary: Get all archived projects
@@ -1769,8 +1797,9 @@ paths:
                             items:
                               type: integer
                           health_status:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The health status of the project
                           add_time:
                             type: string
@@ -1782,8 +1811,9 @@ paths:
                             type: string
                             description: The date and time of the last status change of the project in ISO 8601 format
                           archive_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time the project was archived in ISO 8601 format. If not archived, this field is null.
                           custom_fields:
                             type: object
@@ -1824,10 +1854,12 @@ paths:
                   custom_fields: {}
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /projects/search:
     get:
       summary: Search projects
-      description: Searches all projects by title, description, notes and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope. Found projects can be filtered by person ID or organization ID.
+      description: Searches all projects by title, description, notes and/or custom fields. This endpoint is a wrapper of /v1/itemSearch with a narrower OAuth scope. Found projects can be filtered by person ID or organization ID.
       x-token-cost: 20
       operationId: searchProjects
       tags:
@@ -1923,23 +1955,27 @@ paths:
                                     type: string
                                     description: The title of the project
                                   status:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The status of the project
                                   owner:
                                     type: object
                                     properties:
                                       id:
-                                        type: integer
-                                        nullable: true
+                                        type:
+                                        - integer
+                                        - 'null'
                                         description: The ID of the owner of the project
                                   board_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: The ID of the board the project belongs to
                                   phase:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
@@ -1948,52 +1984,61 @@ paths:
                                         type: string
                                         description: The name of the phase
                                   person:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
                                         description: The ID of the person the project is associated with
                                       name:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The name of the person the project is associated with
                                   organization:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
                                         description: The ID of the organization the project is associated with
                                       name:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The name of the organization the project is associated with
                                       address:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The address of the organization the project is associated with
                                   deal:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
                                         description: The ID of the deal the project is associated with
                                       title:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The title of the deal the project is associated with
                                   deal_count:
                                     type: integer
                                     description: The number of deals associated with the project
                                   description:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The description of the project
                                   end_date:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The end date of the project
                                   custom_fields:
                                     type: array
@@ -2045,6 +2090,8 @@ paths:
                       notes: []
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /projects/{id}/permittedUsers:
     get:
       summary: List permitted users
@@ -2087,6 +2134,8 @@ paths:
                 data:
                 - 123
                 - 456
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /projects/{id}/changelog:
     get:
       summary: List updates about project field values
@@ -2137,12 +2186,14 @@ paths:
                       type: object
                       properties:
                         change_source:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The source of change, for example 'app', 'mobile', 'api', etc.
                         change_source_user_agent:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The user agent from which the change was made
                         time:
                           type: string
@@ -2188,6 +2239,8 @@ paths:
                   actor_user_id: 42
                 additional_data:
                   next_cursor: aWQ6NTQ0
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -2234,3 +2287,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

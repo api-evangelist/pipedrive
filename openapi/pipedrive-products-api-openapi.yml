@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Products API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Products API
+  version: '1.0'
+  description: 'Operations tagged Products across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Products
-  description: 'Products are the goods or services you are dealing with. Each product can have N different price points - firstly, each product can have a price in N different currencies, and secondly, each product can have N variations of itself, each having N prices in different currencies. Note that only one price per variation per currency is supported. Products can be instantiated to deals. In the context of instatiation, a custom price, quantity, duration and discount can be applied.
-
-    '
+  description: Products are the goods or services you are dealing with. Each product can have N different price points - firstly, each product can have a price in N different currencies, and secondly, each product can have N variations of itself, each having N prices in different currencies. Note that only one price per variation per currency is supported. Products can be instantiated to deals. In the context of instatiation, a custom price, quantity, duration and discount can be applied.
 paths:
   /products/{id}/deals:
     get:
@@ -99,8 +96,9 @@ paths:
                                   type: boolean
                                   description: If the creator has a picture or not
                                 pic_hash:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The creator picture hash
                                 active_flag:
                                   type: boolean
@@ -127,8 +125,9 @@ paths:
                                     type: boolean
                                     description: If the user has a picture or not
                                   pic_hash:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The user picture hash
                                   active_flag:
                                     type: boolean
@@ -254,8 +253,9 @@ paths:
                               type: string
                               description: The status of the deal
                             probability:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                               description: The success probability percentage of the deal
                             next_activity_date:
                               type: string
@@ -264,27 +264,32 @@ paths:
                               type: string
                               description: The time of the next activity associated with the deal
                             next_activity_id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of the next activity associated with the deal
                             last_activity_id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of the last activity associated with the deal
                             last_activity_date:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The date of the last activity associated with the deal
                             lost_reason:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The reason for losing the deal
                             visible_to:
                               type: string
                               description: The visibility of the deal
                             close_time:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The date and time of closing the deal
                             pipeline_id:
                               type: integer
@@ -372,8 +377,9 @@ paths:
                               type: string
                               description: The currency associated with the deal
                             rotten_time:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The date and time of changing the deal status as rotten
                             owner_name:
                               type: string
@@ -391,20 +397,24 @@ paths:
                               type: string
                               description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                             origin_id:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                             channel:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                             channel_id:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The optional ID to further distinguish the Marketing channel.
                             arr:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                               description: 'Only available in Growth and above plans
 
 
@@ -415,8 +425,9 @@ paths:
 
                                 '
                             mrr:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                               description: 'Only available in Growth and above plans
 
 
@@ -427,8 +438,9 @@ paths:
 
                                 '
                             acv:
-                              type: number
-                              nullable: true
+                              type:
+                              - number
+                              - 'null'
                               description: 'Only available in Growth and above plans
 
 
@@ -439,8 +451,9 @@ paths:
 
                                 '
                             arr_currency:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: 'Only available in Growth and above plans
 
 
@@ -451,8 +464,9 @@ paths:
 
                                 '
                             mrr_currency:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: 'Only available in Growth and above plans
 
 
@@ -463,8 +477,9 @@ paths:
 
                                 '
                             acv_currency:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: 'Only available in Growth and above plans
 
 
@@ -527,12 +542,14 @@ paths:
                                       type: integer
                                       description: The ID of the owner of the organization that is associated with the item
                                     address:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The address of the organization
                                     cc_email:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The BCC email of the organization associated with the item
                         person:
                           type: object
@@ -610,8 +627,9 @@ paths:
                                     type: integer
                                     description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
                                   pic_hash:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The user picture hash
                                   active_flag:
                                     type: boolean
@@ -834,6 +852,8 @@ paths:
                       deal_probability: true
                       add_time: '2015-12-08 10:00:24'
                       update_time: '2015-12-08 10:00:24'
+    servers:
+    - url: https://api.pipedrive.com/v1
   /products/{id}/files:
     get:
       summary: List files attached to a product
@@ -976,6 +996,8 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: true
+    servers:
+    - url: https://api.pipedrive.com/v1
   /products/{id}/followers:
     get:
       summary: List followers of a product
@@ -1130,6 +1152,8 @@ paths:
                   id: 1
                   product_id: 2
                   add_time: '2019-12-24 12:02:04'
+    servers:
+    - url: https://api.pipedrive.com/v1
   /products/{id}/followers/{follower_id}:
     delete:
       summary: Delete a follower from a product
@@ -1178,6 +1202,8 @@ paths:
                 success: true
                 data:
                   id: 1
+    servers:
+    - url: https://api.pipedrive.com/v1
   /products/{id}/permittedUsers:
     get:
       summary: List permitted users
@@ -1225,6 +1251,8 @@ paths:
                 - 10100010
                 - 22302444
                 - 33511023
+    servers:
+    - url: https://api.pipedrive.com/v1
   /products:
     get:
       summary: Get all products
@@ -1381,8 +1409,9 @@ paths:
                               properties:
                                 billing_frequency_cycles:
                                   default: null
-                                  type: integer
-                                  nullable: true
+                                  type:
+                                  - integer
+                                  - 'null'
                                   description: 'Only available in Growth and above plans
 
 
@@ -1454,7 +1483,7 @@ paths:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
     post:
       summary: Add a product
-      description: Adds a new product to the Products inventory. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-product" target="_blank" rel="noopener noreferrer">adding a product</a>.
+      description: Adds a new product to the Products inventory. For more information, see the tutorial for adding a product.
       x-token-cost: 5
       operationId: addProduct
       tags:
@@ -1543,8 +1572,9 @@ paths:
                 properties:
                   billing_frequency_cycles:
                     default: null
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     description: 'Only available in Growth and above plans
 
 
@@ -1643,8 +1673,9 @@ paths:
                         properties:
                           billing_frequency_cycles:
                             default: null
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -1705,6 +1736,8 @@ paths:
                       - type: number
                       - type: object
                         additionalProperties: true
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /products/{id}/followers/changelog:
     get:
       summary: List followers changelog of a product
@@ -1789,10 +1822,12 @@ paths:
                   time: '2024-01-01T00:00:00Z'
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /products/search:
     get:
       summary: Search products
-      description: Searches all products by name, code and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope.
+      description: Searches all products by name, code and/or custom fields. This endpoint is a wrapper of /v1/itemSearch with a narrower OAuth scope.
       x-token-cost: 20
       operationId: searchProducts
       tags:
@@ -1923,6 +1958,8 @@ paths:
                       custom_fields: []
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /products/{id}:
     delete:
       summary: Delete a product
@@ -2063,8 +2100,9 @@ paths:
                         properties:
                           billing_frequency_cycles:
                             default: null
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -2219,8 +2257,9 @@ paths:
               - type: object
                 properties:
                   billing_frequency_cycles:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     description: 'Only available in Growth and above plans
 
 
@@ -2319,8 +2358,9 @@ paths:
                         properties:
                           billing_frequency_cycles:
                             default: null
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -2381,6 +2421,8 @@ paths:
                       - type: number
                       - type: object
                         additionalProperties: true
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /products/{id}/duplicate:
     post:
       summary: Duplicate a product
@@ -2480,8 +2522,9 @@ paths:
                         properties:
                           billing_frequency_cycles:
                             default: null
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -2542,6 +2585,8 @@ paths:
                       - type: number
                       - type: object
                         additionalProperties: true
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /products/{id}/variations:
     get:
       summary: Get all product variations
@@ -2705,6 +2750,8 @@ paths:
                     cost: 2
                     direct_cost: 3
                     notes: This is the price for the upgraded mechanical pencil
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /products/{id}/variations/{product_variation_id}:
     patch:
       summary: Update a product variation
@@ -2833,6 +2880,8 @@ paths:
                 success: true
                 data:
                   id: 123
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /products/{id}/images:
     get:
       summary: Get image of a product
@@ -3070,6 +3119,8 @@ paths:
                 success: true
                 data:
                   id: 1
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -3116,3 +3167,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Leads API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Leads API
+  version: '1.0'
+  description: 'Operations tagged Leads across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Leads
-  description: 'Leads are potential deals stored in Leads Inbox before they are archived or converted to a deal. Each lead needs to be named (using the `title` field) and be linked to a person or an organization. In addition to that, a lead can contain most of the fields a deal can (such as `value` or `expected_close_date`).
-
-    '
+  description: Leads are potential deals stored in Leads Inbox before they are archived or converted to a deal. Each lead needs to be named (using the `title` field) and be linked to a person or an organization. In addition to that, a lead can contain most of the fields a deal can (such as `value` or `expected_close_date`).
 paths:
   /leads:
     get:
@@ -23,9 +20,7 @@ paths:
       tags:
       - Leads
       summary: Get all leads
-      description: 'Returns multiple not archived leads. Leads are sorted by the time they were created, from oldest to newest. Pagination can be controlled using `limit` and `start` query parameters. If a lead contains custom fields, the fields'' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field''s value hasn''t been set for the lead, it won''t appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields'' structure from deals.
-
-        '
+      description: Returns multiple not archived leads. Leads are sorted by the time they were created, from oldest to newest. Pagination can be controlled using `limit` and `start` query parameters. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields' structure from deals.
       x-token-cost: 20
       operationId: getLeads
       parameters:
@@ -123,12 +118,14 @@ paths:
                             type: string
                             format: uuid
                         person_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of a person which this lead is linked to
                         organization_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of an organization which this lead is linked to
                         source_name:
                           type: string
@@ -139,20 +136,24 @@ paths:
                           type: string
                           description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
                         origin_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
                         channel:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                         channel_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the Marketing channel.
                         source_deal_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of the deal if the lead was converted from a deal.
                         is_archived:
                           type: boolean
@@ -161,8 +162,9 @@ paths:
                           type: boolean
                           description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
                         value:
-                          type: object
-                          nullable: true
+                          type:
+                          - object
+                          - 'null'
                           description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
                           required:
                           - amount
@@ -173,13 +175,15 @@ paths:
                             currency:
                               type: string
                         expected_close_date:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date
-                          nullable: true
                           description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
                         next_activity_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of the next activity associated with the lead
                         add_time:
                           type: string
@@ -251,7 +255,7 @@ paths:
       tags:
       - Leads
       summary: Add a lead
-      description: Creates a lead. A lead always has to be linked to a person or an organization or both. All leads created through the Pipedrive API will have a lead source and origin set to `API`. Here's the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-lead" target="_blank" rel="noopener noreferrer">adding a lead</a>. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields' structure from deals. See an example given in the <a href="https://pipedrive.readme.io/docs/updating-custom-field-value" target="_blank" rel="noopener noreferrer">updating custom fields' values tutorial</a>.
+      description: Creates a lead. A lead always has to be linked to a person or an organization or both. All leads created through the Pipedrive API will have a lead source and origin set to `API`. Here's the tutorial for adding a lead. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields' structure from deals. See an example given in the updating custom fields' values tutorial.
       x-token-cost: 10
       operationId: addLead
       requestBody:
@@ -282,8 +286,9 @@ paths:
                   type: integer
                   description: The ID of an organization which this lead will be linked to. If the organization does not exist yet, it needs to be created first. This property is required unless `person_id` is specified.
                 value:
-                  type: object
-                  nullable: true
+                  type:
+                  - object
+                  - 'null'
                   description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
                   required:
                   - amount
@@ -311,16 +316,19 @@ paths:
                   type: boolean
                   description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
                 origin_id:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this lead. If omitted, `origin_id` will be set to null.
                 channel:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of Marketing channel this lead was created from. Provided value must be one of the channels configured for your company. You can fetch allowed values with <a href="https://developers.pipedrive.com/docs/api/v1/DealFields#getDealField" target="_blank" rel="noopener noreferrer">GET /v1/dealFields</a>. If omitted, channel will be set to null.
                 channel_id:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The optional ID to further distinguish the Marketing channel. If omitted, `channel_id` will be set to null.
       responses:
         '201':
@@ -357,12 +365,14 @@ paths:
                           type: string
                           format: uuid
                       person_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of a person which this lead is linked to
                       organization_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of an organization which this lead is linked to
                       source_name:
                         type: string
@@ -373,20 +383,24 @@ paths:
                         type: string
                         description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
                       origin_id:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
                       channel:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                       channel_id:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The optional ID to further distinguish the Marketing channel.
                       source_deal_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the deal if the lead was converted from a deal.
                       is_archived:
                         type: boolean
@@ -395,8 +409,9 @@ paths:
                         type: boolean
                         description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
                       value:
-                        type: object
-                        nullable: true
+                        type:
+                        - object
+                        - 'null'
                         description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
                         required:
                         - amount
@@ -407,13 +422,15 @@ paths:
                           currency:
                             type: string
                       expected_close_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
                       next_activity_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the next activity associated with the lead
                       add_time:
                         type: string
@@ -464,6 +481,8 @@ paths:
                   update_time: '2020-10-14T11:30:36.551Z'
                   visible_to: '3'
                   cc_email: company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com
+    servers:
+    - url: https://api.pipedrive.com/v1
   /leads/archived:
     get:
       security:
@@ -474,9 +493,7 @@ paths:
       tags:
       - Leads
       summary: Get all archived leads
-      description: 'Returns multiple archived leads. Leads are sorted by the time they were created, from oldest to newest. Pagination can be controlled using `limit` and `start` query parameters. If a lead contains custom fields, the fields'' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field''s value hasn''t been set for the lead, it won''t appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields'' structure from deals.
-
-        '
+      description: Returns multiple archived leads. Leads are sorted by the time they were created, from oldest to newest. Pagination can be controlled using `limit` and `start` query parameters. If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields' structure from deals.
       x-token-cost: 40
       operationId: getArchivedLeads
       parameters:
@@ -568,12 +585,14 @@ paths:
                             type: string
                             format: uuid
                         person_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of a person which this lead is linked to
                         organization_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of an organization which this lead is linked to
                         source_name:
                           type: string
@@ -584,20 +603,24 @@ paths:
                           type: string
                           description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
                         origin_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
                         channel:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                         channel_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the Marketing channel.
                         source_deal_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of the deal if the lead was converted from a deal.
                         is_archived:
                           type: boolean
@@ -606,8 +629,9 @@ paths:
                           type: boolean
                           description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
                         value:
-                          type: object
-                          nullable: true
+                          type:
+                          - object
+                          - 'null'
                           description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
                           required:
                           - amount
@@ -618,13 +642,15 @@ paths:
                             currency:
                               type: string
                         expected_close_date:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date
-                          nullable: true
                           description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
                         next_activity_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of the next activity associated with the lead
                         add_time:
                           type: string
@@ -688,6 +714,8 @@ paths:
                   update_time: '2020-10-14T11:30:36.551Z'
                   visible_to: '3'
                   cc_email: company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com
+    servers:
+    - url: https://api.pipedrive.com/v1
   /leads/{id}:
     get:
       security:
@@ -744,12 +772,14 @@ paths:
                           type: string
                           format: uuid
                       person_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of a person which this lead is linked to
                       organization_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of an organization which this lead is linked to
                       source_name:
                         type: string
@@ -760,20 +790,24 @@ paths:
                         type: string
                         description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
                       origin_id:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
                       channel:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                       channel_id:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The optional ID to further distinguish the Marketing channel.
                       source_deal_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the deal if the lead was converted from a deal.
                       is_archived:
                         type: boolean
@@ -782,8 +816,9 @@ paths:
                         type: boolean
                         description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
                       value:
-                        type: object
-                        nullable: true
+                        type:
+                        - object
+                        - 'null'
                         description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
                         required:
                         - amount
@@ -794,13 +829,15 @@ paths:
                           currency:
                             type: string
                       expected_close_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
                       next_activity_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the next activity associated with the lead
                       add_time:
                         type: string
@@ -869,12 +906,14 @@ paths:
                     type: string
                     description: A message describing how to solve the problem
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: false
@@ -890,7 +929,7 @@ paths:
       tags:
       - Leads
       summary: Update a lead
-      description: Updates one or more properties of a lead. Only properties included in the request will be updated. Send `null` to unset a property (applicable for example for `value`, `person_id` or `organization_id`). If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields’ structure from deals. See an example given in the <a href="https://pipedrive.readme.io/docs/updating-custom-field-value" target="_blank" rel="noopener noreferrer">updating custom fields’ values tutorial</a>.
+      description: Updates one or more properties of a lead. Only properties included in the request will be updated. Send `null` to unset a property (applicable for example for `value`, `person_id` or `organization_id`). If a lead contains custom fields, the fields' values will be included in the response in the same format as with the `Deals` endpoints. If a custom field's value hasn't been set for the lead, it won't appear in the response. Please note that leads do not have a separate set of custom fields, instead they inherit the custom fields’ structure from deals. See an example given in the updating custom fields’ values tutorial.
       x-token-cost: 10
       operationId: updateLead
       parameters:
@@ -909,8 +948,9 @@ paths:
               type: object
               properties:
                 title:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The name of the lead
                 owner_id:
                   type: integer
@@ -922,21 +962,24 @@ paths:
                     type: string
                     format: uuid
                 person_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: 'The ID of a person which this lead will be linked to. If the person does not exist yet, it needs to be created first. A lead always has to be linked to a person or organization or both.
 
                     '
                 organization_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of an organization which this lead will be linked to. If the organization does not exist yet, it needs to be created first. A lead always has to be linked to a person or organization or both.
                 is_archived:
                   type: boolean
                   description: A flag indicating whether the lead is archived or not
                 value:
-                  type: object
-                  nullable: true
+                  type:
+                  - object
+                  - 'null'
                   description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
                   required:
                   - amount
@@ -947,9 +990,10 @@ paths:
                     currency:
                       type: string
                 expected_close_date:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: date
-                  nullable: true
                   description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
                 visible_to:
                   type: string
@@ -965,12 +1009,14 @@ paths:
                   type: boolean
                   description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
                 channel:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of Marketing channel this lead was created from. Provided value must be one of the channels configured for your company which you can fetch with <a href="https://developers.pipedrive.com/docs/api/v1/DealFields#getDealField" target="_blank" rel="noopener noreferrer">GET /v1/dealFields</a>.
                 channel_id:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The optional ID to further distinguish the Marketing channel.
       responses:
         '200':
@@ -1007,12 +1053,14 @@ paths:
                           type: string
                           format: uuid
                       person_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of a person which this lead is linked to
                       organization_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of an organization which this lead is linked to
                       source_name:
                         type: string
@@ -1023,20 +1071,24 @@ paths:
                         type: string
                         description: The way this Lead was created. `origin` field is set by Pipedrive when Lead is created and cannot be changed.
                       origin_id:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The optional ID to further distinguish the origin of the lead - e.g. Which API integration created this Lead.
                       channel:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                       channel_id:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The optional ID to further distinguish the Marketing channel.
                       source_deal_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the deal if the lead was converted from a deal.
                       is_archived:
                         type: boolean
@@ -1045,8 +1097,9 @@ paths:
                         type: boolean
                         description: A flag indicating whether the lead was seen by someone in the Pipedrive UI
                       value:
-                        type: object
-                        nullable: true
+                        type:
+                        - object
+                        - 'null'
                         description: 'The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. Both amount and currency are required.'
                         required:
                         - amount
@@ -1057,13 +1110,15 @@ paths:
                           currency:
                             type: string
                       expected_close_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.'
                       next_activity_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the next activity associated with the lead
                       add_time:
                         type: string
@@ -1132,12 +1187,14 @@ paths:
                     type: string
                     description: A message describing how to solve the problem
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: false
@@ -1203,12 +1260,14 @@ paths:
                     type: string
                     description: A message describing how to solve the problem
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: false
@@ -1216,6 +1275,8 @@ paths:
                 error_info: Object was not found.
                 data: null
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /leads/{id}/permittedUsers:
     get:
       summary: List permitted users
@@ -1263,10 +1324,12 @@ paths:
                 - 10100010
                 - 22302444
                 - 33511023
+    servers:
+    - url: https://api.pipedrive.com/v1
   /leads/search:
     get:
       summary: Search leads
-      description: Searches all leads by title, notes and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope. Found leads can be filtered by the person ID and the organization ID.
+      description: Searches all leads by title, notes and/or custom fields. This endpoint is a wrapper of /v1/itemSearch with a narrower OAuth scope. Found leads can be filtered by the person ID and the organization ID.
       x-token-cost: 40
       operationId: searchLeads
       tags:
@@ -1479,6 +1542,8 @@ paths:
                     more_items_in_collection:
                       type: boolean
                       description: If there are more list items in the collection than displayed or not
+    servers:
+    - url: https://api.pipedrive.com/v1
   /leads/{id}/convert/deal:
     post:
       security:
@@ -1488,7 +1553,7 @@ paths:
       tags:
       - Leads
       summary: Convert a lead to a deal
-      description: Initiates a conversion of a lead to a deal. The return value is an ID of a job that was assigned to perform the conversion. Related entities (notes, files, emails, activities, ...) are transferred during the process to the target entity. If the conversion is successful, the lead is marked as deleted. To retrieve the created entity ID and the result of the conversion, call the <a href="https://developers.pipedrive.com/docs/api/v1/Leads#getLeadConversionStatus">/api/v2/leads/{lead_id}/convert/status/{conversion_id}</a> endpoint.
+      description: Initiates a conversion of a lead to a deal. The return value is an ID of a job that was assigned to perform the conversion. Related entities (notes, files, emails, activities, ...) are transferred during the process to the target entity. If the conversion is successful, the lead is marked as deleted. To retrieve the created entity ID and the result of the conversion, call the /api/v2/leads/{lead_id}/convert/status/{conversion_id} endpoint.
       operationId: convertLeadToDeal
       x-token-cost: 40
       parameters:
@@ -1534,8 +1599,9 @@ paths:
                         type: string
                         format: uuid
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -1560,12 +1626,14 @@ paths:
                     type: string
                     description: A message describing how to solve the problem
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: false
@@ -1573,6 +1641,8 @@ paths:
                 error_info: Object was not found.
                 data: null
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /leads/{id}/convert/status/{conversion_id}:
     get:
       security:
@@ -1650,8 +1720,9 @@ paths:
                         - failed
                         - rejected
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '404':
           description: A resource describing an error
@@ -1671,12 +1742,14 @@ paths:
                     type: string
                     description: A message describing how to solve the problem
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: false
@@ -1684,6 +1757,8 @@ paths:
                 error_info: Object was not found.
                 data: null
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -1730,3 +1805,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

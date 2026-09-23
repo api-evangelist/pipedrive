@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities CallLogs API
+  title: Pipedrive API v1 Call Logs API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Call logs describe the outcome of a phone call managed by an integrated provider. Since these logs are also considered activities, they can be associated with a deal or a lead, a person and/or an organization. Call logs do differ from other activities, as they only receive the information needed to describe the phone call.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
-- name: CallLogs
-  description: 'Call logs describe the outcome of a phone call managed by an integrated provider. Since these logs are also considered activities, they can be associated with a deal or a lead, a person and/or an organization. Call logs do differ from other activities, as they only receive the information needed to describe the phone call.
-
-    '
+- name: Call Logs
+  description: Call logs describe the outcome of a phone call managed by an integrated provider. Since these logs are also considered activities, they can be associated with a deal or a lead, a person and/or an organization. Call logs do differ from other activities, as they only receive the information needed to describe the phone call.
 paths:
   /callLogs:
     post:
@@ -20,7 +16,7 @@ paths:
       - oauth2:
         - phone-integration
       tags:
-      - CallLogs
+      - Call Logs
       summary: Add a call log
       description: Adds a new call log.
       x-token-cost: 10
@@ -214,12 +210,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '403':
           description: You don't have permission to access the resource.
@@ -241,12 +239,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '404':
           description: A resource required to process the request was not found.
@@ -268,12 +268,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '500':
           description: There was an error processing the request.
@@ -295,12 +297,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
     get:
       security:
@@ -308,7 +312,7 @@ paths:
       - oauth2:
         - phone-integration
       tags:
-      - CallLogs
+      - Call Logs
       summary: Get all call logs assigned to a particular user
       description: Returns all call logs assigned to a particular user.
       x-token-cost: 20
@@ -473,7 +477,7 @@ paths:
       - oauth2:
         - phone-integration
       tags:
-      - CallLogs
+      - Call Logs
       summary: Delete a call log
       description: Deletes a call log. If there is an audio recording attached to it, it will also be deleted. The related activity will not be removed by this request. If you want to remove the related activities, please use the endpoint which is specific for activities.
       x-token-cost: 6
@@ -520,12 +524,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '404':
           description: A resource required to process the request was not found.
@@ -547,12 +553,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '410':
           description: The callLog you are trying to access is no longer available.
@@ -574,12 +582,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '500':
           description: There was an error processing the request.
@@ -601,12 +611,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
     get:
       security:
@@ -614,7 +626,7 @@ paths:
       - oauth2:
         - phone-integration
       tags:
-      - CallLogs
+      - Call Logs
       summary: Get details of a call log
       description: Returns details of a specific call log.
       x-token-cost: 2
@@ -752,12 +764,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
   /callLogs/{id}/recordings:
     post:
@@ -766,7 +780,7 @@ paths:
       - oauth2:
         - phone-integration
       tags:
-      - CallLogs
+      - Call Logs
       summary: Attach an audio file to the call log
       description: Adds an audio recording to the call log. That audio can be played by those who have access to the call log object.
       x-token-cost: 10
@@ -826,12 +840,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '409':
           description: Recording for this call already exists.
@@ -853,12 +869,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '500':
           description: There was an error processing the request.
@@ -880,12 +898,14 @@ paths:
                     description: A message describing how to solve the problem
                     example: Please check developers.pipedrive.com for more information about Pipedrive API.
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
 components:
   securitySchemes:

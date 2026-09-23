@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Oauth API
+  title: Pipedrive API v1 OAUTH API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace. Authorization via OAuth 2.0 is a well-known and stable way to get fine-grained access to an API. To retrieve OAuth2 tokens you should send requests to the `https://oauth.pipedrive.com` domain. After registering the app, you must add the necessary server-side logic to your app to establish the OAuth flow. Please read more about authorization step on the Pipedrive Developers page.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
-- name: Oauth
-  description: 'Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace. Authorization via OAuth 2.0 is a well-known and stable way to get fine-grained access to an API. To retrieve OAuth2 tokens you should send requests to the `https://oauth.pipedrive.com` domain. After registering the app, you must add the necessary server-side logic to your app to establish the OAuth flow. Please read more about authorization step on the [Pipedrive Developers page](https://pipedrive.readme.io/docs/marketplace-oauth-authorization).
-
-    '
+- name: OAuth
+  description: Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace. Authorization via OAuth 2.0 is a well-known and stable way to get fine-grained access to an API. To retrieve OAuth2 tokens you should send requests to the `https://oauth.pipedrive.com` domain. After registering the app, you must add the necessary server-side logic to your app to establish the OAuth flow. Please read more about authorization step on the Pipedrive Developers page.
 paths:
   /oauth/authorize:
     get:
@@ -22,7 +18,7 @@ paths:
       servers:
       - url: https://oauth.pipedrive.com
       tags:
-      - Oauth
+      - OAuth
       parameters:
       - in: query
         name: client_id
@@ -60,7 +56,7 @@ paths:
       servers:
       - url: https://oauth.pipedrive.com
       tags:
-      - Oauth
+      - OAuth
       security:
       - basic_authentication: []
       parameters:
@@ -133,7 +129,7 @@ paths:
       servers:
       - url: https://oauth.pipedrive.com
       tags:
-      - Oauth
+      - OAuth
       security:
       - basic_authentication: []
       parameters:

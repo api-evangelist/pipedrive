@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Mailbox API
+  title: Pipedrive API v1 Mailbox API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: 'Mailbox was designed to be the email control hub inside Pipedrive. Pipedrive supports all major providers (including Gmail, Outlook and also custom IMAP/SMTP). There are 2 options for syncing user emails: 2-way sync: Mail Connection is established with the mail provider (example Gmail). There can be only 1 active Mail Connection per user in company. 1-way sync: SmartBCC feature which stores the copies of email messages to Pipedrive by adding the SmartBCC specific address to mail recipients.'
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: Mailbox
-  description: 'Mailbox was designed to be the email control hub inside Pipedrive. Pipedrive supports all major providers (including Gmail, Outlook and also custom IMAP/SMTP). There are 2 options for syncing user emails: 2-way sync: Mail Connection is established with the mail provider (example Gmail). There can be only 1 active Mail Connection per user in company. 1-way sync: SmartBCC feature which stores the copies of email messages to Pipedrive by adding the SmartBCC specific address to mail recipients.
-
-    '
+  description: 'Mailbox was designed to be the email control hub inside Pipedrive. Pipedrive supports all major providers (including Gmail, Outlook and also custom IMAP/SMTP). There are 2 options for syncing user emails: 2-way sync: Mail Connection is established with the mail provider (example Gmail). There can be only 1 active Mail Connection per user in company. 1-way sync: SmartBCC feature which stores the copies of email messages to Pipedrive by adding the SmartBCC specific address to mail recipients.'
 paths:
   /mailbox/mailMessages/{id}:
     get:
@@ -190,8 +186,9 @@ paths:
                           type: string
                           description: The snippet of mail message. Snippet length is up to 225 characters.
                         mail_tracking_status:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The status of tracking mail message. Value is `null` if tracking is not enabled.
                           enum:
                           - opened
@@ -463,8 +460,9 @@ paths:
                                 - 0
                                 - 1
                             mail_tracking_status:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Mail tracking status
                             has_attachments_flag:
                               description: Whether the mail thread has an attachment
@@ -567,8 +565,9 @@ paths:
                                         type: integer
                                         description: ID of the mail message party
                                       linked_organization_id:
-                                        type: integer
-                                        nullable: true
+                                        type:
+                                        - integer
+                                        - 'null'
                                         description: Linked Organization ID
                                 from:
                                   type: array
@@ -602,8 +601,9 @@ paths:
                                         type: integer
                                         description: ID of the mail message party
                                       linked_organization_id:
-                                        type: integer
-                                        nullable: true
+                                        type:
+                                        - integer
+                                        - 'null'
                                         description: Linked Organization ID
                             drafts_parties:
                               type: array
@@ -619,8 +619,9 @@ paths:
                               type: number
                               description: Version
                             snippet_draft:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: A snippet from a draft
                             snippet_sent:
                               type: string
@@ -693,9 +694,10 @@ paths:
                               format: date-time
                               description: The time when the mail thread has had the first message received or created
                             last_message_sent_timestamp:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: The last time when the mail thread has had a message sent
                             last_message_received_timestamp:
                               type: string
@@ -710,17 +712,20 @@ paths:
                               format: date-time
                               description: The time when the mail thread was updated in database received
                             deal_id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of the deal
                             deal_status:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Status of the deal
                             lead_id:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: uuid
-                              nullable: true
                               description: The ID of the lead
                             all_messages_sent_flag:
                               type: number
@@ -904,8 +909,9 @@ paths:
                                 - 0
                                 - 1
                             mail_tracking_status:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Mail tracking status
                             has_attachments_flag:
                               description: Whether the mail thread has an attachment
@@ -1008,8 +1014,9 @@ paths:
                                         type: integer
                                         description: ID of the mail message party
                                       linked_organization_id:
-                                        type: integer
-                                        nullable: true
+                                        type:
+                                        - integer
+                                        - 'null'
                                         description: Linked Organization ID
                                 from:
                                   type: array
@@ -1043,8 +1050,9 @@ paths:
                                         type: integer
                                         description: ID of the mail message party
                                       linked_organization_id:
-                                        type: integer
-                                        nullable: true
+                                        type:
+                                        - integer
+                                        - 'null'
                                         description: Linked Organization ID
                             drafts_parties:
                               type: array
@@ -1060,8 +1068,9 @@ paths:
                               type: number
                               description: Version
                             snippet_draft:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: A snippet from a draft
                             snippet_sent:
                               type: string
@@ -1134,9 +1143,10 @@ paths:
                               format: date-time
                               description: The time when the mail thread has had the first message received or created
                             last_message_sent_timestamp:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: The last time when the mail thread has had a message sent
                             last_message_received_timestamp:
                               type: string
@@ -1151,17 +1161,20 @@ paths:
                               format: date-time
                               description: The time when the mail thread was updated in database received
                             deal_id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of the deal
                             deal_status:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Status of the deal
                             lead_id:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: uuid
-                              nullable: true
                               description: The ID of the lead
                             all_messages_sent_flag:
                               type: number
@@ -1332,8 +1345,9 @@ paths:
                               - 0
                               - 1
                           mail_tracking_status:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: Mail tracking status
                           has_attachments_flag:
                             description: Whether the mail thread has an attachment
@@ -1436,8 +1450,9 @@ paths:
                                       type: integer
                                       description: ID of the mail message party
                                     linked_organization_id:
-                                      type: integer
-                                      nullable: true
+                                      type:
+                                      - integer
+                                      - 'null'
                                       description: Linked Organization ID
                               from:
                                 type: array
@@ -1471,8 +1486,9 @@ paths:
                                       type: integer
                                       description: ID of the mail message party
                                     linked_organization_id:
-                                      type: integer
-                                      nullable: true
+                                      type:
+                                      - integer
+                                      - 'null'
                                       description: Linked Organization ID
                           drafts_parties:
                             type: array
@@ -1488,8 +1504,9 @@ paths:
                             type: number
                             description: Version
                           snippet_draft:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: A snippet from a draft
                           snippet_sent:
                             type: string
@@ -1562,9 +1579,10 @@ paths:
                             format: date-time
                             description: The time when the mail thread has had the first message received or created
                           last_message_sent_timestamp:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: date-time
-                            nullable: true
                             description: The last time when the mail thread has had a message sent
                           last_message_received_timestamp:
                             type: string
@@ -1579,17 +1597,20 @@ paths:
                             format: date-time
                             description: The time when the mail thread was updated in database received
                           deal_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of the deal
                           deal_status:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: Status of the deal
                           lead_id:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: uuid
-                            nullable: true
                             description: The ID of the lead
                           all_messages_sent_flag:
                             type: number
@@ -1707,8 +1728,9 @@ paths:
                                 - 0
                                 - 1
                             mail_tracking_status:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Mail tracking status
                             has_attachments_flag:
                               description: Whether the mail thread has an attachment
@@ -1807,8 +1829,9 @@ paths:
                                     type: integer
                                     description: ID of the mail message party
                                   linked_organization_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: Linked Organization ID
                             to:
                               type: array
@@ -1842,8 +1865,9 @@ paths:
                                     type: integer
                                     description: ID of the mail message party
                                   linked_organization_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: Linked Organization ID
                             cc:
                               type: array
@@ -1877,8 +1901,9 @@ paths:
                                     type: integer
                                     description: ID of the mail message party
                                   linked_organization_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: Linked Organization ID
                             bcc:
                               type: array
@@ -1912,8 +1937,9 @@ paths:
                                     type: integer
                                     description: ID of the mail message party
                                   linked_organization_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: Linked Organization ID
                             body_url:
                               type: string
@@ -1922,8 +1948,9 @@ paths:
                               type: integer
                               description: ID of the mail thread
                             draft:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: If the mail message has a draft status then the value is the mail message object as JSON formatted string, otherwise `null`.
                             has_body_flag:
                               type: number

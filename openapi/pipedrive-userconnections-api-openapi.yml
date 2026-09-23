@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities UserConnections API
+  title: Pipedrive API v1 User Connections API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Manage user connections.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: UserConnections
-  description: 'Manage user connections.
-
-    '
+  description: Manage user connections.
 paths:
   /userConnections:
     get:

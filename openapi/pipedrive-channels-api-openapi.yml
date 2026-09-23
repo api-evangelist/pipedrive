@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Channels API
+  title: Pipedrive API v1 Channels API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: 'Channels API allows you to integrate your existing messaging channels into Pipedrive through Messaging app extension. It enables you to manage and interact with the channel’s conversations, participants and messages inside Pipedrive Messaging inbox: get the historical conversation, receive and send new messages. These endpoints are accessible only through **Messengers integration** OAuth scope together with Messaging manifest in building the Messaging app extension.'
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: Channels
-  description: 'Channels API allows you to integrate your existing messaging channels into Pipedrive through [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension). It enables you to manage and interact with the channel’s conversations, participants and messages inside Pipedrive Messaging inbox: get the historical conversation, receive and send new messages. These endpoints are accessible only through **Messengers integration** OAuth scope together with Messaging manifest in building the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
-
-    '
+  description: 'Channels API allows you to integrate your existing messaging channels into Pipedrive through Messaging app extension. It enables you to manage and interact with the channel’s conversations, participants and messages inside Pipedrive Messaging inbox: get the historical conversation, receive and send new messages. These endpoints are accessible only through **Messengers integration** OAuth scope together with Messaging manifest in building the Messaging app extension.'
 paths:
   /channels:
     post:
@@ -23,7 +19,7 @@ paths:
       tags:
       - Channels
       summary: Add a channel
-      description: Adds a new messaging channel, only admins are able to register new channels. It will use the getConversations endpoint to fetch conversations, participants and messages afterward. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+      description: Adds a new messaging channel, only admins are able to register new channels. It will use the getConversations endpoint to fetch conversations, participants and messages afterward. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the Messaging app extension.
       x-token-cost: 10
       operationId: addChannel
       requestBody:
@@ -186,7 +182,7 @@ paths:
       tags:
       - Channels
       summary: Delete a channel
-      description: Deletes an existing messenger’s channel and all related entities (conversations and messages). To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+      description: Deletes an existing messenger’s channel and all related entities (conversations and messages). To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the Messaging app extension.
       x-token-cost: 6
       operationId: deleteChannel
       parameters:
@@ -244,7 +240,7 @@ paths:
       tags:
       - Channels
       summary: Receives an incoming message
-      description: Adds a message to a conversation. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+      description: Adds a message to a conversation. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the Messaging app extension.
       x-token-cost: 10
       operationId: receiveMessage
       requestBody:
@@ -472,7 +468,7 @@ paths:
       tags:
       - Channels
       summary: Delete a conversation
-      description: Deletes an existing conversation. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the [Messaging app extension](https://pipedrive.readme.io/docs/messaging-app-extension).
+      description: Deletes an existing conversation. To use the endpoint, you need to have **Messengers integration** OAuth scope enabled and the Messaging manifest ready for the Messaging app extension.
       x-token-cost: 6
       operationId: deleteConversation
       parameters:

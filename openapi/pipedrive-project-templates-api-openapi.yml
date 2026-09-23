@@ -1,26 +1,23 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities ProjectTemplates API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Project Templates API
+  version: '1.0'
+  description: 'Operations tagged ProjectTemplates across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
-- name: ProjectTemplates
-  description: 'Project templates allow you to have reusable and dynamic structure to simplify creation of a project. Project template can contain information about activities, tasks and groups that will be used when creating a project.
-
-    '
+- name: Project Templates
+  description: Project templates allow you to have reusable and dynamic structure to simplify creation of a project. Project template can contain information about activities, tasks and groups that will be used when creating a project.
 paths:
   /projectTemplates:
     get:
       summary: Get all project templates
-      description: Returns all not deleted project templates. This is a cursor-paginated endpoint. For more information, please refer to our documentation on <a href="https://pipedrive.readme.io/docs/core-api-concepts-pagination" target="_blank" rel="noopener noreferrer">pagination</a>.
+      description: Returns all not deleted project templates. This is a cursor-paginated endpoint. For more information, please refer to our documentation on pagination.
       x-token-cost: 20
       operationId: getProjectTemplates
       tags:
-      - ProjectTemplates
+      - Project Templates
       security:
       - api_key: []
       - oauth2:
@@ -99,6 +96,8 @@ paths:
                   update_time: '2023-09-14 08:14:40.288'
                 additional_data:
                   next_cursor: eyJhY3Rpdml0aWVzIjoyN30
+    servers:
+    - url: https://api.pipedrive.com/v1
   /projectTemplates/{id}:
     get:
       summary: Get details of a template
@@ -106,7 +105,7 @@ paths:
       x-token-cost: 2
       operationId: getProjectTemplate
       tags:
-      - ProjectTemplates
+      - Project Templates
       security:
       - api_key: []
       - oauth2:
@@ -158,8 +157,9 @@ paths:
                           type: string
                           description: 'The update date and time of the template in UTC. Format: YYYY-MM-DD HH:MM:SS.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -172,6 +172,8 @@ paths:
                   add_time: '2023-09-14 08:14:40.288'
                   update_time: '2023-09-14 08:14:40.288'
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
 components:
   securitySchemes:
     basic_authentication:
@@ -218,3 +220,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

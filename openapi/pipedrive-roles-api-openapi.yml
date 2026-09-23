@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Roles API
+  title: Pipedrive API v1 Roles API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Roles are a part of the Visibility groups’ feature that allow the admin user to categorize other users and dictate what items they will be allowed access to see.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: Roles
-  description: 'Roles are a part of the Visibility groups’ feature that allow the admin user to categorize other users and dictate what items they will be allowed access to see.
-
-    '
+  description: Roles are a part of the Visibility groups’ feature that allow the admin user to categorize other users and dictate what items they will be allowed access to see.
 paths:
   /roles:
     get:
@@ -66,8 +62,9 @@ paths:
                             type: object
                             properties:
                               parent_role_id:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 description: The ID of the parent role
                               name:
                                 type: string
@@ -163,8 +160,9 @@ paths:
                   type: string
                   description: The name of the role
                 parent_role_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of the parent role
       responses:
         '200':
@@ -287,8 +285,9 @@ paths:
                         type: object
                         properties:
                           parent_role_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of the parent role
                           name:
                             type: string
@@ -386,8 +385,9 @@ paths:
               type: object
               properties:
                 parent_role_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of the parent role
                 name:
                   type: string
@@ -537,8 +537,9 @@ paths:
                           type: object
                           properties:
                             parent_role_id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of the parent role
                             name:
                               type: string
@@ -813,7 +814,7 @@ paths:
   /roles/{id}/pipelines:
     get:
       summary: List pipeline visibility for a role
-      description: Returns the list of either visible or hidden pipeline IDs for a specific role. For more information on pipeline visibility, please refer to the <a href="https://support.pipedrive.com/en/article/visibility-groups" target="_blank" rel="noopener noreferrer">Visibility groups article</a>.
+      description: Returns the list of either visible or hidden pipeline IDs for a specific role. For more information on pipeline visibility, please refer to the Visibility groups article.
       x-token-cost: 20
       operationId: getRolePipelines
       tags:
@@ -873,7 +874,7 @@ paths:
                   visible: true
     put:
       summary: Update pipeline visibility for a role
-      description: Updates the specified pipelines to be visible and/or hidden for a specific role. For more information on pipeline visibility, please refer to the <a href="https://support.pipedrive.com/en/article/visibility-groups" target="_blank" rel="noopener noreferrer">Visibility groups article</a>.
+      description: Updates the specified pipelines to be visible and/or hidden for a specific role. For more information on pipeline visibility, please refer to the Visibility groups article.
       x-token-cost: 10
       operationId: updateRolePipelines
       tags:

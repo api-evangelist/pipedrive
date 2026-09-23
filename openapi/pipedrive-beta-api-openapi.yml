@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Beta API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive API v2 Beta API
+  version: 2.0.0
+  description: Beta endpoints are endpoints that may have changes without a regular 60-90 day notice period.
 servers:
-- url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Beta
-  description: 'Beta endpoints are endpoints that may have changes without a regular 60-90 day notice period.
-
-    '
+  description: Beta endpoints are endpoints that may have changes without a regular 60-90 day notice period.
 paths:
   /projectFields:
     get:
@@ -106,8 +102,9 @@ paths:
                           - projects_board
                           - projects_phase
                         options:
-                          type: array
-                          nullable: true
+                          type:
+                          - array
+                          - 'null'
                           description: Array of available options for enum/set fields, null for other field types
                           items:
                             type: object
@@ -119,22 +116,26 @@ paths:
                                 type: string
                                 description: The option display label
                               color:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Optional color code for the option
                               update_time:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 format: date-time
-                                nullable: true
                                 description: When the option was last updated
                               add_time:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 format: date-time
-                                nullable: true
                                 description: When the option was created
                         subfields:
-                          type: array
-                          nullable: true
+                          type:
+                          - array
+                          - 'null'
                           description: Array of subfields for complex field types (address, monetary), null for simple field types
                           items:
                             type: object
@@ -187,8 +188,9 @@ paths:
                     type: object
                     properties:
                       next_cursor:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: Base64url-encoded cursor for fetching the next page of results, null if no more pages
               example:
                 success: true
@@ -389,8 +391,9 @@ paths:
                         - projects_board
                         - projects_phase
                       options:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of available options for enum/set fields, null for other field types
                         items:
                           type: object
@@ -402,22 +405,26 @@ paths:
                               type: string
                               description: The option display label
                             color:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Optional color code for the option
                             update_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was last updated
                             add_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was created
                       subfields:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of subfields for complex field types (address, monetary), null for simple field types
                         items:
                           type: object
@@ -575,8 +582,9 @@ paths:
                         - projects_board
                         - projects_phase
                       options:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of available options for enum/set fields, null for other field types
                         items:
                           type: object
@@ -588,22 +596,26 @@ paths:
                               type: string
                               description: The option display label
                             color:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Optional color code for the option
                             update_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was last updated
                             add_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was created
                       subfields:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of subfields for complex field types (address, monetary), null for simple field types
                         items:
                           type: object
@@ -802,8 +814,9 @@ paths:
                         - projects_board
                         - projects_phase
                       options:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of available options for enum/set fields, null for other field types
                         items:
                           type: object
@@ -815,22 +828,26 @@ paths:
                               type: string
                               description: The option display label
                             color:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: Optional color code for the option
                             update_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was last updated
                             add_time:
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               format: date-time
-                              nullable: true
                               description: When the option was created
                       subfields:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of subfields for complex field types (address, monetary), null for simple field types
                         items:
                           type: object
@@ -945,14 +962,16 @@ paths:
                         type: string
                         description: The type of the field
                       options:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of available options for enum/set fields, null for other field types
                         items:
                           type: object
                       subfields:
-                        type: array
-                        nullable: true
+                        type:
+                        - array
+                        - 'null'
                         description: Array of subfields for complex field types, null for simple field types
                         items:
                           type: object
@@ -1033,8 +1052,9 @@ paths:
                           type: string
                           description: The display label of the option
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
@@ -1099,8 +1119,9 @@ paths:
                           type: string
                           description: The display label of the option
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
@@ -1171,8 +1192,9 @@ paths:
                           type: string
                           description: The display label of the option
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
@@ -1182,7 +1204,7 @@ paths:
   /projects/search:
     get:
       summary: Search projects
-      description: Searches all projects by title, description, notes and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope. Found projects can be filtered by person ID or organization ID.
+      description: Searches all projects by title, description, notes and/or custom fields. This endpoint is a wrapper of /v1/itemSearch with a narrower OAuth scope. Found projects can be filtered by person ID or organization ID.
       x-token-cost: 20
       operationId: searchProjects
       tags:
@@ -1278,23 +1300,27 @@ paths:
                                     type: string
                                     description: The title of the project
                                   status:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The status of the project
                                   owner:
                                     type: object
                                     properties:
                                       id:
-                                        type: integer
-                                        nullable: true
+                                        type:
+                                        - integer
+                                        - 'null'
                                         description: The ID of the owner of the project
                                   board_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: The ID of the board the project belongs to
                                   phase:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
@@ -1303,52 +1329,61 @@ paths:
                                         type: string
                                         description: The name of the phase
                                   person:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
                                         description: The ID of the person the project is associated with
                                       name:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The name of the person the project is associated with
                                   organization:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
                                         description: The ID of the organization the project is associated with
                                       name:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The name of the organization the project is associated with
                                       address:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The address of the organization the project is associated with
                                   deal:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
                                         description: The ID of the deal the project is associated with
                                       title:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The title of the deal the project is associated with
                                   deal_count:
                                     type: integer
                                     description: The number of deals associated with the project
                                   description:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The description of the project
                                   end_date:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The end date of the project
                                   custom_fields:
                                     type: array
@@ -1485,8 +1520,9 @@ paths:
                           type: integer
                           description: The ID of the user who created the task
                         description:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The description of the task
                         project_id:
                           type: integer
@@ -1498,18 +1534,21 @@ paths:
                           type: boolean
                           description: Whether the task is a milestone or not.
                         due_date:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date
-                          nullable: true
                           description: 'The due date of the task. Format: YYYY-MM-DD.'
                         start_date:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date
-                          nullable: true
                           description: 'The start date of the task. Format: YYYY-MM-DD.'
                         parent_task_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of the parent task. If `null`, the task is a root-level task.
                         assignee_ids:
                           type: array
@@ -1517,9 +1556,10 @@ paths:
                             type: integer
                           description: The IDs of users assigned to the task
                         priority:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           minimum: 0
-                          nullable: true
                           description: The priority of the task
                         add_time:
                           type: string
@@ -1528,8 +1568,9 @@ paths:
                           type: string
                           description: The update date and time of the task in ISO 8601 format
                         marked_as_done_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time the task was marked as done in ISO 8601 format
                   additional_data:
                     description: The additional data of the list
@@ -1591,12 +1632,14 @@ paths:
                   type: integer
                   description: The ID of the project this task is associated with
                 parent_task_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of the parent task. Cannot be the ID of a task that is already a subtask.
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The description of the task
                 done:
                   type: integer
@@ -1611,18 +1654,21 @@ paths:
                   - 1
                   description: Whether the task is a milestone or not. `0` = Not a milestone, `1` = Milestone.
                 due_date:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: date
-                  nullable: true
                   description: 'The due date of the task. Format: YYYY-MM-DD.'
                 start_date:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: date
-                  nullable: true
                   description: 'The start date of the task. Format: YYYY-MM-DD.'
                 assignee_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of the user assigned to the task. When set, the `assignee_ids` field will be overwritten with this value.
                 assignee_ids:
                   type: array
@@ -1631,9 +1677,10 @@ paths:
                   maxItems: 10
                   description: The IDs of users assigned to the task. When set, the `assignee_id` field will be set to the first value in this array, or `null` if empty.
                 priority:
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   minimum: 0
-                  nullable: true
                   description: The priority of the task
       responses:
         '201':
@@ -1662,8 +1709,9 @@ paths:
                         type: integer
                         description: The ID of the user who created the task
                       description:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The description of the task
                       project_id:
                         type: integer
@@ -1675,18 +1723,21 @@ paths:
                         type: boolean
                         description: Whether the task is a milestone or not.
                       due_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The due date of the task. Format: YYYY-MM-DD.'
                       start_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The start date of the task. Format: YYYY-MM-DD.'
                       parent_task_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the parent task. If `null`, the task is a root-level task.
                       assignee_ids:
                         type: array
@@ -1694,9 +1745,10 @@ paths:
                           type: integer
                         description: The IDs of users assigned to the task
                       priority:
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         minimum: 0
-                        nullable: true
                         description: The priority of the task
                       add_time:
                         type: string
@@ -1705,12 +1757,14 @@ paths:
                         type: string
                         description: The update date and time of the task in ISO 8601 format
                       marked_as_done_time:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The date and time the task was marked as done in ISO 8601 format
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -1780,8 +1834,9 @@ paths:
                         type: integer
                         description: The ID of the user who created the task
                       description:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The description of the task
                       project_id:
                         type: integer
@@ -1793,18 +1848,21 @@ paths:
                         type: boolean
                         description: Whether the task is a milestone or not.
                       due_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The due date of the task. Format: YYYY-MM-DD.'
                       start_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The start date of the task. Format: YYYY-MM-DD.'
                       parent_task_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the parent task. If `null`, the task is a root-level task.
                       assignee_ids:
                         type: array
@@ -1812,9 +1870,10 @@ paths:
                           type: integer
                         description: The IDs of users assigned to the task
                       priority:
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         minimum: 0
-                        nullable: true
                         description: The priority of the task
                       add_time:
                         type: string
@@ -1823,12 +1882,14 @@ paths:
                         type: string
                         description: The update date and time of the task in ISO 8601 format
                       marked_as_done_time:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The date and time the task was marked as done in ISO 8601 format
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -1885,12 +1946,14 @@ paths:
                   type: integer
                   description: The ID of the project this task is associated with
                 parent_task_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of the parent task. Cannot be the ID of a task that is already a subtask.
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The description of the task
                 done:
                   type: integer
@@ -1905,18 +1968,21 @@ paths:
                   - 1
                   description: Whether the task is a milestone or not. `0` = Not a milestone, `1` = Milestone.
                 due_date:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: date
-                  nullable: true
                   description: 'The due date of the task. Format: YYYY-MM-DD.'
                 start_date:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: date
-                  nullable: true
                   description: 'The start date of the task. Format: YYYY-MM-DD.'
                 assignee_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of the user assigned to the task. When set, the `assignee_ids` field will be overwritten with this value.
                 assignee_ids:
                   type: array
@@ -1925,9 +1991,10 @@ paths:
                   maxItems: 10
                   description: The IDs of users assigned to the task. When set, the `assignee_id` field will be set to the first value in this array, or `null` if empty.
                 priority:
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   minimum: 0
-                  nullable: true
                   description: The priority of the task
       responses:
         '200':
@@ -1956,8 +2023,9 @@ paths:
                         type: integer
                         description: The ID of the user who created the task
                       description:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The description of the task
                       project_id:
                         type: integer
@@ -1969,18 +2037,21 @@ paths:
                         type: boolean
                         description: Whether the task is a milestone or not.
                       due_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The due date of the task. Format: YYYY-MM-DD.'
                       start_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The start date of the task. Format: YYYY-MM-DD.'
                       parent_task_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the parent task. If `null`, the task is a root-level task.
                       assignee_ids:
                         type: array
@@ -1988,9 +2059,10 @@ paths:
                           type: integer
                         description: The IDs of users assigned to the task
                       priority:
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         minimum: 0
-                        nullable: true
                         description: The priority of the task
                       add_time:
                         type: string
@@ -1999,12 +2071,14 @@ paths:
                         type: string
                         description: The update date and time of the task in ISO 8601 format
                       marked_as_done_time:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The date and time the task was marked as done in ISO 8601 format
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -2064,8 +2138,9 @@ paths:
                         type: integer
                         description: The ID of the deleted task
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -2119,8 +2194,9 @@ paths:
                           type: string
                           description: The update date and time of the board in ISO 8601 format
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
@@ -2422,8 +2498,9 @@ paths:
                           type: string
                           description: The update date and time of the phase in ISO 8601 format
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
               example:
                 success: true
                 data:
@@ -2717,9 +2794,6 @@ components:
             contacts:full: Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields
             products:read: Read products, its fields, files, followers and products connected to a deal
             products:full: Create, read, update and delete products and its fields; add products to deals
-            deal-fields:full: Create, read, update and delete deal fields
-            product-fields:full: Create, read, update and delete product fields
-            contact-fields:full: Create, read, update and delete person and organization fields
             projects:read: Read projects and its fields, tasks and project templates
             projects:full: Create, read, update and delete projects and its fields; add projects templates and project related tasks
             users:read: Read data about users (people with access to a Pipedrive account), their permissions, roles and followers
@@ -2733,3 +2807,7 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+            deal-fields:full: Create, read, update and delete deal fields
+            product-fields:full: Create, read, update and delete product fields
+            contact-fields:full: Create, read, update and delete person and organization fields
+            project-fields:full: Create, read, update and delete project fields

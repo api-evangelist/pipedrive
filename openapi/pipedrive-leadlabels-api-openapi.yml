@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities LeadLabels API
+  title: Pipedrive API v1 Lead Labels API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: 'Lead labels allow you to visually categorize your leads. There are three default lead labels: hot, cold, and warm, but you can add as many new custom labels as you want.'
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: LeadLabels
-  description: 'Lead labels allow you to visually categorize your leads. There are three default lead labels: hot, cold, and warm, but you can add as many new custom labels as you want.
-
-    '
+  description: 'Lead labels allow you to visually categorize your leads. There are three default lead labels: hot, cold, and warm, but you can add as many new custom labels as you want.'
 paths:
   /leadLabels:
     get:
@@ -189,9 +185,7 @@ paths:
       tags:
       - LeadLabels
       summary: Update a lead label
-      description: 'Updates one or more properties of a lead label. Only properties included in the request will be updated.
-
-        '
+      description: Updates one or more properties of a lead label. Only properties included in the request will be updated.
       x-token-cost: 10
       operationId: updateLeadLabel
       parameters:
@@ -296,12 +290,14 @@ paths:
                     type: string
                     description: A message describing how to solve the problem
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
     delete:
       security:
@@ -361,12 +357,14 @@ paths:
                     type: string
                     description: A message describing how to solve the problem
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
 components:
   securitySchemes:

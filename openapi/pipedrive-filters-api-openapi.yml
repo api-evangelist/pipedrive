@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Filters API
+  title: Pipedrive API v1 Filters API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Each filter is essentially a set of data validation conditions. A filter of the same kind can be applied when fetching a list of deals, leads, persons, organizations or products in the context of a pipeline. Filters are limited to a maximum of 16 conditions. When applied, only items matching the conditions of the filter are returned. Detailed definitions of filter conditions and additional functionality is not yet available.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: Filters
-  description: 'Each filter is essentially a set of data validation conditions. A filter of the same kind can be applied when fetching a list of deals, leads, persons, organizations or products in the context of a pipeline. Filters are limited to a maximum of 16 conditions. When applied, only items matching the conditions of the filter are returned. Detailed definitions of filter conditions and additional functionality is not yet available.
-
-    '
+  description: Each filter is essentially a set of data validation conditions. A filter of the same kind can be applied when fetching a list of deals, leads, persons, organizations or products in the context of a pipeline. Filters are limited to a maximum of 16 conditions. When applied, only items matching the conditions of the filter are returned. Detailed definitions of filter conditions and additional functionality is not yet available.
 paths:
   /filters:
     delete:
@@ -124,8 +120,9 @@ paths:
                             type: string
                             description: The name of the filter
                           filter_code:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The system code of the filter
                           is_editable:
                             type: boolean
@@ -144,8 +141,9 @@ paths:
                             - activity
                             - projects
                           temporary_flag:
-                            type: boolean
-                            nullable: true
+                            type:
+                            - boolean
+                            - 'null'
                             description: Whether the filter is temporary
                           user_id:
                             type: integer
@@ -154,8 +152,9 @@ paths:
                             type: string
                             description: The date and time when the filter was added
                           update_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time when the filter was updated
                           visible_to:
                             allOf:
@@ -167,12 +166,14 @@ paths:
                               - '7'
                             description: The visibility group ID of who can see the filter
                           last_used_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time when the filter was last used
                           custom_view_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The custom view ID linked to the filter
               example:
                 success: true
@@ -192,7 +193,7 @@ paths:
                   custom_view_id: null
     post:
       summary: Add a new filter
-      description: Adds a new filter, returns the ID upon success. Note that in the conditions JSON object only one first-level condition group is supported, and it must be glued with 'AND', and only two second level condition groups are supported of which one must be glued with 'AND' and the second with 'OR'. Other combinations do not work (yet) but the syntax supports introducing them in future. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-filter" target="_blank" rel="noopener noreferrer">adding a filter</a>.
+      description: Adds a new filter, returns the ID upon success. Note that in the conditions JSON object only one first-level condition group is supported, and it must be glued with 'AND', and only two second level condition groups are supported of which one must be glued with 'AND' and the second with 'OR'. Other combinations do not work (yet) but the syntax supports introducing them in future. For more information, see the tutorial for adding a filter.
       x-token-cost: 10
       operationId: addFilter
       tags:
@@ -267,8 +268,9 @@ paths:
                           type: string
                           description: The name of the filter
                         filter_code:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The system code of the filter
                         is_editable:
                           type: boolean
@@ -287,8 +289,9 @@ paths:
                           - activity
                           - projects
                         temporary_flag:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Whether the filter is temporary
                         user_id:
                           type: integer
@@ -297,8 +300,9 @@ paths:
                           type: string
                           description: The date and time when the filter was added
                         update_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the filter was last updated
                         visible_to:
                           allOf:
@@ -310,12 +314,14 @@ paths:
                             - '7'
                           description: The visibility group ID of the filter
                         last_used_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the filter was last used
                         custom_view_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The custom view ID linked to the filter
                         conditions:
                           type: object
@@ -356,19 +362,22 @@ paths:
                                           type: string
                                           description: The operator used in the condition (e.g. "=", "IS NOT NULL")
                                         value:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: The value of the condition
                                         extra_value:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: An extra value for conditions that require two values
                                         json_value_flag:
                                           type: boolean
                                           description: Whether the value is JSON-encoded
                                         field_code:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: The code name of the field. Present when `include_field_code=true` is passed as a query parameter; `null` if the field code cannot be resolved
               example:
                 success: true
@@ -403,7 +412,7 @@ paths:
   /filters/helpers:
     get:
       summary: Get all filter helpers
-      description: Returns all supported filter helpers. It helps to know what conditions and helpers are available when you want to <a href="/docs/api/v1/Filters#addFilter">add</a> or <a href="/docs/api/v1/Filters#updateFilter">update</a> filters. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/adding-a-filter" target="_blank" rel="noopener noreferrer">adding a filter</a>.
+      description: Returns all supported filter helpers. It helps to know what conditions and helpers are available when you want to add or update filters. For more information, see the tutorial for adding a filter.
       x-token-cost: 20
       operationId: getFilterHelpers
       tags:
@@ -738,8 +747,9 @@ paths:
                           type: string
                           description: The name of the filter
                         filter_code:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The system code of the filter
                         is_editable:
                           type: boolean
@@ -758,8 +768,9 @@ paths:
                           - activity
                           - projects
                         temporary_flag:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Whether the filter is temporary
                         user_id:
                           type: integer
@@ -768,8 +779,9 @@ paths:
                           type: string
                           description: The date and time when the filter was added
                         update_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the filter was updated
                         visible_to:
                           allOf:
@@ -781,12 +793,14 @@ paths:
                             - '7'
                           description: The visibility group ID of who can see the filter
                         last_used_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the filter was last used
                         custom_view_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The custom view ID linked to the filter
                         conditions:
                           type: object
@@ -827,19 +841,22 @@ paths:
                                           type: string
                                           description: The operator used in the condition (e.g. "=", "IS NOT NULL")
                                         value:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: The value of the condition
                                         extra_value:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: An extra value for conditions that require two values
                                         json_value_flag:
                                           type: boolean
                                           description: Whether the value is JSON-encoded
                                         field_code:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: The code name of the field. Present when `include_field_code=true` is passed as a query parameter; `null` if the field code cannot be resolved
               example:
                 success: true
@@ -939,8 +956,9 @@ paths:
                           type: string
                           description: The name of the filter
                         filter_code:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The system code of the filter
                         is_editable:
                           type: boolean
@@ -959,8 +977,9 @@ paths:
                           - activity
                           - projects
                         temporary_flag:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Whether the filter is temporary
                         user_id:
                           type: integer
@@ -969,8 +988,9 @@ paths:
                           type: string
                           description: The date and time when the filter was added
                         update_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the filter was last updated
                         visible_to:
                           allOf:
@@ -982,12 +1002,14 @@ paths:
                             - '7'
                           description: The visibility group ID of the filter
                         last_used_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the filter was last used
                         custom_view_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The custom view ID linked to the filter
                         conditions:
                           type: object
@@ -1028,19 +1050,22 @@ paths:
                                           type: string
                                           description: The operator used in the condition (e.g. "=", "IS NOT NULL")
                                         value:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: The value of the condition
                                         extra_value:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: An extra value for conditions that require two values
                                         json_value_flag:
                                           type: boolean
                                           description: Whether the value is JSON-encoded
                                         field_code:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: The code name of the field. Present when `include_field_code=true` is passed as a query parameter; `null` if the field code cannot be resolved
               example:
                 success: true

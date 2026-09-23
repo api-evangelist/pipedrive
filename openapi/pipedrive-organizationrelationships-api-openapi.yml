@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities OrganizationRelationships API
+  title: Pipedrive API v1 Organization Relationships API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: Organization relationships represent how different organizations are related to each other. The relationship can be hierarchical (parent-child companies) or lateral as defined by the `type` field - either `parent` or `related`.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: OrganizationRelationships
-  description: 'Organization relationships represent how different organizations are related to each other. The relationship can be hierarchical (parent-child companies) or lateral as defined by the `type` field - either `parent` or `related`.
-
-    '
+  description: Organization relationships represent how different organizations are related to each other. The relationship can be hierarchical (parent-child companies) or lateral as defined by the `type` field - either `parent` or `related`.
 paths:
   /organizationRelationships:
     get:
@@ -80,12 +76,14 @@ paths:
                                       type: integer
                                       description: The ID of the owner of the organization that is associated with the item
                                     address:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The address of the organization
                                     cc_email:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The BCC email of the organization associated with the item
                                 - type: object
                                   properties:
@@ -107,12 +105,14 @@ paths:
                                       type: integer
                                       description: The ID of the owner of the organization that is associated with the item
                                     address:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The address of the organization
                                     cc_email:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The BCC email of the organization associated with the item
                                 - type: object
                                   properties:
@@ -183,12 +183,14 @@ paths:
                                     type: integer
                                     description: The ID of the owner of the organization that is associated with the item
                                   address:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The address of the organization
                                   cc_email:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The BCC email of the organization associated with the item
               example:
                 success: true
@@ -309,12 +311,14 @@ paths:
                                 type: integer
                                 description: The ID of the owner of the organization that is associated with the item
                               address:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The address of the organization
                               cc_email:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The BCC email of the organization associated with the item
                           - type: object
                             properties:
@@ -336,12 +340,14 @@ paths:
                                 type: integer
                                 description: The ID of the owner of the organization that is associated with the item
                               address:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The address of the organization
                               cc_email:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The BCC email of the organization associated with the item
                           - type: object
                             properties:
@@ -386,12 +392,14 @@ paths:
                                     type: integer
                                     description: The ID of the owner of the organization that is associated with the item
                                   address:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The address of the organization
                                   cc_email:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The BCC email of the organization associated with the item
               example:
                 success: true
@@ -539,12 +547,14 @@ paths:
                                   type: integer
                                   description: The ID of the owner of the organization that is associated with the item
                                 address:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The address of the organization
                                 cc_email:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The BCC email of the organization associated with the item
                             - type: object
                               properties:
@@ -566,12 +576,14 @@ paths:
                                   type: integer
                                   description: The ID of the owner of the organization that is associated with the item
                                 address:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The address of the organization
                                 cc_email:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The BCC email of the organization associated with the item
                             - type: object
                               properties:
@@ -624,12 +636,14 @@ paths:
                                     type: integer
                                     description: The ID of the owner of the organization that is associated with the item
                                   address:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The address of the organization
                                   cc_email:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The BCC email of the organization associated with the item
               example:
                 success: true
@@ -747,12 +761,14 @@ paths:
                                 type: integer
                                 description: The ID of the owner of the organization that is associated with the item
                               address:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The address of the organization
                               cc_email:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The BCC email of the organization associated with the item
                           - type: object
                             properties:
@@ -774,12 +790,14 @@ paths:
                                 type: integer
                                 description: The ID of the owner of the organization that is associated with the item
                               address:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The address of the organization
                               cc_email:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The BCC email of the organization associated with the item
                           - type: object
                             properties:
@@ -824,12 +842,14 @@ paths:
                                     type: integer
                                     description: The ID of the owner of the organization that is associated with the item
                                   address:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The address of the organization
                                   cc_email:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The BCC email of the organization associated with the item
               example:
                 success: true

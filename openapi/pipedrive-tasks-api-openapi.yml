@@ -1,22 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Tasks API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Tasks API
+  version: '1.0'
+  description: 'Operations tagged Tasks across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Tasks
-  description: 'Tasks represent actions that need to be completed and must be associated with a project. Tasks have an optional due date, can be assigned to a user and can have subtasks.
-
-    '
+  description: Tasks represent actions that need to be completed and must be associated with a project. Tasks have an optional due date, can be assigned to a user and can have subtasks.
 paths:
   /tasks:
     get:
       summary: Get all tasks
-      description: Returns all tasks. This is a cursor-paginated endpoint. For more information, please refer to our documentation on <a href="https://pipedrive.readme.io/docs/core-api-concepts-pagination" target="_blank" rel="noopener noreferrer">pagination</a>.
+      description: Returns all tasks. This is a cursor-paginated endpoint. For more information, please refer to our documentation on pagination.
       x-token-cost: 20
       operationId: getTasks
       tags:
@@ -307,8 +304,9 @@ paths:
                             type: string
                             description: 'The marked as done date and time of the task in UTC. Format: YYYY-MM-DD HH:MM:SS.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -330,6 +328,8 @@ paths:
                   marked_as_done_time: '2023-09-22 08:14:40.288'
                   project_id: 1
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /tasks/{id}:
     get:
       summary: Get details of a task
@@ -426,8 +426,9 @@ paths:
                             type: string
                             description: 'The marked as done date and time of the task in UTC. Format: YYYY-MM-DD HH:MM:SS.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -588,8 +589,9 @@ paths:
                             type: string
                             description: 'The marked as done date and time of the task in UTC. Format: YYYY-MM-DD HH:MM:SS.'
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -654,8 +656,9 @@ paths:
                             type: integer
                             description: The ID of the task that was deleted
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -696,12 +699,14 @@ paths:
                   type: integer
                   description: The ID of the project this task is associated with
                 parent_task_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of the parent task. Cannot be the ID of a task that is already a subtask.
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The description of the task
                 done:
                   type: integer
@@ -716,18 +721,21 @@ paths:
                   - 1
                   description: Whether the task is a milestone or not. `0` = Not a milestone, `1` = Milestone.
                 due_date:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: date
-                  nullable: true
                   description: 'The due date of the task. Format: YYYY-MM-DD.'
                 start_date:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: date
-                  nullable: true
                   description: 'The start date of the task. Format: YYYY-MM-DD.'
                 assignee_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: The ID of the user assigned to the task. When set, the `assignee_ids` field will be overwritten with this value.
                 assignee_ids:
                   type: array
@@ -736,9 +744,10 @@ paths:
                   maxItems: 10
                   description: The IDs of users assigned to the task. When set, the `assignee_id` field will be set to the first value in this array, or `null` if empty.
                 priority:
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   minimum: 0
-                  nullable: true
                   description: The priority of the task
       responses:
         '200':
@@ -767,8 +776,9 @@ paths:
                         type: integer
                         description: The ID of the user who created the task
                       description:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The description of the task
                       project_id:
                         type: integer
@@ -780,18 +790,21 @@ paths:
                         type: boolean
                         description: Whether the task is a milestone or not.
                       due_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The due date of the task. Format: YYYY-MM-DD.'
                       start_date:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date
-                        nullable: true
                         description: 'The start date of the task. Format: YYYY-MM-DD.'
                       parent_task_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the parent task. If `null`, the task is a root-level task.
                       assignee_ids:
                         type: array
@@ -799,9 +812,10 @@ paths:
                           type: integer
                         description: The IDs of users assigned to the task
                       priority:
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         minimum: 0
-                        nullable: true
                         description: The priority of the task
                       add_time:
                         type: string
@@ -810,12 +824,14 @@ paths:
                         type: string
                         description: The update date and time of the task in ISO 8601 format
                       marked_as_done_time:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: The date and time the task was marked as done in ISO 8601 format
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -838,6 +854,8 @@ paths:
                   update_time: '2026-09-14T08:14:40.000Z'
                   marked_as_done_time: null
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
 components:
   securitySchemes:
     basic_authentication:
@@ -884,3 +902,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Users API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Users API
+  version: '1.0'
+  description: 'Operations tagged Users across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Users
-  description: 'Users are people with access to your Pipedrive account. A user may belong to one or many Pipedrive accounts, so deleting a user from one Pipedrive account will not remove the user from the data store if he/she is connected to multiple accounts. Users should not be confused with persons.
-
-    '
+  description: Users are people with access to your Pipedrive account. A user may belong to one or many Pipedrive accounts, so deleting a user from one Pipedrive account will not remove the user from the data store if he/she is connected to multiple accounts. Users should not be confused with persons.
 paths:
   /users:
     get:
@@ -66,8 +63,9 @@ paths:
                             type: string
                             description: The user email
                           phone:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The user phone
                           activated:
                             type: boolean
@@ -79,8 +77,9 @@ paths:
                             type: string
                             description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                           modified:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                           has_created_company:
                             type: boolean
@@ -120,8 +119,9 @@ paths:
                             type: integer
                             description: The ID of the user role
                           icon_url:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The user icon URL
                           is_you:
                             type: boolean
@@ -283,8 +283,9 @@ paths:
                           type: string
                           description: The user email
                         phone:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The user phone
                         activated:
                           type: boolean
@@ -296,8 +297,9 @@ paths:
                           type: string
                           description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                         modified:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                         has_created_company:
                           type: boolean
@@ -337,8 +339,9 @@ paths:
                           type: integer
                           description: The ID of the user role
                         icon_url:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The user icon URL
                         is_you:
                           type: boolean
@@ -395,6 +398,8 @@ paths:
                 error_info: Please check developers.pipedrive.com
                 data: null
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /users/find:
     get:
       summary: Find users by name
@@ -465,8 +470,9 @@ paths:
                             type: string
                             description: The user email
                           phone:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The user phone
                           activated:
                             type: boolean
@@ -478,8 +484,9 @@ paths:
                             type: string
                             description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                           modified:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                           has_created_company:
                             type: boolean
@@ -519,8 +526,9 @@ paths:
                             type: integer
                             description: The ID of the user role
                           icon_url:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The user icon URL
                           is_you:
                             type: boolean
@@ -586,6 +594,8 @@ paths:
                   icon_url: null
                   is_you: false
                   is_deleted: false
+    servers:
+    - url: https://api.pipedrive.com/v1
   /users/me:
     get:
       summary: Get current user data
@@ -638,8 +648,9 @@ paths:
                             type: string
                             description: The user email
                           phone:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The user phone
                           activated:
                             type: boolean
@@ -651,8 +662,9 @@ paths:
                             type: string
                             description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                           modified:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                           has_created_company:
                             type: boolean
@@ -692,8 +704,9 @@ paths:
                             type: integer
                             description: The ID of the user role
                           icon_url:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The user icon URL
                           is_you:
                             type: boolean
@@ -789,6 +802,8 @@ paths:
                 success: false
                 error: unauthorized access
                 errorCode: 401
+    servers:
+    - url: https://api.pipedrive.com/v1
   /users/{id}:
     get:
       summary: Get one user
@@ -848,8 +863,9 @@ paths:
                           type: string
                           description: The user email
                         phone:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The user phone
                         activated:
                           type: boolean
@@ -861,8 +877,9 @@ paths:
                           type: string
                           description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                         modified:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                         has_created_company:
                           type: boolean
@@ -902,8 +919,9 @@ paths:
                           type: integer
                           description: The ID of the user role
                         icon_url:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The user icon URL
                         is_you:
                           type: boolean
@@ -1027,8 +1045,9 @@ paths:
                           type: string
                           description: The user email
                         phone:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The user phone
                         activated:
                           type: boolean
@@ -1040,8 +1059,9 @@ paths:
                           type: string
                           description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                         modified:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                         has_created_company:
                           type: boolean
@@ -1081,8 +1101,9 @@ paths:
                           type: integer
                           description: The ID of the user role
                         icon_url:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The user icon URL
                         is_you:
                           type: boolean
@@ -1156,6 +1177,8 @@ paths:
               example:
                 success: false
                 error: User not found or not accessible.
+    servers:
+    - url: https://api.pipedrive.com/v1
   /users/{id}/followers:
     get:
       summary: List followers of a user
@@ -1222,6 +1245,8 @@ paths:
                 error_info: Please check developers.pipedrive.com
                 data: null
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /users/{id}/permissions:
     get:
       summary: List user permissions
@@ -1360,6 +1385,8 @@ paths:
                   can_bulk_edit_items: true
                   can_change_visibility_of_items: true
                   can_create_own_workflow: true
+    servers:
+    - url: https://api.pipedrive.com/v1
   /users/{id}/roleAssignments:
     get:
       summary: List role assignments
@@ -1417,8 +1444,9 @@ paths:
                           type: object
                           properties:
                             parent_role_id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The ID of the parent role
                             name:
                               type: string
@@ -1471,6 +1499,8 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: false
+    servers:
+    - url: https://api.pipedrive.com/v1
   /users/{id}/roleSettings:
     get:
       summary: List user role settings
@@ -1547,6 +1577,8 @@ paths:
                   org_default_visibility: 1
                   person_default_visibility: 1
                   product_default_visibility: 1
+    servers:
+    - url: https://api.pipedrive.com/v1
 components:
   securitySchemes:
     basic_authentication:
@@ -1593,3 +1625,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

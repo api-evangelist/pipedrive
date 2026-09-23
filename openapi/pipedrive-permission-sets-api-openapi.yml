@@ -1,17 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities PermissionSets API
+  title: Pipedrive API v1 Permission Sets API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: 'Permission sets define what users in the account can do: which actions they are allowed to perform and which features they can access.'
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
-- name: PermissionSets
-  description: 'Permission sets define what users in the account can do: which actions they are allowed to perform and which features they can access. Permission sets are app-specific, where apps are large parts of functionality, e.g., sales app, which allows accessing sales data, global permissions, which oversee cross-product features (for example contacts, insights, products) or account settings, which provides access to billing, user management, company settings and security center. Some permission sets with types such as admin and regular are pre-created for the account, while other custom ones can be created by users (depending on the tier the account is on).
-
-    '
+- name: Permission Sets
+  description: 'Permission sets define what users in the account can do: which actions they are allowed to perform and which features they can access.'
 paths:
   /permissionSets:
     get:
@@ -20,7 +16,7 @@ paths:
       x-token-cost: 20
       operationId: getPermissionSets
       tags:
-      - PermissionSets
+      - Permission Sets
       security:
       - api_key: []
       - oauth2:
@@ -129,7 +125,7 @@ paths:
       x-token-cost: 2
       operationId: getPermissionSet
       tags:
-      - PermissionSets
+      - Permission Sets
       security:
       - api_key: []
       - oauth2:
@@ -222,7 +218,7 @@ paths:
       x-token-cost: 20
       operationId: getPermissionSetAssignments
       tags:
-      - PermissionSets
+      - Permission Sets
       security:
       - api_key: []
       - oauth2:

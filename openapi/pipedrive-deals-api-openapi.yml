@@ -1,17 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Deals API
-  version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  title: Pipedrive Deals API
+  version: '1.0'
+  description: 'Operations tagged Deals across 2 of this provider''s published API definitions: pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.pipedrive.com/v1
+- url: https://api.pipedrive.com/api/v2
 tags:
 - name: Deals
-  description: 'Deals represent ongoing, lost or won sales to an organization or to a person. Each deal has a monetary value and must be placed in a stage. Deals can be owned by a user, and followed by one or many users. Each deal consists of standard data fields but can also contain a number of custom fields. The custom fields can be recognized by long hashes as keys. These hashes can be mapped against `DealField.key`. The corresponding label for each such custom field can be obtained from `DealField.name`.
-
-    '
+  description: Deals represent ongoing, lost or won sales to an organization or to a person. Each deal has a monetary value and must be placed in a stage. Deals can be owned by a user, and followed by one or many users. Each deal consists of standard data fields but can also contain a number of custom fields. The custom fields can be recognized by long hashes as keys. These hashes can be mapped against `DealField.key`. The corresponding label for each such custom field can be obtained from `DealField.name`.
 paths:
   /deals/archived:
     get:
@@ -139,8 +136,9 @@ paths:
                                 type: boolean
                                 description: If the creator has a picture or not
                               pic_hash:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The creator picture hash
                               active_flag:
                                 type: boolean
@@ -167,8 +165,9 @@ paths:
                                   type: boolean
                                   description: If the user has a picture or not
                                 pic_hash:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The user picture hash
                                 active_flag:
                                   type: boolean
@@ -294,8 +293,9 @@ paths:
                             type: string
                             description: The status of the deal
                           probability:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: The success probability percentage of the deal
                           next_activity_date:
                             type: string
@@ -304,27 +304,32 @@ paths:
                             type: string
                             description: The time of the next activity associated with the deal
                           next_activity_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of the next activity associated with the deal
                           last_activity_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of the last activity associated with the deal
                           last_activity_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date of the last activity associated with the deal
                           lost_reason:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The reason for losing the deal
                           visible_to:
                             type: string
                             description: The visibility of the deal
                           close_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time of closing the deal
                           pipeline_id:
                             type: integer
@@ -412,8 +417,9 @@ paths:
                             type: string
                             description: The currency associated with the deal
                           rotten_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time of changing the deal status as rotten
                           owner_name:
                             type: string
@@ -431,20 +437,24 @@ paths:
                             type: string
                             description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                           origin_id:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                           channel:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                           channel_id:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The optional ID to further distinguish the Marketing channel.
                           arr:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -455,8 +465,9 @@ paths:
 
                               '
                           mrr:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -467,8 +478,9 @@ paths:
 
                               '
                           acv:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -479,8 +491,9 @@ paths:
 
                               '
                           arr_currency:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -491,8 +504,9 @@ paths:
 
                               '
                           mrr_currency:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -503,8 +517,9 @@ paths:
 
                               '
                           acv_currency:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -552,8 +567,9 @@ paths:
                                   type: integer
                                   description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
                                 pic_hash:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The user picture hash
                                 active_flag:
                                   type: boolean
@@ -596,12 +612,14 @@ paths:
                                     type: integer
                                     description: The ID of the owner of the organization that is associated with the item
                                   address:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The address of the organization
                                   cc_email:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The BCC email of the organization associated with the item
                       person:
                         type: object
@@ -825,6 +843,8 @@ paths:
                     limit: 100
                     more_items_in_collection: false
                     next_start: 1
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/summary:
     get:
       summary: Get deals summary
@@ -961,6 +981,8 @@ paths:
                   total_weighted_currency_converted_value: 41.1
                   total_currency_converted_value_formatted: US$41.1
                   total_weighted_currency_converted_value_formatted: US$41.1
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/summary/archived:
     get:
       summary: Get archived deals summary
@@ -1098,6 +1120,8 @@ paths:
                   total_weighted_currency_converted_value: 41.1
                   total_currency_converted_value_formatted: US$41.1
                   total_weighted_currency_converted_value_formatted: US$41.1
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/timeline:
     get:
       summary: Get deals timeline
@@ -1252,8 +1276,9 @@ paths:
                                 type: string
                                 description: The status of the deal
                               probability:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 description: The success probability percentage of the deal
                               next_activity_date:
                                 type: string
@@ -1262,27 +1287,32 @@ paths:
                                 type: string
                                 description: The time of the next activity associated with the deal
                               next_activity_id:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 description: The ID of the next activity associated with the deal
                               last_activity_id:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 description: The ID of the last activity associated with the deal
                               last_activity_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The date of the last activity associated with the deal
                               lost_reason:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The reason for losing the deal
                               visible_to:
                                 type: string
                                 description: The visibility of the deal
                               close_time:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The date and time of closing the deal
                               pipeline_id:
                                 type: integer
@@ -1370,8 +1400,9 @@ paths:
                                 type: string
                                 description: The currency associated with the deal
                               rotten_time:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The date and time of changing the deal status as rotten
                               owner_name:
                                 type: string
@@ -1389,20 +1420,24 @@ paths:
                                 type: string
                                 description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                               origin_id:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                               channel:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                               channel_id:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The optional ID to further distinguish the Marketing channel.
                               arr:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1413,8 +1448,9 @@ paths:
 
                                   '
                               mrr:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1425,8 +1461,9 @@ paths:
 
                                   '
                               acv:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1437,8 +1474,9 @@ paths:
 
                                   '
                               arr_currency:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1449,8 +1487,9 @@ paths:
 
                                   '
                               mrr_currency:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1461,8 +1500,9 @@ paths:
 
                                   '
                               acv_currency:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1587,6 +1627,8 @@ paths:
                     won_count: 1
                     won_values:
                       USD: 2200
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/timeline/archived:
     get:
       summary: Get archived deals timeline
@@ -1742,8 +1784,9 @@ paths:
                                 type: string
                                 description: The status of the deal
                               probability:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 description: The success probability percentage of the deal
                               next_activity_date:
                                 type: string
@@ -1752,27 +1795,32 @@ paths:
                                 type: string
                                 description: The time of the next activity associated with the deal
                               next_activity_id:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 description: The ID of the next activity associated with the deal
                               last_activity_id:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 description: The ID of the last activity associated with the deal
                               last_activity_date:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The date of the last activity associated with the deal
                               lost_reason:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The reason for losing the deal
                               visible_to:
                                 type: string
                                 description: The visibility of the deal
                               close_time:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The date and time of closing the deal
                               pipeline_id:
                                 type: integer
@@ -1860,8 +1908,9 @@ paths:
                                 type: string
                                 description: The currency associated with the deal
                               rotten_time:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The date and time of changing the deal status as rotten
                               owner_name:
                                 type: string
@@ -1879,20 +1928,24 @@ paths:
                                 type: string
                                 description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                               origin_id:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                               channel:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                               channel_id:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The optional ID to further distinguish the Marketing channel.
                               arr:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1903,8 +1956,9 @@ paths:
 
                                   '
                               mrr:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1915,8 +1969,9 @@ paths:
 
                                   '
                               acv:
-                                type: number
-                                nullable: true
+                                type:
+                                - number
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1927,8 +1982,9 @@ paths:
 
                                   '
                               arr_currency:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1939,8 +1995,9 @@ paths:
 
                                   '
                               mrr_currency:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -1951,8 +2008,9 @@ paths:
 
                                   '
                               acv_currency:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: 'Only available in Growth and above plans
 
 
@@ -2077,6 +2135,8 @@ paths:
                     won_count: 1
                     won_values:
                       USD: 2200
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/changelog:
     get:
       summary: List updates about deal field values
@@ -2131,12 +2191,14 @@ paths:
                             type: string
                             description: The key of the field that was changed
                           old_value:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The value of the field before the change
                           new_value:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The value of the field after the change
                           actor_user_id:
                             type: integer
@@ -2145,12 +2207,14 @@ paths:
                             type: string
                             description: The date and time of the change
                           change_source:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The source of change, for example 'app', 'mobile', 'api', etc.
                           change_source_user_agent:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The user agent from which the change was made
                           is_bulk_update_flag:
                             type: boolean
@@ -2183,6 +2247,8 @@ paths:
                   is_bulk_update_flag: false
                 additional_data:
                   next_cursor: aWQ6NTQ0
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/duplicate:
     post:
       summary: Duplicate deal
@@ -2271,8 +2337,9 @@ paths:
                           type: string
                           description: The status of the deal
                         probability:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: The success probability percentage of the deal
                         next_activity_date:
                           type: string
@@ -2281,27 +2348,32 @@ paths:
                           type: string
                           description: The time of the next activity associated with the deal
                         next_activity_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of the next activity associated with the deal
                         last_activity_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of the last activity associated with the deal
                         last_activity_date:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date of the last activity associated with the deal
                         lost_reason:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The reason for losing the deal
                         visible_to:
                           type: string
                           description: The visibility of the deal
                         close_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time of closing the deal
                         pipeline_id:
                           type: integer
@@ -2389,8 +2461,9 @@ paths:
                           type: string
                           description: The currency associated with the deal
                         rotten_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time of changing the deal status as rotten
                         owner_name:
                           type: string
@@ -2408,20 +2481,24 @@ paths:
                           type: string
                           description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                         origin_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                         channel:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                         channel_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the Marketing channel.
                         arr:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -2432,8 +2509,9 @@ paths:
 
                             '
                         mrr:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -2444,8 +2522,9 @@ paths:
 
                             '
                         acv:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -2456,8 +2535,9 @@ paths:
 
                             '
                         arr_currency:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -2468,8 +2548,9 @@ paths:
 
                             '
                         mrr_currency:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -2480,8 +2561,9 @@ paths:
 
                             '
                         acv_currency:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -2561,6 +2643,8 @@ paths:
                   acv_currency: null
                   arr_currency: null
                   mrr_currency: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/files:
     get:
       summary: List files attached to a deal
@@ -2758,6 +2842,8 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: true
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/flow:
     get:
       summary: List updates about a deal
@@ -2899,12 +2985,14 @@ paths:
                                     type: integer
                                     description: The ID of the owner of the organization that is associated with the item
                                   address:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The address of the organization
                                   cc_email:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The BCC email of the organization associated with the item
                         user:
                           type: object
@@ -2927,8 +3015,9 @@ paths:
                                     type: integer
                                     description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
                                   pic_hash:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The user picture hash
                                   active_flag:
                                     type: boolean
@@ -3227,10 +3316,12 @@ paths:
                         currency: EUR
                         stage_id: 2
                         pipeline_id: 1
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/participantsChangelog:
     get:
       summary: List updates about participants of a deal
-      description: List updates about participants of a deal. This is a cursor-paginated endpoint. For more information, please refer to our documentation on <a href="https://pipedrive.readme.io/docs/core-api-concepts-pagination" target="_blank" rel="noopener noreferrer">pagination</a>.
+      description: List updates about participants of a deal. This is a cursor-paginated endpoint. For more information, please refer to our documentation on pagination.
       x-token-cost: 10
       operationId: getDealParticipantsChangelog
       tags:
@@ -3313,6 +3404,8 @@ paths:
                   time: '2024-01-10 11:47:23'
                 additional_data:
                   next_cursor: eyJkZWFsIjo0fQ
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/followers:
     get:
       summary: List followers of a deal
@@ -3456,6 +3549,8 @@ paths:
                   id: 2
                   deal_id: 3
                   add_time: '2018-04-11 12:54:43'
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/followers/{follower_id}:
     delete:
       summary: Delete a follower from a deal
@@ -3503,6 +3598,8 @@ paths:
                 success: true
                 data:
                   id: 123
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/mailMessages:
     get:
       summary: List mail messages associated with a deal
@@ -3686,8 +3783,9 @@ paths:
                                   type: string
                                   description: The snippet of mail message. Snippet length is up to 225 characters.
                                 mail_tracking_status:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The status of tracking mail message. Value is `null` if tracking is not enabled.
                                   enum:
                                   - opened
@@ -3929,10 +4027,12 @@ paths:
                     start: 0
                     limit: 100
                     more_items_in_collection: true
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/merge:
     put:
       summary: Merge two deals
-      description: Merges a deal with another deal. For more information, see the tutorial for <a href="https://pipedrive.readme.io/docs/merging-two-deals" target="_blank" rel="noopener noreferrer">merging two deals</a>.
+      description: Merges a deal with another deal. For more information, see the tutorial for merging two deals.
       x-token-cost: 40
       operationId: mergeDeals
       tags:
@@ -4030,8 +4130,9 @@ paths:
                             type: string
                             description: The status of the deal
                           probability:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: The success probability percentage of the deal
                           next_activity_date:
                             type: string
@@ -4040,27 +4141,32 @@ paths:
                             type: string
                             description: The time of the next activity associated with the deal
                           next_activity_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of the next activity associated with the deal
                           last_activity_id:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of the last activity associated with the deal
                           last_activity_date:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date of the last activity associated with the deal
                           lost_reason:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The reason for losing the deal
                           visible_to:
                             type: string
                             description: The visibility of the deal
                           close_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time of closing the deal
                           pipeline_id:
                             type: integer
@@ -4148,8 +4254,9 @@ paths:
                             type: string
                             description: The currency associated with the deal
                           rotten_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time of changing the deal status as rotten
                           owner_name:
                             type: string
@@ -4167,20 +4274,24 @@ paths:
                             type: string
                             description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                           origin_id:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                           channel:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                           channel_id:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The optional ID to further distinguish the Marketing channel.
                           arr:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -4191,8 +4302,9 @@ paths:
 
                               '
                           mrr:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -4203,8 +4315,9 @@ paths:
 
                               '
                           acv:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -4215,8 +4328,9 @@ paths:
 
                               '
                           arr_currency:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -4227,8 +4341,9 @@ paths:
 
                               '
                           mrr_currency:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -4239,8 +4354,9 @@ paths:
 
                               '
                           acv_currency:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -4326,10 +4442,14 @@ paths:
                   acv_currency: null
                   arr_currency: null
                   mrr_currency: null
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/participants:
     get:
       summary: List participants of a deal
-      description: Lists the participants associated with a deal.<br>If a company uses the [Campaigns product](https://pipedrive.readme.io/docs/campaigns-in-pipedrive-api), then this endpoint will also return the `data.marketing_status` field.
+      description: 'Lists the participants associated with a deal.
+
+        If a company uses the Campaigns product, then this endpoint will also return the `data.marketing_status` field.'
       x-token-cost: 10
       operationId: getDealParticipants
       tags:
@@ -4502,8 +4622,9 @@ paths:
                                 type: string
                                 description: The visibility group ID of who can see the person
                               picture_id:
-                                type: object
-                                nullable: true
+                                type:
+                                - object
+                                - 'null'
                                 title: PictureDataWithID
                                 properties:
                                   id:
@@ -4537,8 +4658,9 @@ paths:
                                         type: string
                                         description: The URL of the 512*512 picture
                               label:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                                 description: The label assigned to the person. When the `label` field is updated, the `label_ids` field value will be overwritten by the `label` field value.
                               label_ids:
                                 type: array
@@ -4546,15 +4668,17 @@ paths:
                                   type: integer
                                 description: The IDs of labels assigned to the person. When the `label_ids` field is updated, the `label` field value will be set to the first value of the `label_ids` field.
                               org_name:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The name of the organization associated with the person
                               owner_name:
                                 type: string
                                 description: The name of the owner associated with the person
                               cc_email:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: The BCC email associated with the person
                           - type: object
                             title: additionalPersonInfo
@@ -4581,8 +4705,9 @@ paths:
                                           type: integer
                                           description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
                                         pic_hash:
-                                          type: string
-                                          nullable: true
+                                          type:
+                                          - string
+                                          - 'null'
                                           description: The user picture hash
                                         active_flag:
                                           type: boolean
@@ -4593,8 +4718,9 @@ paths:
                                           type: integer
                                           description: The ID of the owner
                                   org_id:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     title: RelationshipOrganizationInfoItemWithActiveFlag
                                     properties:
                                       name:
@@ -4607,12 +4733,14 @@ paths:
                                         type: integer
                                         description: The ID of the owner of the organization that is associated with the item
                                       address:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The address of the organization
                                       cc_email:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The BCC email of the organization associated with the item
                                       label_ids:
                                         type: array
@@ -4634,8 +4762,9 @@ paths:
                                     type: string
                                     description: The first name of the person
                                   last_name:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The last name of the person
                             - type: object
                               title: personCountEmailDealAndActivityInfo
@@ -4669,12 +4798,14 @@ paths:
                                 - type: object
                                   properties:
                                     last_incoming_mail_time:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The date and time of the last incoming email associated with the person
                                     last_outgoing_mail_time:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The date and time of the last outgoing email associated with the person
                               - type: object
                                 title: dealCountAndActivityInfo
@@ -4708,24 +4839,29 @@ paths:
                                 - type: object
                                   properties:
                                     next_activity_date:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The date of the next activity associated with the deal
                                     next_activity_time:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The time of the next activity associated with the deal
                                     next_activity_id:
-                                      type: integer
-                                      nullable: true
+                                      type:
+                                      - integer
+                                      - 'null'
                                       description: The ID of the next activity associated with the deal
                                     last_activity_id:
-                                      type: integer
-                                      nullable: true
+                                      type:
+                                      - integer
+                                      - 'null'
                                       description: The ID of the last activity associated with the deal
                                     last_activity_date:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The date of the last activity associated with the deal
                         added_by_user_id:
                           title: GetUserResponse
@@ -4762,8 +4898,9 @@ paths:
                                     type: string
                                     description: The user email
                                   phone:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The user phone
                                   activated:
                                     type: boolean
@@ -4775,8 +4912,9 @@ paths:
                                     type: string
                                     description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                                   modified:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                                   has_created_company:
                                     type: boolean
@@ -4816,8 +4954,9 @@ paths:
                                     type: integer
                                     description: The ID of the user role
                                   icon_url:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The user icon URL
                                   is_you:
                                     type: boolean
@@ -4868,8 +5007,9 @@ paths:
                                   type: integer
                                   description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
                                 pic_hash:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The user picture hash
                                 active_flag:
                                   type: boolean
@@ -4912,12 +5052,14 @@ paths:
                                     type: integer
                                     description: The ID of the owner of the organization that is associated with the item
                                   address:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The address of the organization
                                   cc_email:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The BCC email of the organization associated with the item
                       person:
                         type: object
@@ -5282,8 +5424,9 @@ paths:
                               type: string
                               description: The visibility group ID of who can see the person
                             picture_id:
-                              type: object
-                              nullable: true
+                              type:
+                              - object
+                              - 'null'
                               title: PictureDataWithID
                               properties:
                                 id:
@@ -5317,8 +5460,9 @@ paths:
                                       type: string
                                       description: The URL of the 512*512 picture
                             label:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                               description: The label assigned to the person. When the `label` field is updated, the `label_ids` field value will be overwritten by the `label` field value.
                             label_ids:
                               type: array
@@ -5326,15 +5470,17 @@ paths:
                                 type: integer
                               description: The IDs of labels assigned to the person. When the `label_ids` field is updated, the `label` field value will be set to the first value of the `label_ids` field.
                             org_name:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The name of the organization associated with the person
                             owner_name:
                               type: string
                               description: The name of the owner associated with the person
                             cc_email:
-                              type: string
-                              nullable: true
+                              type:
+                              - string
+                              - 'null'
                               description: The BCC email associated with the person
                         - type: object
                           title: additionalPersonInfo
@@ -5361,8 +5507,9 @@ paths:
                                         type: integer
                                         description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
                                       pic_hash:
-                                        type: string
-                                        nullable: true
+                                        type:
+                                        - string
+                                        - 'null'
                                         description: The user picture hash
                                       active_flag:
                                         type: boolean
@@ -5373,8 +5520,9 @@ paths:
                                         type: integer
                                         description: The ID of the owner
                                 org_id:
-                                  type: object
-                                  nullable: true
+                                  type:
+                                  - object
+                                  - 'null'
                                   title: RelationshipOrganizationInfoItemWithActiveFlag
                                   properties:
                                     name:
@@ -5387,12 +5535,14 @@ paths:
                                       type: integer
                                       description: The ID of the owner of the organization that is associated with the item
                                     address:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The address of the organization
                                     cc_email:
-                                      type: string
-                                      nullable: true
+                                      type:
+                                      - string
+                                      - 'null'
                                       description: The BCC email of the organization associated with the item
                                     label_ids:
                                       type: array
@@ -5414,8 +5564,9 @@ paths:
                                   type: string
                                   description: The first name of the person
                                 last_name:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The last name of the person
                           - type: object
                             title: personCountEmailDealAndActivityInfo
@@ -5449,12 +5600,14 @@ paths:
                               - type: object
                                 properties:
                                   last_incoming_mail_time:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The date and time of the last incoming email associated with the person
                                   last_outgoing_mail_time:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The date and time of the last outgoing email associated with the person
                             - type: object
                               title: dealCountAndActivityInfo
@@ -5488,24 +5641,29 @@ paths:
                               - type: object
                                 properties:
                                   next_activity_date:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The date of the next activity associated with the deal
                                   next_activity_time:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The time of the next activity associated with the deal
                                   next_activity_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: The ID of the next activity associated with the deal
                                   last_activity_id:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                     description: The ID of the last activity associated with the deal
                                   last_activity_date:
-                                    type: string
-                                    nullable: true
+                                    type:
+                                    - string
+                                    - 'null'
                                     description: The date of the last activity associated with the deal
                       added_by_user_id:
                         title: GetUserResponse
@@ -5542,8 +5700,9 @@ paths:
                                   type: string
                                   description: The user email
                                 phone:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The user phone
                                 activated:
                                   type: boolean
@@ -5555,8 +5714,9 @@ paths:
                                   type: string
                                   description: 'The creation date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                                 modified:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: 'The last modification date and time of the user. Format: YYYY-MM-DD HH:MM:SS'
                                 has_created_company:
                                   type: boolean
@@ -5596,8 +5756,9 @@ paths:
                                   type: integer
                                   description: The ID of the user role
                                 icon_url:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The user icon URL
                                 is_you:
                                   type: boolean
@@ -5635,8 +5796,9 @@ paths:
                                   type: integer
                                   description: Whether the user has picture or not. 0 = No picture, 1 = Has picture.
                                 pic_hash:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   description: The user picture hash
                                 active_flag:
                                   type: boolean
@@ -5814,6 +5976,8 @@ paths:
                       - value: ''
                         primary: true
                       owner_id: 8877
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/participants/{deal_participant_id}:
     delete:
       summary: Delete a participant from a deal
@@ -5861,6 +6025,8 @@ paths:
                 success: true
                 data:
                   id: 123
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals/{id}/permittedUsers:
     get:
       summary: List permitted users
@@ -5900,6 +6066,8 @@ paths:
                 data:
                 - 123
                 - 456
+    servers:
+    - url: https://api.pipedrive.com/v1
   /deals:
     get:
       summary: Get all deals
@@ -6107,19 +6275,22 @@ paths:
                             type: string
                             description: The status of the deal
                           probability:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: The success probability percentage of the deal
                           lost_reason:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The reason for losing the deal
                           visible_to:
                             type: integer
                             description: The visibility of the deal
                           close_time:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The date and time of closing the deal
                           won_time:
                             type: string
@@ -6140,25 +6311,30 @@ paths:
                             type: string
                             description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                           origin_id:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                           channel:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                           channel_id:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The optional ID to further distinguish the Marketing channel.
                           source_lead_id:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: uuid
-                            nullable: true
                             description: The ID of the lead if the deal was converted from a lead. Only included when requested via include_fields parameter.
                           arr:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -6169,8 +6345,9 @@ paths:
 
                               '
                           mrr:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -6181,8 +6358,9 @@ paths:
 
                               '
                           acv:
-                            type: number
-                            nullable: true
+                            type:
+                            - number
+                            - 'null'
                             description: 'Only available in Growth and above plans
 
 
@@ -6305,19 +6483,22 @@ paths:
                   type: string
                   description: The status of the deal
                 probability:
-                  type: number
-                  nullable: true
+                  type:
+                  - number
+                  - 'null'
                   description: The success probability percentage of the deal
                 lost_reason:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The reason for losing the deal. Can only be set if deal status is lost.
                 visible_to:
                   type: integer
                   description: The visibility of the deal
                 close_time:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The date and time of closing the deal. Can only be set if deal status is won or lost.
                 won_time:
                   type: string
@@ -6405,19 +6586,22 @@ paths:
                           type: string
                           description: The status of the deal
                         probability:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: The success probability percentage of the deal
                         lost_reason:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The reason for losing the deal
                         visible_to:
                           type: integer
                           description: The visibility of the deal
                         close_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time of closing the deal
                         won_time:
                           type: string
@@ -6438,25 +6622,30 @@ paths:
                           type: string
                           description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                         origin_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                         channel:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                         channel_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the Marketing channel.
                         source_lead_id:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: uuid
-                          nullable: true
                           description: The ID of the lead if the deal was converted from a lead. Only included when requested via include_fields parameter.
                         arr:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -6467,8 +6656,9 @@ paths:
 
                             '
                         mrr:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -6479,8 +6669,9 @@ paths:
 
                             '
                         acv:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -6537,6 +6728,8 @@ paths:
                   arr: 120
                   mrr: 10
                   custom_fields: {}
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /deals/{id}:
     delete:
       summary: Delete a deal
@@ -6703,19 +6896,22 @@ paths:
                           type: string
                           description: The status of the deal
                         probability:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: The success probability percentage of the deal
                         lost_reason:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The reason for losing the deal
                         visible_to:
                           type: integer
                           description: The visibility of the deal
                         close_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time of closing the deal
                         won_time:
                           type: string
@@ -6736,25 +6932,30 @@ paths:
                           type: string
                           description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                         origin_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                         channel:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                         channel_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the Marketing channel.
                         source_lead_id:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: uuid
-                          nullable: true
                           description: The ID of the lead if the deal was converted from a lead. Only included when requested via include_fields parameter.
                         arr:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -6765,8 +6966,9 @@ paths:
 
                             '
                         mrr:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -6777,8 +6979,9 @@ paths:
 
                             '
                         acv:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -6897,19 +7100,22 @@ paths:
                   type: string
                   description: The status of the deal
                 probability:
-                  type: number
-                  nullable: true
+                  type:
+                  - number
+                  - 'null'
                   description: The success probability percentage of the deal
                 lost_reason:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The reason for losing the deal. Can only be set if deal status is lost.
                 visible_to:
                   type: integer
                   description: The visibility of the deal
                 close_time:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The date and time of closing the deal. Can only be set if deal status is won or lost.
                 won_time:
                   type: string
@@ -6997,19 +7203,22 @@ paths:
                           type: string
                           description: The status of the deal
                         probability:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: The success probability percentage of the deal
                         lost_reason:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The reason for losing the deal
                         visible_to:
                           type: integer
                           description: The visibility of the deal
                         close_time:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time of closing the deal
                         won_time:
                           type: string
@@ -7030,25 +7239,30 @@ paths:
                           type: string
                           description: The way this Deal was created. `origin` field is set by Pipedrive when Deal is created and cannot be changed.
                         origin_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the origin of the deal - e.g. Which API integration created this Deal.
                         channel:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The ID of your Marketing channel this Deal was created from. Recognized Marketing channels can be configured in your <a href="https://app.pipedrive.com/settings/fields" target="_blank" rel="noopener noreferrer">Company settings</a>.
                         channel_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The optional ID to further distinguish the Marketing channel.
                         source_lead_id:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: uuid
-                          nullable: true
                           description: The ID of the lead if the deal was converted from a lead. Only included when requested via include_fields parameter.
                         arr:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -7059,8 +7273,9 @@ paths:
 
                             '
                         mrr:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -7071,8 +7286,9 @@ paths:
 
                             '
                         acv:
-                          type: number
-                          nullable: true
+                          type:
+                          - number
+                          - 'null'
                           description: 'Only available in Growth and above plans
 
 
@@ -7129,6 +7345,8 @@ paths:
                   arr: 120
                   mrr: 10
                   custom_fields: {}
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /deals/{id}/followers/changelog:
     get:
       summary: List followers changelog of a deal
@@ -7214,10 +7432,12 @@ paths:
                   time: '2024-01-01T00:00:00Z'
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /deals/search:
     get:
       summary: Search deals
-      description: Searches all deals by title, notes and/or custom fields. This endpoint is a wrapper of <a href="https://developers.pipedrive.com/docs/api/v1/ItemSearch#searchItem">/v1/itemSearch</a> with a narrower OAuth scope. Found deals can be filtered by the person ID and the organization ID.
+      description: Searches all deals by title, notes and/or custom fields. This endpoint is a wrapper of /v1/itemSearch with a narrower OAuth scope. Found deals can be filtered by the person ID and the organization ID.
       x-tool-description: Performs full-text search across deal titles, notes, and custom fields with advanced filtering. Essential for search functionality, autocomplete features, and deal discovery. Supports exact matching, field-specific searches, and filtering by person, organization, or status.
       x-token-cost: 20
       operationId: searchDeals
@@ -7356,8 +7576,9 @@ paths:
                                         type: string
                                         description: The name of the stage of the deal
                                   person:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
@@ -7366,8 +7587,9 @@ paths:
                                         type: string
                                         description: The name of the person the deal is associated with
                                   organization:
-                                    type: object
-                                    nullable: true
+                                    type:
+                                    - object
+                                    - 'null'
                                     properties:
                                       id:
                                         type: integer
@@ -7422,6 +7644,8 @@ paths:
                       is_archived: false
                 additional_data:
                   next_cursor: eyJmaWVsZCI6ImlkIiwiZmllbGRWYWx1ZSI6Nywic29ydERpcmVjdGlvbiI6ImFzYyIsImlkIjo3fQ
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /deals/{id}/discounts:
     get:
       summary: List discounts added to a deal
@@ -7602,6 +7826,8 @@ paths:
                   created_by: 1
                   updated_at: '2024-03-12T10:30:05Z'
                   updated_by: 1
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /deals/{id}/discounts/{discount_id}:
     patch:
       summary: Update a discount added to a deal
@@ -7754,6 +7980,8 @@ paths:
                 success: true
                 data:
                   id: 123
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /deals/{id}/convert/lead:
     post:
       security:
@@ -7763,7 +7991,7 @@ paths:
       tags:
       - Deals
       summary: Convert a deal to a lead
-      description: Initiates a conversion of a deal to a lead. The return value is an ID of a job that was assigned to perform the conversion. Related entities (notes, files, emails, activities, ...) are transferred during the process to the target entity. There are exceptions for entities like invoices or history that are not transferred and remain linked to the original deal. If the conversion is successful, the deal is marked as deleted. To retrieve the created entity ID and the result of the conversion, call the <a href="https://developers.pipedrive.com/docs/api/v1/Deals#getDealConversionStatus">/api/v2/deals/{deal_id}/convert/status/{conversion_id}</a> endpoint.
+      description: Initiates a conversion of a deal to a lead. The return value is an ID of a job that was assigned to perform the conversion. Related entities (notes, files, emails, activities, ...) are transferred during the process to the target entity. There are exceptions for entities like invoices or history that are not transferred and remain linked to the original deal. If the conversion is successful, the deal is marked as deleted. To retrieve the created entity ID and the result of the conversion, call the /api/v2/deals/{deal_id}/convert/status/{conversion_id} endpoint.
       operationId: convertDealToLead
       x-token-cost: 40
       parameters:
@@ -7795,8 +8023,9 @@ paths:
                         type: string
                         format: uuid
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: true
@@ -7821,12 +8050,14 @@ paths:
                     type: string
                     description: A message describing how to solve the problem
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: false
@@ -7834,6 +8065,8 @@ paths:
                 error_info: Object was not found.
                 data: null
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/api/v2
   /deals/{id}/convert/status/{conversion_id}:
     get:
       security:
@@ -7910,8 +8143,9 @@ paths:
                         - failed
                         - rejected
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
         '404':
           description: A resource describing an error
@@ -7931,12 +8165,14 @@ paths:
                     type: string
                     description: A message describing how to solve the problem
                   data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
                   additional_data:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     example: null
               example:
                 success: false
@@ -7944,6 +8180,8 @@ paths:
                 error_info: Object was not found.
                 data: null
                 additional_data: null
+    servers:
+    - url: https://api.pipedrive.com/api/v2
 components:
   securitySchemes:
     basic_authentication:
@@ -7990,3 +8228,6 @@ components:
             goals:full: Create, read, update and delete goals
             video-calls: Allows application to register as a video call integration provider and create conference links
             messengers-integration: Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses
+x-refined-from:
+- pipedrive-v1-openapi.yml
+- pipedrive-v2-openapi.yml

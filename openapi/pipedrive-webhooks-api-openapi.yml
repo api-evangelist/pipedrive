@@ -1,15 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipedrive API v1 Activities Webhooks API
+  title: Pipedrive API v1 Webhooks API
   version: 1.0.0
-  description: 'Activities are appointments/tasks/events on a calendar that can be associated with a deal, a lead, a person and an organization. Activities can be of different type (such as call, meeting, lunch or a custom type - see ActivityTypes object) and can be assigned to a particular user. Note that activities can also be created without a specific date/time.
-
-    '
+  description: See the guide for Webhooks for more information.
 servers:
 - url: https://api.pipedrive.com/v1
 tags:
 - name: Webhooks
-  description: See <a href="https://pipedrive.readme.io/docs/guide-for-webhooks-v2?ref=api_reference" target="_blank" rel="noopener noreferrer">the guide for Webhooks</a> for more information.
+  description: See the guide for Webhooks for more information.
 paths:
   /webhooks:
     get:
@@ -90,9 +88,10 @@ paths:
                             format: date-time
                             description: The date when the Webhook was added
                           remove_time:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: date-time
-                            nullable: true
                             description: The date when the Webhook was removed (if removed)
                           type:
                             type: string
@@ -102,25 +101,30 @@ paths:
                             - automation
                             description: The type of the Webhook
                           http_auth_user:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The username of the `subscription_url` of the Webhook
                           http_auth_password:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The password of the `subscription_url` of the Webhook
                           remove_reason:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             description: The removal reason of the Webhook (if removed)
                           last_delivery_time:
-                            type: string
+                            type:
+                            - string
+                            - 'null'
                             format: date-time
-                            nullable: true
                             description: The last delivery time of the Webhook
                           last_http_status:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                             description: The last delivery HTTP status of the Webhook
                           admin_id:
                             type: integer
@@ -176,7 +180,7 @@ paths:
                 errorCode: 401
     post:
       summary: Create a new Webhook
-      description: Creates a new Webhook and returns its details. Note that specifying an event which triggers the Webhook combines 2 parameters - `event_action` and `event_object`. E.g., use `*.*` for getting notifications about all events, `create.deal` for any newly added deals, `delete.persons` for any deleted persons, etc. See <a href="https://pipedrive.readme.io/docs/guide-for-webhooks-v2?ref=api_reference" target="_blank" rel="noopener noreferrer">the guide for Webhooks</a> for more details.
+      description: Creates a new Webhook and returns its details. Note that specifying an event which triggers the Webhook combines 2 parameters - `event_action` and `event_object`. E.g., use `*.*` for getting notifications about all events, `create.deal` for any newly added deals, `delete.persons` for any deleted persons, etc. See the guide for Webhooks for more details.
       x-token-cost: 10
       operationId: addWebhook
       tags:
@@ -231,12 +235,14 @@ paths:
                   type: integer
                   description: The ID of the user that this webhook will be authorized with. You have the option to use a different user's `user_id`. If it is not set, the current user's `user_id` will be used. As each webhook event is checked against a user's permissions, the webhook will only be sent if the user has access to the specified object(s). If you want to receive notifications for all events, please use a top-level admin user’s `user_id`.
                 http_auth_user:
-                  nullable: true
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: The HTTP basic auth username of the subscription URL endpoint (if required)
                 http_auth_password:
-                  nullable: true
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: The HTTP basic auth password of the subscription URL endpoint (if required)
                 version:
                   type: string
@@ -311,9 +317,10 @@ paths:
                           format: date-time
                           description: The date when the Webhook was added
                         remove_time:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
-                          nullable: true
                           description: The date when the Webhook was removed (if removed)
                         type:
                           type: string
@@ -323,25 +330,30 @@ paths:
                           - automation
                           description: The type of the Webhook
                         http_auth_user:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The username of the `subscription_url` of the Webhook
                         http_auth_password:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The password of the `subscription_url` of the Webhook
                         remove_reason:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The removal reason of the Webhook (if removed)
                         last_delivery_time:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
-                          nullable: true
                           description: The last delivery time of the Webhook
                         last_http_status:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: The last delivery HTTP status of the Webhook
                         admin_id:
                           type: integer
