@@ -860,7 +860,7 @@ paths:
       summary: Get one product field
       description: Returns metadata about a specific product field.
       x-token-cost: 1
-      operationId: getProductField
+      operationId: getProductFieldsByFieldCode
       tags:
       - Product Fields
       security:
@@ -1023,11 +1023,13 @@ paths:
                   ui_visibility:
                     add_visible_flag: true
                     details_visible_flag: true
+      x-operation-id-source: normalized
+      x-operation-id-original: getProductField
     patch:
       summary: Update one product field
       description: Updates a product custom field. The field_code and field_type cannot be changed. At least one field must be provided in the request body.
       x-token-cost: 5
-      operationId: updateProductField
+      operationId: patchProductFieldsByFieldCode
       tags:
       - Product Fields
       security:
@@ -1208,11 +1210,13 @@ paths:
                   ui_visibility:
                     add_visible_flag: true
                     details_visible_flag: true
+      x-operation-id-source: normalized
+      x-operation-id-original: updateProductField
     delete:
       summary: Delete one product field
       description: Marks a custom field as deleted.
       x-token-cost: 3
-      operationId: deleteProductField
+      operationId: deleteProductFieldsByFieldCode
       tags:
       - Product Fields
       security:
@@ -1286,6 +1290,8 @@ paths:
                   subfields: null
                   is_custom_field: true
                   is_optional_response_field: false
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteProductField
     servers:
     - url: https://api.pipedrive.com/api/v2
   /productFields/{field_code}/options:

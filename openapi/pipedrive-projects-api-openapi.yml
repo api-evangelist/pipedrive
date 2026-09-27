@@ -738,7 +738,7 @@ paths:
       summary: Update a project
       description: Updates the properties of a project.
       x-token-cost: 5
-      operationId: updateProject
+      operationId: patchProjectsById
       tags:
       - Projects
       security:
@@ -930,6 +930,8 @@ paths:
                   status_change_time: '2026-04-14T10:45:20.852Z'
                   archive_time: null
                   custom_fields: {}
+      x-operation-id-source: normalized
+      x-operation-id-original: updateProject
     servers:
     - url: https://api.pipedrive.com/v1
   /projects/{id}/archive:

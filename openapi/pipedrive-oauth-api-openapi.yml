@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Pipedrive API v1 OAUTH API
+  title: Pipedrive API v1 OAuth API
   version: 1.0.0
   description: Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace. Authorization via OAuth 2.0 is a well-known and stable way to get fine-grained access to an API. To retrieve OAuth2 tokens you should send requests to the `https://oauth.pipedrive.com` domain. After registering the app, you must add the necessary server-side logic to your app to establish the OAuth flow. Please read more about authorization step on the Pipedrive Developers page.
 servers:

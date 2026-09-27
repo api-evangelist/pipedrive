@@ -55,7 +55,7 @@
     "pipedrive-projectfields-api-openapi.yml"
   ],
   "archived": [
-    "deleted 11 superseded output(s) from the previous generation"
+    "deleted 10 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
@@ -81,8 +81,8 @@
     "tag 'Stages' spans 2 source specs (pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml): per-path servers applied",
     "tag 'Tasks' spans 2 source specs (pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml): per-path servers applied",
     "tag 'Users' spans 2 source specs (pipedrive-v1-openapi.yml, pipedrive-v2-openapi.yml): per-path servers applied",
-    "superseded outputs removed: pipedrive-activity-types-api-openapi.yml, pipedrive-call-logs-api-openapi.yml, pipedrive-lead-fields-api-openapi.yml, pipedrive-lead-sources-api-openapi.yml, pipedrive-o-auth-api-openapi.yml \u2026",
-    "apis.yml register: written (+11 apis, 48 total)"
+    "superseded outputs removed: pipedrive-activity-types-api-openapi.yml, pipedrive-call-logs-api-openapi.yml, pipedrive-lead-fields-api-openapi.yml, pipedrive-lead-sources-api-openapi.yml, pipedrive-organization-fields-api-openapi.yml \u2026",
+    "apis.yml register: written (+10 apis, 48 total)"
   ],
   "skipped": [
     "pipedrive-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -110,7 +110,7 @@
     "pipedrive-meetings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "pipedrive-notefields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "pipedrive-notes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "pipedrive-o-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pipedrive-oauth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "pipedrive-organization-fields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "pipedrive-organizationrelationships-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "pipedrive-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",

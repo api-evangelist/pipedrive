@@ -1109,7 +1109,7 @@ paths:
       summary: Get one organization field
       description: Returns metadata about a specific organization field.
       x-token-cost: 1
-      operationId: getOrganizationField
+      operationId: getOrganizationFieldsByFieldCode
       tags:
       - Organization Fields
       security:
@@ -1345,11 +1345,13 @@ paths:
                     stage_ids: []
                   required_fields:
                     enabled: true
+      x-operation-id-source: normalized
+      x-operation-id-original: getOrganizationField
     patch:
       summary: Update one organization field
       description: Updates an organization custom field. The field_code and field_type cannot be changed. At least one field must be provided in the request body.
       x-token-cost: 5
-      operationId: updateOrganizationField
+      operationId: patchOrganizationFieldsByFieldCode
       tags:
       - Organization Fields
       security:
@@ -1649,11 +1651,13 @@ paths:
                     stage_ids: []
                   required_fields:
                     enabled: true
+      x-operation-id-source: normalized
+      x-operation-id-original: updateOrganizationField
     delete:
       summary: Delete one organization field
       description: Marks a custom field as deleted.
       x-token-cost: 3
-      operationId: deleteOrganizationField
+      operationId: deleteOrganizationFieldsByFieldCode
       tags:
       - Organization Fields
       security:
@@ -1727,6 +1731,8 @@ paths:
                   subfields: null
                   is_custom_field: true
                   is_optional_response_field: false
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteOrganizationField
     servers:
     - url: https://api.pipedrive.com/api/v2
   /organizationFields/{field_code}/options:

@@ -2611,8 +2611,6 @@ apis:
     Permission sets define what users in the account can do: which actions they are allowed to perform
     and which features they can access.
   tags:
-  - PermissionSets
-  tags_raw:
   - Permission Sets
   properties:
   - type: OpenAPI

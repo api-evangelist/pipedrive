@@ -140,7 +140,7 @@ paths:
       summary: Get all project boards
       description: Returns all active project boards.
       x-token-cost: 10
-      operationId: getProjectsBoards
+      operationId: getBoards
       tags:
       - ProjectBoards
       security:
@@ -194,6 +194,8 @@ paths:
                   add_time: '2024-01-01T00:00:00.000Z'
                   update_time: '2024-01-01T00:00:00.000Z'
                 additional_data: null
+      x-operation-id-source: normalized
+      x-operation-id-original: getProjectsBoards
     post:
       summary: Add a project board
       description: Adds a new project board.
@@ -267,7 +269,7 @@ paths:
       summary: Get details of a project board
       description: Returns the details of a specific project board.
       x-token-cost: 10
-      operationId: getProjectsBoard
+      operationId: getBoardsById
       tags:
       - ProjectBoards
       security:
@@ -320,6 +322,8 @@ paths:
                   order_nr: 1
                   add_time: '2024-01-01T00:00:00.000Z'
                   update_time: '2024-01-01T00:00:00.000Z'
+      x-operation-id-source: normalized
+      x-operation-id-original: getProjectsBoard
     patch:
       summary: Update a project board
       description: Updates the properties of a project board.

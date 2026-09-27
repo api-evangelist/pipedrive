@@ -155,7 +155,7 @@ paths:
       summary: Get project phases
       description: Returns all active project phases under a specific board.
       x-token-cost: 10
-      operationId: getProjectsPhases
+      operationId: getPhases
       tags:
       - Project Phases
       security:
@@ -221,6 +221,8 @@ paths:
                   add_time: '2024-01-01T00:00:00.000Z'
                   update_time: '2024-01-01T00:00:00.000Z'
                 additional_data: null
+      x-operation-id-source: normalized
+      x-operation-id-original: getProjectsPhases
     post:
       summary: Add a project phase
       description: Adds a new project phase to a board.
@@ -302,7 +304,7 @@ paths:
       summary: Get details of a project phase
       description: Returns the details of a specific project phase.
       x-token-cost: 10
-      operationId: getProjectsPhase
+      operationId: getPhasesById
       tags:
       - Project Phases
       security:
@@ -359,6 +361,8 @@ paths:
                   order_nr: 1
                   add_time: '2024-01-01T00:00:00.000Z'
                   update_time: '2024-01-01T00:00:00.000Z'
+      x-operation-id-source: normalized
+      x-operation-id-original: getProjectsPhase
     patch:
       summary: Update a project phase
       description: Updates the properties of a project phase.

@@ -669,7 +669,7 @@ paths:
       summary: Update a task
       description: Updates a task.
       x-token-cost: 5
-      operationId: updateTask
+      operationId: patchTasksById
       tags:
       - Tasks
       security:
@@ -854,6 +854,8 @@ paths:
                   update_time: '2026-09-14T08:14:40.000Z'
                   marked_as_done_time: null
                 additional_data: null
+      x-operation-id-source: normalized
+      x-operation-id-original: updateTask
     servers:
     - url: https://api.pipedrive.com/v1
 components:

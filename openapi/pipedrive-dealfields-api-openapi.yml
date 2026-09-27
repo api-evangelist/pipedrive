@@ -1109,7 +1109,7 @@ paths:
       summary: Get one deal field
       description: Returns metadata about a specific deal field.
       x-token-cost: 1
-      operationId: getDealField
+      operationId: getDealFieldsByFieldCode
       tags:
       - DealFields
       security:
@@ -1344,11 +1344,13 @@ paths:
                     enabled: false
                     stage_ids: []
                     statuses: {}
+      x-operation-id-source: normalized
+      x-operation-id-original: getDealField
     patch:
       summary: Update one deal field
       description: Updates a deal custom field. The field_code and field_type cannot be changed. At least one field must be provided in the request body.
       x-token-cost: 5
-      operationId: updateDealField
+      operationId: patchDealFieldsByFieldCode
       tags:
       - DealFields
       security:
@@ -1658,11 +1660,13 @@ paths:
                     enabled: false
                     stage_ids: []
                     statuses: {}
+      x-operation-id-source: normalized
+      x-operation-id-original: updateDealField
     delete:
       summary: Delete one deal field
       description: Marks a custom field as deleted.
       x-token-cost: 3
-      operationId: deleteDealField
+      operationId: deleteDealFieldsByFieldCode
       tags:
       - DealFields
       security:
@@ -1741,6 +1745,8 @@ paths:
                   subfields: null
                   is_custom_field: true
                   is_optional_response_field: false
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteDealField
     servers:
     - url: https://api.pipedrive.com/api/v2
   /dealFields/{field_code}/options:
