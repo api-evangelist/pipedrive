@@ -1,0 +1,12 @@
+{
+ "url": "https://developers.pipedrive.com/docs/api/v1/openapi-v2.yaml",
+ "requested_url": "https://developers.pipedrive.com/docs/api/v1/openapi-v2.yaml",
+ "status": 200,
+ "content_type": "text/yaml; charset=UTF-8",
+ "bytes": 1042388,
+ "sha256": "fc2ce0fe3c3422633a2e9616aa90fca77eac3d389b110f8c159d87df7088201f",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
