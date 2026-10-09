@@ -28,11 +28,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-activityfields-api
   collections/pipedrive-activitytypes-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-activitytypes-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-activitytypes-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-activitytypes-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-beta-api.opencollection.json:
     method: derived
     evidence: openapi/pipedrive-beta-api
@@ -46,11 +46,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-billing-api
   collections/pipedrive-calllogs-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-calllogs-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-calllogs-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-calllogs-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-channels-api.opencollection.json:
     method: derived
     evidence: openapi/pipedrive-channels-api
@@ -112,11 +112,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-itemsearch-api
   collections/pipedrive-leadfields-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-leadfields-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-leadfields-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-leadfields-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-leadlabels-api.opencollection.json:
     method: derived
     evidence: openapi/pipedrive-leadlabels-api
@@ -130,11 +130,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-leads-api
   collections/pipedrive-leadsources-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-leadsources-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-leadsources-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-leadsources-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-legacyteams-api.opencollection.json:
     method: derived
     evidence: openapi/pipedrive-legacyteams-api
@@ -172,11 +172,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-oauth-api
   collections/pipedrive-organizationfields-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-organizationfields-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-organizationfields-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-organizationfields-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-organizationrelationships-api.opencollection.json:
     method: derived
     evidence: openapi/pipedrive-organizationrelationships-api
@@ -190,11 +190,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-organizations-api
   collections/pipedrive-permissionsets-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-permissionsets-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-permissionsets-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-permissionsets-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-personfields-api.opencollection.json:
     method: derived
     evidence: openapi/pipedrive-personfields-api
@@ -214,11 +214,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-pipelines-api
   collections/pipedrive-productfields-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-productfields-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-productfields-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-productfields-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-products-api.opencollection.json:
     method: derived
     evidence: openapi/pipedrive-products-api
@@ -238,11 +238,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-projectfields-api
   collections/pipedrive-projectphases-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-projectphases-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-projectphases-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-projectphases-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-projects-api.opencollection.json:
     method: derived
     evidence: openapi/pipedrive-projects-api
@@ -250,11 +250,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-projects-api
   collections/pipedrive-projecttemplates-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-projecttemplates-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-projecttemplates-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-projecttemplates-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-recents-api.opencollection.json:
     method: derived
     evidence: openapi/pipedrive-recents-api
@@ -292,11 +292,11 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-users-api
   collections/pipedrive-usersettings-api.opencollection.json:
-    method: derived
-    evidence: openapi/pipedrive-usersettings-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-usersettings-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-usersettings-api
+    method: unknown
+    evidence: no authorship recorded
   collections/pipedrive-v1.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -318,61 +318,10 @@ artifacts:
   finops/pipedrive-finops.yml:
     method: generated
     evidence: declared in the artifact
-  graphql/pipedrive-graphql.md:
+  front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
-  graphql/pipedrive-schema.graphql:
-    method: unknown
-    evidence: no authorship recorded
-  kin/checks-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-06T210741.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-07T135032.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T093022.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T111628.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-11T211707.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-12T193225.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-17T064519.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T080027.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T082702.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T114122.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T165047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T191845.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T205517.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-21T110057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T064859.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T171257.yml:
+  kin/checks-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-25T125852.yml:
@@ -459,22 +408,141 @@ artifacts:
   kin/score-2026-09-05T072335.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T144739.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T195450.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T211839.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T011047.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T224210.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T200636.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T213054.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T214843.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T232836.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T204815.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T222408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T062655.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T080032.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T204651.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T221936.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-13T214537.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T064754.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T210656.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T225847.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T211329.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T230249.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T210549.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T225339.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T211151.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T233623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T205255.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T231945.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T165737.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T193153.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T205903.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T232958.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T211425.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T233935.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-22T213221.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-23T000603.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T064009.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T090406.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T161608.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   llms/pipedrive-llms-probe.yml:
     method: searched
     evidence: 'derive-llms-provenance.py: harvested'
   openapi/_original/pipedrive-v1-openapi.yml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
   openapi/_original/pipedrive-v2-openapi.yml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
   openapi/pipedrive-activities-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-activityfields-api-openapi.yml:
+  openapi/pipedrive-activity-types-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-activitytypes-api-openapi.yml:
+  openapi/pipedrive-activityfields-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-beta-api-openapi.yml:
@@ -483,7 +551,7 @@ artifacts:
   openapi/pipedrive-billing-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-calllogs-api-openapi.yml:
+  openapi/pipedrive-call-logs-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-channels-api-openapi.yml:
@@ -516,16 +584,16 @@ artifacts:
   openapi/pipedrive-itemsearch-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-leadfields-api-openapi.yml:
+  openapi/pipedrive-lead-fields-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/pipedrive-lead-sources-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-leadlabels-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-leads-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-leadsources-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-legacyteams-api-openapi.yml:
@@ -546,7 +614,7 @@ artifacts:
   openapi/pipedrive-oauth-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-organizationfields-api-openapi.yml:
+  openapi/pipedrive-organization-fields-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-organizationrelationships-api-openapi.yml:
@@ -555,7 +623,7 @@ artifacts:
   openapi/pipedrive-organizations-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-permissionsets-api-openapi.yml:
+  openapi/pipedrive-permission-sets-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-personfields-api-openapi.yml:
@@ -567,10 +635,16 @@ artifacts:
   openapi/pipedrive-pipelines-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-productfields-api-openapi.yml:
+  openapi/pipedrive-product-fields-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-products-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/pipedrive-project-phases-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/pipedrive-project-templates-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-projectboards-api-openapi.yml:
@@ -579,13 +653,7 @@ artifacts:
   openapi/pipedrive-projectfields-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-projectphases-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-projects-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-projecttemplates-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-recents-api-openapi.yml:
@@ -600,21 +668,24 @@ artifacts:
   openapi/pipedrive-tasks-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/pipedrive-user-settings-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-userconnections-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-users-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/pipedrive-usersettings-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/pipedrive-webhooks-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   plans/pipedrive-plans-pricing.yml:
-    method: generated
+    method: searched
     evidence: declared in the artifact
+  plans/pipedrive-price-estimates.yml:
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-activities-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-activities-api
@@ -622,8 +693,8 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-activityfields-api
   postman/pipedrive-activitytypes-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-activitytypes-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-beta-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-beta-api
@@ -631,8 +702,8 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-billing-api
   postman/pipedrive-calllogs-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-calllogs-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-channels-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-channels-api
@@ -664,8 +735,8 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-itemsearch-api
   postman/pipedrive-leadfields-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-leadfields-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-leadlabels-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-leadlabels-api
@@ -673,8 +744,8 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-leads-api
   postman/pipedrive-leadsources-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-leadsources-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-legacyteams-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-legacyteams-api
@@ -694,8 +765,8 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-oauth-api
   postman/pipedrive-organizationfields-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-organizationfields-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-organizationrelationships-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-organizationrelationships-api
@@ -703,8 +774,8 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-organizations-api
   postman/pipedrive-permissionsets-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-permissionsets-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-personfields-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-personfields-api
@@ -715,8 +786,8 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-pipelines-api
   postman/pipedrive-productfields-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-productfields-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-products-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-products-api
@@ -727,14 +798,14 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-projectfields-api
   postman/pipedrive-projectphases-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-projectphases-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-projects-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-projects-api
   postman/pipedrive-projecttemplates-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-projecttemplates-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-recents-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-recents-api
@@ -754,13 +825,13 @@ artifacts:
     method: derived
     evidence: openapi/pipedrive-users-api
   postman/pipedrive-usersettings-api.postman_collection.json:
-    method: derived
-    evidence: openapi/pipedrive-usersettings-api
+    method: unknown
+    evidence: no authorship recorded
   postman/pipedrive-webhooks-api.postman_collection.json:
     method: derived
     evidence: openapi/pipedrive-webhooks-api
   rate-limits/pipedrive-rate-limits.yml:
-    method: generated
+    method: searched
     evidence: declared in the artifact
   rules/pipedrive-asyncapi-spectral-rules.yml:
     method: generated
