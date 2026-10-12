@@ -1,0 +1,1262 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/pipedrive/integrations
+- https://n8n.io/integrations/pipedrive/
+- https://composio.dev/toolkits/pipedrive
+checked:
+- https://composio.dev/toolkits/pipedrive
+- https://monid.ai/tools/pipedrive
+- https://n8n.io/integrations/pipedrive/
+- https://zapier.com/apps/pipedrive/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: pipedrive
+  url: https://zapier.com/apps/pipedrive/integrations
+  external_url: https://pipedrive.com/
+  partner_tier: PLATINUM
+  triggers:
+  - key: activity_in_filter_v2
+    label: Activity Matching Filter
+  - key: activity_v2
+    label: New Activity
+  - key: deal_in_filter_v2
+    label: Deal Matching Filter
+  - key: deal_v3
+    label: New Deal
+  - key: lead
+    label: New Lead
+  - key: noteComment
+    label: New Comments in Notes
+  - key: note_v2
+    label: New Note
+  - key: organization_in_filter_v2
+    label: Organization Matching Filter
+  - key: organization_v2
+    label: New Organization
+  - key: personV2
+    label: New Person
+  - key: person_deleted
+    label: Deleted Person
+  - key: person_in_filter
+    label: Person Matching Filter
+  - key: projectV2
+    label: New Project
+  - key: updated_deal_stage_v3
+    label: Updated Deal Stage
+  - key: updated_deal_v4
+    label: Updated Deal
+  - key: updated_lead
+    label: Updated Lead
+  - key: updated_organization_v3
+    label: Updated Organization
+  - key: updated_person_v4
+    label: Updated Person
+  actions:
+  - key: add_deal_discount
+    label: Add Discount to Deal
+  - key: add_label_to_personV2
+    label: Add Label to Person
+  - key: add_product_to_deal_v2
+    label: Add Product to Deal
+  - key: add_product_variation
+    label: Add Product Variation
+  - key: create_activity_v2
+    label: Create Activity
+  - key: create_deal_v2
+    label: Create Deal
+  - key: create_file
+    label: Attach File
+  - key: create_follower_v2
+    label: Add Follower
+  - key: create_lead
+    label: Create Lead
+  - key: create_note
+    label: Create Note
+  - key: create_organization_v2
+    label: Create Organization
+  - key: create_personV2
+    label: Create Person
+  - key: create_productV2
+    label: Create Product
+  - key: create_project
+    label: Create Project
+  - key: create_task
+    label: Create Task
+  - key: manage_deal_labels
+    label: Add/Remove Deal Labels
+  - key: remove_product_from_deal
+    label: Remove Product From Deal
+  - key: update_activity_v2
+    label: Update Activity
+  - key: update_deal_v2
+    label: Update Deal
+  - key: update_lead
+    label: Update Lead
+  - key: update_organization_v2
+    label: Update Organization
+  - key: update_personV2
+    label: Update Person
+  - key: update_productV2
+    label: Update Product
+  - key: update_project
+    label: Update Project
+  - key: update_task
+    label: Update Task
+  - key: _zap_raw_request
+    label: API Request (Beta)
+  searches:
+  - key: activity_v3
+    label: Find Activities
+  - key: deals_by_person_v3
+    label: Find Deals Associated With a Person
+  - key: deal_v3
+    label: Find Deals
+  - key: find_deal_products
+    label: Find Deal Products
+  - key: find_product_variations
+    label: Find Product Variations
+  - key: get_activity_type
+    label: Get Activity Type
+  - key: get_deal
+    label: Get Deal
+  - key: get_lead
+    label: Get Lead
+  - key: get_organization
+    label: Get Organization
+  - key: get_person
+    label: Get Person
+  - key: get_product
+    label: Get Product
+  - key: get_stage
+    label: Get Stage
+  - key: get_user
+    label: Get User
+  - key: leadsV2
+    label: Find Leads
+  - key: note
+    label: Get Note
+  - key: notesV2
+    label: Find Notes
+  - key: organization_v3
+    label: Find Organizations
+  - key: person_v3
+    label: Find Persons
+  - key: productV3
+    label: Find Products
+  - key: project
+    label: Get Project
+  - key: projects
+    label: Find Project(s)
+  - key: search_task
+    label: Find Tasks
+  - key: user_v2
+    label: Find Users
+- marketplace: n8n
+  channel: open-source-node
+  app: pipedrive
+  url: https://n8n.io/integrations/pipedrive/
+  identity: title
+  pair_pages: 251
+  pairs:
+  - pipefy
+  - pirate-weather
+  - pitchly
+  - pivotal-tracker
+  - planview-leankit
+  - planyo-online-booking
+  - platformly
+  - plecto
+  - plivo
+  - postbin
+  - postgres
+  - posthog
+  - practitest
+  - predisai
+  - prodia
+  - product-hunt
+  - profitwell
+  - project-bubble-proprofs-project
+  - prompthub
+  - prospe-ai
+  - pushbullet
+  - pushcut
+  - pusher
+  - pushover
+  - qradar
+  - qualaroo
+  - qualys
+  - quentn
+  - questdb
+  - quick-base
+  - quickbooks-online
+  - quickchart
+  - quintadb
+  - rabbitmq
+  - radar
+  - raindrop
+  - rapid7-insightvm
+  - raven-tools
+  - rawg-video-games-database
+  - read-ai
+  - realphonevalidation
+  - recharge
+  - recorded-future
+  - redash
+  - reddit
+  - redis
+  - relevance-ai
+  - relink-url-shortener
+  - relysia
+  - replyio
+  - retable
+  - reverse-contact
+  - rewardful
+  - ritekit
+  - roboflow
+  - robolytix
+  - roboresponseai
+  - rocketchat
+  - rollbar
+  - rootly
+  - route4me
+  - rundeck
+  - s3
+  - sales-simplify
+  - salesforce
+  - salesmaa
+  - salesmate
+  - salesmsg
+  - salesrocks
+  - samsung-smartthings
+  - scrape-itcloud
+  - scrapeninja
+  - seamless-ai
+  - search-and-save
+  - seatable
+  - securityscorecard
+  - segment
+  - sekoia
+  - sellix
+  - sembly-ai
+  - sendgrid
+  - sendy
+  - sentryio
+  - servicenow
+  - sharly-ai
+  - shiphero
+  - shipstation
+  - shopify
+  - shortio
+  - shuffler
+  - sierra-interactive
+  - sifter
+  - signaturit
+  - signl4
+  - signrequest
+  - simpleem
+  - simplehash
+  - simplekpi
+  - simplelocalize
+  - simplero
+  - simpletexting
+  - sitecreatorio
+  - sitespeakai
+  - slack
+  - smaily
+  - smartreach
+  - smartsuite
+  - sms-it
+  - sms-magic
+  - sms77
+  - snapdocs
+  - snatchbot
+  - snipcart
+  - snowflake
+  - solve-data
+  - specter
+  - splunk
+  - spondyr
+  - spontit
+  - sportsdata
+  - spotify
+  - spydra
+  - sslmate-cert-spotter-api
+  - stackby
+  - stammerai
+  - starton
+  - statuscake
+  - storyblok
+  - strapi
+  - strava
+  - stripe
+  - studio-by-ai21-labs
+  - suitedash
+  - supabase
+  - supernormal
+  - superpowered
+  - supportivekoala
+  - survicate
+  - swagup
+  - switchboard
+  - syncly
+  - syncromsp
+  - synthesia
+  - taiga
+  - talentlms
+  - talknotes
+  - tapfiliate
+  - td-ameritrade
+  - teachable
+  - team-up
+  - teamdeck
+  - teamgate
+  - teknoir
+  - telegram
+  - testmonitor
+  - textcortex-ai
+  - textgain
+  - textkit
+  - textmagic
+  - thankster
+  - the-customer-factor
+  - the-leap
+  - thehive
+  - thehive-5
+  - thoughtfulgpt
+  - thrivecart
+  - tidb-cloud
+  - tierion
+  - tilda
+  - timescaledb
+  - timetonic
+  - tinyurl
+  - tisane-labs
+  - todoist
+  - token-metrics
+  - toket
+  - totango
+  - trackvia
+  - transifex
+  - travisci
+  - trellix-epo
+  - trello
+  - trengo
+  - trevorio
+  - turbohire
+  - tuskr
+  - tuulio
+  - twake
+  - twilio
+  - twist
+  - twitter
+  - unbounce
+  - unisender
+  - unleashed-software
+  - upkeep
+  - uplead
+  - uproc
+  - uptimerobot
+  - uptimetoolbox
+  - urlscanio
+  - uservoice
+  - venafi-tls-protect-cloud
+  - venafi-tls-protect-datacenter
+  - venly
+  - verifalia
+  - vero
+  - vimeo
+  - virustotal
+  - vivifyscrum
+  - voicit
+  - vonage
+  - vowel
+  - watchsignals
+  - waveline-extract
+  - webex-by-cisco
+  - webflow
+  - webscraperio
+  - wekan
+  - whal3s
+  - whatconverts
+  - whatsapp-business-cloud
+  - wise
+  - wizychat
+  - wonderchat
+  - wondercraft
+  - woocommerce
+  - woodpeckerco
+  - wordpress
+  - workast
+  - workboard
+  - woxo
+  - writesonic
+  - wubook-ratechecker
+  - xero
+  - xtractly
+  - ybug
+  - ycode
+  - yodiz
+  - yourls
+  - youtube
+  - zabbix
+  - zammad
+  - zendesk
+  - zenrows
+  - zoho-books
+  - zoho-crm
+  - zoho-desk
+  - zonka-feedback
+  - zoom
+  - zscaler-zia
+  - zulip
+- marketplace: composio
+  channel: agent-gateway
+  app: pipedrive
+  url: https://composio.dev/toolkits/pipedrive
+  identity: action-prefix
+  actions:
+  - key: PIPEDRIVE_ADD_ACTIVITY_TYPE
+  - key: PIPEDRIVE_ADD_AN_ACTIVITY
+  - key: PIPEDRIVE_ADD_AN_ORGANIZATION
+  - key: PIPEDRIVE_ADD_A_CALL_LOG
+  - key: PIPEDRIVE_ADD_A_CHANNEL
+  - key: PIPEDRIVE_ADD_A_COMMENT_TO_A_NOTE
+  - key: PIPEDRIVE_ADD_A_DEAL
+  - key: PIPEDRIVE_ADD_A_PERSON
+  - key: PIPEDRIVE_ADD_CALL_LOG
+  - key: PIPEDRIVE_ADD_CALL_LOG_AUDIO_FILE
+  - key: PIPEDRIVE_ADD_CHANNEL
+  - key: PIPEDRIVE_ADD_DEALFIELDS_OPTIONS
+  - key: PIPEDRIVE_ADD_DEAL_DISCOUNT
+  - key: PIPEDRIVE_ADD_DEAL_FIELD
+  - key: PIPEDRIVE_ADD_DEAL_FOLLOWER
+  - key: PIPEDRIVE_ADD_DEAL_PARTICIPANT
+  - key: PIPEDRIVE_ADD_DEAL_PRODUCT
+  - key: PIPEDRIVE_ADD_DEAL_PRODUCTS
+  - key: PIPEDRIVE_ADD_FILE
+  - key: PIPEDRIVE_ADD_FILTER
+  - key: PIPEDRIVE_ADD_GOAL
+  - key: PIPEDRIVE_ADD_INCOMING_MESSAGE
+  - key: PIPEDRIVE_ADD_INSTALLMENT_SUBSCRIPTION
+  - key: PIPEDRIVE_ADD_LEAD
+  - key: PIPEDRIVE_ADD_LEAD_LABEL
+  - key: PIPEDRIVE_ADD_NOTE
+  - key: PIPEDRIVE_ADD_NOTE_COMMENT
+  - key: PIPEDRIVE_ADD_ORGANIZATION_FIELD
+  - key: PIPEDRIVE_ADD_ORGANIZATION_FIELD_OPTIONS
+  - key: PIPEDRIVE_ADD_ORGANIZATION_FOLLOWER
+  - key: PIPEDRIVE_ADD_OR_UPDATE_ROLE_SETTING
+  - key: PIPEDRIVE_ADD_PERSONFIELDS_OPTIONS
+  - key: PIPEDRIVE_ADD_PERSON_FIELD
+  - key: PIPEDRIVE_ADD_PERSON_FOLLOWER
+  - key: PIPEDRIVE_ADD_PERSON_PICTURE
+  - key: PIPEDRIVE_ADD_PIPELINE
+  - key: PIPEDRIVE_ADD_PRODUCT
+  - key: PIPEDRIVE_ADD_PRODUCTFIELDS_OPTIONS
+  - key: PIPEDRIVE_ADD_PRODUCT_FIELD
+  - key: PIPEDRIVE_ADD_PRODUCT_FOLLOWER
+  - key: PIPEDRIVE_ADD_PRODUCT_IMAGE
+  - key: PIPEDRIVE_ADD_PRODUCT_VARIATION
+  - key: PIPEDRIVE_ADD_PROJECT
+  - key: PIPEDRIVE_ADD_RECURRING_SUBSCRIPTION
+  - key: PIPEDRIVE_ADD_ROLE
+  - key: PIPEDRIVE_ADD_ROLE_ASSIGNMENT
+  - key: PIPEDRIVE_ADD_STAGE
+  - key: PIPEDRIVE_ADD_TASK
+  - key: PIPEDRIVE_ADD_TEAM
+  - key: PIPEDRIVE_ADD_TEAM_USERS
+  - key: PIPEDRIVE_ADD_USER
+  - key: PIPEDRIVE_ARCHIVE_PROJECT
+  - key: PIPEDRIVE_CANCEL_RECURRING_SUBSCRIPTION
+  - key: PIPEDRIVE_CONVERT_DEAL_TO_LEAD
+  - key: PIPEDRIVE_CONVERT_LEAD_TO_DEAL
+  - key: PIPEDRIVE_CREATE_ORGANIZATION_RELATIONSHIP
+  - key: PIPEDRIVE_CREATE_REMOTE_FILE_LINK
+  - key: PIPEDRIVE_CREATE_WEBHOOK
+  - key: PIPEDRIVE_CTIVITYIELDS_GET_ALL_ACTIVITYFIELDS
+  - key: PIPEDRIVE_DEALS_UPDATE_DEAL
+  - key: PIPEDRIVE_DELETE_ACTIVITIES_BULK
+  - key: PIPEDRIVE_DELETE_ACTIVITY
+  - key: PIPEDRIVE_DELETE_ACTIVITY_TYPE
+  - key: PIPEDRIVE_DELETE_ACTIVITY_TYPES_BULK
+  - key: PIPEDRIVE_DELETE_AN_ACTIVITY
+  - key: PIPEDRIVE_DELETE_A_PERSON
+  - key: PIPEDRIVE_DELETE_A_PERSON_FIELD
+  - key: PIPEDRIVE_DELETE_A_STAGE
+  - key: PIPEDRIVE_DELETE_CALL_LOG
+  - key: PIPEDRIVE_DELETE_CHANNEL
+  - key: PIPEDRIVE_DELETE_COMMENT
+  - key: PIPEDRIVE_DELETE_CONVERSATION
+  - key: PIPEDRIVE_DELETE_DEAL
+  - key: PIPEDRIVE_DELETE_DEALS_BULK
+  - key: PIPEDRIVE_DELETE_DEAL_DISCOUNT
+  - key: PIPEDRIVE_DELETE_DEAL_FIELD
+  - key: PIPEDRIVE_DELETE_DEAL_FIELDS_BULK
+  - key: PIPEDRIVE_DELETE_DEAL_FIELD_OPTIONS
+  - key: PIPEDRIVE_DELETE_DEAL_FOLLOWER
+  - key: PIPEDRIVE_DELETE_DEAL_PARTICIPANT
+  - key: PIPEDRIVE_DELETE_DEAL_PRODUCT
+  - key: PIPEDRIVE_DELETE_DEAL_PRODUCTS
+  - key: PIPEDRIVE_DELETE_FILE
+  - key: PIPEDRIVE_DELETE_FILTER
+  - key: PIPEDRIVE_DELETE_FILTERS_BULK
+  - key: PIPEDRIVE_DELETE_GOAL
+  - key: PIPEDRIVE_DELETE_LEAD
+  - key: PIPEDRIVE_DELETE_LEAD_LABEL
+  - key: PIPEDRIVE_DELETE_MAIL_THREAD
+  - key: PIPEDRIVE_DELETE_MULTIPLE_PRODUCT_FIELDS
+  - key: PIPEDRIVE_DELETE_MULTIPLE_STAGES
+  - key: PIPEDRIVE_DELETE_NOTE
+  - key: PIPEDRIVE_DELETE_ORGANIZATION
+  - key: PIPEDRIVE_DELETE_ORGANIZATIONS_BULK
+  - key: PIPEDRIVE_DELETE_ORGANIZATION_FIELD
+  - key: PIPEDRIVE_DELETE_ORGANIZATION_FIELDS_BULK
+  - key: PIPEDRIVE_DELETE_ORGANIZATION_FIELD_OPTIONS
+  - key: PIPEDRIVE_DELETE_ORGANIZATION_FOLLOWER
+  - key: PIPEDRIVE_DELETE_ORGANIZATION_RELATIONSHIP
+  - key: PIPEDRIVE_DELETE_PERSON
+  - key: PIPEDRIVE_DELETE_PERSONS_BULK
+  - key: PIPEDRIVE_DELETE_PERSON_FIELD
+  - key: PIPEDRIVE_DELETE_PERSON_FIELDS_BULK
+  - key: PIPEDRIVE_DELETE_PERSON_FIELD_OPTIONS
+  - key: PIPEDRIVE_DELETE_PERSON_FOLLOWER
+  - key: PIPEDRIVE_DELETE_PERSON_PICTURE
+  - key: PIPEDRIVE_DELETE_PIPELINE
+  - key: PIPEDRIVE_DELETE_PRODUCT
+  - key: PIPEDRIVE_DELETE_PRODUCT_FIELD
+  - key: PIPEDRIVE_DELETE_PRODUCT_FIELD_OPTIONS
+  - key: PIPEDRIVE_DELETE_PRODUCT_FOLLOWER
+  - key: PIPEDRIVE_DELETE_PRODUCT_IMAGE
+  - key: PIPEDRIVE_DELETE_PRODUCT_VARIATION
+  - key: PIPEDRIVE_DELETE_PROJECT
+  - key: PIPEDRIVE_DELETE_ROLE
+  - key: PIPEDRIVE_DELETE_ROLE_ASSIGNMENT
+  - key: PIPEDRIVE_DELETE_STAGE
+  - key: PIPEDRIVE_DELETE_SUBSCRIPTION
+  - key: PIPEDRIVE_DELETE_TASK
+  - key: PIPEDRIVE_DELETE_TEAM_USERS
+  - key: PIPEDRIVE_DELETE_WEBHOOK
+  - key: PIPEDRIVE_DOWNLOAD_FILE
+  - key: PIPEDRIVE_DUPLICATE_DEAL
+  - key: PIPEDRIVE_DUPLICATE_PRODUCT
+  - key: PIPEDRIVE_ENUMERATE_ACCESSIBLE_USERS_FOR_LEAD
+  - key: PIPEDRIVE_FIND_GOALS
+  - key: PIPEDRIVE_FIND_USERS_BY_NAME
+  - key: PIPEDRIVE_GET_ACTIVITY
+  - key: PIPEDRIVE_GET_ACTIVITY_FIELD
+  - key: PIPEDRIVE_GET_ALL_ACTIVITIES_ASSIGNED_TO_A_PARTICULAR_USER
+  - key: PIPEDRIVE_GET_ALL_ACTIVITIES_BETA
+  - key: PIPEDRIVE_GET_ALL_ACTIVITY_FIELDS
+  - key: PIPEDRIVE_GET_ALL_ACTIVITY_TYPES
+  - key: PIPEDRIVE_GET_ALL_DEALS
+  - key: PIPEDRIVE_GET_ALL_DEALS_BETA
+  - key: PIPEDRIVE_GET_ALL_DEAL_FIELDS
+  - key: PIPEDRIVE_GET_ALL_FILES
+  - key: PIPEDRIVE_GET_ALL_FILTERS
+  - key: PIPEDRIVE_GET_ALL_FILTER_HELPERS
+  - key: PIPEDRIVE_GET_ALL_LEADS
+  - key: PIPEDRIVE_GET_ALL_LEAD_LABELS
+  - key: PIPEDRIVE_GET_ALL_LEAD_SOURCES
+  - key: PIPEDRIVE_GET_ALL_NOTES
+  - key: PIPEDRIVE_GET_ALL_NOTE_FIELDS
+  - key: PIPEDRIVE_GET_ALL_ORGANIZATIONS
+  - key: PIPEDRIVE_GET_ALL_ORGANIZATIONS_BETA
+  - key: PIPEDRIVE_GET_ALL_ORGANIZATION_FIELDS
+  - key: PIPEDRIVE_GET_ALL_PERMISSION_SETS
+  - key: PIPEDRIVE_GET_ALL_PERSONS
+  - key: PIPEDRIVE_GET_ALL_PERSONS_BETA
+  - key: PIPEDRIVE_GET_ALL_PERSON_FIELDS
+  - key: PIPEDRIVE_GET_ALL_PIPELINES
+  - key: PIPEDRIVE_GET_ALL_PRODUCTS
+  - key: PIPEDRIVE_GET_ALL_PRODUCT_FIELDS
+  - key: PIPEDRIVE_GET_ALL_PROJECTS
+  - key: PIPEDRIVE_GET_ALL_PROJECT_BOARDS
+  - key: PIPEDRIVE_GET_ALL_PROJECT_TEMPLATES
+  - key: PIPEDRIVE_GET_ALL_RELATIONSHIPS_FOR_ORGANIZATION
+  - key: PIPEDRIVE_GET_ALL_ROLES
+  - key: PIPEDRIVE_GET_ALL_STAGES
+  - key: PIPEDRIVE_GET_ALL_SUPPORTED_CURRENCIES
+  - key: PIPEDRIVE_GET_ALL_TASKS
+  - key: PIPEDRIVE_GET_ALL_TEAMS
+  - key: PIPEDRIVE_GET_ALL_TEAMS_OF_A_USER
+  - key: PIPEDRIVE_GET_ALL_USERS
+  - key: PIPEDRIVE_GET_ALL_USERS_IN_A_TEAM
+  - key: PIPEDRIVE_GET_ALL_USER_CONNECTIONS
+  - key: PIPEDRIVE_GET_ALL_WEBHOOKS
+  - key: PIPEDRIVE_GET_ARCHIVED_DEALS
+  - key: PIPEDRIVE_GET_ARCHIVED_LEADS
+  - key: PIPEDRIVE_GET_CALL_LOG
+  - key: PIPEDRIVE_GET_COMMENT
+  - key: PIPEDRIVE_GET_COMPANY_ADD_ONS
+  - key: PIPEDRIVE_GET_CONVERSATIONS
+  - key: PIPEDRIVE_GET_CURRENT_USER_DATA
+  - key: PIPEDRIVE_GET_DEAL
+  - key: PIPEDRIVE_GET_DEALS_CONVERSION_RATES_IN_PIPELINE
+  - key: PIPEDRIVE_GET_DEALS_CONVERT_STATUS
+  - key: PIPEDRIVE_GET_DEALS_DISCOUNTS
+  - key: PIPEDRIVE_GET_DEALS_IN_A_PIPELINE
+  - key: PIPEDRIVE_GET_DEALS_IN_A_STAGE
+  - key: PIPEDRIVE_GET_DEALS_PRODUCTS
+  - key: PIPEDRIVE_GET_DEALS_SUMMARY
+  - key: PIPEDRIVE_GET_DEALS_SUMMARY_ARCHIVED
+  - key: PIPEDRIVE_GET_DEALS_TIMELINE
+  - key: PIPEDRIVE_GET_DEALS_WITH_PRODUCT
+  - key: PIPEDRIVE_GET_DEAL_CHANGELOG
+  - key: PIPEDRIVE_GET_DEAL_FIELD
+  - key: PIPEDRIVE_GET_DEAL_FILES
+  - key: PIPEDRIVE_GET_DEAL_FOLLOWERS
+  - key: PIPEDRIVE_GET_DEAL_FOLLOWERS_CHANGELOG
+  - key: PIPEDRIVE_GET_DEAL_MAIL_MESSAGES
+  - key: PIPEDRIVE_GET_DEAL_PARTICIPANTS
+  - key: PIPEDRIVE_GET_DEAL_PARTICIPANTS_CHANGELOG
+  - key: PIPEDRIVE_GET_DEAL_PRODUCTS
+  - key: PIPEDRIVE_GET_DEAL_SUBSCRIPTION
+  - key: PIPEDRIVE_GET_DEAL_UPDATES
+  - key: PIPEDRIVE_GET_DEAL_USERS
+  - key: PIPEDRIVE_GET_DETAILS_OF_AN_ORGANIZATION
+  - key: PIPEDRIVE_GET_FILE
+  - key: PIPEDRIVE_GET_FILTER
+  - key: PIPEDRIVE_GET_GOAL_RESULT
+  - key: PIPEDRIVE_GET_LEAD_CONVERSION_STATUS
+  - key: PIPEDRIVE_GET_LEAD_FIELDS
+  - key: PIPEDRIVE_GET_LEAD_USERS
+  - key: PIPEDRIVE_GET_MAIL_MESSAGE
+  - key: PIPEDRIVE_GET_MAIL_THREAD
+  - key: PIPEDRIVE_GET_MAIL_THREADS
+  - key: PIPEDRIVE_GET_MAIL_THREAD_MESSAGES
+  - key: PIPEDRIVE_GET_MARKETPLACE_CLIENT_ID
+  - key: PIPEDRIVE_GET_NOTE
+  - key: PIPEDRIVE_GET_NOTE_COMMENTS
+  - key: PIPEDRIVE_GET_ONE_LEAD
+  - key: PIPEDRIVE_GET_ORGANIZATION
+  - key: PIPEDRIVE_GET_ORGANIZATION_CHANGELOG
+  - key: PIPEDRIVE_GET_ORGANIZATION_DEALS
+  - key: PIPEDRIVE_GET_ORGANIZATION_FIELD
+  - key: PIPEDRIVE_GET_ORGANIZATION_FILES
+  - key: PIPEDRIVE_GET_ORGANIZATION_FOLLOWERS
+  - key: PIPEDRIVE_GET_ORGANIZATION_FOLLOWERS_CHANGELOG
+  - key: PIPEDRIVE_GET_ORGANIZATION_MAIL_MESSAGES
+  - key: PIPEDRIVE_GET_ORGANIZATION_PERSONS
+  - key: PIPEDRIVE_GET_ORGANIZATION_RELATIONSHIP
+  - key: PIPEDRIVE_GET_ORGANIZATION_UPDATES
+  - key: PIPEDRIVE_GET_ORGANIZATION_USERS
+  - key: PIPEDRIVE_GET_PERMISSION_SET
+  - key: PIPEDRIVE_GET_PERMISSION_SET_ASSIGNMENTS
+  - key: PIPEDRIVE_GET_PERSON
+  - key: PIPEDRIVE_GET_PERSON_CHANGELOG
+  - key: PIPEDRIVE_GET_PERSON_DEALS
+  - key: PIPEDRIVE_GET_PERSON_FIELD
+  - key: PIPEDRIVE_GET_PERSON_FILES
+  - key: PIPEDRIVE_GET_PERSON_FOLLOWERS
+  - key: PIPEDRIVE_GET_PERSON_FOLLOWERS_CHANGELOG
+  - key: PIPEDRIVE_GET_PERSON_MAIL_MESSAGES
+  - key: PIPEDRIVE_GET_PERSON_PICTURE
+  - key: PIPEDRIVE_GET_PERSON_PRODUCTS
+  - key: PIPEDRIVE_GET_PERSON_UPDATES
+  - key: PIPEDRIVE_GET_PERSON_USERS
+  - key: PIPEDRIVE_GET_PIPELINE
+  - key: PIPEDRIVE_GET_PIPELINE_CONVERSION_STATISTICS
+  - key: PIPEDRIVE_GET_PIPELINE_MOVEMENT_STATISTICS
+  - key: PIPEDRIVE_GET_PRODUCT
+  - key: PIPEDRIVE_GET_PRODUCT_DEALS
+  - key: PIPEDRIVE_GET_PRODUCT_FIELD
+  - key: PIPEDRIVE_GET_PRODUCT_FILES
+  - key: PIPEDRIVE_GET_PRODUCT_FOLLOWERS
+  - key: PIPEDRIVE_GET_PRODUCT_FOLLOWERS_CHANGELOG
+  - key: PIPEDRIVE_GET_PRODUCT_IMAGES
+  - key: PIPEDRIVE_GET_PRODUCT_USERS
+  - key: PIPEDRIVE_GET_PRODUCT_VARIATIONS
+  - key: PIPEDRIVE_GET_PROJECT
+  - key: PIPEDRIVE_GET_PROJECT_ACTIVITIES
+  - key: PIPEDRIVE_GET_PROJECT_BOARD
+  - key: PIPEDRIVE_GET_PROJECT_GROUPS
+  - key: PIPEDRIVE_GET_PROJECT_PHASE
+  - key: PIPEDRIVE_GET_PROJECT_PHASES
+  - key: PIPEDRIVE_GET_PROJECT_PLAN
+  - key: PIPEDRIVE_GET_PROJECT_TASKS
+  - key: PIPEDRIVE_GET_RECENTS
+  - key: PIPEDRIVE_GET_ROLE
+  - key: PIPEDRIVE_GET_ROLE_ASSIGNMENTS
+  - key: PIPEDRIVE_GET_ROLE_PIPELINES
+  - key: PIPEDRIVE_GET_ROLE_SETTINGS
+  - key: PIPEDRIVE_GET_STAGE
+  - key: PIPEDRIVE_GET_SUBSCRIPTION
+  - key: PIPEDRIVE_GET_SUBSCRIPTION_PAYMENTS
+  - key: PIPEDRIVE_GET_TASK
+  - key: PIPEDRIVE_GET_TEAM
+  - key: PIPEDRIVE_GET_TEMPLATE
+  - key: PIPEDRIVE_GET_TEMPLATES
+  - key: PIPEDRIVE_GET_USER
+  - key: PIPEDRIVE_GET_USER_CALL_LOGS
+  - key: PIPEDRIVE_GET_USER_FOLLOWERS
+  - key: PIPEDRIVE_GET_USER_PERMISSIONS
+  - key: PIPEDRIVE_GET_USER_ROLE_ASSIGNMENTS
+  - key: PIPEDRIVE_GET_USER_ROLE_SETTINGS
+  - key: PIPEDRIVE_LINK_REMOTE_FILE
+  - key: PIPEDRIVE_LINK_USER_VIDEO_INTEGRATION
+  - key: PIPEDRIVE_LIST_DEAL_ACTIVITIES
+  - key: PIPEDRIVE_LIST_DEAL_FILES
+  - key: PIPEDRIVE_LIST_DEAL_FOLLOWERS
+  - key: PIPEDRIVE_LIST_DEAL_MAIL_MESSAGES
+  - key: PIPEDRIVE_LIST_DEAL_PERSONS
+  - key: PIPEDRIVE_LIST_DEAL_PRODUCTS
+  - key: PIPEDRIVE_LIST_DEAL_UPDATES
+  - key: PIPEDRIVE_LIST_DEAL_USERS
+  - key: PIPEDRIVE_LIST_ORGANIZATION_ACTIVITIES
+  - key: PIPEDRIVE_LIST_ORGANIZATION_DEALS
+  - key: PIPEDRIVE_LIST_ORGANIZATION_FILES
+  - key: PIPEDRIVE_LIST_ORGANIZATION_FOLLOWERS
+  - key: PIPEDRIVE_LIST_ORGANIZATION_MAIL_MESSAGES
+  - key: PIPEDRIVE_LIST_ORGANIZATION_PERSONS
+  - key: PIPEDRIVE_LIST_PARTICIPANTS_OF_A_DEAL
+  - key: PIPEDRIVE_LIST_PERMISSION_SET_ASSIGNMENTS
+  - key: PIPEDRIVE_LIST_PERSON_ACTIVITIES
+  - key: PIPEDRIVE_LIST_PERSON_DEALS
+  - key: PIPEDRIVE_LIST_PERSON_FILES
+  - key: PIPEDRIVE_LIST_PERSON_FOLLOWERS
+  - key: PIPEDRIVE_LIST_PERSON_MAIL_MESSAGES
+  - key: PIPEDRIVE_LIST_PERSON_PRODUCTS
+  - key: PIPEDRIVE_LIST_PERSON_USERS
+  - key: PIPEDRIVE_LIST_PRODUCT_FILES
+  - key: PIPEDRIVE_LIST_PRODUCT_FOLLOWERS
+  - key: PIPEDRIVE_LIST_PRODUCT_USERS
+  - key: PIPEDRIVE_LIST_ROLE_ASSIGNMENTS
+  - key: PIPEDRIVE_LIST_ROLE_PIPELINE_VISIBILITY
+  - key: PIPEDRIVE_LIST_ROLE_SETTINGS
+  - key: PIPEDRIVE_LIST_UPDATES_ABOUT_AN_ORGANIZATION
+  - key: PIPEDRIVE_LIST_UPDATES_ABOUT_A_PERSON
+  - key: PIPEDRIVE_LIST_UPDATES_ABOUT_PARTICIPANTS_OF_A_DEAL
+  - key: PIPEDRIVE_LIST_USER_FOLLOWERS
+  - key: PIPEDRIVE_LIST_USER_PERMISSIONS
+  - key: PIPEDRIVE_LIST_USER_ROLE_ASSIGNMENTS
+  - key: PIPEDRIVE_LIST_USER_ROLE_SETTINGS
+  - key: PIPEDRIVE_LIST_USER_SETTINGS
+  - key: PIPEDRIVE_MERGE_DEALS
+  - key: PIPEDRIVE_MERGE_ORGANIZATIONS
+  - key: PIPEDRIVE_MERGE_PERSONS
+  - key: PIPEDRIVE_MERGE_TWO_DEALS
+  - key: PIPEDRIVE_MERGE_TWO_ORGANIZATIONS
+  - key: PIPEDRIVE_MERGE_TWO_PERSONS
+  - key: PIPEDRIVE_NEW_DEAL_TRIGGER
+  - key: PIPEDRIVE_NEW_NOTE_TRIGGER
+  - key: PIPEDRIVE_NEW_ORGANIZATION_TRIGGER
+  - key: PIPEDRIVE_ORGANIZATION_ACCESSIBLE_USER_LIST
+  - key: PIPEDRIVE_PATCH_DEAL_FIELDS
+  - key: PIPEDRIVE_PATCH_ORGANIZATION_FIELDS
+  - key: PIPEDRIVE_PATCH_PERSON_FIELDS
+  - key: PIPEDRIVE_PRODUCTFIELDS_PATCH_PRODUCTFIELDS
+  - key: PIPEDRIVE_REFRESH_TOKENS
+  - key: PIPEDRIVE_REQUEST_AUTHORIZATION
+  - key: PIPEDRIVE_SEARCH_DEALS
+  - key: PIPEDRIVE_SEARCH_ITEM_BY_FIELD
+  - key: PIPEDRIVE_SEARCH_LEADS
+  - key: PIPEDRIVE_SEARCH_MULTIPLE_ITEM_TYPES
+  - key: PIPEDRIVE_SEARCH_ORGANIZATIONS
+  - key: PIPEDRIVE_SEARCH_PERSONS
+  - key: PIPEDRIVE_SEARCH_PRODUCTS
+  - key: PIPEDRIVE_TAGES_UPDATE_STAGE
+  - key: PIPEDRIVE_UNLINK_USER_FROM_VIDEO_CALL_INTEGRATION
+  - key: PIPEDRIVE_UPDATE_ACTIVITY
+  - key: PIPEDRIVE_UPDATE_ACTIVITY_IN_PROJECT_PLAN
+  - key: PIPEDRIVE_UPDATE_ACTIVITY_TYPE
+  - key: PIPEDRIVE_UPDATE_AN_ACTIVITY
+  - key: PIPEDRIVE_UPDATE_AN_ACTIVITY_TYPE
+  - key: PIPEDRIVE_UPDATE_AN_ORGANIZATION
+  - key: PIPEDRIVE_UPDATE_AN_ORGANIZATION_FIELD
+  - key: PIPEDRIVE_UPDATE_AN_ORGANIZATION_RELATIONSHIP
+  - key: PIPEDRIVE_UPDATE_A_COMMENT_RELATED_TO_A_NOTE
+  - key: PIPEDRIVE_UPDATE_A_DEAL
+  - key: PIPEDRIVE_UPDATE_A_DEAL_FIELD
+  - key: PIPEDRIVE_UPDATE_A_FILTER
+  - key: PIPEDRIVE_UPDATE_A_LEAD
+  - key: PIPEDRIVE_UPDATE_A_LEAD_LABEL
+  - key: PIPEDRIVE_UPDATE_A_NOTE
+  - key: PIPEDRIVE_UPDATE_A_PERSON
+  - key: PIPEDRIVE_UPDATE_A_PERSON_FIELD
+  - key: PIPEDRIVE_UPDATE_A_PIPELINE
+  - key: PIPEDRIVE_UPDATE_A_PRODUCT
+  - key: PIPEDRIVE_UPDATE_A_PRODUCT_FIELD
+  - key: PIPEDRIVE_UPDATE_COMMENT_FOR_NOTE
+  - key: PIPEDRIVE_UPDATE_DEAL
+  - key: PIPEDRIVE_UPDATE_DEALFIELDS_OPTIONS
+  - key: PIPEDRIVE_UPDATE_DEAL_DISCOUNT
+  - key: PIPEDRIVE_UPDATE_DEAL_FIELD
+  - key: PIPEDRIVE_UPDATE_DEAL_PRODUCT
+  - key: PIPEDRIVE_UPDATE_DEAL_PRODUCT_ATTACHMENT
+  - key: PIPEDRIVE_UPDATE_DEAL_V2
+  - key: PIPEDRIVE_UPDATE_FILE
+  - key: PIPEDRIVE_UPDATE_FILE_DETAILS
+  - key: PIPEDRIVE_UPDATE_FILTER
+  - key: PIPEDRIVE_UPDATE_GOAL
+  - key: PIPEDRIVE_UPDATE_INSTALLMENT_SUBSCRIPTION
+  - key: PIPEDRIVE_UPDATE_LEAD
+  - key: PIPEDRIVE_UPDATE_LEAD_LABEL
+  - key: PIPEDRIVE_UPDATE_MAIL_THREAD
+  - key: PIPEDRIVE_UPDATE_NOTE
+  - key: PIPEDRIVE_UPDATE_ORGANIZATION
+  - key: PIPEDRIVE_UPDATE_ORGANIZATION_FIELD
+  - key: PIPEDRIVE_UPDATE_ORGANIZATION_FIELD_OPTIONS
+  - key: PIPEDRIVE_UPDATE_ORGANIZATION_RELATIONSHIP
+  - key: PIPEDRIVE_UPDATE_PERSON
+  - key: PIPEDRIVE_UPDATE_PERSONFIELDS_OPTIONS
+  - key: PIPEDRIVE_UPDATE_PERSON_FIELD
+  - key: PIPEDRIVE_UPDATE_PERSON_V2
+  - key: PIPEDRIVE_UPDATE_PIPELINE
+  - key: PIPEDRIVE_UPDATE_PIPELINE_VISIBILITY_FOR_ROLE
+  - key: PIPEDRIVE_UPDATE_PRODUCT
+  - key: PIPEDRIVE_UPDATE_PRODUCTFIELDS_OPTIONS
+  - key: PIPEDRIVE_UPDATE_PRODUCT_FIELD
+  - key: PIPEDRIVE_UPDATE_PRODUCT_IMAGE
+  - key: PIPEDRIVE_UPDATE_PRODUCT_VARIATION
+  - key: PIPEDRIVE_UPDATE_PROJECT
+  - key: PIPEDRIVE_UPDATE_RECURRING_SUBSCRIPTION
+  - key: PIPEDRIVE_UPDATE_ROLE
+  - key: PIPEDRIVE_UPDATE_ROLE_PIPELINES
+  - key: PIPEDRIVE_UPDATE_STAGE
+  - key: PIPEDRIVE_UPDATE_STAGE_DETAILS
+  - key: PIPEDRIVE_UPDATE_TASK
+  - key: PIPEDRIVE_UPDATE_TASK_IN_PROJECT_PLAN
+  - key: PIPEDRIVE_UPDATE_TEAM
+  - key: PIPEDRIVE_UPDATE_USER
+  - key: PIPEDRIVE_UPDATE_USER_DETAILS
+edges:
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: Gravity Forms
+  partner: gravity-forms
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/gravity-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.gravityforms.com/?utm_campaign=partners&utm_source=zapier-listing-learn-more&utm_medium=free-placement
+- partner_name: Facebook Lead Ads
+  partner: facebook-lead-ads
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/facebook-lead-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://www.facebook.com/business/ads/lead-ads
+- partner_name: Mailchimp
+  partner: mailchimp
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/mailchimp
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://mailchimp.com/
+- partner_name: Calendly
+  partner: calendly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/calendly
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: WPForms
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/wpforms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://wpforms.com/
+- partner_name: Google Ads
+  partner: google-ads
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/google-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://ads.google.com/
+- partner_name: Gmail
+  partner: gmail
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Unbounce
+  partner: unbounce
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/unbounce
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://unbounce.com/
+- partner_name: PandaDoc
+  partner: pandadoc
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/pandadoc
+  direction: third-party
+  category: Documents
+  partner_url: https://www.pandadoc.com/integrations/zapier/?utm_source=zapier-marketplace&utm_medium=partner&utm_campaign=2020-11-inbd-marketplace-websitevisit-pandadoc-zapier-integration
+- partner_name: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/microsoft-outlook
+  direction: third-party
+  category: Calendar
+  partner_url: https://outlook.live.com/
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: Squarespace Forms
+  partner: squarespace
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/squarespace-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.squarespace.com/
+- partner_name: WooCommerce
+  partner: woocommerce
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/woocommerce
+  direction: third-party
+  category: eCommerce
+  partner_url: https://woocommerce.com/products/woocommerce-zapier/?utm_source=zapier&utm_medium=website&utm_campaign=integration
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: LinkedIn Ads
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/linkedin-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://www.linkedin.com/
+- partner_name: ActiveCampaign
+  partner: activecampaign
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/activecampaign
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.activecampaign.com/?utm_source=unpaid_syndication_website&utm_medium=referral&utm_campaign=zapier_listing
+- partner_name: Acuity Scheduling
+  partner: acuity-scheduling
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/acuity-scheduling
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://acuityscheduling.com/?utm_source=zapier.com&utm_medium=referral&utm_campaign=integration-page
+- partner_name: Facebook Lead Ads (for Business admins)
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/facebook-lead-ads-beta
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://facebook.com/
+- partner_name: lemlist
+  partner: lemlist
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/lemlist
+  direction: third-party
+  category: Drip Emails
+  partner_url: https://lemlist.com/
+- partner_name: ClickFunnels Classic
+  partner: clickfunnels
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/clickfunnels-classic
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.clickfunnels.com/
+- partner_name: Wix
+  partner: wix
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/wix
+  direction: third-party
+  category: Website Builders
+  partner_url: https://www.wix.com/
+- partner_name: Perspective
+  partner: perspective
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/perspective
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://perspective.co/
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: Instantly
+  partner: instantly-ai
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/instantly
+  direction: third-party
+  category: Email
+  partner_url: https://instantly.ai/
+- partner_name: monday.com
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: Brevo
+  partner: brevo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/brevo
+  direction: third-party
+  category: Email Newsletters
+  partner_url: https://www.sendinblue.com/?utm_medium=plugin&utm_source=zapier
+- partner_name: OnceHub
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/oncehub
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://www.oncehub.com/scheduleonce/home
+- partner_name: Tally
+  partner: tally
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/tally
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://try.tally.so/zapier
+- partner_name: lemlist
+  partner: lemlist
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/lemlist/blob/main/openapi/lemlist-companies-api-openapi.yml
+  contract_reference:
+    repo: lemlist
+    spec_file: lemlist-companies-api-openapi.yml
+    value: pipedrive
+    property: Company.crmSync.provider
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: supaglue
+  partner: supaglue
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/supaglue/blob/main/openapi/supaglue-syncconfigs-api-openapi.yml
+  contract_reference:
+    repo: supaglue
+    spec_file: supaglue-syncconfigs-api-openapi.yml
+    value: pipedrive
+    property: components.schemas.provider_name
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: vessel
+  partner: vessel
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/vessel/blob/main/openapi/vessel-connections-api-openapi.yml
+  contract_reference:
+    repo: vessel
+    spec_file: vessel-connections-api-openapi.yml
+    value: pipedrive
+    property: schemas.Connection.integrationId
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+templates:
+- title: Create Pipedrive deals for new leads in Google Ads
+  url: https://zapier.com/apps/google-ads/integrations/pipedrive/534677/create-pipedrive-deals-for-new-leads-in-google-ads
+  apps:
+  - google-ads
+  - pipedrive
+- title: Add new Unbounce form submissions to Pipedrive as deals
+  url: https://zapier.com/apps/pipedrive/integrations/unbounce/95/add-new-unbounce-form-submissions-to-pipedrive-as-deals
+  apps:
+  - unbounce
+  - pipedrive
+- title: Send offline conversions in Google Ads when new deals match filters in Pipedrive
+  url: https://zapier.com/apps/google-ads/integrations/pipedrive/547076/send-offline-conversions-in-google-ads-when-new-deals-match-filters-in-pipedrive
+  apps:
+  - pipedrive
+  - google-ads
+- title: Create persons on Pipedrive with new Perspective leads information
+  url: https://zapier.com/apps/perspective/integrations/pipedrive/43820/create-persons-on-pipedrive-with-new-perspective-leads-information
+  apps:
+  - perspective
+  - pipedrive
+- title: Add new Pipedrive people to Google Ads Custom Lists
+  url: https://zapier.com/apps/google-ads/integrations/pipedrive/78014/add-new-pipedrive-people-to-google-ads-custom-lists
+  apps:
+  - pipedrive
+  - google-ads
+- title: Add new Pipedrive people to Mailchimp as subscribers
+  url: https://zapier.com/apps/mailchimp/integrations/pipedrive/218/add-new-pipedrive-people-to-mailchimp-as-subscribers
+  apps:
+  - pipedrive
+  - mailchimp
+- title: Send funnel events to Facebook Conversions from Pipedrive
+  url: https://zapier.com/apps/facebook-conversions/integrations/pipedrive/1130085/send-funnel-events-to-facebook-conversions-from-pipedrive
+  apps:
+  - pipedrive
+  - facebook-conversions
+- title: Create Pipedrive deals from new Facebook Lead Ads leads
+  url: https://zapier.com/apps/facebook-lead-ads/integrations/pipedrive/11332/create-pipedrive-deals-from-new-facebook-lead-ads-leads
+  apps:
+  - facebook-lead-ads
+  - pipedrive
+- title: Send Offline Conversion to Google Ads for Updated Deal Stage in Pipedrive
+  url: https://zapier.com/apps/google-ads/integrations/pipedrive/1007650/send-offline-conversion-to-google-ads-for-updated-deal-stage-in-pipedrive
+  apps:
+  - pipedrive
+  - google-ads
+- title: Add new Pipedrive deals to Google Sheets rows
+  url: https://zapier.com/apps/google-sheets/integrations/pipedrive/9142/add-new-pipedrive-deals-to-google-sheets-rows
+  apps:
+  - pipedrive
+  - google-sheets
+- title: Add new Pipedrive contacts as Brevo subscribers
+  url: https://zapier.com/apps/brevo/integrations/pipedrive/9151/add-new-pipedrive-contacts-as-brevo-subscribers
+  apps:
+  - pipedrive
+  - brevo
+- title: Create Pipedrive deals from new invitees in Calendly
+  url: https://zapier.com/apps/calendly/integrations/pipedrive/15931/create-pipedrive-deals-from-new-invitees-in-calendly
+  apps:
+  - calendly
+  - pipedrive
+template_total: 6508
