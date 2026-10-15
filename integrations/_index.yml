@@ -498,7 +498,7 @@
     app_slug: pipedrive
     beta: false
     builder: unknown (not in the directory record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: pipedrive-n8n
   label: n8n
@@ -525,7 +525,7 @@
     builder: n8n (built-in node)
     other_nodes:
     - Pipedrive/v1
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: pipedrive-pipedream
   label: Pipedream
@@ -551,5 +551,5 @@
     actions: true
     sources: true
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
