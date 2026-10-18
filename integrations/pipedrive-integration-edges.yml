@@ -5,6 +5,7 @@ source:
 - https://n8n.io/integrations/pipedrive/
 - https://composio.dev/toolkits/pipedrive
 checked:
+- google-workspace/integrations/google-workspace-integration-edges.yml
 - https://composio.dev/toolkits/pipedrive
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
@@ -18,7 +19,11 @@ checked:
 - https://n8n.io/integrations/pipedrive/
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/pipedrive/integrations
+- microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+- monday-com/integrations/monday-com-integration-edges.yml
 - okta/integrations/okta-integration-edges.yml
+- slack/integrations/slack-integration-edges.yml
+- zoom/integrations/zoom-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -1426,6 +1431,93 @@ edges:
     builder: 'community (Meltano Hub variant maintainers: airbyte, singer-io)'
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
+- partner_name: Google Workspace (own)
+  partner: google-workspace
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://workspace.google.com/marketplace/app/pipedrive_crm/181457847709
+  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
+  apps:
+  - Pipedrive CRM
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Google Workspace app
+- partner_name: Microsoft Teams (own)
+  partner: microsoft-teams
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appsource.microsoft.com/en-us/product/office/WA200002395
+  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+  apps:
+  - Pipedrive
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Microsoft Teams app
+  publisher_verified:
+  - Microsoft 365 Publisher Attestation
+- partner_name: Monday.com (own)
+  partner: monday-com
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://monday.com/marketplace/listing/10000011
+  mirror_of: monday-com/integrations/monday-com-integration-edges.yml
+  apps:
+  - Pipedrive
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: monday.com app
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A2VG0CJAE-dealbot-by-pipedrive
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Dealbot by Pipedrive
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
+- partner_name: Zoom (own)
+  partner: zoom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.zoom.us/apps/uZzyLt6kRzeTYlZj_S_YMQ
+  mirror_of: zoom/integrations/zoom-integration-edges.yml
+  apps:
+  - Pipedrive
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Zoom app
 templates:
 - title: Create Pipedrive deals for new leads in Google Ads
   url: https://zapier.com/apps/google-ads/integrations/pipedrive/534677/create-pipedrive-deals-for-new-leads-in-google-ads
