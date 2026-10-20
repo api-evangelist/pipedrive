@@ -1,4 +1,4 @@
-generated: '2026-10-12'
+generated: '2026-10-20'
 method: searched
 source:
 - https://zapier.com/apps/pipedrive/integrations
@@ -177,259 +177,12 @@ marketplace_apps:
   app: pipedrive
   url: https://n8n.io/integrations/pipedrive/
   identity: title
-  pair_pages: 251
+  pair_pages: 4
   pairs:
-  - pipefy
-  - pirate-weather
-  - pitchly
-  - pivotal-tracker
-  - planview-leankit
-  - planyo-online-booking
-  - platformly
-  - plecto
-  - plivo
-  - postbin
   - postgres
-  - posthog
-  - practitest
-  - predisai
-  - prodia
-  - product-hunt
-  - profitwell
-  - project-bubble-proprofs-project
-  - prompthub
-  - prospe-ai
-  - pushbullet
-  - pushcut
-  - pusher
-  - pushover
-  - qradar
-  - qualaroo
-  - qualys
-  - quentn
-  - questdb
-  - quick-base
-  - quickbooks-online
-  - quickchart
-  - quintadb
-  - rabbitmq
-  - radar
-  - raindrop
-  - rapid7-insightvm
-  - raven-tools
-  - rawg-video-games-database
-  - read-ai
-  - realphonevalidation
-  - recharge
-  - recorded-future
-  - redash
-  - reddit
-  - redis
-  - relevance-ai
-  - relink-url-shortener
-  - relysia
-  - replyio
-  - retable
-  - reverse-contact
-  - rewardful
-  - ritekit
-  - roboflow
-  - robolytix
-  - roboresponseai
-  - rocketchat
-  - rollbar
-  - rootly
-  - route4me
-  - rundeck
-  - s3
-  - sales-simplify
-  - salesforce
-  - salesmaa
-  - salesmate
-  - salesmsg
-  - salesrocks
-  - samsung-smartthings
-  - scrape-itcloud
-  - scrapeninja
-  - seamless-ai
-  - search-and-save
-  - seatable
-  - securityscorecard
-  - segment
-  - sekoia
-  - sellix
-  - sembly-ai
-  - sendgrid
-  - sendy
-  - sentryio
-  - servicenow
-  - sharly-ai
-  - shiphero
-  - shipstation
-  - shopify
-  - shortio
-  - shuffler
-  - sierra-interactive
-  - sifter
-  - signaturit
-  - signl4
-  - signrequest
-  - simpleem
-  - simplehash
-  - simplekpi
-  - simplelocalize
-  - simplero
-  - simpletexting
-  - sitecreatorio
-  - sitespeakai
   - slack
-  - smaily
-  - smartreach
-  - smartsuite
-  - sms-it
-  - sms-magic
-  - sms77
-  - snapdocs
-  - snatchbot
-  - snipcart
-  - snowflake
-  - solve-data
-  - specter
-  - splunk
-  - spondyr
-  - spontit
-  - sportsdata
-  - spotify
-  - spydra
-  - sslmate-cert-spotter-api
-  - stackby
-  - stammerai
-  - starton
-  - statuscake
-  - storyblok
-  - strapi
-  - strava
-  - stripe
-  - studio-by-ai21-labs
-  - suitedash
   - supabase
-  - supernormal
-  - superpowered
-  - supportivekoala
-  - survicate
-  - swagup
-  - switchboard
-  - syncly
-  - syncromsp
-  - synthesia
-  - taiga
-  - talentlms
-  - talknotes
-  - tapfiliate
-  - td-ameritrade
-  - teachable
-  - team-up
-  - teamdeck
-  - teamgate
-  - teknoir
   - telegram
-  - testmonitor
-  - textcortex-ai
-  - textgain
-  - textkit
-  - textmagic
-  - thankster
-  - the-customer-factor
-  - the-leap
-  - thehive
-  - thehive-5
-  - thoughtfulgpt
-  - thrivecart
-  - tidb-cloud
-  - tierion
-  - tilda
-  - timescaledb
-  - timetonic
-  - tinyurl
-  - tisane-labs
-  - todoist
-  - token-metrics
-  - toket
-  - totango
-  - trackvia
-  - transifex
-  - travisci
-  - trellix-epo
-  - trello
-  - trengo
-  - trevorio
-  - turbohire
-  - tuskr
-  - tuulio
-  - twake
-  - twilio
-  - twist
-  - twitter
-  - unbounce
-  - unisender
-  - unleashed-software
-  - upkeep
-  - uplead
-  - uproc
-  - uptimerobot
-  - uptimetoolbox
-  - urlscanio
-  - uservoice
-  - venafi-tls-protect-cloud
-  - venafi-tls-protect-datacenter
-  - venly
-  - verifalia
-  - vero
-  - vimeo
-  - virustotal
-  - vivifyscrum
-  - voicit
-  - vonage
-  - vowel
-  - watchsignals
-  - waveline-extract
-  - webex-by-cisco
-  - webflow
-  - webscraperio
-  - wekan
-  - whal3s
-  - whatconverts
-  - whatsapp-business-cloud
-  - wise
-  - wizychat
-  - wonderchat
-  - wondercraft
-  - woocommerce
-  - woodpeckerco
-  - wordpress
-  - workast
-  - workboard
-  - woxo
-  - writesonic
-  - wubook-ratechecker
-  - xero
-  - xtractly
-  - ybug
-  - ycode
-  - yodiz
-  - yourls
-  - youtube
-  - zabbix
-  - zammad
-  - zendesk
-  - zenrows
-  - zoho-books
-  - zoho-crm
-  - zoho-desk
-  - zonka-feedback
-  - zoom
-  - zscaler-zia
-  - zulip
 - marketplace: composio
   channel: agent-gateway
   app: pipedrive
@@ -439,9 +192,6 @@ marketplace_apps:
   - key: PIPEDRIVE_ADD_ACTIVITY_TYPE
   - key: PIPEDRIVE_ADD_AN_ACTIVITY
   - key: PIPEDRIVE_ADD_AN_ORGANIZATION
-  - key: PIPEDRIVE_ADD_A_CALL_LOG
-  - key: PIPEDRIVE_ADD_A_CHANNEL
-  - key: PIPEDRIVE_ADD_A_COMMENT_TO_A_NOTE
   - key: PIPEDRIVE_ADD_A_DEAL
   - key: PIPEDRIVE_ADD_A_PERSON
   - key: PIPEDRIVE_ADD_CALL_LOG
@@ -715,6 +465,8 @@ marketplace_apps:
   - key: PIPEDRIVE_GET_USER_ROLE_SETTINGS
   - key: PIPEDRIVE_LINK_REMOTE_FILE
   - key: PIPEDRIVE_LINK_USER_VIDEO_INTEGRATION
+  - key: PIPEDRIVE_LIST_ACTIVITIES
+  - key: PIPEDRIVE_LIST_DEALS
   - key: PIPEDRIVE_LIST_DEAL_ACTIVITIES
   - key: PIPEDRIVE_LIST_DEAL_FILES
   - key: PIPEDRIVE_LIST_DEAL_FOLLOWERS
@@ -723,6 +475,7 @@ marketplace_apps:
   - key: PIPEDRIVE_LIST_DEAL_PRODUCTS
   - key: PIPEDRIVE_LIST_DEAL_UPDATES
   - key: PIPEDRIVE_LIST_DEAL_USERS
+  - key: PIPEDRIVE_LIST_FILES
   - key: PIPEDRIVE_LIST_ORGANIZATION_ACTIVITIES
   - key: PIPEDRIVE_LIST_ORGANIZATION_DEALS
   - key: PIPEDRIVE_LIST_ORGANIZATION_FILES
@@ -731,6 +484,7 @@ marketplace_apps:
   - key: PIPEDRIVE_LIST_ORGANIZATION_PERSONS
   - key: PIPEDRIVE_LIST_PARTICIPANTS_OF_A_DEAL
   - key: PIPEDRIVE_LIST_PERMISSION_SET_ASSIGNMENTS
+  - key: PIPEDRIVE_LIST_PERSONS
   - key: PIPEDRIVE_LIST_PERSON_ACTIVITIES
   - key: PIPEDRIVE_LIST_PERSON_DEALS
   - key: PIPEDRIVE_LIST_PERSON_FILES
@@ -840,337 +594,8 @@ marketplace_apps:
   - key: PIPEDRIVE_UPDATE_TEAM
   - key: PIPEDRIVE_UPDATE_USER
   - key: PIPEDRIVE_UPDATE_USER_DETAILS
+  - key: PIPEDRIVE_WHO_AM_I
 edges:
-- partner_name: Typeform
-  partner: typeform
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/typeform
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
-- partner_name: Gravity Forms
-  partner: gravity-forms
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/gravity-forms
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://www.gravityforms.com/?utm_campaign=partners&utm_source=zapier-listing-learn-more&utm_medium=free-placement
-- partner_name: Facebook Lead Ads
-  partner: facebook-lead-ads
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/facebook-lead-ads
-  direction: third-party
-  category: Ads & Conversion
-  partner_url: https://www.facebook.com/business/ads/lead-ads
-- partner_name: Mailchimp
-  partner: mailchimp
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/mailchimp
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://mailchimp.com/
-- partner_name: Calendly
-  partner: calendly
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/calendly
-  direction: third-party
-  category: Scheduling & Booking
-  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
-- partner_name: HubSpot
-  partner: hubspot
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/hubspot
-  direction: third-party
-  category: Marketing Automation
-  partner_url: http://www.hubspot.com/
-- partner_name: WPForms
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/wpforms
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://wpforms.com/
-- partner_name: Google Ads
-  partner: google-ads
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/google-ads
-  direction: third-party
-  category: Ads & Conversion
-  partner_url: https://ads.google.com/
-- partner_name: Gmail
-  partner: gmail
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/gmail
-  direction: third-party
-  category: Email
-  partner_url: https://mail.google.com/
-- partner_name: Unbounce
-  partner: unbounce
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/unbounce
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://unbounce.com/
-- partner_name: PandaDoc
-  partner: pandadoc
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/pandadoc
-  direction: third-party
-  category: Documents
-  partner_url: https://www.pandadoc.com/integrations/zapier/?utm_source=zapier-marketplace&utm_medium=partner&utm_campaign=2020-11-inbd-marketplace-websitevisit-pandadoc-zapier-integration
-- partner_name: Microsoft Outlook
-  partner: microsoft-outlook
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/microsoft-outlook
-  direction: third-party
-  category: Calendar
-  partner_url: https://outlook.live.com/
-- partner_name: Google Forms
-  partner: google-forms
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/google-forms
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: http://google.com/
-- partner_name: Squarespace Forms
-  partner: squarespace
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/squarespace-forms
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://www.squarespace.com/
-- partner_name: WooCommerce
-  partner: woocommerce
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/woocommerce
-  direction: third-party
-  category: eCommerce
-  partner_url: https://woocommerce.com/products/woocommerce-zapier/?utm_source=zapier&utm_medium=website&utm_campaign=integration
-- partner_name: Airtable
-  partner: airtable
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/airtable
-  direction: third-party
-  category: Databases
-  partner_url: https://airtable.com/
-- partner_name: LinkedIn Ads
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/linkedin-ads
-  direction: third-party
-  category: Ads & Conversion
-  partner_url: https://www.linkedin.com/
-- partner_name: ActiveCampaign
-  partner: activecampaign
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/activecampaign
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://www.activecampaign.com/?utm_source=unpaid_syndication_website&utm_medium=referral&utm_campaign=zapier_listing
-- partner_name: Acuity Scheduling
-  partner: acuity-scheduling
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/acuity-scheduling
-  direction: third-party
-  category: Scheduling & Booking
-  partner_url: https://acuityscheduling.com/?utm_source=zapier.com&utm_medium=referral&utm_campaign=integration-page
-- partner_name: Facebook Lead Ads (for Business admins)
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/facebook-lead-ads-beta
-  direction: third-party
-  category: Ads & Conversion
-  partner_url: https://facebook.com/
-- partner_name: lemlist
-  partner: lemlist
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/lemlist
-  direction: third-party
-  category: Drip Emails
-  partner_url: https://lemlist.com/
-- partner_name: ClickFunnels Classic
-  partner: clickfunnels
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/clickfunnels-classic
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://www.clickfunnels.com/
-- partner_name: Wix
-  partner: wix
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/wix
-  direction: third-party
-  category: Website Builders
-  partner_url: https://www.wix.com/
-- partner_name: Perspective
-  partner: perspective
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/perspective
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://perspective.co/
-- partner_name: Shopify
-  partner: shopify
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/shopify
-  direction: third-party
-  category: eCommerce
-  partner_url: https://www.shopify.com/
-- partner_name: Instantly
-  partner: instantly-ai
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/instantly
-  direction: third-party
-  category: Email
-  partner_url: https://instantly.ai/
-- partner_name: monday.com
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/monday
-  direction: third-party
-  category: Project Management
-  partner_url: https://monday.com/
-- partner_name: Brevo
-  partner: brevo
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/brevo
-  direction: third-party
-  category: Email Newsletters
-  partner_url: https://www.sendinblue.com/?utm_medium=plugin&utm_source=zapier
-- partner_name: OnceHub
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/oncehub
-  direction: third-party
-  category: Scheduling & Booking
-  partner_url: https://www.oncehub.com/scheduleonce/home
-- partner_name: Tally
-  partner: tally
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/tally
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://try.tally.so/zapier
 - partner_name: lemlist
   partner: lemlist
   partner_match: domain
@@ -1539,6 +964,366 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Zoom app
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: Calendly
+  partner: calendly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/calendly
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
+- partner_name: Mailchimp
+  partner: mailchimp
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/mailchimp
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://mailchimp.com/
+- partner_name: Squarespace Forms
+  partner: squarespace
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/squarespace-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.squarespace.com/
+- partner_name: ActiveCampaign
+  partner: activecampaign
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/activecampaign
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.activecampaign.com/?utm_source=unpaid_syndication_website&utm_medium=referral&utm_campaign=zapier_listing
+- partner_name: Gravity Forms
+  partner: gravity-forms
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/gravity-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.gravityforms.com/?utm_campaign=partners&utm_source=zapier-listing-learn-more&utm_medium=free-placement
+- partner_name: lemlist
+  partner: lemlist
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/lemlist
+  direction: third-party
+  category: Drip Emails
+  partner_url: https://lemlist.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Google Ads
+  partner: google-ads
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/google-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://ads.google.com/
+- partner_name: Wix
+  partner: wix
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/wix
+  direction: third-party
+  category: Website Builders
+  partner_url: https://www.wix.com/
+- partner_name: Facebook Lead Ads
+  partner: facebook-lead-ads
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/facebook-lead-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://www.facebook.com/business/ads/lead-ads
+- partner_name: Unbounce
+  partner: unbounce
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/unbounce
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://unbounce.com/
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: WPForms
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/wpforms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://wpforms.com/
+- partner_name: Acuity Scheduling
+  partner: acuity-scheduling
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/acuity-scheduling
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://acuityscheduling.com/?utm_source=zapier.com&utm_medium=referral&utm_campaign=integration-page
+- partner_name: PandaDoc
+  partner: pandadoc
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/pandadoc
+  direction: third-party
+  category: Documents
+  partner_url: https://www.pandadoc.com/integrations/zapier/?utm_source=zapier-marketplace&utm_medium=partner&utm_campaign=2020-11-inbd-marketplace-websitevisit-pandadoc-zapier-integration
+- partner_name: Gmail
+  partner: gmail
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Apollo
+  partner: apollo-io
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/apollo
+  direction: third-party
+  category: Sales & CRM
+  partner_url: https://www.apollo.io/
+- partner_name: Instantly
+  partner: instantly-ai
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/instantly
+  direction: third-party
+  category: Email
+  partner_url: https://instantly.ai/
+- partner_name: Jotform
+  partner: jotform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/jotform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://www.jotform.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: QuickBooks Online
+  partner: quickbooks
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/quickbooks
+  direction: third-party
+  category: Accounting
+  partner_url: http://intuit.com/
+- partner_name: Brevo
+  partner: brevo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/brevo
+  direction: third-party
+  category: Email Newsletters
+  partner_url: https://www.sendinblue.com/?utm_medium=plugin&utm_source=zapier
+- partner_name: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/microsoft-outlook
+  direction: third-party
+  category: Calendar
+  partner_url: https://outlook.live.com/
+- partner_name: ClickFunnels Classic
+  partner: clickfunnels
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/clickfunnels-classic
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.clickfunnels.com/
+- partner_name: Facebook Lead Ads (for Business admins)
+  partner: facebook-lead-ads
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/facebook-lead-ads-beta
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://facebook.com/
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: Manychat
+  partner: manychat
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/manychat
+  direction: third-party
+  category: Social Media Marketing
+  partner_url: https://manychat.com/
+- partner_name: ClickUp
+  partner: clickup
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/clickup
+  direction: third-party
+  category: Project Management
+  partner_url: https://clickup.com/zapier
+- partner_name: Perspective
+  partner: perspective
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/pipedrive/integrations/perspective
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://perspective.co/
 templates:
 - title: Create Pipedrive deals for new leads in Google Ads
   url: https://zapier.com/apps/google-ads/integrations/pipedrive/534677/create-pipedrive-deals-for-new-leads-in-google-ads
@@ -1600,4 +1385,4 @@ templates:
   apps:
   - calendly
   - pipedrive
-template_total: 6508
+template_total: 6510

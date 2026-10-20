@@ -15,6 +15,7 @@
   evidence: https://zapier.com/apps/google-ads/integrations/pipedrive/534677/create-pipedrive-deals-for-new-leads-in-google-ads
   template: https://zapier.com/apps/google-ads/integrations/pipedrive/534677/create-pipedrive-deals-for-new-leads-in-google-ads
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: pipedrive-add-new-unbounce-form-submissions-to-pipedrive-as-deals
@@ -29,6 +30,7 @@
   evidence: https://zapier.com/apps/pipedrive/integrations/unbounce/95/add-new-unbounce-form-submissions-to-pipedrive-as-deals
   template: https://zapier.com/apps/pipedrive/integrations/unbounce/95/add-new-unbounce-form-submissions-to-pipedrive-as-deals
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: pipedrive-send-offline-conversions-in-google-ads-when-new-deals-match-filters-in-pipedrive
@@ -43,6 +45,7 @@
   evidence: https://zapier.com/apps/google-ads/integrations/pipedrive/547076/send-offline-conversions-in-google-ads-when-new-deals-match-filters-in-pipedrive
   template: https://zapier.com/apps/google-ads/integrations/pipedrive/547076/send-offline-conversions-in-google-ads-when-new-deals-match-filters-in-pipedrive
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: pipedrive-create-persons-on-pipedrive-with-new-perspective-leads-information
@@ -57,6 +60,7 @@
   evidence: https://zapier.com/apps/perspective/integrations/pipedrive/43820/create-persons-on-pipedrive-with-new-perspective-leads-information
   template: https://zapier.com/apps/perspective/integrations/pipedrive/43820/create-persons-on-pipedrive-with-new-perspective-leads-information
   source: template
+  relationship: ipaas-bridge
   status: pending-partner-spec
   arazzo: null
 - slug: pipedrive-add-new-pipedrive-people-to-google-ads-custom-lists
@@ -71,6 +75,7 @@
   evidence: https://zapier.com/apps/google-ads/integrations/pipedrive/78014/add-new-pipedrive-people-to-google-ads-custom-lists
   template: https://zapier.com/apps/google-ads/integrations/pipedrive/78014/add-new-pipedrive-people-to-google-ads-custom-lists
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: pipedrive-add-new-pipedrive-people-to-mailchimp-as-subscribers
@@ -85,6 +90,7 @@
   evidence: https://zapier.com/apps/mailchimp/integrations/pipedrive/218/add-new-pipedrive-people-to-mailchimp-as-subscribers
   template: https://zapier.com/apps/mailchimp/integrations/pipedrive/218/add-new-pipedrive-people-to-mailchimp-as-subscribers
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: pipedrive-create-pipedrive-deals-from-new-facebook-lead-ads-leads
@@ -99,6 +105,7 @@
   evidence: https://zapier.com/apps/facebook-lead-ads/integrations/pipedrive/11332/create-pipedrive-deals-from-new-facebook-lead-ads-leads
   template: https://zapier.com/apps/facebook-lead-ads/integrations/pipedrive/11332/create-pipedrive-deals-from-new-facebook-lead-ads-leads
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: pipedrive-send-offline-conversion-to-google-ads-for-updated-deal-stage-in-pipedrive
@@ -113,6 +120,7 @@
   evidence: https://zapier.com/apps/google-ads/integrations/pipedrive/1007650/send-offline-conversion-to-google-ads-for-updated-deal-stage-in-pipedrive
   template: https://zapier.com/apps/google-ads/integrations/pipedrive/1007650/send-offline-conversion-to-google-ads-for-updated-deal-stage-in-pipedrive
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: pipedrive-add-new-pipedrive-contacts-as-brevo-subscribers
@@ -127,6 +135,7 @@
   evidence: https://zapier.com/apps/brevo/integrations/pipedrive/9151/add-new-pipedrive-contacts-as-brevo-subscribers
   template: https://zapier.com/apps/brevo/integrations/pipedrive/9151/add-new-pipedrive-contacts-as-brevo-subscribers
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: pipedrive-create-pipedrive-deals-from-new-invitees-in-calendly
@@ -141,278 +150,26 @@
   evidence: https://zapier.com/apps/calendly/integrations/pipedrive/15931/create-pipedrive-deals-from-new-invitees-in-calendly
   template: https://zapier.com/apps/calendly/integrations/pipedrive/15931/create-pipedrive-deals-from-new-invitees-in-calendly
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
-  arazzo: null
-- slug: pipedrive-typeform
-  label: Typeform
-  partner: typeform
-  partner_name: Typeform
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/typeform
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-gravity-forms
-  label: Gravity Forms
-  partner: gravity-forms
-  partner_name: Gravity Forms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/gravity-forms
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-hubspot
-  label: HubSpot
-  partner: hubspot
-  partner_name: HubSpot
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/hubspot
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-wpforms
-  label: WPForms
-  partner_name: WPForms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/wpforms
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: pipedrive-gmail
-  label: Gmail
-  partner: gmail
-  partner_name: Gmail
-  category: Email
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/gmail
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: pipedrive-pandadoc
-  label: PandaDoc
-  partner: pandadoc
-  partner_name: PandaDoc
-  category: Documents
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/pandadoc
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-microsoft-outlook
-  label: Microsoft Outlook
-  partner: microsoft-outlook
-  partner_name: Microsoft Outlook
-  category: Calendar
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/microsoft-outlook
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-google-forms
-  label: Google Forms
-  partner: google-forms
-  partner_name: Google Forms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/google-forms
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-squarespace-forms
-  label: Squarespace Forms
-  partner: squarespace
-  partner_name: Squarespace Forms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/squarespace-forms
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-woocommerce
-  label: WooCommerce
-  partner: woocommerce
-  partner_name: WooCommerce
-  category: eCommerce
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/woocommerce
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-airtable
-  label: Airtable
-  partner: airtable
-  partner_name: Airtable
-  category: Databases
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/airtable
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-linkedin-ads
-  label: LinkedIn Ads
-  partner_name: LinkedIn Ads
-  category: Ads & Conversion
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/linkedin-ads
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: pipedrive-activecampaign
-  label: ActiveCampaign
-  partner: activecampaign
-  partner_name: ActiveCampaign
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/activecampaign
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-acuity-scheduling
-  label: Acuity Scheduling
-  partner: acuity-scheduling
-  partner_name: Acuity Scheduling
-  category: Scheduling & Booking
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/acuity-scheduling
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-facebook-lead-ads-for-business-admins
-  label: Facebook Lead Ads (for Business admins)
-  partner_name: Facebook Lead Ads (for Business admins)
-  category: Ads & Conversion
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/facebook-lead-ads-beta
-  source: edge
-  status: pending-partner-spec
   arazzo: null
 - slug: pipedrive-lemlist
   label: lemlist
   partner: lemlist
   partner_name: lemlist
-  category: Drip Emails
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/lemlist
+  type: contract
+  channel: partner-built
+  evidence: https://github.com/api-evangelist/lemlist/blob/main/openapi/lemlist-companies-api-openapi.yml
   source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-clickfunnels-classic
-  label: ClickFunnels Classic
-  partner: clickfunnels
-  partner_name: ClickFunnels Classic
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/clickfunnels-classic
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-wix
-  label: Wix
-  partner: wix
-  partner_name: Wix
-  category: Website Builders
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/wix
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-shopify
-  label: Shopify
-  partner: shopify
-  partner_name: Shopify
-  category: eCommerce
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/shopify
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-instantly
-  label: Instantly
-  partner: instantly-ai
-  partner_name: Instantly
-  category: Email
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/instantly
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: pipedrive-monday-com
-  label: monday.com
-  partner_name: monday.com
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/monday
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: pipedrive-oncehub
-  label: OnceHub
-  partner_name: OnceHub
-  category: Scheduling & Booking
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/oncehub
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: pipedrive-tally
-  label: Tally
-  partner: tally
-  partner_name: Tally
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/pipedrive/integrations/tally
-  source: edge
-  status: pending-generation
+  relationship: processor-connection
+  contract_reference:
+    repo: lemlist
+    spec_file: lemlist-companies-api-openapi.yml
+    value: pipedrive
+    property: Company.crmSync.provider
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+  status: not-a-workflow
   arazzo: null
 - slug: pipedrive-supaglue
   label: supaglue
@@ -718,4 +475,289 @@
   source: edge
   relationship: platform-app
   status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-typeform
+  label: Typeform
+  partner: typeform
+  partner_name: Typeform
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/typeform
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-squarespace-forms
+  label: Squarespace Forms
+  partner: squarespace
+  partner_name: Squarespace Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/squarespace-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-activecampaign
+  label: ActiveCampaign
+  partner: activecampaign
+  partner_name: ActiveCampaign
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/activecampaign
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-gravity-forms
+  label: Gravity Forms
+  partner: gravity-forms
+  partner_name: Gravity Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/gravity-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-hubspot
+  label: HubSpot
+  partner: hubspot
+  partner_name: HubSpot
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/hubspot
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-wix
+  label: Wix
+  partner: wix
+  partner_name: Wix
+  category: Website Builders
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/wix
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-google-forms
+  label: Google Forms
+  partner: google-forms
+  partner_name: Google Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/google-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-wpforms
+  label: WPForms
+  partner_name: WPForms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/wpforms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: pipedrive-acuity-scheduling
+  label: Acuity Scheduling
+  partner: acuity-scheduling
+  partner_name: Acuity Scheduling
+  category: Scheduling & Booking
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/acuity-scheduling
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-pandadoc
+  label: PandaDoc
+  partner: pandadoc
+  partner_name: PandaDoc
+  category: Documents
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/pandadoc
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-gmail
+  label: Gmail
+  partner: gmail
+  partner_name: Gmail
+  category: Email
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/gmail
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: pipedrive-apollo
+  label: Apollo
+  partner: apollo-io
+  partner_name: Apollo
+  category: Sales & CRM
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/apollo
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-instantly
+  label: Instantly
+  partner: instantly-ai
+  partner_name: Instantly
+  category: Email
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/instantly
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-jotform
+  label: Jotform
+  partner: jotform
+  partner_name: Jotform
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/jotform
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-slack
+  label: Slack
+  partner: slack
+  partner_name: Slack
+  category: Team Chat
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/slack
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-quickbooks-online
+  label: QuickBooks Online
+  partner: quickbooks
+  partner_name: QuickBooks Online
+  category: Accounting
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/quickbooks
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: pipedrive-microsoft-outlook
+  label: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_name: Microsoft Outlook
+  category: Calendar
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/microsoft-outlook
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-clickfunnels-classic
+  label: ClickFunnels Classic
+  partner: clickfunnels
+  partner_name: ClickFunnels Classic
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/clickfunnels-classic
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-facebook-lead-ads-for-business-admins
+  label: Facebook Lead Ads (for Business admins)
+  partner: facebook-lead-ads
+  partner_name: Facebook Lead Ads (for Business admins)
+  category: Ads & Conversion
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/facebook-lead-ads-beta
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-airtable
+  label: Airtable
+  partner: airtable
+  partner_name: Airtable
+  category: Databases
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/airtable
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-manychat
+  label: Manychat
+  partner: manychat
+  partner_name: Manychat
+  category: Social Media Marketing
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/manychat
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: pipedrive-clickup
+  label: ClickUp
+  partner: clickup
+  partner_name: ClickUp
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/pipedrive/integrations/clickup
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
   arazzo: null
