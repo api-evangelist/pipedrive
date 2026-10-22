@@ -761,3 +761,159 @@
   relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
+- slug: pipedrive-aircall
+  label: Aircall
+  partner: aircall
+  partner_name: Aircall
+  category: Communicate with leads
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/aircall/9e22c78e800871e6
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-apollo-io
+  label: Apollo.io
+  partner: apollo-io
+  partner_name: Apollo.io
+  category: Attract new leads
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/apollo-io/c1e7b5c186a0fe35
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-cloudtalk-io
+  label: cloudtalk.io
+  partner: cloudtalk
+  partner_name: cloudtalk.io
+  category: Nurture my leads
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/cloud-talk-ai-dialer-cti-for-pipedrive/9f5f8e12f3836e83
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-fireflies-ai
+  label: Fireflies.ai
+  partner: fireflies
+  partner_name: Fireflies.ai
+  category: Communicate with leads
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/fireflies-ai-recording-transcription/4ab9e5f57e197843
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-import2
+  label: Import2
+  partner: import2
+  partner_name: Import2
+  category: Other use cases
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/import-2/bf7972b87b5a9861
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-saas-labs
+  label: SaaS Labs
+  partner: justcall
+  partner_name: SaaS Labs
+  category: Attract new leads
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/just-call/d401831fa27bdb38
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-oneflow
+  label: Oneflow
+  partner: oneflow
+  partner_name: Oneflow
+  category: Manage contracts
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/contract-magic-by-oneflow-for-pipedrive/27f16fc3bd398210
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-pandadoc-integrations
+  label: PandaDoc Integrations
+  partner: pandadoc
+  partner_name: PandaDoc Integrations
+  category: Manage contracts
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/panda-doc-proposals-e-signatures-and-cpq/bde8d47250a2302c
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-pipedream
+  label: pipedream
+  partner: pipedream
+  partner_name: pipedream
+  category: Qualify my leads
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/pipedream/5d80274eae050b58
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-ringcentral-labs
+  label: RingCentral Labs
+  partner: ringcentral
+  partner_name: RingCentral Labs
+  category: Automate my pipeline and data
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/ring-central-app-connect/5d4736e322561f57
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-surfe
+  label: Surfe
+  partner: surfe
+  partner_name: Surfe
+  category: Attract new leads
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/surfe/97c68091c72b436b
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pipedrive-zapier-inc
+  label: Zapier, Inc.
+  partner: zapier
+  partner_name: Zapier, Inc.
+  category: Qualify my leads
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/zapier/10f6b602cda330ef
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

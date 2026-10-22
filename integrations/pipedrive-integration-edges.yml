@@ -27,6 +27,8 @@ checked:
 - slack/integrations/slack-integration-edges.yml
 - zendesk/integrations/zendesk-integration-edges.yml
 - zoom/integrations/zoom-integration-edges.yml
+- https://www.pipedrive.com/en/marketplace
+- https://www.pipedrive.com/en/marketplace/sitemap.xml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -1324,6 +1326,253 @@ edges:
   direction: third-party
   category: Marketing Automation
   partner_url: https://perspective.co/
+- partner_name: Aircall
+  app: Aircall
+  apps:
+  - Aircall
+  listing_count: 1
+  partner: aircall
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/aircall/9e22c78e800871e6
+  category: Communicate with leads
+  partner_url: https://aircall.io/?utm_source=pipedrive&utm_medium=marketplace&utm_campaign=partner-marketplace
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Apollo.io
+  app: Apollo.io
+  apps:
+  - Apollo.io
+  listing_count: 1
+  partner: apollo-io
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/apollo-io/c1e7b5c186a0fe35
+  category: Attract new leads
+  partner_url: https://www.apollo.io/?utm_medium=partner&utm_source=tech_Pipedrive&utm_campaign=appmarketplace
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: cloudtalk.io
+  app: 'CloudTalk: AI Dialer & CTI for Pipedrive'
+  apps:
+  - 'CloudTalk: AI Dialer & CTI for Pipedrive'
+  listing_count: 1
+  partner: cloudtalk
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/cloud-talk-ai-dialer-cti-for-pipedrive/9f5f8e12f3836e83
+  category: Nurture my leads
+  partner_url: https://www.cloudtalk.io/pipedrive-call-center-integration/?utm_campaign=14655611-Pipedrive%20Marketplace&utm_source=pipedrive_marketplace&utm_medium=referral
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Fireflies.ai
+  app: Fireflies.ai - Recording & Transcription
+  apps:
+  - Fireflies.ai - Recording & Transcription
+  listing_count: 1
+  partner: fireflies
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/fireflies-ai-recording-transcription/4ab9e5f57e197843
+  category: Communicate with leads
+  partner_url: https://fireflies.ai
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Import2
+  app: Import2
+  apps:
+  - Import2
+  listing_count: 1
+  partner: import2
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/import-2/bf7972b87b5a9861
+  category: Other use cases
+  partner_url: https://www.import2.com/
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: SaaS Labs
+  app: JustCall
+  apps:
+  - JustCall
+  listing_count: 1
+  partner: justcall
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/just-call/d401831fa27bdb38
+  category: Attract new leads
+  partner_url: https://justcall.io/integration/pipedrive/?utm_source=pipedrivemarketplace&utm_medium=integrationpartnerlisting&utm_campaign=integration
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: lemlist
+  app: lemlist
+  apps:
+  - lemlist
+  listing_count: 1
+  partner: lemlist
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/lemlist/38e611cc51ab6b1c
+  category: Attract new leads
+  partner_url: https://lemlist.com
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Oneflow
+  app: Contract magic by Oneflow for Pipedrive
+  apps:
+  - Contract magic by Oneflow for Pipedrive
+  listing_count: 1
+  partner: oneflow
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/contract-magic-by-oneflow-for-pipedrive/27f16fc3bd398210
+  category: Manage contracts
+  partner_url: https://oneflow.com/
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: PandaDoc Integrations
+  app: PandaDoc - Proposals, e-signatures, and CPQ
+  apps:
+  - PandaDoc - Proposals, e-signatures, and CPQ
+  listing_count: 1
+  partner: pandadoc
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/panda-doc-proposals-e-signatures-and-cpq/bde8d47250a2302c
+  category: Manage contracts
+  partner_url: https://www.pandadoc.com/integrations/crm/pipedrive/?utm_source=pipedrive-marketplace&utm_medium=partner&utm_campaign=2020-11-inbd-marketplace-websitevisit-pandadoc-pipedrive-integration
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: pipedream
+  app: Pipedream
+  apps:
+  - Pipedream
+  listing_count: 1
+  partner: pipedream
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/pipedream/5d80274eae050b58
+  category: Qualify my leads
+  partner_url: https://pipedream.com
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: RingCentral Labs
+  app: RingCentral App Connect
+  apps:
+  - RingCentral App Connect
+  listing_count: 1
+  partner: ringcentral
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/ring-central-app-connect/5d4736e322561f57
+  category: Automate my pipeline and data
+  partner_url: https://github.com/ringcentral/rc-unified-crm-extension
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Surfe
+  app: Surfe
+  apps:
+  - Surfe
+  listing_count: 1
+  partner: surfe
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/surfe/97c68091c72b436b
+  category: Attract new leads
+  partner_url: https://www.surfe.com?utm_source=pipedrive&utm_medium=crm-partner&utm_campaign=partners
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Zapier, Inc.
+  app: Zapier
+  apps:
+  - Zapier
+  listing_count: 1
+  partner: zapier
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/zapier/10f6b602cda330ef
+  category: Qualify my leads
+  partner_url: https://zapier.com/
+  signal_note: Pipedrive Marketplace listing (publisher Website / Privacy link from the listing page's own public
+    JSON); listing count and app names are context, never counted
+  detected_by: sweep-pipedrive-marketplace.py
+  detected: '2026-10-22'
 templates:
 - title: Create Pipedrive deals for new leads in Google Ads
   url: https://zapier.com/apps/google-ads/integrations/pipedrive/534677/create-pipedrive-deals-for-new-leads-in-google-ads
