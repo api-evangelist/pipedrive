@@ -374,3 +374,9 @@ components:
             product-fields:full: Create, read, update and delete product fields
             contact-fields:full: Create, read, update and delete person and organization fields
             project-fields:full: Create, read, update and delete project fields
+x-provenance:
+  method: harvested
+  publisher: Pipedrive
+  source: https://developers.pipedrive.com/docs/api/v1/openapi-v2.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
