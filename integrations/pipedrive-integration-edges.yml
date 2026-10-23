@@ -29,6 +29,9 @@ checked:
 - zoom/integrations/zoom-integration-edges.yml
 - https://www.pipedrive.com/en/marketplace
 - https://www.pipedrive.com/en/marketplace/sitemap.xml
+- https://ifttt.com/explore/services
+- https://ifttt.com/pipedrive
+- https://ifttt.com/sitemap_services.xml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -1573,6 +1576,31 @@ edges:
     JSON); listing count and app names are context, never counted
   detected_by: sweep-pipedrive-marketplace.py
   detected: '2026-10-22'
+- partner_name: IFTTT
+  partner: ifttt
+  partner_match: aggregator
+  type: marketplace
+  marketplace: ifttt-services
+  channel: ipaas-listing
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://ifttt.com/pipedrive
+  category: null
+  contract_reference:
+    register: IFTTT service directory (ifttt.com/explore/services; ifttt.com/<service>)
+    spec_file: null
+    role: ipaas-connector:ifttt
+    registered_name: Pipedrive
+    matched_domain: pipedrive.com
+    matched_by: domain
+    app_slug: pipedrive
+    ifttt_category: Business tools
+    builder: unknown (the service page does not say who built it)
+    detected_by: sweep-ifttt-services.py
+    detected: '2026-10-23'
+    signal_note: one edge per (provider, platform); triggers, actions and applet counts are context, never read
+  detected_by: sweep-ifttt-services.py
+  first_seen: '2026-10-23'
 templates:
 - title: Create Pipedrive deals for new leads in Google Ads
   url: https://zapier.com/apps/google-ads/integrations/pipedrive/534677/create-pipedrive-deals-for-new-leads-in-google-ads
